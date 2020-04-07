@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Buyer;
+use Sentinel;
 
 class BuyersController extends Controller
 {
@@ -34,7 +36,20 @@ class BuyersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'name' => $request->name,
+            'dob'  =>$request->dob,
+            'gender' => $request->gender,
+            'description' => $request->description,
+            'last_visited_at' => $request->last_visited_at,
+            'last_visited_from' => $request->last_visited_from,
+            'verification_token' => $request->verification_token,
+            'remember_token' => $request->remember_token,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        Buyer::create($data);
     }
 
     /**

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Shop;
+use Sentinel;
 
 class ShopsController extends Controller
 {
@@ -34,7 +36,20 @@ class ShopsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'cell_phone' => $request->cell_phone,
+            'google_location' => $request->google_location,
+            'featured' => $request->featured,
+            'email' => $request->email,
+            'web' => $request->web,
+            'description' => $request->description,
+            'seller_id' => $request->seller_id,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+        Shop::create($data);
     }
 
     /**
