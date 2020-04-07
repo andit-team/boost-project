@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Sentinel;
-class phpHomeController extends Controller
+class HomeController extends Controller
 {
 
     public function register(){
