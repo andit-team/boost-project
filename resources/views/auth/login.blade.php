@@ -8,8 +8,8 @@
     <meta name="description" content="Multikart admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Multikart admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="../assets/images/dashboard/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="../assets/images/dashboard/favicon.png" type="image/x-icon">
+    <link rel="icon" href="{{asset('')}}/assets/images/dashboard/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('')}}/assets/images/dashboard/favicon.png" type="image/x-icon">
     <title>Multikart - Premium Admin Template</title>
 
     <!-- Google font-->
@@ -17,23 +17,23 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Font Awesome-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/fontawesome.css">
 
     <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/themify.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/themify.css">
 
     <!-- slick icon-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/slick.css">
-    <link rel="stylesheet" type="text/css" href="../assets/css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/slick-theme.css">
 
     <!-- jsgrid css-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/jsgrid.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/jsgrid.css">
 
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/bootstrap.css">
 
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="../assets/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/admin.css">
 
 </head>
 <body>
@@ -167,22 +167,29 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" id="top-profile-tab" data-toggle="tab" href="#top-profile" role="tab" aria-controls="top-profile" aria-selected="true"><span class="icon-user mr-2"></span>Login</a>
                                 </li>
-                                <li class="nav-item">
+                                <!-- <li class="nav-item">
                                     <a class="nav-link" id="contact-top-tab" data-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="false"><span class="icon-unlock mr-2"></span>Register</a>
-                                </li>
+                                </li> -->
                             </ul>
-                            <div class="tab-content" id="top-tabContent">
-                                <div class="tab-pane fade show active" id="top-profile" role="tabpanel" aria-labelledby="top-profile-tab">
-                                    <form class="form-horizontal auth-form">
+                            <!-- <div class="tab-content" id="top-tabContent"> -->
+                                <!-- <div class="tab-pane fade show active" id="top-profile" role="tabpanel" aria-labelledby="top-profile-tab"> -->
+                                @if (\Session::has('error'))
+                                    <div class="alert alert-danger">
+                                            <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
+                                    </div>
+                                @endif
+
+                                    <form class="form-horizontal auth-form" method="post" action="{{route('loginproces')}}">
+                                        @csrf
                                         <div class="form-group">
-                                            <input required="" name="login[username]" type="email" class="form-control" placeholder="Username" id="exampleInputEmail1">
+                                            <input required="" name="login[email]" type="email" class="form-control" placeholder="Email" id="exampleInputEmail1">
                                         </div>
                                         <div class="form-group">
                                             <input required="" name="login[password]" type="password" class="form-control" placeholder="Password">
                                         </div>
                                         <div class="form-terms">
                                             <div class="custom-control custom-checkbox mr-sm-2">
-                                                <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+                                                <input type="checkbox" class="custom-control-input" name="remember" id="customControlAutosizing">
                                                 <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
                                                 <a href="#" class="btn btn-default forgot-pass">lost your password</a>
                                             </div>
@@ -200,8 +207,8 @@
                                             </ul>
                                         </div>
                                     </form>
-                                </div>
-                                <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
+                                <!-- </div> -->
+                                <!-- <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
                                     <form class="form-horizontal auth-form">
                                         <div class="form-group">
                                             <input required="" name="login[username]" type="email" class="form-control" placeholder="Username" id="exampleInputEmail12">
@@ -231,46 +238,46 @@
                                             </ul>
                                         </div>
                                     </form>
-                                </div>
+                                </div> -->
 
-                            </div>
+                            <!-- </div> -->
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="index.html" class="btn btn-primary back-btn"><i data-feather="arrow-left"></i>back</a>
+            {{-- <a href="index.html" class="btn btn-primary back-btn"><i data-feather="arrow-left"></i>back</a> --}}
         </div>
     </div>
 </div>
 
 <!-- latest jquery-->
-<script src="../assets/js/jquery-3.3.1.min.js"></script>
+<script src="{{asset('')}}/assets/js/jquery-3.3.1.min.js"></script>
 
 <!-- Bootstrap js-->
-<script src="../assets/js/popper.min.js"></script>
-<script src="../assets/js/bootstrap.js"></script>
+<script src="{{asset('')}}/assets/js/popper.min.js"></script>
+<script src="{{asset('')}}/assets/js/bootstrap.js"></script>
 
 <!-- feather icon js-->
-<script src="../assets/js/icons/feather-icon/feather.min.js"></script>
-<script src="../assets/js/icons/feather-icon/feather-icon.js"></script>
+<script src="{{asset('')}}/assets/js/icons/feather-icon/feather.min.js"></script>
+<script src="{{asset('')}}/assets/js/icons/feather-icon/feather-icon.js"></script>
 
 <!-- Sidebar jquery-->
-<script src="../assets/js/sidebar-menu.js"></script>
-<script src="../assets/js/slick.js"></script>
+<script src="{{asset('')}}/assets/js/sidebar-menu.js"></script>
+<script src="{{asset('')}}/assets/js/slick.js"></script>
 
 <!-- Jsgrid js-->
-<script src="../assets/js/jsgrid/jsgrid.min.js"></script>
-<script src="../assets/js/jsgrid/griddata-invoice.js"></script>
-<script src="../assets/js/jsgrid/jsgrid-invoice.js"></script>
+<script src="{{asset('')}}/assets/js/jsgrid/jsgrid.min.js"></script>
+<script src="{{asset('')}}/assets/js/jsgrid/griddata-invoice.js"></script>
+<script src="{{asset('')}}/assets/js/jsgrid/jsgrid-invoice.js"></script>
 
 <!-- lazyload js-->
-<script src="../assets/js/lazysizes.min.js"></script>
+<script src="{{asset('')}}/assets/js/lazysizes.min.js"></script>
 
 <!--right sidebar js-->
-<script src="../assets/js/chat-menu.js"></script>
+<script src="{{asset('')}}/assets/js/chat-menu.js"></script>
 
 <!--script admin-->
-<script src="../assets/js/admin-script.js"></script>
+<script src="{{asset('')}}/assets/js/admin-script.js"></script>
 <script>
     $('.single-item').slick({
             arrows: false,
