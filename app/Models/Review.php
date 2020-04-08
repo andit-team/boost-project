@@ -3,17 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Buyer;
+use App\Models\Item;
+use App\User;
 class Review extends Model
 {
       protected $fillable = ['stars','reply','review_msg','active','buyer_id','item_id','user_id'];
 
       public function user(){
-       return $this->belongsTo(HrmEmployee::class,'user_id');
+       return $this->belongsTo(User::class,'user_id');
 
       public function buyer(){
-        return $this->belongsTo(HrmEmployee::class,'buyer_id');
+        return $this->belongsTo(Buyer::class,'buyer_id');
 
       public function item(){
-        return $this->belongsTo(HrmEmployee::class,'item_id');
+        return $this->belongsTo(Item::class,'item_id');
 }

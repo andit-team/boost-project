@@ -3,20 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Item;
+use App\Models\Color;
+use App\Models\Size;
+use App\User;
 class Inventory extends Model
 {
     protected $fillable = ['color_name','qty_stock','sort','available_on','active','item_id','color_id','size_id','user_id'];
 
     public function user(){
-     return $this->belongsTo(HrmEmployee::class,'user_id');
+     return $this->belongsTo(User::class,'user_id');
 
     public function item(){
-      return $this->belongsTo(HrmEmployee::class,'item_id');
+      return $this->belongsTo(Item::class,'item_id');
 
     public function color(){
-      return $this->belongsTo(HrmEmployee::class,'color_id');
+      return $this->belongsTo(Color::class,'color_id');
 
     public function size(){
-      return $this->belongsTo(HrmEmployee::class,'size_id');
+      return $this->belongsTo(Size::class,'size_id');
 }
