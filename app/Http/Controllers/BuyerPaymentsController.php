@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PaymentMethod;
 use Illuminate\Http\Request;
+use App\Models\BuyerPayment;
+use Sentinel;
 
 class BuyerPaymentsController extends Controller
 {
@@ -34,7 +37,19 @@ class BuyerPaymentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateForm($request);
+        $data = [
+            'authorize_info' =>$request->authorize_info,
+            'payment_token' =>$request->payment_token,
+            'payer_info' =>$request->payer_info,
+            'amount' =>$request->amount,
+            'order_id' =>$request->order_id,
+            'payment_method_id' =>$request->payment_method_id,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        BuyerPayment::create($data);
     }
 
     /**
@@ -80,5 +95,14 @@ class BuyerPaymentsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'authorize_info' => 'required',
+            'payment_token' => 'required',
+            'payer_info' => 'required',
+            'amount' => 'required',
+        ]);
     }
 }

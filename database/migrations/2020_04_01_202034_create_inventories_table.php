@@ -17,7 +17,6 @@ class CreateInventoriesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('item_id');
             $table->unsignedInteger('color_id');
-            $table->string('color_name');
             $table->integer('qty_stock');
             $table->unsignedInteger('size_id');
             $table->integer('sort');

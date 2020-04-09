@@ -36,6 +36,7 @@ class BuyersController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validateForm($request);
         $data = [
             'name' => $request->name,
             'dob'  =>$request->dob,
@@ -95,5 +96,13 @@ class BuyersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'dob' => 'required',
+            'gender' => 'required',
+        ]);
     }
 }

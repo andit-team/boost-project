@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tag;
+use Sentinel;
 
 class TagsController extends Controller
 {
@@ -34,7 +36,15 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'name' => $request->name,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        Tag::create($data);
+
+
     }
 
     /**
@@ -80,5 +90,11 @@ class TagsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ]);
     }
 }

@@ -36,6 +36,7 @@ class ShopsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validateForm($request);
         $data = [
             'name' => $request->name,
             'slug' => $request->slug,
@@ -95,5 +96,16 @@ class ShopsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'cell_phone' => 'required',
+            'featured' => 'required',
+            'email' => 'required',
+            'web' => 'required',
+            'description' => 'required',
+        ]);
     }
 }

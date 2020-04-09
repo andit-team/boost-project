@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Size;
+use Sentinel;
 
 class SizesController extends Controller
 {
@@ -34,7 +36,15 @@ class SizesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'name' => $request->name,
+            'item_size' => $request->item_size,
+            'desc' => $request->desc,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        Size::create($data);
     }
 
     /**
@@ -80,5 +90,12 @@ class SizesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'item_size' => 'required',
+        ]);
     }
 }

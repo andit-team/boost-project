@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PaymentMethod;
+use Sentinel;
 
 class PaymentMethodsController extends Controller
 {
@@ -34,7 +36,15 @@ class PaymentMethodsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateForm($request);
+        $data = [
+            'name' => $request->name,
+            'desc' => $request->desc,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        PaymentMethod::create($data);
     }
 
     /**
@@ -80,5 +90,11 @@ class PaymentMethodsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ]);
     }
 }

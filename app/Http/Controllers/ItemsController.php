@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Item;
+use Sentinel;
 
 class ItemsController extends Controller
 {
@@ -34,7 +36,34 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateForm($request);
+        $data = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'price' => $request->price,
+            'model_no' => $request->model_no,
+            'org_price' => $request->org_price,
+            'pack_id' => $request->pack_id,
+            'sorting' => $request->sorting,
+            'description' => $request->description,
+            'min_order' => $request->min_order,
+            'available_on' => $request->available_on,
+            'availability' => $request->availability,
+            'made_in' => $request->made_in,
+            'materials' => $request->materials,
+            'labeled' => $request->labeled,
+            'video_url' => $request->video_url,
+            'total_sale_amount' => $request->total_sale_amount,
+            'total_order_qty' => $request->total_order_qty,
+            'last_ordered_at' => $request->last_ordered_at,
+            'last_carted_at' => $request->last_carted_at,
+            'total_view' => $request->total_view,
+            'activated_at' => $request->activated_at,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        Item::create($data);
     }
 
     /**
@@ -80,5 +109,19 @@ class ItemsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'model_no' => 'required',
+            'org_price' => 'required',
+            'pack_id' => 'required',
+            'min_order'=> 'required',
+            'made_in' => 'required',
+            'materials'=> 'required',
+            'labeled' => 'required',
+        ]);
     }
 }

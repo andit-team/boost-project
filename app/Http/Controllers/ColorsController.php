@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Color;
+use Sentinel;
 
 class ColorsController extends Controller
 {
@@ -34,7 +36,14 @@ class ColorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'name' => $request->name,
+            'color_code' => $request->color_code,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        Color::create($data);
     }
 
     /**
@@ -80,5 +89,12 @@ class ColorsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'color_code' => 'required',
+        ]);
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cart;
+use Sentinel;
 
 class CartsController extends Controller
 {
@@ -34,7 +36,20 @@ class CartsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateForm($request);
+        $data = [
+            'rate' =>$request->rate,
+            'qty' =>$request->qty,
+            'buyer_id' =>$request->buyer_id,
+            'shop_id' =>$request->shop_id,
+            'item_id' =>$request->item_id,
+            'color_id' =>$request->color_id,
+            'size_id' =>$request->size_id,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        Cart::create($data);
     }
 
     /**
@@ -80,5 +95,15 @@ class CartsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'rate' => 'required',
+            'qty' => 'required',
+            'buyer_id' => 'required',
+            'shop_id' => 'required',
+            'item_id' => 'required',
+        ]);
     }
 }

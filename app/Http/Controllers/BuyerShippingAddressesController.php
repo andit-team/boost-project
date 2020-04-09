@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\BuyerShippingAddress;
+use Sentinel;
 
 class BuyerShippingAddressesController extends Controller
 {
@@ -34,7 +36,21 @@ class BuyerShippingAddressesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'location' => $request->location,
+            'address' => $request->address,
+            'country' => $request->country,
+            'state' => $request->state,
+            'city' => $request->city,
+            'zip_code' => $request->zip_code,
+            'phone' => $request->phone,
+            'fax' => $request->fax,
+            'buyer_id' => $request->buyer_id,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        BuyerShippingAddress::create($data);
     }
 
     /**
@@ -80,5 +96,17 @@ class BuyerShippingAddressesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'location' => 'required',
+            'address' => 'required',
+            'country' => 'required',
+            'state' => 'required',
+            'city' => 'required',
+            'zip_code' => 'required',
+            'phone' => 'required',
+        ]);
     }
 }

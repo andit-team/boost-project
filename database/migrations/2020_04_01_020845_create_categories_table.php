@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('thumb')->nullable();
-            $table->string('patent')->nullable();
+            $table->string('parent')->nullable();
             $table->integer('sort')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedInteger('user_id');

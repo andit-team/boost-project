@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ShippingMethod;
+use Sentinel;
 
 class ShippingMethodsController extends Controller
 {
@@ -34,7 +36,17 @@ class ShippingMethodsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateForm($request);
+        $data =[
+            'name' => $request->name,
+            'fees' => $request->fees,
+            'desc' => $request->desc,
+            'courier_id' => $request->courier_id,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        ShippingMethod::create($data);
     }
 
     /**
@@ -80,5 +92,12 @@ class ShippingMethodsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'fees' => 'required',
+        ]);
     }
 }
