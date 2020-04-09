@@ -31,7 +31,7 @@ use App\Models\Tag;
 class User extends EloquentUser
 {
     protected $fillable = [
-        'name','deki', 'email', 'password',
+        'first_name','last_name', 'email', 'password',
     ];
 
     public function buyer(){

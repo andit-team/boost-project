@@ -19,9 +19,15 @@ class DatabaseSeeder extends Seeder
                 DB::table('sellers')->truncate();
                 DB::table('shops')->truncate();
                 DB::table('tags')->truncate();
+                DB::table('permissions')->truncate();
+                DB::table('roles')->truncate();
+                DB::table('users')->truncate();
 
         $this->call([
 
+                PermissionTableSeeder::class,
+                RoleTableSeeder::class,
+                UserTableSeeder::class,
                 BuyersTableSeeder::class,
                 CategoriesTableSeeder::class,
                 CuriersTableSeeder::class,

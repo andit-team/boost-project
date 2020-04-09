@@ -46,7 +46,12 @@ class AuthController extends Controller
 
 	public function dashboard(){
 		if (Sentinel::check())
-			return view('welcome');
+			if(Sentinel::getUser()->inRole('buyer'))
+				return view('buyer-dashboard');
+			else if(Sentinel::getUser()->inRole('seller'))
+				return view('seller-dashboard');
+			else
+				return view('admin.dashboard');
 		else
 			return redirect('login');
 	}
