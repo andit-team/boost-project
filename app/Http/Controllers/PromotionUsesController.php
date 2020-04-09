@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PromotionUse;
+use Sentinel;
 
 class PromotionUsesController extends Controller
 {
@@ -34,7 +36,18 @@ class PromotionUsesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'title' =>$request->title,
+            'amount' =>$request->amount,
+            'description'  =>$request->description,
+            'buyer_id' =>$request->buyer_id,
+            'promotion_id' =>$request->promotion_id,
+            'order_id' =>$request->order_id,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        PromotionUse::create($data);
     }
 
     /**
@@ -80,5 +93,12 @@ class PromotionUsesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'amount' => 'required'
+        ]);
     }
 }

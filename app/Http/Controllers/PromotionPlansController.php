@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PromotionPlan;
 use Illuminate\Http\Request;
 
 class PromotionPlansController extends Controller
@@ -34,7 +35,17 @@ class PromotionPlansController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'from_price' => $request->from_price,
+            'to_price' => $request->to_price,
+            'amount' => $request->amount,
+            'is_free_shipping' => $request->is_free_shipping,
+            'promotion_id' => $request->promotion_id,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        PromotionPlan::create($data);
     }
 
     /**
@@ -80,5 +91,15 @@ class PromotionPlansController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'from_price' => 'required',
+            'to_price' => 'required',
+            'amount' => 'required',
+            'is_free_shipping' => 'required',
+            'promotion_id' => 'required',
+        ]);
     }
 }

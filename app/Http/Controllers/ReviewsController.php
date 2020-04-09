@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Review;
+use Sentinel;
 
 class ReviewsController extends Controller
 {
@@ -34,7 +36,18 @@ class ReviewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $this->validateForm($request);
+       $data = [
+           'stars' =>$request->stars,
+           'reply' =>$request->reply,
+           'review_msg' =>$request->review_msg,
+           'buyer_id' =>$request->buyer_id,
+           'item_id' =>$request->item_id,
+           'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+       ];
+
+       Review::create($data);
     }
 
     /**
@@ -80,5 +93,9 @@ class ReviewsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([]);
     }
 }

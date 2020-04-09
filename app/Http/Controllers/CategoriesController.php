@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use Sentinel;
 
 class CategoriesController extends Controller
 {
@@ -34,7 +36,18 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateForm($request);
+        $data = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'thumb' => $request->thumb,
+            'parent' => $request->parent,
+            'sort' => $request->sort,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        Category::create($data);
     }
 
     /**
@@ -80,5 +93,11 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'name' => 'required'
+        ]);
     }
 }

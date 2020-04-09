@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Currency;
+use Sentinel;
 
 class CurrenciesController extends Controller
 {
@@ -34,7 +36,16 @@ class CurrenciesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateForm($request);
+       $data = [
+           'name' =>$request->name,
+           'code' =>$request->code,
+           'symbol' =>$request->symbol,
+           'user_id' => Sentinel::getUser()->id,
+           'created_at' => now(),
+       ];
+
+       Currency::create($data);
     }
 
     /**
@@ -80,5 +91,13 @@ class CurrenciesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'code' => 'required',
+            'symbol' => 'required',
+        ]);
     }
 }

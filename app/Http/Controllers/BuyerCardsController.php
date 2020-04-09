@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\BuyerCard;
+use Sentinel;
 
 class BuyerCardsController extends Controller
 {
@@ -34,7 +36,20 @@ class BuyerCardsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateForm($request);
+        $data = [
+            'card_number' => $request->card_number,
+            'card_holder_name' => $request->card_holder_name,
+            'card_expire_date' => $request->card_expire_date,
+            'card_cvc' => $request->card_cvc,
+            'buyer_id' => $request->buyer_id,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        BuyerCard::create($data);
+
+
     }
 
     /**
@@ -80,5 +95,14 @@ class BuyerCardsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'card_number' => 'required',
+            'card_holder_name' => 'required',
+            'card_expire_date' => 'required',
+            'card_cvc' => 'required'
+        ]);
     }
 }

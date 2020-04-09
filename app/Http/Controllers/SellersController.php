@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Seller;
+use Sentinel;
 
 class SellersController extends Controller
 {
@@ -34,7 +36,21 @@ class SellersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateForm($request);
+        $data = [
+            'name' => $request->name,
+            'dob'  =>$request->dob,
+            'gender' => $request->gender,
+            'description' => $request->description,
+            'last_visited_at' => $request->last_visited_at,
+            'last_visited_from' => $request->last_visited_from,
+            'verification_token' => $request->verification_token,
+            'remember_token' => $request->remember_token,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        Seller::create($data);
     }
 
     /**
@@ -80,5 +96,14 @@ class SellersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'dob' => 'required',
+            'gender' => 'required',
+            'description' => 'required',
+        ]);
     }
 }

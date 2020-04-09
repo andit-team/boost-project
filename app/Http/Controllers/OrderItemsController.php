@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\OrderItem;
+use Sentinel;
 
 class OrderItemsController extends Controller
 {
@@ -34,7 +36,20 @@ class OrderItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'qty' =>$request->qty,
+            'rate' =>$request->rate,
+            'amount' =>$request->amount,
+            'order_id' =>$request->order_id,
+            'shop_id' =>$request->shop_id,
+            'item_id' =>$request->item_id,
+            'color_id' =>$request->color_id,
+            'size_id' =>$request->size_id,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        OrderItem::create($data);
     }
 
     /**
@@ -80,5 +95,16 @@ class OrderItemsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'qty' => 'required',
+            'rate' => 'required',
+            'shop_id' => 'required',
+            'item_id' => 'required',
+            'color_id' => 'required',
+            'size_id' => 'required',
+        ]);
     }
 }

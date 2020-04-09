@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
+use Sentinel;
 
 class OrdersController extends Controller
 {
@@ -34,7 +36,31 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateForm($request);
+        $data = [
+            'order_number' =>$request->order_number,
+            'invoice_number' =>$request->invoice_number,
+            'tracking_number' =>$request->tracking_number,
+            'subtotal' =>$request->subtotal,
+            'discount' =>$request->discount,
+            'shipping_cost' =>$request->shipping_cost,
+            'grand_total' =>$request->grand_total,
+            'admin_note' =>$request->admin_note,
+            'shipping_track' =>$request->shipping_track,
+            'confirm_at' =>$request->confirm_at,
+            'back_ordered_at' =>$request->back_ordered_at,
+            'cancel_at' =>$request->cancel_at,
+            'status' =>$request->status,
+            'buyer_id' =>$request->buyer_id,
+            'buyer_billing_address_id' =>$request->buyer_billing_address_id,
+            'buyer_shipping_address_id' =>$request->buyer_shipping_address_id,
+            'buyer_card_id' =>$request->buyer_card_id,
+            'shipping_method_id' =>$request->shipping_method_id,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        Order::create($data);
     }
 
     /**
@@ -80,5 +106,19 @@ class OrdersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'order_number' => 'required',
+            'invoice_number' => 'required',
+            'tracking_number' => 'required',
+            'subtotal' => 'required',
+            'discount' => 'required',
+            'shipping_cost' => 'required',
+            'grand_total' => 'required',
+            'shipping_track' => 'required',
+            'confirm_at' => 'required'
+        ]);
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Courier;
+use Sentinel;
 
 class CouriersController extends Controller
 {
@@ -34,7 +36,13 @@ class CouriersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'name' => $request->name,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        Courier::create($data);
     }
 
     /**
@@ -80,5 +88,11 @@ class CouriersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'name' => 'required',
+        ]);
     }
 }
