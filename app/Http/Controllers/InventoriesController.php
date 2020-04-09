@@ -102,6 +102,7 @@ class InventoriesController extends Controller
             'color_id' => 'required',
             'qty_stock' => 'required',
             'size_id' => 'required',
+            'available_on' => 'required'
         ]);
     }
 }

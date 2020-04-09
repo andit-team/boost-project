@@ -103,6 +103,7 @@ class BuyersController extends Controller
             'name' => 'required',
             'dob' => 'required',
             'gender' => 'required',
+            'description' => 'required',
         ]);
     }
 }

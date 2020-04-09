@@ -98,6 +98,7 @@ class ShippingMethodsController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'fees' => 'required',
+            'courier_id' => 'required',
         ]);
     }
 }

@@ -122,6 +122,11 @@ class ItemsController extends Controller
             'made_in' => 'required',
             'materials'=> 'required',
             'labeled' => 'required',
+            'available_on' => 'required',
+            'availability' => 'required',
+            'activated_at' => 'required',
+
+
         ]);
     }
 }

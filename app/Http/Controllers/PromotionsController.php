@@ -106,6 +106,7 @@ class PromotionsController extends Controller
             'is_permanent' => 'required',
             'valid_from' => 'required',
             'valid_to' => 'required',
+            'coupon_code' => 'required'
         ]);
     }
 }

@@ -94,7 +94,8 @@ class PromotionHeadsController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'promotion_name' => 'required'
+            'promotion_name' => 'required',
+            'description' => 'required'
         ]);
     }
 }

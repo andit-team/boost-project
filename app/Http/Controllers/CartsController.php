@@ -104,6 +104,7 @@ class CartsController extends Controller
             'buyer_id' => 'required',
             'shop_id' => 'required',
             'item_id' => 'required',
+            'color_id' => 'required',
         ]);
     }
 }

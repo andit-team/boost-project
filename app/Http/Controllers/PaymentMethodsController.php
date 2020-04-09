@@ -95,6 +95,7 @@ class PaymentMethodsController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required',
+            'desc' => 'required'
         ]);
     }
 }

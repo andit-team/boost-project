@@ -108,6 +108,7 @@ class BuyerBillingAddressesController extends Controller
             'state' => 'required',
             'city' => 'required',
             'zip_code'=> 'required',
+            'phone' => 'required',
         ]);
     }
 }

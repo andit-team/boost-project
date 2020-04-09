@@ -102,6 +102,8 @@ class SellersController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'dob' => 'required',
+            'gender' => 'required',
+            'description' => 'required',
         ]);
     }
 }

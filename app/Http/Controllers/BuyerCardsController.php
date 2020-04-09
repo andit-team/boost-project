@@ -102,6 +102,7 @@ class BuyerCardsController extends Controller
             'card_number' => 'required',
             'card_holder_name' => 'required',
             'card_expire_date' => 'required',
+            'card_cvc' => 'required'
         ]);
     }
 }

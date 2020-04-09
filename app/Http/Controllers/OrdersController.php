@@ -118,6 +118,7 @@ class OrdersController extends Controller
             'shipping_cost' => 'required',
             'grand_total' => 'required',
             'shipping_track' => 'required',
+            'confirm_at' => 'required'
         ]);
     }
 }
