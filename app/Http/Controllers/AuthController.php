@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Sentinel;
-class phpHomeController extends Controller
+class AuthController extends Controller
 {
 
     public function register(){
     	$data = [
 		    'name'    	=> 'test',
-		    'deki'    	=> 'dddd',
 		    'email'    	=> 'sharif@me.com',
 		    'password' 	=> 'password',
 		];
@@ -22,23 +21,27 @@ class phpHomeController extends Controller
 	public function login(){
 
 		if (!Sentinel::check())
-			dump('login page.. here');
+			return view('auth.login');
 		else
 			return redirect('dashboard');
 	}
 
-	public function loginprocess(){
+	public function loginprocess(Request $request){
+		// dd($request->all());
 		$credentials = [
-			'email'	=> 'sharif@me.com',
-			'password'	=> 'password'
+			'email'		=> $request->login['email'],
+			'password'	=> $request->login['password']
 		];
 
-		$user = Sentinel::authenticate($credentials);
+		if($request->remember == 'on')
+			$user = Sentinel::authenticateAndRemember($credentials);
+		else
+			$user = Sentinel::authenticate($credentials);
 
 		if($user)
 			return redirect('dashboard');
 		else
-			return redirect('login');
+			return redirect('login')->with('error', 'Invalid email or password');
 	}
 
 	public function dashboard(){
