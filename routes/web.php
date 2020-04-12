@@ -28,3 +28,9 @@ Route::get('/', function () {
 // 	dd($data);
 
 // });
+Auth::routes();
+Route::resource('/categories','CategoriesController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

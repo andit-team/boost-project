@@ -114,6 +114,7 @@
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ZuJ4nTLLGJKRWnRgd15WrIBsoE" />
@@ -177,6 +178,8 @@
       <workItem from="1586411758546" duration="1223000" />
       <workItem from="1586460230685" duration="1001000" />
       <workItem from="1586481460835" duration="5391000" />
+      <workItem from="1586492844554" duration="2367000" />
+      <workItem from="1586628704196" duration="8183000" />
     </task>
     <servers />
   </component>
@@ -184,10 +187,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="235" y="127" key="FileChooserDialogImpl" timestamp="1586369119026">
+    <state x="235" y="127" key="FileChooserDialogImpl" timestamp="1586638658609">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state x="235" y="127" key="FileChooserDialogImpl/0.0.1360.738@0.0.1360.738" timestamp="1586369119026" />
+    <state x="235" y="127" key="FileChooserDialogImpl/0.0.1360.738@0.0.1360.738" timestamp="1586638658609" />
     <state x="183" y="15" key="SettingsEditor" timestamp="1586222782774">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
