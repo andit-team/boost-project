@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\ItemCategory;
 use Sentinel;
 
 class CategoriesController extends Controller
@@ -37,7 +38,8 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validateForm($request);
-        $data = [
+
+        $category = Category::create([
             'name' => $request->name,
             'slug' => $request->slug,
             'thumb' => $request->thumb,
@@ -45,9 +47,15 @@ class CategoriesController extends Controller
             'sort' => $request->sort,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
-        ];
+        ]);
 
-        Category::create($data);
+        for($i=0;i<count($request->category_id); $i++){
+         $itemCategory = ItemCategory::create([
+             'category' =>$category->id,
+         ]);
+       }
+
+        return  redirect()->back();
     }
 
     /**
