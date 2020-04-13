@@ -12,7 +12,6 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $users = [
-                'name'          => 'Admin',
                 'first_name'    => 'Admin',
                 'last_name'     => 'AndIt',
                 'email'         => 'admin@andit.com',
@@ -24,7 +23,6 @@ class UserTableSeeder extends Seeder
         $role = \Sentinel::findRoleBySlug('admin');
         $role->users()->attach($user->id);
         $users = [
-                'name'          => 'Buyer',
                 'first_name'    => 'Sofiq',
                 'last_name'     => 'Mia',
                 'email'         => 'buyer@andit.com',
@@ -37,7 +35,6 @@ class UserTableSeeder extends Seeder
         $role->users()->attach($user->id);
 
         $users = [
-                'name'          => 'Seller',
                 'first_name'    => 'Rofiq',
                 'last_name'     => 'Mia',
                 'email'         => 'seller@andit.com',

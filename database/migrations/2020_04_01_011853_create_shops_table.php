@@ -17,7 +17,7 @@ class CreateShopsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('slug');
-            $table->integer('cell_phone');
+            $table->string('cell_phone');
             $table->string('google_location');
             $table->string('featured');
             $table->string('email');
