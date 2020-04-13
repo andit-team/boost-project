@@ -14,11 +14,11 @@ class CreateItemCategoriesTable extends Migration
     public function up()
     {
         Schema::create('item_categories', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->boolean('active')->default(0)->change();
-            $table->unsignedInteger('category_id');
-            $table->unsignedInteger('item_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

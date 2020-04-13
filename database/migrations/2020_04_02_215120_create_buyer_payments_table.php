@@ -14,15 +14,15 @@ class CreateBuyerPaymentsTable extends Migration
     public function up()
     {
         Schema::create('buyer_payments', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('authorize_info');
             $table->integer('payment_token');
             $table->string('payer_info');
             $table->decimal('amount',8,2);
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('order_id');
-            $table->unsignedInteger('payment_method_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('payment_method_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

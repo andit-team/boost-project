@@ -14,16 +14,16 @@ class CreateItemImagesTable extends Migration
     public function up()
     {
         Schema::create('item_images', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('item_id');
-            $table->unsignedInteger('color_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('color_id');
             $table->integer('sort');
             $table->string('org_img');
             $table->string('list_img');
             $table->string('thumb_img');
             $table->string('compressed_img');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

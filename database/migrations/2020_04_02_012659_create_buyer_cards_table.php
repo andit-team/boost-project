@@ -14,14 +14,14 @@ class CreateBuyerCardsTable extends Migration
     public function up()
     {
         Schema::create('buyer_cards', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->integer('card_number');
             $table->string('card_holder_name');
             $table->date('card_expire_date');
             $table->string('card_cvc');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('buyer_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('buyer_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

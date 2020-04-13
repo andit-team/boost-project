@@ -14,7 +14,7 @@ class CreateShopsTable extends Migration
     public function up()
     {
         Schema::create('shops', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('slug');
             $table->integer('cell_phone');
@@ -25,8 +25,8 @@ class CreateShopsTable extends Migration
             $table->text('description');
 //            $table->unsignedInteger('timezone_id');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('seller_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('seller_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

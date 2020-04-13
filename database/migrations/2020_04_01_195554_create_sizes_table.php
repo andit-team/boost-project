@@ -14,12 +14,12 @@ class CreateSizesTable extends Migration
     public function up()
     {
         Schema::create('sizes', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->decimal('item_size',8,2)->default(0);
             $table->text('desc');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

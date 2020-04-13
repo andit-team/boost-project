@@ -14,14 +14,14 @@ class CreatePromotionPlansTable extends Migration
     public function up()
     {
         Schema::create('promotion_plans', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->decimal('from_price',8,2);
             $table->decimal('to_price',8,2);
             $table->decimal('amount',8,2);
             $table->enum('is_free_shipping',['Yes','No'])->default('No');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('promotion_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('promotion_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

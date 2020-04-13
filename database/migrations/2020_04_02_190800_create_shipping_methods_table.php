@@ -14,13 +14,13 @@ class CreateShippingMethodsTable extends Migration
     public function up()
     {
         Schema::create('shipping_methods', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->decimal('fees',8,2);
             $table->text('desc');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('courier_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('courier_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

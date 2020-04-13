@@ -14,7 +14,7 @@ class CreatePromotionsTable extends Migration
     public function up()
     {
         Schema::create('promotions', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('title');
             $table->text('description');
             $table->enum('is_permanent',['Yes','No'])->default('Yes');
@@ -25,8 +25,8 @@ class CreatePromotionsTable extends Migration
             $table->string('multiple_use');
             $table->string('priority');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('promotion_head_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('promotion_head_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

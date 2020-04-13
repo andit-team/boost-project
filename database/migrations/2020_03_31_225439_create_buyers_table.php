@@ -14,7 +14,7 @@ class CreateBuyersTable extends Migration
     public function up()
     {
         Schema::create('buyers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->date('dob');
             $table->enum('gender',['Male','Female','Other'])->default('Male');
@@ -24,10 +24,10 @@ class CreateBuyersTable extends Migration
             $table->string('verification_token');
             $table->string('remember_token');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
-            
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }

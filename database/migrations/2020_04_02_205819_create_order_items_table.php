@@ -14,17 +14,17 @@ class CreateOrderItemsTable extends Migration
     public function up()
     {
         Schema::create('order_items', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->decimal('qty',8,2)->default(0);
             $table->decimal('rate',8,2)->default(0);
             $table->decimal('amount',8,2)->default(0);
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('order_id');
-            $table->unsignedInteger('shop_id');
-            $table->unsignedInteger('item_id');
-            $table->unsignedInteger('color_id');
-            $table->unsignedInteger('size_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('color_id');
+            $table->unsignedBigInteger('size_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');

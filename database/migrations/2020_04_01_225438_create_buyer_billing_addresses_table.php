@@ -14,7 +14,7 @@ class CreateBuyerBillingAddressesTable extends Migration
     public function up()
     {
         Schema::create('buyer_billing_addresses', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('location');
             $table->text('address');
             $table->string('country');
@@ -24,12 +24,12 @@ class CreateBuyerBillingAddressesTable extends Migration
             $table->integer('phone');
             $table->string('fax');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('buyer_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('buyer_id')->default(1);
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 
-            // $table->foreign('buyer_id')->references('id')->on('buyers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('buyer_id')->references('id')->on('buyers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }

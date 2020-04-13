@@ -14,7 +14,7 @@ class CreateSellersTable extends Migration
     public function up()
     {
         Schema::create('sellers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->date('dob');
             $table->enum('gender',['Male','Female','Other'])->default('Male');
@@ -24,7 +24,7 @@ class CreateSellersTable extends Migration
             $table->string('verification_token');
             $table->string('remember_token');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

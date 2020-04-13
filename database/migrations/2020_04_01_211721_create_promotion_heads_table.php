@@ -14,11 +14,11 @@ class CreatePromotionHeadsTable extends Migration
     public function up()
     {
         Schema::create('promotion_heads', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('promotion_name');
             $table->text('description');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

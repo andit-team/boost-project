@@ -14,7 +14,7 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->integer('order_number');
             $table->string('invoice_number');
             $table->string('tracking_number');
@@ -29,12 +29,12 @@ class CreateOrdersTable extends Migration
             $table->dateTime('cancel_at');
             $table->enum('status',['Active','Voided'])->default('Active');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('buyer_id');
-            $table->unsignedInteger('buyer_billing_address_id');
-            $table->unsignedInteger('buyer_shipping_address_id');
-            $table->unsignedInteger('buyer_card_id');
-            $table->unsignedInteger('shipping_method_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('buyer_id');
+            $table->unsignedBigInteger('buyer_billing_address_id');
+            $table->unsignedBigInteger('buyer_shipping_address_id');
+            $table->unsignedBigInteger('buyer_card_id');
+            $table->unsignedBigInteger('shipping_method_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

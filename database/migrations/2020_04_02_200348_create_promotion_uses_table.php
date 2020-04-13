@@ -14,15 +14,15 @@ class CreatePromotionUsesTable extends Migration
     public function up()
     {
         Schema::create('promotion_uses', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('title');
             $table->decimal('amount',8,2)->default(0);
             $table->text('description');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedInteger('buyer_id');
-            $table->unsignedInteger('promotion_id');
-            $table->unsignedInteger('order_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('buyer_id');
+            $table->unsignedBigInteger('promotion_id');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 

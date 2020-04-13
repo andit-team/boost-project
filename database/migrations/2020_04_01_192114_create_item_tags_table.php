@@ -14,10 +14,10 @@ class CreateItemTagsTable extends Migration
     public function up()
     {
         Schema::create('item_tags', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('tag_id');
-            $table->unsignedInteger('item_id');
-            $table->unsignedInteger('user_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('tag_id');
+            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('user_id');
             $table->boolean('active')->default(1)->change();
             $table->softDeletes();
             $table->timestamps();
