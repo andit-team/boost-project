@@ -3,6 +3,10 @@
 Route::get('register','AuthController@register');
 
 
+Route::prefix('merchant')->group(function () {
+    Route::get('signup-step-1','AuthController@register');
+});
+
 Route::get('login','AuthController@userlogin');
 
 
@@ -23,4 +27,5 @@ Route::post('loginp','AuthController@adminloginprocess')->name('loginproces');
 
 Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::get('dashboard','AdminHomeController@admindashboard');
+    Route::resource('/category','CategoriesController');
 });

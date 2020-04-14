@@ -28,8 +28,8 @@ Route::get('/', function () {
 // 	dd($data);
 
 // });
-Auth::routes();
-Route::resource('/categories','CategoriesController');
+// Auth::routes();
+
 
 //Auth::routes();
 //
