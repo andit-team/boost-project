@@ -126,7 +126,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../andit-hms" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunManager">
@@ -183,7 +183,9 @@
       <workItem from="1586655616534" duration="606000" />
       <workItem from="1586716362570" duration="1268000" />
       <workItem from="1586752790707" duration="164000" />
-      <workItem from="1586801998808" duration="2917000" />
+      <workItem from="1586801998808" duration="4944000" />
+      <workItem from="1586827265822" duration="148000" />
+      <workItem from="1586838416793" duration="1063000" />
     </task>
     <servers />
   </component>
@@ -191,18 +193,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="235" y="127" key="FileChooserDialogImpl" timestamp="1586804884443">
+    <state x="235" y="127" key="FileChooserDialogImpl" timestamp="1586827416317">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state x="235" y="127" key="FileChooserDialogImpl/0.0.1360.738@0.0.1360.738" timestamp="1586804884443" />
+    <state x="235" y="127" key="FileChooserDialogImpl/0.0.1360.738@0.0.1360.738" timestamp="1586827416317" />
     <state x="183" y="15" key="SettingsEditor" timestamp="1586222782774">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
     <state x="183" y="15" key="SettingsEditor/0.0.1360.738@0.0.1360.738" timestamp="1586222782774" />
-    <state x="163" y="197" key="com.intellij.ide.util.TipDialog" timestamp="1586716553220">
+    <state x="163" y="197" key="com.intellij.ide.util.TipDialog" timestamp="1586827271768">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
-    <state x="163" y="197" key="com.intellij.ide.util.TipDialog/0.0.1360.738@0.0.1360.738" timestamp="1586716553220" />
+    <state x="163" y="197" key="com.intellij.ide.util.TipDialog/0.0.1360.738@0.0.1360.738" timestamp="1586827271768" />
     <state x="343" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1586802539529">
       <screen x="0" y="0" width="1360" height="738" />
     </state>
