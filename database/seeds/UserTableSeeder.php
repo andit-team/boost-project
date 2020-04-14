@@ -14,6 +14,7 @@ class UserTableSeeder extends Seeder
         $users = [
                 'first_name'    => 'Admin',
                 'last_name'     => 'AndIt',
+                'type'          => 'admin',
                 'email'         => 'admin@andit.com',
                 'password'      => '123456', //123456
                 'created_at'    => now(),
@@ -27,6 +28,7 @@ class UserTableSeeder extends Seeder
                 'last_name'     => 'Mia',
                 'email'         => 'buyer@andit.com',
                 'password'      => '123456', //123456
+                'type'          => 'buyers',
                 'created_at'    => now(),
                 'updated_at'    => now()
         ];
@@ -39,6 +41,7 @@ class UserTableSeeder extends Seeder
                 'last_name'     => 'Mia',
                 'email'         => 'seller@andit.com',
                 'password'      => '123456', //123456
+                'type'          => 'sellers',
                 'created_at'    => now(),
                 'updated_at'    => now()
         ];

@@ -11,7 +11,7 @@ class AuthController extends Controller{
 		if (!Sentinel::check())
 			return view('auth.admin.login');
 		else
-			return redirect('dashboard');
+			return redirect('andbaazaradmin/dashboard');
 	}
 
 	public function adminloginprocess(Request $request){
@@ -28,16 +28,9 @@ class AuthController extends Controller{
 			$user = Sentinel::authenticate($credentials);
 
 		if($user)
-			return redirect('dashboard');
+			return redirect('andbaazaradmin/dashboard');
 		else
 			return redirect('login')->with('error', 'Invalid email or password');
-	}
-
-	public function admindashboard(){
-		if (Sentinel::check())
-			return view('admin.dashboard');
-		else
-			return redirect('andbaazaradmin/login');
 	}
 
 	public function logout(){
