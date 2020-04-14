@@ -19,7 +19,7 @@
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form class="needs-validation" action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data">
+{{--                                            <form class="needs-validation" action="{{ route('categories.store') }}" method="post" enctype="multipart/form-data">--}}
                                                 <div class="form">
                                                     <div class="form-group">
                                                         <label for="validationCustom01" class="mb-1">Category Name :</label>
@@ -33,7 +33,7 @@
                                                         <button class="btn btn-primary" type="submit">Save</button>
                                                     </div>
                                                 </div>
-                                            </form>
+{{--                                            </form>--}}
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>

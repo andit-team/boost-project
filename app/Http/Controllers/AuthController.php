@@ -75,7 +75,7 @@ class AuthController extends Controller
 			return redirect('andbaazaradmin/login');
 	}
 	public function dashboard(){
-		return view('buyer-dashboard');
+		return view('admin.dashboard');
 		// if (Sentinel::check())
 		// if(Sentinel::getUser()->inRole('buyer'))
 		// 		return view('buyer-dashboard');

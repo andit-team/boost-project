@@ -31,6 +31,6 @@ Route::get('/', function () {
 Auth::routes();
 Route::resource('/categories','CategoriesController');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index')->name('home');

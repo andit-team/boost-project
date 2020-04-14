@@ -14,7 +14,7 @@ class BuyersTableSeeder extends Seeder
       $data = [
 
        [
-          'name'                => 'Akash',
+          'full_name'                => 'Akash',
           'dob'                 => '2000-01-01',
           'gender'              => 'Male',
           'description'         => 'Student',
@@ -27,7 +27,7 @@ class BuyersTableSeeder extends Seeder
           'updated_at'  => now()
       ],
       [
-          'name'                => 'Arman',
+          'full_name'                => 'Arman',
           'dob'                 => '2000-01-01',
           'gender'              => 'Male',
           'description'         => 'Student',
@@ -40,7 +40,7 @@ class BuyersTableSeeder extends Seeder
           'updated_at'  => now()
       ],
       [
-          'name'                => 'Abir',
+          'full_name'                => 'Abir',
           'dob'                 => '2000-01-01',
           'gender'              => 'Male',
           'description'         => 'Student',
@@ -53,7 +53,7 @@ class BuyersTableSeeder extends Seeder
           'updated_at'  => now()
       ],
       [
-          'name'                => 'Arif',
+          'full_name'                => 'Arif',
           'dob'                 => '2000-01-01',
           'gender'              => 'Male',
           'description'         => 'Student',
@@ -66,7 +66,7 @@ class BuyersTableSeeder extends Seeder
           'updated_at'  => now()
       ],
       [
-          'name'                => 'Anibarn',
+          'full_name'                => 'Anibarn',
           'dob'                 => '2000-01-01',
           'gender'              => 'Male',
           'description'         => 'Student',
@@ -79,7 +79,7 @@ class BuyersTableSeeder extends Seeder
           'updated_at'  => now()
       ],
       [
-          'name'                => 'Amit',
+          'full_name'                => 'Amit',
           'dob'                 => '2000-01-01',
           'gender'              => 'Male',
           'description'         => 'Student',
@@ -92,7 +92,7 @@ class BuyersTableSeeder extends Seeder
           'updated_at'  => now()
       ],
       [
-          'name'                => 'Ankur',
+          'full_name'                => 'Ankur',
           'dob'                 => '2000-01-01',
           'gender'              => 'Male',
           'description'         => 'Student',
@@ -105,7 +105,7 @@ class BuyersTableSeeder extends Seeder
           'updated_at'  => now()
       ],
       [
-          'name'                => 'Ahona',
+          'full_name'                => 'Ahona',
           'dob'                 => '2000-01-01',
           'gender'              => 'Female',
           'description'         => 'Student',
@@ -119,7 +119,7 @@ class BuyersTableSeeder extends Seeder
       ],
 
       [
-          'name'                => 'Annonna',
+          'full_name'                => 'Annonna',
           'dob'                 => '2000-01-01',
           'gender'              => 'Female',
           'description'         => 'Student',

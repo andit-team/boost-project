@@ -47,13 +47,7 @@ class CategoriesController extends Controller
             'sort' => $request->sort,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
-        ]);
-
-        for($i=0;i<count($request->category_id); $i++){
-         $itemCategory = ItemCategory::create([
-             'category' =>$category->id,
-         ]);
-       }
+        ]); 
 
         return  redirect()->back();
     }

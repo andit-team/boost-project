@@ -1,7 +1,7 @@
 @extends('admin.layout.master')
 
 @section('content')
-    
+
             <!-- Container-fluid starts-->
             <div class="container-fluid">
                 <div class="page-header">

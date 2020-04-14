@@ -36,6 +36,9 @@
 
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/admin.css">
+
+    <!-- jsgrid css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/jsgrid.css">
 </head>
 
 <body>
@@ -211,6 +214,11 @@
 
 <!--script admin-->
 <script src="{{asset('')}}/assets/js/admin-script.js"></script>
+
+<!-- Jsgrid js-->
+<script src="{{asset('')}}/assets/js/jsgrid/jsgrid.min.js"></script>
+<script src="{{asset('')}}/assets/js/jsgrid/griddata-manage-product.js"></script>
+<script src="{{asset('')}}/assets/js/jsgrid/jsgrid-manage-product.js"></script>
 
 </body>
 </html>
