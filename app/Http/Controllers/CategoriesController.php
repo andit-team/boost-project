@@ -47,7 +47,7 @@ class CategoriesController extends Controller
             'sort' => $request->sort,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
-        ]); 
+        ]);
 
         return  redirect()->back();
     }
