@@ -36,10 +36,9 @@
 
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/admin.css">
-
-    <!-- jsgrid css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/jsgrid.css">
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/custom.css">
+    <!-- Datatables css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/datatables.css">
 </head>
 
 <body>
@@ -216,10 +215,9 @@
 <!--script admin-->
 <script src="{{asset('')}}/assets/js/admin-script.js"></script>
 
-<!-- Jsgrid js-->
-<script src="{{asset('')}}/assets/js/jsgrid/jsgrid.min.js"></script>
-<script src="{{asset('')}}/assets/js/jsgrid/griddata-manage-product.js"></script>
-<script src="{{asset('')}}/assets/js/jsgrid/jsgrid-manage-product.js"></script>
+<!-- Datatable js-->
+<script src="{{asset('')}}/assets/js/datatables/jquery.dataTables.min.js"></script>
+<script src="{{asset('')}}/assets/js/datatables/custom-basic.js"></script>
 
 </body>
 </html>
