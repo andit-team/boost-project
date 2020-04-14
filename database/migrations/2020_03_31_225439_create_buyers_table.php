@@ -15,14 +15,14 @@ class CreateBuyersTable extends Migration
     {
         Schema::create('buyers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->date('dob');
+            $table->string('full_name');
+            $table->date('dob')->nullable();
             $table->enum('gender',['Male','Female','Other'])->default('Male');
             $table->text('description')->nullable();
-            $table->date('last_visited_at');
-            $table->string('last_visited_from');
-            $table->string('verification_token');
-            $table->string('remember_token');
+            $table->date('last_visited_at')->nullable();;
+            $table->string('last_visited_from')->nullable();;
+            $table->string('verification_token')->nullable();;
+            $table->string('remember_token')->nullable();;
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
