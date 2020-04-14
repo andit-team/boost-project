@@ -1,29 +1,36 @@
 <?php
 
-Route::get('register','AuthController@register');
+Route::get('login','CustomerController@userlogin');
+Route::post('userlogin','CustomerController@userloginprocess')->name('userloginprocess');
+Route::get('register','CustomerController@register');
+Route::post('register','CustomerController@registration')->name('registration');
+Route::get('dashboard','CustomerController@dashboard');
+
 
 
 Route::prefix('merchant')->group(function () {
-    Route::get('signup-step-1','AuthController@register');
+    Route::get('dashboard','MerchantController@dashboard');
+    Route::get('signup-step-one','MerchantController@registrationStepOne');
+    Route::post('signup-step-one','MerchantController@registrationStepOneProcess')->name('merchantStepOne');
+    Route::get('signup-step-two','MerchantController@registrationStepTwo');
+    Route::post('signup-step-two','MerchantController@registrationStepTwoProcess')->name('merchantStepTwo');
+    Route::get('signup-step-final','MerchantController@registrationStepFinal');
+    Route::post('signup-step-final','MerchantController@registrationStepFinalProcess')->name('merchantStepFinal');
 });
 
-Route::get('login','AuthController@userlogin');
-
-
-Route::post('userlogin','AuthController@userloginprocess')->name('userloginprocess');
-
-Route::get('dashboard','AuthController@dashboard')->middleware('auth');
 
 
 
 
 Route::get('logout','AuthController@logout');
-Route::get('dashboard','AuthController@dashboard');
+
+// Route::get('dashboard','AuthController@dashboard');
 
 
 
 Route::get('andbaazaradmin/login','AuthController@adminlogin');
 Route::post('loginp','AuthController@adminloginprocess')->name('loginproces');
+
 
 Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::get('dashboard','AdminHomeController@admindashboard');
