@@ -10,6 +10,10 @@ class MerchantController extends Controller{
         
     }
 
+    public function merchantlogin(){
+        return view('auth.merchant.login');
+    }
+
     public function registrationStepOne(){
         return view('auth.merchant.login');
     }

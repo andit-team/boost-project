@@ -33,6 +33,7 @@ class User extends EloquentUser
     protected $fillable = [
         'first_name','last_name', 'email', 'password',
     ];
+    protected $loginNames = ['email','type'];
 
     public function buyer(){
       return $this->hasMany(Buyer::class,'buyer_id');

@@ -30,6 +30,11 @@
             <div class="col-lg-6">
                 <h3>Login</h3>
                 <div class="theme-card">
+                    @if (\Session::has('error'))
+                        <div class="alert alert-danger">
+                                <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
+                        </div>
+                    @endif
                     <form class="theme-form" action="{{route('userloginprocess')}}" method="post">
                         @csrf
                         <div class="form-group">
