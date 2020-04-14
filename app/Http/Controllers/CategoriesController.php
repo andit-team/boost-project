@@ -16,7 +16,9 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index');
+        $category = Category::all();
+        //dd($category);
+        return view('admin.categories.index',compact('category'));
     }
 
     /**
@@ -38,8 +40,7 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validateForm($request);
-
-        $category = Category::create([
+        $data =[
             'name' => $request->name,
             'slug' => $request->slug,
             'thumb' => $request->thumb,
@@ -47,9 +48,11 @@ class CategoriesController extends Controller
             'sort' => $request->sort,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
-        ]);
+        ];
 
-        return  redirect()->back();
+        Category::create($data);
+
+        return back();
     }
 
     /**
@@ -58,9 +61,10 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        //dd($category);
+       return  view('admin.categories.show',compact('category'));
     }
 
     /**
@@ -69,9 +73,10 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        //dd($category);
+        return view('admin.categories.edit',compact('category'));
     }
 
     /**
@@ -81,9 +86,22 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $this->validateForm($request);
+        $data =[
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'thumb' => $request->thumb,
+            'parent' => $request->parent,
+            'sort' => $request->sort,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        $category->update($data);
+
+        return back();
     }
 
     /**
@@ -92,9 +110,11 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return back();
     }
 
     private function validateForm($request){
