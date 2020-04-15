@@ -52,7 +52,7 @@ class CategoriesController extends Controller
 
         Category::create($data);
 
-        return back();
+        return redirect('andbaazaradmin/category');
     }
 
     /**
@@ -101,7 +101,7 @@ class CategoriesController extends Controller
 
         $category->update($data);
 
-        return back();
+        return redirect('andbaazaradmin/category');
     }
 
     /**
@@ -114,7 +114,7 @@ class CategoriesController extends Controller
     {
         $category->delete();
 
-        return back();
+        return redirect('andbaazaradmin/category');
     }
 
     private function validateForm($request){
