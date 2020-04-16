@@ -96,7 +96,7 @@ class CategoriesController extends Controller
             'parent' => $request->parent,
             'sort' => $request->sort,
             'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
+            'updated_at' => now(),
         ];
 
         $category->update($data);

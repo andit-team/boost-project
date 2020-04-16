@@ -15,26 +15,27 @@
                         <ul class="sidebar-submenu">
                             <li>
                                 <a href="#"><i class="fa fa-circle"></i>
-                                    <span>Physical</span> <i class="fa fa-angle-right pull-right"></i>
+                                    <span>Category</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                                 <ul class="sidebar-submenu">
                                     <li><a href="{{ url('andbaazaradmin/category') }}"><i class="fa fa-circle"></i>Categories</a></li>
                                     <li><a href="{{ url('andbaazaradmin/category/create') }}"><i class="fa fa-circle"></i>Category</a></li>
-                                    <li><a href="category-sub.html"><i class="fa fa-circle"></i>Sub Category</a></li>
-                                    <li><a href="product-list.html"><i class="fa fa-circle"></i>Product List</a></li>
-                                    <li><a href="product-detail.html"><i class="fa fa-circle"></i>Product Detail</a></li>
-                                    <li><a href="add-product.html"><i class="fa fa-circle"></i>Add Product</a></li>
+{{--                                    <li><a href="category-sub.html"><i class="fa fa-circle"></i>Sub Category</a></li>--}}
+{{--                                    <li><a href="product-list.html"><i class="fa fa-circle"></i>Product List</a></li>--}}
+{{--                                    <li><a href="product-detail.html"><i class="fa fa-circle"></i>Product Detail</a></li>--}}
+{{--                                    <li><a href="add-product.html"><i class="fa fa-circle"></i>Add Product</a></li>--}}
                                 </ul>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-circle"></i>
-                                    <span>Digital</span> <i class="fa fa-angle-right pull-right"></i>
+                                    <span>Currency</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                                 <ul class="sidebar-submenu">
-                                    <li><a href="category-digital.html"><i class="fa fa-circle"></i>Category</a></li>
-                                    <li><a href="category-digitalsub.html"><i class="fa fa-circle"></i>Sub Category</a></li>
-                                    <li><a href="product-listdigital.html"><i class="fa fa-circle"></i>Product List</a></li>
-                                    <li><a href="add-digital-product.html"><i class="fa fa-circle"></i>Add Product</a></li>
+                                    <li><a href="{{ 'andbaazaradmin/currency' }}"><i class="fa fa-circle"></i>Currencies</a></li>
+                                    <li><a href="{{ 'andbaazaradmin/currency/create' }}"><i class="fa fa-circle"></i>Currency</a></li>
+{{--                                    <li><a href="category-digitalsub.html"><i class="fa fa-circle"></i>Sub Category</a></li>--}}
+{{--                                    <li><a href="product-listdigital.html"><i class="fa fa-circle"></i>Product List</a></li>--}}
+{{--                                    <li><a href="add-digital-product.html"><i class="fa fa-circle"></i>Add Product</a></li>--}}
                                 </ul>
                             </li>
                         </ul>
