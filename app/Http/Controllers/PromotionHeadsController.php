@@ -15,7 +15,9 @@ class PromotionHeadsController extends Controller
      */
     public function index()
     {
-        //
+      $promotionhead= PromotionHead::all();
+      //dd($promotionhead);
+      return view('admin.promotionhead.index',compact('promotionhead'));
     }
 
     /**
@@ -25,7 +27,7 @@ class PromotionHeadsController extends Controller
      */
     public function create()
     {
-        //
+          return view('admin.promotionhead.create');
     }
 
     /**
@@ -34,7 +36,7 @@ class PromotionHeadsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PromotionHead $promotionhead,Request $request)
     {
         $this->validateForm($request);
         $data = [
@@ -45,6 +47,8 @@ class PromotionHeadsController extends Controller
         ];
 
         PromotionHead::create($data);
+
+        return redirect('andbaazaradmin/promotionhead');
     }
 
     /**
@@ -53,9 +57,10 @@ class PromotionHeadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PromotionHead $promotionhead)
     {
-        //
+      //dd($category);
+     return  view('admin.promotionhead.show',compact('promotionhead'));
     }
 
     /**
@@ -64,9 +69,10 @@ class PromotionHeadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(PromotionHead $promotionhead)
     {
-        //
+      //dd($promotionhead);
+      return view('admin.promotionhead.edit',compact('promotionhead'));
     }
 
     /**
@@ -76,9 +82,19 @@ class PromotionHeadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PromotionHead $promotionhead, Request $request)
     {
-        //
+      $this->validateForm($request);
+        $data = [
+            'promotion_name' => $request->promotion_name,
+            'description' => $request->description,
+            'user_id' => Sentinel::getUser()->id,
+            'updated_at' => now(),
+        ];
+
+      $promotionhead->update($data);
+
+      return redirect('andbaazaradmin/promotionhead');
     }
 
     /**
@@ -87,9 +103,11 @@ class PromotionHeadsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(PromotionHead $promotionhead)
     {
-        //
+          $promotionhead->delete();
+
+          return redirect('andbaazaradmin/promotionhead');
     }
 
     private function validateForm($request){
