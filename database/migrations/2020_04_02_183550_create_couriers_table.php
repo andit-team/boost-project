@@ -16,6 +16,7 @@ class CreateCouriersTable extends Migration
         Schema::create('couriers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->text('desc')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
