@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="page-header-left">
-                            <h3>Edit Tag
+                            <h3>Edit Promotion
                                 <small>AndBaazar Admin panel</small>
                             </h3>
                         </div>
@@ -17,8 +17,8 @@
                     <div class="col-lg-6">
                         <ol class="breadcrumb pull-right">
                             <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item">Tag </li>
-                            <li class="breadcrumb-item active">Edit Tag</li>
+                            <li class="breadcrumb-item">Promotion </li>
+                            <li class="breadcrumb-item active">Edit Promotion</li>
                         </ol>
                     </div>
                 </div>
@@ -30,17 +30,21 @@
         <div class="container-fluid">
             <div class="card tab2-card">
                 <div class="card-header">
-                    <h5>Edit Tag</h5>
+                    <h5>Edit Promotion</h5>
                 </div>
                 <div class="card-body">
-                    <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/tag/'.$tag->id) }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/promotion/'.$promotion->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="name" class="col-xl-3 col-md-4">Tag Name <span>*</span></label>
-                                    <input class="form-control col-md-8" name="name" value="{{ $tag->name }}" id="name" type="text" required="">
+                                    <label for="title" class="col-xl-3 col-md-4">Title <span>*</span></label>
+                                    <input class="form-control col-md-8" name="title" value="{{ $tag->title }}" id="title" type="text" required="">
+                                </div>
+                                <div class="form-group row">
+                                    <label for="description" class="col-xl-3 col-md-4">Description <span>*</span></label>
+                                    <input class="form-control col-md-8" name="description" value="{{ $tag->description }}" id="description" type="text" required="">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-md-4"></label>
