@@ -15,7 +15,9 @@ class ColorsController extends Controller
      */
     public function index()
     {
-        //
+      $category = Category::all();
+      //dd($category);
+      return view('admin.categories.index',compact('category'));
     }
 
     /**
@@ -25,7 +27,7 @@ class ColorsController extends Controller
      */
     public function create()
     {
-        //
+          return view('admin.categories.create');
     }
 
     /**
@@ -54,7 +56,8 @@ class ColorsController extends Controller
      */
     public function show($id)
     {
-        //
+      //dd($category);
+     return  view('admin.categories.show',compact('category'));
     }
 
     /**
@@ -65,7 +68,8 @@ class ColorsController extends Controller
      */
     public function edit($id)
     {
-        //
+      //dd($category);
+      return view('admin.categories.edit',compact('category'));
     }
 
     /**
@@ -77,7 +81,13 @@ class ColorsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $data = [
+          'name' => $request->name,
+          'color_code' => $request->color_code,
+          'user_id' => Sentinel::getUser()->id,
+          'created_at' => now(),
+      ];
+
     }
 
     /**
@@ -88,7 +98,9 @@ class ColorsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $category->delete();
+
+      return redirect('andbaazaradmin/category');
     }
 
     private function validateForm($request){

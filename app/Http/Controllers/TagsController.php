@@ -15,7 +15,9 @@ class TagsController extends Controller
      */
     public function index()
     {
-        //
+      $tag = Tag::all();
+      //dd($category);
+      return view('admin.tags.index',compact('tag'));
     }
 
     /**
@@ -25,7 +27,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-        //
+          return view('admin.tags.create');
     }
 
     /**
@@ -44,6 +46,7 @@ class TagsController extends Controller
 
         Tag::create($data);
 
+       return redirect('andbaazaradmin/tag');
 
     }
 
@@ -53,9 +56,10 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Tag $tag)
     {
-        //
+      //dd($category);
+     return  view('admin.tags.show',compact('tag'));
     }
 
     /**
@@ -64,9 +68,10 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        //
+      //dd($category);
+      return view('admin.tags.edit',compact('tag'));
     }
 
     /**
@@ -76,9 +81,18 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Tag $tag, Request $request)
     {
-        //
+
+          $data = [
+              'name' => $request->name,
+              'user_id' => Sentinel::getUser()->id,
+              'created_at' => now(),
+          ];
+
+          $tag->update($data);
+
+         return redirect('andbaazaradmin/tag');
     }
 
     /**
@@ -87,9 +101,12 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
-        //
+
+          $tag->delete();
+
+          return redirect('andbaazaradmin/tag');
     }
 
     private function validateForm($request){

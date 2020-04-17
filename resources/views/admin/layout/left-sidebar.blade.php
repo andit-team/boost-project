@@ -28,17 +28,38 @@
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-circle"></i>
+                                    <span>Tag</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="{{ url('andbaazaradmin/tag') }}"><i class="fa fa-circle"></i>All Tag</a></li>
+                                    <li><a href="{{ url('andbaazaradmin/tag/create') }}"><i class="fa fa-circle"></i> Add Tag</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-circle"></i>
+                                    <span>Color</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="{{ url('andbaazaradmin/color') }}"><i class="fa fa-circle"></i>All Color</a></li>
+                                    <li><a href="{{ url('andbaazaradmin/color/create') }}"><i class="fa fa-circle"></i> Add Color</a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#"><i class="fa fa-circle"></i>
                                     <span>Size</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                                 <ul class="sidebar-submenu">
                                     <li><a href="{{ url('andbaazaradmin/size') }}"><i class="fa fa-circle"></i>Sizes</a></li>
                                     <li><a href="{{ url('andbaazaradmin/size/create') }}"><i class="fa fa-circle"></i>Size</a></li>
-                                    {{--                                    <li><a href="category-sub.html"><i class="fa fa-circle"></i>Sub Category</a></li>--}}
-                                    {{--                                    <li><a href="product-list.html"><i class="fa fa-circle"></i>Product List</a></li>--}}
-                                    {{--                                    <li><a href="product-detail.html"><i class="fa fa-circle"></i>Product Detail</a></li>--}}
-                                    {{--                                    <li><a href="add-product.html"><i class="fa fa-circle"></i>Add Product</a></li>--}}
+                                {{--<li><a href="category-sub.html"><i class="fa fa-circle"></i>Sub Category</a></li>--}}
+                                {{--<li><a href="product-list.html"><i class="fa fa-circle"></i>Product List</a></li>--}}
+                                {{--<li><a href="product-detail.html"><i class="fa fa-circle"></i>Product Detail</a></li>--}}
+                                {{-- <li><a href="add-product.html"><i class="fa fa-circle"></i>Add Product</a></li>--}}
                                 </ul>
                             </li>
+
                             <li>
                                 <a href="#"><i class="fa fa-circle"></i>
                                     <span>Payment Method</span> <i class="fa fa-angle-right pull-right"></i>
@@ -52,7 +73,16 @@
                                     {{--                                    <li><a href="add-product.html"><i class="fa fa-circle"></i>Add Product</a></li>--}}
                                 </ul>
                             </li>
-							 <li>
+                            <li>
+                                <a href="#"><i class="fa fa-circle"></i>
+                                    <span>Promotion</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="{{ url('andbaazaradmin/promotion') }}"><i class="fa fa-circle"></i> All Promotion</a></li>
+                                    <li><a href="{{ url('andbaazaradmin/promotion/create') }}"><i class="fa fa-circle"></i>Add Promotion</a></li>
+                                </ul>
+                            </li>
+							                 <li>
                                 <a href="#"><i class="fa fa-circle"></i>
                                     <span>Promotion Head</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>

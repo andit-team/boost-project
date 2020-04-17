@@ -15,7 +15,7 @@ class PromotionsController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -97,7 +97,9 @@ class PromotionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $category->delete();
+
+      return redirect('andbaazaradmin/category');
     }
 
     private function validateForm($request){
