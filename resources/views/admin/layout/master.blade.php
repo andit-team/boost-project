@@ -42,7 +42,7 @@
 </head>
 
 <body>
-
+@include('sweetalert::alert')
 <!-- page-wrapper Start-->
 <div class="page-wrapper">
 

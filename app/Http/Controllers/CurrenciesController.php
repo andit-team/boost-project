@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Currency;
 use Sentinel;
+use Session;
+use Alert;
 
 class CurrenciesController extends Controller
 {
@@ -48,6 +50,9 @@ class CurrenciesController extends Controller
        ];
 
        Currency::create($data);
+
+       //Session::flash('success','Currency Created Successfully');
+        alert()->success('SuccessAlert','Currency Created Successfully.');
 
        return redirect('andbaazaradmin/currency');
     }
@@ -94,6 +99,8 @@ class CurrenciesController extends Controller
 
         $currency->update($data);
 
+        alert()->warning('WarningAlert','Currency Updated Successfully.');
+
         return redirect('andbaazaradmin/currency');
     }
 
@@ -106,6 +113,8 @@ class CurrenciesController extends Controller
     public function destroy(Currency $currency)
     {
         $currency->delete();
+
+        alert()->error('DangerAlert','Currency Deleted Successfully.');
 
         return redirect('andbaazaradmin/currency');
     }
