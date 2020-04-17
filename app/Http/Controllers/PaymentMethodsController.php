@@ -15,7 +15,8 @@ class PaymentMethodsController extends Controller
      */
     public function index()
     {
-        //
+        $payMethod = PaymentMethod::all();
+       return view('admin.payment_methods.index',compact('payMethod'));
     }
 
     /**
@@ -25,7 +26,7 @@ class PaymentMethodsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.payment_methods.create');
     }
 
     /**
@@ -45,6 +46,8 @@ class PaymentMethodsController extends Controller
         ];
 
         PaymentMethod::create($data);
+
+        return redirect('andbaazaradmin/paymentmethod');
     }
 
     /**
@@ -55,7 +58,8 @@ class PaymentMethodsController extends Controller
      */
     public function show($id)
     {
-        //
+        $paymentMethod = PaymentMethod::find($id);
+        return view('admin.payment_methods.show',compact('paymentMethod'));
     }
 
     /**
@@ -66,7 +70,9 @@ class PaymentMethodsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $paymentMethod = PaymentMethod::find($id);
+        //dd($paymentMethod);
+        return view('admin.payment_methods.edit',compact('paymentMethod'));
     }
 
     /**
@@ -76,9 +82,21 @@ class PaymentMethodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //
+        $this->validateForm($request);
+        $paymentMethod = PaymentMethod::find($id);
+        $data = [
+            'name' => $request->name,
+            'desc' => $request->desc,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        $paymentMethod->update($data);
+
+        return redirect('andbaazaradmin/paymentmethod');
+
     }
 
     /**
@@ -89,7 +107,10 @@ class PaymentMethodsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $paymentMethod = PaymentMethod::find($id);
+        $paymentMethod->delete();
+        
+        return redirect('andbaazaradmin/paymentmethod');
     }
 
     private function validateForm($request){
