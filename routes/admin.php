@@ -35,4 +35,5 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::get('dashboard','AdminHomeController@dashboard');
     Route::resource('/category','CategoriesController');
     Route::resource('/currency','CurrenciesController');
+    Route::resource('/courier','CouriersController');
 });
