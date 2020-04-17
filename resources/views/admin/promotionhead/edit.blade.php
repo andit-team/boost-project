@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+<!-- @extends('admin.layout.master')
 
 @section('content')
     <div class="page-body">
@@ -62,4 +62,4 @@
         <!-- Container-fluid Ends-->
 
     </div>
-@endsection
+@endsection -->
