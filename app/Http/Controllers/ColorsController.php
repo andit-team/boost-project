@@ -15,9 +15,8 @@ class ColorsController extends Controller
      */
     public function index()
     {
-      $category = Category::all();
-      //dd($category);
-      return view('admin.categories.index',compact('category'));
+      $color = Color::all();
+      return view('admin.colors.index',compact('color'));
     }
 
     /**
@@ -27,7 +26,7 @@ class ColorsController extends Controller
      */
     public function create()
     {
-          return view('admin.categories.create');
+          return view('admin.colors.create');
     }
 
     /**
@@ -44,8 +43,8 @@ class ColorsController extends Controller
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
-
         Color::create($data);
+        return redirect('andbaazaradmin/color');
     }
 
     /**
@@ -54,10 +53,9 @@ class ColorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Color $color)
     {
-      //dd($category);
-     return  view('admin.categories.show',compact('category'));
+     return  view('admin.colors.show',compact('color'));
     }
 
     /**
@@ -66,10 +64,9 @@ class ColorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Color $color)
     {
-      //dd($category);
-      return view('admin.categories.edit',compact('category'));
+      return view('admin.colors.edit',compact('color'));
     }
 
     /**
@@ -79,7 +76,7 @@ class ColorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Color $color, Request $request)
     {
       $data = [
           'name' => $request->name,
@@ -87,7 +84,9 @@ class ColorsController extends Controller
           'user_id' => Sentinel::getUser()->id,
           'created_at' => now(),
       ];
+            $color->update($data);
 
+           return redirect('andbaazaradmin/color');
     }
 
     /**
@@ -96,11 +95,11 @@ class ColorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Color $color)
     {
-      $category->delete();
+      $color->delete();
 
-      return redirect('andbaazaradmin/category');
+      return redirect('andbaazaradmin/color');
     }
 
     private function validateForm($request){

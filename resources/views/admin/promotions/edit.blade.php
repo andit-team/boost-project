@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="page-header-left">
-                            <h3>Edit Category
+                            <h3>Edit Tag
                                 <small>AndBaazar Admin panel</small>
                             </h3>
                         </div>
@@ -17,8 +17,8 @@
                     <div class="col-lg-6">
                         <ol class="breadcrumb pull-right">
                             <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item">Categories </li>
-                            <li class="breadcrumb-item active">Edit Category</li>
+                            <li class="breadcrumb-item">Tag </li>
+                            <li class="breadcrumb-item active">Edit Tag</li>
                         </ol>
                     </div>
                 </div>
@@ -30,17 +30,17 @@
         <div class="container-fluid">
             <div class="card tab2-card">
                 <div class="card-header">
-                    <h5>Edit Category</h5>
+                    <h5>Edit Tag</h5>
                 </div>
                 <div class="card-body">
-                    <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/category/'.$category->id) }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/tag/'.$tag->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group row">
-                                    <label for="validationCustom0" class="col-xl-3 col-md-4">Category Name <span>*</span></label>
-                                    <input class="form-control col-md-8" name="name" value="{{ $category->name }}" id="validationCustom0" type="text" required="">
+                                    <label for="name" class="col-xl-3 col-md-4">Tag Name <span>*</span></label>
+                                    <input class="form-control col-md-8" name="name" value="{{ $tag->name }}" id="name" type="text" required="">
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-md-4"></label>

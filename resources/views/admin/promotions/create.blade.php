@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="page-header-left">
-                                <h3>Create Category
+                                <h3>Create Tag
                                     <small>AndBaazar Admin panel</small>
                                 </h3>
                             </div>
@@ -17,8 +17,8 @@
                         <div class="col-lg-6">
                             <ol class="breadcrumb pull-right">
                                 <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                                <li class="breadcrumb-item">Categories </li>
-                                <li class="breadcrumb-item active">Create Category</li>
+                                <li class="breadcrumb-item">Tag </li>
+                                <li class="breadcrumb-item active">Create Tag</li>
                             </ol>
                         </div>
                     </div>
@@ -30,16 +30,16 @@
             <div class="container-fluid">
                 <div class="card tab2-card">
                     <div class="card-header">
-                        <h5>Create New Category</h5>
+                        <h5>Create New Tag</h5>
                     </div>
                     <div class="card-body">
-                                <form class="needs-validation" novalidate="" action="{{ route('category.store') }}" method="post" enctype="multipart/form-data">
+                                <form class="needs-validation" novalidate="" action="{{ route('tag.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group row">
-                                                <label for="validationCustom0" class="col-xl-3 col-md-4">Category Name <span>*</span></label>
-                                                <input class="form-control col-md-8" name="name" id="validationCustom0" type="text" required="">
+                                                <label for="name" class="col-xl-3 col-md-4">Tag Name <span>*</span></label>
+                                                <input class="form-control col-md-8" name="name" id="name" type="text" required="">
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-md-4"></label>
