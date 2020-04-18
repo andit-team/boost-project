@@ -109,7 +109,7 @@ class PaymentMethodsController extends Controller
     {
         $paymentMethod = PaymentMethod::find($id);
         $paymentMethod->delete();
-        
+
         return redirect('andbaazaradmin/paymentmethod');
     }
 
