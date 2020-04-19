@@ -45,11 +45,7 @@ class PromotionsController extends Controller
             'is_permanent' => $request->is_permanent,
             'valid_from' => $request->valid_from,
             'valid_to' => $request->valid_to,
-            'has_coupon_code' => $request->has_coupon_code,
-            'coupon_code' => $request->coupon_code,
-            'multiple_use' => $request->multiple_use,
-            'priority' => $request->priority,
-            'promotion_head_id' => $request->promotion_head_id,
+            'coupon_code' => $request->coupon_code,        
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
@@ -105,7 +101,7 @@ class PromotionsController extends Controller
           'created_at' => now(),
       ];
 
-      $color->update($data);
+      $promotion->update($data);
 
      return redirect('andbaazaradmin/promotion');
     }
@@ -118,7 +114,7 @@ class PromotionsController extends Controller
      */
     public function destroy(Promotion $promotion)
     {
-      $category->delete();
+      $promotion->delete();
 
       return redirect('andbaazaradmin/promotion');
     }
@@ -126,6 +122,7 @@ class PromotionsController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'title' => 'required',
+            'description' => 'required',
             'is_permanent' => 'required',
             'valid_from' => 'required',
             'valid_to' => 'required',

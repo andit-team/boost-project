@@ -36,14 +36,27 @@
                                 <form class="needs-validation" novalidate="" action="{{ route('promotion.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
-                                        <div class="col-sm-12">
+                                        <div class="col-sm-10">
                                             <div class="form-group row">
                                                 <label for="title" class="col-xl-3 col-md-4">Title <span>*</span></label>
                                                 <input class="form-control col-md-8" name="title" id="title" type="text" required="">
                                             </div>
+
                                             <div class="form-group row">
-                                              <label for="description" class="col-xl-3 col-md-4"> Description <span>*</span></label>
-                                             <textarea name="description" id="" class="form-control"  value="{{old('description')}}" class="form-control" id="description" placeholder="Description" rows="3"></textarea>
+                                                <label for="description" class="col-xl-3 col-md-4">Description <span>*</span></label>
+                                                <textarea class="form-control col-md-8" name="description" id="description" type="text" required=""></textarea>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="valid_from" class="col-xl-3 col-md-4">Valid From  <span>*</span></label>
+                                               <input type="date" name="valid_from" value="{{old('date',date('Y-m-d'))}}" class="form-control col-md-8 datepickerDB" id="valid_from" required autocomplete="off">
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="valid_to" class="col-xl-3 col-md-4">Valid To  <span>*</span></label>
+                                               <input type="date" name="valid_to" value="{{old('date',date('Y-m-d'))}}" class="form-control col-md-8 datepickerDB" id="valid_to" required autocomplete="off">
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="coupon_code" class="col-xl-3 col-md-4">Coupon Code <span>*</span></label>
+                                                <input class="form-control col-md-8" name="coupon_code" id="coupon_code" type="text" required="">
                                             </div>
                                               <div class="form-group row">
                                                 <label class="col-xl-3 col-md-4"></label>
