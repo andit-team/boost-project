@@ -28,7 +28,7 @@ class PromotionsController extends Controller
      */
     public function create()
     {
-      $promotionhead = PromotionHead::all();
+        $promotionhead = PromotionHead::all();
         return view('admin.promotions.create',compact('promotionhead'));
     }
 
@@ -121,7 +121,7 @@ class PromotionsController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'title' => 'required',
-            'description' => 'required',          
+            'description' => 'required',
             'valid_from' => 'required',
             'valid_to' => 'required',
             'coupon_code' => 'required'

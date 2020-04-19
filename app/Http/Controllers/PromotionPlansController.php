@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PromotionPlan;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 
 class PromotionPlansController extends Controller
@@ -14,7 +15,9 @@ class PromotionPlansController extends Controller
      */
     public function index()
     {
-        //
+      $promotion = Promotion::all();
+      $promotionplan = PromotionPlan::all();
+      return view('admin.promotions.index',compact('promotion','promotionplan'));
     }
 
     /**
@@ -24,7 +27,8 @@ class PromotionPlansController extends Controller
      */
     public function create()
     {
-        //
+      $promotionplan = PromotionPlan::all();
+      return view('admin.promotions.create',compact('promotionplan'));
     }
 
     /**
@@ -46,6 +50,7 @@ class PromotionPlansController extends Controller
         ];
 
         PromotionPlan::create($data);
+         return redirect('andbaazaradmin/promotionplan');
     }
 
     /**
@@ -54,9 +59,9 @@ class PromotionPlansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Promotionplan $promotionplan)
     {
-        //
+      return  view('admin.promotions.show',compact('promotion'));
     }
 
     /**
@@ -65,9 +70,10 @@ class PromotionPlansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Promotionplan $promotionplan)
     {
-        //
+        $promotion = PromotionPlan::all();
+      return view('admin.promotions.edit',compact('promotion'));
     }
 
     /**
@@ -77,9 +83,20 @@ class PromotionPlansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Promotionplan $promotionplan,Request $request)
     {
-        //
+      $data = [
+          'from_price' => $request->from_price,
+          'to_price' => $request->to_price,
+          'amount' => $request->amount,
+          'is_free_shipping' => $request->is_free_shipping,
+          'promotion_id' => $request->promotion_id,
+          'user_id' => Sentinel::getUser()->id,
+          'created_at' => now(),
+      ];
+      $promotionplan->update($data);
+
+     return redirect('andbaazaradmin/promotionplan');
     }
 
     /**
@@ -88,17 +105,18 @@ class PromotionPlansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Promotionplan $promotionplan)
     {
-        //
+      $promotionplan->delete();
+
+      return redirect('andbaazaradmin/promotionplan');
     }
 
     private function validateForm($request){
         $validatedData = $request->validate([
             'from_price' => 'required',
             'to_price' => 'required',
-            'amount' => 'required',
-            'is_free_shipping' => 'required',
+            'amount' => 'required',            
             'promotion_id' => 'required',
         ]);
     }
