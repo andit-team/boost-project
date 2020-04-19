@@ -25,7 +25,7 @@ class BuyerBillingAddressesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.buyer_billing_address.create');
     }
 
     /**

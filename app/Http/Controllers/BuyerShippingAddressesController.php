@@ -25,7 +25,7 @@ class BuyerShippingAddressesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.buyer_shipping_addresses.create');
     }
 
     /**

@@ -26,7 +26,7 @@ class BuyerPaymentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.buyer_payments.create');
     }
 
     /**

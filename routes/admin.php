@@ -36,10 +36,19 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::resource('/category','CategoriesController');
     Route::resource('/size','SizesController');
     Route::resource('/paymentmethod','PaymentMethodsController');
-	  Route::resource('/promotionhead','PromotionHeadsController');
+    Route::resource('/promotionhead','PromotionHeadsController');
     Route::resource('/currency','CurrenciesController');
     Route::resource('/courier','CouriersController');
+
+    Route::resource('/buyer','BuyersController');
+    Route::resource('/buyershippingaddress','BuyerShippingAddressesController');
+    Route::resource('/buyerbillingaddress','BuyerBillingAddressesController');
+    Route::resource('/buyercard','BuyerCardsController');
+    Route::resource('/buyerpayment','BuyerPaymentsController');
+
+
     Route::resource('/tag','TagsController');
     Route::resource('/color','ColorsController');
     Route::resource('/promotion','PromotionsController');
+
 });

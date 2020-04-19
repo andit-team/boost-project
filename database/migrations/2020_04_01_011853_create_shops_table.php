@@ -30,7 +30,7 @@ class CreateShopsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('seller_id')->references('id')->on('buyers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
