@@ -13,8 +13,12 @@
                             <thead>
                             <tr>
                                 <th>Sl</th>
+                                <th>Promotion Head</th>
                                 <th>Title</th>
                                 <th>Description</th>
+                                <th>Valid From</th>
+                                <th>Valid To</th>
+                                <th>Coupon Code</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -23,8 +27,12 @@
                             @foreach($promotion as $row)
                             <tr>
                                 <td>{{ ++$i }}</td>
+                                <td>{{ $row->promotionhead->promotion_name }}</td>
                                 <td>{{ $row->title }}</td>
                                 <td>{{ $row->description }}</td>
+                                <td>{{ $row->valid_from }}</td>
+                                <td>{{ $row->valid_to }}</td>
+                                <td>{{ $row->coupon_code }}</td>
                                 <td>
                                     <ul class="list-inline">
                                         <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/promotion/'.$row->id) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>

@@ -37,6 +37,16 @@
                                     @csrf
                                     <div class="row">
                                         <div class="col-sm-10">
+                                          <div class="form-group col-md-10 ">
+                                             <div class="form-group row">
+                                                 <label for="title" class="col-xl-3 col-md-4">Promotion Head <span>*</span></label>
+                                                <select name="promotion_head_id" class="form-control col-md-8 " id="promotion_head_id" required autocomplete="off">
+                                                    <option value="" selected disabled>Select Promotion Head</option>
+                                                    @foreach ($promotionhead as $row)
+                                                        <option value="{{ $row->id }}">{{$row->promotion_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                </div>
                                             <div class="form-group row">
                                                 <label for="title" class="col-xl-3 col-md-4">Title <span>*</span></label>
                                                 <input class="form-control col-md-8" name="title" id="title" type="text" required="">

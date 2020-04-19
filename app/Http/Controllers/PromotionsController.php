@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Promotion;
+use App\Models\PromotionHead;
 use Sentinel;
 
 class PromotionsController extends Controller
@@ -16,7 +17,8 @@ class PromotionsController extends Controller
     public function index()
     {
       $promotion = Promotion::all();
-      return view('admin.promotions.index',compact('promotion'));
+      $promotionhead = PromotionHead::all();
+      return view('admin.promotions.index',compact('promotion','promotionhead'));
     }
 
     /**
@@ -26,7 +28,8 @@ class PromotionsController extends Controller
      */
     public function create()
     {
-        return view('admin.promotions.create');
+      $promotionhead = PromotionHead::all();
+        return view('admin.promotions.create',compact('promotionhead'));
     }
 
     /**
@@ -42,14 +45,13 @@ class PromotionsController extends Controller
         $data = [
             'title' => $request->title,
             'description' => $request->description,
-            'is_permanent' => $request->is_permanent,
             'valid_from' => $request->valid_from,
             'valid_to' => $request->valid_to,
-            'coupon_code' => $request->coupon_code,        
+            'coupon_code' => $request->coupon_code,
+            'promotion_head_id' => $request->promotion_head_id,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
-
         Promotion::create($data);
 
          return redirect('andbaazaradmin/promotion');
@@ -63,7 +65,7 @@ class PromotionsController extends Controller
      */
     public function show(Promotion $promotion)
     {
-       return  view('admin.promotions.show',compact('color'));
+       return  view('admin.promotions.show',compact('promotion'));
     }
 
     /**
@@ -74,7 +76,8 @@ class PromotionsController extends Controller
      */
     public function edit(Promotion $promotion)
     {
-        return view('admin.promotions.edit',compact('color'));
+        $promotionhead = PromotionHead::all();
+        return view('admin.promotions.edit',compact('promotion','promotionhead'));
     }
 
     /**
@@ -89,13 +92,9 @@ class PromotionsController extends Controller
       $data = [
           'title' => $request->title,
           'description' => $request->description,
-          'is_permanent' => $request->is_permanent,
           'valid_from' => $request->valid_from,
           'valid_to' => $request->valid_to,
-          'has_coupon_code' => $request->has_coupon_code,
           'coupon_code' => $request->coupon_code,
-          'multiple_use' => $request->multiple_use,
-          'priority' => $request->priority,
           'promotion_head_id' => $request->promotion_head_id,
           'user_id' => Sentinel::getUser()->id,
           'created_at' => now(),
@@ -122,8 +121,7 @@ class PromotionsController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'title' => 'required',
-            'description' => 'required',
-            'is_permanent' => 'required',
+            'description' => 'required',          
             'valid_from' => 'required',
             'valid_to' => 'required',
             'coupon_code' => 'required'

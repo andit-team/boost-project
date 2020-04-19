@@ -33,21 +33,49 @@
                     <h5>Show Tag</h5>
                 </div>
                 <div class="card-body">
-
                         <div class="row">
                             <div class="col-sm-12">
-                                <div class="form-group row">
-                                    <label for="title" class="col-xl-3 col-md-4">Title <span>*</span></label>
-                                    <input class="form-control col-md-8" name="title" readonly value="{{ $promotion->title }}" id="title" type="text" required="">
+                          <div class="form-group row">
+                              <label class="col-sm-2 text-right control-label col-form-label">Promotion Head :</label>
+                              <div class="col-sm-10">
+                                  <input disabled type="text" value="{{  $promotion->promotionhead->promotion_name }}" class="form-control text-dark">
+                              </div>
+                           </div>
+                           <div class="form-group row">
+                               <label class="col-sm-2 text-right control-label col-form-label">Promotion Title :</label>
+                               <div class="col-sm-10">
+                                   <input disabled type="text" value="{{  $promotion->title }}" class="form-control text-dark">
+                               </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 text-right control-label col-form-label">Promotion Description :</label>
+                                <div class="col-sm-10">
+                                    <input disabled type="text" value="{{  $promotion->description }}" class="form-control text-dark">
                                 </div>
-                                <div class="form-group row">
-                                  <label for="description" class="col-xl-3 col-md-4"> Description <span>*</span></label>
-                                 <textarea name="description" id="" class="form-control"  value="{{$promotion->description}}" class="form-control" id="description" placeholder="Description" rows="3"></textarea>
+                             </div>
+                             <div class="form-group row">
+                                <label class="col-sm-2 text-right control-label col-form-label">Valid From :</label>
+                                <div class="col-sm-10">
+                                    <input disabled type="text" value="{{date('d M ',strtotime($promotion->valid_from)) }}" class="form-control text-dark">
                                 </div>
+                             </div>
+                             <div class="form-group row">
+                                <label class="col-sm-2 text-right control-label col-form-label">Valid To :</label>
+                                <div class="col-sm-10">
+                                    <input disabled type="text" value="{{date('d M ',strtotime($promotion->valid_to)) }}" class="form-control text-dark">
+                                </div>
+                             </div>
+                             <div class="form-group row">
+                                 <label class="col-sm-2 text-right control-label col-form-label">Coupon Code :</label>
+                                 <div class="col-sm-10">
+                                     <input disabled type="text" value="{{  $promotion->coupon_code }}" class="form-control text-dark">
+                                 </div>
+                              </div>
+
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-md-4"></label>
                                     <div class="checkbox checkbox-primary col-md-8">
-                                        <a href="{{ url('andbaazaradmin/tag') }}"  class="btn btn-primary">Back</a>
+                                        <a href="{{ url('andbaazaradmin/promotion') }}"  class="btn btn-primary">Back</a>
                                     </div>
                                 </div>
 
