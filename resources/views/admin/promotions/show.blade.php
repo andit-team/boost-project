@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="page-header-left">
-                            <h3>Show Tag
+                            <h3>Show Promotion
                                 <small>AndBaazar Admin panel</small>
                             </h3>
                         </div>
@@ -17,8 +17,8 @@
                     <div class="col-lg-6">
                         <ol class="breadcrumb pull-right">
                             <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item">Tag </li>
-                            <li class="breadcrumb-item active">Create Tag</li>
+                            <li class="breadcrumb-item">Promotion </li>
+                            <li class="breadcrumb-item active">Create Promotion</li>
                         </ol>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <div class="card tab2-card">
                 <div class="card-header">
-                    <h5>Show Tag</h5>
+                    <h5>Show Promotion</h5>
                 </div>
                 <div class="card-body">
                         <div class="row">

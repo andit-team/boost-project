@@ -40,8 +40,8 @@
                                           <div class="form-group col-md-10 ">
                                              <div class="form-group row">
                                                  <label for="title" class="col-xl-3 col-md-4">Promotion <span>*</span></label>
-                                                <select name="promotion_id" class="form-control col-md-8 " id="promotion_head_id" required autocomplete="off">
-                                                    <option value="" selected disabled>Select Promotion Head</option>
+                                                <select name="promotion_id" class="form-control col-md-8 " id="promotion_id" required autocomplete="off">
+                                                    <option value="" selected disabled>Select Promotion</option>
                                                     @foreach ($promotion as $row)
                                                         <option value="{{ $row->id }}">{{$row->title}}</option>
                                                     @endforeach
@@ -55,14 +55,12 @@
                                                 <label for="to_price" class="col-xl-3 col-md-4">To Price <span>*</span></label>
                                                 <input class="form-control col-md-8" name="to_price" id="title" type="text" required="">
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="title" class="col-xl-3 col-md-4">To Price <span>*</span></label>
-                                                <input class="form-control col-md-8" name="title" id="title" type="text" required="">
-                                            </div>
+
                                             <div class="form-group row">
                                                 <label for="amount" class="col-xl-3 col-md-4">Amount <span>*</span></label>
-                                                <input class="form-control col-md-8" name="amount" id="title" type="text" required="">
+                                                <input class="form-control col-md-8" name="amount" id="amount" type="text" required="">
                                             </div>
+                                        
 
                                               <div class="form-group row">
                                                 <label class="col-xl-3 col-md-4"></label>

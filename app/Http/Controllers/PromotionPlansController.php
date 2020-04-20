@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PromotionPlan;
 use App\Models\Promotion;
 use Illuminate\Http\Request;
-
+use Sentinel;
 class PromotionPlansController extends Controller
 {
     /**
@@ -17,7 +17,7 @@ class PromotionPlansController extends Controller
     {
       $promotion = Promotion::all();
       $promotionplan = PromotionPlan::all();
-      return view('admin.promotions.index',compact('promotion','promotionplan'));
+      return view('admin.promotion_plan.index',compact('promotion','promotionplan'));
     }
 
     /**
@@ -27,8 +27,8 @@ class PromotionPlansController extends Controller
      */
     public function create()
     {
-      $promotionplan = PromotionPlan::all();
-      return view('admin.promotions.create',compact('promotionplan'));
+      $promotion = Promotion::all();
+      return view('admin.promotion_plan.create',compact('promotion'));
     }
 
     /**
@@ -43,7 +43,6 @@ class PromotionPlansController extends Controller
             'from_price' => $request->from_price,
             'to_price' => $request->to_price,
             'amount' => $request->amount,
-            'is_free_shipping' => $request->is_free_shipping,
             'promotion_id' => $request->promotion_id,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
@@ -61,7 +60,7 @@ class PromotionPlansController extends Controller
      */
     public function show(Promotionplan $promotionplan)
     {
-      return  view('admin.promotions.show',compact('promotion'));
+      return  view('admin.promotion_plan.show',compact('promotionplan'));
     }
 
     /**
@@ -72,8 +71,8 @@ class PromotionPlansController extends Controller
      */
     public function edit(Promotionplan $promotionplan)
     {
-        $promotion = PromotionPlan::all();
-      return view('admin.promotions.edit',compact('promotion'));
+      $promotion = Promotion::all();
+      return view('admin.promotion_plan.edit',compact('promotion','promotionplan'));
     }
 
     /**
@@ -89,7 +88,6 @@ class PromotionPlansController extends Controller
           'from_price' => $request->from_price,
           'to_price' => $request->to_price,
           'amount' => $request->amount,
-          'is_free_shipping' => $request->is_free_shipping,
           'promotion_id' => $request->promotion_id,
           'user_id' => Sentinel::getUser()->id,
           'created_at' => now(),
@@ -116,7 +114,7 @@ class PromotionPlansController extends Controller
         $validatedData = $request->validate([
             'from_price' => 'required',
             'to_price' => 'required',
-            'amount' => 'required',            
+            'amount' => 'required',
             'promotion_id' => 'required',
         ]);
     }

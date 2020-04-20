@@ -75,6 +75,15 @@
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-circle"></i>
+                                    <span>Shipping Method</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="{{ url('andbaazaradmin/shippingmethod') }}"><i class="fa fa-circle"></i> All Shipping Method</a></li>
+                                    <li><a href="{{ url('andbaazaradmin/shippingmethod/create') }}"><i class="fa fa-circle"></i>Add Shipping Method</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-circle"></i>
                                     <span>Promotion</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                                 <ul class="sidebar-submenu">
@@ -134,15 +143,6 @@
                         <ul class="sidebar-submenu">
                             <li><a href="order.html"><i class="fa fa-circle"></i>Orders</a></li>
                             <li><a href="transactions.html"><i class="fa fa-circle"></i>Transactions</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-circle"></i>
-                            <span>Shipping Method</span> <i class="fa fa-angle-right pull-right"></i>
-                        </a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{ url('andbaazaradmin/shippingmethod') }}"><i class="fa fa-circle"></i> All Shipping Method</a></li>
-                            <li><a href="{{ url('andbaazaradmin/shippingmethod/create') }}"><i class="fa fa-circle"></i>Add Shipping Method</a></li>
                         </ul>
                     </li>
                     <li><a class="sidebar-header" href=""><i data-feather="tag"></i><span>Coupons</span><i class="fa fa-angle-right pull-right"></i></a>
