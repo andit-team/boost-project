@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ShippingMethod;
+use App\Models\Courier;
 use Sentinel;
 
 class ShippingMethodsController extends Controller
@@ -15,7 +16,9 @@ class ShippingMethodsController extends Controller
      */
     public function index()
     {
-        //
+      $courier = Courier::all();
+      $shippingmethod = ShippingMethod::all();
+      return view('admin.shipping_method.index',compact('courier','shippingmethod'));
     }
 
     /**
@@ -25,7 +28,8 @@ class ShippingMethodsController extends Controller
      */
     public function create()
     {
-        //
+      $courier = Courier::all();
+      return view('admin.shipping_method.create',compact('courier'));
     }
 
     /**
@@ -37,6 +41,7 @@ class ShippingMethodsController extends Controller
     public function store(Request $request)
     {
         $this->validateForm($request);
+
         $data =[
             'name' => $request->name,
             'fees' => $request->fees,
@@ -45,8 +50,9 @@ class ShippingMethodsController extends Controller
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
-
         ShippingMethod::create($data);
+
+         return redirect('andbaazaradmin/shippingmethod');
     }
 
     /**
@@ -55,9 +61,9 @@ class ShippingMethodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ShippingMethod $shippingmethod)
     {
-        //
+        return  view('admin.shipping_method.show',compact('shippingmethod'));
     }
 
     /**
@@ -66,9 +72,10 @@ class ShippingMethodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ShippingMethod $shippingmethod)
     {
-        //
+      $courier = Courier::all();
+      return view('admin.shipping_method.edit',compact('courier','shippingmethod'));
     }
 
     /**
@@ -78,9 +85,19 @@ class ShippingMethodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ShippingMethod $shippingmethod,Request $request)
     {
-        //
+      $data =[
+          'name' => $request->name,
+          'fees' => $request->fees,
+          'desc' => $request->desc,
+          'courier_id' => $request->courier_id,
+          'user_id' => Sentinel::getUser()->id,
+          'updated_at' => now(),
+      ];
+      $shippingmethod->update($data);
+
+     return redirect('andbaazaradmin/shippingmethod');
     }
 
     /**
@@ -89,9 +106,11 @@ class ShippingMethodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ShippingMethod $shippingmethod)
     {
-        //
+      $shippingmethod->delete();
+
+      return redirect('andbaazaradmin/shippingmethod');
     }
 
     private function validateForm($request){
