@@ -15,7 +15,8 @@ class PromotionsController extends Controller
      */
     public function index()
     {
-        //
+      $promotion = Promotion::all();
+      return view('admin.promotions.index',compact('promotion'));
     }
 
     /**
@@ -25,7 +26,7 @@ class PromotionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.promotions.create');
     }
 
     /**
@@ -37,6 +38,7 @@ class PromotionsController extends Controller
     public function store(Request $request)
     {
         $this->validateForm($request);
+
         $data = [
             'title' => $request->title,
             'description' => $request->description,
@@ -53,6 +55,8 @@ class PromotionsController extends Controller
         ];
 
         Promotion::create($data);
+
+         return redirect('andbaazaradmin/promotion');
     }
 
     /**
@@ -61,9 +65,9 @@ class PromotionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Promotion $promotion)
     {
-        //
+       return  view('admin.promotions.show',compact('color'));
     }
 
     /**
@@ -72,9 +76,9 @@ class PromotionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Promotion $promotion)
     {
-        //
+        return view('admin.promotions.edit',compact('color'));
     }
 
     /**
@@ -84,9 +88,26 @@ class PromotionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Promotion $promotion,Request $request)
     {
-        //
+      $data = [
+          'title' => $request->title,
+          'description' => $request->description,
+          'is_permanent' => $request->is_permanent,
+          'valid_from' => $request->valid_from,
+          'valid_to' => $request->valid_to,
+          'has_coupon_code' => $request->has_coupon_code,
+          'coupon_code' => $request->coupon_code,
+          'multiple_use' => $request->multiple_use,
+          'priority' => $request->priority,
+          'promotion_head_id' => $request->promotion_head_id,
+          'user_id' => Sentinel::getUser()->id,
+          'created_at' => now(),
+      ];
+
+      $color->update($data);
+
+     return redirect('andbaazaradmin/promotion');
     }
 
     /**
@@ -95,9 +116,11 @@ class PromotionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Promotion $promotion)
     {
-        //
+      $category->delete();
+
+      return redirect('andbaazaradmin/promotion');
     }
 
     private function validateForm($request){

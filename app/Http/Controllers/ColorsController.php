@@ -15,7 +15,8 @@ class ColorsController extends Controller
      */
     public function index()
     {
-        //
+      $color = Color::all();
+      return view('admin.colors.index',compact('color'));
     }
 
     /**
@@ -25,7 +26,7 @@ class ColorsController extends Controller
      */
     public function create()
     {
-        //
+          return view('admin.colors.create');
     }
 
     /**
@@ -42,8 +43,8 @@ class ColorsController extends Controller
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
-
         Color::create($data);
+        return redirect('andbaazaradmin/color');
     }
 
     /**
@@ -52,9 +53,9 @@ class ColorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Color $color)
     {
-        //
+     return  view('admin.colors.show',compact('color'));
     }
 
     /**
@@ -63,9 +64,9 @@ class ColorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Color $color)
     {
-        //
+      return view('admin.colors.edit',compact('color'));
     }
 
     /**
@@ -75,9 +76,17 @@ class ColorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Color $color, Request $request)
     {
-        //
+      $data = [
+          'name' => $request->name,
+          'color_code' => $request->color_code,
+          'user_id' => Sentinel::getUser()->id,
+          'created_at' => now(),
+      ];
+            $color->update($data);
+
+           return redirect('andbaazaradmin/color');
     }
 
     /**
@@ -86,9 +95,11 @@ class ColorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Color $color)
     {
-        //
+      $color->delete();
+
+      return redirect('andbaazaradmin/color');
     }
 
     private function validateForm($request){

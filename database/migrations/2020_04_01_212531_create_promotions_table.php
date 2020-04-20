@@ -18,12 +18,12 @@ class CreatePromotionsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->enum('is_permanent',['Yes','No'])->default('Yes');
-            $table->date('valid_from');
-            $table->date('valid_to');
+            $table->date('valid_from')->nullable();
+            $table->date('valid_to')->nullable();
             $table->enum('has_coupon_code',['Yes','No'])->default('Yes');
-            $table->string('coupon_code');
-            $table->string('multiple_use');
-            $table->string('priority');
+            $table->string('coupon_code')->nullable();
+            $table->string('multiple_use')->nullable();
+            $table->string('priority')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('promotion_head_id');
             $table->unsignedBigInteger('user_id');
