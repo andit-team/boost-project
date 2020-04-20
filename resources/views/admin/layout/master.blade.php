@@ -39,6 +39,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/custom.css">
     <!-- Datatables css-->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/datatables.css">
+    <!--Datepicker css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/bootstrap-datepicker.min.css">
 </head>
 
 <body>
@@ -218,6 +220,10 @@
 <!-- Datatable js-->
 <script src="{{asset('')}}/assets/js/datatables/jquery.dataTables.min.js"></script>
 <script src="{{asset('')}}/assets/js/datatables/custom-basic.js"></script>
+
+<!--Datepicker js-->
+
+<script src="{{asset('')}}/assets/js/bootstrap-datepicker.min.js"></script>
 
 </body>
 </html>
