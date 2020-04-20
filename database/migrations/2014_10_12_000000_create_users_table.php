@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('last_name')->nullable();
             $table->string('email');
             $table->string('password');
-            $table->enum('type',['buyers','sellers','admin'])->default('admin');
+            $table->enum('type',['buyers','buyers','admin'])->default('admin');
             $table->text('permissions')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->softDeletes();

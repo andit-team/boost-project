@@ -638,8 +638,7 @@
                                                             </a>
                                                             <h4><span>1 x $ 299.00</span></h4>
                                                         </div>
-                                                    </div>
-                                                    <div class="close-circle">
+                                                    </div><div class="close-circle">
                                                         <a href="#"><i class="fa fa-times" aria-hidden="true"></i></a>
                                                     </div>
                                                 </li>
@@ -671,7 +670,7 @@
 
     @yield('content')
 
-    
+
     <!-- footer start -->
     <footer class="footer-light">
         <div class="light-layout">

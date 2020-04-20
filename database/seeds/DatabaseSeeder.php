@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
                 DB::table('couriers')->truncate();
                 DB::table('currencies')->truncate();
                 DB::table('promotion_heads')->truncate();
-                DB::table('sellers')->truncate();
+                DB::table('buyers')->truncate();
                 DB::table('shops')->truncate();
                 DB::table('tags')->truncate();
                 DB::table('permissions')->truncate();

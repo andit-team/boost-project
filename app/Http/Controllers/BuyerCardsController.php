@@ -25,7 +25,7 @@ class BuyerCardsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.byer_cards.create');
     }
 
     /**

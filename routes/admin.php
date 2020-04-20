@@ -39,4 +39,10 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
 	Route::resource('/promotionhead','PromotionHeadsController');
     Route::resource('/currency','CurrenciesController');
     Route::resource('/courier','CouriersController');
+    Route::resource('/buyer','BuyersController');
+    Route::resource('/buyershippingaddress','BuyerShippingAddressesController');
+    Route::resource('/buyerbillingaddress','BuyerBillingAddressesController');
+    Route::resource('/buyercard','BuyerCardsController');
+    Route::resource('/buyerpayment','BuyerPaymentsController');
+
 });
