@@ -8,8 +8,8 @@
                     <div class="card-header">
                         <h5>Manage Order</h5>
                     </div>
-                    <div class="card-body order-datatable">
-                        <table class="display" id="basic-1">
+                    <div class="card-body">
+                        <table class="table" id="example">
                             <thead>
                             <tr>
                                 <th>Sl</th>
@@ -18,7 +18,7 @@
                                 <th>Action</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            {{-- <tbody>
                             @php $i=0; @endphp
                             @foreach($category as $row)
                             <tr>
@@ -40,7 +40,7 @@
                                 </td>
                             </tr>
                             @endforeach
-                            </tbody>
+                            </tbody> --}}
                         </table>
                     </div>
                 </div>
@@ -48,3 +48,10 @@
         </div>
     </div>
 @endsection
+@push('js')
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+    </script>
+    @endpush
