@@ -75,11 +75,29 @@
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-circle"></i>
+                                    <span>Shipping Method</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="{{ url('andbaazaradmin/shippingmethod') }}"><i class="fa fa-circle"></i> All Shipping Method</a></li>
+                                    <li><a href="{{ url('andbaazaradmin/shippingmethod/create') }}"><i class="fa fa-circle"></i>Add Shipping Method</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-circle"></i>
                                     <span>Promotion</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                                 <ul class="sidebar-submenu">
                                     <li><a href="{{ url('andbaazaradmin/promotion') }}"><i class="fa fa-circle"></i> All Promotion</a></li>
                                     <li><a href="{{ url('andbaazaradmin/promotion/create') }}"><i class="fa fa-circle"></i>Add Promotion</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-circle"></i>
+                                    <span>Promotion plan</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="{{ url('andbaazaradmin/promotionplan') }}"><i class="fa fa-circle"></i> All Promotion Plan</a></li>
+                                    <li><a href="{{ url('andbaazaradmin/promotionplan/create') }}"><i class="fa fa-circle"></i>Add Promotion Plan</a></li>
                                 </ul>
                             </li>
 							                 <li>
