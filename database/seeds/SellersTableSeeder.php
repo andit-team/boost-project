@@ -133,6 +133,6 @@ class SellersTableSeeder extends Seeder
             ],
         ];
 
-        DB::table('buyers')->insert($data);
+        DB::table('sellers')->insert($data);
        }
 }

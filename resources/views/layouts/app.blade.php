@@ -1563,6 +1563,7 @@
             document.getElementById("search-overlay").style.display = "none";
         }
     </script>
+    @stack('js')
 </body>
 
 </html>

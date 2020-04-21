@@ -50,7 +50,7 @@
                     </div>
                 </div>
 
-                <div class="col-sm-9 register-page contact-page container">
+                <div class="col-sm-9 register-page contact-page">
                     <h3>PERSONAL DETAIL</h3>
                     <form class="theme-form" action="{{ route('buyer.store') }}" method="post" enctype="multipart/form-data">
                         @csrf

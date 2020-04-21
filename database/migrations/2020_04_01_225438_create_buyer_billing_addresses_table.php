@@ -15,14 +15,14 @@ class CreateBuyerBillingAddressesTable extends Migration
     {
         Schema::create('buyer_billing_addresses', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->text('address');
             $table->string('country');
             $table->string('state');
             $table->string('city');
             $table->string('zip_code');
             $table->integer('phone');
-            $table->string('fax');
+            $table->string('fax')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('buyer_id')->default(1);
             $table->unsignedBigInteger('user_id');
