@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Currency;
 use Sentinel;
+use Session;
+use Alert;
 
 class CurrenciesController extends Controller
 {
@@ -15,7 +17,8 @@ class CurrenciesController extends Controller
      */
     public function index()
     {
-        //
+        $currency = Currency::all();
+        return view('admin.currencies.index',compact('currency'));
     }
 
     /**
@@ -25,7 +28,7 @@ class CurrenciesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.currencies.create');
     }
 
     /**
@@ -36,6 +39,7 @@ class CurrenciesController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $this->validateForm($request);
        $data = [
            'name' =>$request->name,
@@ -46,6 +50,11 @@ class CurrenciesController extends Controller
        ];
 
        Currency::create($data);
+
+       //Session::flash('success','Currency Created Successfully');
+        alert()->success('SuccessAlert','Currency Created Successfully.');
+
+       return redirect('andbaazaradmin/currency');
     }
 
     /**
@@ -54,9 +63,9 @@ class CurrenciesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Currency $currency)
     {
-        //
+       return view('admin.currencies.show',compact('currency'));
     }
 
     /**
@@ -65,9 +74,9 @@ class CurrenciesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Currency $currency)
     {
-        //
+        return view('admin.currencies.edit',compact('currency'));
     }
 
     /**
@@ -77,9 +86,22 @@ class CurrenciesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Currency $currency)
     {
-        //
+        $this->validateForm($request);
+        $data = [
+            'name' =>$request->name,
+            'code' =>$request->code,
+            'symbol' =>$request->symbol,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        $currency->update($data);
+
+        alert()->warning('WarningAlert','Currency Updated Successfully.');
+
+        return redirect('andbaazaradmin/currency');
     }
 
     /**
@@ -88,9 +110,13 @@ class CurrenciesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Currency $currency)
     {
-        //
+        $currency->delete();
+
+        alert()->error('DangerAlert','Currency Deleted Successfully.');
+
+        return redirect('andbaazaradmin/currency');
     }
 
     private function validateForm($request){

@@ -15,7 +15,8 @@ class CouriersController extends Controller
      */
     public function index()
     {
-        //
+        $courier = Courier::all();
+        return view('admin.couriers.index',compact('courier'));
     }
 
     /**
@@ -25,7 +26,7 @@ class CouriersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.couriers.create');
     }
 
     /**
@@ -38,11 +39,14 @@ class CouriersController extends Controller
     {
         $data = [
             'name' => $request->name,
+            'desc' => $request->desc,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
 
         Courier::create($data);
+
+        return redirect('andbaazaradmin/courier');
     }
 
     /**
@@ -51,9 +55,9 @@ class CouriersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Courier $courier)
     {
-        //
+        return view('admin.couriers.show',compact('courier'));
     }
 
     /**
@@ -62,9 +66,9 @@ class CouriersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Courier $courier)
     {
-        //
+        return view('admin.couriers.edit',compact('courier'));
     }
 
     /**
@@ -74,9 +78,18 @@ class CouriersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Courier $courier)
     {
-        //
+        $data = [
+            'name' => $request->name,
+            'desc' => $request->desc,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        $courier->update($data);
+
+        return redirect('andbaazaradmin/courier');
     }
 
     /**
@@ -85,9 +98,11 @@ class CouriersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Courier $courier)
     {
-        //
+        $courier->delete();
+
+        return redirect('andbaazaradmin/courier');
     }
 
     private function validateForm($request){

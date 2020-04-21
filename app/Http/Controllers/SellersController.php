@@ -25,7 +25,7 @@ class SellersController extends Controller
      */
     public function create()
     {
-        //
+       //
     }
 
     /**

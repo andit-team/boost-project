@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Buyer;
+use Illuminate\Support\Facades\Auth;
 use Sentinel;
+use App\User;
 
 class BuyersController extends Controller
 {
@@ -25,7 +27,9 @@ class BuyersController extends Controller
      */
     public function create()
     {
-        //
+        //$user = User::where('id',Sentinel::getUser()->id)->first();
+        //dd($user);
+        return view('admin.buyers.create');
     }
 
     /**
@@ -36,9 +40,11 @@ class BuyersController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $this->validateForm($request);
         $data = [
-            'name' => $request->name,
+            'full_name' => $request->full_name,
+            'phone_number' => $request->phone_number,
             'dob'  =>$request->dob,
             'gender' => $request->gender,
             'description' => $request->description,
@@ -50,7 +56,10 @@ class BuyersController extends Controller
             'created_at' => now(),
         ];
 
-        Buyer::create($data);
+        $buyer = Buyer::create($data);
+        //dd( $buyer);
+
+        return back();
     }
 
     /**
@@ -100,10 +109,10 @@ class BuyersController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'name' => 'required',
-            'dob' => 'required',
-            'gender' => 'required',
-            'description' => 'required',
+            'full_name' => 'required',
+//            'dob' => 'required',
+//            'gender' => 'required',
+//            'description' => 'required',
         ]);
     }
 }

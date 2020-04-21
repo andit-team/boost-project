@@ -15,18 +15,21 @@ class CuriersTableSeeder extends Seeder
       [
           'name'           => 'Continental',
           'user_id'        => '2',
+          'desc'           => '',
           'created_at'     => now(),
           'updated_at'     => now()
       ],
       [
           'name'           => 'Sa Paribahan',
           'user_id'        => '2',
+          'desc'           => '',
           'created_at'     => now(),
           'updated_at'     => now()
       ],
       [
           'name'           => 'Sundarban',
           'user_id'        => '2',
+          'desc'           => '',
           'created_at'     => now(),
           'updated_at'     => now()
       ],
