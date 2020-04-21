@@ -17,6 +17,7 @@ class CreateShopsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('slug');
+            $table->string('logo');
             $table->string('cell_phone');
             $table->string('google_location');
             $table->string('featured');
@@ -26,6 +27,7 @@ class CreateShopsTable extends Migration
 //            $table->unsignedInteger('timezone_id');
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('seller_id');
+            $table->unsignedBigInteger('timezone_id');
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
