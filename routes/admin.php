@@ -53,4 +53,6 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::resource('/color','ColorsController');
     Route::resource('/promotion','PromotionsController');
 
+    Route::resource('/shop','ShopsController');
+
 });

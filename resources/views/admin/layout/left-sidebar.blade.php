@@ -139,6 +139,13 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li><a class="sidebar-header" href="#"><i data-feather="clipboard"></i><span>Shops</span><i class="fa fa-angle-right pull-right"></i></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="<a href="{{ 'andbaazaradmin/shop' }}"><i class="fa fa-circle"></i>All Shop</a></li>
+                            <li><a href="<a href="{{ 'andbaazaradmin/shop/create' }}"><i class="fa fa-circle"></i>Create Shop</a></li>
+                        </ul>
+                    </li>
                     <li><a class="sidebar-header" href=""><i data-feather="dollar-sign"></i><span>Sales</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
                             <li><a href="order.html"><i class="fa fa-circle"></i>Orders</a></li>
@@ -149,12 +156,6 @@
                         <ul class="sidebar-submenu">
                             <li><a href="coupon-list.html"><i class="fa fa-circle"></i>List Coupons</a></li>
                             <li><a href="coupon-create.html"><i class="fa fa-circle"></i>Create Coupons </a></li>
-                        </ul>
-                    </li>
-                    <li><a class="sidebar-header" href="#"><i data-feather="clipboard"></i><span>Pages</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="pages-list.html"><i class="fa fa-circle"></i>List Page</a></li>
-                            <li><a href="page-create.html"><i class="fa fa-circle"></i>Create Page</a></li>
                         </ul>
                     </li>
                     <li><a class="sidebar-header" href="media.html"><i data-feather="camera"></i><span>Media</span></a></li>
