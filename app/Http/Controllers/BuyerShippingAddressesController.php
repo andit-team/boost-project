@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buyer;
 use Illuminate\Http\Request;
 use App\Models\BuyerShippingAddress;
 use Sentinel;
@@ -25,7 +26,8 @@ class BuyerShippingAddressesController extends Controller
      */
     public function create()
     {
-        return view('admin.buyer_shipping_addresses.create');
+        $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
+        return view('admin.buyer_shipping_addresses.create',compact('buyerShippingAddress'));
     }
 
     /**
@@ -36,6 +38,8 @@ class BuyerShippingAddressesController extends Controller
      */
     public function store(Request $request)
     {
+        $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
+        $this->validateForm($request);
         $data = [
             'location' => $request->location,
             'address' => $request->address,
@@ -45,12 +49,14 @@ class BuyerShippingAddressesController extends Controller
             'zip_code' => $request->zip_code,
             'phone' => $request->phone,
             'fax' => $request->fax,
-            'buyer_id' => $request->buyer_id,
+            'buyer_id' => $buyerId->id,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
 
         BuyerShippingAddress::create($data);
+
+        return back();
     }
 
     /**
@@ -70,9 +76,9 @@ class BuyerShippingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BuyerShippingAddress $buyershippingaddress)
     {
-        //
+        return view('admin.buyer_shipping_addresses.edit',compact('buyershippingaddress'));
     }
 
     /**
@@ -82,9 +88,26 @@ class BuyerShippingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, BuyerShippingAddress $buyershippingaddress)
     {
-        //
+        $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
+        $this->validateForm($request);
+        $data = [
+            'location' => $request->location,
+            'address' => $request->address,
+            'country' => $request->country,
+            'state' => $request->state,
+            'city' => $request->city,
+            'zip_code' => $request->zip_code,
+            'phone' => $request->phone,
+            'fax' => $request->fax,
+            'buyer_id' => $buyerId->id,
+            'user_id' => Sentinel::getUser()->id,
+            'updated_at' => now(),
+        ];
+
+        $buyershippingaddress->update($data);
+        return back();
     }
 
     /**
