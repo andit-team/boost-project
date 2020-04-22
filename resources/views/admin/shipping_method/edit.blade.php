@@ -55,22 +55,10 @@
                                     <label for="fees" class="col-xl-3 col-md-4">Fees <span>*</span></label>
                                     <input class="form-control col-md-8" name="fees" id="title" type="text" value="{{ $shippingmethod->fees }}" required="">
                                 </div>
-                                <!-- <div class="form-group row">
-                                    <label for="fees" class="col-xl-3 col-md-4">Fees<span>*</span></label>
-                                    <input class="form-control col-md-8" name="fees" value="{{ $shippingmethod->fees }}" id="fees" type="number" required="">
-                                </div> -->
                                 <div class="form-group row">
                                     <label for="desc" class="col-xl-3 col-md-4">Description<span>*</span></label>
                                       <input class="form-control col-md-8" name="desc" value="{{ $shippingmethod->desc }}" id="desc" type="text" required="">
-                                </div>
-
-                                <!-- <div class="form-group row">
-                                    <label class="col-sm-2 text-right control-label col-form-label">Description :</label>
-                                    <div class="col-sm-10">
-                                        <input  type="text" value="{{  $shippingmethod->desc }}" class="form-control text-dark">
-                                    </div>
-                                 </div> -->
-
+                                </div>                          
                                <!-- <div class="form-group row">
                                     <label for="desc" class="col-xl-3 col-md-4">Description <span>*</span></label>
                                       <textarea class="form-control col-md-8" rows="4" cols="50" name="desc" value="{{  $shippingmethod->desc }}" id="desc"  required=""></textarea>
