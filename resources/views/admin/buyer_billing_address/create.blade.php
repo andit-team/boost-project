@@ -53,40 +53,69 @@
                 <!-- address section start -->
                 <div class="col-sm-9 contact-page register-page container">
                     <h3>Billing ADDRESS</h3>
-                    <form class="theme-form">
+                    <form class="theme-form" action="{{ route('buyerbillingaddress.store') }}" method="post">
+                        @csrf
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="name">flat / plot</label>
-                                <input type="text" class="form-control" id="home-ploat" placeholder="company name"
-                                       required="">
+                                <label for="name">Location</label>
+                                <input type="text" class="form-control" name="location" id="home-ploat" placeholder="company name">
+                                @if ($errors->has('location'))
+                                    <span class="text-danger">{{ $errors->first('location') }}</span>
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 <label for="name">Address *</label>
-                                <input type="text" class="form-control" id="address-two" placeholder="Address"
-                                       required="">
-                            </div>
-                            <div class="col-md-6">
-                                <label for="email">Zip Code *</label>
-                                <input type="text" class="form-control" id="zip-code" placeholder="zip-code"
-                                       required="">
+                                <input type="text" class="form-control" name="address" id="address-two" placeholder="Address" required="">
+                                @if ($errors->has('address'))
+                                    <span class="text-danger">{{ $errors->first('address') }}</span>
+                                @endif
                             </div>
                             <div class="col-md-6 select_input">
                                 <label for="review">Country *</label>
-                                <select class="form-control" size="1">
+                                <select class="form-control" name="country" size="1">
                                     <option value="India">India</option>
                                     <option value="UAE">UAE</option>
                                     <option value="U.K">U.K</option>
                                     <option value="US">US</option>
                                 </select>
+                                @if ($errors->has('country'))
+                                    <span class="text-danger">{{ $errors->first('country') }}</span>
+                                @endif
                             </div>
                             <div class="col-md-6">
-                                <label for="review">City *</label>
-                                <input type="text" class="form-control" id="city" placeholder="City" required="">
+                                <label for="review">State *</label>
+                                <input type="text" class="form-control" name="state" id="region-state" placeholder="Region/state" required="">
+                                @if ($errors->has('state'))
+                                    <span class="text-danger">{{ $errors->first('state') }}</span>
+                                @endif
                             </div>
                             <div class="col-md-6">
-                                <label for="review">Region/State *</label>
-                                <input type="text" class="form-control" id="region-state" placeholder="Region/state"
-                                       required="">
+                                <label for="city">City *</label>
+                                <input type="text" class="form-control" name="city" id="city" placeholder="City" required="">
+                                @if ($errors->has('city'))
+                                    <span class="text-danger">{{ $errors->first('city') }}</span>
+                                @endif
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email">Zip Code *</label>
+                                <input type="text" class="form-control" name="zip_code" id="zip-code" placeholder="zip-code" required="">
+                                @if ($errors->has('zip_code'))
+                                    <span class="text-danger">{{ $errors->first('zip_code') }}</span>
+                                @endif
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Phone *</label>
+                                <input type="number" class="form-control" name="phone" id="city" placeholder="City" required="">
+                                @if ($errors->has('phone'))
+                                    <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                @endif
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Fax *</label>
+                                <input type="number" class="form-control" name="fax" id="city" placeholder="Fax" required="">
+                                @if ($errors->has('fax'))
+                                    <span class="text-danger">{{ $errors->first('fax') }}</span>
+                                @endif
                             </div>
                             <div class="col-md-12">
                                 <button class="btn btn-sm btn-solid" type="submit">Save setting</button>
