@@ -18,7 +18,7 @@
                                 <th>Action</th>
                             </tr>
                             </thead>
-                            {{-- <tbody>
+                          <tbody>
                             @php $i=0; @endphp
                             @foreach($category as $row)
                             <tr>
@@ -40,7 +40,7 @@
                                 </td>
                             </tr>
                             @endforeach
-                            </tbody> --}}
+                            </tbody>
                         </table>
                     </div>
                 </div>
