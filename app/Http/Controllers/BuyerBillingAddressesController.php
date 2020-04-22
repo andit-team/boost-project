@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BuyerBillingAddress;
+use App\Models\Buyer;
+use Illuminate\Support\Facades\Auth;
 use Sentinel;
 
 class BuyerBillingAddressesController extends Controller
@@ -25,7 +27,8 @@ class BuyerBillingAddressesController extends Controller
      */
     public function create()
     {
-        return view('admin.buyer_billing_address.create');
+        $buyerAddress = BuyerBillingAddress::where('user_id',Sentinel::getUser()->id)->first();
+        return view('admin.buyer_billing_address.create',compact('buyerAddress'));
     }
 
     /**
@@ -36,6 +39,9 @@ class BuyerBillingAddressesController extends Controller
      */
     public function store(Request $request)
     {
+        $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
+        //dd($buyerId);
+
         $this->validateForm($request);
         $data = [
             'location' => $request->location,
@@ -46,12 +52,14 @@ class BuyerBillingAddressesController extends Controller
             'zip_code' => $request->zip_code,
             'phone' => $request->phone,
             'fax' => $request->fax,
-            'buyer_id' => $request->buyer_id,
+            'buyer_id' =>  $buyerId->id,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
 
         BuyerBillingAddress::create($data);
+
+        return back();
 
     }
 
@@ -72,9 +80,9 @@ class BuyerBillingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BuyerBillingAddress $buyerbillingaddress)
     {
-        //
+        return view('admin.buyer_billing_address.edit',compact('buyerbillingaddress'));
     }
 
     /**
@@ -84,9 +92,29 @@ class BuyerBillingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, BuyerBillingAddress $buyerbillingaddress)
     {
-        //
+        $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
+
+        $this->validateForm($request);
+        $data = [
+            'location' => $request->location,
+            'address' => $request->address,
+            'country' => $request->country,
+            'state' => $request->state,
+            'city' => $request->city,
+            'zip_code' => $request->zip_code,
+            'phone' => $request->phone,
+            'fax' => $request->fax,
+            'buyer_id' =>  $buyerId->id,
+            'user_id' => Sentinel::getUser()->id,
+            'updated_at' => now(),
+        ];
+
+        $buyerbillingaddress->update($data);
+
+        return back();
+
     }
 
     /**

@@ -40,7 +40,7 @@
                                           <div class="form-group col-md-10 ">
                                              <div class="form-group row">
                                                  <label for="currier_id" class="col-xl-3 col-md-4">Currier Name <span>*</span></label>
-                                                <select name="currier_id" class="form-control col-md-8 " id="currier_id" required autocomplete="off">
+                                                <select name="courier_id" class="form-control col-md-8 " id="courier_id" required autocomplete="off">
                                                     <option value="" selected disabled>Select Currier Name</option>
                                                     @foreach ($courier as $row)
                                                         <option value="{{ $row->id }}">{{$row->name}}</option>
@@ -68,8 +68,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                    </div>
                                 </form>
-                    </div>
                 </div>
             </div>
             <!-- Container-fluid Ends-->

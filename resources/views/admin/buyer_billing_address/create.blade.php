@@ -14,6 +14,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Billing Address</li>
+                            <li class="breadcrumb-item"><a href="{{ url('/andbaazaradmin/buyerbillingaddress/'.$buyerAddress->id.'/edit') }}">Edit</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -70,14 +71,9 @@
                                     <span class="text-danger">{{ $errors->first('address') }}</span>
                                 @endif
                             </div>
-                            <div class="col-md-6 select_input">
+                            <div class="col-md-6">
                                 <label for="review">Country *</label>
-                                <select class="form-control" name="country" size="1">
-                                    <option value="India">India</option>
-                                    <option value="UAE">UAE</option>
-                                    <option value="U.K">U.K</option>
-                                    <option value="US">US</option>
-                                </select>
+                                <input type="text" class="form-control" name="country" id="region-state" placeholder="Country" required="">
                                 @if ($errors->has('country'))
                                     <span class="text-danger">{{ $errors->first('country') }}</span>
                                 @endif

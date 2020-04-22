@@ -40,7 +40,8 @@ class ShippingMethodsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validateForm($request);
+        //dd($request->all());
+        //$this->validateForm($request);
 
         $data =[
             'name' => $request->name,
