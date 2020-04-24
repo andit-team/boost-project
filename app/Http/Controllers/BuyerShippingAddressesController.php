@@ -40,7 +40,7 @@ class BuyerShippingAddressesController extends Controller
     {
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
         $this->validateForm($request);
-        $data = [
+        $buyerShippingAddress = BuyerShippingAddress::updateOrCreate(['buyer_id' =>$buyerId->id],[
             'location' => $request->location,
             'address' => $request->address,
             'country' => $request->country,
@@ -52,9 +52,7 @@ class BuyerShippingAddressesController extends Controller
             'buyer_id' => $buyerId->id,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
-        ];
-
-        BuyerShippingAddress::create($data);
+        ]);
 
         return back();
     }
@@ -76,9 +74,9 @@ class BuyerShippingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(BuyerShippingAddress $buyershippingaddress)
+    public function edit($id)
     {
-        return view('admin.buyer_shipping_addresses.edit',compact('buyershippingaddress'));
+        //
     }
 
     /**
@@ -88,26 +86,9 @@ class BuyerShippingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BuyerShippingAddress $buyershippingaddress)
+    public function update(Request $request, $id)
     {
-        $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
-        $this->validateForm($request);
-        $data = [
-            'location' => $request->location,
-            'address' => $request->address,
-            'country' => $request->country,
-            'state' => $request->state,
-            'city' => $request->city,
-            'zip_code' => $request->zip_code,
-            'phone' => $request->phone,
-            'fax' => $request->fax,
-            'buyer_id' => $buyerId->id,
-            'user_id' => Sentinel::getUser()->id,
-            'updated_at' => now(),
-        ];
-
-        $buyershippingaddress->update($data);
-        return back();
+        //
     }
 
     /**

@@ -27,9 +27,9 @@ class BuyersController extends Controller
      */
     public function create()
     {
-        //$user = User::where('id',Sentinel::getUser()->id)->first();
-        //dd($user);
-        return view('admin.buyers.create');
+        $buyerProfile = Buyer::where('user_id',Sentinel::getUser()->id)->first();
+        //dd($buyerProfile);
+        return view('admin.buyers.create',compact('buyerProfile'));
     }
 
     /**
@@ -40,9 +40,9 @@ class BuyersController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
         $this->validateForm($request);
-        $data = [
+        $buyerprofile = Buyer::updateOrCreate(['user_id'=>$buyerId->user_id],[
             'full_name' => $request->full_name,
             'phone_number' => $request->phone_number,
             'dob'  =>$request->dob,
@@ -54,10 +54,7 @@ class BuyersController extends Controller
             'remember_token' => $request->remember_token,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
-        ];
-
-        $buyer = Buyer::create($data);
-        //dd( $buyer);
+        ]);
 
         return back();
     }

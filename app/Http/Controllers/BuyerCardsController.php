@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buyer;
 use Illuminate\Http\Request;
 use App\Models\BuyerCard;
+use PHPUnit\Framework\StaticAnalysis\HappyPath\AssertNotInstanceOf\B;
 use Sentinel;
 
 class BuyerCardsController extends Controller
@@ -25,7 +27,9 @@ class BuyerCardsController extends Controller
      */
     public function create()
     {
-        return view('admin.byer_cards.create');
+        $buyerCard = BuyerCard::where('user_id',Sentinel::getUser()->id)->first();
+        //dd($buyerCard);
+        return view('admin.byer_cards.create',compact('buyerCard'));
     }
 
     /**
@@ -36,20 +40,19 @@ class BuyerCardsController extends Controller
      */
     public function store(Request $request)
     {
+        $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
         $this->validateForm($request);
-        $data = [
+        $buyerCard = BuyerCard::updateOrCreate(['buyer_id'=>$buyerId->id],[
             'card_number' => $request->card_number,
             'card_holder_name' => $request->card_holder_name,
             'card_expire_date' => $request->card_expire_date,
             'card_cvc' => $request->card_cvc,
-            'buyer_id' => $request->buyer_id,
+            'buyer_id' => $buyerId->id,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
-        ];
+        ]);
 
-        BuyerCard::create($data);
-
-
+        return back();
     }
 
     /**

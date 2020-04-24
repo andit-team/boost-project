@@ -52,33 +52,55 @@
 
                 <div class="col-sm-9 register-page contact-page container">
                     <h3>CARD DETAIL</h3>
-                    <form class="theme-form">
+                    <form class="theme-form" action="{{ route('buyercard.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="name">First Name</label>
-                                <input type="text" class="form-control" id="name" placeholder="Enter Your name"
-                                       required="">
+                                <label for="card_number">Card Number *</label>
+                                @if($buyerCard == '')
+                                    <input type="number" class="form-control" name="card_number" value="{{ old('card_number') }}"  id="" placeholder="Card number" required="">
+                                @else
+                                    <input type="number" class="form-control" name="card_number" value="{{ old('card_number',$buyerCard->card_number) }}" id="" placeholder="Card number" required="">
+                                @endif
+                                @if ($errors->has('card_number'))
+                                    <span class="text-danger">{{ $errors->first('card_number') }}</span>
+                                @endif
                             </div>
                             <div class="col-md-6">
-                                <label for="email">Last Name</label>
-                                <input type="text" class="form-control" id="last-name" placeholder="Email" required="">
+                                <label for="card_holder_name">Card holder name *</label>
+                                @if($buyerCard == '')
+                                    <input type="text" class="form-control" name="card_holder_name" value="{{ old('card_holder_name') }}" id="" placeholder="Card holder name" required="">
+                                @else
+                                    <input type="text" class="form-control" name="card_holder_name" value="{{ old('card_holder_name',$buyerCard->card_holder_name) }}" id="" placeholder="Card holder name" required="">
+                                @endif
+                                @if ($errors->has('card_holder_name'))
+                                    <span class="text-danger">{{ $errors->first('card_holder_name') }}</span>
+                                @endif
                             </div>
                             <div class="col-md-6">
-                                <label for="review">Phone number</label>
-                                <input type="text" class="form-control" id="review" placeholder="Enter your number"
-                                       required="">
+                                <label for="card_expire_date">Card expire date</label>
+                                @if($buyerCard == '')
+                                    <input type="text" class="form-control" name="card_expire_date" value="{{ old('card_number') }}" id="" placeholder="Card expire date" required="">
+                                @else
+                                    <input type="text" class="form-control" name="card_expire_date" value="{{ old('card_number',$buyerCard->card_expire_date) }}" id="" placeholder="Card expire date" required="">
+                                @endif
+                                @if ($errors->has('card_expire_date'))
+                                    <span class="text-danger">{{ $errors->first('card_expire_date') }}</span>
+                                @endif
                             </div>
                             <div class="col-md-6">
-                                <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email" placeholder="Email" required="">
-                            </div>
-                            <div class="col-md-12">
-                                <label for="review">Write Your Message</label>
-                                <textarea class="form-control mb-0" placeholder="Write Your Message"
-                                          id="exampleFormControlTextarea1" rows="6"></textarea>
+                                <label for="card_cvc">Card cvc</label>
+                                @if($buyerCard == '')
+                                    <input type="text" class="form-control" name="card_cvc" value="{{ old('card_cvc') }}" id="" placeholder="Card cvc" required="">
+                                @else
+                                    <input type="text" class="form-control" name="card_cvc" value="{{ old('card_cvc',$buyerCard->card_cvc) }}" id="" placeholder="Card cvc" required="">
+                                @endif
+                                @if ($errors->has('card_cvc'))
+                                    <span class="text-danger">{{ $errors->first('card_cvc') }}</span>
+                                @endif
                             </div>
                             <div class="col-md-12 mt-4">
-                                <button class="btn btn-sm btn-solid" type="submit">Save setting</button>
+                                <button class="btn btn-sm btn-solid" type="submit">Save & Update</button>
                             </div>
                         </div>
                     </form>
