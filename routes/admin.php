@@ -57,4 +57,6 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
 
     Route::resource('/product','ItemsController');
 
+    Route::get('category_setup','CategorySetupController@index');
+
 });
