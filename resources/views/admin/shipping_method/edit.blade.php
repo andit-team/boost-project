@@ -43,7 +43,7 @@
                                  <select name="courier_id" class="form-control col-md-8 " id="courier_id" required autocomplete="off">
                                      <option value="" selected disabled>Select Courier Name</option>
                                      @foreach ($courier as $row)
-                                         <option value="{{ $row->id }}"@if($row->id==$shippingmethod->name) selected @endif>{{$row->title}}</option>
+                                         <option value="{{ $row->id }}"@if($row->id==$shippingmethod->name) selected @endif>{{$row->name}}</option>
                                      @endforeach
                                  </select>
                                  </div>
@@ -52,15 +52,18 @@
                                     <input class="form-control col-md-8" name="name" value="{{ $shippingmethod->name }}" id="from_price" type="text" required="">
                                 </div>
                                 <div class="form-group row">
-                                    <label for="fees" class="col-xl-3 col-md-4">Fees<span>*</span></label>
-                                    <input class="form-control col-md-8" name="fees" value="{{ $shippingmethod->fees }}" id="to_price" type="text" required="">
+                                    <label for="fees" class="col-xl-3 col-md-4">Fees <span>*</span></label>
+                                    <input class="form-control col-md-8" name="fees" id="title" type="text" value="{{ $shippingmethod->fees }}" required="">
                                 </div>
-
-
                                 <div class="form-group row">
+                                    <label for="desc" class="col-xl-3 col-md-4">Description<span>*</span></label>
+                                      <input class="form-control col-md-8" name="desc" value="{{ $shippingmethod->desc }}" id="desc" type="text" required="">
+                                </div>                          
+                               <!-- <div class="form-group row">
                                     <label for="desc" class="col-xl-3 col-md-4">Description <span>*</span></label>
-                                      <textarea class="form-control col-md-8" rows="4" cols="50" name="desc"value="{{ $shippingmethod->desc }}" id="validationCustom0"  required=""></textarea>    
-                                </div>
+                                      <textarea class="form-control col-md-8" rows="4" cols="50" name="desc" value="{{  $shippingmethod->desc }}" id="desc"  required=""></textarea>
+                                </div> -->
+
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-md-4"></label>
                                     <div class="checkbox checkbox-primary col-md-8">

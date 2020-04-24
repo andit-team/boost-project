@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="page-header-left">
-                                <h3>Create Promotion Plan
+                                <h3>Create Shipping Method
                                     <small>AndBaazar Admin panel</small>
                                 </h3>
                             </div>
@@ -17,7 +17,7 @@
                         <div class="col-lg-6">
                             <ol class="breadcrumb pull-right">
                                 <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                                <li class="breadcrumb-item">Promotion Plan</li>
+                                <li class="breadcrumb-item">Shipping Method</li>
                                 <li class="breadcrumb-item active">Create Promotion Plan</li>
                             </ol>
                         </div>
@@ -30,7 +30,7 @@
             <div class="container-fluid">
                 <div class="card tab2-card">
                     <div class="card-header">
-                        <h5>Create New Promotion Plan</h5>
+                        <h5>Create New Shipping Method</h5>
                     </div>
                     <div class="card-body">
                                 <form class="needs-validation" novalidate="" action="{{ route('shippingmethod.store') }}" method="post" enctype="multipart/form-data">
