@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\ItemCategory;
 use Sentinel;
-
+use Session;
 class CategoriesController extends Controller
 {
     /**
@@ -51,6 +51,8 @@ class CategoriesController extends Controller
         ];
 
         Category::create($data);
+
+        Session::flash('success', 'Category Inserted Successfully');
 
         return redirect('andbaazaradmin/category');
     }
@@ -101,6 +103,7 @@ class CategoriesController extends Controller
 
         $category->update($data);
 
+        Session::flash('success', 'Category Updated Successfully');
         return redirect('andbaazaradmin/category');
     }
 
@@ -113,6 +116,8 @@ class CategoriesController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
+
+       Session::flash('success', 'Category Deleted Successfully');
 
         return redirect('andbaazaradmin/category');
     }

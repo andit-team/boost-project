@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PromotionHead;
 use Sentinel;
-
+use Session;
 class PromotionHeadsController extends Controller
 {
     /**
@@ -48,6 +48,9 @@ class PromotionHeadsController extends Controller
 
         PromotionHead::create($data);
 
+
+
+        Session::flash('success', 'Promotion Heads Added  Successfully!');
         return redirect('andbaazaradmin/promotionhead');
     }
 
@@ -93,6 +96,12 @@ class PromotionHeadsController extends Controller
         ];
 
       $promotionhead->update($data);
+      $notification = array(
+        	'message' => 'I am a successful message!',
+        	'alert-type' => 'success'
+        );
+
+   Session::flash('success', 'Promotion Heads Updated  Successfully!');
 
       return redirect('andbaazaradmin/promotionhead');
     }
@@ -107,6 +116,7 @@ class PromotionHeadsController extends Controller
     {
           $promotionhead->delete();
 
+        Session::flash('success', 'Promotion Heads Deleted  Successfully!');
           return redirect('andbaazaradmin/promotionhead');
     }
 

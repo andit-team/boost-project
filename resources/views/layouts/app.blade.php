@@ -33,6 +33,8 @@
 
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/color1.css" media="screen" id="color">
+      <link rel="stylesheet" type="text/css" href="{{asset('')}}/css/toastr.min.css">
+   <!-- <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"> -->
 
 </head>
 
@@ -1554,6 +1556,45 @@
     <!-- Theme js-->
     <script src="{{asset('')}}/assets/js/script.js"></script>
 
+    <!-- Toaster js-->
+  <script src="{{asset('')}}/js/toastr.min.js"></script>
+
+    <!-- Toaster js-->
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script> -->
+  <!-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+ <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+ {!! Toastr::message() !!} -->
+
+  <!-- <script>
+    @if(Session::has('message'))
+      var type = "{{ Session::get('alert-type', 'info') }}";
+      switch(type){
+          case 'info':
+              toastr.info("{{ Session::get('message') }}");
+              break;
+
+          case 'warning':
+              toastr.warning("{{ Session::get('message') }}");
+              break;
+
+          case 'success':
+              toastr.success("{{ Session::get('message') }}");
+              break;
+
+          case 'error':
+              toastr.error("{{ Session::get('message') }}");
+              break;
+      }
+    @endif
+  </script> -->
+
+  <script>
+    @if(Session::has('success'))
+
+    toastr.success("{{Session::get('success')}}")
+    @endif
+  </script>
+
     <script>
         function openSearch() {
             document.getElementById("search-overlay").style.display = "block";
@@ -1564,6 +1605,8 @@
         }
     </script>
     @stack('js')
+
+
 </body>
 
 </html>
