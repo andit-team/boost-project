@@ -117,6 +117,26 @@ class CategoriesController extends Controller
         return redirect('andbaazaradmin/category');
     }
 
+    public function manageCategory()
+    {
+        $categories = Category::where('parent_id',0)->get();
+        $allCategories = Category::pluck('name','id')->all();
+        return view('admin.categories.categoryTreeview',compact('categories','allCategories'));
+    }
+
+    public function addCategory(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+        $input = $request->all();
+        $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
+        $input['user_id'] = Sentinel::getUser()->id;
+
+        Category::create($input);
+        return back()->with('success', 'New Category added successfully.');
+    }
+
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required'

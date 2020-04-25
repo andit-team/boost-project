@@ -41,6 +41,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/datatables.css">
     <!--Datepicker css-->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/bootstrap-datepicker.min.css">
+
+    <link href="{{ asset('') }}/css/treeview.css" rel="stylesheet">
 </head>
 
 <body>
@@ -224,6 +226,8 @@
 <!--Datepicker js-->
 
 <script src="{{asset('')}}/assets/js/bootstrap-datepicker.min.js"></script>
+
+<script src="{{ asset('') }}/js/treeview.js"></script>
 
 </body>
 </html>

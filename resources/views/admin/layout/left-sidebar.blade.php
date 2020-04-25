@@ -20,6 +20,7 @@
                                 <ul class="sidebar-submenu">
                                     <li><a href="{{ url('andbaazaradmin/category') }}"><i class="fa fa-circle"></i>Categories</a></li>
                                     <li><a href="{{ url('andbaazaradmin/category/create') }}"><i class="fa fa-circle"></i>Category</a></li>
+                                    <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>
 {{--                                    <li><a href="category-sub.html"><i class="fa fa-circle"></i>Sub Category</a></li>--}}
 {{--                                    <li><a href="product-list.html"><i class="fa fa-circle"></i>Product List</a></li>--}}
 {{--                                    <li><a href="product-detail.html"><i class="fa fa-circle"></i>Product Detail</a></li>--}}

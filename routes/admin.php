@@ -33,6 +33,8 @@ Route::post('andbaazaradmin/login','AuthController@adminloginprocess')->name('lo
 
 Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::get('dashboard','AdminHomeController@dashboard');
+    Route::get('/category-tree-view',['uses'=>'CategoriesController@manageCategory']);
+    Route::post('/add-category',['as'=>'add.category','uses'=>'CategoriesController@addCategory']);
     Route::resource('/category','CategoriesController');
     Route::resource('/size','SizesController');
     Route::resource('/paymentmethod','PaymentMethodsController');

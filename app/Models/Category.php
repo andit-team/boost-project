@@ -9,7 +9,7 @@ use App\User;
 class Category extends Model
 {
 
-    protected $fillable = ['name','slug','thumb','parent','sort','active','user_id'];
+    protected $fillable = ['name','slug','thumb','parent','sort','parent_id','active','user_id'];
 
     public function user(){
      return $this->belongsTo(HrmEmployee::class,'user_id');
@@ -17,6 +17,10 @@ class Category extends Model
    public function itemcategory(){
      return $this->hasMany(ItemCategory::class,'category_id');
    }
+
+    public function childs() {
+        return $this->hasMany('App\Models\Category','parent_id','id') ;
+    }
 
 
 
