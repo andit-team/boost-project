@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tag;
 use Sentinel;
-
+use Session;
 class TagsController extends Controller
 {
     /**
@@ -45,6 +45,7 @@ class TagsController extends Controller
 
         Tag::create($data);
 
+       Session::flash('success', 'Tags Inserted Successfully');
        return redirect('andbaazaradmin/tag');
 
     }
@@ -88,7 +89,7 @@ class TagsController extends Controller
           ];
 
           $tag->update($data);
-
+         Session::flash('success', 'Tags Updated Successfully');
          return redirect('andbaazaradmin/tag');
     }
 
@@ -102,7 +103,7 @@ class TagsController extends Controller
     {
 
           $tag->delete();
-
+          Session::flash('success', 'Tags Deleted Successfully');
           return redirect('andbaazaradmin/tag');
     }
 
