@@ -1562,8 +1562,8 @@
     <!-- Toaster js-->
   <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script> -->
   <!-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
- <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
- {!! Toastr::message() !!} -->
+ <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>-->
+{{-- {!! Toastr::message() !!} -->--}}
 
   <!-- <script>
     @if(Session::has('message'))

@@ -11,6 +11,11 @@ class Category extends Model
 
     protected $fillable = ['name','slug','thumb','parent','sort','parent_id','active','user_id'];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function user(){
      return $this->belongsTo(HrmEmployee::class,'user_id');
    }
