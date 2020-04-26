@@ -15,6 +15,7 @@ class CategoriesTableSeeder extends Seeder
       [
         'name'           => 'Shirt',
         'slug'           => 'B111',
+        'parent_id'      => 0,
         'user_id'        => '2',
         'created_at'     => now(),
         'updated_at'     => now()
@@ -22,6 +23,7 @@ class CategoriesTableSeeder extends Seeder
       [
         'name'           => 'Fatua',
         'slug'           => 'B222',
+         'parent_id'      => 0,
         'user_id'        => '2',
         'created_at'     => now(),
         'updated_at'     => now()
@@ -29,6 +31,7 @@ class CategoriesTableSeeder extends Seeder
       [
         'name'           => 'Kamij',
         'slug'           => 'B333',
+          'parent_id'      => 0,
         'user_id'        => '2',
         'created_at'     => now(),
         'updated_at'     => now()
@@ -36,6 +39,7 @@ class CategoriesTableSeeder extends Seeder
       [
         'name'           => 'Showes',
         'slug'           => 'B444',
+          'parent_id'      => 0,
         'user_id'        => '2',
         'created_at'     => now(),
         'updated_at'     => now()
@@ -43,6 +47,7 @@ class CategoriesTableSeeder extends Seeder
       [
         'name'           => 'watch',
         'slug'           => 'B555',
+          'parent_id'      => 0,
         'user_id'        => '2',
         'created_at'     => now(),
         'updated_at'     => now()
@@ -50,6 +55,7 @@ class CategoriesTableSeeder extends Seeder
       [
         'name'           => 'Sun Glass',
         'slug'           => 'B666',
+          'parent_id'      => 0,
         'user_id'        => '2',
         'created_at'     => now(),
         'updated_at'     => now()

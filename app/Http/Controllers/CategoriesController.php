@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\ItemCategory;
 use Sentinel;
 use Session;
+use Baazar;
 class CategoriesController extends Controller
 {
     /**
@@ -37,12 +38,13 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Category $category)
     {
         $this->validateForm($request);
+        $slug = Baazar::getUniqueSlug($category,$request->name);
         $data =[
             'name' => $request->name,
-            'slug' => $request->slug,
+            'slug' => $slug,
             'thumb' => $request->thumb,
             'parent' => $request->parent,
             'sort' => $request->sort,
