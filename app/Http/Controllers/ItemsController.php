@@ -64,6 +64,7 @@ class ItemsController extends Controller
         ];
 
         Item::create($data);
+        Session::flash('success', 'Item Added Successfully!');
     }
 
     /**
