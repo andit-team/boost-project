@@ -52,12 +52,12 @@
 //     }
 // });
 // /* Initialization of treeviews */
-// $('#tree1').treed(); 
+// $('#tree1').treed();
 $.fn.extend({
     treed: function (o) {
 
-        var openedClass = 'glyphicon-minus-sign';
-        var closedClass = 'glyphicon-plus-sign';
+        var openedClass = 'fa fa-minus-circle';
+        var closedClass = 'fa fa-plus-circle';
 
         if (typeof o != 'undefined'){
             if (typeof o.openedClass != 'undefined'){

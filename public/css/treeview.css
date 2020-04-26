@@ -83,15 +83,24 @@
 .card-primary {
 
     border-color: #606ec3;
-    margin: 3%;
+    /*margin: 3%;*/
 
+}
+.header1{
+    margin-bottom: -325px;
+}
+.style-1{
+    margin-left: -350px;
+    margin-right: 500px;
+}
+.ul-1{
+    margin: 350px
 }
 .tree ul {
 
-    margin-left:1em;
+    margin-left:5em;
 
-    position:relative
-
+    position:relative;
 }
 
 .tree ul ul {
@@ -132,7 +141,7 @@
 
     font-weight:700;
 
-    position:relative
+    position:relative;
 
 }
 
