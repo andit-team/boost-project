@@ -44,6 +44,7 @@ class ColorsController extends Controller
             'created_at' => now(),
         ];
         Color::create($data);
+        Session::flash('success', 'Colors Inserted Successfully!');
         return redirect('andbaazaradmin/color');
     }
 
@@ -85,7 +86,7 @@ class ColorsController extends Controller
           'created_at' => now(),
       ];
             $color->update($data);
-
+           Session::flash('success', 'Colors Updated Successfully!');
            return redirect('andbaazaradmin/color');
     }
 
@@ -98,7 +99,7 @@ class ColorsController extends Controller
     public function destroy(Color $color)
     {
       $color->delete();
-
+      Session::flash('success', 'Colors Deleted Successfully!');
       return redirect('andbaazaradmin/color');
     }
 

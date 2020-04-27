@@ -45,7 +45,7 @@ class CouriersController extends Controller
         ];
 
         Courier::create($data);
-
+        Session::flash('success', 'Courier Inserted Successfully!');
         return redirect('andbaazaradmin/courier');
     }
 
@@ -88,7 +88,7 @@ class CouriersController extends Controller
         ];
 
         $courier->update($data);
-
+        Session::flash('success', 'Courier Updated Successfully!');
         return redirect('andbaazaradmin/courier');
     }
 
@@ -101,7 +101,7 @@ class CouriersController extends Controller
     public function destroy(Courier $courier)
     {
         $courier->delete();
-
+        Session::flash('success', 'Courier Deleted Successfully!');
         return redirect('andbaazaradmin/courier');
     }
 

@@ -36,6 +36,7 @@
       <link rel="stylesheet" type="text/css" href="{{asset('')}}/css/toastr.min.css">
    <!-- <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"> -->
 
+  <link rel="stylesheet" href="{{asset('')}}/css/jquery-ui.min.css">
 </head>
 
 <body>
@@ -1559,6 +1560,10 @@
     <!-- Toaster js-->
   <script src="{{asset('')}}/js/toastr.min.js"></script>
 
+
+   <script src="{{asset('')}}/js/jquery-ui.min.js"></script>
+
+
     <!-- Toaster js-->
   <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script> -->
   <!-- <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
@@ -1588,12 +1593,7 @@
     @endif
   </script> -->
 
-  <script>
-    @if(Session::has('success'))
-
-    toastr.success("{{Session::get('success')}}")
-    @endif
-  </script>
+  
 
     <script>
         function openSearch() {

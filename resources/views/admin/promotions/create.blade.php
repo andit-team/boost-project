@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label for="valid_from" class="col-xl-3 col-md-4">Valid From  <span>*</span></label>
-                                               <input type="date" name="valid_from" value="{{old('date',date('Y-m-d'))}}" class="form-control col-md-8 datepickerDB" id="valid_from" required autocomplete="off">
+                                               <input type="date" name="valid_from" value="{{old('date',date('Y-m-d'))}}" class="form-control col-md-8 datepickerDB" id="showDate" required autocomplete="off">
                                             </div>
                                             <div class="form-group row">
                                                 <label for="valid_to" class="col-xl-3 col-md-4">Valid To  <span>*</span></label>
@@ -81,6 +81,19 @@
                 </div>
             </div>
             <!-- Container-fluid Ends-->
-
         </div>
 @endsection
+
+<script>
+
+     $(document).ready(function(){
+           $("#showDate").datepicker({
+             showOn:'both',
+             buttonText:'Show Date',
+             dateFormat:'yy/mm/dd',
+             changeMonth:true,
+             changeYear:true,
+           });
+ });
+
+</script>
