@@ -18,6 +18,7 @@ class CreateShippingMethodsTable extends Migration
             $table->string('name');
             $table->decimal('fees',8,2);
             $table->text('desc');
+            $table->string('slug')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('courier_id');
             $table->unsignedBigInteger('user_id');

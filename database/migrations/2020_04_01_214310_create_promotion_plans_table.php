@@ -18,6 +18,7 @@ class CreatePromotionPlansTable extends Migration
             $table->decimal('from_price',8,2);
             $table->decimal('to_price',8,2);
             $table->decimal('amount',8,2);
+            $table->string('slug')->nullable();
             $table->enum('is_free_shipping',['Yes','No'])->default('No');
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('promotion_id');

@@ -18,6 +18,7 @@ class CreateCurrenciesTable extends Migration
             $table->string('name');
             $table->integer('code');
             $table->string('symbol');
+            $table->string('slug')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();

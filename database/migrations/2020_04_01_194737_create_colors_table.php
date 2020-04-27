@@ -17,6 +17,7 @@ class CreateColorsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('color_code');
+            $table->string('slug')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();

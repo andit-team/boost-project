@@ -16,6 +16,7 @@ class CreatePromotionsTable extends Migration
         Schema::create('promotions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->string('slug')->nullable();
             $table->text('description');
             $table->enum('is_permanent',['Yes','No'])->default('Yes');
             $table->date('valid_from');

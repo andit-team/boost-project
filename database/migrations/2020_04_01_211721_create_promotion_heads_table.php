@@ -16,6 +16,7 @@ class CreatePromotionHeadsTable extends Migration
         Schema::create('promotion_heads', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('promotion_name');
+            $table->string('slug')->nullable();
             $table->text('description');
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');

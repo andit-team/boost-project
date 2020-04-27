@@ -18,6 +18,7 @@ class CreateSizesTable extends Migration
             $table->string('name');
             $table->decimal('item_size',8,2)->default(0);
             $table->text('desc');
+            $table->string('slug')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
