@@ -40,12 +40,13 @@ class CategoriesController extends Controller
      */
     public function store(Request $request, Category $category)
     {
+        //dd($request->all());
         $this->validateForm($request);
         $slug = Baazar::getUniqueSlug($category,$request->name);
         $data =[
             'name' => $request->name,
             'slug' => $slug,
-            'thumb' => $request->thumb,
+            'thumb' => Baazar::fileUpload($request,'thumb','','/uploads/category_image'),
             'parent' => $request->parent,
             'sort' => $request->sort,
             'user_id' => Sentinel::getUser()->id,

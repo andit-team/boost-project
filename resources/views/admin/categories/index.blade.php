@@ -1,6 +1,7 @@
 @extends('admin.layout.master')
 
 @section('content')
+    @include('admin.elements.alert')
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -27,10 +28,10 @@
                                 <td>{{ $row->thumb }}</td>
                                 <td>
                                     <ul class="list-inline">
-                                        <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/category/'.$row->id) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>
-                                        <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/category/'.$row->id).'/edit' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a> </li>
+                                        <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/category/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>
+                                        <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/category/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a> </li>
                                         <li class="list-inline-item">
-                                            <form action="{{ url('/andbaazaradmin/category/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                            <form action="{{ url('/andbaazaradmin/category/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>

@@ -1,6 +1,7 @@
 @extends('admin.layout.master')
 
 @section('content')
+    @include('admin.elements.alert')
         <div class="page-body">
 
             <!-- Container-fluid starts-->
@@ -42,6 +43,10 @@
                                                 <input class="form-control col-md-8" name="name" id="validationCustom0" type="text" required="">
                                             </div>
                                             <div class="form-group row">
+                                                <label for="image" class="col-xl-3 col-md4">Image</label>
+                                                <input type="file" class="form-control col-md-8" name="thumb">
+                                            </div>
+                                            <div class="form-group row">
                                                 <label class="col-xl-3 col-md-4"></label>
                                                 <div class="checkbox checkbox-primary col-md-8">
                                                     <button type="submit"  class="btn btn-primary">Save</button>
@@ -58,3 +63,10 @@
 
         </div>
 @endsection
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/imageupload.css') }}">
+@endpush
+@push('js')
+    <script src="{{ asset('js/imageupload.js') }}"></script>
+@endpush
+

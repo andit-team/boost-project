@@ -33,8 +33,8 @@ use App\Models\ShippingMethod;
 use App\Models\Size;
 use App\Models\Shop;
 use App\Models\Tag;
-//use Sentinel;
-//use Session;
+use Sentinel;
+use Session;
 
 class Baazar
 {
@@ -44,6 +44,30 @@ class Baazar
         $slugCount = count($model->whereRaw("{$row} REGEXP '^{$slug}(-[0-9]+)?$' and id != '{$model->id}'")->get());
 
         return ($slugCount > 0) ? "{$slug}-{$slugCount}" : $slug;
+    }
+    public function fileUpload($request, $input = 'image', $old = 'old_image', $path = '/uploads',$name = NULL) {
+        $request->validate([
+            $input => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile($input)) {
+            if(!empty($old)){
+                if(file_exists(public_path().$old)){
+                    unlink(public_path().$old);
+                }
+            }
+            $image = $request->file($input);
+            $name = !empty($name) ? $name : time();
+            $name = $name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path($path);
+            $image->move($destinationPath, $name);
+            $url =  $path.'/'.$name;
+            return $url;
+        }
+        if(!empty($old)){
+            return $request->$old;
+        }
+        return '';
     }
 
 }

@@ -46,7 +46,7 @@
 </head>
 
 <body>
-@include('sweetalert::alert')
+{{--@include('sweetalert::alert')--}}
 <!-- page-wrapper Start-->
 <div class="page-wrapper">
 
