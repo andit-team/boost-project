@@ -43,7 +43,17 @@ class CategoriesController extends Controller
         //dd($request->all());
         $this->validateForm($request);
         $slug = Baazar::getUniqueSlug($category,$request->name);
-        $data =[
+//        $data =[
+//            'name' => $request->name,
+//            'slug' => $slug,
+//            'thumb' => Baazar::fileUpload($request,'thumb','','/uploads/category_image'),
+//            'parent' => $request->parent,
+//            'sort' => $request->sort,
+//            'user_id' => Sentinel::getUser()->id,
+//            'created_at' => now(),
+//        ];
+
+        $data = Category::create([
             'name' => $request->name,
             'slug' => $slug,
             'thumb' => Baazar::fileUpload($request,'thumb','','/uploads/category_image'),
@@ -51,9 +61,17 @@ class CategoriesController extends Controller
             'sort' => $request->sort,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
-        ];
+            ]);
 
-        Category::create($data);
+
+            $itemcategory = ItemCategory::create([
+               'category_id' => $data->id,
+                'user_id' => Sentinel::getUser()->id,
+                'created_at' => now(),
+            ]);
+
+
+        //Category::create($data);
 
         Session::flash('success', 'Category Inserted Successfully');
 
@@ -96,7 +114,6 @@ class CategoriesController extends Controller
         $this->validateForm($request);
         $data =[
             'name' => $request->name,
-            'slug' => $request->slug,
             'thumb' => $request->thumb,
             'parent' => $request->parent,
             'sort' => $request->sort,

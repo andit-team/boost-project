@@ -15,8 +15,8 @@ class CreateItemTagsTable extends Migration
     {
         Schema::create('item_tags', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('tag_id');
-            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('tag_id')->nullable();
+            $table->unsignedBigInteger('item_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->boolean('active')->default(1)->change();
             $table->softDeletes();

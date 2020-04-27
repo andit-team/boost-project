@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ItemTag;
 use Illuminate\Http\Request;
 use App\Models\Tag;
 use Sentinel;
@@ -37,13 +38,24 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
-        $data = [
+//        $data = [
+//            'name' => $request->name,
+//            'user_id' => Sentinel::getUser()->id,
+//            'created_at' => now(),
+//        ];
+
+        $data = Tag::create([
             'name' => $request->name,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
-        ];
+        ]);
 
-        Tag::create($data);
+        $itemtag = ItemTag::create([
+            'tag_id' => $data->id,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ]);
+        //Tag::create($data);
 
        Session::flash('success', 'Tags Inserted Successfully');
        return redirect('andbaazaradmin/tag');
