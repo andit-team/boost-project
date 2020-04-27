@@ -49,7 +49,8 @@ class PromotionPlansController extends Controller
         ];
 
         PromotionPlan::create($data);
-         return redirect('andbaazaradmin/promotionplan');
+        Session::flash('success', 'Promotion Plan Inserted Successfully!');
+        return redirect('andbaazaradmin/promotionplan');
     }
 
     /**
@@ -93,7 +94,7 @@ class PromotionPlansController extends Controller
           'created_at' => now(),
       ];
       $promotionplan->update($data);
-
+    Session::flash('success', 'Promotion Plan Updated Successfully!');
      return redirect('andbaazaradmin/promotionplan');
     }
 
@@ -106,7 +107,7 @@ class PromotionPlansController extends Controller
     public function destroy(Promotionplan $promotionplan)
     {
       $promotionplan->delete();
-
+      Session::flash('success', 'Promotion Plan Deleted Successfully!');
       return redirect('andbaazaradmin/promotionplan');
     }
 

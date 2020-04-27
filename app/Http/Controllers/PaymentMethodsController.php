@@ -46,7 +46,7 @@ class PaymentMethodsController extends Controller
         ];
 
         PaymentMethod::create($data);
-
+        Session::flash('success', 'Payment Method Inserted Successfully!');
         return redirect('andbaazaradmin/paymentmethod');
     }
 
@@ -94,7 +94,7 @@ class PaymentMethodsController extends Controller
         ];
 
         $paymentMethod->update($data);
-
+        Session::flash('success', 'Payment Method Updated Successfully!');
         return redirect('andbaazaradmin/paymentmethod');
 
     }
@@ -109,7 +109,7 @@ class PaymentMethodsController extends Controller
     {
         $paymentMethod = PaymentMethod::find($id);
         $paymentMethod->delete();
-
+        Session::flash('success', 'Payment Method Deleted Successfully!');
         return redirect('andbaazaradmin/paymentmethod');
     }
 

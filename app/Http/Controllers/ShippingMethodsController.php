@@ -52,8 +52,8 @@ class ShippingMethodsController extends Controller
             'created_at' => now(),
         ];
         ShippingMethod::create($data);
-
-         return redirect('andbaazaradmin/shippingmethod');
+        Session::flash('success', 'Shipping Method Inserted Successfully!');
+        return redirect('andbaazaradmin/shippingmethod');
     }
 
     /**
@@ -97,7 +97,7 @@ class ShippingMethodsController extends Controller
           'updated_at' => now(),
       ];
       $shippingmethod->update($data);
-
+     Session::flash('success', 'Shipping Method Updated Successfully!');
      return redirect('andbaazaradmin/shippingmethod');
     }
 
@@ -110,7 +110,7 @@ class ShippingMethodsController extends Controller
     public function destroy(ShippingMethod $shippingmethod)
     {
       $shippingmethod->delete();
-
+      Session::flash('success', 'Shipping Method Deleted Successfully!');
       return redirect('andbaazaradmin/shippingmethod');
     }
 
