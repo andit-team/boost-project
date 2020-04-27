@@ -1,6 +1,18 @@
 @extends('admin.layout.master')
 
 @section('content')
+    <style>
+        .imagestyle{
+            width: 75px;
+            height: 75px;
+            border-width: 4px 4px 4px 4px;border-style: solid;
+            border-color: #ccc;
+        }
+        .divmargin{
+            margin-top: 20px;
+            margin-left: 250px;
+        }
+    </style>
     <div class="page-body">
 
         <!-- Container-fluid starts-->
@@ -43,6 +55,18 @@
                                     <input class="form-control col-md-8" name="name" value="{{ $category->name }}" id="validationCustom0" type="text" required="">
                                 </div>
                                 <div class="form-group row">
+                                    <label for="image" class="col-xl-3 col-md4">Image</label>
+                                    <input type="file" class="form-control col-md-8" name="thumb" id="image" onchange="loadFile(event)">
+                                    <input type="hidden" value="{{$category->thumb}}" name="old_image">
+                                    <div class="divmargin">
+                                        @if(!empty($category->thumb))
+                                        <img id="output"  class="imagestyle" src="{{ asset($category->thumb) }}" />
+                                        @else
+                                            <img id="output"  class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}" />
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label class="col-xl-3 col-md-4"></label>
                                     <div class="checkbox checkbox-primary col-md-8">
                                         <button type="submit"  class="btn btn-primary">Update</button>
@@ -59,3 +83,9 @@
 
     </div>
 @endsection
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

@@ -114,7 +114,7 @@ class CategoriesController extends Controller
         $this->validateForm($request);
         $data =[
             'name' => $request->name,
-            'thumb' => $request->thumb,
+            'thumb' => Baazar::fileUpload($request,'thumb','old_image','/uploads/category_image'),
             'parent' => $request->parent,
             'sort' => $request->sort,
             'user_id' => Sentinel::getUser()->id,

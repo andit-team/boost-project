@@ -7,6 +7,7 @@ use App\Models\Buyer;
 use Illuminate\Support\Facades\Auth;
 use Sentinel;
 use App\User;
+use Baazar;
 
 class BuyersController extends Controller
 {
@@ -42,23 +43,11 @@ class BuyersController extends Controller
     {
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
         $this->validateForm($request);
-//        $buyerprofile = Buyer::updateOrCreate(['user_id'=>$buyerId->user_id],[
-//            'full_name' => $request->full_name,
-//            'phone_number' => $request->phone_number,
-//            'dob'  =>$request->dob,
-//            'gender' => $request->gender,
-//            'description' => $request->description,
-//            'last_visited_at' => $request->last_visited_at,
-//            'last_visited_from' => $request->last_visited_from,
-//            'verification_token' => $request->verification_token,
-//            'remember_token' => $request->remember_token,
-//            'user_id' => Sentinel::getUser()->id,
-//            'created_at' => now(),
-//        ]);
         if($buyerId){
             $buyerId->update([
                 'full_name' => $request->full_name,
                 'phone_number' => $request->phone_number,
+                'picture' => Baazar::fileUpload($request,'picture','old_image','/uploads/buyer_profile'),
                 'dob'  =>$request->dob,
                 'gender' => $request->gender,
                 'description' => $request->description,
@@ -73,6 +62,7 @@ class BuyersController extends Controller
             $buyerId=Buyer::create([
                 'full_name' => $request->full_name,
                 'phone_number' => $request->phone_number,
+                'picture' => Baazar::fileUpload($request,'picture','','/uploads/buyer_profile'),
                 'dob'  =>$request->dob,
                 'gender' => $request->gender,
                 'description' => $request->description,
