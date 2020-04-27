@@ -46,7 +46,7 @@ class SizesController extends Controller
         ];
 
         Size::create($data);
-
+        Session::flash('success', 'Size Inserted Successfully!');
         return redirect('andbaazaradmin/size');
     }
 
@@ -90,7 +90,7 @@ class SizesController extends Controller
         ];
 
         $size->update($data);
-
+        Session::flash('success', 'Size Updated Successfully!');
         return redirect('andbaazaradmin/size');
     }
 
@@ -103,7 +103,7 @@ class SizesController extends Controller
     public function destroy(Size $size)
     {
         $size->delete();
-
+        Session::flash('success', 'Size Deleted Successfully!');
         return redirect('andbaazaradmin/size');
     }
 
