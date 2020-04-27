@@ -1,6 +1,15 @@
 @extends('admin.layout.master')
 
 @section('content')
+    <style>
+        .imagestyle{
+            width: 50px;
+            height: 50px;
+            border-width: 4px 4px 4px 4px;
+            border-style: solid;
+            border-color: #ccc;
+        }
+    </style>
     @include('admin.elements.alert')
     <div class="container-fluid">
         <div class="row">
@@ -25,7 +34,12 @@
                             <tr>
                                 <td>{{ ++$i }}</td>
                                 <td>{{ $row->name }}</td>
-                                <td>{{ $row->thumb }}</td>
+                                <td>
+                                    @if(!empty($row->thumb))
+                                       <img class="imagestyle" src="{{ asset($row->thumb ) }}"></td>
+                                    @else
+                                        <img class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}">
+                                    @endif
                                 <td>
                                     <ul class="list-inline">
                                         <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/category/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>

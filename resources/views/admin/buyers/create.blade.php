@@ -90,7 +90,12 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="picture">Picture</label>
-                                <input type="file" class="form-control" name="picture" id="" placeholder="" accept=".png, .jpg, .jpeg">
+                                @if($buyerProfile == '')
+                                   <input type="file" class="form-control" name="picture" id="" placeholder="" accept=".png, .jpg, .jpeg">
+                                @else
+                                    <input type="file" class="form-control" name="picture" id="" placeholder="" accept=".png, .jpg, .jpeg">
+                                    <input type="hidden" value="{{$buyerProfile->picture}}" name="old_image">
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 @if($buyerProfile == '')

@@ -1,6 +1,18 @@
 @extends('admin.layout.master')
 
 @section('content')
+    <style>
+        .imagestyle{
+            width: 75px;
+            height: 75px;
+            border-width: 4px 4px 4px 4px;border-style: solid;
+            border-color: #ccc;
+        }
+        .divmargin{
+            margin-top: 20px;
+            margin-left: 250px;
+        }
+    </style>
     @include('admin.elements.alert')
         <div class="page-body">
 
@@ -44,7 +56,10 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label for="image" class="col-xl-3 col-md4">Image</label>
-                                                <input type="file" class="form-control col-md-8" name="thumb">
+                                                <input type="file" class="form-control col-md-8" name="thumb" id="image" onchange="loadFile(event)">
+                                                <div class="divmargin">
+                                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}" />
+                                                </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label class="col-xl-3 col-md-4"></label>
@@ -63,10 +78,16 @@
 
         </div>
 @endsection
-@push('css')
-    <link rel="stylesheet" href="{{ asset('css/imageupload.css') }}">
-@endpush
-@push('js')
-    <script src="{{ asset('js/imageupload.js') }}"></script>
-@endpush
+{{--@push('css')--}}
+{{--    <link rel="stylesheet" href="{{ asset('css/imageupload.css') }}">--}}
+{{--@endpush--}}
+{{--@push('js')--}}
+{{--    <script src="{{ asset('js/imageupload.js') }}"></script>--}}
+{{--@endpush--}}
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
 
