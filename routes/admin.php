@@ -19,6 +19,7 @@ Route::prefix('merchant')->group(function () {
     Route::post('signup-step-two','MerchantController@registrationStepTwoProcess')->name('merchantStepTwo');
     Route::get('signup-step-final','MerchantController@registrationStepFinal');
     Route::post('signup-step-final','MerchantController@registrationStepFinalProcess')->name('merchantStepFinal');
+    Route::resource('/seller','SellersController');
 });
 
 
@@ -50,7 +51,7 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::resource('/buyercard','BuyerCardsController');
     Route::resource('/buyerpayment','BuyerPaymentsController');
 
-    Route::resource('/seller','');
+
 
 
     Route::resource('/tag','TagsController');
