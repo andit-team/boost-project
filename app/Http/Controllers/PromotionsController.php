@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Promotion;
 use App\Models\PromotionHead;
 use Sentinel;
-
+use Session;
+use Baazar;
 class PromotionsController extends Controller
 {
     /**
@@ -38,10 +39,10 @@ class PromotionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Promotion $promotion,Request $request)
     {
-        $this->validateForm($request);
-
+      $this->validateForm($request);
+      $slug = Baazar::getUniqueSlug($promotion,$request->name);
         $data = [
             'title' => $request->title,
             'description' => $request->description,
@@ -49,6 +50,7 @@ class PromotionsController extends Controller
             'valid_to' => $request->valid_to,
             'coupon_code' => $request->coupon_code,
             'promotion_head_id' => $request->promotion_head_id,
+            'slug' => $slug,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
