@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Courier;
 use Sentinel;
-
+use Baazar;
+use Session;
 class CouriersController extends Controller
 {
     /**
@@ -35,11 +36,14 @@ class CouriersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Courier $courier,Request $request)
     {
+        $this->validateForm($request);
+        $slug = Baazar::getUniqueSlug($courier,$request->name);
         $data = [
             'name' => $request->name,
             'desc' => $request->desc,
+            'slug' => $slug,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
@@ -80,6 +84,7 @@ class CouriersController extends Controller
      */
     public function update(Request $request, Courier $courier)
     {
+        $this->validateForm($request);
         $data = [
             'name' => $request->name,
             'desc' => $request->desc,

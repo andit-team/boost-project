@@ -9,7 +9,12 @@ use App\Models\PromotionUse;
 use App\User;
 class Promotion extends Model
 {
-    protected $fillable = ['title','description','is_permanent','valid_from','valid_to','has_coupon_code','coupon_code','multiple_use','priority','active','promotion_head_id','user_id'];
+    protected $fillable = ['title','description','is_permanent','valid_from','valid_to','has_coupon_code','coupon_code','multiple_use','priority','active','promotion_head_id','user_id','slug'];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function user(){
      return $this->belongsTo(User::class,'user_id');

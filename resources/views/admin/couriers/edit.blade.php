@@ -33,7 +33,7 @@
                     <h5>Edit Couriers</h5>
                 </div>
                 <div class="card-body">
-                    <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/courier/'.$courier->id) }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/courier/'.$courier->slug) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="row">
@@ -63,4 +63,3 @@
 
     </div>
 @endsection
-

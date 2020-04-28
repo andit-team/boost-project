@@ -8,7 +8,12 @@ use App\Models\Courier;
 use App\User;
 class ShippingMethod extends Model
 {
-    protected $fillable = ['name','fees','desc','active','courier_id','user_id'];
+    protected $fillable = ['name','fees','desc','active','courier_id','user_id','slug'];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function user(){
      return $this->belongsTo(User::class,'user_id');
