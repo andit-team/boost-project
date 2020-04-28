@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\ItemTag;
 use App\Models\Order;
 use App\User;
+
 class Tag extends Model
 {
    protected $fillable = ['name','active','user_id','slug'];

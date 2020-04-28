@@ -45,6 +45,7 @@ class SizesController extends Controller
             'name' => $request->name,
             'item_size' => $request->item_size,
             'desc' => $request->desc,
+            'slug' => $slug,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];

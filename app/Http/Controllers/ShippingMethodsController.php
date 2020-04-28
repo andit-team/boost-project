@@ -47,6 +47,7 @@ class ShippingMethodsController extends Controller
             'name' => $request->name,
             'fees' => $request->fees,
             'desc' => $request->desc,
+            'slug' => $slug,
             'courier_id' => $request->courier_id,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
