@@ -33,7 +33,7 @@
                     <h5>Edit Promotion Head</h5>
                 </div>
                 <div class="card-body">
-                    <form class="needs-validation" novalidate="" action="{{url('/andbaazaradmin/promotionhead/'.$promotionhead->id) }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" novalidate="" action="{{url('/andbaazaradmin/promotionhead/'.$promotionhead->slug) }}" method="post" enctype="multipart/form-data">
                        @csrf
                        @method('PUT')
                         <div class="row">
@@ -62,4 +62,4 @@
         <!-- Container-fluid Ends-->
 
     </div>
-@endsection 
+@endsection
