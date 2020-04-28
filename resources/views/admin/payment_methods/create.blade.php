@@ -33,7 +33,7 @@
                     <h5>Create New Couriers</h5>
                 </div>
                 <div class="card-body">
-                    <form class="needs-validation" novalidate="" action="{{ route('PaymentMethod.store') }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" novalidate="" action="{{ url('PaymentMethod.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-sm-12">
@@ -62,4 +62,3 @@
 
     </div>
 @endsection
-

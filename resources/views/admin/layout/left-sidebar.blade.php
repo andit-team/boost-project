@@ -137,8 +137,8 @@
                                     <span>Currency</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                                 <ul class="sidebar-submenu">
-                                    <li><a href="{{ 'andbaazaradmin/currency' }}"><i class="fa fa-circle"></i>Currencies</a></li>
-                                    <li><a href="{{ 'andbaazaradmin/currency/create' }}"><i class="fa fa-circle"></i>Currency</a></li>
+                                    <li><a href="{{ url('andbaazaradmin/currency') }}"><i class="fa fa-circle"></i>Currencies</a></li>
+                                    <li><a href="{{ url('andbaazaradmin/currency/create') }}"><i class="fa fa-circle"></i>Currency</a></li>
 {{--                                    <li><a href="category-digitalsub.html"><i class="fa fa-circle"></i>Sub Category</a></li>--}}
 {{--                                    <li><a href="product-listdigital.html"><i class="fa fa-circle"></i>Product List</a></li>--}}
 {{--                                    <li><a href="add-digital-product.html"><i class="fa fa-circle"></i>Add Product</a></li>--}}

@@ -7,6 +7,7 @@ use App\Models\Currency;
 use Sentinel;
 use Session;
 use Alert;
+use Baazar;
 
 class CurrenciesController extends Controller
 {
@@ -37,14 +38,15 @@ class CurrenciesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Currency $currency,Request $request)
     {
-        //dd($request->all());
-        $this->validateForm($request);
+      $this->validateForm($request);
+      $slug = Baazar::getUniqueSlug($currency,$request->name);
        $data = [
            'name' =>$request->name,
            'code' =>$request->code,
            'symbol' =>$request->symbol,
+           'slug' => $slug,
            'user_id' => Sentinel::getUser()->id,
            'created_at' => now(),
        ];
