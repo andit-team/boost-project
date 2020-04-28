@@ -41,7 +41,7 @@ class UserTableSeeder extends Seeder
                 'last_name'     => 'Mia',
                 'email'         => 'seller@andit.com',
                 'password'      => '123456', //123456
-                'type'          => 'buyers',
+                'type'          => 'sellers',
                 'created_at'    => now(),
                 'updated_at'    => now()
         ];

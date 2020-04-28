@@ -7,11 +7,32 @@ use Sentinel;
 class MerchantController extends Controller{
 
     public function dashboard(){
-        
+
     }
 
     public function merchantlogin(){
         return view('auth.merchant.login');
+    }
+    public function merchantloginprocess(Request $request){
+        $credentials = [
+            'email'		=> $request->login['email'],
+            'password'	=> $request->login['password'],
+            'type'	    => 'sellers',
+        ];
+
+        // if($request->remember == 'on')
+        // 	$user = Sentinel::authenticateAndRemember($credentials);
+        // else
+        $user = Sentinel::authenticate($credentials);
+        // dd($user);
+        if($user)
+            //return redirect('dashboard');
+            // here is redirecing verdor dashboard
+            //die('vendoer Dashboard');
+            return view('vendor-deshboard');
+        else
+            //die('somer error here...');
+            return redirect('login')->with('error', 'Invalid email or password');
     }
 
     public function registrationStepOne(){
