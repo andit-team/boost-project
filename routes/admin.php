@@ -50,6 +50,8 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::resource('/buyercard','BuyerCardsController');
     Route::resource('/buyerpayment','BuyerPaymentsController');
 
+    Route::resource('/seller','');
+
 
     Route::resource('/tag','TagsController');
     Route::resource('/color','ColorsController');

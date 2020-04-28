@@ -17,7 +17,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
+        $category = Category::where('parent_id',0)->get();
         //dd($category);
         return view('admin.categories.index',compact('category'));
     }
@@ -43,16 +43,6 @@ class CategoriesController extends Controller
         //dd($request->all());
         $this->validateForm($request);
         $slug = Baazar::getUniqueSlug($category,$request->name);
-//        $data =[
-//            'name' => $request->name,
-//            'slug' => $slug,
-//            'thumb' => Baazar::fileUpload($request,'thumb','','/uploads/category_image'),
-//            'parent' => $request->parent,
-//            'sort' => $request->sort,
-//            'user_id' => Sentinel::getUser()->id,
-//            'created_at' => now(),
-//        ];
-
         $data = Category::create([
             'name' => $request->name,
             'slug' => $slug,

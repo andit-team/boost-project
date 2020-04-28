@@ -179,7 +179,7 @@
                                     </div>
                                 @endif
 
-                                    <form class="form-horizontal auth-form" method="post" action="{{route('loginproces')}}">
+                                    <form class="form-horizontal auth-form" method="post" action="{{route('merchantloginprocess')}}">
                                         @csrf
                                         <div class="form-group">
                                             <input required="" name="login[email]" type="email" class="form-control" placeholder="Email" id="exampleInputEmail1">
