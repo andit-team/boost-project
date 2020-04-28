@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\BuyerPayment;
 use App\User;
-
 class PaymentMethod extends Model
 {
         protected $fillable = ['name','desc','active','user_id','slug'];
