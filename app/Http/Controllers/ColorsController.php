@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Color;
 use Sentinel;
-
+use Session;
+use Baazar;
 class ColorsController extends Controller
 {
     /**
@@ -35,10 +36,13 @@ class ColorsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Color $color,Request $request)
     {
+      $this->validateForm($request);
+      $slug = Baazar::getUniqueSlug($color,$request->name);
         $data = [
             'name' => $request->name,
+            'slug' => $slug,
             'color_code' => $request->color_code,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
@@ -79,13 +83,14 @@ class ColorsController extends Controller
      */
     public function update(Color $color, Request $request)
     {
+      $this->validateForm($request);
       $data = [
           'name' => $request->name,
-          'color_code' => $request->color_code,
+          'color_code' => $request->color_code,      
           'user_id' => Sentinel::getUser()->id,
           'created_at' => now(),
       ];
-            $color->update($data);
+           $color->update($data);
            Session::flash('success', 'Colors Updated Successfully!');
            return redirect('andbaazaradmin/color');
     }
@@ -107,6 +112,7 @@ class ColorsController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'color_code' => 'required',
+            'slug'=>'',
         ]);
     }
 }

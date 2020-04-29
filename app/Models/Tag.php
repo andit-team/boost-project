@@ -8,7 +8,12 @@ use App\Models\Order;
 use App\User;
 class Tag extends Model
 {
-   protected $fillable = ['name','active','user_id'];
+   protected $fillable = ['name','active','user_id','slug'];
+
+   public function getRouteKeyName()
+   {
+       return 'slug';
+   }
 
    public function user(){
     return $this->belongsTo(HrmEmployee::class,'user_id');
