@@ -44,6 +44,27 @@
                                     <span class="text-danger">{{ $errors->first('model_no') }}</span>
                                 @endif
                             </div>
+                            <div class="col-md-`12">
+                              <label for="desc" class="col-xl-3 col-md-6">Description <span>*</span></label>
+                              <textarea class="form-control col-md-12" rows="4" cols="114" name="description" id="description"  required=""></textarea>
+                                @if ($errors->has('description'))
+                                    <span class="text-danger">{{ $errors->first('description') }}</span>
+                                @endif
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Made In *</label>
+                                <input type="text" class="form-control" name="made_in" id="made_in" placeholder="City" required="">
+                                @if ($errors->has('made_in'))
+                                    <span class="text-danger">{{ $errors->first('made_in') }}</span>
+                                @endif
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Materials *</label>
+                                <input type="text" class="form-control" name="materials" id="materials" placeholder="Fax" required="">
+                                @if ($errors->has('materials'))
+                                    <span class="text-danger">{{ $errors->first('materials') }}</span>
+                                @endif
+                            </div>
                             <div class="col-md-6">
                                 <label for="review">Orginal Price *</label>
                                 <input type="text" class="form-control" name="org_price" id="org_price" required="">
@@ -51,43 +72,11 @@
                                     <span class="text-danger">{{ $errors->first('org_price') }}</span>
                                 @endif
                             </div>
-                            <!-- <div class="col-md-6">
-                                <label for="review">Package *</label>
-                                <input type="text" class="form-control" name="pack_id" id="pack_id" placeholder="Region/state" required="">
-                                @if ($errors->has('pack_id'))
-                                    <span class="text-danger">{{ $errors->first('pack_id') }}</span>
-                                @endif
-                            </div> -->
-                            <div class="form-group row">
-                                <label for="desc" class="col-xl-3 col-md-4">Description <span>*</span></label>
-                              <textarea class="form-control col-md-8" rows="4" cols="50" name="description" id="description"  required=""></textarea>
-                            </div>
                             <div class="col-md-6">
-                                <label for="city">Minum Order *</label>
-                                <input type="text" class="form-control" name="min_order" id="min_order" placeholder="City" required="">
-                                @if ($errors->has('min_order'))
-                                    <span class="text-danger">{{ $errors->first('min_order') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-md-6">
-                                <label for="email">Availability *</label>
-                                <input type="text" class="form-control" name="availability" id="availability" placeholder="zip-code" required="">
-                                @if ($errors->has('availability'))
-                                    <span class="text-danger">{{ $errors->first('availability') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-md-6">
-                                <label for="review">Made In *</label>
-                                <input type="number" class="form-control" name="made_in" id="made_in" placeholder="City" required="">
-                                @if ($errors->has('made_in'))
-                                    <span class="text-danger">{{ $errors->first('made_in') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-md-6">
-                                <label for="review">Materials *</label>
-                                <input type="number" class="form-control" name="materials" id="materials" placeholder="Fax" required="">
-                                @if ($errors->has('materials'))
-                                    <span class="text-danger">{{ $errors->first('materials') }}</span>
+                                <label for="review"> Price *</label>
+                                <input type="text" class="form-control" name="org_price" id="org_price" required="">
+                                @if ($errors->has('org_price'))
+                                    <span class="text-danger">{{ $errors->first('org_price') }}</span>
                                 @endif
                             </div>
                             <div class="col-md-6">
@@ -105,10 +94,10 @@
                                 @endif
                             </div>
                             <div class="col-md-6">
-                                <label for="review">Total Sale Amount *</label>
-                                <input type="number" class="form-control" name="total_sale_amount" id="total_sale_amount" placeholder="Fax" required="">
-                                @if ($errors->has('total_sale_amount'))
-                                    <span class="text-danger">{{ $errors->first('total_sale_amount') }}</span>
+                                <label for="city">Minum Order *</label>
+                                <input type="text" class="form-control" name="min_order" id="min_order" placeholder="City" required="">
+                                @if ($errors->has('min_order'))
+                                    <span class="text-danger">{{ $errors->first('min_order') }}</span>
                                 @endif
                             </div>
                             <div class="col-md-6">
@@ -118,17 +107,40 @@
                                     <span class="text-danger">{{ $errors->first('total_order_qty') }}</span>
                                 @endif
                             </div>
-                            <div class="form-group row">
-                                <label for="valid_from" class="col-xl-3 col-md-4">Last Order  <span>*</span></label>
-                               <input type="date" name="last_ordered_at" value="{{old('date',date('Y-m-d'))}}" class="form-control col-md-8 datepickerDB" id="last_ordered_at" required autocomplete="off">
+                            <!-- <div class="col-md-6">
+                                <label for="review">Package *</label>
+                                <input type="text" class="form-control" name="pack_id" id="pack_id" placeholder="Region/state" required="">
+                                @if ($errors->has('pack_id'))
+                                    <span class="text-danger">{{ $errors->first('pack_id') }}</span>
+                                @endif
+                            </div> -->
+                            <div class="col-md-6">
+                                <label for="email">Availability *</label>
+                                <input type="text" class="form-control" name="availability" id="availability" placeholder="zip-code" required="">
+                                @if ($errors->has('availability'))
+                                    <span class="text-danger">{{ $errors->first('availability') }}</span>
+                                @endif
                             </div>
-                            <div class="form-group row">
-                                <label for="last_carted_at" class="col-xl-3 col-md-4">Last Created  <span>*</span></label>
-                               <input type="date" name="last_carted_at" value="{{old('date',date('Y-m-d'))}}" class="form-control col-md-8 datepickerDB" id="last_carted_at" required autocomplete="off">
+                            <div class="col-md-6">
+                                <label for="review">Total Sale Amount *</label>
+                                <input type="number" class="form-control" name="total_sale_amount" id="total_sale_amount" placeholder="Fax" required="">
+                                @if ($errors->has('total_sale_amount'))
+                                    <span class="text-danger">{{ $errors->first('total_sale_amount') }}</span>
+                                @endif
                             </div>
-                            <div class="form-group row">
-                                <label for="last_carted_at" class="col-xl-3 col-md-4">Last Created  <span>*</span></label>
-                               <input type="date" name="last_carted_at" value="{{old('date',date('Y-m-d'))}}" class="form-control col-md-8 datepickerDB" id="last_carted_at" required autocomplete="off">
+                            <div class="col-md-6">
+                                <label for="review">Last Carted </label>
+                                <input type="date" name="last_carted_at" value="{{old('date',date('Y-m-d'))}}" class="form-control  datepickerDB" id="last_carted_at" required autocomplete="off">
+                                @if ($errors->has('last_carted_at'))
+                                    <span class="text-danger">{{ $errors->first('last_carted_at') }}</span>
+                                @endif
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Last Order</label>
+                                <input type="date" name="last_ordered_at" value="{{old('date',date('Y-m-d'))}}" class="form-control  datepickerDB" id="last_carted_at" required autocomplete="off">
+                                @if ($errors->has('last_ordered_at'))
+                                    <span class="text-danger">{{ $errors->first('last_ordered_at') }}</span>
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 <label for="review">Total View *</label>
@@ -137,9 +149,12 @@
                                     <span class="text-danger">{{ $errors->first('total_view') }}</span>
                                 @endif
                             </div>
-                            <div class="form-group row">
-                                <label for="last_carted_at" class="col-xl-3 col-md-4">Activated  <span>*</span></label>
-                               <input type="date" name="activated_at" value="{{old('date',date('Y-m-d'))}}" class="form-control col-md-8 datepickerDB" id="activated_at" required autocomplete="off">
+                            <div class="col-md-6">
+                                <label for="review">Activated At </label>
+                                <input type="date" name="activated_at" value="{{old('date',date('Y-m-d'))}}" class="form-control  datepickerDB" id="activated_at" required autocomplete="off">
+                                @if ($errors->has('activated_at'))
+                                    <span class="text-danger">{{ $errors->first('activated_at') }}</span>
+                                @endif
                             </div>
                             <div class="col-md-12">
                                 <button class="btn btn-sm btn-solid" type="submit">Save setting</button>
