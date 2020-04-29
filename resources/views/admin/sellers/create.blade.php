@@ -75,23 +75,23 @@
                             <div class="col-md-6">
                                 <label for="full_name">Full Name</label>
                                 @if($sellerProfile == '')
-                                    <input type="text" class="form-control" name="full_name" value="{{ old('full_name') }}"   placeholder="Enter Your name" required="">
+                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}"   placeholder="Enter Your name" required="">
                                 @else
-                                    <input type="text" class="form-control" name="full_name" value="{{ old('full_name',$sellerProfile->full_name) }}"   placeholder="Enter Your name" required="">
+                                    <input type="text" class="form-control" name="name" value="{{ old('name',$sellerProfile->name) }}"   placeholder="Enter Your name" required="">
                                 @endif
-                                @if ($errors->has('full_name'))
-                                    <span class="text-danger">{{ $errors->first('full_name') }}</span>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
                                 @endif
                             </div>
                             <div class="col-md-6">
                                 <label for="phone_number">Phone number</label>
                                 @if($sellerProfile == '')
-                                    <input type="number" class="form-control" name="phone_number" value="{{ old('phone_number') }}" maxlength="11" minlength="11" id="" placeholder="Enter your number">
+                                    <input type="number" class="form-control" name="phone" value="{{ old('phone') }}" maxlength="11" minlength="11" id="" placeholder="Enter your number">
                                 @else
-                                    <input type="number" class="form-control" name="phone_number" value="{{ old('phone_number',$sellerProfile->phone_number) }}" maxlength="11" minlength="11" id="review" placeholder="Enter your number">
+                                    <input type="number" class="form-control" name="phone" value="{{ old('phone',$sellerProfile->phone) }}" maxlength="11" minlength="11" id="review" placeholder="Enter your number">
                                 @endif
-                                @if ($errors->has('phone_number'))
-                                    <span class="text-danger">{{ $errors->first('phone_number') }}</span>
+                                @if ($errors->has('phone'))
+                                    <span class="text-danger">{{ $errors->first('phone') }}</span>
                                 @endif
                             </div>
                             <div class="col-md-6">

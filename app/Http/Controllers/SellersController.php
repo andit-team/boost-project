@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Seller;
 use Sentinel;
+use Baazar;
 
 class SellersController extends Controller
 {
@@ -38,21 +39,42 @@ class SellersController extends Controller
      */
     public function store(Request $request)
     {
+        $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        //dd($sellerId);
         $this->validateForm($request);
-        $data = [
-            'name' => $request->name,
-            'dob'  =>$request->dob,
-            'gender' => $request->gender,
-            'description' => $request->description,
-            'last_visited_at' => $request->last_visited_at,
-            'last_visited_from' => $request->last_visited_from,
-            'verification_token' => $request->verification_token,
-            'remember_token' => $request->remember_token,
-            'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
-        ];
+        if($sellerId){
+            $sellerId->update([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'picture' => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
+                'dob'  =>$request->dob,
+                'gender' => $request->gender,
+                'description' => $request->description,
+                'last_visited_at' => $request->last_visited_at,
+                'last_visited_from' => $request->last_visited_from,
+                'verification_token' => $request->verification_token,
+                'remember_token' => $request->remember_token,
+                'user_id' => Sentinel::getUser()->id,
+                'created_at' => now(),
+            ]);
+        }else{
+            $sellerId=Seller::create([
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'picture' => Baazar::fileUpload($request,'picture','','/uploads/vendor_profile'),
+                'dob'  =>$request->dob,
+                'gender' => $request->gender,
+                'description' => $request->description,
+                'last_visited_at' => $request->last_visited_at,
+                'last_visited_from' => $request->last_visited_from,
+                'verification_token' => $request->verification_token,
+                'remember_token' => $request->remember_token,
+                'user_id' => Sentinel::getUser()->id,
+                'created_at' => now(),
+            ]);
+        }
 
-        Seller::create($data);
+        return back();
     }
 
     /**
