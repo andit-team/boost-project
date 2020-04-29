@@ -25,7 +25,9 @@ class SellersController extends Controller
      */
     public function create()
     {
-       //
+        $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        //dd($sellerProfile);
+       return view('admin.sellers.create',compact('sellerProfile'));
     }
 
     /**
