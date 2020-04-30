@@ -45,6 +45,15 @@
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dashboard">dashboard</a></li>
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a>
                                 </li>
+                                <!-- <li>
+                                    <a href="#"><i class="fa fa-circle"></i>
+                                        <span>Product</span> <i class="fa fa-angle-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="{{ url('andbaazaradmin/product') }}"><i class="fa fa-circle"></i>All Product</a></li>
+                                        <li><a href="{{ url('andbaazaradmin/product/create') }}"><i class="fa fa-circle"></i> Add Product</a></li>
+                                    </ul>
+                                </li> -->
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">orders</a>
                                 </li>
                                 <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/seller/create') }}">profile</a>
