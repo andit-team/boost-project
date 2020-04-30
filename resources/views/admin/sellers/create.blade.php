@@ -64,7 +64,7 @@
                         @csrf
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="full_name">Full Name</label>
+                                <label for="name">Full Name</label>
                                 @if($sellerProfile == '')
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}"   placeholder="Enter Your name" required="">
                                 @else
@@ -97,12 +97,14 @@
                                 @endif
                             </div>
                             <div class="col-md-6">
-                                <label for="picture">Picture</label>
+                                <label for="email">Full Name</label>
                                 @if($sellerProfile == '')
-                                    <input type="file" class="form-control" name="picture" id="" placeholder="" accept=".png, .jpg, .jpeg">
+                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}"   placeholder="Enter Your Email" required="">
                                 @else
-                                    <input type="file" class="form-control" name="picture" id="" placeholder="" accept=".png, .jpg, .jpeg">
-                                    <input type="hidden" value="{{$sellerProfile->picture}}" name="old_image">
+                                    <input type="email" class="form-control" name="email" value="{{ old('email',$sellerProfile->email) }}"   placeholder="Enter Your Email" required="">
+                                @endif
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
                                 @endif
                             </div>
                             <div class="col-md-6">
@@ -120,6 +122,15 @@
                                     <label for="Female">Female</label>
                                     <input name="gender" value="Other" type="radio" id="Other" class="with-gap" {{$sellerProfile->gender == 'Other' ? 'checked' : ''}}>
                                     <label for="Other">Other</label>
+                                @endif
+                            </div>
+                            <div class="col-md-6">
+                                <label for="picture">Picture</label>
+                                @if($sellerProfile == '')
+                                    <input type="file" class="form-control" name="picture" id="" placeholder="" accept=".png, .jpg, .jpeg">
+                                @else
+                                    <input type="file" class="form-control" name="picture" id="" placeholder="" accept=".png, .jpg, .jpeg">
+                                    <input type="hidden" value="{{$sellerProfile->picture}}" name="old_image">
                                 @endif
                             </div>
                             <div class="col-md-12">

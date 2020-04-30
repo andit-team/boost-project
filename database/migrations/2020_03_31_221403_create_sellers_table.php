@@ -17,6 +17,7 @@ class CreateSellersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('picture')->nullable();
+            $table->string('email')->nullable();
             $table->date('dob');
             $table->integer('phone')->nullable();
             $table->enum('gender',['Male','Female','Other'])->default('Male');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Seller;
+use App\Mail\VendorProfileApprovalNotificationMail;
 use Sentinel;
 use Baazar;
 
@@ -46,6 +47,7 @@ class SellersController extends Controller
             $sellerId->update([
                 'name' => $request->name,
                 'phone' => $request->phone,
+                'email' => $request->email,
                 'picture' => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
                 'dob'  =>$request->dob,
                 'gender' => $request->gender,
@@ -61,6 +63,7 @@ class SellersController extends Controller
             $sellerId=Seller::create([
                 'name' => $request->name,
                 'phone' => $request->phone,
+                'email' => $request->email,
                 'picture' => Baazar::fileUpload($request,'picture','','/uploads/vendor_profile'),
                 'dob'  =>$request->dob,
                 'gender' => $request->gender,
@@ -72,6 +75,9 @@ class SellersController extends Controller
                 'user_id' => Sentinel::getUser()->id,
                 'created_at' => now(),
             ]);
+
+            \Mail::to($sellerId)->send(new VendorProfileApprovalNotificationMail($sellerId));
+            session()->flash('message','Thanks for create profile! Your Message Sent Successfully');
         }
 
         return back();
