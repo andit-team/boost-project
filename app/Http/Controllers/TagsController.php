@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Tag;
 use Sentinel;
 use Session;
+use Baazar;
 class TagsController extends Controller
 {
     /**
@@ -36,16 +37,14 @@ class TagsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-//        $data = [
-//            'name' => $request->name,
-//            'user_id' => Sentinel::getUser()->id,
-//            'created_at' => now(),
-//        ];
+    public function store(Tag $tag,Request $request)
+   {
+      $this->validateForm($request);
+      $slug = Baazar::getUniqueSlug($tag,$request->name);
 
         $data = Tag::create([
             'name' => $request->name,
+            'slug' => $slug,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ]);

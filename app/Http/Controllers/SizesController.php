@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Size;
 use Sentinel;
+use Session;
+use Baazar;
 
 class SizesController extends Controller
 {
@@ -35,12 +37,15 @@ class SizesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Size $size,Request $request)
     {
+      $this->validateForm($request);
+      $slug = Baazar::getUniqueSlug($size,$request->name);
         $data = [
             'name' => $request->name,
             'item_size' => $request->item_size,
             'desc' => $request->desc,
+            'slug' => $slug,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];

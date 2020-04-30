@@ -33,7 +33,7 @@
                     <h5>Edit New Sizes</h5>
                 </div>
                 <div class="card-body">
-                    <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/size/'.$size->id) }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/size/'.$size->slug) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
                         <div class="row">
@@ -67,4 +67,3 @@
 
     </div>
 @endsection
-

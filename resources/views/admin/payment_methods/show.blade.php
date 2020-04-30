@@ -38,11 +38,11 @@
                         <div class="col-sm-12">
                             <div class="form-group row">
                                 <label for="validationCustom0" class="col-xl-3 col-md-4">Payment Method <span>*</span></label>
-                                <input class="form-control col-md-8" name="name" readonly value="{{ $paymentMethod->name }}" id="validationCustom0" type="text" required="">
+                                <input class="form-control col-md-8" name="name" readonly value="{{ $paymentmethod->name }}" id="validationCustom0" type="text" required="">
                             </div>
                             <div class="form-group row">
                                 <label for="validationCustom0" class="col-xl-3 col-md-4">Description <span>*</span></label>
-                                <textarea class="form-control col-md-8" name="desc" rows="5" cols="50" readonly  id="validationCustom0"  required="">{{ $paymentMethod->desc }}</textarea>
+                                <textarea class="form-control col-md-8" name="desc" rows="5" cols="50" readonly  id="validationCustom0"  required="">{{ $paymentmethod->desc }}</textarea>
                             </div>
                             <div class="form-group row">
                                 <label class="col-xl-3 col-md-4"></label>

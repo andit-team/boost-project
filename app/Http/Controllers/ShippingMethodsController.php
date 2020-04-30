@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\ShippingMethod;
 use App\Models\Courier;
 use Sentinel;
-
+use Session;
+use Baazar;
 class ShippingMethodsController extends Controller
 {
     /**
@@ -38,15 +39,15 @@ class ShippingMethodsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ShippingMethod $shippingmethod,Request $request)
     {
-        //dd($request->all());
-        //$this->validateForm($request);
-
+      $this->validateForm($request);
+      $slug = Baazar::getUniqueSlug($shippingmethod,$request->name);
         $data =[
             'name' => $request->name,
             'fees' => $request->fees,
             'desc' => $request->desc,
+            'slug' => $slug,
             'courier_id' => $request->courier_id,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),

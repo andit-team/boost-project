@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Courier;
 use Sentinel;
-use Baazar;
 use Session;
+use Baazar;
 class CouriersController extends Controller
 {
     /**

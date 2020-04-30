@@ -33,7 +33,7 @@
                     <h5>Edit Shipping Method</h5>
                 </div>
                 <div class="card-body">
-                    <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/shippingmethod/'.$shippingmethod->id) }}" method="post" enctype="multipart/form-data">
+                    <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/shippingmethod/'.$shippingmethod->slug) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -58,7 +58,7 @@
                                 <div class="form-group row">
                                     <label for="desc" class="col-xl-3 col-md-4">Description<span>*</span></label>
                                       <input class="form-control col-md-8" name="desc" value="{{ $shippingmethod->desc }}" id="desc" type="text" required="">
-                                </div>                          
+                                </div>
                                <!-- <div class="form-group row">
                                     <label for="desc" class="col-xl-3 col-md-4">Description <span>*</span></label>
                                       <textarea class="form-control col-md-8" rows="4" cols="50" name="desc" value="{{  $shippingmethod->desc }}" id="desc"  required=""></textarea>

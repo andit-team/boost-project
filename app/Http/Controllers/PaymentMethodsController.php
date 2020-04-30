@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PaymentMethod;
 use Sentinel;
-
+use Baazar;
+use Session;
 class PaymentMethodsController extends Controller
 {
     /**
@@ -15,8 +16,8 @@ class PaymentMethodsController extends Controller
      */
     public function index()
     {
-        $payMethod = PaymentMethod::all();
-       return view('admin.payment_methods.index',compact('payMethod'));
+        $paymentmethod = PaymentMethod::all();
+       return view('admin.payment_methods.index',compact('paymentmethod'));
     }
 
     /**
@@ -35,12 +36,15 @@ class PaymentMethodsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PaymentMethod $paymentmethod,Request $request)
     {
-        $this->validateForm($request);
+
+      $this->validateForm($request);
+      $slug = Baazar::getUniqueSlug($paymentmethod,$request->name);
         $data = [
             'name' => $request->name,
             'desc' => $request->desc,
+            'slug' => $slug,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
@@ -56,10 +60,10 @@ class PaymentMethodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PaymentMethod $paymentmethod)
     {
-        $paymentMethod = PaymentMethod::find($id);
-        return view('admin.payment_methods.show',compact('paymentMethod'));
+        // $paymentMethod = PaymentMethod::find($id);
+        return view('admin.payment_methods.show',compact('paymentmethod'));
     }
 
     /**
@@ -68,11 +72,11 @@ class PaymentMethodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(PaymentMethod $paymentmethod)
     {
-        $paymentMethod = PaymentMethod::find($id);
+        // $paymentMethod = PaymentMethod::find($id);
         //dd($paymentMethod);
-        return view('admin.payment_methods.edit',compact('paymentMethod'));
+        return view('admin.payment_methods.edit',compact('paymentmethod'));
     }
 
     /**
@@ -82,10 +86,10 @@ class PaymentMethodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request,PaymentMethod $paymentmethod)
     {
         $this->validateForm($request);
-        $paymentMethod = PaymentMethod::find($id);
+        // $paymentMethod = PaymentMethod::find($id);
         $data = [
             'name' => $request->name,
             'desc' => $request->desc,
@@ -93,7 +97,7 @@ class PaymentMethodsController extends Controller
             'created_at' => now(),
         ];
 
-        $paymentMethod->update($data);
+        $paymentmethod->update($data);
         Session::flash('success', 'Payment Method Updated Successfully!');
         return redirect('andbaazaradmin/paymentmethod');
 
@@ -105,10 +109,10 @@ class PaymentMethodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(PaymentMethod $paymentmethod)
     {
-        $paymentMethod = PaymentMethod::find($id);
-        $paymentMethod->delete();
+        // $paymentMethod = PaymentMethod::find($id);
+        $paymentmethod->delete();
         Session::flash('success', 'Payment Method Deleted Successfully!');
         return redirect('andbaazaradmin/paymentmethod');
     }

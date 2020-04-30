@@ -29,10 +29,10 @@
                                     <td>{{  \Illuminate\Support\Str::limit($row->desc,20) }}</td>
                                     <td>
                                         <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/size/'.$row->id) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>
-                                            <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/size/'.$row->id).'/edit' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a> </li>
+                                            <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/size/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>
+                                            <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/size/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a> </li>
                                             <li class="list-inline-item">
-                                                <form action="{{ url('/andbaazaradmin/size/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                                <form action="{{ url('/andbaazaradmin/size/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
