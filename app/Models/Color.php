@@ -8,6 +8,7 @@ use App\Models\Inventory;
 use App\Models\ItemImage;
 use App\Models\OrderItem;
 use App\User;
+
 class Color extends Model
 {
     protected $fillable = ['name','color_code','active','user_id','slug'];

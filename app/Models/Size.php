@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Inventory;
 use App\Models\OrderItem;
 use App\User;
+
 class Size extends Model
 {
   protected $fillable = ['name','item_size','desc','active','user_id','slug'];

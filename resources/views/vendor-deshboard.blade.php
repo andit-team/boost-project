@@ -22,7 +22,7 @@
         </div>
     </div>
     <!-- breadcrumb End -->
-
+ 
 
     <!--  dashboard section start -->
     <section class="dashboard-section section-b-space">
@@ -198,7 +198,7 @@
                                         <div class="card-body">
                                             <div class="top-sec">
                                                 <h3>all products</h3>
-                                                <a href="#" class="btn btn-sm btn-solid">add product</a>
+                                                <a href="{{ url('merchant/product/create') }}" class="btn btn-sm btn-solid">add product</a>
                                             </div>
                                             <table class="table-responsive-md table mb-0">
                                                 <thead>

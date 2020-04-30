@@ -38,11 +38,19 @@ class CreateItemsTable extends Migration
             $table->dateTime('activated_at');
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('size_id');
+            $table->unsignedBigInteger('color_id');
             $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-        });
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade')->onUpdate('cascade');
+      });
     }
 
     /**

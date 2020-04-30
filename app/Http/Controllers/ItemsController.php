@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\Item;
+use App\Models\Size;
+use App\Models\Color;
 use Sentinel;
+use Session;
+use Baazar;
 
 class ItemsController extends Controller
 {
@@ -15,7 +20,11 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        return view ('admin.product.index');
+      $category = Category::all();
+      $item = Item::all();
+      $size= Size::all();
+      $color = Color::all();
+      return view ('admin.product.index',compact('category','item','size','color'));
     }
 
     /**
@@ -36,7 +45,8 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validateForm($request);
+      $this->validateForm($request);
+      $slug = Baazar::getUniqueSlug($item,$request->name);
         $data = [
             'name' => $request->name,
             'slug' => $request->slug,
@@ -59,6 +69,9 @@ class ItemsController extends Controller
             'last_carted_at' => $request->last_carted_at,
             'total_view' => $request->total_view,
             'activated_at' => $request->activated_at,
+            'category_id' => $request->category_id,
+            'size_id' => $request->size_id,
+            'color_id' => $request->color_id,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];

@@ -20,6 +20,8 @@ Route::prefix('merchant')->group(function () {
     Route::get('signup-step-final','MerchantController@registrationStepFinal');
     Route::post('signup-step-final','MerchantController@registrationStepFinalProcess')->name('merchantStepFinal');
     Route::resource('/seller','SellersController');
+
+    Route::resource('/product','ItemsController');
 });
 
 
@@ -59,8 +61,6 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::resource('/promotion','PromotionsController');
 
     Route::resource('/shop','ShopsController');
-
-    Route::resource('/product','ItemsController');
 
     Route::get('category_setup','CategorySetupController@index');
 
