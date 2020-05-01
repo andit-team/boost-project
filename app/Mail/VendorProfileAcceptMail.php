@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class VendorProfileApprovalNotificationMail extends Mailable
+class VendorProfileAcceptMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,10 +16,12 @@ class VendorProfileApprovalNotificationMail extends Mailable
      *
      * @return void
      */
-    public $sellerId;
-    public function __construct($sellerId)
+    public $data;
+    public $name;
+    public function __construct($data,$name)
     {
-        $this->sellerId = $sellerId;
+       $this->data = $data;
+       $this->name = $name;
     }
 
     /**
@@ -29,6 +31,6 @@ class VendorProfileApprovalNotificationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('admin.emails.vendorapprovalrequest');
+        return $this->view('admin.emails.vendorAcceptProfile',['data'=>$this->data,'name'=>$this->name]);
     }
 }
