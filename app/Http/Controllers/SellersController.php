@@ -18,7 +18,7 @@ class SellersController extends Controller
      */
     public function index()
     {
-        $sellers = Seller::all();
+        $sellers = Seller::orderBy('id', 'DESC')->get();
         //dd($sellers);
         return view('admin.sellers.index',compact('sellers'));
     }
@@ -162,6 +162,7 @@ class SellersController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required',
+            'email' => 'required',
             'dob' => 'required',
             'gender' => 'required',
             'description' => 'required',

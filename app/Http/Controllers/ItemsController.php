@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\ProductApproveRequestMail;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Size;
@@ -50,12 +51,13 @@ class ItemsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Item $item,Request $request)
+    public function store(Request $request)
     {
       $this->validateForm($request);
       $slug = Baazar::getUniqueSlug($item,$request->name);
         $data = [
-            'name' => $request->name,           
+            'name' => $request->name,  
+            'email' => $request->email,         
             'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
             'slug' => $slug,
             'price' => $request->price,
@@ -86,7 +88,8 @@ class ItemsController extends Controller
         ];
 
         Item::create($data);
-        Session::flash('success', 'Product Added Successfully!');
+        \Mail::to($data)->send(new ProductApproveRequestMail($data));
+        Session::flash('success', 'Item Added Successfully!');
     }
 
     /**
@@ -137,6 +140,7 @@ class ItemsController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required',
+            'emial'=> 'required',
             'price' => 'required',
             'model_no' => 'required',
             'org_price' => 'required',
@@ -144,7 +148,12 @@ class ItemsController extends Controller
             'min_order'=> 'required',
             'made_in' => 'required',
             'materials'=> 'required',
-            'labeled' => 'required',        
+            'labeled' => 'required',
+            'available_on' => 'required',
+            'availability' => 'required',
+            'activated_at' => 'required',
+
+
         ]);
     }
 }

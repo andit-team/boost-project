@@ -56,8 +56,22 @@
                         <div class="faq-tab">
                             <ul class="nav nav-tabs" id="top-tab" role="tablist">
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dashboard">dashboard</a></li>
+
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a>
                                 </li>                              
+
+                                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/product') }}">products</a>
+                                </li>
+                                <!-- <li>
+                                    <a href="#"><i class="fa fa-circle"></i>
+                                        <span>Product</span> <i class="fa fa-angle-right pull-right"></i>
+                                    </a>
+                                    <ul class="sidebar-submenu">
+                                        <li><a href="{{ url('andbaazaradmin/product') }}"><i class="fa fa-circle"></i>All Product</a></li>
+                                        <li><a href="{{ url('andbaazaradmin/product/create') }}"><i class="fa fa-circle"></i> Add Product</a></li>
+                                    </ul>
+                                </li> -->
+
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">orders</a>
                                 </li>
                                 <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/seller/create') }}">profile</a>
@@ -93,8 +107,13 @@
                                             </div>
                                         </div>                          
 
+<<<<<<< HEAD
                                         <div class="col-md-6 pb-4">
                                             <label for="category_id">Category *</label>
+=======
+                                        <div class="col-md-6">
+                                            <label for="name">Category *</label>
+>>>>>>> 5e31ac953b8052574689ffacf5f872bcdd7bba7d
                                             <select name="category_id" class="form-control px-10" id="category_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Category</option>
                                                 @foreach ($category as $row)
@@ -114,7 +133,11 @@
                                         </div>  
                                    
                                         <div class="col-md-6">
+<<<<<<< HEAD
                                             <label for="color_id">Color *</label>
+=======
+                                            <label for="name">Color *</label>
+>>>>>>> 5e31ac953b8052574689ffacf5f872bcdd7bba7d
                                             <select name="color_id" class="form-control" id="color_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Color</option>
                                                 @foreach ($color as $row)
@@ -123,8 +146,13 @@
                                             </select>
                                         </div>
 
+<<<<<<< HEAD
                                         <div class="col-md-6 pb-4">
                                             <label for="size_id">Size *</label>
+=======
+                                        <div class="col-md-6">
+                                            <label for="name">Size *</label>
+>>>>>>> 5e31ac953b8052574689ffacf5f872bcdd7bba7d
                                             <select name="size_id" class="form-control" id="size_id" autocomplete="off">
                                                 <option value="" selected disabled>Select Size</option>
                                                 @foreach ($size as $row)
@@ -241,7 +269,19 @@
                                             @if ($errors->has('activated_at'))
                                                 <span class="text-danger">{{ $errors->first('activated_at') }}</span>
                                             @endif
+<<<<<<< HEAD
                                         </div> --}}
+=======
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="email">Email</label> 
+                                                <input type="email" class="form-control" name="email" value="{{ old('email') }}"   placeholder="Enter Your Email" required="">
+                                          
+                                            @if ($errors->has('email'))
+                                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                                            @endif
+                                        </div>
+>>>>>>> 5e31ac953b8052574689ffacf5f872bcdd7bba7d
                                         <div class="col-md-12">
                                             <button class="btn btn-sm btn-solid" type="submit">Save</button>
                                         </div>
