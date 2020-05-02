@@ -34,7 +34,11 @@ class ItemsController extends Controller
      */
     public function create()
     {
-          return view ('admin.product.create');
+        $category = Category::all();
+        $item = Item::all();
+        $size= Size::all();
+        $color = Color::all();
+          return view ('admin.product.create',compact('category','item','size','color'));
     }
 
     /**
@@ -48,7 +52,8 @@ class ItemsController extends Controller
       $this->validateForm($request);
       $slug = Baazar::getUniqueSlug($item,$request->name);
         $data = [
-            'name' => $request->name,
+            'name' => $request->name,           
+            'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
             'slug' => $request->slug,
             'price' => $request->price,
             'model_no' => $request->model_no,
@@ -111,7 +116,7 @@ class ItemsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // 'image' => Baazar::fileUpload($request,'image','old_image','/uploads/product_image'),
     }
 
     /**
