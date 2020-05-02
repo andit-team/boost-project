@@ -30,7 +30,7 @@
                                     <td>
                                         <ul class="list-inline">
 {{--                                            <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/courier/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>--}}
-                                            <li class="list-inline-item"><a href="{{ url('/merchant/seller/'.$row->id.'/edit') }}" title="Edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a> </li>
+                                            <li class="list-inline-item"><a href="{{ url('/merchant/seller/'.$row->id.'/edit') }}" title="Edit" class="btn btn-sm btn-info"><i class="fa fa-check"></i> </a> </li>
                                             <li class="list-inline-item">
                                                 <form action="{{ url('/merchant/seller/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                     @csrf
