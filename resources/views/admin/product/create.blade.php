@@ -34,7 +34,7 @@
                                 <img src="{{ asset('') }}/assets/images/logos/17.png" alt="" class="img-fluid">
                             </div>
                             <div class="profile-detail">
-                                <h5>Fashion Store</h5>
+                                <h5>Products Store</h5>
                                 <h6>750 followers | 10 review</h6>
                                 <h6>mark.enderess@mail.com</h6>
                             </div>
@@ -82,7 +82,7 @@
 
                             <div class="form-group row">
                                 <label for="image" class="col-xl-3 col-md4">Image</label>
-                                <input type="file" class="form-control col-md-8" name="thumb" id="image" onchange="loadFile(event)">
+                                <input type="file" class="form-control col-md-8" name="image" id="image" onchange="loadFile(event)">
                                 <div class="divmargin">
                                     <img id="output"  class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}" />
                                 </div>
