@@ -105,7 +105,7 @@ class SellersController extends Controller
      */
     public function edit(Seller $seller)
     {
-        $seller = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        //$seller = Seller::where('user_id',Sentinel::getUser()->id)->first();
         //dd($seller);
         return view('admin.sellers.edit',compact('seller'));
     }
@@ -119,7 +119,7 @@ class SellersController extends Controller
      */
     public function update(Request $request, Seller $seller)
     {
-        $seller= Seller::where('user_id',Sentinel::getUser()->id)->first();
+        //$seller= Seller::where('user_id',Sentinel::getUser()->id)->first();
         //dd($seller);
         $this->validateForm($request);
 
