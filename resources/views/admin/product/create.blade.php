@@ -56,7 +56,7 @@
                         <div class="faq-tab">
                             <ul class="nav nav-tabs" id="top-tab" role="tablist">
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dashboard">dashboard</a></li>
-                                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a>
+                                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/product') }}">products</a>
                                 </li>
                                 <!-- <li>
                                     <a href="#"><i class="fa fa-circle"></i>
@@ -104,7 +104,7 @@
 
                                         <div class="col-md-6">
                                             <label for="name">Category *</label>
-                                            <select name="category_id" class="form-control px-10" id="category_id" required autocomplete="off">
+                                            <select name="category_id" class="form-control px-10" id="category_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Category</option>
                                                 @foreach ($category as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
@@ -124,7 +124,7 @@
 
                                         <div class="col-md-6">
                                             <label for="name">Color *</label>
-                                            <select name="color_id" class="form-control" id="color_id" required autocomplete="off">
+                                            <select name="color_id" class="form-control" id="color_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Color</option>
                                                 @foreach ($color as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
@@ -134,7 +134,7 @@
 
                                         <div class="col-md-6">
                                             <label for="name">Size *</label>
-                                            <select name="size_id" class="form-control" id="size_id" required autocomplete="off">
+                                            <select name="size_id" class="form-control" id="size_id" autocomplete="off">
                                                 <option value="" selected disabled>Select Size</option>
                                                 @foreach ($size as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
@@ -261,6 +261,14 @@
                                             <input type="date" name="activated_at" value="{{old('date',date('Y-m-d'))}}" class="form-control  datepickerDB" id="activated_at" required autocomplete="off">
                                             @if ($errors->has('activated_at'))
                                                 <span class="text-danger">{{ $errors->first('activated_at') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="email">Email</label> 
+                                                <input type="email" class="form-control" name="email" value="{{ old('email') }}"   placeholder="Enter Your Email" required="">
+                                          
+                                            @if ($errors->has('email'))
+                                                <span class="text-danger">{{ $errors->first('email') }}</span>
                                             @endif
                                         </div>
                                         <div class="col-md-12">
