@@ -1,5 +1,19 @@
 @extends('layouts.vendor')
 @section('content')
+
+    <style>
+        .imagestyle{
+            width: 75px;
+            height: 75px;
+            border-width: 4px 4px 4px 4px;border-style: solid;
+            border-color: #ccc;
+        }
+        .divmargin{
+            margin-top: 20px;
+            margin-left: 250px;
+        }
+    </style>
+    @include('admin.elements.alert')
     <!-- breadcrumb start -->
     <div class="breadcrumb-section">
         <div class="container">
@@ -68,63 +82,74 @@
 
                 <!-- address section start -->
                 <div class="col-sm-9 contact-page register-page container">
-                    <h3>Added Product</h3>
-                    <form class="theme-form" action="{{ route('product.store') }}" method="post">
-                        @csrf
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" name="name" id="name">
-                                @if ($errors->has('name'))
-                                    <span class="text-danger">{{ $errors->first('name') }}</span>
-                                @endif
-                            </div>
+                        <h3>Added Product</h3>
+                            <form class="theme-form" action="{{ route('product.store') }}" method="post">
+                                @csrf
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <label for="name">Name</label>
+                                            <input type="text" class="form-control" name="name" id="name">
+                                            @if ($errors->has('name'))
+                                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                                            @endif
+                                        </div>
 
-                            <div class="form-group row">
-                                <label for="image" class="col-xl-3 col-md4">Image</label>
-                                <input type="file" class="form-control col-md-8" name="image" id="image" onchange="loadFile(event)">
-                                <div class="divmargin">
-                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}" />
-                                </div>
-                            </div>
-                            
-                            <div class="form-group row">
-                                <label for="category_id" class="col-xl-3 col-md-4">Category <span>*</span></label>
-                               <select name="category_id" class="form-control col-md-8 " id="category_id" required autocomplete="off">
-                                   <option value="" selected disabled>Select Category</option>
-                                   @foreach ($category as $row)
-                                       <option value="{{ $row->id }}">{{$row->name}}</option>
-                                   @endforeach
-                               </select>
-                               </div>
+                                        <div class="col-md-6">
+                                            <label for="name">Image</label>
+                                            <input type="file" class="form-control col-md-12" name="image" id="image" onchange="loadFile(event)">
+                                            <div class="divmargin">
+                                                {{-- <img id="output"  class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}" /> --}}
+                                            </div>
+                                        </div>                          
 
-                               <div class="form-group row">
-                                   <label for="color_id" class="col-xl-3 col-md-4">Color<span>*</span></label>
-                                  <select name="color_id" class="form-control col-md-8 " id="color_id" required autocomplete="off">
-                                      <option value="" selected disabled>Select Color</option>
-                                      @foreach ($color as $row)
-                                          <option value="{{ $row->id }}">{{$row->name}}</option>
-                                      @endforeach
-                                  </select>
-                                  </div>
-                                  <div class="form-group row">
-                                      <label for="size_id" class="col-xl-3 col-md-4">Size <span>*</span></label>
-                                     <select name="size_id" class="form-control col-md-8 " id="size_id" required autocomplete="off">
-                                         <option value="" selected disabled>Select Size</option>
-                                         @foreach ($size as $row)
-                                             <option value="{{ $row->id }}">{{$row->name}}</option>
-                                         @endforeach
-                                     </select>
-                                     </div>
-                                     {{-- <div class="form-group row">
-                                         <label for="title" class="col-xl-3 col-md-4">Subcategory <span>*</span></label>
-                                        <select name="promotion_head_id" class="form-control col-md-8 " id="promotion_head_id" required autocomplete="off">
-                                            <option value="" selected disabled>Select Subcategory</option>
-                                            @foreach ($promotionhead as $row)
-                                                <option value="{{ $row->id }}">{{$row->promotion_name}}</option>
-                                            @endforeach
-                                        </select>
-                                        </div> --}}                                      
+                                        <div class="col-md-6">
+                                            <label for="name">Category *</label>
+                                            <select name="category_id" class="form-control px-10" id="category_id" required autocomplete="off">
+                                                <option value="" selected disabled>Select Category</option>
+                                                @foreach ($category as $row)
+                                                    <option value="{{ $row->id }}">{{$row->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="name">Sub Category *</label>
+                                            <select name="category_id" class="form-control px-10" id="category_id"  autocomplete="off">
+                                                <option value="" selected disabled>Select Sub Category</option>
+                                                @foreach ($category as $row)
+                                                    <option value="{{ $row->id }}">{{$row->parent}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="name">Color *</label>
+                                            <select name="color_id" class="form-control" id="color_id" required autocomplete="off">
+                                                <option value="" selected disabled>Select Color</option>
+                                                @foreach ($color as $row)
+                                                    <option value="{{ $row->id }}">{{$row->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="name">Size *</label>
+                                            <select name="size_id" class="form-control" id="size_id" required autocomplete="off">
+                                                <option value="" selected disabled>Select Size</option>
+                                                @foreach ($size as $row)
+                                                    <option value="{{ $row->id }}">{{$row->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                                                                                                                  
+                                        <div class="col-md-12">
+                                            <label for="description">Description *</label>
+                                        <textarea class="form-control col-md-12" rows="4" cols="114" name="description" id="description"  required=""></textarea>
+                                            @if ($errors->has('description'))
+                                                <span class="text-danger">{{ $errors->first('description') }}</span>
+                                            @endif
+                                        </div>
+                                                                        
                                         <div class="col-md-6">
                                             <label for="name">Model No *</label>
                                             <input type="number" class="form-control" name="model_no" id="model_no"  required="">
@@ -132,23 +157,17 @@
                                                 <span class="text-danger">{{ $errors->first('model_no') }}</span>
                                             @endif
                                         </div>
-                                        <div class="col-md-`12">
-                                        <label for="desc" class="col-xl-3 col-md-6">Description <span>*</span></label>
-                                        <textarea class="form-control col-md-12" rows="4" cols="114" name="description" id="description"  required=""></textarea>
-                                            @if ($errors->has('description'))
-                                                <span class="text-danger">{{ $errors->first('description') }}</span>
-                                            @endif
-                                        </div>
+
                                         <div class="col-md-6">
                                             <label for="review">Made In *</label>
-                                            <input type="text" class="form-control" name="made_in" id="made_in" placeholder="City" required="">
+                                            <input type="text" class="form-control" name="made_in" id="made_in" required="">
                                             @if ($errors->has('made_in'))
                                                 <span class="text-danger">{{ $errors->first('made_in') }}</span>
                                             @endif
                                         </div>
                                         <div class="col-md-6">
                                             <label for="review">Materials *</label>
-                                            <input type="text" class="form-control" name="materials" id="materials" placeholder="Fax" required="">
+                                            <input type="text" class="form-control" name="materials" id="materials"  required="">
                                             @if ($errors->has('materials'))
                                                 <span class="text-danger">{{ $errors->first('materials') }}</span>
                                             @endif
@@ -169,49 +188,49 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="review">Label *</label>
-                                            <input type="number" class="form-control" name="labeled" id="labeled" placeholder="Fax" required="">
+                                            <input type="number" class="form-control" name="labeled" id="labeled" required="">
                                             @if ($errors->has('labeled'))
                                                 <span class="text-danger">{{ $errors->first('labeled') }}</span>
                                             @endif
                                         </div>
                                         <div class="col-md-6">
                                             <label for="review">Video Url *</label>
-                                            <input type="number" class="form-control" name="video_url" id="video_url" placeholder="Fax" required="">
+                                            <input type="number" class="form-control" name="video_url" id="video_url"  >
                                             @if ($errors->has('video_url'))
                                                 <span class="text-danger">{{ $errors->first('video_url') }}</span>
                                             @endif
                                         </div>
                                         <div class="col-md-6">
                                             <label for="city">Minum Order *</label>
-                                            <input type="text" class="form-control" name="min_order" id="min_order" placeholder="City" required="">
+                                            <input type="text" class="form-control" name="min_order" id="min_order"  required="">
                                             @if ($errors->has('min_order'))
                                                 <span class="text-danger">{{ $errors->first('min_order') }}</span>
                                             @endif
                                         </div>
                                         <div class="col-md-6">
                                             <label for="review">Total Order Quanty *</label>
-                                            <input type="number" class="form-control" name="total_order_qty" id="total_order_qty" placeholder="Fax" required="">
+                                            <input type="number" class="form-control" name="total_order_qty" id="total_order_qty"  required="">
                                             @if ($errors->has('total_order_qty'))
                                                 <span class="text-danger">{{ $errors->first('total_order_qty') }}</span>
                                             @endif
                                         </div>
-                                        <!-- <div class="col-md-6">
+                                         <div class="col-md-6">
                                             <label for="review">Package *</label>
-                                            <input type="text" class="form-control" name="pack_id" id="pack_id" placeholder="Region/state" required="">
+                                            <input type="text" class="form-control" name="pack_id" id="pack_id" placeholder="Pack_id" required="">
                                             @if ($errors->has('pack_id'))
                                                 <span class="text-danger">{{ $errors->first('pack_id') }}</span>
                                             @endif
-                                        </div> -->
-                                        <div class="col-md-6">
+                                        </div> 
+                                        {{-- <div class="col-md-6">
                                             <label for="email">Availability *</label>
-                                            <input type="text" class="form-control" name="availability" id="availability" placeholder="zip-code" required="">
+                                            <input type="text" class="form-control" name="availability" id="availability"  required="">
                                             @if ($errors->has('availability'))
                                                 <span class="text-danger">{{ $errors->first('availability') }}</span>
                                             @endif
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-6">
                                             <label for="review">Total Sale Amount *</label>
-                                            <input type="number" class="form-control" name="total_sale_amount" id="total_sale_amount" placeholder="Fax" required="">
+                                            <input type="number" class="form-control" name="total_sale_amount" id="total_sale_amount"  required="">
                                             @if ($errors->has('total_sale_amount'))
                                                 <span class="text-danger">{{ $errors->first('total_sale_amount') }}</span>
                                             @endif
@@ -230,13 +249,13 @@
                                                 <span class="text-danger">{{ $errors->first('last_ordered_at') }}</span>
                                             @endif
                                         </div>
-                                        <div class="col-md-6">
+                                        {{-- <div class="col-md-6">
                                             <label for="review">Total View *</label>
                                             <input type="number" class="form-control" name="total_view" id="total_view" placeholder="Fax" required="">
                                             @if ($errors->has('total_view'))
                                                 <span class="text-danger">{{ $errors->first('total_view') }}</span>
                                             @endif
-                                        </div>
+                                        </div> --}}
                                         <div class="col-md-6">
                                             <label for="review">Activated At </label>
                                             <input type="date" name="activated_at" value="{{old('date',date('Y-m-d'))}}" class="form-control  datepickerDB" id="activated_at" required autocomplete="off">
@@ -248,11 +267,17 @@
                                             <button class="btn btn-sm btn-solid" type="submit">Save</button>
                                         </div>
                                     </div>
-                    </form>
-                </div>
+                                </form>
+                            </div>
 
-            </div>
-        </div>
-    </section>
+                        </div>
+                    </div>
+                </section>
     <!-- section end -->
 @endsection
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

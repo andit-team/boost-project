@@ -47,7 +47,7 @@ class ItemsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Item $item,Request $request)
     {
       $this->validateForm($request);
       $slug = Baazar::getUniqueSlug($item,$request->name);
@@ -82,7 +82,7 @@ class ItemsController extends Controller
         ];
 
         Item::create($data);
-        Session::flash('success', 'Item Added Successfully!');
+        Session::flash('success', 'Product Added Successfully!');
     }
 
     /**
@@ -140,12 +140,7 @@ class ItemsController extends Controller
             'min_order'=> 'required',
             'made_in' => 'required',
             'materials'=> 'required',
-            'labeled' => 'required',
-            'available_on' => 'required',
-            'availability' => 'required',
-            'activated_at' => 'required',
-
-
+            'labeled' => 'required',        
         ]);
     }
 }
