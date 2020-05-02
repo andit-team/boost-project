@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1>Hello, <p style="font-size: x-small;">{{ $data->name }}</p></h1>
+<h1>Hello, <p style="font-size: x-small;">{{ $data->name}}</p></h1>
 
 <P>
   Dear,
