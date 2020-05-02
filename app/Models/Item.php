@@ -13,7 +13,7 @@ use App\Models\Review;
 use App\User;
 class Item extends Model
 {
-    protected $fillable = ['name','slug','price','model_no','org_price','sorting','description','min_order','available_on','availability','made_in','materials','labeled','video_url','total_sale_amount','total_order_qty','last_ordered_at','last_carted_at','total_view','activated_at','active','pack_id','user_id'];
+    protected $fillable = ['name','slug','price','model_no','org_price','sorting','description','image','email','min_order','available_on','availability','made_in','materials','labeled','video_url','total_sale_amount','total_order_qty','last_ordered_at','last_carted_at','total_view','activated_at','active','sub_category','pack_id','user_id','shop_id','category_id','size_id','color_id'];
 
 
         public function getRouteKeyName()

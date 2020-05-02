@@ -38,7 +38,10 @@ class ItemsController extends Controller
         $item = Item::all();
         $size= Size::all();
         $color = Color::all();
-          return view ('admin.product.create',compact('category','item','size','color'));
+        $categories = Category::where('parent_id',0)->get();
+        $subCategories = Category::where('parent_id','!=',0)->get();
+        // dd($allCategories);
+          return view ('admin.product.create',compact('category','categories','item','size','color','subCategories'));
     }
 
     /**
@@ -54,30 +57,31 @@ class ItemsController extends Controller
         $data = [
             'name' => $request->name,           
             'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
-            'slug' => $request->slug,
+            'slug' => $slug,
             'price' => $request->price,
             'model_no' => $request->model_no,
             'org_price' => $request->org_price,
             'pack_id' => $request->pack_id,
-            'sorting' => $request->sorting,
+            // 'sorting' => $request->sorting,
             'description' => $request->description,
             'min_order' => $request->min_order,
-            'available_on' => $request->available_on,
-            'availability' => $request->availability,
+            // 'available_on' => $request->available_on,
+            // 'availability' => $request->availability,
             'made_in' => $request->made_in,
+            'sub_category' => $request->sub_category,
             'materials' => $request->materials,
             'labeled' => $request->labeled,
             'video_url' => $request->video_url,
-            'total_sale_amount' => $request->total_sale_amount,
+            // 'total_sale_amount' => $request->total_sale_amount,
             'total_order_qty' => $request->total_order_qty,
             'last_ordered_at' => $request->last_ordered_at,
             'last_carted_at' => $request->last_carted_at,
-            'total_view' => $request->total_view,
+            // 'total_view' => $request->total_view,
             'activated_at' => $request->activated_at,
             'category_id' => $request->category_id,
             'size_id' => $request->size_id,
             'color_id' => $request->color_id,
-            'user_id' => Sentinel::getUser()->id,
+            // 'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
 
