@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Item;
 use App\Models\Size;
 use App\Models\Color;
+use App\Models\Seller;
 use Sentinel;
 use Session;
 use Baazar;
@@ -53,6 +54,8 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
+      $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
+      //dd($sellerId);
       $this->validateForm($request);
       $slug = Baazar::getUniqueSlug($item,$request->name);
         $data = [
@@ -83,7 +86,7 @@ class ItemsController extends Controller
             'category_id' => $request->category_id,
             'size_id' => $request->size_id,
             'color_id' => $request->color_id,
-            // 'user_id' => Sentinel::getUser()->id,
+            'user_id' => $sellerId,
             'created_at' => now(),
         ];
 
