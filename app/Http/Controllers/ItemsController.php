@@ -55,7 +55,9 @@ class ItemsController extends Controller
      */
     public function store(Item $item,Request $request)
     {
+        
       $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
+      
       $this->validateForm($request);
       $slug = Baazar::getUniqueSlug($item,$request->name);
         $data = [
@@ -86,16 +88,13 @@ class ItemsController extends Controller
             'category_id' => $request->category_id,
             'size_id' => $request->size_id,
             'color_id' => $request->color_id,
-            'user_id' => Sentinel::getUser()->id,
+            'user_id' => $sellerId,
             'created_at' => now(),
         ];
 
         
 
-        Item::create($data);
-
-         \Mail::to($data)->send(new ProductApproveRequestMail($data));
-
+        Item::create($data); 
         $name = $data['name'];
          \Mail::to($data['email'])->send(new ProductApproveRequestMail($data, $name));
         Session::flash('success', 'Item Added Successfully!');
@@ -148,10 +147,7 @@ class ItemsController extends Controller
         //
     }
 
-    public function subcategory(Request $request){
-      $categoryId = $request->categoryId;
-      return Item::getSubcategory($categoryId);
-    }
+  
 
     private function validateForm($request){
         $validatedData = $request->validate([

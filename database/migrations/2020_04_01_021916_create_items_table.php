@@ -35,10 +35,10 @@ class CreateItemsTable extends Migration
             $table->string('video_url')->nullable();
             $table->integer('total_sale_amount')->nullable();
             $table->integer('total_order_qty');
-            $table->dateTime('last_ordered_at');
-            $table->dateTime('last_carted_at');
+            $table->date('last_ordered_at');
+            $table->date('last_carted_at');
             $table->integer('total_view')->nullable();
-            $table->dateTime('activated_at')->nullable();
+            $table->date('activated_at')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('shop_id')->nullable();

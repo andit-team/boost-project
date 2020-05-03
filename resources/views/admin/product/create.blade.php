@@ -121,11 +121,11 @@
                                          <div class="col-md-6">
                                             <label for="sub_category">Sub Category *</label>
                                             <select name="sub_category" class="form-control px-10 sub" id="sub_category"  autocomplete="off">
-                                                {{-- <option value="" selected disabled>Select Sub Category</option>
+                                                <option value="" selected disabled>Select Sub Category</option>
                                                 @foreach ($subCategories as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
-                                                @endforeach --}}
-                                                <option value="">Select</option>
+                                                @endforeach
+                                                {{-- <option value="">Select</option> --}}
                                             </select>
                                         </div>  
                                    
@@ -239,14 +239,14 @@
                                         </div> --}}
                                         <div class="col-md-6">
                                             <label for="last_carted_at">Last Carted </label>
-                                            <input type="date" name="last_carted_at" value="{{old('date',date('Y-m-d'))}}" class="form-control  datepickerDB" id="last_carted_at" required autocomplete="off">
+                                            <input type="text" name="last_carted_at" value="{{old('date',date('Y-m-d'))}}" class="form-control  datepickerDB" id="last_carted_at" required autocomplete="off">
                                             @if ($errors->has('last_carted_at'))
                                                 <span class="text-danger">{{ $errors->first('last_carted_at') }}</span>
                                             @endif
                                         </div>
                                         <div class="col-md-6">
                                             <label for="last_ordered_at">Last Order</label>
-                                            <input type="date" name="last_ordered_at" value="{{old('date',date('Y-m-d'))}}" class="form-control  datepickerDB" id="last_carted_at" required autocomplete="off">
+                                            <input type="text" name="last_ordered_at" value="{{old('date',date('Y-m-d'))}}" class="form-control  datepickerDB" id="last_carted_at" required autocomplete="off">
                                             @if ($errors->has('last_ordered_at'))
                                                 <span class="text-danger">{{ $errors->first('last_ordered_at') }}</span>
                                             @endif
@@ -282,32 +282,10 @@
                 </section>
     <!-- section end -->
 @endsection
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
     };
 </script>
-<script>
-    $(document).ready(function(){ 
-        $('#category_id').on('change',function(){
-            //alert('hi');
-            var categoryId = $(this).val();
-            var option     = '<option value="">Sub category</option>'
-            alert(categoryId);
-            $.ajax({
-                type:"GET",
-                url:"/product/"+categoryId,
-                data:{'categoryId':categoryId},
-                success:function(data){
-                    for(var i; i<data.langth;i++){
-                        option = option+'<option value="'+data[i].sub_category+'">'+data[i].name+'</option>';
-                    }
-                    $('.sub').html(option);
-                    $('.sub').trigger("chosen:updated");
-                }
-            })
-        })
-    });
-</script>    
