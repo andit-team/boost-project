@@ -47,16 +47,14 @@ class InventoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Inventory $inventory,Request $request)
     {
         $this->validateForm($request);
         $data = [
             'item_id' => $request->item_id,
             'color_id' => $request->color_id,
-            'qty_stock' => $request->qty_stock,
-            'size_id' => $request->size_id,
-            'sort' => $request->sort,
-            'available_on' => $request->available_on,
+            'size_id' => $request->size_id, 
+            'qty_stock' => $request->qty_stock,                    
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
@@ -114,8 +112,7 @@ class InventoriesController extends Controller
             'item_id' => 'required',
             'color_id' => 'required',
             'qty_stock' => 'required',
-            'size_id' => 'required',
-            'available_on' => 'required'
+            'size_id' => 'required',           
         ]);
     }
 }
