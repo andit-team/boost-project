@@ -23,6 +23,8 @@ Route::prefix('merchant')->group(function () {
     
     Route::resource('/seller','SellersController'); 
     Route::resource('/product','ItemsController');
+    Route::resource('/inventory','InventoriesController');
+    
 });
 
 

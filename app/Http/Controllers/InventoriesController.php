@@ -15,7 +15,7 @@ class InventoriesController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.inventory.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class InventoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.inventory.create');
     }
 
     /**
