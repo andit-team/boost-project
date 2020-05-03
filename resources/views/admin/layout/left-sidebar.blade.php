@@ -168,6 +168,18 @@
                                     {{--                                    <li><a href="add-digital-product.html"><i class="fa fa-circle"></i>Add Product</a></li>--}}
                                 </ul>
                             </li>
+                            <li>
+                                <a href="#"><i class="fa fa-circle"></i>
+                                    <span>Products</span> <i class="fa fa-angle-right pull-right"></i>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="{{ url('merchant/product/adminIndex')}}"><i class="fa fa-circle"></i>Products list</a></li>
+{{--                                    <li><a href="{{ url('andbaazaradmin/courier/create') }}"><i class="fa fa-circle"></i>Courier</a></li>--}}
+                                    {{--                                    <li><a href="category-digitalsub.html"><i class="fa fa-circle"></i>Sub Category</a></li>--}}
+                                    {{--                                    <li><a href="product-listdigital.html"><i class="fa fa-circle"></i>Product List</a></li>--}}
+                                    {{--                                    <li><a href="add-digital-product.html"><i class="fa fa-circle"></i>Add Product</a></li>--}}
+                                </ul>
+                            </li>
                         </ul>
                     </li>
 

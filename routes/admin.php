@@ -20,7 +20,7 @@ Route::prefix('merchant')->group(function () {
     Route::get('signup-step-final','MerchantController@registrationStepFinal');
     Route::post('signup-step-final','MerchantController@registrationStepFinalProcess')->name('merchantStepFinal');
 
-    
+    Route::get('/product/adminIndex','ItemsController@adminIndex');
     Route::resource('/seller','SellersController'); 
     Route::resource('/product','ItemsController');
 });
