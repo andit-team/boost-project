@@ -56,9 +56,10 @@ class ItemsController extends Controller
     public function store(Item $item,Request $request)
     {
         
-      $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
-      
-      $this->validateForm($request);
+      $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first(); 
+
+    //   $this->validateForm($request);
+
       $slug = Baazar::getUniqueSlug($item,$request->name);
         $data = [
             'name' => $request->name,  
@@ -142,30 +143,34 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Item $item)
     {
-        //
+        $item->delete();
+
+        Session::flash('success', 'Product Deleted Successfully');
+ 
+         return redirect('merchant/product');
     }
 
   
 
-    private function validateForm($request){
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'emial'=> 'required',
-            'price' => 'required',
-            'model_no' => 'required',
-            'org_price' => 'required',
-            'pack_id' => 'required',
-            'min_order'=> 'required',
-            'made_in' => 'required',
-            'materials'=> 'required',
-            'labeled' => 'required',
-            // 'available_on' => 'required',
-            // 'availability' => 'required',
-            // 'activated_at' => 'required',
+    // private function validateForm($request){
+    //     $validatedData = $request->validate([
+    //         'name' => 'required',
+    //         'emial'=> 'required',
+    //         'price' => 'required',
+    //         'model_no' => 'required',
+    //         'org_price' => 'required',
+    //         'pack_id' => 'required',
+    //         'min_order'=> 'required',
+    //         'made_in' => 'required',
+    //         'materials'=> 'required',
+    //         'labeled' => 'required',
+    //         // 'available_on' => 'required',
+    //         // 'availability' => 'required',
+    //         // 'activated_at' => 'required',
 
 
-        ]);
-    }
+    //     ]);
+    // }
 }
