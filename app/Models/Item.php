@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use App\Models\Cart;
 use App\Models\Inventory;
 use App\Models\ItemCategory;
@@ -47,5 +48,12 @@ class Item extends Model
      }
      public function review(){
        return $this->hasMany(Review::class,'item_id');
+     }
+
+     public static function getSubcategory(){
+       return DB::table('categories')
+                  ->select('*')
+                  ->where('parent_id','!=',0)
+                  ->get();
      }
 }

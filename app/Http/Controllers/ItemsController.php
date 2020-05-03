@@ -144,6 +144,11 @@ class ItemsController extends Controller
         //
     }
 
+    public function subcategory(Request $request){
+      $categoryId = $request->categoryId;
+      return Item::getSubcategory($categoryId);
+    }
+
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required',
