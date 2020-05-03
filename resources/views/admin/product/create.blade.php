@@ -108,19 +108,8 @@
                                         </div>                          
 
 
-<<<<<<< HEAD
-                                        <div class="col-md-6 pb-4">
-                                            <label for="category_id">Category *</label>
-
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 pb-4">                                        
                                             <label for="name">Category *</label>
-=======
-                                        {{-- <div class="col-md-6 pb-4">
-                                            <label for="category_id">Category *</label> --}}
-
-                                        <div class="col-md-6">
-                                            <label for="name">Category *</label> 
->>>>>>> 7f2a2ed09eb788bedfc7a1c915b6ce49ed88446b
                                             <select name="category_id" class="form-control px-10" id="category_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Category</option>
                                                 @foreach ($category as $row)
@@ -139,12 +128,8 @@
                                             </select>
                                         </div>  
                                    
-                                        {{-- <div class="col-md-6">
-
-                                            <label for="color_id">Color *</label> --}}
-
+                                        <div class="col-md-6">                                          
                                             <label for="name">Color *</label>
-
                                             <select name="color_id" class="form-control" id="color_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Color</option>
                                                 @foreach ($color as $row)
@@ -154,12 +139,8 @@
                                         </div>
 
 
-                                        {{-- <div class="col-md-6 pb-4">
-                                            <label for="size_id">Size *</label> --}}
-
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 pb-4">                                         
                                             <label for="name">Size *</label>
-
                                             <select name="size_id" class="form-control" id="size_id" autocomplete="off">
                                                 <option value="" selected disabled>Select Size</option>
                                                 @foreach ($size as $row)
@@ -282,13 +263,12 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label for="email">Email</label> 
-                                                <input type="email" class="form-control" name="email" value="{{ old('email') }}"   placeholder="Enter Your Email" required="">
+                                                <input type="email" class="form-control" name="email" value="{{ old('email') }}"   placeholder="Enter Your Email" >
                                           
                                             @if ($errors->has('email'))
                                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                                             @endif
                                         </div>
-
                                         <div class="col-md-12">
                                             <button class="btn btn-sm btn-solid" type="submit">Save</button>
                                         </div>
