@@ -9,11 +9,11 @@
 </head>
 <body>
 
-<h1>Hello, <p style="font-size: x-small;">{{ $data->name}}</p></h1>
+<h1>Hello, <p style="font-size: x-small;">{{ $name }}</p></h1>
 
 <P>
   Dear,
-  {{ $data->name }},We got your product publish request.
+  {{ $name }},We got your product publish request.
 </P>
 
 
