@@ -60,7 +60,7 @@ class ItemsController extends Controller
       $slug = Baazar::getUniqueSlug($item,$request->name);
         $data = [
             'name' => $request->name,  
-            // 'email' => $request->email,         
+             'email' => $request->email,         
             'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
             'slug' => $slug,
             'price' => $request->price,
@@ -91,7 +91,7 @@ class ItemsController extends Controller
         ];
 
         Item::create($data);
-        // \Mail::to($data)->send(new ProductApproveRequestMail($data));
+         \Mail::to($data)->send(new ProductApproveRequestMail($data));
         Session::flash('success', 'Item Added Successfully!');
     }
 
@@ -143,7 +143,7 @@ class ItemsController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required',
-            // 'emial'=> 'required',
+            'emial'=> 'required',
             'price' => 'required',
             'model_no' => 'required',
             'org_price' => 'required',

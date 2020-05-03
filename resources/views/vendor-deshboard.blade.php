@@ -44,6 +44,7 @@
                             <ul class="nav nav-tabs" id="top-tab" role="tablist">
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dashboard">dashboard</a></li>
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a>
+                                    {{-- <li class="nav-item"><a data-toggle="tab" class="nav-link" href="{{ url('merchant/product') }}">products</a> --}}
                                 </li>
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">orders</a>
                                 </li>
