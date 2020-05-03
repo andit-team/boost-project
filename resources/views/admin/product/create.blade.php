@@ -107,13 +107,12 @@
                                             </div>
                                         </div>                          
 
-<<<<<<< HEAD
+
                                         <div class="col-md-6 pb-4">
                                             <label for="category_id">Category *</label>
-=======
+
                                         <div class="col-md-6">
                                             <label for="name">Category *</label>
->>>>>>> 5e31ac953b8052574689ffacf5f872bcdd7bba7d
                                             <select name="category_id" class="form-control px-10" id="category_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Category</option>
                                                 @foreach ($category as $row)
