@@ -51,13 +51,13 @@ class ItemsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Item $item,Request $request)
     {
       $this->validateForm($request);
       $slug = Baazar::getUniqueSlug($item,$request->name);
         $data = [
             'name' => $request->name,  
-            'email' => $request->email,         
+            // 'email' => $request->email,         
             'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
             'slug' => $slug,
             'price' => $request->price,
@@ -79,7 +79,7 @@ class ItemsController extends Controller
             'last_ordered_at' => $request->last_ordered_at,
             'last_carted_at' => $request->last_carted_at,
             // 'total_view' => $request->total_view,
-            'activated_at' => $request->activated_at,
+            // 'activated_at' => $request->activated_at,
             'category_id' => $request->category_id,
             'size_id' => $request->size_id,
             'color_id' => $request->color_id,
@@ -88,7 +88,7 @@ class ItemsController extends Controller
         ];
 
         Item::create($data);
-        \Mail::to($data)->send(new ProductApproveRequestMail($data));
+        // \Mail::to($data)->send(new ProductApproveRequestMail($data));
         Session::flash('success', 'Item Added Successfully!');
     }
 
@@ -140,7 +140,7 @@ class ItemsController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required',
-            'emial'=> 'required',
+            // 'emial'=> 'required',
             'price' => 'required',
             'model_no' => 'required',
             'org_price' => 'required',
@@ -149,9 +149,9 @@ class ItemsController extends Controller
             'made_in' => 'required',
             'materials'=> 'required',
             'labeled' => 'required',
-            'available_on' => 'required',
-            'availability' => 'required',
-            'activated_at' => 'required',
+            // 'available_on' => 'required',
+            // 'availability' => 'required',
+            // 'activated_at' => 'required',
 
 
         ]);

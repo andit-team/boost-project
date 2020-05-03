@@ -38,7 +38,7 @@ class CreateItemsTable extends Migration
             $table->dateTime('last_ordered_at');
             $table->dateTime('last_carted_at');
             $table->integer('total_view')->nullable();
-            $table->dateTime('activated_at');
+            $table->dateTime('activated_at')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('shop_id')->nullable();
