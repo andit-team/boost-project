@@ -92,10 +92,7 @@ class ItemsController extends Controller
 
         
 
-        Item::create($data);
-
-         \Mail::to($data)->send(new ProductApproveRequestMail($data));
-
+        Item::create($data); 
         $name = $data['name'];
          \Mail::to($data['email'])->send(new ProductApproveRequestMail($data, $name));
         Session::flash('success', 'Item Added Successfully!');
