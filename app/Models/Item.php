@@ -24,6 +24,14 @@ class Item extends Model
     public function user(){
      return $this->belongsTo(User::class,'user_id');
           }
+    public function category(){
+     return $this->belongsTo(::class,'category_id');
+          }
+
+    public function color(){
+     return $this->belongsTo(::class,'category_id');
+          }
+
     public function pack(){
       return $this->belongsTo(HrmEmployee::class,'pack_id');
       }

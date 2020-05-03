@@ -27,6 +27,7 @@ class ItemsController extends Controller
       $size= Size::all();
       $color = Color::all();
       return view ('admin.product.index',compact('category','item','size','color'));
+    // return view('admin.product.index');
     }
 
     /**
