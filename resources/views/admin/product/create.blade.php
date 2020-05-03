@@ -121,10 +121,10 @@
                                          <div class="col-md-6">
                                             <label for="sub_category">Sub Category *</label>
                                             <select name="sub_category" class="form-control px-10 sub" id="sub_category"  autocomplete="off">
-                                                {{-- <option value="" selected disabled>Select Sub Category</option>
+                                                 <option value="" selected disabled>Select Sub Category</option>
                                                 @foreach ($subCategories as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
-                                                @endforeach --}}
+                                                @endforeach 
                                                 <option value="">Select</option>
                                             </select>
                                         </div>  

@@ -42,7 +42,7 @@
           </div>
           <div class="faq-tab">
               <ul class="nav nav-tabs" id="top-tab" role="tablist">
-                  <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#dashboard">dashboard</a></li>                  
+                  <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#dashboard">dashboard</a></li>
                   </li>
                   <li class="nav-item"><a  class="nav-link active" href="{{ url('merchant/product') }}">All Products</a>
                   </li>
