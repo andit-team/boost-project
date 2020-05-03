@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inventory;
+use App\Models\Item;
+use App\Models\Color;
+use App\Models\Size;
 use Sentinel;
+use Session;
+use Baazar;
 
 class InventoriesController extends Controller
 {
@@ -15,7 +20,11 @@ class InventoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.inventory.index');
+        $inventory = Inventory::all();
+        $item = Item::all();
+        $size= Size::all();
+        $color = Color::all();
+        return view ('admin.inventory.index',compact('inventory','item','size','color'));
     }
 
     /**
@@ -25,7 +34,11 @@ class InventoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.inventory.create');
+        $inventory = Inventory::all();
+        $item = Item::all();
+        $size= Size::all();
+        $color = Color::all();
+        return view ('admin.inventory.create',compact('inventory','item','size','color'));
     }
 
     /**
