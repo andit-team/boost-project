@@ -23,6 +23,8 @@ Route::prefix('merchant')->group(function () {
     Route::get('/product/adminIndex','ItemsController@adminIndex');
     Route::resource('/seller','SellersController'); 
     Route::resource('/product','ItemsController');
+    Route::resource('/inventory','InventoriesController');
+    
 });
 
 

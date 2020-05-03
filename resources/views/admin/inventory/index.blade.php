@@ -43,9 +43,9 @@
                     <div class="faq-tab">
                           <ul class="nav nav-tabs" id="top-tab" role="tablist">
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#dashboard">dashboard</a></li>
-                                <li class="nav-item"><a  class="nav-link active" href="{{ url('merchant/product') }}">All Products</a>
+                                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/product') }}">All Products</a>
+                                <li class="nav-item"><a  class="nav-link active" href="{{ url('merchant/inventory') }}">All Inventory</a>
                                 </li>
-                                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/inventory') }}">All Inventory</a>
                                 </li>
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">orders</a>
                                 </li>
@@ -67,56 +67,11 @@
                       <div class="card dashboard-table mt-0">
                           <div class="card-body">
                               <div class="top-sec">
-                                  <h3>all products</h3>
-                                  <a href="{{ url('merchant/product/create') }}" class="btn btn-sm btn-solid">add product</a>
+                                  <h3>all inventory</h3>
+                                  <a href="{{ url('merchant/inventory/create') }}" class="btn btn-sm btn-solid">add inventory</a>
                                </div>
 
-        <table class="table-responsive-md table mb-0">
-            <thead>
-            <tr>
-                <th>Sl</th>
-                <th>Image</th>
-                <th>Product Name</th>
-                <th>Category</th>
-                <th>Color</th>
-                <th>Size</th>
-                <th>Price</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-              <tbody>
-              @php $i=0; @endphp
-              @foreach($item as $row)
-              <tr>
-                  <td>{{ ++$i }}</td>
-                  <td>
-                      @if(!empty($row->image))
-                         <img class="imagestyle" src="{{ asset($row->image ) }}">
-                      @else
-                          <img class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}">
-                      @endif
-                  </td>
-                  <td>{{ $row->name}}</td>
-                  <td>{{ $row->category->name }}</td>
-                  <td>{{ $row->color->name }}</td>
-                  <td>{{ $row->size->name }}</td>
-                  <td>{{ $row->price}}</td>
-                  <td>
-                      <ul class="list-inline">
-                          <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>
-                          <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-secondary"><i class="fa fa-edit"></i> </a> </li>
-                          <li class="list-inline-item">
-                              <form action="{{ url('/merchant/product/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                  @csrf
-                                  @method('delete')
-                                  <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                              </form>
-                          </li>
-                      </ul>
-                  </td>
-                  @endforeach
-            </tbody>
-           </table>
+      {{-- table --}}
           </div>
          </div>
         </div>

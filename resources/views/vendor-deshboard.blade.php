@@ -22,7 +22,7 @@
         </div>
     </div>
     <!-- breadcrumb End -->
- 
+
 
     <!--  dashboard section start -->
     <section class="dashboard-section section-b-space">
@@ -43,9 +43,11 @@
                         <div class="faq-tab">
                             <ul class="nav nav-tabs" id="top-tab" role="tablist">
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dashboard">dashboard</a></li>
-                                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a>                             
-                                </li>
+                                <!-- <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a></li>                             -->
+
                                 <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/product') }}">All Products</a>
+                                </li>
+                                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/inventory') }}">All Inventory</a>
                                 </li>
                                 </li>
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">orders</a>

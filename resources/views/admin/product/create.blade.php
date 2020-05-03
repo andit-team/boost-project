@@ -56,22 +56,9 @@
                         <div class="faq-tab">
                             <ul class="nav nav-tabs" id="top-tab" role="tablist">
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dashboard">dashboard</a></li>
-
-                                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a>
-                                </li>                              
-
-                                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/product') }}">products</a>
+                                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/product') }}">All Products</a>
                                 </li>
-                                <!-- <li>
-                                    <a href="#"><i class="fa fa-circle"></i>
-                                        <span>Product</span> <i class="fa fa-angle-right pull-right"></i>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li><a href="{{ url('andbaazaradmin/product') }}"><i class="fa fa-circle"></i>All Product</a></li>
-                                        <li><a href="{{ url('andbaazaradmin/product/create') }}"><i class="fa fa-circle"></i> Add Product</a></li>
-                                    </ul>
-                                </li> -->
-
+                                 <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/inventory') }}">All Inventory</a>                     
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">orders</a>
                                 </li>
                                 <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/seller/create') }}">profile</a>
@@ -105,10 +92,10 @@
                                             <div class="divmargin">
                                                 {{-- <img id="output"  class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}" /> --}}
                                             </div>
-                                        </div>                          
+                                        </div>
 
 
-                                        <div class="col-md-6 pb-4">                                        
+                                        <div class="col-md-6 pb-4">
                                             <label for="name">Category *</label>
                                             <select name="category_id" class="form-control px-10" id="category_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Category</option>
@@ -116,7 +103,7 @@
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
                                                 @endforeach
                                             </select>
-                                        </div>                                       
+                                        </div>
 
                                          <div class="col-md-6">
                                             <label for="sub_category">Sub Category *</label>
@@ -124,11 +111,13 @@
                                                  <option value="" selected disabled>Select Sub Category</option>
                                                 @foreach ($subCategories as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
-                                                @endforeach  
+
+                                                @endforeach   
+
                                             </select>
-                                        </div>  
-                                   
-                                        <div class="col-md-6">                                          
+                                        </div>
+
+                                        <div class="col-md-6">
                                             <label for="name">Color *</label>
                                             <select name="color_id" class="form-control" id="color_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Color</option>
@@ -139,7 +128,7 @@
                                         </div>
 
 
-                                        <div class="col-md-6 pb-4">                                         
+                                        <div class="col-md-6 pb-4">
                                             <label for="name">Size *</label>
                                             <select name="size_id" class="form-control" id="size_id" autocomplete="off">
                                                 <option value="" selected disabled>Select Size</option>
@@ -148,7 +137,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                                                                                                                  
+
                                         <div class="col-md-12">
                                             <label for="description">Description *</label>
                                         <textarea class="form-control col-md-12" rows="4" cols="114" name="description" id="description"  required=""></textarea>
@@ -156,7 +145,7 @@
                                                 <span class="text-danger">{{ $errors->first('description') }}</span>
                                             @endif
                                         </div>
-                                                                        
+
                                         <div class="col-md-6">
                                             <label for="model_no">Model No *</label>
                                             <input type="number" class="form-control" name="model_no" id="model_no"  required="">
@@ -227,8 +216,8 @@
                                             @if ($errors->has('pack_id'))
                                                 <span class="text-danger">{{ $errors->first('pack_id') }}</span>
                                             @endif
-                                        </div> 
-                                       
+                                        </div>
+
                                         {{-- <div class="col-md-6">
                                             <label for="review">Total Sale Amount *</label>
                                             <input type="number" class="form-control" name="total_sale_amount" id="total_sale_amount"  required="">
@@ -250,7 +239,7 @@
                                                 <span class="text-danger">{{ $errors->first('last_ordered_at') }}</span>
                                             @endif
                                         </div>
-                                       
+
                                         {{-- <div class="col-md-6">
                                             <label for="review">Activated At </label>
                                             <input type="date" name="activated_at" value="{{old('date',date('Y-m-d'))}}" class="form-control  datepickerDB" id="activated_at" required autocomplete="off">
@@ -262,9 +251,9 @@
 
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="email">Email</label> 
+                                            <label for="email">Email</label>
                                                 <input type="email" class="form-control" name="email" value="{{ old('email') }}"   placeholder="Enter Your Email" >
-                                          
+
                                             @if ($errors->has('email'))
                                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                                             @endif
@@ -288,4 +277,28 @@
         output.src = URL.createObjectURL(event.target.files[0]);
     };
 </script>
-  
+
+   
+<script>
+    $(document).ready(function(){
+        $('#category_id').on('change',function(){
+            //alert('hi');
+            var categoryId = $(this).val();
+            var option     = '<option value="">Sub category</option>'
+            alert(categoryId);
+            $.ajax({
+                type:"GET",
+                url:"/product/"+categoryId,
+                data:{'categoryId':categoryId},
+                success:function(data){
+                    for(var i; i<data.langth;i++){
+                        option = option+'<option value="'+data[i].sub_category+'">'+data[i].name+'</option>';
+                    }
+                    $('.sub').html(option);
+                    $('.sub').trigger("chosen:updated");
+                }
+            })
+        })
+    });
+</script>
+
