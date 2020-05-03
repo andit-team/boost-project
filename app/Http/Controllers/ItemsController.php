@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Item;
 use App\Models\Size;
 use App\Models\Color;
+use App\Models\Seller;
 use Sentinel;
 use Session;
 use Baazar;
@@ -53,11 +54,12 @@ class ItemsController extends Controller
      */
     public function store(Item $item,Request $request)
     {
+      $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
       $this->validateForm($request);
       $slug = Baazar::getUniqueSlug($item,$request->name);
         $data = [
             'name' => $request->name,  
-            // 'email' => $request->email,         
+            'email' => $request->email,         
             'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
             'slug' => $slug,
             'price' => $request->price,
@@ -83,13 +85,18 @@ class ItemsController extends Controller
             'category_id' => $request->category_id,
             'size_id' => $request->size_id,
             'color_id' => $request->color_id,
-            // 'user_id' => Sentinel::getUser()->id,
+            'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
 
+        
+
         Item::create($data);
-        // \Mail::to($data)->send(new ProductApproveRequestMail($data));
+        $name = $data['name'];
+         \Mail::to($data['email'])->send(new ProductApproveRequestMail($data, $name));
         Session::flash('success', 'Item Added Successfully!');
+
+        return back();
     }
 
     /**

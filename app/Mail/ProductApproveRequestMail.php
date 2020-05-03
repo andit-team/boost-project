@@ -17,9 +17,11 @@ class ProductApproveRequestMail extends Mailable
      * @return void
      */
     public $data;
-    public function __construct($data)
+    public $name;
+    public function __construct($data,$name)
     {
         $this->data = $data;
+        $this->name = $name;
     }
 
     /**
@@ -29,6 +31,6 @@ class ProductApproveRequestMail extends Mailable
      */
     public function build()
     {
-        return $this->view('admin.emails.ProductaApproverequest');
+        return $this->view('admin.emails.ProductaApproverequest',['data'=>$this->data,'name'=>$this->name]);
     }
 }
