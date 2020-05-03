@@ -120,11 +120,12 @@
 
                                          <div class="col-md-6">
                                             <label for="sub_category">Sub Category *</label>
-                                            <select name="sub_category" class="form-control px-10" id=""  autocomplete="off">
-                                                <option value="" selected disabled>Select Sub Category</option>
+                                            <select name="sub_category" class="form-control px-10 sub" id="sub_category"  autocomplete="off">
+                                                {{-- <option value="" selected disabled>Select Sub Category</option>
                                                 @foreach ($subCategories as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
-                                                @endforeach
+                                                @endforeach --}}
+                                                <option value="">Select</option>
                                             </select>
                                         </div>  
                                    
@@ -281,9 +282,32 @@
                 </section>
     <!-- section end -->
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
     };
 </script>
+<script>
+    $(document).ready(function(){ 
+        $('#category_id').on('change',function(){
+            //alert('hi');
+            var categoryId = $(this).val();
+            var option     = '<option value="">Sub category</option>'
+            alert(categoryId);
+            $.ajax({
+                type:"GET",
+                url:"/product/"+categoryId,
+                data:{'categoryId':categoryId},
+                success:function(data){
+                    for(var i; i<data.langth;i++){
+                        option = option+'<option value="'+data[i].sub_category+'">'+data[i].name+'</option>';
+                    }
+                    $('.sub').html(option);
+                    $('.sub').trigger("chosen:updated");
+                }
+            })
+        })
+    });
+</script>    

@@ -45,6 +45,7 @@ class Baazar
 
         return ($slugCount > 0) ? "{$slug}-{$slugCount}" : $slug;
     }
+
     public function fileUpload($request, $input = 'image', $old = 'old_image', $path = '/uploads',$name = NULL) {
         $request->validate([
             $input => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -69,5 +70,10 @@ class Baazar
         }
         return '';
     }
+
+    // public function getSubcategory(){
+    //     $subCategory = Category::where('parent_id','!=',0)->get();
+    //     return $subCategory;
+    // }
 
 }
