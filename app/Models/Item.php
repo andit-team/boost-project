@@ -65,10 +65,5 @@ class Item extends Model
        return $this->hasMany(Review::class,'item_id');
      }
 
-     public static function getSubcategory(){
-       return DB::table('categories')
-                  ->select('*')
-                  ->where('parent_id','!=',0)
-                  ->get();
-     }
+   
 }

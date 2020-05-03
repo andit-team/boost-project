@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mail\ProductApproveRequestMail;
+use App\Mail\productApproveMail;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Size;
@@ -117,9 +118,17 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Item $product)
     {
-        //
+        //dd($product);
+        $category = Category::all();
+        $item = Item::all();
+        $size= Size::all();
+        $color = Color::all();
+        $categories = Category::where('parent_id',0)->get();
+        $subCategories = Category::where('parent_id','!=',0)->get();
+
+        return view ('admin.product.edit',compact('category','categories','item','size','color','subCategories','product'));
     }
 
     /**
@@ -129,9 +138,55 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Item $item)
     {
-        // 'image' => Baazar::fileUpload($request,'image','old_image','/uploads/product_image'),
+        $data = [
+            'name' => $request->name,  
+            'email' => $request->email,         
+            'image' => Baazar::fileUpload($request,'image','old_image','/uploads/product_image'), 
+            'price' => $request->price,
+            'model_no' => $request->model_no,
+            'org_price' => $request->org_price,
+            'pack_id' => $request->pack_id,
+            // 'sorting' => $request->sorting,
+            'description' => $request->description,
+            'min_order' => $request->min_order,
+            // 'available_on' => $request->available_on,
+            // 'availability' => $request->availability,
+            'made_in' => $request->made_in,
+            'sub_category' => $request->sub_category,
+            'materials' => $request->materials,
+            'labeled' => $request->labeled,
+            'video_url' => $request->video_url,
+            // 'total_sale_amount' => $request->total_sale_amount,
+            'total_order_qty' => $request->total_order_qty,
+            'last_ordered_at' => $request->last_ordered_at,
+            'last_carted_at' => $request->last_carted_at,
+            // 'total_view' => $request->total_view,
+            // 'activated_at' => $request->activated_at,
+            'category_id' => $request->category_id,
+            'size_id' => $request->size_id,
+            'color_id' => $request->color_id,
+            'user_id' => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ];
+
+        
+
+        $item->update($data); 
+        $name = $data['name'];
+         \Mail::to($data['email'])->send(new productApproveMail($data, $name));
+        Session::flash('success', 'Item Added Successfully!');
+
+        return back();
+    }
+
+    public function adminIndex(){
+    $category = Category::all();
+      $item = Item::all();
+      $size= Size::all();
+      $color = Color::all();
+     return view('admin.product.adminIndex',compact('category','item','size','color'));
     }
 
     /**

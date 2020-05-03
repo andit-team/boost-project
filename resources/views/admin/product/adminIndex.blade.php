@@ -1,0 +1,80 @@
+@extends('admin.layout.master')
+
+@section('content')
+    <style>
+        .imagestyle{
+            width: 50px;
+            height: 50px;
+            border-width: 4px 4px 4px 4px;
+            border-style: solid;
+            border-color: #ccc;
+        }
+    </style>
+    @include('admin.elements.alert')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Manage Order</h5>
+                    </div>
+                    <div class="card-body">
+                        <table class="table" id="example">
+                            <thead>
+                            <tr>
+                                <th>Sl</th>
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Category</th>
+                                <th>Color</th>
+                                <th>Size</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead> 
+                            <tbody>
+                                @php $i=0; @endphp
+                                @foreach($item as $row)
+                                <tr>
+                                    <td>{{ ++$i }}</td>
+                                    <td>
+                                        @if(!empty($row->image))
+                                           <img class="imagestyle" src="{{ asset($row->image ) }}">
+                                        @else
+                                            <img class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}">
+                                        @endif
+                                    </td>
+                                    <td>{{ $row->name}}</td>
+                                    <td>{{ $row->category->name }}</td>
+                                    <td>{{ $row->color->name }}</td>
+                                    <td>{{ $row->size->name }}</td>
+                                    <td>{{ $row->price}}</td>
+                                    <td>
+                                        <ul class="list-inline">
+                                            {{-- <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li> --}}
+                                            <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-check"></i> </a> </li>
+                                            {{-- <li class="list-inline-item">
+                                                <form action="{{ url('/merchant/product/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                                </form>
+                                            </li> --}}
+                                        </ul>
+                                    </td>
+                                    @endforeach
+                              </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@push('js')
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+} );
+    </script>
+    @endpush

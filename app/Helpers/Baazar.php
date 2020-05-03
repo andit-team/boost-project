@@ -69,11 +69,5 @@ class Baazar
             return $request->$old;
         }
         return '';
-    }
-
-    // public function getSubcategory(){
-    //     $subCategory = Category::where('parent_id','!=',0)->get();
-    //     return $subCategory;
-    // }
-
+    } 
 }

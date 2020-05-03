@@ -12,7 +12,7 @@ Route::prefix('merchant')->group(function () {
     Route::get('dashboard','MerchantController@dashboard');
     Route::get('login','MerchantController@merchantlogin');
     Route::post('login','MerchantController@merchantloginprocess')->name('merchantloginprocess');
-    Route::get('/product','ItemsController@subcategory');
+    
     Route::get('signup-step-one','MerchantController@registrationStepOne');
     Route::post('signup-step-one','MerchantController@registrationStepOneProcess')->name('merchantStepOne');
     Route::get('signup-step-two','MerchantController@registrationStepTwo');
@@ -20,7 +20,7 @@ Route::prefix('merchant')->group(function () {
     Route::get('signup-step-final','MerchantController@registrationStepFinal');
     Route::post('signup-step-final','MerchantController@registrationStepFinalProcess')->name('merchantStepFinal');
 
-    
+    Route::get('/product/adminIndex','ItemsController@adminIndex');
     Route::resource('/seller','SellersController'); 
     Route::resource('/product','ItemsController');
     Route::resource('/inventory','InventoriesController');
