@@ -28,6 +28,7 @@ use App\Models\ShippingMethod;
 use App\Models\Shop;
 use App\Models\Size;
 use App\Models\Tag;
+use App\Models\Item;
 class User extends EloquentUser
 {
     protected $fillable = [
@@ -64,6 +65,9 @@ class User extends EloquentUser
       }
       public function inventory(){
         return $this->hasMany(Inventory::class,'user_id');
+      }
+      public function item(){
+         return $this->hasMany(Item::class,'user_id');
       }
       public function itemcategory(){
         return $this->hasMany(ItemCategory::class,'user_id');

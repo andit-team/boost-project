@@ -27,6 +27,7 @@ class ItemsController extends Controller
       $size= Size::all();
       $color = Color::all();
       return view ('admin.product.index',compact('category','item','size','color'));
+    // return view('admin.product.index');
     }
 
     /**
@@ -92,6 +93,9 @@ class ItemsController extends Controller
         
 
         Item::create($data);
+
+         \Mail::to($data)->send(new ProductApproveRequestMail($data));
+
         $name = $data['name'];
          \Mail::to($data['email'])->send(new ProductApproveRequestMail($data, $name));
         Session::flash('success', 'Item Added Successfully!');
@@ -152,7 +156,7 @@ class ItemsController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required',
-            // 'emial'=> 'required',
+            'emial'=> 'required',
             'price' => 'required',
             'model_no' => 'required',
             'org_price' => 'required',

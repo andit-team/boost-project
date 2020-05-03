@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Inventory;
 use App\Models\ItemImage;
 use App\Models\OrderItem;
+use App\Models\Item;
 use App\User;
 
 class Color extends Model
@@ -33,6 +34,9 @@ class Color extends Model
   }
   public function orderitem(){
     return $this->hasMany(OrderItem::class,'item_id');
+  }
+  public function item(){
+     return $this->hasMany(Item::class,'color_id');
   }
 
 }
