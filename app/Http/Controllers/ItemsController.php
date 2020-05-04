@@ -202,6 +202,16 @@ class ItemsController extends Controller
     }
 
    
+    public function dropzoneStore(Request $request)
+    {
+        $image = $request->file('file');
+   
+        $imageName = time().'.'.$image->extension();
+        $image->move(public_path('images'),$imageName);
+   
+        return response()->json(['success'=>$imageName]);
+    }
+
 
     public function adminIndex(){
     $category = Category::all();

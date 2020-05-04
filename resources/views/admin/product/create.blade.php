@@ -90,7 +90,7 @@
                                             <label for="image">Image</label>
                                             <input type="file" class="form-control col-md-12" name="image" id="image" onchange="loadFile(event)">
                                             <div class="divmargin">
-                                                {{-- <img id="output"  class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}" /> --}}
+                                                 {{-- <img id="output"  class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}" />  --}}
                                             </div>
                                         </div>
 
@@ -115,17 +115,30 @@
                                                 @endforeach   
 
                                             </select>
-                                        </div> 
-                                        <div class="col-md-6 pb-4">
-                                            <label for="name">Tag *</label>
-                                            <select name="tag_id" class="form-control px-10" id="tag_id"  autocomplete="off">
-                                                <option value="" selected disabled>Select Tag</option>
-                                                @foreach ($tag as $row)
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="name">Color *</label>
+                                            <select name="color_id" class="form-control" id="color_id"  autocomplete="off">
+                                                <option value="" selected disabled>Select Color</option>
+                                                @foreach ($color as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="col-md-6">
+
+
+                                        <div class="col-md-6 pb-4">
+                                            <label for="name">Size *</label>
+                                            <select name="size_id" class="form-control" id="size_id" autocomplete="off">
+                                                <option value="" selected disabled>Select Size</option>
+                                                @foreach ($size as $row)
+                                                    <option value="{{ $row->id }}">{{$row->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-12">
                                             <label for="description">Description *</label>
                                         <textarea class="form-control col-md-12" rows="4" cols="114" name="description" id="description"  required=""></textarea>
                                             @if ($errors->has('description'))
@@ -236,9 +249,14 @@
 
                                         </div> --}}
 
-                                        </div> 
-                                        <div class="col-md-6"> 
-                                        <input type="hidden" class="form-control" name="email" value="{{ $sellerId->email }}"   placeholder="Enter Your Email" > 
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="email">Email</label>
+                                                <input type="email" class="form-control" name="email" value="{{ old('email') }}"   placeholder="Enter Your Email" >
+
+                                            @if ($errors->has('email'))
+                                                <span class="text-danger">{{ $errors->first('email') }}</span>
+                                            @endif
                                         </div>
                                         <div class="col-md-12">
                                             <button class="btn btn-sm btn-solid" type="submit">Save</button>
@@ -252,7 +270,7 @@
                 </section>
     <!-- section end -->
 @endsection
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');
@@ -270,7 +288,7 @@
             alert(categoryId);
             $.ajax({
                 type:"GET",
-                url:"/product/subcategory/{id}",
+                url:"/product/"+categoryId,
                 data:{'categoryId':categoryId},
                 success:function(data){
                     for(var i; i<data.langth;i++){
