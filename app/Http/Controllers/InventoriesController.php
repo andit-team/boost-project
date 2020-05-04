@@ -104,9 +104,20 @@ class InventoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Inventory $inventory,Request $request)
     {
-        //
+        $this->validateForm($request);
+        // $slug = Baazar::getUniqueSlug($inventory,$request->name);
+        $data = [
+            'item_id' => $request->item_id,
+            'color_id' => $request->color_id,
+            'size_id' => $request->size_id, 
+            'qty_stock' => $request->qty_stock,                    
+            'user_id' => Sentinel::getUser()->id,
+            'updated_at' => now(),
+        ];
+        $inventory->update($data);
+        return redirect('merchant/inventory');
     }
 
     /**

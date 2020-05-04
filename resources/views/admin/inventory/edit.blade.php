@@ -108,8 +108,8 @@
                                         </div> 
 
                                         <div class="form-group row">
-                                            <label for="title" class="col-xl-3 col-md-4">Stock Quantity <span>*</span></label>
-                                            <input class="form-control col-md-8" name="title" value="{{ $inventory->qty_stock }}" id="title" type="text" required="">
+                                            <label for="qty_stock" class="col-xl-3 col-md-4">Stock Quantity <span>*</span></label>
+                                            <input class="form-control col-md-8" name="qty_stock" value="{{ $inventory->qty_stock }}" id="qty_stock" type="number" required="">
                                         </div>  
                                      
                                         <div class="form-group row ">
