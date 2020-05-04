@@ -66,9 +66,9 @@
                                     <div class="form-row">
                                                                         
                                         <div class="col-md-6 pb-4">
-                                            <label for="name">Item *</label>
+                                            <label for="name">Product *</label>
                                             <select name="item_id" class="form-control px-10" id="item_id"  autocomplete="off">
-                                                <option value="" selected disabled>Select Item</option>
+                                                <option value="" selected disabled>Select Product</option>
                                                 @foreach ($item as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
                                                 @endforeach

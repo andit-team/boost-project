@@ -10,7 +10,13 @@ use App\User;
 class Inventory extends Model
 {
 
-    protected $fillable = ['item_id','color_id','qty_stock','size_id','sort','available_on','active','user_id'];
+    protected $fillable = ['item_id','color_id','slug','qty_stock','size_id','sort','available_on','active','user_id'];
+    
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
 
     public function user(){
      return $this->belongsTo(User::class,'user_id');
