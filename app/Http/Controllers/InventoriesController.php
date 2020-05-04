@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Inventory;
+use App\Models\Item;
+use App\Models\Color;
+use App\Models\Size;
 use Sentinel;
+use Session;
+use Baazar;
 
 class InventoriesController extends Controller
 {
@@ -15,7 +20,12 @@ class InventoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.inventory.index');
+        $inventory = Inventory::all();
+        $item = Item::where('user_id',Sentinel::getUser()->id)->get();
+        
+        $size= Size::all();
+        $color = Color::all();
+        return view ('admin.inventory.index',compact('inventory','item','size','color'));
     }
 
     /**
@@ -25,7 +35,13 @@ class InventoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.inventory.create');
+        $inventory = Inventory::all();
+       // $item = Item::all();
+        $item = Item::where('user_id',Sentinel::getUser()->id)->get();
+        //dd($item);
+        $size= Size::all();
+        $color = Color::all();
+        return view ('admin.inventory.create',compact('inventory','item','size','color'));
     }
 
     /**
@@ -34,21 +50,21 @@ class InventoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Inventory $inventory,Request $request)
     {
         $this->validateForm($request);
+        $slug = Baazar::getUniqueSlug($inventory,$request->name);
         $data = [
             'item_id' => $request->item_id,
             'color_id' => $request->color_id,
-            'qty_stock' => $request->qty_stock,
-            'size_id' => $request->size_id,
-            'sort' => $request->sort,
-            'available_on' => $request->available_on,
+            'size_id' => $request->size_id, 
+            'qty_stock' => $request->qty_stock,                    
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
 
         Inventory::create($data);
+        return redirect('merchant/inventory');
     }
 
     /**
@@ -57,9 +73,10 @@ class InventoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Inventory $inventory)
     {
-        //
+       
+        return view ('admin.inventory.show',compact('inventory'));
     }
 
     /**
@@ -68,9 +85,16 @@ class InventoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Inventory $inventory)
     {
-        //
+        $inventory = Inventory::where('slug',$inventory->slug)->first();
+       //dd( $inventory);
+        //  $item = Item::all();
+         $item = Item::where('user_id',Sentinel::getUser()->id)->get();
+         //dd($item);
+         $size= Size::all();
+         $color = Color::all();
+         return view ('admin.inventory.edit',compact('inventory','item','size','color'));     
     }
 
     /**
@@ -80,9 +104,20 @@ class InventoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Inventory $inventory,Request $request)
     {
-        //
+        $this->validateForm($request);
+        // $slug = Baazar::getUniqueSlug($inventory,$request->name);
+        $data = [
+            'item_id' => $request->item_id,
+            'color_id' => $request->color_id,
+            'size_id' => $request->size_id, 
+            'qty_stock' => $request->qty_stock,                    
+            'user_id' => Sentinel::getUser()->id,
+            'updated_at' => now(),
+        ];
+        $inventory->update($data);
+        return redirect('merchant/inventory');
     }
 
     /**
@@ -91,9 +126,10 @@ class InventoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Inventory $inventory)
     {
-        //
+        $inventory->delete();
+        return redirect('merchant/inventory');
     }
 
     private function validateForm($request){
@@ -101,8 +137,7 @@ class InventoriesController extends Controller
             'item_id' => 'required',
             'color_id' => 'required',
             'qty_stock' => 'required',
-            'size_id' => 'required',
-            'available_on' => 'required'
+            'size_id' => 'required',           
         ]);
     }
 }
