@@ -39,6 +39,8 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('') }}/assets/css/color1.css" media="screen" id="color">
 
+    <!-- Dropzone css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
 
 </head>
 
@@ -1478,6 +1480,9 @@
 
 <!-- Theme js-->
 <script src="{{ asset('') }}/assets/js/script.js"></script>
+
+<!-- Dropzone js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
 
 <script>
     function openSearch() {

@@ -117,6 +117,11 @@
                   @endforeach
             </tbody>
            </table>
+           <div class="col-md-6">
+            <form action="/file-upload"
+                class="dropzone"
+                id="my-awesome-dropzone"></form>
+           </div>
           </div>
          </div>
         </div>
