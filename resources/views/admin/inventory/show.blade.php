@@ -103,14 +103,7 @@
                                                         <input disabled type="text" value="{{  $inventory->qty_stock }}" class="form-control text-dark">
                                                     </div>
                                                </div>   
-
-                                               {{-- <div class="form-group row ">
-                                                    <label class="col-xl-3 col-md-2 "></label>
-                                                    <div class="col-sm-10">
-                                                        <a href="{{ url('merchant/inventory') }}"  class="btn btn-info">Back</a>
-                                                    </div>
-                                               </div> --}}
-
+                                               
                                                <div class="form-group row ">
                                                 <label class="col-sm-2 text-right control-label col-form-label"></label>
                                                     <div class="checkbox checkbox-primary col-md-6">

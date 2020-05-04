@@ -87,8 +87,14 @@ class InventoriesController extends Controller
      */
     public function edit(Inventory $inventory)
     {
-         
-        return view ('admin.inventory.edit',compact('inventory'));
+        $inventory = Inventory::where('slug',$inventory->slug)->first();
+       //dd( $inventory);
+        //  $item = Item::all();
+         $item = Item::where('user_id',Sentinel::getUser()->id)->get();
+         //dd($item);
+         $size= Size::all();
+         $color = Color::all();
+         return view ('admin.inventory.edit',compact('inventory','item','size','color'));     
     }
 
     /**
