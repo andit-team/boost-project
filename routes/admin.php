@@ -19,7 +19,9 @@ Route::prefix('merchant')->group(function () {
     Route::post('signup-step-two','MerchantController@registrationStepTwoProcess')->name('merchantStepTwo');
     Route::get('signup-step-final','MerchantController@registrationStepFinal');
     Route::post('signup-step-final','MerchantController@registrationStepFinalProcess')->name('merchantStepFinal');
-
+    
+    Route::get('/product/subcategory/{id}','ItemsController@subcategory');
+    Route::post('/product/approvement/{slug}','ItemsController@approvement');
     Route::get('/product/adminIndex','ItemsController@adminIndex');
     Route::resource('/seller','SellersController'); 
     Route::resource('/product','ItemsController');

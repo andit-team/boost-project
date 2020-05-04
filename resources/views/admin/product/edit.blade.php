@@ -88,7 +88,7 @@
                 <!-- address section start -->
                 <div class="col-sm-9 contact-page register-page container">
                         <h3>Edit Product</h3>
-                            <form class="theme-form" action="{{ url('/merchant/product/'.$product->slug) }}" method="post"  enctype="multipart/form-data">
+                            <form class="theme-form" action="{{ url('merchant/product/'.$product->slug) }}" method="post"  enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
                                     <div class="form-row">
@@ -130,28 +130,17 @@
                                             </select>
                                         </div>  
                                    
-                                        <div class="col-md-6">                                          
-                                            <label for="name">Color *</label>
-                                            <select name="color_id" class="form-control" id="color_id"  autocomplete="off">
-                                                <option value="" selected disabled>Select Color</option>
-                                                @foreach ($color as $row)
-                                                    <option value="{{ $row->id }}" @if($product->color_id == $row->id) selected @endif>{{$row->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-
-                                        <div class="col-md-6 pb-4">                                         
-                                            <label for="name">Size *</label>
-                                            <select name="size_id" class="form-control" id="size_id" autocomplete="off">
-                                                <option value="" selected disabled>Select Size</option>
-                                                @foreach ($size as $row)
-                                                    <option value="{{ $row->id }}"@if($product->size_id == $row->id) selected @endif>{{$row->name}}</option>
+                                        <div class="col-md-6 pb-4">
+                                            <label for="name">Tag *</label>
+                                            <select name="tag_id" class="form-control px-10" id="tag_id"  autocomplete="off">
+                                                <option value="" selected disabled>Select Tag</option>
+                                                @foreach ($tag as $row)
+                                                    <option value="{{ $row->id }}" @if($product->tag_id == $row->id) selected @endif>{{$row->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
                                                                                                                                   
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <label for="description">Description *</label>
                                         <textarea class="form-control col-md-12" rows="4" cols="114" name="description" id="description"  required="">{{ $product->description }}</textarea>
                                             @if ($errors->has('description'))
@@ -263,16 +252,11 @@
                                         </div> --}}
 
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="email">Email</label> 
-                                                <input type="email" class="form-control" name="email" value="{{ $product->email }}"   placeholder="Enter Your Email" >
-                                          
-                                            @if ($errors->has('email'))
-                                                <span class="text-danger">{{ $errors->first('email') }}</span>
-                                            @endif
+                                        <div class="col-md-6"> 
+                                                <input type="hidden" class="form-control" name="email" value="{{ $product->email }}"   placeholder="Enter Your Email" > 
                                         </div>
                                         <div class="col-md-12">
-                                            <button class="btn btn-sm btn-solid" type="submit">Approve</button>
+                                            <button class="btn btn-sm btn-solid" type="submit">Update</button>
                                         </div>
                                     </div>
                                 </form>

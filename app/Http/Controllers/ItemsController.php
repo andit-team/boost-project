@@ -10,6 +10,9 @@ use App\Models\Item;
 use App\Models\Size;
 use App\Models\Color;
 use App\Models\Seller;
+use App\Models\ItemCategory;
+use App\Models\ItemTag;
+use App\Models\Tag;
 use Sentinel;
 use Session;
 use Baazar;
@@ -44,8 +47,10 @@ class ItemsController extends Controller
         $color = Color::all();
         $categories = Category::where('parent_id',0)->get();
         $subCategories = Category::where('parent_id','!=',0)->get();
-        // dd($allCategories);
-          return view ('admin.product.create',compact('category','categories','item','size','color','subCategories'));
+        $tag = Tag::all();
+        $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        //dd($sellerId);
+          return view ('admin.product.create',compact('category','categories','item','size','color','subCategories','tag','sellerId'));
     }
 
     /**
@@ -56,12 +61,14 @@ class ItemsController extends Controller
      */
     public function store(Item $item,Request $request)
     {
-      $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
-    //   $this->validateForm($request);
+      //dd($request->all());
+      //$sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
+      //dd($sellerId);
+    //  $this->validateForm($request);
       $slug = Baazar::getUniqueSlug($item,$request->name);
         $data = [
-            'name' => $request->name,  
-            'email' => $request->email,         
+            'name' => $request->name,
+            'email'=> $request->email,          
             'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
             'slug' => $slug,
             'price' => $request->price,
@@ -84,16 +91,30 @@ class ItemsController extends Controller
             'last_carted_at' => $request->last_carted_at,
             // 'total_view' => $request->total_view,
             // 'activated_at' => $request->activated_at,
-            'category_id' => $request->category_id,
-            'size_id' => $request->size_id,
-            'color_id' => $request->color_id,
+            'category_id' => $request->category_id, 
+            'tag_id'      => $request->tag_id,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
 
         
 
-        Item::create($data); 
+        $product = Item::create($data); 
+
+        $itemcategory = ItemCategory::create([
+           'category_id' => $product->category_id,
+           'item_id' => $product->id,
+           'user_id' => Sentinel::getUser()->id,
+           'created_at' => now(),
+       ]);
+
+       $itemtag = ItemTag::create([
+         'tag_id' => $product->tag_id,
+         'item_id' => $product->id,
+         'user_id' => Sentinel::getUser()->id,
+         'created_at' => now(),
+       ]);
+
         $name = $data['name'];
          \Mail::to($data['email'])->send(new ProductApproveRequestMail($data, $name));
         Session::flash('success', 'Item Added Successfully!');
@@ -107,9 +128,9 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Item $product)
     {
-        //
+        return view('admin.product.show',compact('product'));
     }
 
     /**
@@ -127,8 +148,9 @@ class ItemsController extends Controller
         $color = Color::all();
         $categories = Category::where('parent_id',0)->get();
         $subCategories = Category::where('parent_id','!=',0)->get();
+        $tag = Tag::all();
 
-        return view ('admin.product.edit',compact('category','categories','item','size','color','subCategories','product'));
+        return view ('admin.product.edit',compact('category','categories','item','size','color','subCategories','product','tag'));
     }
 
     /**
@@ -141,7 +163,7 @@ class ItemsController extends Controller
     public function update(Request $request, Item $item)
     {
         $data = [
-            'name' => $request->name,  
+            'name' => $request->name,
             'email' => $request->email,         
             'image' => Baazar::fileUpload($request,'image','old_image','/uploads/product_image'), 
             'price' => $request->price,
@@ -164,22 +186,22 @@ class ItemsController extends Controller
             'last_carted_at' => $request->last_carted_at,
             // 'total_view' => $request->total_view,
             // 'activated_at' => $request->activated_at,
-            'category_id' => $request->category_id,
-            'size_id' => $request->size_id,
-            'color_id' => $request->color_id,
+            'category_id' => $request->category_id, 
+            'tag_id'      => $request->tag_id,
             'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
+            'update_at' => now(),
         ];
 
         
 
-        $item->update($data); 
-        $name = $data['name'];
-         \Mail::to($data['email'])->send(new productApproveMail($data, $name));
+        $item->update($data);  
+      
         Session::flash('success', 'Item Added Successfully!');
 
         return back();
     }
+
+   
 
     public function adminIndex(){
     $category = Category::all();
@@ -187,6 +209,26 @@ class ItemsController extends Controller
       $size= Size::all();
       $color = Color::all();
      return view('admin.product.adminIndex',compact('category','item','size','color'));
+    }
+
+     public function approvement($slug){
+      
+     
+      $data = Item::where('slug',$slug)->first();
+      
+      $data->update(['status' => 'Active']);
+      
+      $name = $data['name'];
+      \Mail::to($data['email'])->send(new productApproveMail($data, $name));
+      Session::flash('success', 'Item Approve Successfully!');
+
+        return back();
+
+    }
+
+    public function subcategory(Request $request){
+      $categoryId = $request->categoryId;
+      return Item::getSubcategory($categoryId);
     }
 
     /**
@@ -204,10 +246,10 @@ class ItemsController extends Controller
          return redirect('merchant/product');
     }
 
-    public function subcategory(Request $request){
-      $categoryId = $request->categoryId;
-      return Item::getSubcategory($categoryId);
-    }
+    // public function subcategory(Request $request){
+    //   $categoryId = $request->categoryId;
+    //   return Item::getSubcategory($categoryId);
+    // }
 
     // private function validateForm($request){
     //     $validatedData = $request->validate([
