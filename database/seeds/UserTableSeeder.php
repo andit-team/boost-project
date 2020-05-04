@@ -39,7 +39,8 @@ class UserTableSeeder extends Seeder
         $users = [
                 'first_name'    => 'Rofiq',
                 'last_name'     => 'Mia',
-                'email'         => 'seller@andit.com',
+                // 'email'         => 'seller@andit.com',
+                'email'         => 'jalalk53@ymail.com',
                 'password'      => '123456', //123456
                 'type'          => 'sellers',
                 'created_at'    => now(),

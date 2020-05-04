@@ -54,12 +54,6 @@ class CategoriesController extends Controller
             ]);
 
 
-            $itemcategory = ItemCategory::create([
-               'category_id' => $data->id,
-                'user_id' => Sentinel::getUser()->id,
-                'created_at' => now(),
-            ]);
-
 
         //Category::create($data);
 

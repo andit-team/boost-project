@@ -15,8 +15,8 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email');
+            $table->string('name'); 
+            $table->string('email')->nullable();
             $table->string('image')->nullable();
             $table->string('slug');
             $table->string('sub_category');
@@ -40,19 +40,18 @@ class CreateItemsTable extends Migration
             $table->integer('total_view')->nullable();
             $table->dateTime('activated_at')->nullable();
             $table->boolean('active')->default(1)->change();
+            $table->enum('status',['Active','Inactive'])->default('Inactive');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('shop_id')->nullable();
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('size_id');
-            $table->unsignedBigInteger('color_id');
+            $table->unsignedBigInteger('category_id'); 
+            $table->unsignedBigInteger('tag_id');
             $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade'); 
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade')->onUpdate('cascade'); 
       });
     }
 
