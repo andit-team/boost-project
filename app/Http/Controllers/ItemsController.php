@@ -27,7 +27,7 @@ class ItemsController extends Controller
     public function index()
     {
       $category = Category::all();
-      $item = Item::all();
+      $item = Item::where('status','Active')->get();
       $size= Size::all();
       $color = Color::all();
       return view ('admin.product.index',compact('category','item','size','color'));
