@@ -71,14 +71,49 @@
                                   <a href="{{ url('merchant/inventory/create') }}" class="btn btn-sm btn-solid">add inventory</a>
                                </div>
 
-      {{-- table --}}
-          </div>
-         </div>
-        </div>
-       </div>
-      </div>
-      </div>
-  </section>
+                               <table class="table-responsive-md table mb-0">
+                                <thead>
+                                <tr>
+                                    <th>Sl</th>                                   
+                                    <th>Product Name</th>                                   
+                                    <th>Color</th>
+                                    <th>Size</th>
+                                    <th>Stock Quantity</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                  @php $i=0; @endphp
+                                  @foreach($inventory as $row)
+                                  <tr>
+                                      <td>{{ ++$i }}</td>                                    
+                                      <td>{{ $row->item->name}}</td>                                     
+                                      <td>{{ $row->color->name }}</td>
+                                      <td>{{ $row->size->name }}</td>
+                                      <td>{{ $row->qty_stock}}</td>
+                                      <td>
+                                          <ul class="list-inline">
+                                              <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>
+                                              <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-secondary"><i class="fa fa-edit"></i> </a> </li>
+                                              <li class="list-inline-item">
+                                                  <form action="{{ url('/merchant/product/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                                      @csrf
+                                                      @method('delete')
+                                                      <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                                  </form>
+                                              </li>
+                                          </ul>
+                                      </td>
+                                   @endforeach
+                                 </tbody>
+                               </table>
+                             </div>
+                          </div>
+                       </div>
+                   </div>
+               </div>
+            </div>
+       </section>
     <!--  dashboard section end -->
 
 

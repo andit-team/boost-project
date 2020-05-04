@@ -21,7 +21,8 @@ class InventoriesController extends Controller
     public function index()
     {
         $inventory = Inventory::all();
-        $item = Item::all();
+        $item = Item::where('user_id',Sentinel::getUser()->id)->get();
+        
         $size= Size::all();
         $color = Color::all();
         return view ('admin.inventory.index',compact('inventory','item','size','color'));
@@ -35,7 +36,9 @@ class InventoriesController extends Controller
     public function create()
     {
         $inventory = Inventory::all();
-        $item = Item::all();
+       // $item = Item::all();
+        $item = Item::where('user_id',Sentinel::getUser()->id)->get();
+        //dd($item);
         $size= Size::all();
         $color = Color::all();
         return view ('admin.inventory.create',compact('inventory','item','size','color'));
@@ -60,6 +63,7 @@ class InventoriesController extends Controller
         ];
 
         Inventory::create($data);
+        return redirect('merchant/inventory');
     }
 
     /**

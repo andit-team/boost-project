@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="page-header-left">
-                                <h3>Create Tag
+                                <h3>Create Color
                                     <small>AndBaazar Admin panel</small>
                                 </h3>
                             </div>
@@ -17,8 +17,8 @@
                         <div class="col-lg-6">
                             <ol class="breadcrumb pull-right">
                                 <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                                <li class="breadcrumb-item">Tag </li>
-                                <li class="breadcrumb-item active">Create Tag</li>
+                                <li class="breadcrumb-item">Color </li>
+                                <li class="breadcrumb-item active">Create Color</li>
                             </ol>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
             <div class="container-fluid">
                 <div class="card tab2-card">
                     <div class="card-header">
-                        <h5>Create New Tag</h5>
+                        <h5>Create New Color</h5>
                     </div>
                     <div class="card-body">
                                 <form class="needs-validation" novalidate="" action="{{ route('color.store') }}" method="post" enctype="multipart/form-data">
@@ -38,7 +38,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <div class="form-group row">
-                                                <label for="name" class="col-xl-3 col-md-4">Tag Name <span>*</span></label>
+                                                <label for="name" class="col-xl-3 col-md-4">Color Name <span>*</span></label>
                                                 <input class="form-control col-md-8" name="name" id="name" type="text" required="">
                                             </div>
                                             <div class="form-group row">
@@ -52,14 +52,13 @@
                                                     <button type="submit"  class="btn btn-primary">Save</button>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <!-- Container-fluid Ends-->
+                    <!-- Container-fluid Ends-->
 
         </div>
 @endsection
