@@ -1,3 +1,4 @@
+
 @extends('layouts.vendor')
 
 @section('content')
@@ -67,53 +68,67 @@
                       <div class="card dashboard-table mt-0">
                           <div class="card-body">
                               <div class="top-sec">
-                                  <h3>all inventory</h3>
-                                  <a href="{{ url('merchant/inventory/create') }}" class="btn btn-sm btn-solid">add inventory</a>
+                                  <h3>Show inventory</h3>                                 
                                </div>
 
-                               <table class="table-responsive-md table mb-0">
-                                <thead>
-                                <tr>
-                                    <th>Sl</th>                                   
-                                    <th>Product Name</th>                                   
-                                    <th>Color</th>
-                                    <th>Size</th>
-                                    <th>Stock Quantity</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                  @php $i=0; @endphp
-                                  @foreach($inventory as $row)
-                                  <tr>
-                                      <td>{{ ++$i }}</td>                                    
-                                      <td>{{ $row->item->name}}</td>                                     
-                                      <td>{{ $row->color->name }}</td>
-                                      <td>{{ $row->size->name }}</td>
-                                      <td>{{ $row->qty_stock}}</td>
-                                      <td>
-                                          <ul class="list-inline">
-                                              <li class="list-inline-item"><a href="{{ url('/merchant/inventory/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>
-                                              <li class="list-inline-item"><a href="{{ url('/merchant/inventory/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-secondary"><i class="fa fa-edit"></i> </a> </li>
-                                              <li class="list-inline-item">
-                                                  <form action="{{ url('/merchant/inventory/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                                      @csrf
-                                                      @method('delete')
-                                                      <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                                  </form>
-                                              </li>
-                                          </ul>
-                                      </td>
-                                   @endforeach
-                                 </tbody>
-                               </table>
-                             </div>
+                               <div class="container-fluid">
+                                <div class="card tab2-card">                                   
+                                    <div class="card-body">
+                                       <div class="row">
+                                           <div class="col-sm-12">
+                                              <div class="form-group row">
+                                                  <label class="col-sm-2 text-right control-label col-form-label">Product Name :</label>
+                                                  <div class="col-sm-10">
+                                                      <input disabled type="text" value="{{  $inventory->item->name }}" class="form-control text-dark">
+                                                  </div>
+                                               </div>  
+
+                                               <div class="form-group row">
+                                                    <label class="col-sm-2 text-right control-label col-form-label">Color :</label>
+                                                    <div class="col-sm-10">
+                                                        <input disabled type="text" value="{{  $inventory->color->name }}" class="form-control text-dark">
+                                                    </div>
+                                               </div> 
+
+                                               <div class="form-group row">
+                                                    <label class="col-sm-2 text-right control-label col-form-label">Size :</label>
+                                                    <div class="col-sm-10">
+                                                        <input disabled type="text" value="{{  $inventory->size->name }}" class="form-control text-dark">
+                                                    </div>
+                                               </div>   
+                                               
+                                               <div class="form-group row">
+                                                    <label class="col-sm-2 text-right control-label col-form-label">Stock Quantity :</label>
+                                                    <div class="col-sm-10">
+                                                        <input disabled type="text" value="{{  $inventory->qty_stock }}" class="form-control text-dark">
+                                                    </div>
+                                               </div>   
+
+                                               {{-- <div class="form-group row ">
+                                                    <label class="col-xl-3 col-md-2 "></label>
+                                                    <div class="col-sm-10">
+                                                        <a href="{{ url('merchant/inventory') }}"  class="btn btn-info">Back</a>
+                                                    </div>
+                                               </div> --}}
+
+                                               <div class="form-group row ">
+                                                <label class="col-sm-2 text-right control-label col-form-label"></label>
+                                                    <div class="checkbox checkbox-primary col-md-6">
+                                                        <a href="{{ url('merchant/inventory') }}"  class="btn btn-info">Back</a>
+                                                    </div>
+                                              </div>                                                           
+                                            </div>
+                                        </div>                   
+                                     </div>
+                                 </div>
+                              </div>
                           </div>
-                       </div>
-                   </div>
-               </div>
-            </div>
-       </section>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+</section>
     <!--  dashboard section end -->
 
 
