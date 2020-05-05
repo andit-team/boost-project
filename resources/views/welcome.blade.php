@@ -10,8 +10,8 @@
     <meta name="description" content="multikart">
     <meta name="keywords" content="multikart">
     <meta name="author" content="multikart">
-    <link rel="icon" href="../assets/images/favicon/1.png" type="image/x-icon">
-    <link rel="shortcut icon" href="../assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="icon" href="{{asset('frontend')}}/assets/images/favicon/1.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/favicon/1.png" type="image/x-icon">
     <title>Multikart - Multi-purpopse E-commerce Html Template</title>
 
     <!--Google font-->
@@ -381,7 +381,7 @@
                                                     <li><a href="#">fashion jewellery</a></li>
                                                     <li><a href="#">caps and hats</a></li>
                                                     <li><a href="#">precious jewellery</a></li>
-                                                    <li> <a href="#">more..</a>
+                                                    <li> <a href="#">more{{asset('frontend')}}</a>
                                                         <ul>
                                                             <li><a href="#">necklaces</a></li>
                                                             <li><a href="#">earrings</a></li>
@@ -393,7 +393,7 @@
                                                                     <li><a href="#">pockets squares</a></li>
                                                                     <li><a href="#">helmets</a></li>
                                                                     <li><a href="#">scarves</a></li>
-                                                                    <li> <a href="#">more...</a>
+                                                                    <li> <a href="#">more{{asset('frontend')}}.</a>
                                                                         <ul>
                                                                             <li><a href="#">accessory gift sets</a></li>
                                                                             <li><a href="#">travel accessories</a></li>
@@ -806,14 +806,14 @@
                                             </div>
                                         </li>
                                         <li class="onhover-div mobile-cart">
-                                            <div><img src="../assets/images/icon/cart.png"
+                                            <div><img src="{{asset('frontend')}}/assets/images/icon/cart.png"
                                                     class="img-fluid blur-up lazyload" alt=""> <i
                                                     class="ti-shopping-cart"></i></div>
                                             <ul class="show-div shopping-cart">
                                                 <li>
                                                     <div class="media">
                                                         <a href="#"><img alt="" class="mr-3"
-                                                                src="../assets/images/fashion/product/1.jpg"></a>
+                                                                src="{{asset('frontend')}}/assets/images/fashion/product/1.jpg"></a>
                                                         <div class="media-body">
                                                             <a href="#">
                                                                 <h4>item name</h4>
@@ -827,7 +827,7 @@
                                                 <li>
                                                     <div class="media">
                                                         <a href="#"><img alt="" class="mr-3"
-                                                                src="../assets/images/fashion/product/2.jpg"></a>
+                                                                src="{{asset('frontend')}}/assets/images/fashion/product/2.jpg"></a>
                                                         <div class="media-body">
                                                             <a href="#">
                                                                 <h4>item name</h4>
@@ -866,7 +866,7 @@
         <div class="slide-1 home-slider">
             <div>
                 <div class="home  text-center">
-                    <img src="../assets/images/home-banner/1.jpg" alt="" class="bg-img blur-up lazyload">
+                    <img src="{{asset('frontend')}}/assets/images/home-banner/1.jpg" alt="" class="bg-img blur-up lazyload">
                     <div class="container">
                         <div class="row">
                             <div class="col">
@@ -884,7 +884,7 @@
             </div>
             <div>
                 <div class="home text-center">
-                    <img src="../assets/images/home-banner/2.jpg" alt="" class="bg-img blur-up lazyload">
+                    <img src="{{asset('frontend')}}/assets/images/home-banner/2.jpg" alt="" class="bg-img blur-up lazyload">
                     <div class="container">
                         <div class="row">
                             <div class="col">
@@ -913,7 +913,7 @@
                     <a href="#">
                         <div class="collection-banner p-right text-center">
                             <div class="img-part">
-                                <img src="../assets/images/sub-banner1.jpg" class="img-fluid blur-up lazyload bg-img"
+                                <img src="{{asset('frontend')}}/assets/images/sub-banner1.jpg" class="img-fluid blur-up lazyload bg-img"
                                     alt="">
                             </div>
                             <div class="contain-banner">
@@ -929,7 +929,7 @@
                     <a href="#">
                         <div class="collection-banner p-right text-center">
                             <div class="img-part">
-                                <img src="../assets/images/sub-banner2.jpg" class="img-fluid blur-up lazyload bg-img"
+                                <img src="{{asset('frontend')}}/assets/images/sub-banner2.jpg" class="img-fluid blur-up lazyload bg-img"
                                     alt="">
                             </div>
                             <div class="contain-banner">
@@ -974,11 +974,11 @@
                         <div class="product-box">
                             <div class="img-wrapper">
                                 <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img src="../assets/images/pro3/27.jpg"
+                                    <a href="product-page(no-sidebar).html"><img src="{{asset('frontend')}}/assets/images/pro3/27.jpg"
                                             class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                 </div>
                                 <div class="back">
-                                    <a href="product-page(no-sidebar).html"><img src="../assets/images/pro3/28.jpg"
+                                    <a href="product-page(no-sidebar).html"><img src="{{asset('frontend')}}/assets/images/pro3/28.jpg"
                                             class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                 </div>
                                 <div class="cart-info cart-wrap">
@@ -1017,11 +1017,11 @@
                                         sale</span></div>
                                 <div class="front">
                                     <a href="product-page(no-sidebar).html">
-                                        <img src="../assets/images/pro3/1.jpg" class="img-fluid blur-up lazyload bg-img"
+                                        <img src="{{asset('frontend')}}/assets/images/pro3/1.jpg" class="img-fluid blur-up lazyload bg-img"
                                             alt=""></a>
                                 </div>
                                 <div class="back">
-                                    <a href="product-page(no-sidebar).html"><img src="../assets/images/pro3/2.jpg"
+                                    <a href="product-page(no-sidebar).html"><img src="{{asset('frontend')}}/assets/images/pro3/2.jpg"
                                             class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                 </div>
                                 <div class="cart-info cart-wrap">
@@ -1052,11 +1052,11 @@
                                 <div class="lable-block"><span class="lable3">new</span> <span class="lable4">on
                                         sale</span></div>
                                 <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img src="../assets/images/pro3/33.jpg"
+                                    <a href="product-page(no-sidebar).html"><img src="{{asset('frontend')}}/assets/images/pro3/33.jpg"
                                             class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                 </div>
                                 <div class="back">
-                                    <a href="product-page(no-sidebar).html"><img src="../assets/images/pro3/34.jpg"
+                                    <a href="product-page(no-sidebar).html"><img src="{{asset('frontend')}}/assets/images/pro3/34.jpg"
                                             class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                 </div>
                                 <div class="cart-info cart-wrap">
@@ -1085,11 +1085,11 @@
                         <div class="product-box">
                             <div class="img-wrapper">
                                 <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img src="../assets/images/pro3/35.jpg"
+                                    <a href="product-page(no-sidebar).html"><img src="{{asset('frontend')}}/assets/images/pro3/35.jpg"
                                             class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                 </div>
                                 <div class="back">
-                                    <a href="product-page(no-sidebar).html"><img src="../assets/images/pro3/36.jpg"
+                                    <a href="product-page(no-sidebar).html"><img src="{{asset('frontend')}}/assets/images/pro3/36.jpg"
                                             class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                 </div>
                                 <div class="cart-info cart-wrap">
@@ -1120,11 +1120,11 @@
                                 <div class="lable-block"><span class="lable3">new</span> <span class="lable4">on
                                         sale</span></div>
                                 <div class="front">
-                                    <a href="product-page(no-sidebar).html"><img src="../assets/images/pro3/33.jpg"
+                                    <a href="product-page(no-sidebar).html"><img src="{{asset('frontend')}}/assets/images/pro3/33.jpg"
                                             class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                 </div>
                                 <div class="back">
-                                    <a href="product-page(no-sidebar).html"><img src="../assets/images/pro3/34.jpg"
+                                    <a href="product-page(no-sidebar).html"><img src="{{asset('frontend')}}/assets/images/pro3/34.jpg"
                                             class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                 </div>
                                 <div class="cart-info cart-wrap">
@@ -1161,7 +1161,7 @@
     <!-- Parallax banner -->
     <section class="p-0">
         <div class="full-banner parallax text-center p-left">
-            <img src="../assets/images/parallax/1.jpg" alt="" class="bg-img blur-up lazyload">
+            <img src="{{asset('frontend')}}/assets/images/parallax/1.jpg" alt="" class="bg-img blur-up lazyload">
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -1200,12 +1200,12 @@
                                         <div class="img-wrapper">
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/27.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/27.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/28.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/28.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1239,12 +1239,12 @@
                                                     class="lable4">on sale</span></div>
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/1.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/1.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/2.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/2.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1276,51 +1276,12 @@
                                         <div class="img-wrapper">
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/33.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/33.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/34.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-toggle="modal" data-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
-                                                        class="ti-search" aria-hidden="true"></i></a> <a
-                                                    href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a></div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Slim Fit Cotton Shirt</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="lable-block"><span class="lable3">new</span> <span
-                                                    class="lable4">on sale</span></div>
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/35.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/36.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/34.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1354,49 +1315,12 @@
                                                     class="lable4">on sale</span></div>
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/33.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/35.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/34.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-toggle="modal" data-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
-                                                        class="ti-search" aria-hidden="true"></i></a> <a
-                                                    href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a></div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Slim Fit Cotton Shirt</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/35.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/36.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/36.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1430,12 +1354,12 @@
                                                     class="lable4">on sale</span></div>
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/1.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/33.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/2.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/34.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1467,12 +1391,88 @@
                                         <div class="img-wrapper">
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/27.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/35.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/28.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/36.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="cart-info cart-wrap">
+                                                <button data-toggle="modal" data-target="#addtocart"
+                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
+                                                    href="javascript:void(0)" title="Add to Wishlist"><i
+                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                        class="ti-search" aria-hidden="true"></i></a> <a
+                                                    href="compare.html" title="Compare"><i class="ti-reload"
+                                                        aria-hidden="true"></i></a></div>
+                                        </div>
+                                        <div class="product-detail">
+                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i></div>
+                                            <a href="product-page(no-sidebar).html">
+                                                <h6>Slim Fit Cotton Shirt</h6>
+                                            </a>
+                                            <h4>$500.00</h4>
+                                            <ul class="color-variant">
+                                                <li class="bg-light0"></li>
+                                                <li class="bg-light1"></li>
+                                                <li class="bg-light2"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-box">
+                                        <div class="img-wrapper">
+                                            <div class="lable-block"><span class="lable3">new</span> <span
+                                                    class="lable4">on sale</span></div>
+                                            <div class="front">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/1.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="back">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/2.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="cart-info cart-wrap">
+                                                <button data-toggle="modal" data-target="#addtocart"
+                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
+                                                    href="javascript:void(0)" title="Add to Wishlist"><i
+                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                        class="ti-search" aria-hidden="true"></i></a> <a
+                                                    href="compare.html" title="Compare"><i class="ti-reload"
+                                                        aria-hidden="true"></i></a></div>
+                                        </div>
+                                        <div class="product-detail">
+                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i></div>
+                                            <a href="product-page(no-sidebar).html">
+                                                <h6>Slim Fit Cotton Shirt</h6>
+                                            </a>
+                                            <h4>$500.00</h4>
+                                            <ul class="color-variant">
+                                                <li class="bg-light0"></li>
+                                                <li class="bg-light1"></li>
+                                                <li class="bg-light2"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-box">
+                                        <div class="img-wrapper">
+                                            <div class="front">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/27.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="back">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/28.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1510,12 +1510,12 @@
                                                     class="lable4">on sale</span></div>
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/33.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/33.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/34.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/34.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1547,125 +1547,12 @@
                                         <div class="img-wrapper">
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/35.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/35.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/36.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-toggle="modal" data-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
-                                                        class="ti-search" aria-hidden="true"></i></a> <a
-                                                    href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a></div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Slim Fit Cotton Shirt</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="lable-block"><span class="lable3">new</span> <span
-                                                    class="lable4">on sale</span></div>
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/1.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/2.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-toggle="modal" data-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
-                                                        class="ti-search" aria-hidden="true"></i></a> <a
-                                                    href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a></div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Slim Fit Cotton Shirt</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/27.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/28.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-toggle="modal" data-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
-                                                        class="ti-search" aria-hidden="true"></i></a> <a
-                                                    href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a></div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Slim Fit Cotton Shirt</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/27.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/28.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/36.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1699,12 +1586,12 @@
                                                     class="lable4">on sale</span></div>
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/1.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/1.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/2.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/2.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1736,12 +1623,49 @@
                                         <div class="img-wrapper">
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/33.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/27.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/34.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/28.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="cart-info cart-wrap">
+                                                <button data-toggle="modal" data-target="#addtocart"
+                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
+                                                    href="javascript:void(0)" title="Add to Wishlist"><i
+                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                        class="ti-search" aria-hidden="true"></i></a> <a
+                                                    href="compare.html" title="Compare"><i class="ti-reload"
+                                                        aria-hidden="true"></i></a></div>
+                                        </div>
+                                        <div class="product-detail">
+                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i></div>
+                                            <a href="product-page(no-sidebar).html">
+                                                <h6>Slim Fit Cotton Shirt</h6>
+                                            </a>
+                                            <h4>$500.00</h4>
+                                            <ul class="color-variant">
+                                                <li class="bg-light0"></li>
+                                                <li class="bg-light1"></li>
+                                                <li class="bg-light2"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-box">
+                                        <div class="img-wrapper">
+                                            <div class="front">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/27.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="back">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/28.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1775,12 +1699,88 @@
                                                     class="lable4">on sale</span></div>
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/35.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/1.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/36.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/2.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="cart-info cart-wrap">
+                                                <button data-toggle="modal" data-target="#addtocart"
+                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
+                                                    href="javascript:void(0)" title="Add to Wishlist"><i
+                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                        class="ti-search" aria-hidden="true"></i></a> <a
+                                                    href="compare.html" title="Compare"><i class="ti-reload"
+                                                        aria-hidden="true"></i></a></div>
+                                        </div>
+                                        <div class="product-detail">
+                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i></div>
+                                            <a href="product-page(no-sidebar).html">
+                                                <h6>Slim Fit Cotton Shirt</h6>
+                                            </a>
+                                            <h4>$500.00</h4>
+                                            <ul class="color-variant">
+                                                <li class="bg-light0"></li>
+                                                <li class="bg-light1"></li>
+                                                <li class="bg-light2"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-box">
+                                        <div class="img-wrapper">
+                                            <div class="front">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/33.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="back">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/34.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="cart-info cart-wrap">
+                                                <button data-toggle="modal" data-target="#addtocart"
+                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
+                                                    href="javascript:void(0)" title="Add to Wishlist"><i
+                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                        class="ti-search" aria-hidden="true"></i></a> <a
+                                                    href="compare.html" title="Compare"><i class="ti-reload"
+                                                        aria-hidden="true"></i></a></div>
+                                        </div>
+                                        <div class="product-detail">
+                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i></div>
+                                            <a href="product-page(no-sidebar).html">
+                                                <h6>Slim Fit Cotton Shirt</h6>
+                                            </a>
+                                            <h4>$500.00</h4>
+                                            <ul class="color-variant">
+                                                <li class="bg-light0"></li>
+                                                <li class="bg-light1"></li>
+                                                <li class="bg-light2"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-box">
+                                        <div class="img-wrapper">
+                                            <div class="lable-block"><span class="lable3">new</span> <span
+                                                    class="lable4">on sale</span></div>
+                                            <div class="front">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/35.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="back">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/36.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1818,12 +1818,12 @@
                                                     class="lable4">on sale</span></div>
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/33.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/33.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/34.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/34.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1855,12 +1855,12 @@
                                         <div class="img-wrapper">
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/27.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/27.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/28.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/28.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1892,51 +1892,12 @@
                                         <div class="img-wrapper">
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/33.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/33.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/34.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-toggle="modal" data-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
-                                                        class="ti-search" aria-hidden="true"></i></a> <a
-                                                    href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a></div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Slim Fit Cotton Shirt</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="lable-block"><span class="lable3">new</span> <span
-                                                    class="lable4">on sale</span></div>
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/1.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/2.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/34.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -1970,49 +1931,12 @@
                                                     class="lable4">on sale</span></div>
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/35.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/1.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/36.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-toggle="modal" data-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
-                                                    href="javascript:void(0)" title="Add to Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
-                                                        class="ti-search" aria-hidden="true"></i></a> <a
-                                                    href="compare.html" title="Compare"><i class="ti-reload"
-                                                        aria-hidden="true"></i></a></div>
-                                        </div>
-                                        <div class="product-detail">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i></div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Slim Fit Cotton Shirt</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/35.jpg"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>
-                                            <div class="back">
-                                                <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/36.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/2.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -2046,12 +1970,12 @@
                                                     class="lable4">on sale</span></div>
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/1.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/35.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/2.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/36.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -2083,12 +2007,88 @@
                                         <div class="img-wrapper">
                                             <div class="front">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/27.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/35.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="back">
                                                 <a href="product-page(no-sidebar).html"><img
-                                                        src="../assets/images/pro3/28.jpg"
+                                                        src="{{asset('frontend')}}/assets/images/pro3/36.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="cart-info cart-wrap">
+                                                <button data-toggle="modal" data-target="#addtocart"
+                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
+                                                    href="javascript:void(0)" title="Add to Wishlist"><i
+                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                        class="ti-search" aria-hidden="true"></i></a> <a
+                                                    href="compare.html" title="Compare"><i class="ti-reload"
+                                                        aria-hidden="true"></i></a></div>
+                                        </div>
+                                        <div class="product-detail">
+                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i></div>
+                                            <a href="product-page(no-sidebar).html">
+                                                <h6>Slim Fit Cotton Shirt</h6>
+                                            </a>
+                                            <h4>$500.00</h4>
+                                            <ul class="color-variant">
+                                                <li class="bg-light0"></li>
+                                                <li class="bg-light1"></li>
+                                                <li class="bg-light2"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-box">
+                                        <div class="img-wrapper">
+                                            <div class="lable-block"><span class="lable3">new</span> <span
+                                                    class="lable4">on sale</span></div>
+                                            <div class="front">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/1.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="back">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/2.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="cart-info cart-wrap">
+                                                <button data-toggle="modal" data-target="#addtocart"
+                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button> <a
+                                                    href="javascript:void(0)" title="Add to Wishlist"><i
+                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                                    data-toggle="modal" data-target="#quick-view" title="Quick View"><i
+                                                        class="ti-search" aria-hidden="true"></i></a> <a
+                                                    href="compare.html" title="Compare"><i class="ti-reload"
+                                                        aria-hidden="true"></i></a></div>
+                                        </div>
+                                        <div class="product-detail">
+                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i></div>
+                                            <a href="product-page(no-sidebar).html">
+                                                <h6>Slim Fit Cotton Shirt</h6>
+                                            </a>
+                                            <h4>$500.00</h4>
+                                            <ul class="color-variant">
+                                                <li class="bg-light0"></li>
+                                                <li class="bg-light1"></li>
+                                                <li class="bg-light2"></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-box">
+                                        <div class="img-wrapper">
+                                            <div class="front">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/27.jpg"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="back">
+                                                <a href="product-page(no-sidebar).html"><img
+                                                        src="{{asset('frontend')}}/assets/images/pro3/28.jpg"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                             </div>
                                             <div class="cart-info cart-wrap">
@@ -2226,7 +2226,7 @@
                             <a href="#">
                                 <div class="classic-effect">
                                     <div>
-                                        <img src="../assets/images/blog/1.jpg" class="img-fluid blur-up lazyload bg-img"
+                                        <img src="{{asset('frontend')}}/assets/images/blog/1.jpg" class="img-fluid blur-up lazyload bg-img"
                                             alt="">
                                     </div>
                                     <span></span>
@@ -2245,7 +2245,7 @@
                             <a href="#">
                                 <div class="classic-effect">
                                     <div>
-                                        <img src="../assets/images/blog/2.jpg" class="img-fluid blur-up lazyload bg-img"
+                                        <img src="{{asset('frontend')}}/assets/images/blog/2.jpg" class="img-fluid blur-up lazyload bg-img"
                                             alt="">
                                     </div>
                                     <span></span>
@@ -2264,7 +2264,7 @@
                             <a href="#">
                                 <div class="classic-effect">
                                     <div>
-                                        <img src="../assets/images/blog/3.jpg" class="img-fluid blur-up lazyload bg-img"
+                                        <img src="{{asset('frontend')}}/assets/images/blog/3.jpg" class="img-fluid blur-up lazyload bg-img"
                                             alt="">
                                     </div>
                                     <span></span>
@@ -2283,7 +2283,7 @@
                             <a href="#">
                                 <div class="classic-effect">
                                     <div>
-                                        <img src="../assets/images/blog/4.jpg" class="img-fluid blur-up lazyload bg-img"
+                                        <img src="{{asset('frontend')}}/assets/images/blog/4.jpg" class="img-fluid blur-up lazyload bg-img"
                                             alt="">
                                     </div>
                                     <span></span>
@@ -2302,7 +2302,7 @@
                             <a href="#">
                                 <div class="classic-effect">
                                     <div>
-                                        <img src="../assets/images/blog/5.jpg" class="img-fluid blur-up lazyload bg-img"
+                                        <img src="{{asset('frontend')}}/assets/images/blog/5.jpg" class="img-fluid blur-up lazyload bg-img"
                                             alt="">
                                     </div>
                                     <span></span>
@@ -2334,7 +2334,7 @@
                     <div class="slide-7 no-arrow slick-instagram">
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/images/slider/2.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="{{asset('frontend')}}/assets/images/slider/2.jpg" class="bg-img"
                                         alt="Avatar" style="width:100%">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -2342,7 +2342,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/images/slider/3.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="{{asset('frontend')}}/assets/images/slider/3.jpg" class="bg-img"
                                         alt="Avatar" style="width:100%">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -2350,7 +2350,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/images/slider/4.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="{{asset('frontend')}}/assets/images/slider/4.jpg" class="bg-img"
                                         alt="Avatar" style="width:100%">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -2358,7 +2358,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/images/slider/9.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="{{asset('frontend')}}/assets/images/slider/9.jpg" class="bg-img"
                                         alt="Avatar" style="width:100%">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -2366,7 +2366,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/images/slider/6.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="{{asset('frontend')}}/assets/images/slider/6.jpg" class="bg-img"
                                         alt="Avatar" style="width:100%">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -2374,7 +2374,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/images/slider/7.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="{{asset('frontend')}}/assets/images/slider/7.jpg" class="bg-img"
                                         alt="Avatar" style="width:100%">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -2382,7 +2382,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/images/slider/8.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="{{asset('frontend')}}/assets/images/slider/8.jpg" class="bg-img"
                                         alt="Avatar" style="width:100%">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -2390,7 +2390,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/images/slider/9.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="{{asset('frontend')}}/assets/images/slider/9.jpg" class="bg-img"
                                         alt="Avatar" style="width:100%">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -2398,7 +2398,7 @@
                         </div>
                         <div>
                             <a href="#">
-                                <div class="instagram-box"> <img src="../assets/images/slider/2.jpg" class="bg-img"
+                                <div class="instagram-box"> <img src="{{asset('frontend')}}/assets/images/slider/2.jpg" class="bg-img"
                                         alt="Avatar" style="width:100%">
                                     <div class="overlay"><i class="fa fa-instagram" aria-hidden="true"></i></div>
                                 </div>
@@ -2420,42 +2420,42 @@
                     <div class="slide-6 no-arrow">
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/images/logos/1.png" alt=""></a>
+                                <a href="#"><img src="{{asset('frontend')}}/assets/images/logos/1.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/images/logos/2.png" alt=""></a>
+                                <a href="#"><img src="{{asset('frontend')}}/assets/images/logos/2.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/images/logos/3.png" alt=""></a>
+                                <a href="#"><img src="{{asset('frontend')}}/assets/images/logos/3.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/images/logos/4.png" alt=""></a>
+                                <a href="#"><img src="{{asset('frontend')}}/assets/images/logos/4.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/images/logos/5.png" alt=""></a>
+                                <a href="#"><img src="{{asset('frontend')}}/assets/images/logos/5.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/images/logos/6.png" alt=""></a>
+                                <a href="#"><img src="{{asset('frontend')}}/assets/images/logos/6.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/images/logos/7.png" alt=""></a>
+                                <a href="#"><img src="{{asset('frontend')}}/assets/images/logos/7.png" alt=""></a>
                             </div>
                         </div>
                         <div>
                             <div class="logo-block">
-                                <a href="#"><img src="../assets/images/logos/8.png" alt=""></a>
+                                <a href="#"><img src="{{asset('frontend')}}/assets/images/logos/8.png" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -2504,7 +2504,7 @@
                             <h4>about</h4>
                         </div>
                         <div class="footer-contant">
-                            <div class="footer-logo"><img src="../assets/images/icon/logo.png" alt=""></div>
+                            <div class="footer-logo"><img src="{{asset('frontend')}}/assets/images/icon/logo.png" alt=""></div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
                             <div class="footer-social">
@@ -2582,19 +2582,19 @@
                         <div class="payment-card-bottom">
                             <ul>
                                 <li>
-                                    <a href="#"><img src="../assets/images/icon/visa.png" alt=""></a>
+                                    <a href="#"><img src="{{asset('frontend')}}/assets/images/icon/visa.png" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="../assets/images/icon/mastercard.png" alt=""></a>
+                                    <a href="#"><img src="{{asset('frontend')}}/assets/images/icon/mastercard.png" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="../assets/images/icon/paypal.png" alt=""></a>
+                                    <a href="#"><img src="{{asset('frontend')}}/assets/images/icon/paypal.png" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="../assets/images/icon/american-express.png" alt=""></a>
+                                    <a href="#"><img src="{{asset('frontend')}}/assets/images/icon/american-express.png" alt=""></a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="../assets/images/icon/discover.png" alt=""></a>
+                                    <a href="#"><img src="{{asset('frontend')}}/assets/images/icon/discover.png" alt=""></a>
                                 </li>
                             </ul>
                         </div>
@@ -2618,7 +2618,7 @@
                                 <div class="modal-bg">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                             aria-hidden="true">&times;</span></button>
-                                    <div class="offer-content"> <img src="../assets/images/Offer-banner.png"
+                                    <div class="offer-content"> <img src="{{asset('frontend')}}/assets/images/Offer-banner.png"
                                             class="img-fluid blur-up lazyload" alt="">
                                         <h2>newsletter</h2>
                                         <form
@@ -2655,7 +2655,7 @@
                             aria-hidden="true">&times;</span></button>
                     <div class="row">
                         <div class="col-lg-6 col-xs-12">
-                            <div class="quick-view-img"><img src="../assets/images/pro3/1.jpg" alt=""
+                            <div class="quick-view-img"><img src="{{asset('frontend')}}/assets/images/pro3/1.jpg" alt=""
                                     class="img-fluid blur-up lazyload"></div>
                         </div>
                         <div class="col-lg-6 rtl-text">
@@ -3401,13 +3401,13 @@
                         target="_blank" class="btn btn-block purchase_btn"><i class="fa fa-shopping-cart"
                             aria-hidden="true"></i> purchase Multikart now!</a>
                     <a href="https://themeforest.net/item/multikart-responsive-angular-ecommerce-template/22905358?s_rank=3"
-                        target="_blank" class="btn btn-block purchase_btn"><img src="../assets/images/icon/angular.png"
+                        target="_blank" class="btn btn-block purchase_btn"><img src="{{asset('frontend')}}/assets/images/icon/angular.png"
                             alt="" class="img-fluid"> Multikart Angular</a>
                     <a href="https://themeforest.net/item/multikart-responsive-react-ecommerce-template/23067773?s_rank=2"
-                        target="_blank" class="btn btn-block purchase_btn"><img src="../assets/images/icon/react.png"
+                        target="_blank" class="btn btn-block purchase_btn"><img src="{{asset('frontend')}}/assets/images/icon/react.png"
                             alt="" class="img-fluid"> Multikart React</a>
                     <a href="https://themeforest.net/item/multikart-multipurpose-shopify-sections-theme/23093831?s_rank=1"
-                        target="_blank" class="btn btn-block purchase_btn"><img src="../assets/images/icon/shopify.png"
+                        target="_blank" class="btn btn-block purchase_btn"><img src="{{asset('frontend')}}/assets/images/icon/shopify.png"
                             alt="" class="img-fluid"> Multikart Shopify</a>
                 </div>
             </div>
@@ -3430,7 +3430,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                     <div class="media">
-                                        <img src="../assets/images/stop.png"
+                                        <img src="{{asset('frontend')}}/assets/images/stop.png"
                                             class="stop img-fluid blur-up lazyload mr-3" alt="">
                                         <div class="media-body text-left align-self-center">
                                             <div>
@@ -3460,7 +3460,7 @@
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
-            js.src = '../../../connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+            js.src = '{{asset('frontend')}}/{{asset('frontend')}}/{{asset('frontend')}}/connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
     <!-- Your customer chat code -->
@@ -3490,38 +3490,38 @@
 
 
     <!-- latest jquery-->
-    <script src="../assets/js/jquery-3.3.1.min.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/jquery-3.3.1.min.js"></script>
 
     <!-- fly cart ui jquery-->
-    <script src="../assets/js/jquery-ui.min.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/jquery-ui.min.js"></script>
 
     <!-- exitintent jquery-->
-    <script src="../assets/js/jquery.exitintent.js"></script>
-    <script src="../assets/js/exit.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/jquery.exitintent.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/exit.js"></script>
 
     <!-- popper js-->
-    <script src="../assets/js/popper.min.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/popper.min.js"></script>
 
     <!-- slick js-->
-    <script src="../assets/js/slick.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/slick.js"></script>
 
     <!-- menu js-->
-    <script src="../assets/js/menu.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/menu.js"></script>
 
     <!-- lazyload js-->
-    <script src="../assets/js/lazysizes.min.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/lazysizes.min.js"></script>
 
     <!-- Bootstrap js-->
-    <script src="../assets/js/bootstrap.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/bootstrap.js"></script>
 
     <!-- Bootstrap Notification js-->
-    <script src="../assets/js/bootstrap-notify.min.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/bootstrap-notify.min.js"></script>
 
     <!-- Fly cart js-->
-    <script src="../assets/js/fly-cart.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/fly-cart.js"></script>
 
     <!-- Theme js-->
-    <script src="../assets/js/script.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/script.js"></script>
 
     <script>
         $(window).on('load', function () {
