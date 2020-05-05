@@ -53,9 +53,10 @@ class InventoriesController extends Controller
     public function store(Inventory $inventory,Request $request)
     {
         $this->validateForm($request);
-        $slug = Baazar::getUniqueSlug($inventory,$request->name);
+        $slug = Baazar::getUniqueSlug($inventory,$request->item_id);
         $data = [
             'item_id' => $request->item_id,
+            'slug' => $slug,
             'color_id' => $request->color_id,
             'size_id' => $request->size_id, 
             'qty_stock' => $request->qty_stock,                    

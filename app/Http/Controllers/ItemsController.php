@@ -254,11 +254,17 @@ class ItemsController extends Controller
      */
     public function destroy(Item $product)
     {
-      $product->delete();
+        $product->delete();
 
         Session::flash('success', 'Product Deleted Successfully');
  
          return redirect('merchant/product');
+    }
+
+    public function vendorshow(){
+
+     $product = Item::with('category')->where('user_id',Sentinel::getUser()->id)->first();
+      return view('admin.product.vendorshow',compact('product'));
     }
 
     // public function subcategory(Request $request){
