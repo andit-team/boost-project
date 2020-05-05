@@ -4,6 +4,7 @@ namespace App\Http\Controllers\forntEnd;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Item;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.home.index');
+        $item = Item::all();
+        // return view('welcome');
+         return view('welcome',compact('item'));
     }
 
     /**

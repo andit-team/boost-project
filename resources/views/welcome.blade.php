@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/favicon/1.png" type="image/x-icon">
     <title>Multikart - Multi-purpopse E-commerce Html Template</title>
 
-  @include('frontend.include.css');
+  @include('frontend.include.css')
 
 
 </head>
@@ -23,20 +23,20 @@
 
 
     <!-- loader start -->
-   @include('frontend.include.loader')''
+   @include('frontend.include.loader')
     <!-- loader end -->
 
 
     <!-- header start -->
     <header>
-        @include('frontend.include.header');
-        @include('frontend.include.navbar');
+        @include('frontend.include.header')
+        @include('frontend.include.navbar')
     </header>
     <!-- header end -->
 
 
     <!-- Home slider -->
-   @include('frontend.include.slider');
+   @include('frontend.include.slider')
     <!-- Home slider end -->
 
 
@@ -51,27 +51,27 @@
 
 
     <!-- Product slider -->
-  @include('frontend.include.productslider');
+  @include('frontend.include.productslider')
     <!-- Product slider end -->
 
 
     <!-- Parallax banner -->
-    @include('frontend.include.parallax');
+    @include('frontend.include.parallax')
     <!-- Parallax banner end -->
 
 
     <!-- Tab product -->
-   @include('frontend.include.tabproduct');
+   @include('frontend.include.tabproduct')
     <!-- Tab product end -->
 
 
     <!-- service layout -->
-  @include('frontend.include.service');
+  @include('frontend.include.service')
     <!-- service layout  end -->
 
 
     <!-- blog section -->
-  @include('frontend.include.bloag')
+  @include('frontend.include.blog')
     <!-- blog section end -->
 
 
