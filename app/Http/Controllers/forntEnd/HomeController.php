@@ -25,9 +25,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function details()
     {
-        //
+        return view('frontend.product.details');
     }
 
     /**

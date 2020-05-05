@@ -14,7 +14,7 @@
     <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/favicon/1.png" type="image/x-icon">
     <title>Multikart - Multi-purpopse E-commerce Html Template</title>
 
-  @include('frontend.include.css');
+  @include('frontend.include.css')
 
 
 </head>
@@ -23,43 +23,37 @@
 
 
     <!-- loader start -->
-   @include('frontend.include.loader')''
+   @include('frontend.include.loader')
     <!-- loader end -->
 
 
     <!-- header start -->
     <header>
-        @include('frontend.include.header');
-        @include('frontend.include.navbar');
+        @include('frontend.include.header')
+        @include('frontend.include.navbar')
     </header>
     <!-- header end -->
-
-
-    
-
-
-    
-
+  @yield('content')
 
     <!-- footer -->
-    @include('frontend.include.footer');
+    @include('frontend.include.footer')
     <!-- footer end -->
 
 
    
 
     <!-- theme setting -->
-    @include('frontend.include.themesetting');
+    @include('frontend.include.themesetting')
     <!-- theme setting -->
 
 
     <!-- exit modal popup start-->
-    @include('frontend.include.exitmodal');
+    @include('frontend.include.exitmodal')
     <!-- Add to cart modal popup end-->
 
 
     <!-- facebook chat section start -->
-   @include('frontend.include.facebookchat');
+   @include('frontend.include.facebookchat')
     <!-- facebook chat section end -->
 
 

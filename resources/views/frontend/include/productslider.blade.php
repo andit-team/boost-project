@@ -8,7 +8,7 @@
                         <div class="img-wrapper"> 
                                                                           
                             <div class="front">                              
-                                <a href="product-page(no-sidebar).html"><img src="{{ asset($row->image ) }}"
+                                <a href="{{url('product_details')}}"><img src="{{ asset($row->image ) }}"
                                     class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
                             {{-- <div class="back">

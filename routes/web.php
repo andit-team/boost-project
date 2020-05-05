@@ -14,12 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 include('admin.php');
 
-// Frontend Controller.....
+// Frontend Route.....
 
 
 Route::get('/', 'forntEnd\HomeController@index');
 
+// Frontend Controller.....Product Details Route
 
+Route::get('/product_details', 'forntEnd\HomeController@details');
 
 
 
