@@ -77,7 +77,9 @@
                 <th>Sl</th>
                 <th>Image</th>
                 <th>Product Name</th>
-                <th>Category</th> 
+                <th>Category</th>
+                <th>Color</th>
+                <th>Size</th>
                 <th>Price</th>
                 <th>Action</th>
             </tr>
@@ -95,12 +97,14 @@
                       @endif
                   </td>
                   <td>{{ $row->name}}</td>
-                  <td>{{ $row->category->name }}</td> 
+                  <td>{{ $row->category->name }}</td>
+                  <td>{{ $row->color->name }}</td>
+                  <td>{{ $row->size->name }}</td>
                   <td>{{ $row->price}}</td>
                   <td>
                       <ul class="list-inline">
-                          {{-- <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li> --}}
-                          <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug.'/edit' )}}" title="Show" class="btn btn-sm btn-secondary"><i class="fa fa-edit"></i> </a> </li>
+                          <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>
+                          <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-secondary"><i class="fa fa-edit"></i> </a> </li>
                           <li class="list-inline-item">
                               <form action="{{ url('/merchant/product/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                   @csrf
@@ -112,12 +116,7 @@
                   </td>
                   @endforeach
             </tbody>
-           </table>
-           <div class="col-md-6">
-            <form action="/file-upload"
-                class="dropzone"
-                id="my-awesome-dropzone"></form>
-           </div>
+           </table>         
           </div>
          </div>
         </div>
