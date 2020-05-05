@@ -861,10 +861,7 @@
     <!-- header end -->
 
 
-    <!-- Home slider -->
-    @include('frontend.include.homeslider')
-<!-- Home slider end -->
-    @yield('content')
+ 
 
 
     <!-- footer -->
