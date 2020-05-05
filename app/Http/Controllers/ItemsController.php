@@ -252,9 +252,9 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $item)
+    public function destroy(Item $product)
     {
-        $item->delete();
+      $product->delete();
 
         Session::flash('success', 'Product Deleted Successfully');
  
