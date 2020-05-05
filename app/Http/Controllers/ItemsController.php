@@ -62,9 +62,11 @@ class ItemsController extends Controller
     public function store(Item $item,Request $request)
     {
       //dd($request->all());
-      //$sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
+      $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
       //dd($sellerId);
     //  $this->validateForm($request);
+    //$itemId = Item::where('user_id',Sentinel::getUser()->id)->first();
+    if($sellerId != ''){
       $slug = Baazar::getUniqueSlug($item,$request->name);
         $data = [
             'name' => $request->name,
@@ -118,6 +120,9 @@ class ItemsController extends Controller
         $name = $data['name'];
          \Mail::to($data['email'])->send(new ProductApproveRequestMail($data, $name));
         Session::flash('success', 'Item Added Successfully!');
+       }else{
+        return view('vendor-deshboard');
+       }
 
         return back();
     }
@@ -160,7 +165,7 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(Request $request, Item $product)
     {
         $data = [
             'name' => $request->name,
@@ -194,7 +199,7 @@ class ItemsController extends Controller
 
         
 
-        $item->update($data);  
+        $product->update($data);  
       
         Session::flash('success', 'Item Added Successfully!');
 

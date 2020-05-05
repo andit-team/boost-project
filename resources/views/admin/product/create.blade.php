@@ -239,7 +239,11 @@
 
                                         </div> 
                                         <div class="col-md-6"> 
+                                        @if($sellerId == '')  
+                                        <input type="hidden" class="form-control" name="email" value=""   placeholder="Enter Your Email" > 
+                                        @else  
                                         <input type="hidden" class="form-control" name="email" value="{{ $sellerId->email }}"   placeholder="Enter Your Email" > 
+                                        @endif
                                         </div>
                                         <div class="col-md-12">
                                             <button class="btn btn-sm btn-solid" type="submit">Save</button>
