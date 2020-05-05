@@ -2,7 +2,8 @@
     <link rel="stylesheet" href="{{ asset('css') }}/toastr.min.css">
 @endpush
 @push('js')
-    <script src="{{asset('js/toastr.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{{asset('js/toastr.min.js')}}"></script> 
         <script>
         @if (Session::has('success'))
             toastr.success("{{Session::get('success')}}")
