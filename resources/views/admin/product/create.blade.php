@@ -109,10 +109,11 @@
                                             <label for="sub_category">Sub Category *</label>
                                             <select name="sub_category" class="form-control px-10 sub" id="sub_category"  autocomplete="off">
                                                  <option value="" selected disabled>Select Sub Category</option>
-                                                @foreach ($subCategories as $row)
+                                                {{-- @foreach ($subCategories as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
 
-                                                @endforeach   
+                                                @endforeach    --}}
+                                                {{-- <option value="">Select Sub Category</option> --}}
 
                                             </select>
                                         </div>
@@ -281,24 +282,25 @@
    
 <script>
     $(document).ready(function(){
-        $('#category_id').on('change',function(){
-            //alert('hi');
+        $('#category_id').on('change',function(){ 
             var categoryId = $(this).val();
-            var option     = '<option value="">Sub category</option>'
-            alert(categoryId);
+            var option     = '<option value="">Sub category</option>'; 
             $.ajax({
                 type:"GET",
+
                 url:"/product/"+categoryId,
+                url:"{{ url('/merchant/product/subcategory/{id}') }}",
                 data:{'categoryId':categoryId},
                 success:function(data){
-                    for(var i; i<data.langth;i++){
-                        option = option+'<option value="'+data[i].sub_category+'">'+data[i].name+'</option>';
+                    for(var i=0; i<data.length; i++){
+                        option = option+'<option value="'+data[i].sub_category+'">'+data[i].name+'</option>'; 
                     }
                     $('.sub').html(option);
-                    $('.sub').trigger("chosen:updated");
+                    
                 }
             })
         })
     });
 </script>
+
 
