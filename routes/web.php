@@ -13,10 +13,48 @@ use Illuminate\Support\Facades\Route;
 |
 */
 include('admin.php');
-Route::get('/', function () {
-    return view('welcome');
-});
 
+// Frontend Route.....
+
+
+Route::get('/', 'forntEnd\HomeController@index');
+
+// Frontend Controller.....Product Details Route
+
+Route::get('/product_details', 'forntEnd\HomeController@details');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::post('bill/restore/{slug}', 'diagnostic\BillController@restore');
+ 
 // Route::get('check', function () {
 
 // 	$credentials = [
