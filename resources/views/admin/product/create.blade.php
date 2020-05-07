@@ -99,7 +99,7 @@
                                             <label for="name">Category *</label>
                                             <select name="category_id" class="form-control px-10" id="category_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Category</option>
-                                                @foreach ($category as $row)
+                                                @foreach ($categories as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
                                                 @endforeach
                                             </select>
@@ -270,17 +270,17 @@
     $(document).ready(function(){
         $('#category_id').on('change',function(){ 
             var categoryId = $(this).val();
+            var subCategoryId = $('#sub_category').val();
             var option     = '<option value="">Sub category</option>'; 
             $.ajax({
-                type:"GET", 
+                type:"get", 
                 url:"{{ url('/merchant/product/subcategory/{id}') }}",
                 data:{'categoryId':categoryId},
                 success:function(data){
                     for(var i=0; i<data.length; i++){
-                        option = option+'<option value="'+data[i].sub_category+'">'+data[i].name+'</option>'; 
+                        option = option+'<option value="'+data[i].id+'">'+data[i].name+'</option>';  
                     }
-                    $('.sub').html(option);
-                    
+                    $('.sub').html(option); 
                 }
             })
         })

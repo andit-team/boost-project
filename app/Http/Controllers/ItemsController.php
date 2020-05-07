@@ -261,9 +261,10 @@ class ItemsController extends Controller
          return redirect('merchant/product');
     }
 
-    public function vendorshow(){
+    public function vendorshow($id){
 
-     $product = Item::with('category')->where('user_id',Sentinel::getUser()->id)->first();
+    //  $product = Item::with('category')->where('user_id',Sentinel::getUser()->id)->first();
+    $product = Item::find($id);
       return view('admin.product.vendorshow',compact('product'));
     }
 

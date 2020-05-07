@@ -99,7 +99,7 @@
                   <td>{{ $row->price}}</td>
                   <td>
                       <ul class="list-inline"> 
-                          <li class="list-inline-item"><a href="{{ url('/merchant/product/vendorshow') }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li> 
+                          <li class="list-inline-item"><a href="{{ url('/merchant/product/vendorshow/'.$row->id) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li> 
                           <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a> </li>
 
                           <li class="list-inline-item">

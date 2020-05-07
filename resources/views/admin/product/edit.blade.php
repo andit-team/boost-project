@@ -114,8 +114,8 @@
                                             <label for="name">Category *</label>
                                             <select name="category_id" class="form-control px-10" id="category_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Category</option>
-                                                @foreach ($category as $row)
-                                                    <option value="{{ $row->id }}" @if($product->id == $row->id) selected @endif>{{$row->name}}</option>
+                                                @foreach ($categories as $row)
+                                                    <option value="{{ $row->id }}" @if($product->category_id == $row->id) selected @endif>{{$row->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>                                       
@@ -267,11 +267,32 @@
                 </section>
     <!-- section end -->
 @endsection
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
     };
+</script>
+
+<script>
+    $(document).ready(function(){
+        $('#category_id').on('change',function(){ 
+            var categoryId = $(this).val();
+            var option     = '<option value="">Sub category</option>'; 
+            $.ajax({
+                type:"GET", 
+                url:"{{ url('/merchant/product/subcategory/{id}') }}",
+                data:{'categoryId':categoryId},
+                success:function(data){
+                    for(var i=0; i<data.length; i++){
+                        option = option+'<option value="'+data[i].id+'">'+data[i].name+'</option>'; 
+                    }
+                    $('.sub').html(option);
+                    
+                }
+            })
+        })
+    });
 </script>
   
