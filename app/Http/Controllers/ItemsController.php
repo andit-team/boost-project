@@ -13,6 +13,7 @@ use App\Models\Seller;
 use App\Models\ItemCategory;
 use App\Models\ItemTag;
 use App\Models\Tag;
+use App\Models\ItemImage;
 use Sentinel;
 use Session;
 use Baazar;
@@ -71,7 +72,7 @@ class ItemsController extends Controller
         $data = [
             'name' => $request->name,
             'email'=> $request->email,          
-            'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
+            //'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
             'slug' => $slug,
             'price' => $request->price,
             'model_no' => $request->model_no,
@@ -99,9 +100,28 @@ class ItemsController extends Controller
             'created_at' => now(),
         ];
 
-        
-
+       
         $product = Item::create($data); 
+
+
+          
+        $itemimage = new ItemImage();
+        
+        if($request->hasfile('list_img')){
+          foreach($request->file('list_img') as $file){
+            $imageName = time().$file->getClientOriginalName();
+            $upload_success = $file->move(public_path('/uploads/product_image'),$imageName);
+            $itemimage['list_img'] = $imageName;
+
+            ItemImage::create(array(
+              'list_img' => $itemimage['list_img'],
+              'item_id' => $product->id,
+              'user_id' => Sentinel::getUser()->id,
+              'created_at' => now(),
+            ));
+          }
+        }
+             
 
         $itemcategory = ItemCategory::create([
            'category_id' => $product->category_id,
@@ -135,6 +155,8 @@ class ItemsController extends Controller
      */
     public function show(Item $product)
     {
+      $product = Item::with('itemimage')->where('status','Active')->first();
+      //dd($product);
         return view('admin.product.show',compact('product'));
     }
 
@@ -207,15 +229,7 @@ class ItemsController extends Controller
     }
 
    
-    public function dropzoneStore(Request $request)
-    {
-        $image = $request->file('file');
-   
-        $imageName = time().'.'.$image->extension();
-        $image->move(public_path('images'),$imageName);
-   
-        return response()->json(['success'=>$imageName]);
-    }
+    
 
 
     public function adminIndex(){
@@ -261,10 +275,10 @@ class ItemsController extends Controller
          return redirect('merchant/product');
     }
 
-    public function vendorshow($id){
+    public function vendorshow($slug){
 
     //  $product = Item::with('category')->where('user_id',Sentinel::getUser()->id)->first();
-    $product = Item::find($id);
+      $product = Item::with(['category','itemimage'])->where('slug',$slug)->first();
       return view('admin.product.vendorshow',compact('product'));
     }
 

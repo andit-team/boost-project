@@ -1,6 +1,15 @@
 @extends('layouts.vendor')
 
 @section('content')
+<style>
+    .imagestyle{
+        width: 50px;
+        height: 50px;
+        border-width: 4px 4px 4px 4px;
+        border-style: solid;
+        border-color: #ccc;
+    }
+</style>
     <!-- breadcrumb start -->
     <div class="breadcrumb-section">
         <div class="container">
@@ -88,18 +97,22 @@
               <tr>
                   <td>{{ ++$i }}</td>
                   <td>
-                      @if(!empty($row->image))
-                         <img class="imagestyle" src="{{ asset($row->image ) }}">
-                      @else
-                          <img class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}">
-                      @endif
+                    @foreach($row->itemimage as $itemimg)
+                    {{-- @if($loop->first) --}}
+                    @if(!empty($itemimg->list_img))
+                       <img class="imagestyle" src="{{ asset('/uploads/product_image/'.$itemimg->list_img ) }}">
+                    @else
+                        <img class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}">
+                    @endif
+                    {{-- @endif --}}
+                    @endforeach
                   </td>
                   <td>{{ $row->name}}</td>
                   <td>{{ $row->category->name }}</td> 
                   <td>{{ $row->price}}</td>
                   <td>
                       <ul class="list-inline"> 
-                          <li class="list-inline-item"><a href="{{ url('/merchant/product/vendorshow/'.$row->id) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li> 
+                          <li class="list-inline-item"><a href="{{ url('/merchant/product/vendorshow/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li> 
                           <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a> </li>
 
                           <li class="list-inline-item">
