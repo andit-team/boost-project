@@ -101,7 +101,7 @@
                                                     class="ti-angle-right"></i></button></span></div>
                                 </div>
                             </div>
-                            <div class="product-buttons"><a href="#" data-toggle="modal" data-target="#addtocart"
+                            <div class="product-buttons"><a href="{{url('/addto_cart')}}" 
                                     class="btn btn-solid">add to cart</a> <a href="#" class="btn btn-solid">buy now</a>
                             </div>
                             <div class="border-product">

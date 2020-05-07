@@ -22,6 +22,7 @@ Route::get('/', 'forntEnd\HomeController@index');
 // Frontend Controller.....Product Details Route
 
 // Route::get('/product_details/{id}', 'forntEnd\HomeController@details');
+Route::get('/addto_cart', 'forntEnd\HomeController@cart');
 Route::resource('/product_details', 'forntEnd\HomeController');
 
 
