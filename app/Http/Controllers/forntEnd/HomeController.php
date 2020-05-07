@@ -5,7 +5,7 @@ namespace App\Http\Controllers\forntEnd;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Item;
-
+use Sentinel;
 class HomeController extends Controller
 {
     /**
@@ -25,9 +25,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function details()
+    public function details($id)
     {
-        return view('frontend.product.details');
+        $item = Item::all();
+        $product_details = Item::where('id', $item->id)->first();      
+    //    dd( $product_details);
+         return view('frontend.product.details',compact('product_details','item'));
     }
 
     /**
@@ -48,8 +51,11 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {      
+          $item= Item::find($id);
+        //$product_details = Item::where('slug',$product_details->slug)->first();      
+    //    dd( $product_details);
+         return view('frontend.product.details',compact('product_details','item'));
     }
 
     /**
