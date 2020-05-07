@@ -67,8 +67,8 @@ class Item extends Model
 
      public static function getSubcategory($categoryId){
          return DB::table('categories')
-                    ->select('*')
-                    ->where('parent_id',$categoryId)
+                    ->select('id','name')
+                    ->where('parent_id','=',$categoryId)
                     ->get();
        }
    
