@@ -89,11 +89,13 @@
                         <hr class="hr-borderd">
                         <div class="row pt-3">
                             <div class="col-md-4 text-right"> 
-                                @if(!empty($product->image))
-                                <img class="imagestyle" src="{{ asset($product->image ) }}"></td>
-                            @else
-                                <img class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}">
-                            @endif
+                                @foreach ($product->itemimage as $row) 
+                                @if(!empty( $row->list_img))
+                                <img class="imagestyle" src="{{ asset('/uploads/product_image/'. $row->list_img )}}"></td>
+                             @else
+                                 <img class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}">
+                             @endif 
+                            @endforeach 
                             </div>
                             <div class="col-md-8 text-left">
                                 <h3 class="display-5 pt-1">{{ucfirst($product->name)}}</h3> 

@@ -27,14 +27,14 @@
 {{--                                    <li><a href="add-product.html"><i class="fa fa-circle"></i>Add Product</a></li>--}}
                                 </ul>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="#"><i class="fa fa-circle"></i>
                                     <span>Category Parent Setup</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                                 <ul class="sidebar-submenu">
                                     <li><a href="{{ url('andbaazaradmin/category_setup') }}"><i class="fa fa-circle"></i>Set Category</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <li>
                                 <a href="#"><i class="fa fa-circle"></i>
                                     <span>Tag</span> <i class="fa fa-angle-right pull-right"></i>

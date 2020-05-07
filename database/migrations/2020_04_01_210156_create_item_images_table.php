@@ -15,13 +15,13 @@ class CreateItemImagesTable extends Migration
     {
         Schema::create('item_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('item_id');
-            $table->unsignedBigInteger('color_id');
-            $table->integer('sort');
-            $table->string('org_img');
-            $table->string('list_img');
-            $table->string('thumb_img');
-            $table->string('compressed_img');
+            $table->unsignedBigInteger('item_id')->nullable();
+            $table->unsignedBigInteger('color_id')->nullable();
+            $table->integer('sort')->nullable();
+            $table->string('org_img')->nullable();
+            $table->string('list_img')->nullable();
+            $table->string('thumb_img')->nullable();
+            $table->string('compressed_img')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();

@@ -36,11 +36,15 @@
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>
-                                        @if(!empty($row->image))
-                                           <img class="imagestyle" src="{{ asset($row->image ) }}">
+                                        @foreach($row->itemimage as $itemimg)
+                                        {{-- @if($loop->first) --}}
+                                        @if(!empty($itemimg->list_img))
+                                           <img class="imagestyle" src="{{ asset('/uploads/product_image/'.$itemimg->list_img ) }}">
                                         @else
                                             <img class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}">
                                         @endif
+                                        {{-- @endif --}}
+                                        @endforeach
                                     </td>
                                     <td>{{ $row->name}}</td>
                                     <td>{{ $row->category->name }}</td> 
