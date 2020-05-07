@@ -30,8 +30,26 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="product-slick">
-                            <div><img src="{{ asset( $item->image ) }}" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-0"></div> 
+                            <div>
+                                
+                                
+                                {{-- @foreach($row->itemimage as $itemimg)
+                                {{-- @if($loop->first) --}}
+                                {{-- @if(!empty($itemimg->list_img))
+                                   <img class="imagestyle" src="{{ asset('/uploads/product_image/'.$itemimg->list_img ) }}">
+                                @else --}}
+                                    {{-- <img class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}">
+                                @endif --}}
+                                {{-- @endif --}}
+                                {{-- @endforeach  --}}
+                                
+                                
+                                <img src="{{ asset( '/uploads/product_image/'.$item->list_img) }}" alt=""
+                                    class="img-fluid blur-up lazyload image_zoom_cls-0"> 
+                                
+                                
+                                
+                                </div> 
                             {{-- <div><img src="{{asset('frontend')}}/assets/images/pro3/2.jpg" alt=""
                                     class="img-fluid blur-up lazyload image_zoom_cls-1"></div>
                             <div><img src="{{asset('frontend')}}/assets/images/pro3/27.jpg" alt=""
