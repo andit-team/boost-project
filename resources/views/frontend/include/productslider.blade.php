@@ -7,8 +7,8 @@
                     <div class="product-box">                     
                         <div class="img-wrapper"> 
                                                                           
-                            <div class="front">                              
-                                <a href="{{url('product_details')}}"><img src="{{ asset($row->image ) }}"
+                            <div class="front">                                                          
+                            <a href="{{url('/product_details/'.$row->id)}}"><img src="{{ asset($row->image ) }}"
                                     class="img-fluid blur-up lazyload bg-img" alt=""></a>
                             </div>
                             {{-- <div class="back">

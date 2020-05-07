@@ -30,14 +30,14 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="product-slick">
-                            <div><img src="{{asset('frontend')}}/assets/images/pro3/1.jpg" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-0"></div>
-                            <div><img src="{{asset('frontend')}}/assets/images/pro3/2.jpg" alt=""
+                            <div><img src="{{ asset( $item->image ) }}" alt=""
+                                    class="img-fluid blur-up lazyload image_zoom_cls-0"></div> 
+                            {{-- <div><img src="{{asset('frontend')}}/assets/images/pro3/2.jpg" alt=""
                                     class="img-fluid blur-up lazyload image_zoom_cls-1"></div>
                             <div><img src="{{asset('frontend')}}/assets/images/pro3/27.jpg" alt=""
                                     class="img-fluid blur-up lazyload image_zoom_cls-2"></div>
                             <div><img src="{{asset('frontend')}}/assets/images/pro3/27.jpg" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-3"></div>
+                                    class="img-fluid blur-up lazyload image_zoom_cls-3"></div> --}}
                         </div>
                         <div class="row">
                             <div class="col-12 p-0">
@@ -59,7 +59,7 @@
                             <h2 class="mb-0">Women Pink Shirt</h2>
                             <h5 class="mb-2">by <a href="#">zara</a></h5>
                             <h4><del>$459.00</del><span>55% off</span></h4>
-                            <h3>$32.96</h3>
+                            <h3>{{$item->price}}</h3>
                             <ul class="color-variant">
                                 <li class="bg-light0"></li>
                                 <li class="bg-light1"></li>
@@ -106,10 +106,7 @@
                             </div>
                             <div class="border-product">
                                 <h6 class="product-title">product details</h6>
-                                <p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium
-                                    doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore
-                                    veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam
-                                    voluptatem,</p>
+                                <p>{{$item->description}}</p>
                             </div>
                             <div class="border-product">
                                 <h6 class="product-title">share it</h6>
@@ -153,11 +150,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-lg-12">
-                    <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" id="top-home-tab" data-toggle="tab"
-                                href="#top-home" role="tab" aria-selected="true">Description</a>
-                            <div class="material-border"></div>
-                        </li>
+                    <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">                       
                         <li class="nav-item"><a class="nav-link" id="profile-top-tab" data-toggle="tab"
                                 href="#top-profile" role="tab" aria-selected="false">Details</a>
                             <div class="material-border"></div>
@@ -171,32 +164,9 @@
                             <div class="material-border"></div>
                         </li>
                     </ul>
-                    <div class="tab-content nav-material" id="top-tabContent">
-                        <div class="tab-pane fade show active" id="top-home" role="tabpanel"
-                            aria-labelledby="top-home-tab">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book. It has
-                                survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged. It was popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                                publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum
-                                is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                                industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                galley of type and scrambled it to make a type specimen book. It has survived not only
-                                five centuries, but also the leap into electronic typesetting, remaining essentially
-                                unchanged. It was popularised in the 1960s with the release of Letraset sheets
-                                containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                                Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        </div>
+                    <div class="tab-content nav-material" id="top-tabContent">                        
                         <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                                has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                printer took a galley of type and scrambled it to make a type specimen book. It has
-                                survived not only five centuries, but also the leap into electronic typesetting,
-                                remaining essentially unchanged. It was popularised in the 1960s with the release of
-                                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-                                publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                            <p>{{$item->description}}</p>
                             <div class="single-product-tables">
                                 <table>
                                     <tbody>
