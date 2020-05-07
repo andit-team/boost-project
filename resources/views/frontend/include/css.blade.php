@@ -18,8 +18,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 
     <!-- Icons -->
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/fontawesome.css">
-
+     {{-- <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/fontawesome.min.css">  --}}
+    <link rel="stylesheet" type="text/css" href=" https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--Slick slider css-->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/slick.css">
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/slick-theme.css">

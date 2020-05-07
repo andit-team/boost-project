@@ -96,6 +96,18 @@
                                     </div>
                                 </div>
                             </td>
+                            <td <li class="list-inline-item">
+                                <ul>
+                                <li class="list-inline-item"><a href="#" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a> </li>
+                                <li class="list-inline-item">
+                                <form action="#" method="post" style="margin-top:-2px" id="deleteButton">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                </form>
+                              </li>
+                            </ul>
+                            </td>
                             {{-- <td><a href="#" class="icon"><i class="ti-close"></i></a></td>
                             <td>
                                 <h2 class="td-color">$4539.00</h2>
