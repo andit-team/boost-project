@@ -66,7 +66,7 @@ class HomeController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('frontend.product.cart');
     }
 
     /**
@@ -90,5 +90,10 @@ class HomeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function cart()
+    {
+        return view('frontend.product.cart');
     }
 }
