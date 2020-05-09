@@ -16,8 +16,8 @@ class CreateSizesTable extends Migration
         Schema::create('sizes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->decimal('item_size',8,2)->default(0);
-            $table->text('desc');
+            $table->string('item_size');
+            $table->text('desc')->nullable();
             $table->string('slug')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');
