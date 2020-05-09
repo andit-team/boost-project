@@ -117,8 +117,9 @@
                     </tbody>                 
                 </table>                                                         
             </div>  
-            <div class="col-sm-6 col-md-8">
-                <div class="card ">
+            <div class="col-sm-6 col-md-12">
+              <div class="row"> 
+                <div class="card col-md-6">
                     <div class="card-header">
                         <div class="row">
                             <h3 class="text-xs-center">Payment Methods</h3>
@@ -126,7 +127,16 @@
                         </div>
                     </div>  
                 </div> 
-            </div>         
+                <div class="card col-md-6">
+                    <div class="card-body">
+                        <div class="row">
+                            <h3 class="text-xs-center">Buyer Protection</h3>
+                            <p class="card-text">Get full refund if the item is not as described or if is not delivered.</p>
+                        </div>
+                    </div>  
+                </div> 
+              </div> 
+           </div>         
         </div>      
         <div class="col-sm-12 col-md-4">
             <div class="card text-dark  mb-3" style="max-width: 25rem;">
