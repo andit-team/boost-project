@@ -60,6 +60,58 @@ class CategoriesTableSeeder extends Seeder
         'created_at'     => now(),
         'updated_at'     => now()
       ],
+
+
+
+      [
+        'name'           => 'Jamdani',
+        'slug'           => 'B11ee',
+        'parent_id'      => 1,
+        'user_id'        => '2',
+        'created_at'     => now(),
+        'updated_at'     => now()
+      ],
+      [
+        'name'           => 'Suti',
+        'slug'           => 'B22',
+         'parent_id'      => 2,
+        'user_id'        => '2',
+        'created_at'     => now(),
+        'updated_at'     => now()
+      ],
+      [
+        'name'           => 'Slik',
+        'slug'           => 'B3oko',
+          'parent_id'      => 3,
+        'user_id'        => '2',
+        'created_at'     => now(),
+        'updated_at'     => now()
+      ],
+      [
+        'name'           => 'Cotton',
+        'slug'           => 'B4vcxfbg4',
+          'parent_id'      => 4,
+        'user_id'        => '2',
+        'created_at'     => now(),
+        'updated_at'     => now()
+      ],
+      [
+        'name'           => 'Black',
+        'slug'           => 'B555',
+          'parent_id'      => 5,
+        'user_id'        => '2',
+        'created_at'     => now(),
+        'updated_at'     => now()
+      ],
+      [
+        'name'           => 'White',
+        'slug'           => 'B66g6',
+          'parent_id'      => 5,
+        'user_id'        => '2',
+        'created_at'     => now(),
+        'updated_at'     => now()
+      ],
+      
     ];
 
     DB::table('categories')->insert($data);

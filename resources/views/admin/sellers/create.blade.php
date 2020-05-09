@@ -90,9 +90,9 @@
                             <div class="col-md-6">
                                 <label for="dob">Date of birth</label>
                                 @if($sellerProfile == '')
-                                    <input type="text" class="form-control datepicker"  name="dob" value="{{ old('dob') }}" id="" placeholder="" >
+                                    <input type="date" class="form-control datepicker"  name="dob" value="{{ old('dob') }}" id="" placeholder="" >
                                 @else
-                                    <input type="text" class="form-control datepicker"  name="dob" value="{{ old('dob',$sellerProfile->dob) }}" id="" placeholder="" >
+                                    <input type="date" class="form-control datepicker"  name="dob" value="{{ old('dob',$sellerProfile->dob) }}" id="" placeholder="" >
                                 @endif
                                 @if ($errors->has('dob'))
                                     <span class="text-danger">{{ $errors->first('dob') }}</span>
@@ -138,9 +138,9 @@
                             <div class="col-md-12">
                                 <label for="description">Write Your Message</label>
                                 @if($sellerProfile == '')
-                                    <textarea class="form-control mb-0" placeholder="Write Your Message"  name="description"  id="" rows="6"></textarea>
+                                    <textarea class="form-control mb-0" placeholder="Write Your Message" type ="text"  name="description"  id="" rows="6"></textarea>
                                 @else
-                                    <textarea class="form-control mb-0" placeholder="Write Your Message" name="description" id="" rows="6">{{ $sellerProfile->description }}</textarea>
+                                    <textarea class="form-control mb-0" placeholder="Write Your Message" type ="text" name="description" id="" rows="6">{{ $sellerProfile->description }}</textarea>
                                 @endif
                                 @if ($errors->has('description'))
                                     <span class="text-danger">{{ $errors->first('description') }}</span>
