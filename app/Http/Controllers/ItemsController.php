@@ -155,7 +155,7 @@ class ItemsController extends Controller
      */
     public function show(Item $product)
     {
-      $product = Item::with('itemimage')->where('status','Active')->first();
+      $product = Item::with('itemimage')->first();
       //dd($product);
         return view('admin.product.show',compact('product'));
     }
