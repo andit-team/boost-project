@@ -23,7 +23,7 @@ Route::get('/', 'forntEnd\HomeController@index');
 
 // Route::get('/product_details/{id}', 'forntEnd\HomeController@details');
 Route::get('/addto_cart', 'forntEnd\HomeController@cart');
-Route::resource('/product_details', 'forntEnd\HomeController');
+Route::resource('/item', 'forntEnd\HomeController');
 
 
 

@@ -26,6 +26,7 @@ class CreateItemsTable extends Migration
             $table->integer('pack_id');
             $table->integer('sorting')->nullable();
             $table->text('description');
+            $table->text('rej_desc')->nullable();
             $table->integer('min_order')->default(0);
             $table->enum('available_on',['Yes','No'])->default('Yes');
             // $table->string('availability');

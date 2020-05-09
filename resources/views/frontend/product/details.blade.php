@@ -30,26 +30,28 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="product-slick">
+                            @foreach($product_details->itemimage as $itemimg)
                             <div>
                                 
                                 
-                                {{-- @foreach($row->itemimage as $itemimg)
-                                {{-- @if($loop->first) --}}
-                                {{-- @if(!empty($itemimg->list_img))
-                                   <img class="imagestyle" src="{{ asset('/uploads/product_image/'.$itemimg->list_img ) }}">
-                                @else --}}
-                                    {{-- <img class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}">
-                                @endif --}}
-                                {{-- @endif --}}
-                                {{-- @endforeach  --}}
+                               
+                                @if($loop->first)
+                                @if(!empty($itemimg->list_img))
+                                   <img class="img-fluid blur-up lazyload image_zoom_cls-1" src="{{ asset('/uploads/product_image/'.$itemimg->list_img ) }}">
+                                @else
+                                    <img class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}">
+                                @endif
+                                @endif
                                 
                                 
-                                <img src="{{ asset( '/uploads/product_image/'.$item->list_img) }}" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-0"> 
+                               
+                                {{-- <img src="{{ asset( '/uploads/product_image/'.$item->list_img) }}" alt=""
+                                    class="img-fluid blur-up lazyload image_zoom_cls-0">  --}}
                                 
                                 
                                 
-                                </div> 
+                                </div>  
+                                @endforeach 
                             {{-- <div><img src="{{asset('frontend')}}/assets/images/pro3/2.jpg" alt=""
                                     class="img-fluid blur-up lazyload image_zoom_cls-1"></div>
                             <div><img src="{{asset('frontend')}}/assets/images/pro3/27.jpg" alt=""
@@ -60,14 +62,26 @@
                         <div class="row">
                             <div class="col-12 p-0">
                                 <div class="slider-nav">
-                                    <div><img src="{{asset('frontend')}}/assets/images/pro3/1.jpg" alt=""
-                                            class="img-fluid blur-up lazyload"></div>
-                                    <div><img src="{{asset('frontend')}}/assets/images/pro3/2.jpg" alt=""
+                                    @foreach($product_details->itemimage as $itemimg)
+                                    <div>
+                                       
+                                        {{-- @if($loop->first) --}}
+                                        @if(!empty($itemimg->list_img))
+                                        <img  src="{{ asset('/uploads/product_image/'.$itemimg->list_img ) }}" alt=""
+                                        class="img-fluid blur-up lazyload">
+                                        @else
+                                            <img alt="" class="img-fluid blur-up lazyload" src="{{ asset('/uploads/product_image/user.png') }}">
+                                        @endif
+                                        {{-- @endif --}}
+                                       
+                                    </div>
+                                    @endforeach 
+                                    {{-- <div><img src="{{asset('frontend')}}/assets/images/pro3/2.jpg" alt=""
                                             class="img-fluid blur-up lazyload"></div>
                                     <div><img src="{{asset('frontend')}}/assets/images/pro3/27.jpg" alt=""
                                             class="img-fluid blur-up lazyload"></div>
                                     <div><img src="{{asset('frontend')}}/assets/images/pro3/27.jpg" alt=""
-                                            class="img-fluid blur-up lazyload"></div>
+                                            class="img-fluid blur-up lazyload"></div> --}}
                                 </div>
                             </div>
                         </div>
@@ -77,7 +91,7 @@
                             <h2 class="mb-0">Women Pink Shirt</h2>
                             <h5 class="mb-2">by <a href="#">zara</a></h5>
                             <h4><del>$459.00</del><span>55% off</span></h4>
-                            <h3>{{$item->price}}</h3>
+                            <h3>{{$product_details->price}}</h3>
                             <ul class="color-variant">
                                 <li class="bg-light0"></li>
                                 <li class="bg-light1"></li>
@@ -124,7 +138,7 @@
                             </div>
                             <div class="border-product">
                                 <h6 class="product-title">product details</h6>
-                                <p>{{$item->description}}</p>
+                                <p>{{$product_details->description}}</p>
                             </div>
                             <div class="border-product">
                                 <h6 class="product-title">share it</h6>
@@ -184,7 +198,7 @@
                     </ul>
                     <div class="tab-content nav-material" id="top-tabContent">                        
                         <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
-                            <p>{{$item->description}}</p>
+                            <p>{{$product_details->description}}</p>
                             <div class="single-product-tables">
                                 <table>
                                     <tbody>

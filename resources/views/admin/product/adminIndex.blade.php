@@ -51,7 +51,7 @@
                                     <td>{{ $row->price}}</td>
                                     <td>
                                         <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-check"></i> </a> </li>
+                                            <li class="list-inline-item"><a href="{{ url('/merchant/product/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-check"></i> Approve </a> </li>
                                         </ul>
                                     </td>
                                     @endforeach

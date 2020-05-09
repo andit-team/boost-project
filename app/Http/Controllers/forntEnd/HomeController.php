@@ -51,12 +51,12 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {      
-          $item= Item::find($id);
-        //$product_details = Item::where('slug',$product_details->slug)->first();      
-    //    dd( $product_details);
-         return view('frontend.product.details',compact('product_details','item'));
+    public function show(Item $item)
+    {  
+        //dd($product);
+        $product_details = Item::where('status','Active')->where('slug',$item->slug)->first();      
+       //dd( $product_details);
+         return view('frontend.product.details',compact('product_details'));
     }
 
     /**

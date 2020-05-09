@@ -10,9 +10,9 @@
                                 @foreach($row->itemimage as $itemimg)
                                 @if($loop->first)
                                 @if(!empty($itemimg->list_img))
-                                <a href="{{url('/product_details/'.$row->id)}}">  <img class="imagestyle" src="{{ asset('/uploads/product_image/'.$itemimg->list_img ) }}">
+                                <a href="{{url('/item/'.$row->slug)}}">  <img  src="{{ asset('/uploads/product_image/'.$itemimg->list_img ) }}">
                                 @else
-                                    <img class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}">
+                                    <img  src="{{ asset('/uploads/product_image/user.png') }}">
                                 @endif
                                 @endif
                                 @endforeach      

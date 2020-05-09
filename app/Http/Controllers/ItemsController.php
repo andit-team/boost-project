@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\ProductApproveRequestMail;
 use App\Mail\productApproveMail;
+use App\Mail\ProductRejectMail;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\Size;
@@ -155,7 +156,7 @@ class ItemsController extends Controller
      */
     public function show(Item $product)
     {
-      $product = Item::with('itemimage')->first();
+      $product = Item::with('itemimage')->where('slug',$product->slug)->first();
       //dd($product);
         return view('admin.product.show',compact('product'));
     }
@@ -250,6 +251,26 @@ class ItemsController extends Controller
       $name = $data['name'];
       \Mail::to($data['email'])->send(new productApproveMail($data, $name));
       Session::flash('success', 'Item Approve Successfully!');
+
+        return back();
+
+    }
+
+    public function rejected(Request $request,$slug){
+      //dd($request->all());
+     
+      $data = Item::where('slug',$slug)->first();
+      //dd($data);
+      
+      $data->update([
+        'status' => 'Reject',
+        'rej_desc' => $request->rej_desc,
+        ]);
+      
+      $name = $data['name'];
+      $rej_desc = $data['rej_desc'];
+      \Mail::to($data['email'])->send(new ProductRejectMail($data, $name,$rej_desc));
+      Session::flash('success', 'Item Rejected Successfully!');
 
         return back();
 
