@@ -59,4 +59,4 @@ class SizesTableSeeder extends Seeder
          }
       
     }
-}
+
