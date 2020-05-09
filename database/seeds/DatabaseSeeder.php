@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
                 DB::table('permissions')->truncate();
                 DB::table('roles')->truncate();
                 DB::table('colors')->truncate();
-                // DB::table('sizes')->truncate();
+                DB::table('sizes')->truncate();
                 DB::table('users')->truncate();
               
 
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
                 SellersTableSeeder::class,
                 ShopsTableSeeder::class,
                 TagsTableSeeder::class,
-                // ColorsTableSeeder::class,
+                ColorsTableSeeder::class,
                 SizesTableSeeder::class,
         ]);
     }
