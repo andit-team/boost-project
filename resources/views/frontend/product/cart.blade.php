@@ -1,6 +1,7 @@
 @extends('frontend.layouts.master')
 @section('content')
 
+
 {{-- <style>
     .headpading{
         padding: 50px;     
@@ -114,17 +115,19 @@
                             </td> --}}
                         </tr>
                     </tbody>                 
-                </table>                             
-            </div>
-
-            {{-- <div class="card ">
-                <div class="card-header">
-                    <div class="row">
-                        <h3 class="text-xs-center">Payment Details</h3>
-                        <img class="img-fluid cc-img" src="http://www.prepbootstrap.com/Content/images/shared/misc/creditcardicons.png">
-                    </div>
-                </div> --}}
-        </div>
+                </table>                                                         
+            </div>  
+            <div class="col-sm-6 col-md-8">
+                <div class="card ">
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="text-xs-center">Payment Methods</h3>
+                            <img class="img-fluid cc-img" src="http://www.prepbootstrap.com/Content/images/shared/misc/creditcardicons.png">
+                        </div>
+                    </div>  
+                </div> 
+            </div>         
+        </div>      
         <div class="col-sm-12 col-md-4">
             <div class="card text-dark  mb-3" style="max-width: 25rem;">
                 <div class="card-header"><h3>Order Summary</h3></div>
