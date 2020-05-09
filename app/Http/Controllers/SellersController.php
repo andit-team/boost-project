@@ -60,7 +60,7 @@ class SellersController extends Controller
                 'verification_token' => $request->verification_token,
                 'remember_token' => $request->remember_token,
                 'user_id' => Sentinel::getUser()->id,
-                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }else{
             $sellerId=Seller::create([
@@ -136,7 +136,7 @@ class SellersController extends Controller
                 'verification_token' => $request->verification_token,
                 'remember_token' => $request->remember_token,
                 'user_id' => Sentinel::getUser()->id,
-                'created_at' => now(),
+                'updated_at' => now(),
             ];
 
             $seller->update($data);
