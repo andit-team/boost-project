@@ -31,7 +31,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('') }}/assets/css/datepicker.min.css">
 
     <!-- Themify icon -->
-    <link rel="stylesheet" type="text/css" href="../assets/css/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('') }}/assets/css/themify-icons.css">
+
+    <!-- owlcarousel css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/owlcarousel.css">
 
     <!-- Bootstrap css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('') }}/assets/css/bootstrap.css">
@@ -1467,6 +1470,13 @@
 
 <!-- dare picker js -->
 <script src="{{ asset('') }}/assets/js/date-picker.js"></script>
+
+<!-- Owlcarousel js-->
+<script src="{{asset('')}}/assets/js/owlcarousel/owl.carousel.js"></script>
+<script src="{{asset('')}}/assets/js/dashboard/product-carousel.js"></script>
+
+<!-- lazyload js-->
+<script src="{{asset('')}}/assets/js/lazysizes.min.js"></script>
 
 <!-- Bootstrap js-->
 <script src="{{ asset('') }}/assets/js/bootstrap.js"></script>

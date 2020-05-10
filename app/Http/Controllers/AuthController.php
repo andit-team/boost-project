@@ -35,6 +35,6 @@ class AuthController extends Controller{
 
 	public function logout(){
 		Sentinel::logout(null, true);
-		return redirect('login');
+		return redirect('auth/merchant/login');
 	}
 }

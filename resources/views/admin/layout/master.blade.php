@@ -31,6 +31,9 @@
     <!-- Chartist css -->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/chartist.css">
 
+    <!-- owlcarousel css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/owlcarousel.css">
+
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/bootstrap.css">
 
@@ -43,6 +46,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/bootstrap-datepicker.min.css">
 
     <link href="{{ asset('') }}/css/treeview.css" rel="stylesheet">
+    @stack('css')
 </head>
 
 <body>
@@ -213,8 +217,15 @@
 <!--height equal js-->
 <script src="{{asset('')}}/assets/js/height-equal.js"></script>
 
+<!-- Owlcarousel js-->
+<script src="{{asset('')}}/assets/js/owlcarousel/owl.carousel.js"></script>
+<script src="{{asset('')}}/assets/js/dashboard/product-carousel.js"></script>
+
 <!-- lazyload js-->
 <script src="{{asset('')}}/assets/js/lazysizes.min.js"></script>
+
+
+
 
 <!--script admin-->
 <script src="{{asset('')}}/assets/js/admin-script.js"></script>
@@ -228,6 +239,8 @@
 <script src="{{asset('')}}/assets/js/bootstrap-datepicker.min.js"></script>
 
 <script src="{{ asset('') }}/js/treeview.js"></script>
+
+@stack('js')
 
 </body>
 </html>
