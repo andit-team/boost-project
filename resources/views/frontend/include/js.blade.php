@@ -32,6 +32,9 @@
 <!-- Theme js-->
 <script src="{{asset('frontend')}}/assets/js/script.js"></script>
 
+<!-- Multiselect js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
 <script>
     $(window).on('load', function () {
         setTimeout(function () {
