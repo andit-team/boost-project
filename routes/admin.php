@@ -62,10 +62,7 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::resource('/buyercard','BuyerCardsController');
     Route::resource('/buyerpayment','BuyerPaymentsController');
 
-
-
-
-    Route::resource('/tag','TagsController');
+    Route::resource('/tag','TagsController', ['names' => 'tags']);
     Route::resource('/color','ColorsController');
     Route::resource('/promotion','PromotionsController');
 

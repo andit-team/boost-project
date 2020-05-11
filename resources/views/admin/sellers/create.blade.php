@@ -166,11 +166,11 @@ select.form-control:not([size]):not([multiple]){
                         </div> 
                         </div> 
                     
-                          <div class="card mb-4">                        
+                          <div class="card mb-4 ">                        
                             <div class="card-header">
                              Description 
                             </div>
-                            <div class="card-body row">
+                            <div class="card-body">
                                 <div class="col-md-12">
                                     <label for="description">Write Your Message</label>
                                     @if($sellerProfile == '')
