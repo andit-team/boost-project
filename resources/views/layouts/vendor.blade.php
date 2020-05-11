@@ -1511,6 +1511,8 @@
 
 </script>
 
+@stack('js')
+@stack('css')
 </body>
 
 
