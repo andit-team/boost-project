@@ -233,7 +233,7 @@
                             <li><a href="profile.html"><i class="fa fa-circle"></i>Profile</a></li>
                         </ul>
                     </li>
-<li><a class="sidebar-header" href="invoice.html"><i data-feather="archive"></i><span>Invoice</span></a>
+                      <li><a class="sidebar-header" href="invoice.html"><i data-feather="archive"></i><span>Invoice</span></a>
                     </li>
                     <li><a class="sidebar-header" href="login.html"><i data-feather="log-in"></i><span>Login</span></a>
                     </li>

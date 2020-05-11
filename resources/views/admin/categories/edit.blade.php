@@ -42,7 +42,7 @@
         <div class="container-fluid">
             <div class="card tab2-card">
                 <div class="card-header">
-                    <h5>Edit Category</h5>
+                    <h5>Edit Sub Category</h5>
                 </div>
                 <div class="card-body">
                     <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/category/'.$category->slug) }}" method="post" enctype="multipart/form-data">

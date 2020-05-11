@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\ItemCategory;
+use App\Models\Children;
 use Sentinel;
 use Session;
 use Baazar;
@@ -129,8 +130,9 @@ class CategoriesController extends Controller
     public function manageCategory()
     {
         $categories = Category::where('parent_id',0)->get();
+        $subcategories = Children::all();
         $allCategories = Category::pluck('name','id')->all();
-        return view('admin.categories.categoryTreeview',compact('categories','allCategories'));
+        return view('admin.categories.categoryTreeview',compact('categories','allCategories','subcategories'));
     }
 
     public function addCategory(Request $request)
@@ -142,7 +144,7 @@ class CategoriesController extends Controller
         $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
         $input['user_id'] = Sentinel::getUser()->id;
 
-        Category::create($input);
+        Children::create($input); 
         return back()->with('success', 'New Category added successfully.');
     }
 

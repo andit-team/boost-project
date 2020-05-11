@@ -18,6 +18,7 @@
 
     <!-- Font Awesome-->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/fontawesome.css">
+    
 
     <!-- Flag icon-->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/flag-icon.css">
