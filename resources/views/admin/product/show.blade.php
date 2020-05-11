@@ -38,7 +38,7 @@
                 <div class="col-lg-6">
                     <ol class="breadcrumb pull-right">
                         <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item">Physical</li>
+                        <li class="breadcrumb-item">Product</li>
                         <li class="breadcrumb-item active">Product Detail</li>
                     </ol>
                 </div>
@@ -85,7 +85,7 @@
                         <div class="item"><img src="{{asset('frontend')}}/assets/images/pro3/2.jpg" alt="" class="blur-up lazyloaded"></div> --}}
                     </div>
                 </div>
-                <div class="col-xl-8">
+                <div class="col-xl-6">
                     <div class="product-page-details product-right mb-0">
                         <h2>{{ucfirst($product->name)}}</h2>
                         {{-- <select id="u-rating-fontawesome-o" name="rating" data-current-rating="5" autocomplete="off">
@@ -97,7 +97,9 @@
                         </select> --}}
                         <hr>
                         <h6 class="product-title">product details</h6>
-                        <p>{{($product->description)}}</p>
+                        <p>{{$product->description}}</p>
+                        <h6 class="product-title mt-1">Product Category</h6>
+                        <p>{{$product->category->name}}</p> 
                         <div class="product-price digits mt-2">
                             {{-- <h3>$26.00 <del>$350.00</del></h3> --}}
                             <h3>${{$product->price}}</del></h3>
@@ -184,32 +186,23 @@
                                 {{-- @endif --}}
                             </div>
                             @endif
-                        </div>
-                        <hr>
-                        {{-- <div class="col-md-4"> --}}
-                            <h2>Shop Details</h2>
-                            {{-- <h6 class="card-subtitle">Shop</h6> --}}
-                            <hr class="hr-borderd">
-                            <div class="profile-top">
-                                <div class="profile-image">
-                                    <img src="{{ asset('') }}/assets/images/logos/17.png" alt="" class="img-fluid">
-                                </div>
-                                <div class="profile-detail">
-                                    <h5>Fashion Store</h5>
-                                    <h6>750 followers | 10 review</h6>
-                                    <h6>mark.enderess@mail.com</h6>
-                                </div>
+                        </div> 
+                    </div>   
+                </div> 
+                <div class="col-xl-2 text-center"> 
+                    <div class="product-page-details product-right mb-0 border m-t-40"> 
+                        <div class="profile-top">
+                            <div class="profile-image text-center">
+                                <img src="{{ asset('') }}/assets/images/logos/17.png" alt="" class="img-fluid">
                             </div>
-                            <div class="mt-5 profile-detail">
-                                <h5 class="font-weight-bold"><u>Shop Details</u></h5>
-                                <p>
-                                    A product description is the marketing copy that explains what a product is and why it’s worth purchasing. The purpose of a product description is to supply customers with important information about the features and benefits of the product so they’re compelled to buy.
-                                    However, entrepreneurs and marketers alike are susceptible to a common mistake that comes up when writing product descriptions. Even professional copywriters make it sometimes: writing product descriptions that simply describe your products. Why is it wrong? Because great product descriptions need to augment your product pages by selling your products to real people, not just acting as back-of-the-box dispensers of information for search engines (though search engine optimization can't be an afterthought, of course). Let’s have a look at nine simple ways to persuade visitors to your online store with product descriptions that sell.
-                                </p>
+                            <div class="profile-detail text-center">
+                                <h5>Fashion Store</h5>
+                                <h6>750 followers | 10 review</h6>
+                                <h6>mark.enderess@mail.com</h6>
                             </div>
-                        {{-- </div> --}}
-                    </div>
-                </div>
+                        </div> 
+                    </div>    
+                </div>    
             </div>
         </div>
     </div>

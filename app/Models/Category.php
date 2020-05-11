@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ItemCategory;
 use App\Models\Item;
+use App\Models\Children;
 use App\User;
 
 class Category extends Model
@@ -31,6 +32,11 @@ class Category extends Model
     public function item(){
        return $this->hasMany(Item::class,'category_id');
     }
+
+    public function Children()
+  {
+    return $this->hasMany(Children::class, 'parent_id');
+  }
 
 
 
