@@ -35,6 +35,9 @@
 <!-- Multiselect js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
+<!-- Ckeditor js-->
+<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+
 <script>
     $(window).on('load', function () {
         setTimeout(function () {

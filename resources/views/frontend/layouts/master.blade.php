@@ -39,9 +39,6 @@
     @include('frontend.include.footer')
     <!-- footer end -->
 
-
-   
-
     <!-- theme setting -->
     @include('frontend.include.themesetting')
     <!-- theme setting -->
@@ -78,6 +75,8 @@
     @include('frontend.include.js')
    <!--js End --> 
 
+   @stack('css')
+   @stack('js')
 </body>
 
 
