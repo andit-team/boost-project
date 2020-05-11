@@ -81,27 +81,7 @@ select.form-control:not([size]):not([multiple]){
                               Basic Information
                             </div>
                             <div class="card-body row">           
-                                <div class="card mb-3">
-                                    <div class="card-body">
-                                            <div class="form-group  no-margin">
-                                                <h3 class="box-title">Upload An Image</h3>
-                                            </div>
-                                            <div class="thumbnail upload_image">
-                                                <?php //echo getCMSPhoto($thumb, 'full'); ?>
-                                            <img class="img-responsive" src="{{asset('default.png')}}">
-                                            </div>
-                                            <div class="btn btn-default btn-file">
-                                                <i class="fa fa-picture-o"></i> Set Thumbnail
-                                                @if($sellerProfile == '')
-                                                <input type="file" class="file_select" name="picture"  onchange="instantShowUploadImage(this, '.upload_image')" id="" placeholder="" accept=".png, .jpg, .jpeg">
-                                            @else
-                                                <input type="file" class="file_select" name="picture" onchange="instantShowUploadImage(this, '.upload_image')" id="" placeholder="" accept=".png, .jpg, .jpeg">
-                                                <input type="hidden" value="{{$sellerProfile->picture}}" name="old_image">
-                                            @endif
-                                                {{-- <input type="file" name="thumb" class="file_select" onchange="instantShowUploadImage(this, '.upload_image')"> --}}
-                                            </div>
-                                        </div> 
-                                    </div>
+                                
      
                                 <div class="col-md-6">
                                     <label for="name">Full Name</label>
@@ -114,6 +94,42 @@ select.form-control:not([size]):not([multiple]){
                                         <span class="text-danger">{{ $errors->first('name') }}</span>
                                     @endif
                                 </div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-3 text-center">
+                                    <label for="name"></label>
+                                    {{-- <div class="card mb-3">
+                                        <div class="card-body text-center"> --}}
+                                            <div class="thumbnail upload_image">
+                                                <img class="img-responsive" src="{{asset('default.png')}}" height="100" width="100">
+                                            </div>
+                                            {{-- <img src="http://localhost/andbaazar/public//assets/images/logos/17.png" alt="" height="100" width="100"> --}}
+                                        {{-- </div> --}}
+                                        <input type="file" class="file_select" name="picture"  onchange="instantShowUploadImage(this, '.upload_image')" id="" placeholder="" accept=".png, .jpg, .jpeg">
+                                    {{-- </div> --}}
+                                </div>
+                                {{-- <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="form-group  no-margin">
+                                            <h3 class="box-title">Upload An Image</h3>
+                                        </div>
+                                        <div class="thumbnail upload_image">
+                                            <?php //echo getCMSPhoto($thumb, 'full'); ?>
+                                        <img class="img-responsive" src="{{asset('default.png')}}">
+                                        </div>
+                                        <div class="btn btn-default btn-file">
+                                            <i class="fa fa-picture-o"></i> Set Thumbnail
+                                            @if($sellerProfile == '')
+                                            <input type="file" class="file_select" name="picture"  onchange="instantShowUploadImage(this, '.upload_image')" id="" placeholder="" accept=".png, .jpg, .jpeg">
+                                        @else
+                                            <input type="file" class="file_select" name="picture" onchange="instantShowUploadImage(this, '.upload_image')" id="" placeholder="" accept=".png, .jpg, .jpeg">
+                                            <input type="hidden" value="{{$sellerProfile->picture}}" name="old_image">
+                                        @endif
+                                            {{-- <input type="file" name="thumb" class="file_select" onchange="instantShowUploadImage(this, '.upload_image')">
+                                        </div>
+                                    </div> 
+                                </div> --}}
+
+
                                 <div class="col-md-6">
                                     <label for="dob">Date of birth</label>
                                     @if($sellerProfile == '')
