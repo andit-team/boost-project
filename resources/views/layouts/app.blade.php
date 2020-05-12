@@ -707,14 +707,11 @@
                                 <li><a href="#">My Wishlist</a></li>
                                 <li><a href="#">Newsletter</a></li>
                                 <li><a href="{{ url('andbaazaradmin/buyer/create') }}">My Profile</a></li>
-<<<<<<< HEAD
                                 <li><a href="{{ url('/profile/shipping') }}">My Shipping Address</a></li>
                                 <li><a href="{{ url('/profile/shipping/create') }}">My Shipping Address</a></li>
                                 <li><a href="{{ url('andbaazaradmin/buyerbillingaddress/create') }}">My Billing Address</a></li>
-=======
                                 <li><a href="{{ url('andbaazaradmin/buyershippingaddress/create') }}">My Shipping Address</a></li>
                                 <li><a href="{{ url('/profile/billing') }}">My Billing Address</a></li>
->>>>>>> 182701ab73042593ba0719c91963fb5e9e08c212
                                 <li><a href="{{ url('andbaazaradmin/buyercard/create') }}">My Card</a></li>
                                 <li><a href="#">Change Password</a></li>
                                 <li class="last"><a href="#">Log Out</a></li>

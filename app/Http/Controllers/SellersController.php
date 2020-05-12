@@ -20,7 +20,7 @@ class SellersController extends Controller
     {
         $sellers = Seller::orderBy('id', 'DESC')->get();
         //dd($sellers);
-        return view('admin.sellers.index',compact('sellers'));
+        return view('merchant.sellers.index',compact('sellers'));
     }
 
     /**
@@ -32,7 +32,7 @@ class SellersController extends Controller
     {
         $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
         //dd($sellerProfile);
-       return view('admin.sellers.create',compact('sellerProfile'));
+       return view('merchant.sellers.create',compact('sellerProfile'));
     }
 
     /**
@@ -107,7 +107,7 @@ class SellersController extends Controller
     {
         //$seller = Seller::where('user_id',Sentinel::getUser()->id)->first();
         //dd($seller);
-        return view('admin.sellers.edit',compact('seller'));
+        return view('merchant.sellers.edit',compact('seller'));
     }
 
     /**
