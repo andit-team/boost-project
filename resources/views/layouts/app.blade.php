@@ -33,8 +33,6 @@
 
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/color1.css" media="screen" id="color">
-      <link rel="stylesheet" type="text/css" href="{{asset('')}}/css/toastr.min.css">
-   <!-- <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"> -->
 
   <link rel="stylesheet" href="{{asset('')}}/css/jquery-ui.min.css">
   @stack('css')
@@ -709,9 +707,14 @@
                                 <li><a href="#">My Wishlist</a></li>
                                 <li><a href="#">Newsletter</a></li>
                                 <li><a href="{{ url('andbaazaradmin/buyer/create') }}">My Profile</a></li>
+<<<<<<< HEAD
                                 <li><a href="{{ url('/profile/shipping') }}">My Shipping Address</a></li>
                                 <li><a href="{{ url('/profile/shipping/create') }}">My Shipping Address</a></li>
                                 <li><a href="{{ url('andbaazaradmin/buyerbillingaddress/create') }}">My Billing Address</a></li>
+=======
+                                <li><a href="{{ url('andbaazaradmin/buyershippingaddress/create') }}">My Shipping Address</a></li>
+                                <li><a href="{{ url('/profile/billing') }}">My Billing Address</a></li>
+>>>>>>> 182701ab73042593ba0719c91963fb5e9e08c212
                                 <li><a href="{{ url('andbaazaradmin/buyercard/create') }}">My Card</a></li>
                                 <li><a href="#">Change Password</a></li>
                                 <li class="last"><a href="#">Log Out</a></li>
@@ -897,10 +900,6 @@
 
     <!-- Theme js-->
     <script src="{{asset('')}}/assets/js/script.js"></script>
-
-    <!-- Toaster js-->
-  <script src="{{asset('')}}/js/toastr.min.js"></script>
-
 
    <script src="{{asset('')}}/js/jquery-ui.min.js"></script>
 
