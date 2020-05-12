@@ -18,8 +18,9 @@ class BuyerShippingAddressesController extends Controller
     public function index(){
 
         $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->get();
-        Session::flash('warning', 'Succesasdfklh asdfl');
-        $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
+        // dd($buyerShippingAddress);
+        //Session::flash('warning', 'Succesasdfklh asdfl');
+        // $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
         return view('frontend.buyer_shipping_addresses.index',compact('buyerShippingAddress'));
     }
 
@@ -48,6 +49,7 @@ class BuyerShippingAddressesController extends Controller
         // dd( $buyerId);
         $this->validateForm($request);
         // $buyerShippingAddress = BuyerShippingAddress::updateOrCreate(['buyer_id' =>$buyerId->id],[
+            if( $buyerId){
             $data =[
                 'location'      => $request->location,
                 'address'       => $request->address,
@@ -57,12 +59,15 @@ class BuyerShippingAddressesController extends Controller
                 'zip_code'      => $request->zip_code,
                 'phone'         => $request->phone,
                 'fax'           => $request->fax,
-                 'buyer_id'      => $buyerId->id,
+                'buyer_id'      => $buyerId->id,
                 'user_id'       => Sentinel::getUser()->id,
                 'created_at'    => now(),
             ];
-                 
             BuyerShippingAddress::create($data);
+            return back();
+        }
+                 
+         
         return back();
     }
 
@@ -74,7 +79,7 @@ class BuyerShippingAddressesController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -83,9 +88,10 @@ class BuyerShippingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BuyerShippingAddress $shipping)
     {
-        //
+        //$buyerShippingAddress = BuyerShippingAddress::find($id);         
+        return view('frontend.buyer_shipping_addresses.edit',compact('shipping'));
     }
 
     /**
@@ -95,9 +101,23 @@ class BuyerShippingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, BuyerShippingAddress $shipping)
+    {     
+        $this->validateForm($request);
+        // $buyerShippingAddress = BuyerShippingAddress::updateOrCreate(['buyer_id' =>$buyerId->id],[
+            $data =[
+                'location'      => $request->location,
+                'address'       => $request->address,
+                'country'       => $request->country,
+                'state'         => $request->state,
+                'city'          => $request->city,
+                'zip_code'      => $request->zip_code,
+                'phone'         => $request->phone,
+                'fax'           => $request->fax,             
+                'updated_at'    => now(),
+            ];           
+           $shipping->update($data);
+        return back();
     }
 
     /**

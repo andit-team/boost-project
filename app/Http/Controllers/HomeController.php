@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $item = Item::all();
         // return view('welcome');
-         return view('welcome',compact('item'));
+         return view('home',compact('item'));
     }
 
     /**
