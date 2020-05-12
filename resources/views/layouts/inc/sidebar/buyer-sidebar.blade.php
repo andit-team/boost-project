@@ -4,11 +4,11 @@
         <div class="collection-mobile-back"><span class="filter-back"><i class="fa fa-angle-left" aria-hidden="true"></i> back</span></div>
         <div class="block-content">
             <ul>
-                <li><a href="#">Account Info</a></li>
-                <li><a href="#">Address Book</a></li>
-                <li><a href="#">My Orders</a></li>
-                <li><a href="#">My Wishlist</a></li>
-                <li><a href="#">Newsletter</a></li>
+                {{-- <li><a href="#">Account Info</a></li> --}}
+                {{-- <li><a href="#">Address Book</a></li> --}}
+                {{-- <li><a href="#">My Orders</a></li> --}}
+                {{-- <li><a href="#">My Wishlist</a></li> --}}
+                {{-- <li><a href="#">Newsletter</a></li> --}}
 
                 <li class="{{$active == 'profile' ? 'active' : ''}}"><a href="{{ url('profile/') }}">My Profile</a></li>
                 {{-- <li><a href="{{ url('andbaazaradmin/buyershippingaddress/create') }}">My Shipping Address</a></li> 
