@@ -1,10 +1,31 @@
-@extends('layouts.app')
-
+@extends('layouts.master',['title' => 'Dashboard'])
 @section('content')
-    <!-- breadcrumb End -->
 
+@include('elements.alert')
+@component('layouts.inc.breadcrumb')
+  @slot('pageTitle')
+      Dashboard
+  @endslot
+  @slot('page')
+      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+      <li class="breadcrumb-item active" aria-current="page">card</li>
+  @endslot
+@endcomponent
+    
+@push('css')
+<style>
+    .color{
+        color: red;
+    } 
+</style>
+@endpush
 
     <!-- section start -->
+    <section class="dashboard-section section-b-space">
+        <div class="container">
+            <div class="row">
+                
+                @include('layouts.inc.sidebar.buyer-sidebar')
    
 
                 <div class="col-sm-9 register-page contact-page">
@@ -18,7 +39,7 @@
                                 @if($errors->has('full_name')) <span class="text-danger">{{ $errors->first('full_name') }}</span> @endif
                             </div>
                             <div class="col-md-6">
-                                <label for="full_name">First Name</label>
+                                <label for="full_name">Last Name</label>
                                 <input type="text" class="form-control" name="full_name" value="{{ old('full_name',$profile->last_name) }}"   placeholder="Enter Your name" required="">
                                 @if($errors->has('full_name')) <span class="text-danger">{{ $errors->first('full_name') }}</span> @endif
                             </div>
@@ -53,22 +74,19 @@
                                     <input type="hidden" value="{{$profile->picture}}" name="old_image">
                                 @endif
                             </div>
-                            <div class="col-md-6">
-                                @if($profile == '')
-                                    <input name="gender" value="Male" type="radio" class="with-gap" id="Male">
-                                    <label for="Male" class="col-md-2">Male</label>
-                                    <input name="gender" value="Female" type="radio" id="Female" class="with-gap" checked>
-                                    <label for="Female" class="col-md-2">Female</label>
-                                    <input name="gender" value="Other" type="radio" id="Other" class="with-gap">
-                                    <label for="Other" class="col-md-2">Other</label>
-                                @else
-                                    <input name="gender" value="Male" type="radio" class="with-gap" id="Male" {{$profile->gender == 'Male' ? 'checked' : ''}}>
-                                    <label for="Male">Male</label>
-                                    <input name="gender" value="Female" type="radio" id="Female" class="with-gap" {{$profile->gender == 'Female' ? 'checked' : ''}}>
-                                    <label for="Female">Female</label>
-                                    <input name="gender" value="Other" type="radio" id="Other" class="with-gap" {{$profile->gender == 'Other' ? 'checked' : ''}}>
-                                    <label for="Other">Other</label>
-                                @endif
+                            <div class="col-md-6"> 
+                                <label for="name">Gender (select one): *</label>
+                                <select name="gender" class="form-control px-10" id="tag_id"  autocomplete="off">
+                                  @if($profile == '')                                               
+                                  <option value="Male" selected>Male</option>
+                                  <option value="Female">Female</option> 
+                                  <option value="Other">Other</option> 
+                                  @else 
+                                  <option value="Male" @if($profile->gender == 'Male') selected @endif>Male</option>
+                                  <option value="Female" @if($profile->gender =='Female' ) selected @endif>Female</option> 
+                                  <option value="Other" @if($profile->gender == 'Other') selected @endif>Other</option>                                               
+                                  @endif                                         
+                               </select>
                             </div>
                             <div class="col-md-12">
                                 <label for="description">Write Your Message</label>

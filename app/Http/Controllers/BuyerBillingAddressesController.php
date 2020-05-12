@@ -7,6 +7,7 @@ use App\Models\BuyerBillingAddress;
 use App\Models\Buyer;
 use Illuminate\Support\Facades\Auth;
 use Sentinel;
+use Session;
 
 class BuyerBillingAddressesController extends Controller
 {
@@ -17,8 +18,7 @@ class BuyerBillingAddressesController extends Controller
      */
     public function index()
     {
-        $billing = BuyerBillingAddress::where('user_id',Sentinel::getUser()->id)->get();
-        //dd($billing);
+        $billing = BuyerBillingAddress::where('user_id',Sentinel::getUser()->id)->get(); 
         return view('frontend.buyer_billing_address.index',compact('billing'));
     }
 
@@ -43,20 +43,28 @@ class BuyerBillingAddressesController extends Controller
     {
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
         //dd($buyerId);
-        $this->validateForm($request);
-        $buyerBillingaddress = BuyerBillingAddress::updateOrCreate(['buyer_id' =>$buyerId->id],[
-            'location' => $request->location,
-            'address' => $request->address,
-            'country' => $request->country,
-            'state' => $request->state,
-            'city' => $request->city,
-            'zip_code' => $request->zip_code,
-            'phone' => $request->phone,
-            'fax' => $request->fax,
-            'buyer_id' =>  $buyerId->id,
-            'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
-        ]);
+        $this->validateForm($request); 
+        if($buyerId){
+            $data = [
+                'location' => $request->location,
+                'address' => $request->address,
+                'country' => $request->country,
+                'state' => $request->state,
+                'city' => $request->city,
+                'zip_code' => $request->zip_code,
+                'phone' => $request->phone,
+                'fax' => $request->fax,
+                'buyer_id' =>  $buyerId->id,
+                'user_id' => Sentinel::getUser()->id,
+                'created_at' => now(),
+            ];
+
+            BuyerBillingAddress::create($data);
+
+            Session::flash('success', 'Billing Address created');
+
+            return back();
+         } 
 
         return back();
 
@@ -79,9 +87,10 @@ class BuyerBillingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BuyerBillingAddress $billing)
     {
-        //
+        //dd($billing);
+        return view('frontend.buyer_billing_address.edit',compact('billing'));
     }
 
     /**
@@ -91,9 +100,29 @@ class BuyerBillingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, BuyerBillingAddress $billing)
     {
-        //
+        $this->validateForm($request); 
+        
+            $data = [
+                'location' => $request->location,
+                'address' => $request->address,
+                'country' => $request->country,
+                'state' => $request->state,
+                'city' => $request->city,
+                'zip_code' => $request->zip_code,
+                'phone' => $request->phone,
+                'fax' => $request->fax, 
+                'user_id' => Sentinel::getUser()->id,
+                'updated_at' => now(),
+            ]; 
+
+            $billing->update($data);
+
+            Session::flash('success', 'Billing Address Updated');
+
+            return back();
+       
     }
 
     /**

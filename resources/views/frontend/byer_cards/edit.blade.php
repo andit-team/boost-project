@@ -8,10 +8,11 @@
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">card</li>
+      <li class="breadcrumb-item active" aria-current="page">Card</li>
   @endslot
 @endcomponent
-    
+  
+
 @push('css')
 <style>
     .color{
@@ -26,17 +27,16 @@
             <div class="row">
                 
                 @include('layouts.inc.sidebar.buyer-sidebar')
-
-
                 <div class="col-sm-9 register-page contact-page container">
                     <h3>CARD DETAIL</h3>
-                    <form class="theme-form" action="{{ route('card.store') }}" method="post" enctype="multipart/form-data">
+                    <form class="theme-form" action="{{ url('/profile/card/'.$card->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('put')
                         <div class="form-row">
                             <div class="col-md-6">
                                 <label for="card_number">Card Number *</label>
-                                
-                                    <input type="number" class="form-control" name="card_number" value="{{ old('card_number') }}"  id="" placeholder="Card number" required="">
+                               
+                                    <input type="number" class="form-control" name="card_number" value="{{ old('card_number',$card->card_number) }}" id="" placeholder="Card number" required="">
                                 
                                 @if ($errors->has('card_number'))
                                     <span class="text-danger">{{ $errors->first('card_number') }}</span>
@@ -45,8 +45,8 @@
                             <div class="col-md-6">
                                 <label for="card_holder_name">Card holder name *</label>
                                 
-                                    <input type="text" class="form-control" name="card_holder_name" value="{{ old('card_holder_name') }}" id="" placeholder="Card holder name" required="">
-                                
+                                    <input type="text" class="form-control" name="card_holder_name" value="{{ old('card_holder_name',$card->card_holder_name) }}" id="" placeholder="Card holder name" required="">
+                               
                                 @if ($errors->has('card_holder_name'))
                                     <span class="text-danger">{{ $errors->first('card_holder_name') }}</span>
                                 @endif
@@ -54,7 +54,7 @@
                             <div class="col-md-6">
                                 <label for="card_expire_date">Card expire date</label>
                                 
-                                    <input type="text" class="form-control" name="card_expire_date" value="{{ old('card_number') }}" id="" placeholder="Card expire date" required="">
+                                    <input type="text" class="form-control" name="card_expire_date" value="{{ old('card_number',$card->card_expire_date) }}" id="" placeholder="Card expire date" required="">
                                 
                                 @if ($errors->has('card_expire_date'))
                                     <span class="text-danger">{{ $errors->first('card_expire_date') }}</span>
@@ -62,15 +62,15 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="card_cvc">Card cvc</label>
-                               
-                                    <input type="text" class="form-control" name="card_cvc" value="{{ old('card_cvc') }}" id="" placeholder="Card cvc" required="">
+                                
+                                    <input type="text" class="form-control" name="card_cvc" value="{{ old('card_cvc',$card->card_cvc) }}" id="" placeholder="Card cvc" required="">
                                 
                                 @if ($errors->has('card_cvc'))
                                     <span class="text-danger">{{ $errors->first('card_cvc') }}</span>
                                 @endif
                             </div>
                             <div class="col-md-12 mt-4">
-                                <button class="btn btn-sm btn-solid" type="submit">Save</button>
+                                <button class="btn btn-sm btn-solid" type="submit">Update</button>
                             </div>
                         </div>
                     </form>

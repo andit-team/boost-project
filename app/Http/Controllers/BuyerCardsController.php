@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Buyer;
 use Illuminate\Http\Request;
-use App\Models\BuyerCard;
-use PHPUnit\Framework\StaticAnalysis\HappyPath\AssertNotInstanceOf\B;
+use App\Models\BuyerCard; 
 use Sentinel;
+use Session;
 
 class BuyerCardsController extends Controller
 {
@@ -17,7 +17,8 @@ class BuyerCardsController extends Controller
      */
     public function index()
     {
-        //
+        $card = BuyerCard::where('user_id',Sentinel::getUser()->id)->get();
+        return view('frontend.byer_cards.index',compact('card'));
     }
 
     /**
@@ -27,9 +28,9 @@ class BuyerCardsController extends Controller
      */
     public function create()
     {
-        $buyerCard = BuyerCard::where('user_id',Sentinel::getUser()->id)->first();
+        // $buyerCard = BuyerCard::where('user_id',Sentinel::getUser()->id)->first();
         //dd($buyerCard);
-        return view('admin.byer_cards.create',compact('buyerCard'));
+        return view('frontend.byer_cards.create');
     }
 
     /**
@@ -41,8 +42,10 @@ class BuyerCardsController extends Controller
     public function store(Request $request)
     {
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
-        $this->validateForm($request);
-        $buyerCard = BuyerCard::updateOrCreate(['buyer_id'=>$buyerId->id],[
+        //dd($buyerId);
+        $this->validateForm($request); 
+        if($buyerId){
+            $data = [
             'card_number' => $request->card_number,
             'card_holder_name' => $request->card_holder_name,
             'card_expire_date' => $request->card_expire_date,
@@ -50,8 +53,14 @@ class BuyerCardsController extends Controller
             'buyer_id' => $buyerId->id,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
-        ]);
+            ];
 
+            BuyerCard::create($data);
+
+            Session::flash('success', 'Billing Card created');
+
+            return back();
+        }
         return back();
     }
 
@@ -72,9 +81,9 @@ class BuyerCardsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(BuyerCard $card)
     {
-        //
+        return view('frontend.byer_cards.edit',compact('card'));
     }
 
     /**
@@ -84,9 +93,24 @@ class BuyerCardsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, BuyerCard $card)
     {
-        //
+        $this->validateForm($request);  
+            $data = [
+            'card_number' => $request->card_number,
+            'card_holder_name' => $request->card_holder_name,
+            'card_expire_date' => $request->card_expire_date,
+            'card_cvc' => $request->card_cvc, 
+            'user_id' => Sentinel::getUser()->id,
+            'updated_at' => now(),
+            ];
+
+            $card->update($data);
+
+            Session::flash('success', 'Billing Card updated');
+
+            return back();
+       
     }
 
     /**
@@ -102,7 +126,7 @@ class BuyerCardsController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'card_number' => 'required',
+            'card_number' => 'required|max:6|min:6',
             'card_holder_name' => 'required',
             'card_expire_date' => 'required',
             'card_cvc' => 'required'
