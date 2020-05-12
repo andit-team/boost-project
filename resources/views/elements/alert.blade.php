@@ -4,7 +4,6 @@
 @push('js')
     <script src="{{asset('js/toastr.min.js')}}"></script>
         <script>
-
         toastr.options = {
             "closeButton": true,
             "debug": true,
@@ -22,8 +21,7 @@
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         }
-
-
+        
         @if (Session::has('success'))
             toastr.success("{{Session::get('success')}}")
         @endif

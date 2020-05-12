@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @extends('layouts.master',['title' => 'Dashboard'])
+@section('content')
+
+@extends('layouts.master')
 @section('content')
 
 @include('elements.alert')
@@ -8,9 +12,15 @@
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">card</li>
+      <li class="breadcrumb-item active" aria-current="page">Profile</li>
   @endslot
 @endcomponent
+
+
+    <!-- breadcrumb End -->
+
+
+
     
 @push('css')
 <style>
@@ -18,16 +28,12 @@
         color: red;
     } 
 </style>
-@endpush
-
-    <!-- section start -->
-    <section class="dashboard-section section-b-space">
+@endpush 
+    <!-- section start --> 
+    <section class="section-b-space">
         <div class="container">
             <div class="row">
-                
-                @include('layouts.inc.sidebar.buyer-sidebar')
-   
-
+                @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'profile']) 
                 <div class="col-sm-9 register-page contact-page">
                     <h3>PERSONAL DETAIL</h3>
                     <form class="theme-form" action="{{ route('profileUpdate') }}" method="post" enctype="multipart/form-data">
@@ -105,7 +111,8 @@
                         </div>
                     </form>
                 </div>
-           
-    <!-- section end -->
+            </div>
+        </div>
+    </section>
 @endsection
 
