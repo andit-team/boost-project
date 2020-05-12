@@ -1,4 +1,4 @@
-APP_NAME=Laravelenv
+APP_NAME=andbaazar
 APP_ENV=local
 APP_KEY=base64:jeRrFPiFCBoE5MLlbCVuBjtpKKu9Dhy3RjoDrT9aahk=
 APP_DEBUG=true
@@ -7,11 +7,11 @@ APP_URL=http://localhost
 LOG_CHANNEL=stack
 
 DB_CONNECTION=mysql
-DB_HOST=sql12.freemysqlhosting.net
+DB_HOST=localhost
 DB_PORT=3306
-DB_DATABASE=sql12339807
-DB_USERNAME=sql12339807
-DB_PASSWORD=guyzQpG2gp
+DB_DATABASE=andbaazar
+DB_USERNAME=root
+DB_PASSWORD=
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
