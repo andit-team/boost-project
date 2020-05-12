@@ -15,7 +15,7 @@
 <section class="section-b-space">
   <div class="container">
       <div class="row">
-          @include('layouts.inc.sidebar.buyer-sidebar')
+          @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'billing'])
             <div class="col-md-9">
                 <div class="text-right">
                 <a href="{{url('/profile/billing/create')}}" class="btn btn-info btn-sm mb-2 text-right">New address</a>
