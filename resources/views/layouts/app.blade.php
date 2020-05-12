@@ -718,10 +718,10 @@
                 </div>
                 <!-- address section start -->
 
-    @yield('content')
+                @yield('content')
 
-</div>
-</div>
+            </div>
+        </div>
 </section>
 
 
