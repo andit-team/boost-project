@@ -17,7 +17,7 @@
                                 <a href="#"><i class="fa fa-circle"></i>
                                     <span>Category</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
-                                <ul class="sidebar-submenu">                                    
+                                <ul class="sidebar-submenu">
                                     <li><a href="{{ url('andbaazaradmin/category') }}"><i class="fa fa-circle"></i>Categories</a></li>
                                     <li><a href="{{ url('andbaazaradmin/category/create') }}"><i class="fa fa-circle"></i>Category</a></li>
                                     <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>                               
@@ -28,20 +28,17 @@
                                     <span>Tag</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                                 <ul class="sidebar-submenu">
-                                    {{-- <li class = "{{ set_active('andbaazaradmin/tag') }}"> <a href="{{ route('/andbaazaradmin/tags/') }}">All Tag</a> </li>  --}}
-                                   <li class="{{ request()->is('andbaazaradmin/tag') ? 'active' : '' }}"><a href="{{ route('tags
-                                   ') }}"><i class="fa fa-circle"></i>All Tag</a></li> --}}
-                                    {{-- <li class="{{ Request::routeIs('andbaazaradmin/tag/create') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/tag/create') }}"><i class="fa fa-circle"></i> Add Tag</a></li> --}} --}}
+                                    <li><a href="{{ url('andbaazaradmin/tag') }}"><i class="fa fa-circle"></i>All Tag</a></li>
+                                    <li><a href="{{ url('andbaazaradmin/tag/create') }}"><i class="fa fa-circle"></i> Add Tag</a></li>
                                 </ul>
                             </li>
-                                                                             
+
                             <li>
                                 <a href="#"><i class="fa fa-circle"></i>
                                     <span>Color</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                                 <ul class="sidebar-submenu">
-                                   
-                                    <li><a href="{{ url('andbaazaradmin/color')}}"><i class="fa fa-circle"></i>All Color</a></li>
+                                    <li><a href="{{ url('andbaazaradmin/color') }}"><i class="fa fa-circle"></i>All Color</a></li>
                                     <li><a href="{{ url('andbaazaradmin/color/create') }}"><i class="fa fa-circle"></i> Add Color</a></li>
                                 </ul>
                             </li>
@@ -145,7 +142,7 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>                   
+                    </li>
 
                     <li><a class="sidebar-header" href="#"><i data-feather="clipboard"></i><span>Shops</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
@@ -197,15 +194,10 @@
                             <li><a href="profile.html"><i class="fa fa-circle"></i>Profile</a></li>
                         </ul>
                     </li>
-
                     <li><a class="sidebar-header" href="invoice.html"><i data-feather="archive"></i><span>Invoice</span></a>
-
-                      <li><a class="sidebar-header" href="invoice.html"><i data-feather="archive"></i><span>Invoice</span></a>
-
                     </li>
                     <li><a class="sidebar-header" href="login.html"><i data-feather="log-in"></i><span>Login</span></a>
                     </li>
                 </ul>
             </div>
         </div>
-

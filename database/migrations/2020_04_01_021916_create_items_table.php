@@ -32,12 +32,12 @@ class CreateItemsTable extends Migration
             // $table->string('availability');
             $table->string('made_in');
             $table->string('materials');
-            $table->string('labeled');
+            $table->string('labeled')->nullable();
             $table->string('video_url')->nullable();
             $table->integer('total_sale_amount')->nullable();
-            $table->integer('total_order_qty');
-            $table->dateTime('last_ordered_at');
-            $table->dateTime('last_carted_at');
+            $table->integer('total_order_qty')->nullable();
+            $table->dateTime('last_ordered_at')->nullable();
+            $table->dateTime('last_carted_at')->nullable();
             $table->integer('total_view')->nullable();
             $table->dateTime('activated_at')->nullable();
             $table->boolean('active')->default(1)->change();

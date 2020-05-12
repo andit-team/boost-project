@@ -27,8 +27,8 @@ class BuyersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        $prorile = Sentinel::getUser();
-        return view('frontend.buyers.create',compact('prorile'));
+        $profile = Sentinel::getUser();
+        return view('frontend.buyers.create',compact('profile'));
     }
 
     /**
@@ -49,7 +49,7 @@ class BuyersController extends Controller
                 'gender'                => $request->gender,
                 'description'           => $request->description,
                 'updated_at'            => now(),
-            ]);
+            ]);            
             return back();
         }
         return back();

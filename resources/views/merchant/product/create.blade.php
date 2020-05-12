@@ -166,9 +166,10 @@
                                     <h5 class="card-header">Tag & Model</h5>
                                     <div class="card-body">
                                       <div class="form-group row">
-                                            {{-- <label for="tag_id" class="col-xl-3 col-md-4">Tag <span>*</span></label> --}}
-                                            <select type="text" class="multiselect" multiple="multiple" role="multiselect"> 
+                                            <label for="tag_id" class="col-xl-3 col-md-4">Tag <span>*</span></label>
+                                            {{-- <select type="text" class="multiselect" multiple="multiple" role="multiselect">  --}}
                                             {{-- <select name="tag_id" class="form-control col-md-8 selectpicker" id="tag_id"  autocomplete="off" multiple> --}}
+                                                <select name="tag_id" class="form-control col-md-8   id="tag_id"  autocomplete="off" >
                                                 <option value="" selected disabled>Select Tag</option> 
                                                 @foreach ($tag as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>

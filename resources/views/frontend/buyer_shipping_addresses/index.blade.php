@@ -1,5 +1,6 @@
 @extends('layouts.master',['title' => 'Dashboard'])
 @section('content')
+
 @include('elements.alert')
 @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
@@ -48,6 +49,5 @@
                 </div>
           </div>
       </div>
-  </div>
 </section>
 @endsection
