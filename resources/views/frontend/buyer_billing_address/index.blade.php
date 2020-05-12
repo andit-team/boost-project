@@ -5,7 +5,7 @@
 </div> --}}
 <div class="col-md-9">
     <div class="text-right">
-    <a href="{{url('andbaazar/profile/billing/create')}}}}" class="btn btn-info btn-sm mb-2 text-right">New addtess</a>
+    <a href="{{url('/profile/billing/create')}}" class="btn btn-info btn-sm mb-2 text-right">New addtess</a>
     </div>
     <div class="card">
         <div class="card-header">

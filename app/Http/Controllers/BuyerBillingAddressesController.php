@@ -17,7 +17,9 @@ class BuyerBillingAddressesController extends Controller
      */
     public function index()
     {
-        return view('frontend.buyer_billing_address.index');
+        $billing = BuyerBillingAddress::where('user_id',Sentinel::getUser()->id)->get();
+        //dd($billing);
+        return view('frontend.buyer_billing_address.index',compact('billing'));
     }
 
     /**
@@ -27,8 +29,8 @@ class BuyerBillingAddressesController extends Controller
      */
     public function create()
     {
-       $buyerAddress = BuyerBillingAddress::where('user_id',Sentinel::getUser()->id)->first();
-        return view('frontend.buyer_billing_address.create',compact('buyerAddress'));
+       //$buyerAddress = BuyerBillingAddress::where('user_id',Sentinel::getUser()->id)->first();
+        return view('frontend.buyer_billing_address.create');
     }
 
     /**

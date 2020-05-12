@@ -26,8 +26,8 @@ class BuyerShippingAddressesController extends Controller
      */
     public function create()
     {
-        $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
-        return view('frontend.buyer_shipping_addresses.create',compact('buyerShippingAddress'));
+        //$buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
+        return view('frontend.buyer_shipping_addresses.create');
     }
 
     /**
