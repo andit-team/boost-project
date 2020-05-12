@@ -271,7 +271,7 @@
                     <div class="col-lg-6">
                         <div class="header-contact">
                             <ul>
-                                <li>Welcome to Our store Multikart</li>
+                                <li>Welcome to Our Andbaazar</li>
                                 <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
                             </ul>
                         </div>
@@ -283,7 +283,7 @@
                             <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
                                 My Account
                                 <ul class="onhover-show-div">
-                                    <li><a href="#" data-lng="en">Login</a></li>
+                                    <li><a href="{{url('/merchant/login')}}" data-lng="en">Login</a></li>
                                     <li><a href="#" data-lng="es">Logout</a></li>
                                 </ul>
                             </li>

@@ -29,8 +29,8 @@
                       <h5 class="card-title pt-0 pb-0"><b>City:</b> {{ $row->city }}</h5>
                       <h5 class="card-title pt-0 pb-0"><b>Zip Code:</b> {{ $row->zip_code }}</h5>
                       <h5 class="card-title pt-0 pb-0"><b>State:</b> {{ $row->state }}</h5>
-                      <a href="{{ url('profile/shipping') }}" class="btn btn-danger btn-sm">Edit</a>    
-                    </div>        
+                      <a href="{{ url('/profile/shipping/'.$row->id).'/edit' }}" class="btn btn-danger btn-sm">Edit</a>    
+                    </div>                               
                   </div>  
                   @endforeach 
             </div>
