@@ -6,6 +6,7 @@ use App\Models\Buyer;
 use Illuminate\Http\Request;
 use App\Models\BuyerShippingAddress;
 use Sentinel;
+use Session;
 
 class BuyerShippingAddressesController extends Controller
 {
@@ -15,6 +16,7 @@ class BuyerShippingAddressesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+        Session::flash('warning', 'Succesasdfklh asdfl');
         $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
         return view('frontend.buyer_shipping_addresses.index',compact('buyerShippingAddress'));
     }

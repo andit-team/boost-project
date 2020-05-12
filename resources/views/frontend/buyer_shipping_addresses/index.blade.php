@@ -1,6 +1,6 @@
 @extends('layouts.app',['title' => 'Customer Shipping'])
 @section('content')
-
+@include('elements.alert')
 <div class="col-md-9">
     <div class="card">
         <div class="card-header">
