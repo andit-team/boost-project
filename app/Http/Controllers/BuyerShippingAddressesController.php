@@ -14,9 +14,9 @@ class BuyerShippingAddressesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+        $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
+        return view('frontend.buyer_shipping_addresses.index',compact('buyerShippingAddress'));
     }
 
     /**
@@ -27,7 +27,7 @@ class BuyerShippingAddressesController extends Controller
     public function create()
     {
         $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
-        return view('admin.buyer_shipping_addresses.create',compact('buyerShippingAddress'));
+        return view('frontend.buyer_shipping_addresses.create',compact('buyerShippingAddress'));
     }
 
     /**
@@ -41,17 +41,17 @@ class BuyerShippingAddressesController extends Controller
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
         $this->validateForm($request);
         $buyerShippingAddress = BuyerShippingAddress::updateOrCreate(['buyer_id' =>$buyerId->id],[
-            'location' => $request->location,
-            'address' => $request->address,
-            'country' => $request->country,
-            'state' => $request->state,
-            'city' => $request->city,
-            'zip_code' => $request->zip_code,
-            'phone' => $request->phone,
-            'fax' => $request->fax,
-            'buyer_id' => $buyerId->id,
-            'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
+            'location'      => $request->location,
+            'address'       => $request->address,
+            'country'       => $request->country,
+            'state'         => $request->state,
+            'city'          => $request->city,
+            'zip_code'      => $request->zip_code,
+            'phone'         => $request->phone,
+            'fax'           => $request->fax,
+            'buyer_id'      => $buyerId->id,
+            'user_id'       => Sentinel::getUser()->id,
+            'created_at'    => now(),
         ]);
 
         return back();

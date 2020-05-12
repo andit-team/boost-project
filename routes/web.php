@@ -12,18 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+include('frontend.php');
+include('merchant.php');
 include('admin.php');
 
 // Frontend Route.....
 
 
-Route::get('/', 'forntEnd\HomeController@index');
 
-// Frontend Controller.....Product Details Route
-
-// Route::get('/product_details/{id}', 'forntEnd\HomeController@details');
-Route::get('/addto_cart', 'forntEnd\HomeController@cart');
-Route::resource('/item', 'forntEnd\HomeController');
 
 
 

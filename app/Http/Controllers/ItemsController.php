@@ -32,8 +32,8 @@ class ItemsController extends Controller
       $item = Item::where('status','Active')->get();
       $size= Size::all();
       $color = Color::all();
-      return view ('admin.product.index',compact('category','item','size','color'));
-    // return view('admin.product.index');
+      return view ('merchant.product.index',compact('category','item','size','color'));
+    // return view('merchant.product.index');
     }
 
     /**
@@ -52,7 +52,7 @@ class ItemsController extends Controller
         $tag = Tag::all();
         $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
         //dd($sellerId);
-          return view ('admin.product.create',compact('category','categories','item','size','color','subCategories','tag','sellerId'));
+          return view ('merchant.product.create',compact('category','categories','item','size','color','subCategories','tag','sellerId'));
     }
 
     /**
@@ -158,7 +158,7 @@ class ItemsController extends Controller
     {
       $product = Item::with('itemimage')->where('slug',$product->slug)->first();
       //dd($product);
-        return view('admin.product.show',compact('product'));
+        return view('merchant.product.show',compact('product'));
     }
 
     /**
@@ -178,7 +178,7 @@ class ItemsController extends Controller
         $subCategories = Category::where('parent_id','!=',0)->get();
         $tag = Tag::all();
 
-        return view ('admin.product.edit',compact('category','categories','item','size','color','subCategories','product','tag'));
+        return view ('merchant.product.edit',compact('category','categories','item','size','color','subCategories','product','tag'));
     }
 
     /**
@@ -238,7 +238,7 @@ class ItemsController extends Controller
       $item = Item::all();
       $size= Size::all();
       $color = Color::all();
-     return view('admin.product.adminIndex',compact('category','item','size','color'));
+     return view('merchant.product.adminIndex',compact('category','item','size','color'));
     }
 
      public function approvement($slug){
@@ -300,7 +300,7 @@ class ItemsController extends Controller
 
     //  $product = Item::with('category')->where('user_id',Sentinel::getUser()->id)->first();
       $product = Item::with(['category','itemimage'])->where('slug',$slug)->first();
-      return view('admin.product.vendorshow',compact('product'));
+      return view('merchant.product.vendorshow',compact('product'));
     }
 
     // public function subcategory(Request $request){
