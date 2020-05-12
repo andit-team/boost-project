@@ -33,8 +33,6 @@
 
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/color1.css" media="screen" id="color">
-      <link rel="stylesheet" type="text/css" href="{{asset('')}}/css/toastr.min.css">
-   <!-- <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"> -->
 
   <link rel="stylesheet" href="{{asset('')}}/css/jquery-ui.min.css">
   @stack('css')
@@ -896,10 +894,6 @@
 
     <!-- Theme js-->
     <script src="{{asset('')}}/assets/js/script.js"></script>
-
-    <!-- Toaster js-->
-  <script src="{{asset('')}}/js/toastr.min.js"></script>
-
 
    <script src="{{asset('')}}/js/jquery-ui.min.js"></script>
 

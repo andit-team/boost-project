@@ -15,7 +15,7 @@
     <title>Multikart - Multi-purpopse E-commerce Html Template</title>
 
   @include('frontend.include.css')
-
+  @stack('css')
 
 </head>
 
@@ -75,7 +75,7 @@
     @include('frontend.include.js')
    <!--js End --> 
 
-   @stack('css')
+
    @stack('js')
 </body>
 
