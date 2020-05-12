@@ -1,6 +1,5 @@
 @extends('layouts.app',['title' => 'Customer Shipping'])
 @section('content')
-<<<<<<< HEAD
 
 
 <div class="col-md-8">
@@ -11,39 +10,6 @@
     <div class="card mb-4">      
         <div class="card-header">              
           {{ $row->country }}
-         
-=======
-@include('elements.alert')
-<div class="col-md-9">
-    <div class="card">
-        <div class="card-header">
-          Khulna
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary btn-sm">Edit</a>
-        </div>
-      </div>
-    <div class="card mt-2">
-        <div class="card-header">
-          Khulna
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary btn-sm">Edit</a>
-        </div>
-      </div>
-    <div class="card mt-2">
-        <div class="card-header">
-          Khulna
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary btn-sm">Edit</a>
->>>>>>> 182701ab73042593ba0719c91963fb5e9e08c212
         </div>
         <div class="card-body pl-5">         
           <h5 class="card-title pt-0 pb-0 "><b>Address:</b> {{ $row->address }}</h5>
@@ -52,7 +18,7 @@
           <h5 class="card-title pt-0 pb-0"><b>City:</b> {{ $row->city }}</h5>
           <h5 class="card-title pt-0 pb-0"><b>Zip Code:</b> {{ $row->zip_code }}</h5>
           <h5 class="card-title pt-0 pb-0"><b>State:</b> {{ $row->state }}</h5>
-          <a href="#" class="btn btn-danger btn-sm">Edit</a>
+          <a href="{{ url('profile/shipping') }}" class="btn btn-danger btn-sm">Edit</a>
          
         </div>        
       </div>  

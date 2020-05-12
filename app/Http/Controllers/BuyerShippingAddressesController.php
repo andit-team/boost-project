@@ -85,7 +85,7 @@ class BuyerShippingAddressesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('frontend.buyer_shipping_addresses.edit');
     }
 
     /**
