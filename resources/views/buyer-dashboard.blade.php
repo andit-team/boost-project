@@ -16,7 +16,7 @@
 <section class="section-b-space">
     <div class="container">
         <div class="row">
-            @include('layouts.inc.sidebar.buyer-sidebar')
+            @include('layouts.inc.sidebar.buyer-sidebar',[$active='dashboard'])
             <div class="col-lg-9">
                 <div class="dashboard-right">
                     <div class="dashboard">
