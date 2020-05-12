@@ -40,18 +40,7 @@
                     @foreach ($categories as $category)
                       <li class="list-group-item">
                         <div class="d-flex justify-content-between">
-                          {{ $category->name }}
-
-                          {{-- <div class="button-group d-flex">
-                            <a href="{{ url('/andbaazaradmin/category/'.$category->slug.'/edit') }}"  class="btn btn-sm btn-primary mr-1">Edit</a>
-
-                            <form action="{{ route('category.destroy', $category->id) }}" method="POST">
-                              @csrf
-                              @method('DELETE')
-
-                              <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                            </form>
-                          </div> --}}
+                          {{ $category->name }} 
                         </div>
                         
 
