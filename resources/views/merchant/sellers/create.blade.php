@@ -52,7 +52,7 @@ select.form-control:not([size]):not([multiple]){
                             </div>
                         </div>
                         <div class="faq-tab">
-                            <ul class="nav nav-tabs" id="top-tab" role="tablist">
+                          <ul class="nav nav-tabs" id="top-tab" role="tablist">
                                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#dashboard">dashboard</a></li>
                                 <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/product') }}">All Products</a>
                                 </li>
@@ -66,107 +66,90 @@ select.form-control:not([size]):not([multiple]){
                                 </li>
                                 <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="#">logout</a>
                                 </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                          </ul>
+                      </div>
+                 </div>
+             </div>
 
-                <div class="col-sm-9 register-page contact-page">
-                    <h3>PERSONAL DETAIL</h3>
-                    <form class="theme-form" action="{{ route('seller.store') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-row">
-                         <div class="card mb-4">                        
-                            <div class="card-header">
-                              Basic Information
+             <div class="col-sm-9 register-page contact-page">
+                <h3>PERSONAL DETAIL</h3>
+                <form class="theme-form" action="{{ route('seller.store') }}" method="post" enctype="multipart/form-data">
+                  @csrf
+                   <div class="form-row">
+                      <div class="card mb-4">                        
+                         <div class="card-header">
+                           Basic Information
+                         </div>
+                         <div class="card-body row">                
+                            <div class="col-md-6">
+                                <label for="name">Full Name</label>
+                                @if($sellerProfile == '')
+                                    <input type="text" class="form-control" name="name" value="{{ old('name') }}"   placeholder="Enter Your name" required="">
+                                @else
+                                    <input type="text" class="form-control" name="name" value="{{ old('name',$sellerProfile->name) }}"   placeholder="Enter Your name" required="">
+                                @endif
+                                @if ($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @endif
                             </div>
-                            <div class="card-body row">           
-                                
-     
-                                <div class="col-md-6">
-                                    <label for="name">Full Name</label>
-                                    @if($sellerProfile == '')
-                                        <input type="text" class="form-control" name="name" value="{{ old('name') }}"   placeholder="Enter Your name" required="">
-                                    @else
-                                        <input type="text" class="form-control" name="name" value="{{ old('name',$sellerProfile->name) }}"   placeholder="Enter Your name" required="">
-                                    @endif
-                                    @if ($errors->has('name'))
-                                        <span class="text-danger">{{ $errors->first('name') }}</span>
-                                    @endif
-                                </div>
-                                <div class="col-md-3"></div>
-                                <div class="col-md-3 text-center">
-                                    <label for="name"></label>
-                                    {{-- <div class="card mb-3">
-                                        <div class="card-body text-center"> --}}
-                                            <div class="thumbnail upload_image">
-                                                <img class="img-responsive" src="{{asset('default.png')}}" height="100" width="100">
-                                            </div>
-                                            {{-- <img src="http://localhost/andbaazar/public//assets/images/logos/17.png" alt="" height="100" width="100"> --}}
-                                        {{-- </div> --}}
-                                        <input type="file" class="file_select" name="picture"  onchange="instantShowUploadImage(this, '.upload_image')" id="" placeholder="" accept=".png, .jpg, .jpeg">
-                                    {{-- </div> --}}
-                                </div>
-                                {{-- <div class="card mb-3">
-                                    <div class="card-body">
-                                        <div class="form-group  no-margin">
-                                            <h3 class="box-title">Upload An Image</h3>
-                                        </div>
-                                        <div class="thumbnail upload_image">
-                                            <?php //echo getCMSPhoto($thumb, 'full'); ?>
-                                        <img class="img-responsive" src="{{asset('default.png')}}">
-                                        </div>
-                                        <div class="btn btn-default btn-file">
+
+                            <div class="col-md-3"></div>
+                              <div class="col-md-3 text-center">
+                                <label for="name"></label>
+                                  <div class="card mb-3">
+                                    <div class="card-body text-center"> 
+                                      <div class="thumbnail upload_image">
+                                        <img class="img-responsive" src="{{asset('default.png')}}" height="100" width="100">
+                                      </div>
+                                      <div>
                                             <i class="fa fa-picture-o"></i> Set Thumbnail
                                             @if($sellerProfile == '')
                                             <input type="file" class="file_select" name="picture"  onchange="instantShowUploadImage(this, '.upload_image')" id="" placeholder="" accept=".png, .jpg, .jpeg">
-                                        @else
+                                      @else
                                             <input type="file" class="file_select" name="picture" onchange="instantShowUploadImage(this, '.upload_image')" id="" placeholder="" accept=".png, .jpg, .jpeg">
                                             <input type="hidden" value="{{$sellerProfile->picture}}" name="old_image">
+                                            @endif
+                                     </div>
+                                   </div>
+                                 </div>
+                               </div>
+                               <div class="col-md-6">
+                                        <label for="dob">Date of birth</label>
+                                        @if($sellerProfile == '')
+                                            <input type="date" class="form-control datepicker"  name="dob" value="{{ old('dob') }}" id="" placeholder="" >
+                               @else
+                                            <input type="date" class="form-control datepicker"  name="dob" value="{{ old('dob',$sellerProfile->dob) }}" id="" placeholder="" >
                                         @endif
-                                            {{-- <input type="file" name="thumb" class="file_select" onchange="instantShowUploadImage(this, '.upload_image')">
-                                        </div>
-                                    </div> 
-                                </div> --}}
-
-
-                                <div class="col-md-6">
-                                    <label for="dob">Date of birth</label>
-                                    @if($sellerProfile == '')
-                                        <input type="date" class="form-control datepicker"  name="dob" value="{{ old('dob') }}" id="" placeholder="" >
-                                    @else
-                                        <input type="date" class="form-control datepicker"  name="dob" value="{{ old('dob',$sellerProfile->dob) }}" id="" placeholder="" >
-                                    @endif
-                                    @if ($errors->has('dob'))
-                                        <span class="text-danger">{{ $errors->first('dob') }}</span>
-                                    @endif
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="phone_number">Phone number</label>
-                                    @if($sellerProfile == '')
-                                        <input type="number" class="form-control" name="phone" value="{{ old('phone') }}" maxlength="11" minlength="11" id="" placeholder="Enter your number">
-                                    @else
-                                        <input type="number" class="form-control" name="phone" value="{{ old('phone',$sellerProfile->phone) }}" maxlength="11" minlength="11" id="review" placeholder="Enter your number">
-                                    @endif
-                                    @if ($errors->has('phone'))
-                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                    @endif
-                                </div>                               
-                                <div class="col-md-6">
-                                    <label for="email">Email</label>
-                                    @if($sellerProfile == '')
-                                        <input type="email" class="form-control" name="email" value="{{ old('email') }}"   placeholder="Enter Your Email" required="">
-                                    @else
-                                        <input type="email" class="form-control" name="email" value="{{ old('email',$sellerProfile->email) }}"   placeholder="Enter Your Email" required="">
-                                    @endif
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
-                                </div>
+                                        @if ($errors->has('dob'))
+                                            <span class="text-danger">{{ $errors->first('dob') }}</span>
+                                        @endif
+                              </div>
+                              <div class="col-md-6">
+                                        <label for="phone_number">Phone number</label>
+                                        @if($sellerProfile == '')
+                                            <input type="number" class="form-control" name="phone" value="{{ old('phone') }}" maxlength="11" minlength="11" id="" placeholder="Enter your number">
+                              @else
+                                            <input type="number" class="form-control" name="phone" value="{{ old('phone',$sellerProfile->phone) }}" maxlength="11" minlength="11" id="review" placeholder="Enter your number">
+                                        @endif
+                                        @if ($errors->has('phone'))
+                                            <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                        @endif
+                            </div>                               
+                            <div class="col-md-6">
+                                        <label for="email">Email</label>
+                                        @if($sellerProfile == '')
+                                            <input type="email" class="form-control" name="email" value="{{ old('email') }}"   placeholder="Enter Your Email" required="">
+                            @else
+                                            <input type="email" class="form-control" name="email" value="{{ old('email',$sellerProfile->email) }}"   placeholder="Enter Your Email" required="">
+                                        @endif
+                                        @if ($errors->has('email'))
+                                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                                        @endif
+                            </div>
                                   
-                                <div class="col-md-6 pb-4">
-                                    <label for="name">Gender (select one): *</label>
-                                    <select name="gender" class="form-control px-10" id="tag_id"  autocomplete="off">
+                             <div class="col-md-6 pb-4">
+                                      <label for="name">Gender (select one): *</label>
+                                      <select name="gender" class="form-control px-10" id="tag_id"  autocomplete="off">
                                         @if($sellerProfile == '')                                               
                                         <option value="Male" selected>Male</option>
                                         <option value="Female">Female</option> 
@@ -176,19 +159,19 @@ select.form-control:not([size]):not([multiple]){
                                         <option value="0" @if($sellerProfile->gender =='Female' ) selected @endif>Female</option> 
                                         <option value="0" @if($sellerProfile->gender == 'Other') selected @endif>Other</option>                                               
                                         @endif                                         
-                                    </select>
-                                </div>                                                                                                                               
+                                     </select>
+                            </div>                                                                                                                               
                             </div>
-                        </div> 
-                        </div> 
+                            </div> 
+                            </div> 
                     
-                          <div class="card mb-4">                        
-                            <div class="card-header">
-                             Description 
-                            </div>
-                            <div class="card-body row">
-                                <div class="col-md-12">
-                                    <label for="description">Write Your Message</label>
+                             <div class="card mb-4 ">                        
+                             <div class="card-header">
+                                    Description 
+                             </div>
+                             <div class="card-body">
+                             <div class="col-md-12">
+                                      <label for="description">Write Your Message</label>
                                     @if($sellerProfile == '')
                                         <textarea class="form-control mb-0 summernote" placeholder="Write Your Message" type ="text"  name="description"  id="" rows="6"></textarea>
                                     @else
@@ -197,17 +180,17 @@ select.form-control:not([size]):not([multiple]){
                                     @if ($errors->has('description'))
                                         <span class="text-danger">{{ $errors->first('description') }}</span>
                                     @endif
-                                </div>  
+                            </div>  
                             </div>
-                          </div>                                    
-                        <div class="col-md-12 mt-4">
-                            <button type="submit" class="btn btn-sm btn-solid" >Save & Update</button>
+                            </div>                                    
+                            <div class="col-md-12 mt-4">
+                                <button type="submit" class="btn btn-sm btn-solid" >Save & Update</button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 </section>
     <!--  dashboard section end -->
 
