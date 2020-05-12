@@ -1,12 +1,26 @@
-@extends('layouts.app')
-
+@extends('layouts.master')
 @section('content')
+
+@include('elements.alert')
+@component('layouts.inc.breadcrumb')
+  @slot('pageTitle')
+      Dashboard
+  @endslot
+  @slot('page')
+      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+      <li class="breadcrumb-item active" aria-current="page">Profile</li>
+  @endslot
+@endcomponent
+
+
     <!-- breadcrumb End -->
 
 
     <!-- section start -->
-   
-
+    <section class="section-b-space">
+        <div class="container">
+            <div class="row">
+                @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'profile'])
                 <div class="col-sm-9 register-page contact-page">
                     <h3>PERSONAL DETAIL</h3>
                     <form class="theme-form" action="{{ route('profileUpdate') }}" method="post" enctype="multipart/form-data">
@@ -87,7 +101,8 @@
                         </div>
                     </form>
                 </div>
-           
-    <!-- section end -->
+            </div>
+        </div>
+    </section>
 @endsection
 

@@ -16,11 +16,7 @@ class BuyerShippingAddressesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-
         $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->get();
-        // dd($buyerShippingAddress);
-        //Session::flash('warning', 'Succesasdfklh asdfl');
-        // $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
         return view('frontend.buyer_shipping_addresses.index',compact('buyerShippingAddress'));
     }
 
@@ -31,22 +27,12 @@ class BuyerShippingAddressesController extends Controller
      */
     public function create()
     {
-        // $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
-        //$buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
         return view('frontend.buyer_shipping_addresses.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
-        // dd( $buyerId);
         $this->validateForm($request);
         // $buyerShippingAddress = BuyerShippingAddress::updateOrCreate(['buyer_id' =>$buyerId->id],[
             if( $buyerId){
@@ -64,11 +50,11 @@ class BuyerShippingAddressesController extends Controller
                 'created_at'    => now(),
             ];
             BuyerShippingAddress::create($data);
-            return back();
+            Session::flash('success','Shipping address added succesed!');
+            return redirect('profile/shipping');
         }
-                 
-         
-        return back();
+
+        return redirect('profile/shipping');
     }
 
     /**
@@ -134,12 +120,12 @@ class BuyerShippingAddressesController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'location' => 'required',
-            'address' => 'required',
-            'country' => 'required',
-            'state' => 'required',
-            'city' => 'required',
-            'zip_code' => 'required',
-            'phone' => 'required',
+            // 'address' => 'required',
+            // 'country' => 'required',
+            // 'state' => 'required',
+            // 'city' => 'required',
+            // 'zip_code' => 'required',
+            // 'phone' => 'required',
         ]);
     }
 }
