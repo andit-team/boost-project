@@ -53,7 +53,7 @@ class BuyerShippingAddressesController extends Controller
             Session::flash('success','Shipping address added succesed!');
             return redirect('profile/shipping');
         }
-
+        
         return redirect('profile/shipping');
     }
 
@@ -120,12 +120,12 @@ class BuyerShippingAddressesController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'location' => 'required',
-            // 'address' => 'required',
-            // 'country' => 'required',
-            // 'state' => 'required',
-            // 'city' => 'required',
-            // 'zip_code' => 'required',
-            // 'phone' => 'required',
+            'address' => 'required',
+            'country' => 'required',
+            'state' => 'required',
+            'city' => 'required',
+            'zip_code' => 'required',
+            'phone' => 'required',
         ]);
     }
 }

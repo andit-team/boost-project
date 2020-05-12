@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 
-                @include('layouts.inc.sidebar.buyer-sidebar')
+                @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'cards'])
 
 
                 <div class="col-sm-9 register-page contact-page container">
@@ -36,7 +36,7 @@
                             <div class="col-md-6">
                                 <label for="card_number">Card Number *</label>
                                 
-                                    <input type="number" class="form-control" name="card_number" value="{{ old('card_number') }}"  id="" placeholder="Card number" required="">
+                                    <input type="number" class="form-control" name="card_number" value="{{ old('card_number') }}"  id="" placeholder="Card number" >
                                 
                                 @if ($errors->has('card_number'))
                                     <span class="text-danger">{{ $errors->first('card_number') }}</span>
@@ -45,7 +45,7 @@
                             <div class="col-md-6">
                                 <label for="card_holder_name">Card holder name *</label>
                                 
-                                    <input type="text" class="form-control" name="card_holder_name" value="{{ old('card_holder_name') }}" id="" placeholder="Card holder name" required="">
+                                    <input type="text" class="form-control" name="card_holder_name" value="{{ old('card_holder_name') }}" id="" placeholder="Card holder name" >
                                 
                                 @if ($errors->has('card_holder_name'))
                                     <span class="text-danger">{{ $errors->first('card_holder_name') }}</span>
@@ -54,7 +54,7 @@
                             <div class="col-md-6">
                                 <label for="card_expire_date">Card expire date</label>
                                 
-                                    <input type="text" class="form-control" name="card_expire_date" value="{{ old('card_number') }}" id="" placeholder="Card expire date" required="">
+                                    <input type="text" class="form-control" name="card_expire_date" value="{{ old('card_number') }}" id="" placeholder="Card expire date" >
                                 
                                 @if ($errors->has('card_expire_date'))
                                     <span class="text-danger">{{ $errors->first('card_expire_date') }}</span>
@@ -63,7 +63,7 @@
                             <div class="col-md-6">
                                 <label for="card_cvc">Card cvc</label>
                                
-                                    <input type="text" class="form-control" name="card_cvc" value="{{ old('card_cvc') }}" id="" placeholder="Card cvc" required="">
+                                    <input type="text" class="form-control" name="card_cvc" value="{{ old('card_cvc') }}" id="" placeholder="Card cvc" >
                                 
                                 @if ($errors->has('card_cvc'))
                                     <span class="text-danger">{{ $errors->first('card_cvc') }}</span>

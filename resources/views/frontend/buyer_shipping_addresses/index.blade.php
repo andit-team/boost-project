@@ -14,7 +14,7 @@
 <section class="section-b-space">
   <div class="container">
       <div class="row">
-          @include('layouts.inc.sidebar.buyer-sidebar')
+          @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'shipping'])
           <div class="col-md-9">             
                 <a href="{{ url('profile/shipping/create') }}" class="btn btn-sm btn-solid mb-3">add new Shipping</a>           
               @foreach($buyerShippingAddress as $row) 
