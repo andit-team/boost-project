@@ -19,7 +19,7 @@ class BuyerShippingAddressesController extends Controller
 
         $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->get();
         Session::flash('warning', 'Succesasdfklh asdfl');
-        $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
+        // $buyerShippingAddress = BuyerShippingAddress::where('user_id',Sentinel::getUser()->id)->first();
         return view('frontend.buyer_shipping_addresses.index',compact('buyerShippingAddress'));
     }
 

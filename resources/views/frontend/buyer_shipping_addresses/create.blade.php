@@ -1,6 +1,21 @@
-@extends('layouts.app')
-
+@extends('layouts.master',['title' => 'Shipping Address'])
 @section('content')
+
+@include('elements.alert')
+@component('layouts.inc.breadcrumb')
+  @slot('pageTitle')
+      Dashboard
+  @endslot
+  @slot('page')
+      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+      <li class="breadcrumb-item active" aria-current="page">Shipping</li>
+  @endslot
+@endcomponent
+
+<section class="section-b-space">
+  <div class="container">
+      <div class="row">
+          @include('layouts.inc.sidebar.buyer-sidebar')
     <div class="col-sm-9 contact-page register-page container">
         <h3>SHIPPING ADDRESS</h3>
         <form class="theme-form" action="{{ route('shipping.store') }}" method="post">
@@ -91,4 +106,6 @@
             </div>
         </form>
     </div>
+
+</section>
 @endsection

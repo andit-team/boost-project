@@ -10,7 +10,7 @@
                 <li><a href="#">My Wishlist</a></li>
                 <li><a href="#">Newsletter</a></li>
                 <li><a href="{{ url('andbaazaradmin/buyer/create') }}">My Profile</a></li>
-                <li><a href="{{ url('andbaazaradmin/buyershippingaddress/create') }}">My Shipping Address</a></li>
+                <li><a href="{{ url('profile/shipping') }}">My Shipping Address</a></li>
                 <li><a href="{{ url('/profile/billing') }}">My Billing Address</a></li>
                 <li><a href="{{ url('andbaazaradmin/buyercard/create') }}">My Card</a></li>
                 <li><a href="#">Change Password</a></li>
