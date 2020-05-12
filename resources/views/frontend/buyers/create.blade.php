@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 @extends('layouts.master',['title' => 'Dashboard'])
-@section('content')
-
-@extends('layouts.master')
 @section('content')
 
 @include('elements.alert')

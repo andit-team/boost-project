@@ -15,7 +15,7 @@
 <section class="section-b-space">
   <div class="container">
       <div class="row">
-          @include('layouts.inc.sidebar.buyer-sidebar')
+          @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'cards'])
             <div class="col-md-9">
                 <div class="text-right">
                 <a href="{{url('/profile/card/create')}}" class="btn btn-info btn-sm mb-2 text-right">New Card</a>
@@ -45,4 +45,7 @@
                 </div>
                 @endforeach 
             </div>
+      </div>
+  </div>
+</section>
 @endsection

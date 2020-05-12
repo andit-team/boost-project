@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row">
                 
-                @include('layouts.inc.sidebar.buyer-sidebar')
+                @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'cards'])
                 <div class="col-sm-9 register-page contact-page container">
                     <h3>CARD DETAIL</h3>
                     <form class="theme-form" action="{{ url('/profile/card/'.$card->id) }}" method="post" enctype="multipart/form-data">
