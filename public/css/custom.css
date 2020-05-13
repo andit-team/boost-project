@@ -5,3 +5,7 @@
     margin-bottom: 5px;
     height: inherit;
 }
+
+.error{
+    color: red;
+}

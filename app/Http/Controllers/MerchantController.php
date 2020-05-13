@@ -35,8 +35,16 @@ class MerchantController extends Controller{
             return redirect('login')->with('error', 'Invalid email or password');
     }
 
+    public function sellOnAndbaazar(){
+        return view('merchant.sell-on-andbaazar');
+    }
+
+    public function sellOnAndbaazarPost(Request $request){
+        dd($request->all());
+    }
+
     public function registrationStepOne(){
-        return view('auth.merchant.login');
+        return view('auth.merchant.registration');
     }
     public function registrationStepOneProcess(){
     }
