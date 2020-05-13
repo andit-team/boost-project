@@ -50,7 +50,7 @@ class BuyerShippingAddressesController extends Controller
                 'created_at'    => now(),
             ];
             BuyerShippingAddress::create($data);
-            Session::flash('success','Shipping address added succesed!');
+            Session::flash('success','Shipping address added succeeded!');
             return redirect('profile/shipping');
         }
         
@@ -103,7 +103,8 @@ class BuyerShippingAddressesController extends Controller
                 'updated_at'    => now(),
             ];           
            $shipping->update($data);
-        return back();
+           Session::flash('success','Shipping address Updated succeeded!');
+           return redirect('profile/shipping');
     }
 
     /**
