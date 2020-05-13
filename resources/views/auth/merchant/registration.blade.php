@@ -33,35 +33,38 @@
             <div class="card-body">
                 <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="top-profile-tab" data-toggle="tab" href="#top-profile" role="tab" aria-controls="top-profile" aria-selected="true"><span class="icon-user mr-2"></span>Login</a>
+                        <a class="nav-link" id="contact-top-tab" data-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="false"><span class="icon-unlock mr-2"></span>Register</a>
                     </li>
                 </ul>
+                    
                     @if (\Session::has('error'))
                         <div class="alert alert-danger">
                                 <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
                         </div>
                     @endif
 
-                        <form class="form-horizontal auth-form" method="post" action="{{route('merchantloginprocess')}}">
-                            @csrf
+                        
+                        <form class="form-horizontal auth-form">
                             <div class="form-group">
-                                <input required="" name="login[email]" type="email" class="form-control" placeholder="Email" id="exampleInputEmail1">
+                                <input required="" name="login[username]" type="email" class="form-control" placeholder="Username" id="exampleInputEmail12">
                             </div>
                             <div class="form-group">
                                 <input required="" name="login[password]" type="password" class="form-control" placeholder="Password">
                             </div>
+                            <div class="form-group">
+                                <input required="" name="login[password]" type="password" class="form-control" placeholder="Confirm Password">
+                            </div>
                             <div class="form-terms">
                                 <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" name="remember" id="customControlAutosizing">
-                                    <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
-                                    <a href="#" class="btn btn-default forgot-pass">lost your password</a>
+                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing1">
+                                    <label class="custom-control-label" for="customControlAutosizing1"><span>I agree all statements in <a href=""  class="pull-right">Terms &amp; Conditions</a></span></label>
                                 </div>
                             </div>
                             <div class="form-button">
-                                <button class="btn btn-primary" type="submit">Login</button>
+                                <button class="btn btn-primary" type="submit">Register</button>
                             </div>
                             <div class="form-footer">
-                                <span>Or Login up with social platforms</span>
+                                <span>Or Sign up with social platforms</span>
                                 <ul class="social">
                                     <li><a class="icon-facebook" href=""></a></li>
                                     <li><a class="icon-twitter" href=""></a></li>
@@ -70,8 +73,6 @@
                                 </ul>
                             </div>
                         </form>
-                    
-
             </div>
         </div>
     </div>
@@ -79,3 +80,4 @@
 <a href="index.html" class="btn btn-primary back-btn"><i data-feather="arrow-left"></i>Back To Home</a>
 
 @endsection
+
