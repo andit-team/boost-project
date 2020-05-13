@@ -15,9 +15,11 @@
   <div class="container">
       <div class="row">
           @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'shipping'])
-          <div class="col-md-9">             
-                <a href="{{ url('profile/shipping/create') }}" class="btn btn-sm btn-solid mb-3 text-right">add new Shipping</a>           
-              @foreach($buyerShippingAddress as $row) 
+          <div class="col-md-9"> 
+            <div  class="text-right">          
+                <a href="{{ url('profile/shipping/create') }}" class="btn btn-sm btn-solid mb-3 text-right">add new Shipping</a>  
+            </div>             
+              @forelse($buyerShippingAddress as $row) 
                 <div class="card mb-4">      
                     <div class="card-header">              
                       {{ $row->country }}
@@ -57,8 +59,14 @@
                         </div>                               
                         <a href="{{url('/profile/shipping/'.$row->id.'/edit')}}" class="btn btn-danger btn-sm"><i class="fa fa-edit"></i></a>
                   </div>                     
-               </div>  
-            @endforeach 
+               </div> 
+               @empty
+                <div class="card mt-2"> 
+                    <div class="card-body text-center">
+                        <img  src="{{ asset('frontend')}}/assets/images/no_data_found/not-found-4.png" class="img image-responsive thumbnial w-50">
+                    </div>
+                </div> 
+            @endforelse
          </div>
       </div>
    </div>

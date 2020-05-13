@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buyer;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 use App\Models\BuyerCard; 
 use Sentinel;
 use Session;
@@ -119,9 +119,13 @@ class BuyerCardsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BuyerCard $card)
     {
-        //
+        $card->delete();
+
+        Session::flash('success', 'Billing Card Deleted');
+
+        return back();
     }
 
     private function validateForm($request){

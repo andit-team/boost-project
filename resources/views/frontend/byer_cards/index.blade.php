@@ -18,7 +18,7 @@
           @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'cards'])
             <div class="col-md-9">
                 <div class="text-right">
-                <a href="{{url('/profile/card/create')}}" class="btn btn-sm btn-solid mb-2 text-right">New Card</a>
+                <a href="{{url('/profile/card/create')}}" class="btn btn-sm btn-solid mb-2 text-right">New Card</a> 
                 </div>
                 @forelse($card as $row) 
                 <div class="card mt-2">
@@ -40,7 +40,14 @@
                             <p class="card-text">{{ date("d-M-Y", strtotime($row->card_expire_date)) }}</p>
                            </div> 
                        </div> 
-                    <a href="{{url('/profile/card/'.$row->id.'/edit')}}" class="btn btn-sm btn-solid">Edit</a>
+                       <div class="row">
+                            <a href="{{url('/profile/card/'.$row->id.'/edit')}}" class="btn btn-sm btn-solid ml-3">Edit</a>
+                            <form action="{{ url('/profile/card/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-sm btn-solid ml-2">Delete</button>
+                            </form>
+                       </div>
                     </div>
                 </div>
                 @empty

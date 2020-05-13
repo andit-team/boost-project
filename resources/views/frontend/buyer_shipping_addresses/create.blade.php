@@ -54,7 +54,7 @@
 
                     <div class="col-md-6">                        
                         <label for="location">Phone <span class="text-danger">*</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>                 
-                        <input type="number" class="form-control @error('phone') border-danger @enderror" name="phone" value="{{ old('phone') }}" id="" placeholder="Phone" >                       
+                        <input type="number"  class="form-control @error('phone') border-danger @enderror" name="phone" value="{{ old('phone') }}" id="" placeholder="Phone" >                       
                     </div>
 
                     <div class="col-md-6">  
