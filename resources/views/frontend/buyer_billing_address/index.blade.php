@@ -18,9 +18,16 @@
           @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'billing'])
             <div class="col-md-9">
                 <div class="text-right">
-                <a href="{{url('/profile/billing/create')}}" class="btn btn-info btn-sm mb-2 text-right">New address</a>
-                </div>
+                <a href="{{url('/profile/billing/create')}}" class="btn btn-sm btn-solid mb-2 text-right">New address</a>
+                </div> 
                 @foreach($billing as $row)
+                @if($row == '')
+                <div class="card mt-2"> 
+                    <div class="card-body">
+                        <img  src="{{ asset('frontend')}}/assets/images/no_data_found/no-data-found-1.jpg" >
+                    </div>
+                </div>
+                @else
                 <div class="card mt-2">
                     <div class="card-header">
                     {{$row->location}} 
@@ -44,9 +51,10 @@
                             <p class="card-text">{{ $row->city }}</p>
                            </div>
                        </div> 
-                    <a href="{{url('/profile/billing/'.$row->id.'/edit')}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                    <a href="{{url('/profile/billing/'.$row->id.'/edit')}}" class="btn btn-sm btn-solid">Edit</a>
                     </div>
                 </div>
+                @endif
                 @endforeach 
             </div>
       </div>

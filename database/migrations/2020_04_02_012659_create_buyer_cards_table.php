@@ -15,7 +15,7 @@ class CreateBuyerCardsTable extends Migration
     {
         Schema::create('buyer_cards', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('card_number');
+            $table->integer('card_number',25);
             $table->string('card_holder_name');
             $table->date('card_expire_date');
             $table->string('card_cvc');

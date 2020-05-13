@@ -12,14 +12,6 @@
   @endslot
 @endcomponent
     
-@push('css')
-<style>
-    .color{
-        color: red;
-    }
-</style>
-@endpush
-
     <!-- section start -->
     <section class="dashboard-section section-b-space">
         <div class="container">
@@ -34,40 +26,20 @@
                         @csrf
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="card_number">Card Number *</label>
-                                
-                                    <input type="number" class="form-control" name="card_number" value="{{ old('card_number') }}"  id="" placeholder="Card number" >
-                                
-                                @if ($errors->has('card_number'))
-                                    <span class="text-danger">{{ $errors->first('card_number') }}</span>
-                                @endif
+                                <label for="card_number">Card Number <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('card_number') }}</span> 
+                                <input type="number" class="form-control @error('card_number') border-danger @enderror" name="card_number" value="{{ old('card_number') }}"  id="" placeholder="Card number" >
                             </div>
                             <div class="col-md-6">
-                                <label for="card_holder_name">Card holder name *</label>
-                                
-                                    <input type="text" class="form-control" name="card_holder_name" value="{{ old('card_holder_name') }}" id="" placeholder="Card holder name" >
-                                
-                                @if ($errors->has('card_holder_name'))
-                                    <span class="text-danger">{{ $errors->first('card_holder_name') }}</span>
-                                @endif
+                                <label for="card_holder_name">Card holder name <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('card_holder_name') }}</span>  
+                                <input type="text" class="form-control @error('card_holder_name') border-danger @enderror" name="card_holder_name" value="{{ old('card_holder_name') }}" id="" placeholder="Card holder name" >
                             </div>
                             <div class="col-md-6">
-                                <label for="card_expire_date">Card expire date</label>
-                                
-                                    <input type="text" class="form-control" name="card_expire_date" value="{{ old('card_number') }}" id="" placeholder="Card expire date" >
-                                
-                                @if ($errors->has('card_expire_date'))
-                                    <span class="text-danger">{{ $errors->first('card_expire_date') }}</span>
-                                @endif
+                                <label for="card_expire_date">Card expire date<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('card_expire_date') }}</span> 
+                                <input type="text" class="form-control  @error('card_expire_date') border-danger @enderror" name="card_expire_date" value="{{ old('card_expire_date') }}" id="" placeholder="Card expire date" >
                             </div>
                             <div class="col-md-6">
-                                <label for="card_cvc">Card cvc</label>
-                               
-                                    <input type="text" class="form-control" name="card_cvc" value="{{ old('card_cvc') }}" id="" placeholder="Card cvc" >
-                                
-                                @if ($errors->has('card_cvc'))
-                                    <span class="text-danger">{{ $errors->first('card_cvc') }}</span>
-                                @endif
+                                <label for="card_cvc">Card cvc<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('card_cvc') }}</span> 
+                                <input type="text" class="form-control @error('card_expire_date') border-danger @enderror" name="card_cvc" value="{{ old('card_cvc') }}" id="" placeholder="Card cvc" >
                             </div>
                             <div class="col-md-12 mt-4">
                                 <button class="btn btn-sm btn-solid" type="submit">Save</button>

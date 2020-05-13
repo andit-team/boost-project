@@ -64,9 +64,12 @@ class BuyerBillingAddressesController extends Controller
             Session::flash('success', 'Billing Address created');
 
             return back();
-         } 
+         }else{
+            Session::flash('danger', 'please create profile correctly');
 
-        return back();
+            return back(); 
+         } 
+ 
 
     }
 
