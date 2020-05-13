@@ -15,7 +15,7 @@
 <section class="section-b-space">
   <div class="container">
       <div class="row">
-          @include('layouts.inc.sidebar.buyer-sidebar')
+          @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'shipping'])
     <div class="col-sm-9 contact-page register-page container">
         <h3>SHIPPING ADDRESS</h3>
         <form class="theme-form" action="{{ route('shipping.update',$shipping) }}" method="post">
@@ -71,7 +71,8 @@
                         <span class="text-danger">{{ $errors->first('phone') }}</span>
                     @endif
                 </div>
-                <div class="col-md-6">                                   
+                <div class="col-md-6">  
+                     <label for="fax">Fax *</label>                                   
                         <input type="number" class="form-control" name="fax" value="{{ old('fax',$shipping->fax) }}" id="" placeholder="Fax" required="">                
                     @if ($errors->has('fax'))
                         <span class="text-danger">{{ $errors->first('fax') }}</span>
