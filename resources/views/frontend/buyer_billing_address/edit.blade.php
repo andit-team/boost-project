@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row">
                 
-                @include('layouts.inc.sidebar.buyer-sidebar')
+                @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'billing'])
                 <div class="col-sm-9 contact-page register-page container">
                     <h3>Billing ADDRESS</h3>
                     <form class="theme-form" action="{{ url('/profile/billing/'.$billing->id) }}" method="post">
@@ -109,6 +109,9 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </section>
 
            
        
