@@ -284,8 +284,15 @@
                             <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
                                 My Account
                                 <ul class="onhover-show-div">
+                                    @if( Sentinel::getUser())   
+                                    <li><a href="{{ url('profile/') }}" data-lng="es">My Profile</a></li>
+                                    <li><a href="{{ url('profile/shipping') }}" data-lng="es">My Shippin Address</a></li>
+                                    <li><a href="{{ url('profile/billing') }}" data-lng="es">My Billing Address</a></li>
+                                    <li><a href="{{ url('profile/card') }}" data-lng="es">My Card</a></li>
+                                    <li><a href="{{url('logout')}}" data-lng="es">Logout</a></li>
+                                    @else
                                     <li><a href="{{url('login')}}" data-lng="en">Login</a></li>
-                                    <li><a href="#" data-lng="es">Logout</a></li>
+                                    @endif                  
                                 </ul>
                             </li>
                         </ul>
