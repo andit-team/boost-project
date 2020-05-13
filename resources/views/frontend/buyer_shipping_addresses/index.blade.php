@@ -11,13 +11,21 @@
   @endslot
 @endcomponent
 
+<style>
+  .mt{
+      margin-top: -60px;
+  }
+</style>
+
 <section class="section-b-space">
   <div class="container">
       <div class="row">
           @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'shipping'])
-          <div class="col-md-9">             
-                <a href="{{ url('profile/shipping/create') }}" class="btn btn-sm btn-solid mb-3 text-right">add new Shipping</a>           
-              @foreach($buyerShippingAddress as $row) 
+          <div class="col-md-9"> 
+            <div  class="text-right mt">          
+                <a href="{{ url('profile/shipping/create') }}" class="btn btn-sm btn-solid mb-3 text-right">add new Shipping</a>  
+            </div>             
+              @forelse($buyerShippingAddress as $row) 
                 <div class="card mb-4">      
                     <div class="card-header">              
                       {{ $row->country }}
@@ -54,11 +62,24 @@
                              <p class="card-text">{{ $row->state }}</p>
                             </div>
                             
-                        </div>                               
-                        <a href="{{url('/profile/shipping/'.$row->id.'/edit')}}" class="btn btn-danger btn-sm"><i class="fa fa-edit"></i></a>
+                        </div> 
+                        <div class="row">                              
+                         <a href="{{url('/profile/shipping/'.$row->id.'/edit')}}" class="btn btn-sm btn-solid ml-3"><i class="fa fa-edit"> Edit</i></a>
+                         <form action="{{ url('/profile/shipping/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
+                          @csrf
+                          @method('delete')
+                          <button type="submit" class="btn btn-sm btn-solid ml-2"><i class="fa fa-trash"> Delete</i></button>
+                      </form>
+                        </div>
                   </div>                     
-               </div>  
-            @endforeach 
+               </div> 
+               @empty
+                <div class="card mt-2"> 
+                    <div class="card-body text-center">
+                        <img  src="{{ asset('frontend')}}/assets/images/no_data_found/not-found-2.png" class="img image-responsive thumbnial w-50">
+                    </div>
+                </div> 
+            @endforelse
          </div>
       </div>
    </div>

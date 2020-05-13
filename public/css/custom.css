@@ -4,5 +4,12 @@
     padding: 14px 25px;
     margin-bottom: 5px;
     height: inherit;
-    border-radius:3px;
+}
+
+.error{
+    color: red !important;
+}
+
+input.form-control.error {
+    border-color: red;
 }

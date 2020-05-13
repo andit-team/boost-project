@@ -45,10 +45,10 @@ class BuyersController extends Controller
         //dd($userprofile);
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
         //dd($buyerId);
-        $this->validateForm($request);
+        //$this->validateForm($request);
         if($buyerId){
            $buyerId->update([
-                'first_name'             => $request->first_name,
+                'first_name'            => $request->first_name,
                 'last_name'             => $request->last_name,
                 'phone_number'          => $request->phone_number,
                 'picture'               => Baazar::fileUpload($request,'picture','old_image','/uploads/buyer_profile'),
@@ -59,7 +59,7 @@ class BuyersController extends Controller
             ]); 
             
             $userprofile->update([
-                'first_name'             => $request->first_name,
+                'first_name'            => $request->first_name,
                 'last_name'             => $request->last_name,
             ]);
 
@@ -67,9 +67,30 @@ class BuyersController extends Controller
             Session::flash('success','Profile update Successfully');
             return back();
         }else{
-            Session::flash('success','Please fill your profile information Corrently');
+            $data =[
+                'first_name'            => $request->first_name,
+                'last_name'             => $request->last_name,
+                'phone_number'          => $request->phone_number,
+                'picture'               => Baazar::fileUpload($request,'picture','','/uploads/buyer_profile'),
+                'dob'                   => $request->dob,
+                'gender'                => $request->gender,
+                'description'           => $request->description,
+                'user_id' => Sentinel::getUser()->id,
+                'created_at'            => now(),
+            ];
+
+            Buyer::create($data);
+
+            $userprofile->update([
+                'first_name'            => $request->first_name,
+                'last_name'             => $request->last_name,
+            ]);
+            Session::flash('success','Profile Create Successfully');
             return back();
         }
+
+        Session::flash('success','please insert your profile inforation correctley');
+        return back();
         
     }
 
@@ -120,10 +141,10 @@ class BuyersController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([ 
-               'first_name'  => 'required',
-               'last_name'   => 'required',
-               'dob'         => 'required',
-               'gender'      => 'required',
+            //    'first_name'  => 'required',
+            //    'last_name'   => 'required',
+            //    'dob'         => 'required',
+            //    'gender'      => 'required',
 //            'description' => 'required',
         ]);
     }

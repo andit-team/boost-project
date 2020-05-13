@@ -1,12 +1,17 @@
 <?php
 
+
+Route::get('sell-on-andbaazar','MerchantController@sellOnAndbaazar');
+Route::post('sell-on-andbaazar','MerchantController@sellOnAndbaazarPost')->name('sellOnAndbaazarPost');
+Route::get('merchant/registration','MerchantController@registrationStepOne');
+Route::post('signup-step-one','MerchantController@registrationStepOneProcess')->name('merchantStepOne');
+
 Route::prefix('merchant')->group(function () {
     Route::get('dashboard','MerchantController@dashboard');
     Route::get('login','MerchantController@merchantlogin');
     Route::post('login','MerchantController@merchantloginprocess')->name('merchantloginprocess');
     
-    Route::get('signup-step-one','MerchantController@registrationStepOne');
-    Route::post('signup-step-one','MerchantController@registrationStepOneProcess')->name('merchantStepOne');
+    
     Route::get('signup-step-two','MerchantController@registrationStepTwo');
     Route::post('signup-step-two','MerchantController@registrationStepTwoProcess')->name('merchantStepTwo');
     Route::get('signup-step-final','MerchantController@registrationStepFinal');

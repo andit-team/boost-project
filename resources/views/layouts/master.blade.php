@@ -276,6 +276,7 @@
                             <ul>
                                 <li>Welcome to Our Andbaazar</li>
                                 <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
+                                <li><a href="{{url('sell-on-andbaazar')}}" style="color: #999999;font-size: 14px; padding-right: 25px;">Start Selling Here</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1759,6 +1760,8 @@
 
     <!-- Theme js-->
     <script src="{{asset('frontend')}}/assets/js/script.js"></script>
+    <script src="{{asset('/')}}js/validator.js"></script>
+    <script src="{{asset('/')}}js/validatorRules.js"></script>
 
     <script>
         $(window).on('load', function () {
