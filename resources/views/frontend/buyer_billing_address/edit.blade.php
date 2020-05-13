@@ -64,7 +64,7 @@
                                 <label for="fax">Fax <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('Fax') }}</span> 
                                 <input type="number" class="form-control @error('phone') border-danger @enderror" name="fax" value="{{old('fax',$billing->fax)}}" id="" placeholder="Fax" required=""> 
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 mt-2">
                                 <button class="btn btn-sm btn-solid" type="submit">Update</button>
                             </div>
                         </div>

@@ -62,7 +62,7 @@
                         <input type="number" class="form-control  @error('phone') border-danger @enderror" name="fax" value="{{ old('fax') }}" id="" placeholder="Fax" >                                         
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-md-12 mt-2">
                         <button class="btn btn-sm btn-solid" type="submit">Save </button>
                     </div>
                 </div>

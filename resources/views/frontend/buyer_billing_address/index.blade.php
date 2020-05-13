@@ -12,12 +12,18 @@
   @endslot
 @endcomponent
 
+<style>
+    .mt{
+        margin-top: -60px;
+    }
+</style>
+
 <section class="section-b-space">
   <div class="container">
       <div class="row">
           @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'billing'])
             <div class="col-md-9">
-                <div class="text-right">
+                <div class="text-right mt">
                 <a href="{{url('/profile/billing/create')}}" class="btn btn-sm btn-solid mb-2 text-right">Add New Address</a>
                 </div> 
                 @forelse($billing as $row)
@@ -57,7 +63,7 @@
                 @empty
                 <div class="card mt-2"> 
                     <div class="card-body text-center">
-                        <img  src="{{ asset('frontend')}}/assets/images/no_data_found/not-found-4.png" class="img image-responsive thumbnial w-50">
+                        <img  src="{{ asset('frontend')}}/assets/images/no_data_found/not-found-2.png" class="img image-responsive thumbnial w-50">
                     </div>
                 </div>
                 @endforelse 
