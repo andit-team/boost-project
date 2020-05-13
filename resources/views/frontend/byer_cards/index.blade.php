@@ -20,14 +20,7 @@
                 <div class="text-right">
                 <a href="{{url('/profile/card/create')}}" class="btn btn-sm btn-solid mb-2 text-right">New Card</a>
                 </div>
-                @foreach($card as $row)
-                @if($row == '')
-                    <div class="card mt-2"> 
-                        <div class="card-body">
-                            <img  src="{{ asset('frontend')}}/assets/images/no_data_found/no-data-found-1.jpg" >
-                        </div>
-                    </div>
-                @else
+                @forelse($card as $row) 
                 <div class="card mt-2">
                     <div class="card-header">
                     {{$row->card_holder_name}}
@@ -50,8 +43,13 @@
                     <a href="{{url('/profile/card/'.$row->id.'/edit')}}" class="btn btn-sm btn-solid">Edit</a>
                     </div>
                 </div>
-                @endif
-                @endforeach 
+                @empty
+                <div class="card mt-2"> 
+                    <div class="card-body text-center">
+                        <img  src="{{ asset('frontend')}}/assets/images/no_data_found/not-found-4.png" class="img image-responsive thumbnial w-50">
+                    </div>
+                </div>
+                @endforelse 
             </div>
       </div>
   </div>
