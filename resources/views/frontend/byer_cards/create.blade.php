@@ -75,5 +75,8 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </section>
                 <!-- section end -->
 @endsection

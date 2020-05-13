@@ -23,7 +23,7 @@
                 @foreach($billing as $row)
                 <div class="card mt-2">
                     <div class="card-header">
-                    {{$row->location}}
+                    {{$row->location}} 
                     </div>
                     <div class="card-body">
                        <div class="row mb-3">
@@ -49,4 +49,7 @@
                 </div>
                 @endforeach 
             </div>
+      </div>
+  </div>
+</section>
 @endsection
