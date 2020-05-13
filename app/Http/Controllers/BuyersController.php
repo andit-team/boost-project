@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Sentinel;
 use App\User;
 use Baazar;
+use Session;
 
 class BuyersController extends Controller
 {
@@ -27,8 +28,9 @@ class BuyersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        $profile = Sentinel::getUser();
-        return view('frontend.buyers.create',compact('profile'));
+        $userprofile = Sentinel::getUser();
+        $profile = Buyer::where('user_id',Sentinel::getUser()->id)->first();
+        return view('frontend.buyers.create',compact('profile','userprofile'));
     }
 
     /**
@@ -38,21 +40,58 @@ class BuyersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
+        //dd($request->all());
+        $userprofile = User::where('id',Sentinel::getUser()->id)->first();
+        //dd($userprofile);
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
-        $this->validateForm($request);
+        //dd($buyerId);
+        //$this->validateForm($request);
         if($buyerId){
-            $buyerId->update([
-                'full_name'             => $request->first_name.' '.$request->last_name,
+           $buyerId->update([
+                'first_name'            => $request->first_name,
+                'last_name'             => $request->last_name,
                 'phone_number'          => $request->phone_number,
                 'picture'               => Baazar::fileUpload($request,'picture','old_image','/uploads/buyer_profile'),
                 'dob'                   => $request->dob,
                 'gender'                => $request->gender,
                 'description'           => $request->description,
                 'updated_at'            => now(),
-            ]);            
+            ]); 
+            
+            $userprofile->update([
+                'first_name'            => $request->first_name,
+                'last_name'             => $request->last_name,
+            ]);
+
+            
+            Session::flash('success','Profile update Successfully');
+            return back();
+        }else{
+            $data =[
+                'first_name'            => $request->first_name,
+                'last_name'             => $request->last_name,
+                'phone_number'          => $request->phone_number,
+                'picture'               => Baazar::fileUpload($request,'picture','','/uploads/buyer_profile'),
+                'dob'                   => $request->dob,
+                'gender'                => $request->gender,
+                'description'           => $request->description,
+                'user_id' => Sentinel::getUser()->id,
+                'created_at'            => now(),
+            ];
+
+            Buyer::create($data);
+
+            $userprofile->update([
+                'first_name'            => $request->first_name,
+                'last_name'             => $request->last_name,
+            ]);
+            Session::flash('success','Profile Create Successfully');
             return back();
         }
+
+        Session::flash('success','please insert your profile inforation correctley');
         return back();
+        
     }
 
     /**
@@ -101,10 +140,11 @@ class BuyersController extends Controller
     }
 
     private function validateForm($request){
-        $validatedData = $request->validate([
-            'full_name'     => 'required',
-//            'dob'         => 'required',
-//            'gender'      => 'required',
+        $validatedData = $request->validate([ 
+            //    'first_name'  => 'required',
+            //    'last_name'   => 'required',
+            //    'dob'         => 'required',
+            //    'gender'      => 'required',
 //            'description' => 'required',
         ]);
     }

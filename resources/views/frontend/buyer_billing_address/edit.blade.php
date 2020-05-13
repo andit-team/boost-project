@@ -33,82 +33,46 @@
                         @method('put')
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="name">Location <span class="color"> *</span></label> 
-                                    <input type="text" class="form-control" name="location" value="{{old('location',$billing->location)}}" id="" placeholder="Location">
-                                
-                                @if ($errors->has('location'))
-                                    <span class="text-danger">{{ $errors->first('location') }}</span>
-                                @endif
+                                <label for="name">Location <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('location') }}</span> 
+                                <input type="text" class="form-control @error('location') border-danger @enderror" name="location" value="{{old('location',$billing->location)}}" id="" placeholder="Location"> 
                             </div>
                             <div class="col-md-6">
-                                <label for="address">Address <span class="color"> *</span></label>
-                               
-                                    <input type="text" class="form-control" name="address" value="{{old('address',$billing->address)}}" id="" placeholder="Address" required="">
-                               
-                                @if ($errors->has('address'))
-                                    <span class="text-danger">{{ $errors->first('address') }}</span>
-                                @endif
+                                <label for="address">Address <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('address') }}</span> 
+                                <input type="text" class="form-control @error('address') border-danger @enderror" name="address" value="{{old('address',$billing->address)}}" id="" placeholder="Address" required="">
                             </div>
                             <div class="col-md-6">
-                                <label for="country">Country <span class="color"> *</span></label>
-                                
-                                    <input type="text" class="form-control" name="country" value="{{old('country',$billing->country)}}" id="" placeholder="Country" required="">
-                                
-                                @if ($errors->has('country'))
-                                    <span class="text-danger">{{ $errors->first('country') }}</span>
-                                @endif
+                                <label for="country">Country <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('address') }}</span> 
+                                <input type="text" class="form-control @error('country') border-danger @enderror" name="country" value="{{old('country',$billing->country)}}" id="" placeholder="Country" required=""> 
                             </div>
                             <div class="col-md-6">
-                                <label for="state">State <span class="color"> *</span></label> 
-
-                                    <input type="text" class="form-control" name="state" value="{{old('state',$billing->state)}}" id="" placeholder="State" required="">
-                                
-                                @if ($errors->has('state'))
-                                    <span class="text-danger">{{ $errors->first('state') }}</span>
-                                @endif
+                                <label for="state">State <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('state') }}</span> 
+                                <input type="text" class="form-control @error('state') border-danger @enderror" name="state" value="{{old('state',$billing->state)}}" id="" placeholder="State" required=""> 
                             </div>
                             <div class="col-md-6">
-                                <label for="city">City <span class="color"> *</span></label>
-                                
-                                    <input type="text" class="form-control" name="city" value="{{old('city',$billing->city)}}" id="" placeholder="City" required="">
-                               
-                                @if ($errors->has('city'))
-                                    <span class="text-danger">{{ $errors->first('city') }}</span>
-                                @endif
+                                <label for="city">City <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('city') }}</span>  
+                                <input type="text" class="form-control @error('city') border-danger @enderror" name="city" value="{{old('city',$billing->city)}}" id="" placeholder="City" required="">
                             </div>
                             <div class="col-md-6">
-                                <label for="zip_code">Zip Code <span class="color"> *</span></label>
-                                
-                                    <input type="text" class="form-control" name="zip_code" value="{{old('zip_code',$billing->zip_code)}}" id="" placeholder="zip-code" required="">
-                                
-                                @if ($errors->has('zip_code'))
-                                    <span class="text-danger">{{ $errors->first('zip_code') }}</span>
-                                @endif
+                                <label for="zip_code">Zip Code <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('zip_code') }}</span> 
+                                <input type="text" class="form-control @error('zip_code') border-danger @enderror" name="zip_code" value="{{old('zip_code',$billing->zip_code)}}" id="" placeholder="zip-code" required="">
                             </div>
                             <div class="col-md-6">
-                                <label for="phone">Phone <span class="color"> *</span></label>
-                                
-                                    <input type="number" class="form-control" name="phone" value="{{old('phone',$billing->phone)}}" id="" placeholder="Phone" required="">
-                                
-                                @if ($errors->has('phone'))
-                                    <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                @endif
+                                <label for="phone">Phone <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span> 
+                                <input type="number" class="form-control @error('phone') border-danger @enderror" name="phone" value="{{old('phone',$billing->phone)}}" id="" placeholder="Phone" required=""> 
                             </div>
                             <div class="col-md-6">
-                                <label for="fax">Fax <span class="color"> *</span></label>
-                                
-                                    <input type="number" class="form-control" name="fax" value="{{old('fax',$billing->fax)}}" id="" placeholder="Fax" required="">
-                               
-                                @if ($errors->has('fax'))
-                                    <span class="text-danger">{{ $errors->first('fax') }}</span>
-                                @endif
+                                <label for="fax">Fax <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('Fax') }}</span> 
+                                <input type="number" class="form-control @error('phone') border-danger @enderror" name="fax" value="{{old('fax',$billing->fax)}}" id="" placeholder="Fax" required=""> 
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 mt-2">
                                 <button class="btn btn-sm btn-solid" type="submit">Update</button>
                             </div>
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </section>
 
            
        

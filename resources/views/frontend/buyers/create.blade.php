@@ -20,9 +20,9 @@
     
 @push('css')
 <style>
-    .color{
-        color: red;
-    } 
+    .ht-1{
+        height: 58px;;
+    }
 </style>
 @endpush 
     <!-- section start --> 
@@ -36,36 +36,36 @@
                         @csrf
                         <div class="form-row">
                             <div class="col-md-6">
-                                <label for="full_name">First Name</label>
-                                <input type="text" class="form-control" name="full_name" value="{{ old('full_name',$profile->first_name) }}"   placeholder="Enter Your name" required="">
-                                @if($errors->has('full_name')) <span class="text-danger">{{ $errors->first('full_name') }}</span> @endif
+                                <label for="first_name">First Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('first_name') }}</span>
+                                <input type="text" class="form-control @error('first_name') border-danger @enderror" required name="first_name" value="{{ old('first_name',$userprofile->first_name) }}" id="" placeholder="Firest Name">
+                                
                             </div>
                             <div class="col-md-6">
-                                <label for="full_name">Last Name</label>
-                                <input type="text" class="form-control" name="full_name" value="{{ old('full_name',$profile->last_name) }}"   placeholder="Enter Your name" required="">
-                                @if($errors->has('full_name')) <span class="text-danger">{{ $errors->first('full_name') }}</span> @endif
+                                <label for="last_name">Last Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('last_name') }}</span>
+                                <input type="text" class="form-control @error('last_name') border-danger @enderror" required name="last_name" value="{{ old('last_name',$userprofile->last_name) }}" id="" placeholder="Last Name">
+                                
                             </div>
                             <div class="col-md-6">
-                                <label for="phone_number">Phone number</label>
+                                <label for="phone_number">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone_number') }}</span>
                                 @if($profile == '')
-                                   <input type="number" class="form-control" name="phone_number" value="{{ old('phone_number') }}" maxlength="11" minlength="11" id="" placeholder="Enter your number">
+                                <input type="number" class="form-control @error('phone_number') border-danger @enderror"  name="phone_number" value="{{ old('phone_number') }}" id="" placeholder="Phone Number">
+                                   
                                 @else
-                                    <input type="number" class="form-control" name="phone_number" value="{{ old('phone_number',$profile->phone_number) }}" maxlength="11" minlength="11" id="review" placeholder="Enter your number">
+                                <input type="number" class="form-control @error('phone_number') border-danger @enderror" required name="phone_number" value="{{ old('phone_number',$profile->phone_number) }}" id="" placeholder="Phone Number">
+                                    
                                 @endif
-                                @if ($errors->has('phone_number'))
-                                    <span class="text-danger">{{ $errors->first('phone_number') }}</span>
-                                @endif
+                                
                             </div>
                             <div class="col-md-6">
-                                <label for="dob">Date of birth</label>
+                                <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span>
                                 @if($profile == '')
-                                    <input type="text" class="form-control datepicker"  name="dob" value="{{ old('dob') }}" id="" placeholder="" >
+                                <input type="text" class="form-control datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob',) }}" id="" placeholder="">
+                                    
                                 @else
-                                    <input type="text" class="form-control datepicker"  name="dob" value="{{ old('dob',$profile->dob) }}" id="" placeholder="" >
+                                <input type="text" class="form-control datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob',$profile->dob) }}" id="" placeholder="">
+                                    
                                 @endif
-                                @if ($errors->has('dob'))
-                                    <span class="text-danger">{{ $errors->first('dob') }}</span>
-                                @endif
+                                
                             </div>
                             <div class="col-md-6">
                                 <label for="picture">Picture</label>
@@ -76,9 +76,9 @@
                                     <input type="hidden" value="{{$profile->picture}}" name="old_image">
                                 @endif
                             </div>
-                            <div class="col-md-6"> 
-                                <label for="name">Gender (select one): *</label>
-                                <select name="gender" class="form-control px-10" id="tag_id"  autocomplete="off">
+                            <div class="col-md-6" > 
+                                <label for="name">Gender (select one)<span class="text-danger"> *</span></label>
+                                <select name="gender" class="form-control px-10" id="tag_id"  autocomplete="off" style="height: 58px;">
                                   @if($profile == '')                                               
                                   <option value="Male" selected>Male</option>
                                   <option value="Female">Female</option> 

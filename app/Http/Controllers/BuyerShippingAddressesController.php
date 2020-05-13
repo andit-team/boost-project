@@ -34,23 +34,23 @@ class BuyerShippingAddressesController extends Controller
         
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
         $this->validateForm($request);
-        // $buyerShippingAddress = BuyerShippingAddress::updateOrCreate(['buyer_id' =>$buyerId->id],[
+        // $buyerShippingAddress = BuyerShippingAddress::updateOrCreate(['buyer_id'     =>$buyerId->id],[
             if( $buyerId){
             $data =[
-                'location'      => $request->location,
-                'address'       => $request->address,
-                'country'       => $request->country,
-                'state'         => $request->state,
-                'city'          => $request->city,
-                'zip_code'      => $request->zip_code,
-                'phone'         => $request->phone,
-                'fax'           => $request->fax,
-                'buyer_id'      => $buyerId->id,
-                'user_id'       => Sentinel::getUser()->id,
-                'created_at'    => now(),
+                'location'          => $request->location,
+                'address'           => $request->address,
+                'country'           => $request->country,
+                'state'             => $request->state,
+                'city'              => $request->city,
+                'zip_code'          => $request->zip_code,
+                'phone'             => $request->phone,
+                'fax'               => $request->fax,
+                'buyer_id'          => $buyerId->id,
+                'user_id'           => Sentinel::getUser()->id,
+                'created_at'        => now(),
             ];
             BuyerShippingAddress::create($data);
-            Session::flash('success','Shipping address added succesed!');
+            Session::flash('success','Shipping address added succeeded!');
             return redirect('profile/shipping');
         }
         
@@ -90,20 +90,21 @@ class BuyerShippingAddressesController extends Controller
     public function update(Request $request, BuyerShippingAddress $shipping)
     {     
         $this->validateForm($request);
-        // $buyerShippingAddress = BuyerShippingAddress::updateOrCreate(['buyer_id' =>$buyerId->id],[
+        // $buyerShippingAddress = BuyerShippingAddress::updateOrCreate(['buyer_id'     =>$buyerId->id],[
             $data =[
-                'location'      => $request->location,
-                'address'       => $request->address,
-                'country'       => $request->country,
-                'state'         => $request->state,
-                'city'          => $request->city,
-                'zip_code'      => $request->zip_code,
-                'phone'         => $request->phone,
-                'fax'           => $request->fax,             
-                'updated_at'    => now(),
+                'location'          => $request->location,
+                'address'           => $request->address,
+                'country'           => $request->country,
+                'state'             => $request->state,
+                'city'              => $request->city,
+                'zip_code'          => $request->zip_code,
+                'phone'             => $request->phone,
+                'fax'               => $request->fax,             
+                'updated_at'        => now(),
             ];           
            $shipping->update($data);
-        return back();
+           Session::flash('success','Shipping address Updated succeeded!');
+           return redirect('profile/shipping');
     }
 
     /**
@@ -112,20 +113,24 @@ class BuyerShippingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BuyerShippingAddress $shipping)
     {
-        //
+        $shipping->delete();
+
+        Session::flash('success','Shipping address Deleted');
+
+        return back();
     }
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'location' => 'required',
-            'address' => 'required',
-            'country' => 'required',
-            'state' => 'required',
-            'city' => 'required',
-            'zip_code' => 'required',
-            'phone' => 'required',
+            'location'  => 'required',
+            'address'   => 'required',
+            'country'   => 'required',
+            'state'     => 'required',
+            'city'      => 'required',
+            'zip_code'  => 'required',
+            'phone'     => 'required',
         ]);
     }
 }

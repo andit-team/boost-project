@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Buyer;
 use App\Models\Order;
 use App\User;
 
 class BuyerBillingAddress extends Model
 {
-   protected $fillable = ['location','address','country','state','city','zip_code','phone','fax','active','buyer_id','user_id'];
+   use SoftDeletes; 
+   protected $fillable = ['location','address','country','state','city','zip_code','phone','fax','active','buyer_id','user_id','deleted_at'];
 
    public function user()
    {

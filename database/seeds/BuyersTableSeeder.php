@@ -14,7 +14,8 @@ class BuyersTableSeeder extends Seeder
       $data = [
 
        [
-          'full_name'                => 'Akash',
+          'first_name'          => 'Akash',
+          'last_name'           => 'Mia',
           'dob'                 => '2000-01-01',
           'gender'              => 'Male',
           'description'         => 'Student',
@@ -27,7 +28,8 @@ class BuyersTableSeeder extends Seeder
           'updated_at'  => now()
       ],
       [
-          'full_name'                => 'Arman',
+          'first_name'          => 'Arman',
+          'last_name'           => 'Mia',
           'dob'                 => '2000-01-01',
           'gender'              => 'Male',
           'description'         => 'Student',
@@ -40,7 +42,8 @@ class BuyersTableSeeder extends Seeder
           'updated_at'  => now()
       ],
       [
-          'full_name'                => 'Abir',
+          'first_name'           => 'Abir',
+          'last_name'           => 'Mia',
           'dob'                 => '2000-01-01',
           'gender'              => 'Male',
           'description'         => 'Student',
@@ -51,86 +54,7 @@ class BuyersTableSeeder extends Seeder
           'user_id'             => '1',
           'created_at'  => now(),
           'updated_at'  => now()
-      ],
-      [
-          'full_name'                => 'Arif',
-          'dob'                 => '2000-01-01',
-          'gender'              => 'Male',
-          'description'         => 'Student',
-          'last_visited_at'     => '2000-01-02',
-          'last_visited_from'   => '10.00am',
-          'verification_token'  => '2',
-          'remember_token'      => 'M2',
-          'user_id'             => '1',
-          'created_at'  => now(),
-          'updated_at'  => now()
-      ],
-      [
-          'full_name'                => 'Anibarn',
-          'dob'                 => '2000-01-01',
-          'gender'              => 'Male',
-          'description'         => 'Student',
-          'last_visited_at'     => '2000-01-02',
-          'last_visited_from'   => '10.00am',
-          'verification_token'  => '2',
-          'remember_token'      => 'M2',
-          'user_id'             => '1',
-          'created_at'  => now(),
-          'updated_at'  => now()
-      ],
-      [
-          'full_name'                => 'Amit',
-          'dob'                 => '2000-01-01',
-          'gender'              => 'Male',
-          'description'         => 'Student',
-          'last_visited_at'     => '2000-01-02',
-          'last_visited_from'   => '10.00am',
-          'verification_token'  => '2',
-          'remember_token'      => 'M2',
-          'user_id'             => '1',
-          'created_at'  => now(),
-          'updated_at'  => now()
-      ],
-      [
-          'full_name'                => 'Ankur',
-          'dob'                 => '2000-01-01',
-          'gender'              => 'Male',
-          'description'         => 'Student',
-          'last_visited_at'     => '2000-01-02',
-          'last_visited_from'   => '10.00am',
-          'verification_token'  => '2',
-          'remember_token'      => 'M2',
-          'user_id'             => '1',
-          'created_at'  => now(),
-          'updated_at'  => now()
-      ],
-      [
-          'full_name'                => 'Ahona',
-          'dob'                 => '2000-01-01',
-          'gender'              => 'Female',
-          'description'         => 'Student',
-          'last_visited_at'     => '2000-01-02',
-          'last_visited_from'   => '10.00am',
-          'verification_token'  => '2',
-          'remember_token'      => 'M2',
-          'user_id'             => '1',
-          'created_at'  => now(),
-          'updated_at'  => now()
-      ],
-
-      [
-          'full_name'                => 'Annonna',
-          'dob'                 => '2000-01-01',
-          'gender'              => 'Female',
-          'description'         => 'Student',
-          'last_visited_at'     => '2000-01-02',
-          'last_visited_from'   => '10.00am',
-          'verification_token'  => '2',
-          'remember_token'      => 'M2',
-          'user_id'             => '1',
-          'created_at'  => now(),
-          'updated_at'  => now()
-      ],
+      ], 
   ];
 
   DB::table('buyers')->insert($data);

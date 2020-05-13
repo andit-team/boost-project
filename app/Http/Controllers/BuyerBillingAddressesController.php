@@ -46,27 +46,31 @@ class BuyerBillingAddressesController extends Controller
         $this->validateForm($request); 
         if($buyerId){
             $data = [
-                'location' => $request->location,
-                'address' => $request->address,
-                'country' => $request->country,
-                'state' => $request->state,
-                'city' => $request->city,
-                'zip_code' => $request->zip_code,
-                'phone' => $request->phone,
-                'fax' => $request->fax,
-                'buyer_id' =>  $buyerId->id,
-                'user_id' => Sentinel::getUser()->id,
-                'created_at' => now(),
+                'location'      => $request->location,
+                'address'       => $request->address,
+                'country'       => $request->country,
+                'state'         => $request->state,
+                'city'          => $request->city,
+                'zip_code'      => $request->zip_code,
+                'phone'         => $request->phone,
+                'fax'           => $request->fax,
+                'buyer_id'      =>  $buyerId->id,
+                'user_id'       => Sentinel::getUser()->id,
+                'created_at'    => now(),
             ];
 
             BuyerBillingAddress::create($data);
 
             Session::flash('success', 'Billing Address created');
 
-            return back();
-         } 
+            return redirect('profile/billing');
+         }
+           
+        Session::flash('danger', 'please create profile correctly');
 
-        return back();
+        return redirect('profile/billing'); 
+         
+ 
 
     }
 
@@ -105,23 +109,23 @@ class BuyerBillingAddressesController extends Controller
         $this->validateForm($request); 
         
             $data = [
-                'location' => $request->location,
-                'address' => $request->address,
-                'country' => $request->country,
-                'state' => $request->state,
-                'city' => $request->city,
-                'zip_code' => $request->zip_code,
-                'phone' => $request->phone,
-                'fax' => $request->fax, 
-                'user_id' => Sentinel::getUser()->id,
-                'updated_at' => now(),
+                'location'      => $request->location,
+                'address'       => $request->address,
+                'country'       => $request->country,
+                'state'         => $request->state,
+                'city'          => $request->city,
+                'zip_code'      => $request->zip_code,
+                'phone'         => $request->phone,
+                'fax'           => $request->fax, 
+                'user_id'       => Sentinel::getUser()->id,
+                'updated_at'    => now(),
             ]; 
 
             $billing->update($data);
 
             Session::flash('success', 'Billing Address Updated');
 
-            return back();
+            return redirect('profile/billing');
        
     }
 
@@ -131,20 +135,24 @@ class BuyerBillingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(BuyerBillingAddress $billing)
     {
-        //
+        $billing->delete();
+
+        Session::flash('success', 'Billing Address Deleted');
+
+        return back();
     }
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'location'=> 'required',
-            'address' => 'required',
-            'country' => 'required',
-            'state' => 'required',
-            'city' => 'required',
-            'zip_code'=> 'required',
-            'phone' => 'required',
+            'location'      => 'required',
+            'address'       => 'required',
+            'country'       => 'required',
+            'state'         => 'required',
+            'city'          => 'required',
+            'zip_code'      => 'required',
+            'phone'         => 'required',
         ]);
     }
 }

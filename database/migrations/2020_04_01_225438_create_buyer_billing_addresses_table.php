@@ -21,7 +21,7 @@ class CreateBuyerBillingAddressesTable extends Migration
             $table->string('state');
             $table->string('city');
             $table->string('zip_code');
-            $table->integer('phone');
+            $table->bigInteger('phone');
             $table->string('fax')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('buyer_id')->default(1);
