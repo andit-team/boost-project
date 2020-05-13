@@ -56,8 +56,15 @@
                              <p class="card-text">{{ $row->state }}</p>
                             </div>
                             
-                        </div>                               
-                        <a href="{{url('/profile/shipping/'.$row->id.'/edit')}}" class="btn btn-danger btn-sm"><i class="fa fa-edit"></i></a>
+                        </div> 
+                        <div class="row">                              
+                         <a href="{{url('/profile/shipping/'.$row->id.'/edit')}}" class="btn btn-sm btn-solid ml-3"><i class="fa fa-edit"> Edit</i></a>
+                         <form action="{{ url('/profile/shipping/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
+                          @csrf
+                          @method('delete')
+                          <button type="submit" class="btn btn-sm btn-solid ml-2"><i class="fa fa-trash"> Delete</i></button>
+                      </form>
+                        </div>
                   </div>                     
                </div> 
                @empty

@@ -59,9 +59,10 @@ class BuyerCardsController extends Controller
 
             Session::flash('success', 'Billing Card created');
 
-            return back();
+            return redirect('profile/card');
         }
-        return back();
+        Session::flash('danger', 'Somthing want wrong please fill up the form correctly');
+        return redirect('profile/card');
     }
 
     /**
@@ -109,7 +110,7 @@ class BuyerCardsController extends Controller
 
             Session::flash('success', 'Billing Card updated');
 
-            return back();
+            return redirect('profile/card');
        
     }
 
@@ -130,7 +131,7 @@ class BuyerCardsController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'card_number' => 'required|max:6|min:6',
+            'card_number' => 'required',
             'card_holder_name' => 'required',
             'card_expire_date' => 'required',
             'card_cvc' => 'required'

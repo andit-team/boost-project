@@ -18,7 +18,7 @@
           @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'cards'])
             <div class="col-md-9">
                 <div class="text-right">
-                <a href="{{url('/profile/card/create')}}" class="btn btn-sm btn-solid mb-2 text-right">New Card</a> 
+                <a href="{{url('/profile/card/create')}}" class="btn btn-sm btn-solid mb-2 text-right">Add New Card</a> 
                 </div>
                 @forelse($card as $row) 
                 <div class="card mt-2">
@@ -41,11 +41,11 @@
                            </div> 
                        </div> 
                        <div class="row">
-                            <a href="{{url('/profile/card/'.$row->id.'/edit')}}" class="btn btn-sm btn-solid ml-3">Edit</a>
+                            <a href="{{url('/profile/card/'.$row->id.'/edit')}}" class="btn btn-sm btn-solid ml-3"><i class="fa fa-edit"> Edit</i></a>
                             <form action="{{ url('/profile/card/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="btn btn-sm btn-solid ml-2">Delete</button>
+                                <button type="submit" class="btn btn-sm btn-solid ml-2"><i class="fa fa-trash"> Delete</i></button>
                             </form>
                        </div>
                     </div>

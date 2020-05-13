@@ -13,11 +13,11 @@ class CreateBuyersTable extends Migration
      */
     public function up()
     {
-      Schema::dropIfExists('buyers');
+      //Schema::dropIfExists('buyers');
       Schema::create('buyers', function (Blueprint $table) {
            $table->bigIncrements('id');
            $table->unsignedBigInteger('user_id');
-           $table->string('full_name');
+        //    $table->string('full_name')->nullable();
            $table->string('first_name')->nullable();
            $table->string('last_name')->nullable();
            $table->string('phone_number')->nullable();
