@@ -12,10 +12,10 @@
         </div>
         <div class="faq-tab">
             <ul class="nav nav-tabs" id="top-tab" role="tablist">
-                <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dashboard">dashboard</a></li>
+                <li class="nav-item {{$active == 'dashboard' ? 'active' : ''}}"><a data-toggle="tab" class="nav-link active" href="#dashboard">dashboard</a></li>
                 <!-- <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a></li>                             -->
 
-                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/product') }}">All Products</a>
+                <li class="nav-item {{$active == 'product' ? 'active' : ''}}"><a  class="nav-link" href="{{ url('merchant/product') }}">All Products</a>
                 </li>
                 <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/inventory') }}">All Inventory</a>
                 </li>
