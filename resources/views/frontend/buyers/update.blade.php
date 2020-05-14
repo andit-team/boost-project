@@ -20,28 +20,18 @@
     
 @push('css')
 <style>
+    .ht-1{
+        height: 58px;;
+    }
     .imagestyle{
-        width: 200px;
-        height: 200px;
-        border-width: 1px;
-        border-style: solid;
+        width: 222px;
+        height: 150px;
+        border-width: 4px 4px 4px 4px;border-style: solid;
         border-color: #ccc;
-        border-bottom: 0px;
-        padding: 10px;
     }
-
-    #file-upload{
-        display: none;
-    }
-    .uploadbtn{
-        width: 200px;background: #ddd;float: right;text-align: center;
-    }
-    .custom-file-upload {
-        /* border: 1px solid #ccc; */
-        display: inline-block;
-        padding: 9px 40px;
-        cursor: pointer;
-        border-top: 0px;
+    .divmargin{
+        margin-top: 20px;
+        margin-left: -110px;
     }
 </style> 
 @endpush 
@@ -55,48 +45,41 @@
                     <form class="theme-form" action="{{ route('profileUpdate') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf
                         <div class="form-row">
-                            <div class="col-md-8">
+                            <div class="col-md-8"></div>
+                            <div class="col-md-4">  
+                                <label for="picture">Picture</label>
+                                <div class="divmargin text-center mb-3 mt-0">
+                                    @if(!empty($profile->picture))
+                                        <img id="output"  class="imagestyle" src="{{ asset($profile->picture) }}"/>
+                                    @else
+                                        <img id="output"  class="imagestyle" src="{{ asset('/uploads/buyer_profile/user.png') }}" />
+                                    @endif
+                                </div>
+                                <input type="file" class="form-control col-md-8" name="picture" id="" onchange="loadFile(event)">
+                                {{-- <input type="hidden" value="{{$profile->picture}}" name="old_image">    --}}
+                            </div>
+                            
+                            <div class="col-md-6 mt-2">
                                 <label for="first_name">First Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('first_name') }}</span>
                                 <input type="text" class="form-control @error('first_name') border-danger @enderror" required name="first_name" value="{{ old('first_name',$userprofile->first_name) }}" id="" placeholder="Firest Name">
                                 
-                                <label for="last_name" class="mt-2">Last Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('last_name') }}</span>
+                            </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="last_name">Last Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('last_name') }}</span>
                                 <input type="text" class="form-control @error('last_name') border-danger @enderror" required name="last_name" value="{{ old('last_name',$userprofile->last_name) }}" id="" placeholder="Last Name">
                                 
-                                <label for="phone_number" class="mt-2">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone_number') }}</span>
-                                <input type="number" class="form-control @error('phone_number') border-danger @enderror" required  name="phone_number" value="{{ old('phone_number') }}" id="" placeholder="Phone Number">
                             </div>
-
-
-                            <div class="col-md-4 text-right">  
-                                <label for="picture">Picture</label>
-                                <div class="mt-0">
-                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/buyer_profile/user.png') }}" />
-                                </div>
-                                <div class="uploadbtn"> 
-                                    <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                    <input id="file-upload" type="file" onchange="loadFile(event)"/>
-                                </div>
+                            <div class="col-md-6 mt-2">
+                                <label for="phone_number">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone_number') }}</span>
+                                @if($profile == '')
+                                <input type="number" class="form-control @error('phone_number') border-danger @enderror"  name="phone_number" value="{{ old('phone_number') }}" id="" placeholder="Phone Number">
+                                   
+                                @else
+                                <input type="number" class="form-control @error('phone_number') border-danger @enderror" required name="phone_number" value="{{ old('phone_number',$profile->phone_number) }}" id="" placeholder="Phone Number">
+                                    
+                                @endif
+                                
                             </div>
-                        </div>
-
-                        
-                        {{-- <div class="col-md-6 mt-2"> --}}
-                            <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
-                            <textarea class="form-control mb-0" placeholder="Write Your Message"  name="description"  id="" rows="6" ></textarea>
-
-{{--                             
-                            @if($profile == '')
-                            @else
-                            <textarea class="form-control mb-0" placeholder="Write Your Message" name="description" id="" rows="6" style="height: 58px;">{{ $profile->description }}</textarea>
-                            @endif
-                            @if ($errors->has('description'))<span class="text-danger">{{ $errors->first('description') }}</span>
-                            @endif --}}
-                        {{-- </div> --}}
-                                                                    <div class="form-row">
-                            
-                            
-                            
-                            
                             <div class="col-md-6 mt-2">
                                 <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span>
                                 @if($profile == '')
@@ -122,7 +105,17 @@
                                   @endif                                         
                                </select>
                             </div>
-                            
+                            <div class="col-md-6 mt-2">
+                                <label for="description">Write Your Message</label>
+                                @if($profile == '')
+                                <textarea class="form-control mb-0" placeholder="Write Your Message"  name="description"  id="" rows="6" style="height: 58px;"></textarea>
+                                @else
+                                    <textarea class="form-control mb-0" placeholder="Write Your Message" name="description" id="" rows="6" style="height: 58px;">{{ $profile->description }}</textarea>
+                                @endif
+                                @if ($errors->has('description'))
+                                    <span class="text-danger">{{ $errors->first('description') }}</span>
+                                @endif
+                            </div>
                             <div class="col-md-12 mt-4">
                                 <button type="submit" class="btn btn-sm btn-solid" >Save & Update</button>
                             </div>
