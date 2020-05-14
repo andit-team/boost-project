@@ -17,7 +17,7 @@
                 <li class="{{$active == 'billing' ? 'active' : ''}}"><a href="{{ url('/profile/billing') }}">My Billing Address</a></li>
                 <li class="{{$active == 'cards' ? 'active' : ''}}"><a href="{{ url('/profile/card') }}">My Card</a></li>
                 {{-- <li><a href="#">Change Password</a></li> --}}
-                <li class="last"><a href="{{url('logout')}}">Log Out</a></li>
+                <li class="last"><a href="{{url('/logout')}}">Log Out</a></li>
             </ul>
         </div>
     </div>

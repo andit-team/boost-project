@@ -18,7 +18,7 @@
     @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'shipping'])
      <div class="col-sm-9 contact-page register-page container">
        <h3>SHIPPING ADDRESS</h3>
-        <form class="theme-form" action="{{ route('shipping.update',$shipping) }}" method="post">
+        <form class="theme-form" action="{{ route('shipping.update',$shipping) }}" method="post" id="validateForm">
            @method('put')
             @csrf
             <div class="form-row">
