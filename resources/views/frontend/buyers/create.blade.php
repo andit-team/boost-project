@@ -74,59 +74,33 @@
                                 </div>
                                 <div class="uploadbtn"> 
                                     <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                    <input id="file-upload" type="file" onchange="loadFile(event)"/>
+                                    <input id="file-upload" type="file" name="picture" onchange="loadFile(event)"/>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
 
-                        
-                        {{-- <div class="col-md-6 mt-2"> --}}
-                            <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
-                            <textarea class="form-control mb-0" placeholder="Write Your Message"  name="description"  id="" rows="6" ></textarea>
+                        <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
+                        <textarea class="form-control mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" ></textarea>
 
-{{--                             
-                            @if($profile == '')
-                            @else
-                            <textarea class="form-control mb-0" placeholder="Write Your Message" name="description" id="" rows="6" style="height: 58px;">{{ $profile->description }}</textarea>
-                            @endif
-                            @if ($errors->has('description'))<span class="text-danger">{{ $errors->first('description') }}</span>
-                            @endif --}}
-                        {{-- </div> --}}
-                                                                    <div class="form-row">
-                            
-                            
-                            
-                            
+
+                        <div class="form-row"> 
                             <div class="col-md-6 mt-2">
-                                <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span>
-                                @if($profile == '')
-                                <input type="text" class="form-control datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob') }}" id="" placeholder="">
-                                    
-                                @else
-                                <input type="text" class="form-control datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob',$profile->dob) }}" id="" placeholder="">
-                                    
-                                @endif
-                                
+                                <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span> 
+                                <input type="date" class="form-control datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob') }}" id="" placeholder="">  
                             </div> 
                             <div class="col-md-6 mt-2"> 
-                                <label for="name">Gender (select one)<span class="text-danger"> *</span></label>
-                                <select name="gender" class="form-control px-10" id="tag_id"  autocomplete="off" style="height: 58px;">
-                                  @if($profile == '')                                               
+                                <label for="gender">Gender (select one)<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                <select name="gender" class="form-control px-10 @error('gender') border-danger @enderror" id=""  autocomplete="off" style="height: 51px;">                                         
                                     <option value="Male" selected>Male</option>
                                     <option value="Female">Female</option> 
-                                    <option value="Other">Other</option> 
-                                  @else 
-                                    <option value="Male" @if($profile->gender == 'Male') selected @endif>Male</option>
-                                    <option value="Female" @if($profile->gender =='Female' ) selected @endif>Female</option> 
-                                    <option value="Other" @if($profile->gender == 'Other') selected @endif>Other</option>                                               
-                                  @endif                                         
-                               </select>
+                                    <option value="Other">Other</option>  
+                            </select>
                             </div>
-                            
+                        
                             <div class="col-md-12 mt-4">
-                                <button type="submit" class="btn btn-sm btn-solid" >Save & Update</button>
+                                <button type="submit" class="btn btn-sm btn-solid" >Save</button>
                             </div>
-                        </div>
+                            </div>
                     </form>
                 </div>
             </div>

@@ -60,7 +60,7 @@
 
                 <!-- address section start -->
                 <div class="col-sm-9 contact-page register-page container">
-                        <h3>Added Product</h3>
+                        <h3>Added Inventory</h3>
                             <form class="theme-form" action="{{ route('inventory.store') }}" method="post">
                                 @csrf
                                     <div class="form-row">
