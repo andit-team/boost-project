@@ -20,7 +20,7 @@
     
                 <div class="col-sm-9 contact-page register-page container">
                     <h3>Billing ADDRESS</h3>
-                    <form class="theme-form" action="{{ route('billing.store') }}" method="post">
+                    <form class="theme-form" action="{{ route('billing.store') }}" method="post" id="validateForm">
                         @csrf
                         <div class="form-row">
                             <div class="col-md-6">

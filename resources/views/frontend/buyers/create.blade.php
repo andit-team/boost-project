@@ -23,7 +23,17 @@
     .ht-1{
         height: 58px;;
     }
-</style>
+    .imagestyle{
+        width: 222px;
+        height: 150px;
+        border-width: 4px 4px 4px 4px;border-style: solid;
+        border-color: #ccc;
+    }
+    .divmargin{
+        margin-top: 20px;
+        margin-left: -110px;
+    }
+</style> 
 @endpush 
     <!-- section start --> 
     <section class="section-b-space">
@@ -32,20 +42,33 @@
                 @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'profile']) 
                 <div class="col-sm-9 register-page contact-page">
                     <h3>PERSONAL DETAIL</h3>
-                    <form class="theme-form" action="{{ route('profileUpdate') }}" method="post" enctype="multipart/form-data">
+                    <form class="theme-form" action="{{ route('profileUpdate') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf
                         <div class="form-row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">  
+                                <label for="picture">Picture</label>
+                                <div class="divmargin text-center mb-3 mt-0">
+                                    @if(!empty($profile->picture))
+                                    <img id="output"  class="imagestyle" src="{{ asset($profile->picture) }}"/>
+                                    @else
+                                        <img id="output"  class="imagestyle" src="{{ asset('/uploads/buyer_profile/user.png') }}" />
+                                    @endif
+                                </div>
+                                <input type="file" class="form-control col-md-8" name="picture" id="" onchange="loadFile(event)">
+                                <input type="hidden" value="{{$profile->picture}}" name="old_image">   
+                            </div>
+                            <div class="col-md-8"></div>
+                            <div class="col-md-6 mt-2">
                                 <label for="first_name">First Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('first_name') }}</span>
                                 <input type="text" class="form-control @error('first_name') border-danger @enderror" required name="first_name" value="{{ old('first_name',$userprofile->first_name) }}" id="" placeholder="Firest Name">
                                 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mt-2">
                                 <label for="last_name">Last Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('last_name') }}</span>
                                 <input type="text" class="form-control @error('last_name') border-danger @enderror" required name="last_name" value="{{ old('last_name',$userprofile->last_name) }}" id="" placeholder="Last Name">
                                 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mt-2">
                                 <label for="phone_number">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone_number') }}</span>
                                 @if($profile == '')
                                 <input type="number" class="form-control @error('phone_number') border-danger @enderror"  name="phone_number" value="{{ old('phone_number') }}" id="" placeholder="Phone Number">
@@ -56,7 +79,7 @@
                                 @endif
                                 
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mt-2">
                                 <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span>
                                 @if($profile == '')
                                 <input type="text" class="form-control datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob',) }}" id="" placeholder="">
@@ -66,17 +89,8 @@
                                     
                                 @endif
                                 
-                            </div>
-                            <div class="col-md-6">
-                                <label for="picture">Picture</label>
-                                @if($profile == '')
-                                   <input type="file" class="form-control" name="picture" id="" placeholder="" accept=".png, .jpg, .jpeg">
-                                @else
-                                    <input type="file" class="form-control" name="picture" id="" placeholder="" accept=".png, .jpg, .jpeg">
-                                    <input type="hidden" value="{{$profile->picture}}" name="old_image">
-                                @endif
-                            </div>
-                            <div class="col-md-6" > 
+                            </div> 
+                            <div class="col-md-6 mt-2"> 
                                 <label for="name">Gender (select one)<span class="text-danger"> *</span></label>
                                 <select name="gender" class="form-control px-10" id="tag_id"  autocomplete="off" style="height: 58px;">
                                   @if($profile == '')                                               
@@ -90,12 +104,12 @@
                                   @endif                                         
                                </select>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6 mt-2">
                                 <label for="description">Write Your Message</label>
                                 @if($profile == '')
-                                <textarea class="form-control mb-0" placeholder="Write Your Message"  name="description"  id="" rows="6"></textarea>
+                                <textarea class="form-control mb-0" placeholder="Write Your Message"  name="description"  id="" rows="6" style="height: 58px;"></textarea>
                                 @else
-                                    <textarea class="form-control mb-0" placeholder="Write Your Message" name="description" id="" rows="6">{{ $profile->description }}</textarea>
+                                    <textarea class="form-control mb-0" placeholder="Write Your Message" name="description" id="" rows="6" style="height: 58px;">{{ $profile->description }}</textarea>
                                 @endif
                                 @if ($errors->has('description'))
                                     <span class="text-danger">{{ $errors->first('description') }}</span>
@@ -111,4 +125,12 @@
         </div>
     </section>
 @endsection
+@push('js')
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+@endpush
 
