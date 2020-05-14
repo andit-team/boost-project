@@ -59,7 +59,7 @@
                             <div class="col-md-6">
                                 <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span>
                                 @if($profile == '')
-                                <input type="text" class="form-control datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob',) }}" id="" placeholder="">
+                                <input type="text" class="form-control datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob') }}" id="" placeholder="">
                                     
                                 @else
                                 <input type="text" class="form-control datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob',$profile->dob) }}" id="" placeholder="">
