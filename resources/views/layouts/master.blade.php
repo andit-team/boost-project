@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="brand-logo">
                                     <a href="index.html"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
-                                            class="img-fluid blur-up lazyload" alt=""></a>
+                                            class="img-fluid blur-up lazyload" alt="image"></a>
                                 </div>
                             </div>
                             <div class="menu-right pull-right">
