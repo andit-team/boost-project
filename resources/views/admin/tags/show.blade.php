@@ -27,6 +27,9 @@
         <!-- Container-fluid Ends-->
 
         <!-- Container-fluid starts-->
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-lg-8 col-md-8" >
         <div class="container-fluid">
             <div class="card tab2-card">
                 <div class="card-header">
@@ -34,8 +37,6 @@
                 </div>
                 <div class="card-body">
 
-                        <div class="row">
-                            <div class="col-sm-12">
                                 <div class="form-group row">
                                     <label for="validationCustom0" class="col-xl-3 col-md-4">Tag Name <span>*</span></label>
                                     <input class="form-control col-md-8" name="name" readonly value="{{ $tag->name }}" id="validationCustom0" type="text" required="">
@@ -43,7 +44,7 @@
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-md-4"></label>
                                     <div class="checkbox checkbox-primary col-md-8">
-                                        <a href="{{ url('andbaazaradmin/tag') }}"  class="btn btn-primary">Back</a>
+                                        <a href="{{ url('andbaazaradmin/tag') }}"  class="btn btn-info">Back</a>
                                     </div>
                                 </div>
 

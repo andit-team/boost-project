@@ -28,3 +28,7 @@ input.form-control.error {
 .card .card-body {
     padding: 10px 20px 20px 20px !important;
 }
+
+.card .card-header {
+    background-color: #15141463; 
+}

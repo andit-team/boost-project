@@ -27,6 +27,9 @@
         <!-- Container-fluid Ends-->
 
         <!-- Container-fluid starts-->
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-lg-8 col-md-8" >
         <div class="container-fluid">
             <div class="card tab2-card">
                 <div class="card-header">
@@ -36,8 +39,7 @@
                     <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/tag/'.$tag->slug) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <div class="row">
-                            <div class="col-sm-12">
+                        
                                 <div class="form-group row">
                                     <label for="name" class="col-xl-3 col-md-4">Tag Name <span>*</span></label>
                                     <input class="form-control col-md-8" name="name" value="{{ $tag->name }}" id="name" type="text" required="">
@@ -45,7 +47,8 @@
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-md-4"></label>
                                     <div class="checkbox checkbox-primary col-md-8">
-                                        <button type="submit"  class="btn btn-primary">Update</button>
+                                        <a href="{{ url('andbaazaradmin/tag') }}"  class="btn btn-info">Back</a>
+                                        <button type="submit"  class="btn btn-success">Update</button>
                                     </div>
                                 </div>
 
