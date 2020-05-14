@@ -13,3 +13,23 @@
 input.form-control.error {
     border-color: red;
 }
+
+
+.top-header .header-dropdown .onhover-dropdown .onhover-show-div li a {
+    color: #333333;
+    padding: 5px;
+}
+
+
+.onhover-dropdown .onhover-show-div {
+    min-width: 240px;
+}
+.onhover-show-div  li:hover{
+    opacity: 1;
+    font-size: 18px !important;
+} 
+/* .onhover-show-div li:hover {
+    background-color: #fff;
+    color: #ff5a80 !important;
+    opacity: 1;
+} */

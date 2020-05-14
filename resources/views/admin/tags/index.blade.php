@@ -1,48 +1,77 @@
 @extends('admin.layout.master')
 
+
 @section('content')
+@include('elements.alert')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-7">
                 <div class="card">
                     <div class="card-header">
                         <h5>Manage Tags</h5>
                     </div>
-                    <div class="card-body order-datatable">
-                        <table class="display" id="basic-1">
+                    <div class="card-body">
+                        <table class="table table-borderd" id="dataTableNoPagingDesc">
                             <thead>
                             <tr>
-                                <th>Sl</th>
+                                <th width="50">Sl</th>
                                 <th>Tag</th>
-                                <th>Action</th>
+                                <th width="150">Action</th>
                             </tr>
-                            </thead>
-                            <tbody>
+                        </thead>
+                        <tbody>
                             @php $i=0; @endphp
                             @foreach($tag as $row)
-                            <tr>
-                                <td>{{ ++$i }}</td>
-                                <td>{{ $row->name }}</td>
-                                <td>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>
-                                        <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/tag/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a> </li>
-                                        <li class="list-inline-item">
-                                            <form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                <tr>
+                                    <td>{{ ++$i}}</td>
+                                    <td>{{ $row->name }}</td>
+                                    <td class="d-flex justify-content-between">
+
+                                        <a href="{{ url('/andbaazaradmin/tag/'.$row->slug) }}"><button class="btn btn-sm btn-success">View</button></a>
+                                        <a href="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning">Edit</button></a> 
+                                        <form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-sm btn-primary">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr> 
+                            @endforeach    
+                        </tbody>
+                    </table>
+                    </div> 
                 </div>
             </div>
+
+
+            <div class="col-sm-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Manage Tags</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('tag.store') }}" method="post" class="form" id="validateForm">
+                            @csrf
+                            <div class="form-group">
+                                <label for="tag">Tag Name:</label>
+                                <input type="text"  name="name" required class="form-control @error('name') border-danger @enderror"> 
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                            </div>
+
+                            {{-- <div class="form-group">
+                                <label for="">Tag Name:</label>
+                                <textarea name="" class="form-control" id="" rows="5"></textarea>
+                            </div> --}}
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-success">Save</button>
+                            </div>
+                        </form>    
+                    </div>
+
+
+                </div>
+            </div>
+
         </div>
     </div>
 @endsection
