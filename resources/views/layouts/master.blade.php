@@ -288,11 +288,11 @@
                                 My Account
                                 <ul class="onhover-show-div">
                                     @if( Sentinel::getUser()) 
-                                    <li class="{{$active == 'dashboard' ? 'active' : ''}}"><a href="{{ url('/dashboard') }}">My Dashboard</a></li>  
-                                    <li class="{{$active == 'profile' ? 'active' : ''}}"><a href="{{ url('profile/') }}" data-lng="es">My Profile</a></li>
-                                    <li class="{{$active == 'shipping' ? 'active' : ''}}"><a href="{{ url('profile/shipping') }}" data-lng="es">My Shippin Address</a></li>
-                                    <li class="{{$active == 'billing' ? 'active' : ''}}"><a href="{{ url('profile/billing') }}" data-lng="es">My Billing Address</a></li>
-                                    <li class="{{$active == 'cards' ? 'active' : ''}}"><a href="{{ url('profile/card') }}" data-lng="es">My Card</a></li>
+                                    <li class=""><a href="{{ url('/dashboard') }}">My Dashboard</a></li>  
+                                    <li class=""><a href="{{ url('profile/') }}" data-lng="es">My Profile</a></li>
+                                    <li class=""><a href="{{ url('profile/shipping') }}" data-lng="es">My Shippin Address</a></li>
+                                    <li class=""><a href="{{ url('profile/billing') }}" data-lng="es">My Billing Address</a></li>
+                                    <li class=""><a href="{{ url('profile/card') }}" data-lng="es">My Card</a></li>
 
                                     <li class=""><a href="{{ url('/dashboard') }}">My Dashboard</a></li>  
                                     <li class=""><a href="{{ url('profile/') }}" data-lng="es">My Profile</a></li>
@@ -462,9 +462,9 @@
                                                             <li><a href="product-page(no-sidebar).html">Freeze</a></li>
                                                         </ul>
                                                     </li>                                                                                                     
-                                                    <li><a href="product-page(4-image).html">4 image <span
+                                                    <li><a href="product-page(4-image).html">Television<span
                                                                 class="new-tag">new</span></a></li>                                                
-                                                    <li><a href="product-page(vertical-tab).html">vertical tab</a></li>
+                                                    <li><a href="product-page(vertical-tab).html">Tab</a></li>
                                                 </ul>
                                             </li>                                                                                                                                                               
                                     </ul>
@@ -1478,7 +1478,7 @@
                             <div class="set-position">
                                 <div class="layout-container demo38"></div>
                                 <div class="demo-text">
-                                    <h4>vertical tab</h4>
+                                    <h4> Tab</h4>
                                     <div class="btn-group demo-btn" role="group" aria-label="Basic example"> <button
                                             type="button" onClick="window.open('product-page(vertical-tab).html')"
                                             class="btn new-tab-btn">Preview</button> </div>
