@@ -29,11 +29,11 @@ class BuyersController extends Controller
      */
     public function create(){
         $userprofile = Sentinel::getUser();
-        $profile = Buyer::where('user_id',Sentinel::getUser()->id)->first();
-        return view('frontend.buyers.create',compact('profile','userprofile'));
-        // if(empty($profile))
-        //     return view('frontend.buyers.update');
-        // else    
+        $profile = Buyer::where('user_id',Sentinel::getUser()->id)->first();  
+        if(!empty($profile))
+            return view('frontend.buyers.update',compact('profile','userprofile'));
+        else 
+        return view('frontend.buyers.create',compact('profile','userprofile'));   
     }
 
     /**
@@ -92,7 +92,7 @@ class BuyersController extends Controller
             return back();
         }
 
-        Session::flash('success','please insert your profile inforation correctley');
+        Session::flash('danger','please insert your profile inforation correctley');
         return back();
         
     }
@@ -144,11 +144,11 @@ class BuyersController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([ 
-            //    'first_name'  => 'required',
-            //    'last_name'   => 'required',
-            //    'dob'         => 'required',
-            //    'gender'      => 'required',
-//            'description' => 'required',
+               'first_name'  => 'required',
+               'last_name'   => 'required',
+               'dob'         => 'required',
+               'gender'      => 'required',
+               'description' => 'required',
         ]);
     }
 }
