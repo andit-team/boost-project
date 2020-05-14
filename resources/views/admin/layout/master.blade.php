@@ -42,12 +42,14 @@
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/admin.css">
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/custom.css">
     <!-- Datatables css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/datatables.css">
+    {{-- <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/datatables.css"> --}}
     <!--Datepicker css-->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 
-    <link href="{{ asset('') }}/css/treeview.css" rel="stylesheet">
+    <link href="{{ asset('/') }}css/treeview.css" rel="stylesheet">
     @stack('css')
+    <link href="{{ asset('/') }}css/admin-custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -232,15 +234,57 @@
 <script src="{{asset('')}}/assets/js/admin-script.js"></script>
 
 <!-- Datatable js-->
-<script src="{{asset('')}}/assets/js/datatables/jquery.dataTables.min.js"></script>
-<script src="{{asset('')}}/assets/js/datatables/custom-basic.js"></script>
+{{-- <script src="{{asset('')}}/assets/js/datatables/jquery.dataTables.min.js"></script>
+<script src="{{asset('')}}/assets/js/datatables/custom-basic.js"></script> --}}
 
 <!--Datepicker js-->
 
 <script src="{{asset('')}}/assets/js/bootstrap-datepicker.min.js"></script>
+<script src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
 <script src="{{ asset('') }}/js/treeview.js"></script>
+<script src="{{asset('/')}}js/validator.js"></script>
+<script src="{{asset('/')}}js/validatorRules.js"></script>
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
 
+$('#dataTableNoPagingDesc').DataTable({
+    dom: 'Bfrtip',
+    "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
+    paging: false,
+    buttons: [
+        'excel', 'csv', 'pdf'
+    ],
+    "ordering": false
+});
+
+$('#dataTableNoPaging').DataTable({
+    dom: 'Bfrtip',
+    "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
+    paging: false,
+    // buttons: [
+    //     'excel', 'csv', 'pdf'
+    // ]
+    buttons: [
+            // { extend: 'copyHtml5', footer: true },
+            // { extend: 'excelHtml5', footer: true },
+            // { extend: 'csvHtml5', footer: true },
+            // { extend: 'pdfHtml5', footer: true }
+        ]
+});
+
+$('#example22').DataTable({
+    dom: 'Bfrtip',
+    "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
+    buttons: [
+        'csv', 'excel', 'print'
+    ]
+});
+
+
+</script>
 @stack('js')
 
 </body>

@@ -1,0 +1,30 @@
+.contact-page .theme-form input {
+    border-color: #dddddd;    
+    font-size: 15px;
+    padding: 14px 25px;
+    margin-bottom: 5px;
+    height: inherit;
+}
+
+.error{
+    color: red !important;
+}
+
+input.form-control.error {
+    border-color: red;
+}
+
+
+.btn-sm{
+    font-size: 11px !important;
+    padding: 2px 5px !important;
+}
+
+.dataTables_wrapper table.dataTable th {
+    background-color: #f1f4fb !important;
+    padding: 17px 0.75rem !important;
+}
+
+.card .card-body {
+    padding: 10px 20px 20px 20px !important;
+}
