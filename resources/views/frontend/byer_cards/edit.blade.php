@@ -20,7 +20,7 @@
                 @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'cards'])
                 <div class="col-sm-9 register-page contact-page container">
                     <h3>CARD DETAIL</h3>
-                    <form class="theme-form" action="{{ url('/profile/card/'.$card->id) }}" method="post" enctype="multipart/form-data">
+                    <form class="theme-form" action="{{ url('/profile/card/'.$card->id) }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf
                         @method('put')
                         <div class="form-row">

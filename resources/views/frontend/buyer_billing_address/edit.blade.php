@@ -28,7 +28,7 @@
                 @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'billing'])
                 <div class="col-sm-9 contact-page register-page container">
                     <h3>Billing ADDRESS</h3>
-                    <form class="theme-form" action="{{ url('/profile/billing/'.$billing->id) }}" method="post">
+                    <form class="theme-form" action="{{ url('/profile/billing/'.$billing->id) }}" method="post" id="validateForm">
                         @csrf
                         @method('put')
                         <div class="form-row">

@@ -31,6 +31,9 @@ class BuyersController extends Controller
         $userprofile = Sentinel::getUser();
         $profile = Buyer::where('user_id',Sentinel::getUser()->id)->first();
         return view('frontend.buyers.create',compact('profile','userprofile'));
+        // if(empty($profile))
+        //     return view('frontend.buyers.update');
+        // else    
     }
 
     /**
@@ -41,7 +44,7 @@ class BuyersController extends Controller
      */
     public function store(Request $request){
         //dd($request->all());
-        $userprofile = User::where('id',Sentinel::getUser()->id)->first();
+        $userprofile = Sentinel::getUser();// User::where('id',Sentinel::getUser()->id)->first();
         //dd($userprofile);
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
         //dd($buyerId);
@@ -75,7 +78,7 @@ class BuyersController extends Controller
                 'dob'                   => $request->dob,
                 'gender'                => $request->gender,
                 'description'           => $request->description,
-                'user_id' => Sentinel::getUser()->id,
+                'user_id'               => Sentinel::getUser()->id,
                 'created_at'            => now(),
             ];
 
