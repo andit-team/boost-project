@@ -3,10 +3,9 @@
 @include('elements.alert')
 @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
- Home
+ About Us
   @endslot
   @slot('page')
-      <li class="breadcrumb-item active" aria-current="page">Home</li>
       <li class="breadcrumb-item active" aria-current="page">about us</li>
   @endslot
 @endcomponent
@@ -17,8 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="banner-section"><img src="{{asset('frontend')}}/assets/images/about/about.jpg"
-                      class="img-fluid blur-up lazyload" alt="fdjhfj"></div>
+                    <div class="banner-section"><img src="{{asset('frontend')}}/assets/images/about/about.jpg"class="img-fluid blur-up lazyload" alt="fdjhfj"></div>
                 </div>
                 <div class="col-sm-12">
                     <h4>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium

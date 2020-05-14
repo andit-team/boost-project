@@ -36,14 +36,7 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/color1.css" media="screen" id="color">
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
-    @stack('css') 
-
-    <style>
-        .onhover-show-div  li:hover{
-        background-color: #FF4C3B;  
-        opacity: 0.4;
-        } 
-    </style>
+    @stack('css')
     
 </head>
 
@@ -295,11 +288,17 @@
                                 My Account
                                 <ul class="onhover-show-div">
                                     @if( Sentinel::getUser()) 
-                                    <li class="{{$active == 'dashboard' ? 'active' : ''}}""><a href="{{ url('/dashboard') }}">My Dashboard</a></li>  
-                                    <li class="{{$active == 'profile' ? 'active' : ''}}"><a href="{{ url('profile/') }}" data-lng="es">My Profile</a></li>
-                                    <li class="{{$active == 'shipping' ? 'active' : ''}}"><a href="{{ url('profile/shipping') }}" data-lng="es">My Shippin Address</a></li>
-                                    <li class="{{$active == 'billing' ? 'active' : ''}}"><a href="{{ url('profile/billing') }}" data-lng="es">My Billing Address</a></li>
-                                    <li class="{{$active == 'cards' ? 'active' : ''}}"><a href="{{ url('profile/card') }}" data-lng="es">My Card</a></li>
+                                    <li class=""><a href="{{ url('/dashboard') }}">My Dashboard</a></li>  
+                                    <li class=""><a href="{{ url('profile/') }}" data-lng="es">My Profile</a></li>
+                                    <li class=""><a href="{{ url('profile/shipping') }}" data-lng="es">My Shippin Address</a></li>
+                                    <li class=""><a href="{{ url('profile/billing') }}" data-lng="es">My Billing Address</a></li>
+                                    <li class=""><a href="{{ url('profile/card') }}" data-lng="es">My Card</a></li>
+
+                                    <li class=""><a href="{{ url('/dashboard') }}">My Dashboard</a></li>  
+                                    <li class=""><a href="{{ url('profile/') }}" data-lng="es">My Profile</a></li>
+                                    <li class=""><a href="{{ url('profile/shipping') }}" data-lng="es">My Shippin Address</a></li>
+                                    <li class=""><a href="{{ url('profile/billing') }}" data-lng="es">My Billing Address</a></li>
+                                    <li class=""><a href="{{ url('profile/card') }}" data-lng="es">My Card</a></li>
                                     <li><a href="{{url('logout')}}" data-lng="es">Logout</a></li>
                                     @else
                                     <li><a href="{{url('login')}}" data-lng="en">SIGN IN</a></li>
@@ -322,7 +321,7 @@
                                     <div class="bar-style"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
                                     </div>
                                 </a>
-                                <div id="mySidenav" class="sidenav">
+                                {{-- <div id="mySidenav" class="sidenav">
                                     <a href="javascript:void(0)" class="sidebar-overlay" onclick="closeNav()"></a>
                                     <nav>
                                         <div onclick="closeNav()">
@@ -330,7 +329,7 @@
                                                     aria-hidden="true"></i> Back</div>
                                         </div>                                
                                     </nav>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="brand-logo">
                                 <a href="index.html"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
@@ -352,7 +351,7 @@
                                         <li>
                                             <a href="{{url('/about-us')}}">About</a>                                          
                                         </li>                                       
-                                        <li class="mega" id="hover-cls"><a href="#">Product                                           
+                                        <li class="mega" id="hover-cls"><a href="{{url('/products')}}">Product                                           
                                         </a>
                                         <ul class="mega-menu full-mega-menu">
                                             <li>
@@ -365,11 +364,11 @@
                                                                 </div>
                                                                 <div class="menu-content">                                                                    
                                                                     <ul>
-                                                                        <li><a href="#">dresses</a></li>
-                                                                        <li><a href="#">skirts</a></li>
-                                                                        <li><a href="#">westarn wear</a></li>
-                                                                        <li><a href="#">ethic wear</a></li>
-                                                                        <li><a href="#">sport wear</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">dresses</a></li>
+                                                                        <li><a href="{{url('/products/skirts')}}">skirts</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">westarn wear</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">ethic wear</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">sport wear</a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -381,9 +380,9 @@
                                                                 </div>
                                                                 <div class="menu-content">                                                                   
                                                                     <ul>
-                                                                        <li><a href="#">sport shoes</a></li>
-                                                                        <li><a href="#">formal shoes</a></li>
-                                                                        <li><a href="#">casual shoes</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">sport shoes</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">formal shoes</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">casual shoes</a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -395,9 +394,9 @@
                                                                 </div>
                                                                 <div class="menu-content">                                                                   
                                                                     <ul>
-                                                                        <li><a href="#">sports wear</a></li>
-                                                                        <li><a href="#">western wear</a></li>
-                                                                        <li><a href="#">ethic wear</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">sports wear</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">western wear</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">ethic wear</a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -409,15 +408,15 @@
                                                                 </div>
                                                                 <div class="menu-content">                                                                   
                                                                     <ul>
-                                                                        <li><a href="#">shopper bags</a></li>
-                                                                        <li><a href="#">laptop bags</a></li>
-                                                                        <li><a href="#">clutches</a></li>
-                                                                        <li> <a href="#">purses</a>
+                                                                        <li><a href="{{url('/products/dress')}}">shopper bags</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">laptop bags</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">clutches</a></li>
+                                                                        <li> <a href="{{url('/products/dress')}}">purses</a>
                                                                             <ul>
-                                                                                <li><a href="#">purses</a></li>
-                                                                                <li><a href="#">wallets</a></li>
-                                                                                <li><a href="#">leathers</a></li>
-                                                                                <li><a href="#">satchels</a></li>
+                                                                                <li><a href="{{url('/products/dress')}}">purses</a></li>
+                                                                                <li><a href="{{url('/products/dress')}}">wallets</a></li>
+                                                                                <li><a href="{{url('/products/dress')}}">leathers</a></li>
+                                                                                <li><a href="{{url('/products/dress')}}">satchels</a></li>
                                                                             </ul>
                                                                         </li>
                                                                     </ul>
@@ -431,12 +430,12 @@
                                                                 </div>
                                                                 <div class="menu-content">                                                                   
                                                                     <ul>
-                                                                        <li><a href="#">fashion jewellery</a></li>
-                                                                        <li><a href="#">caps and hats</a></li>
-                                                                        <li><a href="#">precious jewellery</a></li>
-                                                                        <li><a href="#">necklaces</a></li>
-                                                                        <li><a href="#">earrings</a></li>
-                                                                        <li><a href="#">wrist wear</a></li>                                                                        
+                                                                        <li><a href="{{url('/products/dress')}}">fashion jewellery</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">caps and hats</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">precious jewellery</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">necklaces</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">earrings</a></li>
+                                                                        <li><a href="{{url('/products/dress')}}">wrist wear</a></li>                                                                        
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -447,25 +446,25 @@
                                         </ul>
                                     </li>
                                         <li>
-                                            <a href="#">blog</a>                                           
+                                            <a href="{{url('/blog')}}">blog</a>                                           
                                         </li>
                                         <li><a href="{{url('/contact-us')}}">Contact Us</a></li> 
                                             <li>
-                                                <a href="#">Upcoming</a>
+                                                <a href="{{url('/up-coming')}}">Upcoming</a>
                                                 <div class="lable-nav">new</div>
                                                 <ul>
                                                     <li>
-                                                        <a href="#">sidebar</a>
+                                                        <a href="{{url('/up-coming')}}">Electronics</a>
                                                         <ul>
-                                                            <li><a href="product-page.html">left sidebar</a></li>
-                                                            <li><a href="product-page(right-sidebar).html">right sidebar</a>
+                                                            <li><a href="{{url('/up-coming/mobile')}}">Mobile</a></li>
+                                                            <li><a href="product-page(right-sidebar).html">Watches</a>
                                                             </li>
-                                                            <li><a href="product-page(no-sidebar).html">no sidebar</a></li>
+                                                            <li><a href="product-page(no-sidebar).html">Freeze</a></li>
                                                         </ul>
                                                     </li>                                                                                                     
-                                                    <li><a href="product-page(4-image).html">4 image <span
+                                                    <li><a href="product-page(4-image).html">Television<span
                                                                 class="new-tag">new</span></a></li>                                                
-                                                    <li><a href="product-page(vertical-tab).html">vertical tab</a></li>
+                                                    <li><a href="product-page(vertical-tab).html">Tab</a></li>
                                                 </ul>
                                             </li>                                                                                                                                                               
                                     </ul>
@@ -1479,7 +1478,7 @@
                             <div class="set-position">
                                 <div class="layout-container demo38"></div>
                                 <div class="demo-text">
-                                    <h4>vertical tab</h4>
+                                    <h4> Tab</h4>
                                     <div class="btn-group demo-btn" role="group" aria-label="Basic example"> <button
                                             type="button" onClick="window.open('product-page(vertical-tab).html')"
                                             class="btn new-tab-btn">Preview</button> </div>
