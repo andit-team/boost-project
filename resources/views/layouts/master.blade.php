@@ -36,14 +36,7 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/color1.css" media="screen" id="color">
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
-    @stack('css') 
-
-    <style>
-        .onhover-show-div  li:hover{
-        background-color: #FF4C3B;  
-        opacity: 0.4;
-        } 
-    </style>
+    @stack('css')
     
 </head>
 
@@ -295,11 +288,11 @@
                                 My Account
                                 <ul class="onhover-show-div">
                                     @if( Sentinel::getUser()) 
-                                    <li class="{{$active == 'dashboard' ? 'active' : ''}}""><a href="{{ url('/dashboard') }}">My Dashboard</a></li>  
-                                    <li class="{{$active == 'profile' ? 'active' : ''}}"><a href="{{ url('profile/') }}" data-lng="es">My Profile</a></li>
-                                    <li class="{{$active == 'shipping' ? 'active' : ''}}"><a href="{{ url('profile/shipping') }}" data-lng="es">My Shippin Address</a></li>
-                                    <li class="{{$active == 'billing' ? 'active' : ''}}"><a href="{{ url('profile/billing') }}" data-lng="es">My Billing Address</a></li>
-                                    <li class="{{$active == 'cards' ? 'active' : ''}}"><a href="{{ url('profile/card') }}" data-lng="es">My Card</a></li>
+                                    <li class=""><a href="{{ url('/dashboard') }}">My Dashboard</a></li>  
+                                    <li class=""><a href="{{ url('profile/') }}" data-lng="es">My Profile</a></li>
+                                    <li class=""><a href="{{ url('profile/shipping') }}" data-lng="es">My Shippin Address</a></li>
+                                    <li class=""><a href="{{ url('profile/billing') }}" data-lng="es">My Billing Address</a></li>
+                                    <li class=""><a href="{{ url('profile/card') }}" data-lng="es">My Card</a></li>
                                     <li><a href="{{url('logout')}}" data-lng="es">Logout</a></li>
                                     @else
                                     <li><a href="{{url('login')}}" data-lng="en">SIGN IN</a></li>
