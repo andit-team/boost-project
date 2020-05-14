@@ -10,7 +10,7 @@
                 {{-- <li><a href="#">My Wishlist</a></li> --}}
                 {{-- <li><a href="#">Newsletter</a></li> --}}
 
-                <li class="{{$active == 'dashboard' ? 'active' : ''}}""><a href="{{ url('/dashboard') }}">My Dashboard</a></li>
+                <li class="{{$active == 'dashboard' ? 'active' : ''}}"><a href="{{ url('/dashboard') }}">My Dashboard</a></li>
                 <li class="{{$active == 'profile' ? 'active' : ''}}"><a href="{{ url('profile/') }}">My Profile</a></li>
                 {{-- <li><a href="{{ url('andbaazaradmin/buyershippingaddress/create') }}">My Shipping Address</a></li> 
                 <li class="{{$active == 'profile' ? 'active' : ''}}" ><a href="{{ url('andbaazaradmin/buyer/create') }}">My Profile</a></li> --}}

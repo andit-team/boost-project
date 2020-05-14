@@ -1,6 +1,24 @@
-@extends('admin.layout.master')
+@extends('layouts.master')
 
 @section('content')
+
+@include('elements.alert')
+@component('layouts.inc.breadcrumb')
+  @slot('pageTitle')
+      Vendor Dashboard
+  @endslot
+  @slot('page')
+      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+      <li class="breadcrumb-item active" aria-current="page">Profile</li>
+  @endslot
+@endcomponent
+
+    <!--  dashboard section start -->
+    <section class="dashboard-section section-b-space">
+        <div class="container">
+            <div class="row">
+                
+                @include('layouts.inc.sidebar.vendor-sidebar',[$active='profile'])
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -49,4 +67,6 @@
             </div>
         </div>
     </div>
+            </div>
+        </div></section>
 @endsection
