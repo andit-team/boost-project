@@ -24,18 +24,11 @@
                                     <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>
 
                                     {{-- <li><a href="{{ url('andbaazaradmin/category/create') }}"><i class="fa fa-circle"></i>Category</a></li> --}}
-                                    <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>                               
+                                    {{-- <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>                                --}}
                                 </ul>
                             </li>
-                            <li>
-                                <a href="#"><i class="fa fa-circle"></i>
-                                    <span>Tag</span> <i class="fa fa-angle-right pull-right"></i>
-                                </a>
-                                <ul class="sidebar-submenu">
-                                    <li><a href="{{ url('andbaazaradmin/tag') }}"><i class="fa fa-circle"></i>Tags</a></li>
-                                    {{-- <li><a href="{{ url('andbaazaradmin/tag/create') }}"><i class="fa fa-circle"></i> Add Tag</a></li> --}}
-                                </ul>
-                            </li>
+                            <li><a class="sidebar-header" href="{{ url('andbaazaradmin/tag') }}"><i class="fa fa-circle"></i><span>Tags</span></a></li>
+                            
 
                             <li>
                                 <a href="#"><i class="fa fa-circle"></i>
@@ -55,14 +48,14 @@
                                     <!-- <li><a href="{{ url('andbaazaradmin/size/create') }}"><i class="fa fa-circle"></i>Size</a></li>                               -->
                                 </ul>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="#"><i class="fa fa-circle"></i>
                                     <span>Products</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                                 <ul class="sidebar-submenu">
                                     <li><a href="{{ url('merchant/product/adminIndex')}}"><i class="fa fa-circle"></i>Products list</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             </li>   
                         </ul>
                     </li>
@@ -73,19 +66,12 @@
                             <li><a href="<a href="{{ 'andbaazaradmin/shop/create' }}"><i class="fa fa-circle"></i>Create Shop</a></li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-header" href=""><i data-feather="dollar-sign"></i><span>Payment Method</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{ url('andbaazaradmin/paymentmethod') }}"><i class="fa fa-circle"></i>Payment Methods</a></li>
-                            <li><a href="{{ url('andbaazaradmin/paymentmethod/create') }}"><i class="fa fa-circle"></i>Payment Method</a></li>
-
-                            {{-- <li><a href="{{ url('andbaazaradmin/paymentmethod/create') }}"><i class="fa fa-circle"></i>Payment Method</a></li>   --}}
-                        </ul>
+                    
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/paymentmethod') }}"><i data-feather="dollar-sign"></i><span>Payment Method</span></a>
+                        
                     </li>
-                    <li><a class="sidebar-header" href=""><i data-feather="tag"></i><span>Shipping Method</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{ url('andbaazaradmin/shippingmethod') }}"><i class="fa fa-circle"></i>Shipping Methods</a></li>
-                            {{-- <li><a href="{{ url('andbaazaradmin/shippingmethod/create') }}"><i class="fa fa-circle"></i>Add Shipping Method</a></li> --}}
-                        </ul>
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/shippingmethod') }}"><i data-feather="tag"></i><span>Shipping Method</span></a>
+                        
                     </li>
                     {{-- <li><a class="sidebar-header" href="media.html"><i data-feather="camera"></i><span>Media</span></a></li> --}}
                     <li><a class="sidebar-header" href="#"><i data-feather="align-left"></i><span>Promotion</span><i class="fa fa-angle-right pull-right"></i></a>

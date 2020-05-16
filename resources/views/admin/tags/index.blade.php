@@ -2,11 +2,11 @@
 
 @section('content')
 @push('css')
-<style>
+{{-- <style>
     .m-l{
-        margin-left:-100px;
+        margin-left:-150px;
     }
-</style>
+</style> --}}
 @endpush
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
@@ -31,8 +31,8 @@
                             <thead>
                             <tr>
                                 <th width="50">Sl</th>
-                                <th>Tag</th>
-                                <th>Description</th>
+                                <th width="50">Tag</th>
+                                <th width="50">Description</th>
                                 <th width="150">Action</th>
                             </tr>
                         </thead>
@@ -40,16 +40,20 @@
                             @php $i=0; @endphp
                             @foreach($tag as $row)
                                 <tr>
-                                    <td>{{ ++$i}}</td>
-                                    <td>{{ $row->name }}</td>
-                                    <td>{{ $row->description }}</td>
-                                    <td class="d-flex justify-content-between">
-                                        <a href="#" id="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}">Edit</button></a>
-                                        <form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
+                                    <td width="50">{{ ++$i}}</td>
+                                    <td width="50">{{ $row->name }}</td>
+                                    <td width="50">{{  \Illuminate\Support\Str::limit($row->description) }}</td>
+                                    <td class="d-flex justify-content-between" width="150">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}">Edit</button></a></li>
+                                        
+                                            <li class="list-inline-item"><form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-sm btn-primary m-l">Delete</button>
-                                        </form>
+                                            </form>
+                                            </li>
+                                        </ul>
                                     </td>
                                 </tr>
 
@@ -76,7 +80,7 @@
                                                             <span class="text-danger">{{ $errors->first('description') }}</span>
                                                         </div>
                                                     </div>
-                                                    <div class="modal-footer">
+                                                    <div class=" mt-3 text-right">
                                                         <button type="submit" class="btn btn-primary" type="button">Save</button>
                                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                                                     </div>

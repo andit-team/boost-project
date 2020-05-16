@@ -32,10 +32,10 @@
                             <thead>
                             <tr>
                                 <th width="50">Sl</th>
-                                <th>Method</th>
-                                <th>Fees</th>
-                                <th>Description</th>
-                                <th>Courier</th>
+                                <th width="50">Method</th>
+                                <th width="50">Fees</th>
+                                <th width="50">Courier</th>
+                                <th width="50">Description</th> 
                                 <th width="150">Action</th>
                             </tr>
                         </thead>
@@ -43,18 +43,21 @@
                             @php $i=0; @endphp
                             @foreach($shippingmethod as $row)
                                 <tr>
-                                    <td>{{ ++$i}}</td>
-                                    <td>{{ $row->name }}</td>
-                                    <td>{{ $row->fees }}</td>
-                                    <td>{{ $row->courier->name }}</td>
-                                    <td>{{ $row->desc }}</td>
-                                    <td class="d-flex justify-content-between"> 
-                                        <a href="#" id="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#shippingEditModal{{$row->id}}">Edit</button></a> 
-                                        <form action="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-sm btn-primary m-l">Delete</button>
-                                        </form>
+                                    <td width="50">{{ ++$i}}</td>
+                                    <td width="50">{{ $row->name }}</td>
+                                    <td width="50">{{ $row->fees }}</td>
+                                    <td width="50">{{ $row->courier->name }}</td>
+                                    <td width="50">{{ $row->desc }}</td>
+                                    <td class="d-flex justify-content-between" width="150"> 
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#shippingEditModal{{$row->id}}">Edit</button></a> </li>
+                                            <li class="list-inline-item">
+                                                <form action="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-sm btn-primary">Delete</button>
+                                                </form>
+                                            </li>
                                     </td>
                                 </tr> 
 
@@ -95,7 +98,7 @@
                                                             <span class="text-danger">{{ $errors->first('desc') }}</span>
                                                         </div>
                                                     </div>
-                                                    <div class="modal-footer">
+                                                    <div class="mt-3 text-right">
                                                         <button type="submit" class="btn btn-primary" type="button">Save</button>
                                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                                                     </div>

@@ -31,26 +31,30 @@
                         <table class="table" id="example">
                             <thead>
                             <tr>
-                                <th>Sl</th>
-                                <th>Payment Name</th>
-                                <th>Description</th>
-                                <th>Action</th>
+                                <th width="50">Sl</th>
+                                <th width="50">Payment Name</th>
+                                <th width="50">Description</th>
+                                <th width="150">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @php $i=0; @endphp
                             @foreach( $paymentmethod as $row)
                                 <tr>
-                                    <td>{{ ++$i }}</td>
-                                    <td>{{ $row->name }}</td>
-                                    <td>{{ \Illuminate\Support\Str::limit($row->desc,20)  }}</td>
-                                    <td class="d-flex justify-content-between">
-                                       <a href="#" id="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug).'/edit' }}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#paymentEditModal{{$row->id}}">Edit</button></a>
-                                        <form action="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-sm btn-primary m-l">Delete</button>
-                                        </form>   
+                                    <td width="50">{{ ++$i }}</td>
+                                    <td width="50">{{ $row->name }}</td>
+                                    <td width="50">{{ \Illuminate\Support\Str::limit($row->desc,20)  }}</td>
+                                    <td class="d-flex justify-content-between" width="150">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug).'/edit' }}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#paymentEditModal{{$row->id}}">Edit</button></a></li>
+                                            <li class="list-inline-item">
+                                                <form action="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-sm btn-primary">Delete</button>
+                                                </form> 
+                                            </li> 
+                                        </ul> 
                                     </td>
                                 </tr>
                                 <div class="modal fade" id="paymentEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -76,7 +80,7 @@
                                                             <span class="text-danger">{{ $errors->first('desc') }}</span>
                                                         </div>
                                                     </div>
-                                                    <div class="modal-footer">
+                                                    <div class="mt-3 text-right">
                                                         <button type="submit" class="btn btn-primary" type="button">Save</button>
                                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                                                     </div>
