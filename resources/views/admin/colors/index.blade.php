@@ -29,8 +29,8 @@
                                <td>{{ $row->color_code}}</td>
                                <td>
                                    <ul class="list-inline">
-                                       <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/color/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>
-                                       <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/color/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a> </li>
+                                       <!-- <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/color/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li> -->
+                                         <li><a href="#" id="{{ url('/andbaazaradmin/color/'.$row->slug).'/edit' }}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
                                        <li class="list-inline-item">
                                            <form action="{{ url('/andbaazaradmin/color/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                @csrf
@@ -41,10 +41,42 @@
                                    </ul>
                                </td>
                             </tr>
+                            <div class="modal fade" id="tagEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title f-w-600" id="exampleModalLabel">Edit Tag</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/color/'.$row->slug) }}" method="post" enctype="multipart/form-data">
+                                              @csrf
+                                              @method('PUT')
+                                              <div class="row">
+                                                  <div class="col-sm-12">
+                                                      <div class="form-group row">
+                                                          <label for="name" class="col-xl-3 col-md-4">Color Name <span>*</span></label>
+                                                          <input class="form-control col-md-8" name="name" value="{{ $row->name }}" id="name" type="text" required="">
+                                                      </div>
+                                                      <div class="form-group row">
+                                                          <label for="color_code" class="col-xl-3 col-md-4">Color Code <span>*</span></label>
+                                                          <input class="form-control col-md-8" name="color_code" value="{{ $row->color_code }}" id="color_code" type="text" required="">
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="modal-footer">
+                                                  <button type="submit" class="btn btn-primary" type="button">Save</button>
+                                                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                              </div>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+
                            @endforeach
                       </tbody>
                     </table>
-                    </div>
+                  </div>
                 </div>
             </div>
 

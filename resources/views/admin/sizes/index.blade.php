@@ -47,7 +47,7 @@
                                      <td>{{  \Illuminate\Support\Str::limit($row->desc,20) }}</td>
                                      <td>
                                          <ul class="list-inline">
-                                               <a href="#" id="{{ url('/andbaazaradmin/size/'.$row->slug).'/edit' }}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a>
+                                            <li><a href="#" id="{{ url('/andbaazaradmin/size/'.$row->slug).'/edit' }}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
                                              <li class="list-inline-item">
                                                  <form action="{{ url('/andbaazaradmin/size/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                      @csrf
