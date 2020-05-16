@@ -6,6 +6,10 @@
     .m-l{
         margin-left:-100px;
     }
+    .fa{
+      padding:10px;
+      font-size:18px;
+    }
 </style>
 @endpush
 @include('elements.alert')
