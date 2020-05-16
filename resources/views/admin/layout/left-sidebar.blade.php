@@ -19,7 +19,7 @@
                                 </a>
                                 <ul class="sidebar-submenu">
                                     <li><a href="{{ url('andbaazaradmin/category') }}"><i class="fa fa-circle"></i>Categories</a></li>
-                                    <li><a href="{{ url('andbaazaradmin/category/create') }}"><i class="fa fa-circle"></i>Category</a></li>
+                                    {{-- <li><a href="{{ url('andbaazaradmin/category/create') }}"><i class="fa fa-circle"></i>Category</a></li> --}}
                                     <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>                               
                                 </ul>
                             </li>                          
@@ -63,7 +63,7 @@
                     <li><a class="sidebar-header" href=""><i data-feather="dollar-sign"></i><span>Payment Method</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ url('andbaazaradmin/paymentmethod') }}"><i class="fa fa-circle"></i>Payment Methods</a></li>
-                            <li><a href="{{ url('andbaazaradmin/paymentmethod/create') }}"><i class="fa fa-circle"></i>Payment Method</a></li>  
+                            {{-- <li><a href="{{ url('andbaazaradmin/paymentmethod/create') }}"><i class="fa fa-circle"></i>Payment Method</a></li>   --}}
                         </ul>
                     </li>
                     <li><a class="sidebar-header" href=""><i data-feather="tag"></i><span>Shipping Method</span><i class="fa fa-angle-right pull-right"></i></a>
