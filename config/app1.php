@@ -52,10 +52,10 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://powerful-river-96020.herokuapp.com/'),
 
     // 'asset_url' => env('ASSET_URL', null),
-    'asset_url' => env('ASSET_URL', 'http://localhost/andbaazar/public'),
+    'asset_url' => env('ASSET_URL', 'https://powerful-river-96020.herokuapp.com/public'),
 
     /*
     |--------------------------------------------------------------------------
