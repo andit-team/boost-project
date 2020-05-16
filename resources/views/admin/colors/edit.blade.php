@@ -27,10 +27,13 @@
         <!-- Container-fluid Ends-->
 
         <!-- Container-fluid starts-->
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-lg-8 col-md-8" >
         <div class="container-fluid">
             <div class="card tab2-card">
                 <div class="card-header">
-                    <h5>Edit Tag</h5>
+                    <h5>Edit Color</h5>
                 </div>
                 <div class="card-body">
                     <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/color/'.$color->slug) }}" method="post" enctype="multipart/form-data">
@@ -59,6 +62,8 @@
                 </div>
             </div>
         </div>
+      </div>
+  </div>
         <!-- Container-fluid Ends-->
 
     </div>

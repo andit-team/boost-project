@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 
-                @include('layouts.inc.sidebar.vendor-sidebar')
+                @include('layouts.inc.sidebar.vendor-sidebar',[$active ='dashboard'])
 
                 <div class="col-lg-9">
                     <div class="faq-content tab-content" id="top-tabContent">

@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 
-                @include('layouts.inc.sidebar.vendor-sidebar')
+                @include('layouts.inc.sidebar.vendor-sidebar',[$active='profile'])
 
              <div class="col-sm-9 register-page contact-page">
                 <h3>PERSONAL DETAIL</h3>
