@@ -13,13 +13,13 @@
                     <div class="card-body">
                         <table class="table table-borderd" id="dataTableNoPagingDesc">
                             <thead>
-                            <tr>
-                              <th>Sl</th>
-                               <th>Color</th>
-                               <th>Color Code</th>
-                               <th>Action</th>
-                            </tr>
-                        </thead>
+                              <tr>
+                                <th>Sl</th>
+                                 <th>Color</th>
+                                 <th>Color Code</th>
+                                 <th>Action</th>
+                              </tr>
+                          </thead>
                         <tbody>
                           @php $i=0; @endphp
                            @foreach($color as $row)
@@ -40,9 +40,9 @@
                                        </li>
                                    </ul>
                                </td>
-                           </tr>
+                            </tr>
                            @endforeach
-                        </tbody>
+                      </tbody>
                     </table>
                     </div>
                 </div>
@@ -69,21 +69,15 @@
                                       <input type="text"  name="color_code" required class="form-control @error('color_code') border-danger @enderror">
                                       <span class="text-danger">{{ $errors->first('color_code') }}</span>
                                   </div>
-                                  <div class="form-group row">
-                                      <label class="col-xl-3 col-md-4"></label>
-                                      <div class="checkbox checkbox-primary col-md-8">
-                                          <button type="submit"  class="btn btn-primary">Save</button>
-                                      </div>
+                                  <div class="text-right">
+                                      <button type="submit" class="btn btn-primary">Save</button>
                                   </div>
                               </div>
                           </div>
                       </form>
                     </div>
-
-
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

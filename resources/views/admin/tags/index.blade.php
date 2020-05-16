@@ -38,21 +38,20 @@
                                     <td class="d-flex justify-content-between">
 
                                         <a href="{{ url('/andbaazaradmin/tag/'.$row->slug) }}"><button class="btn btn-sm btn-success">View</button></a>
-                                        <a href="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning">Edit</button></a> 
+                                        <a href="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning">Edit</button></a>
                                         <form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-sm btn-primary">Delete</button>
                                         </form>
                                     </td>
-                                </tr> 
-                            @endforeach    
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
-                    </div> 
+                    </div>
                 </div>
             </div>
-
 
             <div class="col-sm-5">
                 <div class="card">
@@ -64,7 +63,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="tag">Tag Name:</label>
-                                <input type="text"  name="name" required class="form-control @error('name') border-danger @enderror"> 
+                                <input type="text"  name="name" required class="form-control @error('name') border-danger @enderror">
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             </div>
 
@@ -73,17 +72,14 @@
                                 <textarea name="" class="form-control" id="" rows="5"></textarea>
                             </div> --}}
                             <div class="text-right">
-                                <button type="submit" class="btn btn-success">Save</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </div>
-                        </form>    
+                        </form>
                     </div>
-
-
                 </div>
             </div>
-
         </div>
     </div>
-</div> 
-    
+</div>
+
 @endsection
