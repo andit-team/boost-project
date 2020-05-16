@@ -3,6 +3,16 @@
 
 @section('content')
 @include('elements.alert')
+@component('admin.layout.inc.breadcrumb')
+  @slot('pageTitle')
+      Tag
+  @endslot
+  @slot('page')
+      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+      <li class="breadcrumb-item active" aria-current="page">Profile</li>
+  @endslot
+@endcomponent
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-7">
@@ -74,4 +84,6 @@
 
         </div>
     </div>
+</div> 
+    
 @endsection
