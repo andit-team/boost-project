@@ -16,7 +16,7 @@
 	6. Set your *Email* on line 314 using the href attribute.
 	7. Set your background image on line 63, see file README.mb for additional background images.
 	8. Set your MailChimp email post URL on line 300 See video: https://youtu.be/YUdP1qfMot8
-	9. FTP to your Website. 
+	9. FTP to your Website.
 	-->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -30,7 +30,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:title" content="My Coming Soon Page" />
 	<meta property="og:description" content="" />
-	
+
 	<!-- Font Awesome CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 
@@ -40,13 +40,13 @@
 
 	<!-- Google Fonts -->
 	<link class="gf-headline" href='https://fonts.googleapis.com/css?family=Pacifico:400&subset=' rel='stylesheet' type='text/css'>
-			
+
 	<!-- Animate CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
-	
+
 	<!-- Calculated Styles -->
 	<style type="text/css">
-	
+
 	html {
 		height: 100%;
 		overflow: hidden;
@@ -57,7 +57,7 @@
 		overflow: auto;
 		-webkit-overflow-scrolling: touch;
 	}
-	
+
 	html{
 		height:100%;
 		background: #ffffff url(https://images.unsplash.com/photo-1449168013943-3a15804bb41c?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=1958d4bfb59a246c6092ff0daabd284b); no-repeat center bottom fixed;
@@ -70,7 +70,7 @@
 	#cspio-page{
 		background-color: rgba(0,0,0,0);
 	}
-	
+
 	.flexbox #cspio-page{
 		align-items: center;
 		justify-content: center;
@@ -99,13 +99,13 @@
 		font-family:Helvetica, Arial, sans-serif;
 		font-weight: 400;
 		font-style: ;
-	} 
+	}
 
 	:-ms-input-placeholder {
 		font-family:Helvetica, Arial, sans-serif;
 		font-weight: 400;
 		font-style: ;
-	} 
+	}
 
 	:-moz-placeholder {
 		font-family:Helvetica, Arial, sans-serif;
@@ -123,7 +123,7 @@
 		font-weight: 400;
 		font-style: ;
 				font-size: 48px;
-		color:#ffffff;
+		color:red;
 		line-height: 1.00em;
 	}
 
@@ -132,7 +132,7 @@
 		font-weight: 400;
 		font-style: ;
     }
-	
+
     .cspio a, .cspio a:visited, .cspio a:hover, .cspio a:active{
 		color: #ffffff;
 	}
@@ -214,7 +214,7 @@
 		-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(217,217,217,0.6);
 		box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(217,217,217,0.6);
 	}
-    
+
     #cspio-content {
 		display: none;
 		max-width: 600px;
@@ -226,7 +226,7 @@
 		background-clip: padding-box;
 		background-color:transparent;
 	}
-    
+
 	.cspio .progress-bar,
 	.countdown_section,
 	.cspio .btn-primary,
@@ -241,7 +241,7 @@
 		-webkit-box-shadow: none !important;
 		box-shadow: none !important;
 	}
-							
+
 	#cspio-page{
 	    background: -moz-radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%,rgba(0, 0, 0, 0.2) 37%,rgba(0,0,0,0) 68%,rgba(0,0,0,0) 100%);
 	    background: -webkit-radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%,rgba(0, 0, 0, 0.2) 37%,rgba(0,0,0,0) 68%,rgba(0,0,0,0) 100%);
@@ -249,16 +249,16 @@
 	}
 
 	.cspio body{
-		background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 7%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.23) 100%); 
-		background: -webkit-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 7%,rgba(0,0,0,0) 80%,rgba(0,0,0,0.23) 100%); 
-		background: radial-gradient(ellipse at center,  rgba(0,0,0,0) 7%,rgba(0,0,0,0) 80%,rgba(0,0,0,0.23) 100%); 
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#3b000000',GradientType=1 ); 
+		background: -moz-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 7%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.23) 100%);
+		background: -webkit-radial-gradient(center, ellipse cover,  rgba(0,0,0,0) 7%,rgba(0,0,0,0) 80%,rgba(0,0,0,0.23) 100%);
+		background: radial-gradient(ellipse at center,  rgba(0,0,0,0) 7%,rgba(0,0,0,0) 80%,rgba(0,0,0,0.23) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#3b000000',GradientType=1 );
 	}
 
 	#cspio-subscribe-btn{
 	    background:transparent;
-	    border: 1px solid #fff !important;
-	    color: #fff;
+	    border: 1px solid red !important;
+	    color:red ;
 	}
 
 	#cspio-subscribe-btn:hover{
@@ -273,8 +273,20 @@
 		    margin-top: -4px;
 	}
 
+	#cspio-description{
+		  color:  #80bfff;
+	}
+
 	#cspio-credit {
 		font-size:11px;
+	}
+	#cspio-privacy-policy-txt{
+		  color:  yellow;
+	}
+
+	#cspio-email{
+		background: red;
+		color: #fff;
 	}
 
 	</style>
@@ -284,40 +296,41 @@
 
 	<!-- Modernizr -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-	
+
 	<!-- Google Analytics Code Goes Here-->
 </head>
 <body>
 	<div id="cspio-page">
 		<div id="cspio-content">
-			
-			<img id="cspio-logo" src="https://static.comingsoonpage.com/cspio-assets/1.0.0/seedprod-logo-white.png">
-			    				
-			<h1 id="cspio-headline">Coming Soon Page</h1>			    				
-			
-			<div id="cspio-description">Get ready! Something really cool is coming!</div>			    				
-			
+
+			<!-- <img id="cspio-logo" src="https://static.comingsoonpage.com/cspio-assets/1.0.0/seedprod-logo-white.png"> -->
+		 	<a href="index.html"></i><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
+							class="img-fluid blur-up lazyload" alt="image"></a>
+			<h1 id="cspio-headline">Coming Soon Page</h1>
+
+			<div id="cspio-description">Get ready! Something really cool is coming!</div>
+
 			<form id="cspio-form" action="" method="post">
 				<div id="cspio-field-wrapper">
 					<div class="row">
 						<div class="col-md-12 seperate"><div class="input-group"><input id="cspio-email" name="EMAIL" class="form-control input-lg form-el" type="email" placeholder="Email" required/>
-					<span class="input-group-btn"><button id="cspio-subscribe-btn" type="submit" class="btn btn-lg btn-primary form-el noglow">Notify Me</button></span></div></div>
+					<span class="input-group-btn"><button id="cspio-subscribe-btn" type="submit" class="btn btn-lg btn-danger form-el noglow">Notify Me</button></span></div></div>
 					</div>
 				</div>
 			</form>
-			
+
 			<span id="cspio-privacy-policy-txt">We promise to never spam you.</span>
-			    						    			    								    			    			    				
+
 			<div id="cspio-socialprofiles">
-				<a href="" target="_blank"><i class="fa fa-facebook-official fa-2x"></i></a>			
-				<a href="" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>			
-				<a href="mailto:" target="_blank"><i class="fa fa-envelope fa-2x"></i></a>			
+				<a href="" target="_blank"><i class="fa fa-facebook-official fa-2x"></i></a>
+				<a href="" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+				<a href="mailto:" target="_blank"><i class="fa fa-envelope fa-2x"></i></a>
 			</div>
 
 			<div id="cspio-credit">
 					<span>Created with <a target="_blank" href="https://www.comingsoonpage.com"><img id="aff" src="https://static.comingsoonpage.com/cspio-assets/1.0.0/comingsoonpage.com-logo.png" alt="Created by ComingSoonPage.com"></a> Free download <a target="_blank" href="http://www.seedprod.com/free-coming-soon-page/" style="text-decoration:underline" alt="Get your free coming soon page.">here.</a>
 				</span></div>
-									    									    			    			    							    			     			    		
+
 		</div><!-- end of #cspio-content -->
 	</div>
 
@@ -326,13 +339,13 @@
 		// Animate Delay
 		setTimeout(function(){ jQuery("#cspio-content").show().addClass('animated fadeIn'); }, 250);
 
-		// Reseize	
+		// Reseize
 		function resize(){
 				$('head').append("<style id='form-style' type='text/css'></style>");
 				$('#form-style').html('.cspio .input-group-btn, .cspio .input-group{display:block;width:100%;}.cspio #cspio-subscribe-btn{margin-left:0;width:100%;display:block;}.cspio .input-group .form-control:first-child, .cspio .input-group-addon:first-child, .cspio .input-group-btn:first-child>.btn, .cspio .input-group-btn:first-child>.dropdown-toggle, .cspio .input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle) {border-bottom-right-radius: 4px;border-top-right-radius: 4px;}.cspio .input-group .form-control:last-child, .cspio .input-group-addon:last-child, .cspio .input-group-btn:last-child>.btn, .cspio .input-group-btn:last-child>.dropdown-toggle, .cspio .input-group-btn:first-child>.btn:not(:first-child) {border-bottom-left-radius: 4px;border-top-left-radius: 4px;}');
 		}
-		
-		$('#cspio-content').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', 
+
+		$('#cspio-content').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
 			function(){
 				var width = $('#cspio-field-wrapper').width();
 				if(width < 480 && width != 0){
