@@ -51,14 +51,6 @@
                                     <li><a href="{{ url('andbaazaradmin/size/create') }}"><i class="fa fa-circle"></i>Size</a></li>                              
                                 </ul>
                             </li>   
-                            <li>
-                                <a href="#"><i class="fa fa-circle"></i>
-                                    <span>Products</span> <i class="fa fa-angle-right pull-right"></i>
-                                </a>
-                                <ul class="sidebar-submenu">
-                                    <li><a href="{{ url('merchant/product/adminIndex')}}"><i class="fa fa-circle"></i>Products list</a></li>
-                                </ul>
-                            </li>
                         </ul>
                     </li>
 
