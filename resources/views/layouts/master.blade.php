@@ -10,9 +10,9 @@
     <meta name="description" content="multikart">
     <meta name="keywords" content="multikart">
     <meta name="author" content="multikart">
-    <link rel="icon" href="{{asset('frontend')}}/assets/images/favicon/1.png" type="image/x-icon">
-    <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/favicon/1.png" type="image/x-icon">
-    <title>Multikart - Multi-purpopse E-commerce Html Template</title>
+    <link rel="icon" href="{{asset('frontend')}}/assets/images/favicon/fav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/favicon/fav.png" type="image/x-icon">
+    <title>Andbaazar</title>
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -32,12 +32,12 @@
 
     <!-- Bootstrap css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/bootstrap.css">
-    
+
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/color1.css" media="screen" id="color">
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
     @stack('css')
-    
+
 </head>
 
 <body>
@@ -106,14 +106,14 @@
                                             <li>
                                                 <a href="#">blog</a>
                                             </li>
-                                            <li><a href="{{url('/contact-us')}}">Contact Us</a> 
+                                            <li><a href="{{url('/contact-us')}}">Contact Us</a>
                                             <li class="mega"><a href="#">Upcoming
                                                     <div class="lable-nav">new</div>
                                                 </a>
                                             </li>
-                                                                                    
+
                                             </li>
-                                          
+
                                         </ul>
                                     </nav>
                                 </div>
@@ -287,17 +287,17 @@
                             <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
                                 My Account
                                 <ul class="onhover-show-div">
-                                    @if( Sentinel::getUser()) 
-                                    <li class=""><a href="{{ url('/dashboard') }}">My Dashboard</a></li>  
+                                    @if( Sentinel::getUser())
+                                    <li class=""><a href="{{ url('/dashboard') }}">My Dashboard</a></li>
                                     <li class=""><a href="{{ url('profile/') }}" data-lng="es">My Profile</a></li>
                                     <li class=""><a href="{{ url('profile/shipping') }}" data-lng="es">My Shippin Address</a></li>
                                     <li class=""><a href="{{ url('profile/billing') }}" data-lng="es">My Billing Address</a></li>
-                                    <li class=""><a href="{{ url('profile/card') }}" data-lng="es">My Card</a></li> 
+                                    <li class=""><a href="{{ url('profile/card') }}" data-lng="es">My Card</a></li>
                                     <li><a href="{{url('logout')}}" data-lng="es">Logout</a></li>
                                     @else
                                     <li><a href="{{url('login')}}" data-lng="en">SIGN IN</a></li>
                                     <li><a href="{{url('register')}}" data-lng="en">SIGN UP</a></li>
-                                    @endif                  
+                                    @endif
                                 </ul>
                             </li>
                         </ul>
@@ -321,7 +321,7 @@
                                         <div onclick="closeNav()">
                                             <div class="sidebar-back text-left"><i class="fa fa-angle-left pr-2"
                                                     aria-hidden="true"></i> Back</div>
-                                        </div>                                
+                                        </div>
                                     </nav>
                                 </div> --}}
                             </div>
@@ -340,12 +340,12 @@
                                                     aria-hidden="true"></i></div>
                                         </li>
                                         <li>
-                                            <a href="{{url('/')}}">Home</a>                                       
+                                            <a href="{{url('/')}}">Home</a>
                                         </li>
                                         <li>
-                                            <a href="{{url('/about-us')}}">About</a>                                          
-                                        </li>                                       
-                                        <li class="mega" id="hover-cls"><a href="{{url('/products')}}">Product                                           
+                                            <a href="{{url('/about-us')}}">About</a>
+                                        </li>
+                                        <li class="mega" id="hover-cls"><a href="{{url('/products')}}">Product
                                         </a>
                                         <ul class="mega-menu full-mega-menu">
                                             <li>
@@ -356,7 +356,7 @@
                                                                 <div class="menu-title">
                                                                     <h5>women's fashion</h5>
                                                                 </div>
-                                                                <div class="menu-content">                                                                    
+                                                                <div class="menu-content">
                                                                     <ul>
                                                                         <li><a href="{{url('/products/dress')}}">dresses</a></li>
                                                                         <li><a href="{{url('/products/skirts')}}">skirts</a></li>
@@ -372,7 +372,7 @@
                                                                 <div class="menu-title">
                                                                     <h5>men's fashion</h5>
                                                                 </div>
-                                                                <div class="menu-content">                                                                   
+                                                                <div class="menu-content">
                                                                     <ul>
                                                                         <li><a href="{{url('/products/dress')}}">sport shoes</a></li>
                                                                         <li><a href="{{url('/products/dress')}}">formal shoes</a></li>
@@ -380,13 +380,13 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                        </div>   
+                                                        </div>
                                                         <div class="col mega-box">
                                                             <div class="link-section">
                                                                 <div class="menu-title">
                                                                     <h5>footwear</h5>
                                                                 </div>
-                                                                <div class="menu-content">                                                                   
+                                                                <div class="menu-content">
                                                                     <ul>
                                                                         <li><a href="{{url('/products/dress')}}">sports wear</a></li>
                                                                         <li><a href="{{url('/products/dress')}}">western wear</a></li>
@@ -394,13 +394,13 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                        </div>   
+                                                        </div>
                                                         <div class="col mega-box">
                                                             <div class="link-section">
                                                                 <div class="menu-title">
                                                                     <h5>Bags</h5>
                                                                 </div>
-                                                                <div class="menu-content">                                                                   
+                                                                <div class="menu-content">
                                                                     <ul>
                                                                         <li><a href="{{url('/products/dress')}}">shopper bags</a></li>
                                                                         <li><a href="{{url('/products/dress')}}">laptop bags</a></li>
@@ -416,33 +416,33 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                        </div>                                                                                                               
+                                                        </div>
                                                         <div class="col mega-box">
                                                             <div class="link-section">
                                                                 <div class="menu-title">
                                                                     <h5>accessories</h5>
                                                                 </div>
-                                                                <div class="menu-content">                                                                   
+                                                                <div class="menu-content">
                                                                     <ul>
                                                                         <li><a href="{{url('/products/dress')}}">fashion jewellery</a></li>
                                                                         <li><a href="{{url('/products/dress')}}">caps and hats</a></li>
                                                                         <li><a href="{{url('/products/dress')}}">precious jewellery</a></li>
                                                                         <li><a href="{{url('/products/dress')}}">necklaces</a></li>
                                                                         <li><a href="{{url('/products/dress')}}">earrings</a></li>
-                                                                        <li><a href="{{url('/products/dress')}}">wrist wear</a></li>                                                                        
+                                                                        <li><a href="{{url('/products/dress')}}">wrist wear</a></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                        </div>                                                          
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </li>
                                         </ul>
                                     </li>
                                         <li>
-                                            <a href="{{url('/blog')}}">blog</a>                                           
+                                            <a href="{{url('/blog')}}">blog</a>
                                         </li>
-                                        <li><a href="{{url('/contact-us')}}">Contact Us</a></li> 
+                                        <li><a href="{{url('/contact-us')}}">Contact Us</a></li>
                                             <li>
                                                 <a href="{{url('/up-coming')}}">Upcoming</a>
                                                 <div class="lable-nav">new</div>
@@ -455,12 +455,12 @@
                                                             </li>
                                                             <li><a href="product-page(no-sidebar).html">Freeze</a></li>
                                                         </ul>
-                                                    </li>                                                                                                     
+                                                    </li>
                                                     <li><a href="product-page(4-image).html">Television<span
-                                                                class="new-tag">new</span></a></li>                                                
+                                                                class="new-tag">new</span></a></li>
                                                     <li><a href="product-page(vertical-tab).html">Tab</a></li>
                                                 </ul>
-                                            </li>                                                                                                                                                               
+                                            </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -571,7 +571,7 @@
 
 
     @yield('content')
-    
+
     <!-- footer -->
     <footer class="footer-light">
         <div class="light-layout">
@@ -711,7 +711,7 @@
     </footer>
     <!-- footer end -->
 
-{{-- 
+{{--
     <!--modal popup start-->
     <div class="modal fade bd-example-modal-lg theme-modal" id="exampleModal" tabindex="-1" role="dialog"
         aria-hidden="true">
