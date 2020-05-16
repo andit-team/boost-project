@@ -53,7 +53,7 @@ class BuyersController extends Controller
            $buyerId->update([
                 'first_name'            => $request->first_name,
                 'last_name'             => $request->last_name,
-                'phone_number'          => $request->phone_number,
+                'phone'                 => $request->phone,
                 'picture'               => Baazar::fileUpload($request,'picture','old_image','/uploads/buyer_profile'),
                 'dob'                   => $request->dob,
                 'gender'                => $request->gender,
@@ -73,7 +73,7 @@ class BuyersController extends Controller
             $data =[
                 'first_name'            => $request->first_name,
                 'last_name'             => $request->last_name,
-                'phone_number'          => $request->phone_number,
+                'phone'                 => $request->phone,
                 'picture'               => Baazar::fileUpload($request,'picture','','/uploads/buyer_profile'),
                 'dob'                   => $request->dob,
                 'gender'                => $request->gender,
