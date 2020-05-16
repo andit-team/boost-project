@@ -73,22 +73,22 @@
                                                         @method('put')
                                                         <div class="form">
                                                             <div class="col-sm-12">
-                                                                <div class="form-group row">
-                                                                    <label for="validationCustom0" class="col-xl-3 col-md-4">Size Name <span>*</span></label>
-                                                                    <input class="form-control col-md-8" name="name" value="{{ $row->name }}" id="validationCustom0" type="text" required="">
+                                                                <div class="form-group ">
+                                                                    <label for="validationCustom0">Size Name </label>
+                                                                    <input class="form-control " name="name" value="{{ $row->name }}" id="validationCustom0" type="text" required="">
                                                                 </div>
-                                                                <div class="form-group row">
-                                                                    <label for="validationCustom0" class="col-xl-3 col-md-4">Item Size <span>*</span></label>
-                                                                    <input class="form-control col-md-8" name="item_size" value="{{ $row->item_size }}"  id="validationCustom0" type="number" required="">
+                                                                <div class="form-group ">
+                                                                    <label for="validationCustom0" >Item Size </label>
+                                                                    <input class="form-control" name="item_size" value="{{ $row->item_size }}"  id="validationCustom0" type="number" required="">
                                                                 </div>
-                                                                <div class="form-group row">
-                                                                    <label for="validationCustom0" class="col-xl-3 col-md-4">Description <span>*</span></label>
-                                                                    <textarea class="form-control col-md-8" name="desc" rows="5" cols="50" id="validationCustom0"  required="">{{ $row->desc }}</textarea>
+                                                                <div class="form-group ">
+                                                                    <label for="validationCustom0">Description</label>
+                                                                    <textarea class="form-control" name="desc" rows="5" cols="50" id="validationCustom0"  required="">{{ $row->desc }}</textarea>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary" type="button">Save</button>
+                                                            <button type="submit" class="btn btn-primary" type="button">Update</button>
                                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                                                         </div>
                                                 </form>
