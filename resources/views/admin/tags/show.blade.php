@@ -36,7 +36,6 @@
                     <h5>Show Tag</h5>
                 </div>
                 <div class="card-body">
-
                                 <div class="form-group row">
                                     <label for="validationCustom0" class="col-xl-3 col-md-4">Tag Name <span>*</span></label>
                                     <input class="form-control col-md-8" name="name" readonly value="{{ $tag->name }}" id="validationCustom0" type="text" required="">
@@ -47,10 +46,8 @@
                                         <a href="{{ url('andbaazaradmin/tag') }}"  class="btn btn-info">Back</a>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                 </div>
             </div>
         </div>
