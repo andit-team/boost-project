@@ -1,8 +1,27 @@
 @extends('admin.layout.master')
 
-
 @section('content')
+@push('css')
+<style>
+    .m-l{
+        margin-left:-100px;
+    }
+    .fa{
+      padding:10px;
+      font-size:18px;
+    }
+</style>
+@endpush
 @include('elements.alert')
+@component('admin.layout.inc.breadcrumb')
+  @slot('pageTitle')
+    Color
+  @endslot
+  @slot('page')
+      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+      <li class="breadcrumb-item active" aria-current="page">Color</li>
+  @endslot
+@endcomponent
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-7">
@@ -45,34 +64,38 @@
                                 <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title f-w-600" id="exampleModalLabel">Edit Tag</h5>
+                                            <h5 class="modal-title f-w-600" id="exampleModalLabel">Edit Color</h5>
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                         </div>
+
                                         <div class="modal-body">
-                                          <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/color/'.$row->slug) }}" method="post" enctype="multipart/form-data">
-                                              @csrf
-                                              @method('PUT')
-                                              <div class="row">
+                                            <form class="needs-validation" novalidate="" action={{ url('/andbaazaradmin/color/'.$row->slug) }} method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                @method('put')
+                                                <div class="form">
                                                   <div class="col-sm-12">
-                                                      <div class="form-group row">
-                                                          <label for="name" class="col-xl-3 col-md-4">Color Name <span>*</span></label>
-                                                          <input class="form-control col-md-8" name="name" value="{{ $row->name }}" id="name" type="text" required="">
-                                                      </div>
-                                                      <div class="form-group row">
-                                                          <label for="color_code" class="col-xl-3 col-md-4">Color Code <span>*</span></label>
-                                                          <input class="form-control col-md-8" name="color_code" value="{{ $row->color_code }}" id="color_code" type="text" required="">
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <div class="modal-footer">
-                                                  <button type="submit" class="btn btn-primary" type="button">Save</button>
-                                                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                                              </div>
-                                          </form>
+                                                    <div class="form-group">
+                                                        <label for="validationCustom01" class="mb-1">Color Name :</label>
+                                                    <input type="text"  name="name" value="{{old('name',$row->name)}}" required class="form-control @error('name') border-danger @enderror">
+                                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                    </div>
+
+                                                    <div class="form-group mb-0">
+                                                        <label for="color_code">Color Code:</label>
+                                                        <input class="form-control" name="color_code" value="{{ $row->color_code }}" id="color_code" type="text" rows="5" required="">
+                                                          <span class="text-danger">{{ $errors->first('color_code') }}</span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary" type="button">Update</button>
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </form>
                                         </div>
+                                      </div>
                                     </div>
                                 </div>
-
                            @endforeach
                       </tbody>
                     </table>

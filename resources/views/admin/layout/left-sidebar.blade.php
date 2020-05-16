@@ -24,29 +24,30 @@
                                     <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>
 
                                     {{-- <li><a href="{{ url('andbaazaradmin/category/create') }}"><i class="fa fa-circle"></i>Category</a></li> --}}
+
                                     {{-- <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>                                --}}
+
+                                    <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>
                                 </ul>
                             </li>
+                            
                             <li><a class="sidebar-header" href="{{ url('andbaazaradmin/tag') }}"><i class="fa fa-circle"></i><span>Tags</span></a></li>
                             
 
                             <li>
-                                <a href="#"><i class="fa fa-circle"></i>
+                                <a href="{{ url('andbaazaradmin/color') }}"><i class="fa fa-circle"></i>
                                     <span>Color</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
-                                <ul class="sidebar-submenu">
+                                <!-- <ul class="sidebar-submenu">
                                     <li><a href="{{ url('andbaazaradmin/color') }}"><i class="fa fa-circle"></i>All Color</a></li>
                                     <li><a href="{{ url('andbaazaradmin/color/create') }}"><i class="fa fa-circle"></i> Add Color</a></li>
-                                </ul>
+                                </ul> -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-circle"></i>
+                                <a href="{{ url('andbaazaradmin/size') }}"><i class="fa fa-circle"></i>
                                     <span>Size</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
-                                <ul class="sidebar-submenu">
-                                    <li><a href="{{ url('andbaazaradmin/size') }}"><i class="fa fa-circle"></i>Sizes</a></li>
-                                    <!-- <li><a href="{{ url('andbaazaradmin/size/create') }}"><i class="fa fa-circle"></i>Size</a></li>                               -->
-                                </ul>
+                              
                             </li>
                             {{-- <li>
                                 <a href="#"><i class="fa fa-circle"></i>
@@ -55,8 +56,13 @@
                                 <ul class="sidebar-submenu">
                                     <li><a href="{{ url('merchant/product/adminIndex')}}"><i class="fa fa-circle"></i>Products list</a></li>
                                 </ul>
+
                             </li> --}}
                             </li>   
+
+                            </li>
+                            </li>
+
                         </ul>
                     </li>
 

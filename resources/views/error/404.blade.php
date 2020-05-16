@@ -257,7 +257,7 @@
 
 	#cspio-subscribe-btn{
 	    background:transparent;
-	    border: 1px solid red !important;
+	    border: 1px solid #fff; !important;
 	    color:red ;
 	}
 
@@ -273,7 +273,7 @@
 		    margin-top: -4px;
 	}
 
-	#cspio-description{
+	/* #cspio-description{
 		  color:  #80bfff;
 	}
 
@@ -282,7 +282,7 @@
 	}
 	#cspio-privacy-policy-txt{
 		  color:  yellow;
-	}
+	} */
 
 	#cspio-email{
 		background: red;
