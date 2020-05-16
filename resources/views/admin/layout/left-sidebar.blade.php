@@ -28,8 +28,8 @@
                                     <span>Tag</span> <i class="fa fa-angle-right pull-right"></i>
                                 </a>
                                 <ul class="sidebar-submenu">
-                                    <li><a href="{{ url('andbaazaradmin/tag') }}"><i class="fa fa-circle"></i>All Tag</a></li>
-                                    <li><a href="{{ url('andbaazaradmin/tag/create') }}"><i class="fa fa-circle"></i> Add Tag</a></li>
+                                    <li><a href="{{ url('andbaazaradmin/tag') }}"><i class="fa fa-circle"></i>Tags</a></li>
+                                    {{-- <li><a href="{{ url('andbaazaradmin/tag/create') }}"><i class="fa fa-circle"></i> Add Tag</a></li> --}}
                                 </ul>
                             </li>
 
