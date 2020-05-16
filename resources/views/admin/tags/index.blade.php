@@ -1,6 +1,5 @@
 @extends('admin.layout.master')
 
-
 @section('content')
 @push('css')
 <style>
@@ -44,15 +43,15 @@
                                     <td>{{ ++$i}}</td>
                                     <td>{{ $row->name }}</td>
                                     <td>{{ $row->description }}</td>
-                                    <td class="d-flex justify-content-between"> 
-                                        <a href="#" id="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}">Edit</button></a> 
+                                    <td class="d-flex justify-content-between">
+                                        <a href="#" id="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}">Edit</button></a>
                                         <form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-sm btn-primary m-l">Delete</button>
                                         </form>
                                     </td>
-                                </tr> 
+                                </tr>
 
                                 <div class="modal fade" id="tagEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg" role="document">
@@ -68,7 +67,7 @@
                                                     <div class="form">
                                                         <div class="form-group">
                                                             <label for="validationCustom01" class="mb-1">Name :</label>
-                                                        <input type="text"  name="name" value="{{old('name',$row->name)}}" required class="form-control @error('name') border-danger @enderror"> 
+                                                        <input type="text"  name="name" value="{{old('name',$row->name)}}" required class="form-control @error('name') border-danger @enderror">
                                                             <span class="text-danger">{{ $errors->first('name') }}</span>
                                                         </div>
                                                         <div class="form-group mb-0">
@@ -82,14 +81,14 @@
                                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                                                     </div>
                                                 </form>
-                                            </div> 
+                                            </div>
                                         </div>
                                     </div>
 
-                            @endforeach    
+                            @endforeach
                         </tbody>
                     </table>
-                    </div> 
+                    </div>
                 </div>
             </div>
 
@@ -104,7 +103,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="tag">Tag Name:</label>
-                                <input type="text"  name="name" required class="form-control @error('name') border-danger @enderror"> 
+                                <input type="text"  name="name" required class="form-control @error('name') border-danger @enderror">
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             </div>
 
@@ -116,7 +115,7 @@
                             <div class="text-right">
                                 <button type="submit" class="btn btn-success">Save</button>
                             </div>
-                        </form>    
+                        </form>
                     </div>
 
 
@@ -124,11 +123,11 @@
             </div>
 
         </div>
-    </div> 
-</div> 
-<!-- Container-fluid starts--> 
+    </div>
+</div>
+<!-- Container-fluid starts-->
 
 </div>
 <!-- Container-fluid Ends-->
-    
+
 @endsection

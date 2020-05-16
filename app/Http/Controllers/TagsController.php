@@ -48,7 +48,7 @@ class TagsController extends Controller
             'slug' => $slug,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
-        ]); 
+        ]);
 
        Session::flash('success', 'Tags Inserted Successfully');
        return redirect('andbaazaradmin/tag');
