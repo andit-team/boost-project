@@ -52,10 +52,8 @@ class CurrenciesController extends Controller
        ];
 
        Currency::create($data);
-
-       //Session::flash('success','Currency Created Successfully');
-        alert()->success('SuccessAlert','Currency Created Successfully.');
-
+     
+       Session::flash('success', 'Currency Inserted Successfully!');
        return redirect('andbaazaradmin/currency');
     }
 
@@ -68,6 +66,7 @@ class CurrenciesController extends Controller
     public function show(Currency $currency)
     {
        return view('admin.currencies.show',compact('currency'));
+
     }
 
     /**
@@ -101,8 +100,7 @@ class CurrenciesController extends Controller
 
         $currency->update($data);
 
-        alert()->warning('WarningAlert','Currency Updated Successfully.');
-
+        Session::flash('success', 'Currency Updated Successfully!');
         return redirect('andbaazaradmin/currency');
     }
 
@@ -116,8 +114,8 @@ class CurrenciesController extends Controller
     {
         $currency->delete();
 
-        alert()->error('DangerAlert','Currency Deleted Successfully.');
-
+        // alert()->error('DangerAlert','Currency Deleted Successfully.');
+        Session::flash('success', 'Currency Deleted Successfully!');
         return redirect('andbaazaradmin/currency');
     }
 

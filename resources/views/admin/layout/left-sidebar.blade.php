@@ -92,10 +92,10 @@
                             <li><a href="{{ url('andbaazaradmin/promotionhead/create') }}"><i class="fa fa-circle"></i>Promotion Head</a></li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-header" href=""><i data-feather="chrome"></i><span>Currencies</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/currency') }}"><i data-feather="chrome"></i><span>Currencies</span><i class="fa fa-angle-right pull-right"></i></a>
+                        {{-- <ul class="sidebar-submenu">
                             <li><a href="{{ url('andbaazaradmin/currency') }}"><i class="fa fa-circle"></i>Currencies</a></li>
-                        </ul>
+                        </ul> --}}
                     </li>
                     <li><a class="sidebar-header" href=""><i data-feather="settings" ></i><span>Couriers</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
