@@ -10,10 +10,7 @@
         border-width: 4px 4px 4px 4px;
         border-style: solid;
         border-color: #ccc;
-    }
-    .m-l{
-        margin-left:-100px;
-    }
+    } 
 </style> 
 @endpush
 @include('elements.alert')
@@ -35,12 +32,12 @@
                         <h5>Manage Category</h5>
                     </div>
                     <div class="card-body">
-                        <table class="table" id="example">
+                        <table class="table table-borderd" id="dataTableNoPagingDesc">
                             <thead>
                             <tr>
                                 <th width="50">Sl</th>
-                                <th>Category</th>
-                                <th>Thumb</th>
+                                <th width="50">Category</th>
+                                <th width="50">Thumb</th>
                                 <th width="150">Action</th>
                             </tr>
                             </thead>
@@ -48,21 +45,25 @@
                             @php $i=0; @endphp
                             @foreach($category as $row)
                             <tr>
-                                <td>{{ ++$i }}</td>
-                                <td>{{ $row->name }}</td>
-                                <td>
+                                <td width="50">{{ ++$i }}</td>
+                                <td width="50">{{ $row->name }}</td>
+                                <td width="50">
                                     @if(!empty($row->thumb))
                                        <img class="imagestyle" src="{{ asset($row->thumb ) }}"></td>
                                     @else
                                         <img class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}">
                                     @endif
-                                <td class="d-flex justify-content-between"> 
-                                    <a href="#" id="{{ url('/andbaazaradmin/category/'.$row->slug).'/edit' }}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#categoryEditModal{{$row->id}}">Edit</button> </a> 
-                                    <form action="{{ url('/andbaazaradmin/category/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-sm btn-primary m-l">Delete</button>
-                                    </form> 
+                                <td class="d-flex justify-content-between" width="150"> 
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/category/'.$row->slug.'/edit')}}" title="Edit"><button class="btn btn-md btn-warning"  data-toggle="modal" data-original-title="test" data-target="#categoryEditModal{{$row->id}}"><i class="fa fa-edit"></i></button> </a></li>
+                                        <li class="list-inline-item"> 
+                                            <form action="{{ url('/andbaazaradmin/category/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-trash"></i></button>
+                                            </form> 
+                                        </li>
+                                    </ul>
                                 </td>
                             </tr> 
 
@@ -85,20 +86,19 @@
                                                         </div>
                                                         <div class="form-group mb-0">
                                                         <label for="validationCustom02" class="mb-1">Image :</label>
-                                                        <input type="file" class="form-control" name="thumb" id="image" onchange="loadFile(event)">
+                                                        <input type="file" class="form-control" name="thumb" id="image" onchange="loadImage(event)">
                                                         <input type="hidden" value="{{$row->thumb}}" name="old_image">
                                                             <div class="divmargin mt-2">
                                                                 @if(!empty($row->thumb))
-                                                                <img id=""  class="imagestyle" src="{{ asset($row->thumb) }}" />
+                                                                <img id="result"  class="imagestyle" src="{{ asset($row->thumb) }}" />
                                                                 @else
-                                                                    <img id=""  class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}" />
+                                                                    <img id="result"  class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}" />
                                                                 @endif
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary" type="button">Update</button>
-                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                    <div class="mt-3 text-right">
+                                                        <button type="submit" class="btn btn-success" type="button">Update</button> 
                                                     </div>
                                                 </form>
                                             </div> 
@@ -145,16 +145,16 @@
 </div>
 @endsection
 @push('js')
-<script>
-    $(document).ready(function() {
-    $('#example').DataTable();
-   } );
-   
+<script> 
     var loadFile = function(event) {
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
     }; 
     
+    var loadImage = function(event){
+        var result = document.getElementById('result');
+        result.src = URL.createObjectURL(event.targen.files[0]);
+    }
 
 </script>
 @endpush
