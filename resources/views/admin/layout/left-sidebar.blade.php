@@ -86,11 +86,8 @@
                     <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotionplan') }}"><i data-feather="user-plus"></i><span>Promotion plane</span></i></a>
                         
                     </li>
-                    <li><a class="sidebar-header" href=""><i data-feather="users"></i><span>Promotion Head</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{ url('andbaazaradmin/promotionhead') }}"><i class="fa fa-circle"></i>All Promotion Head</a></li>
-                            <li><a href="{{ url('andbaazaradmin/promotionhead/create') }}"><i class="fa fa-circle"></i>Promotion Head</a></li>
-                        </ul>
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotionhead') }}"><i data-feather="users"></i><span>Promotion Head</span></a>
+                       
                     </li>
                     <li><a class="sidebar-header" href="{{ url('andbaazaradmin/currency') }}"><i class="icon-usd"></i> </i><span>Currency</span></a>
                         {{-- <ul class="sidebar-submenu">

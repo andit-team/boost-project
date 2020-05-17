@@ -40,13 +40,13 @@ class PromotionHeadsController extends Controller
     public function store(PromotionHead $promotionhead,Request $request)
     {
       $this->validateForm($request);
-      $slug = Baazar::getUniqueSlug($promotionhead,$request->name);
+      $slug = Baazar::getUniqueSlug($promotionhead,$request->promotion_name);
         $data = [
             'promotion_name' => $request->promotion_name,
-            'description' => $request->description,
-            'slug' => $slug,
-            'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
+            'description'    => $request->description,
+            'slug'           => $slug,
+            'user_id'        => Sentinel::getUser()->id,
+            'created_at'     => now(),
         ];
 
         PromotionHead::create($data);
@@ -93,18 +93,15 @@ class PromotionHeadsController extends Controller
       $this->validateForm($request);
         $data = [
             'promotion_name' => $request->promotion_name,
-            'description' => $request->description,
-            'user_id' => Sentinel::getUser()->id,
-            'updated_at' => now(),
+            'description'    => $request->description,
+            'user_id'        => Sentinel::getUser()->id,
+            'updated_at'     => now(),
         ];
 
       $promotionhead->update($data);
-      $notification = array(
-        	'message' => 'I am a successful message!',
-        	'alert-type' => 'success'
-        );
+     
 
-   Session::flash('success', 'Promotion Heads Updated  Successfully!');
+     Session::flash('success', 'Promotion Heads Updated  Successfully!');
 
       return redirect('andbaazaradmin/promotionhead');
     }
@@ -126,7 +123,7 @@ class PromotionHeadsController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'promotion_name' => 'required',
-            'description' => 'required'
+            'description'    => 'required'
         ]);
     }
 }
