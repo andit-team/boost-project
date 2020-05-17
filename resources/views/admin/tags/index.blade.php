@@ -1,13 +1,6 @@
 @extends('admin.layout.master')
 
-@section('content')
-@push('css')
-{{-- <style>
-    .m-l{
-        margin-left:-150px;
-    }
-</style> --}}
-@endpush
+@section('content') 
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
@@ -45,12 +38,12 @@
                                     <td width="50">{{  \Illuminate\Support\Str::limit($row->description) }}</td>
                                     <td class="d-flex justify-content-between" width="150">
                                         <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}">Edit</button></a></li>
+                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-md btn-warning" data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
                                         
                                             <li class="list-inline-item"><form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-sm btn-primary m-l">Delete</button>
+                                            <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-trash"></i></button>
                                             </form>
                                             </li>
                                         </ul>
@@ -65,7 +58,7 @@
                                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post" enctype="multipart/form-data">
+                                                <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post" enctype="multipart/form-data" id="validateForm">
                                                     @csrf
                                                     @method('put')
                                                     <div class="form">
@@ -81,8 +74,7 @@
                                                         </div>
                                                     </div>
                                                     <div class=" mt-3 text-right">
-                                                        <button type="submit" class="btn btn-primary" type="button">Save</button>
-                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" type="button">Update</button> 
                                                     </div>
                                                 </form>
                                             </div>

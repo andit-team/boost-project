@@ -51,7 +51,7 @@
                                 <td>{{ $row->valid_to }}</td>
                                 <td>{{ $row->description }}</td> 
                                 <td class="d-flex justify-content-between"> 
-                                    <a href="#" id="{{ url('/andbaazaradmin/promotion/'.$row->slug).'/edit' }}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#promotionEditModal{{$row->id}}">Edit</button></a> 
+                                    <a href="#" id="{{ url('/andbaazaradmin/promotion/'.$row->slug.'/edit' )}}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#promotionEditModal{{$row->id}}">Edit</button></a> 
                                     <form action="{{ url('/andbaazaradmin/promotion/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                         @csrf
                                         @method('delete')
@@ -67,16 +67,16 @@
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/promotion/'.$row->slug) }}" method="post" enctype="multipart/form-data">
+                                            <form class="needs-validation" action="{{ route('promotion.update',$row->slug) }}" method="post" enctype="multipart/form-data" id="validateForm">
                                                 @csrf
-                                                @method('put')
+                                                @method('PUT')
                                                 <div class="form">
                                                     <div class="form-group">
                                                         <label for="validationCustom01">Promotion Head:</label>
                                                         <select name="promotion_head_id" required class="form-control @error('promotion_head_id') border-danger @enderror">
                                                             <option value="">select promotion Head</option>
                                                             @foreach($promotionhead as $head)
-                                                             <option value="{{ $head->id }}"@if($head->id == $row->id ) selected @endif>{{ $head->promotion_name }}</option>
+                                                             <option value="{{ $head->id }}"@if($head->id == $row->promotion_head_id ) selected @endif>{{ $head->promotion_name }}</option>
                                                             @endforeach
                                                         </select>
                                                         <span class="text-danger">{{ $errors->first('promotion_head_id') }}</span>
@@ -107,11 +107,13 @@
                                                         <span class="text-danger">{{ $errors->first('description') }}</span>
                                                     </div>
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary" type="button">Update</button>
-                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                <div class="mt-3 text-right">
+                                                    <button type="submit" class="btn btn-success" type="button">Update</button> 
                                                 </div>
                                             </form>
+
+
+
                                         </div>
                                     </div>
                                 </div>

@@ -1,14 +1,7 @@
 @extends('admin.layout.master')
 
 
-@section('content')
-@push('css')
-<style>
-    .m-l{
-        margin-left:-100px;
-    }
-</style>
-@endpush
+@section('content') 
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
@@ -28,7 +21,7 @@
                         <h5>Payment Method</h5>
                     </div>
                     <div class="card-body">
-                        <table class="table" id="example">
+                        <table class="table table-borderd" id="dataTableNoPagingDesc">
                             <thead>
                             <tr>
                                 <th width="50">Sl</th>
@@ -46,12 +39,12 @@
                                     <td width="50">{{ \Illuminate\Support\Str::limit($row->desc,20)  }}</td>
                                     <td class="d-flex justify-content-between" width="150">
                                         <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug).'/edit' }}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#paymentEditModal{{$row->id}}">Edit</button></a></li>
+                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug).'/edit' }}" title="Edit"><button class="btn btn-md btn-warning"  data-toggle="modal" data-original-title="test" data-target="#paymentEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
                                             <li class="list-inline-item">
                                                 <form action="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                         @csrf
                                                         @method('delete')
-                                                        <button type="submit" class="btn btn-sm btn-primary">Delete</button>
+                                                        <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-trash"></i></button>
                                                 </form> 
                                             </li> 
                                         </ul> 
@@ -81,8 +74,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="mt-3 text-right">
-                                                        <button type="submit" class="btn btn-primary" type="button">Save</button>
-                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-success" type="button">Update</button> 
                                                     </div>
                                                 </form>
                                             </div> 
@@ -126,10 +118,4 @@
     </div>
 </div>
 @endsection
-@push('js')
-<script>
-    $(document).ready(function() {
-    $('#example').DataTable();
-   } ); 
-</script>
-@endpush
+
