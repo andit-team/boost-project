@@ -575,7 +575,6 @@
     <!-- header end -->
 
 
-
     @yield('content')
     
     <!-- footer -->
