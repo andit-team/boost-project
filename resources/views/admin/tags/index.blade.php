@@ -32,23 +32,23 @@
                             <thead>
                             <tr>
                                 <th width="50">Sl</th>
-                                <th width="50">Tag</th>
-                                <th width="50">Description</th>
-                                <th width="150">Action</th>
+                                <th width="200">Tag</th>
+                                <th>Description</th>
+                                <th width="80" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php $i=0; @endphp
                             @foreach($tag as $row)
                                 <tr>
-                                    <td width="50">{{ ++$i}}</td>
-                                    <td width="50">{{ $row->name }}</td>
-                                    <td width="50">{{  \Illuminate\Support\Str::limit($row->description) }}</td>
-                                    <td class="d-flex justify-content-between" width="150">
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
+                                    <td>{{ ++$i}}</td>
+                                    <td>{{ $row->name }}</td>
+                                    <td>{{  \Illuminate\Support\Str::limit($row->description) }}</td>
+                                    <td class="d-flex justify-content-between">
+                                        <ul>
+                                            <li><a href="#" id="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
                                         
-                                            <li class="list-inline-item"><form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
+                                            <li><form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>

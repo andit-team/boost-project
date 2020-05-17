@@ -30,10 +30,10 @@
                         <table class="table table-borderd" id="dataTableNoPagingDesc">
                             <thead>
                               <tr>
-                                <th>Sl</th>
-                                 <th>Color</th>
+                                 <th width="50">Sl</th>
+                                 <th width="200">Color</th>
                                  <th>Color Code</th>
-                                 <th>Action</th>
+                                 <th width="80" class="text-center">Action</th>
                               </tr>
                           </thead>
                         <tbody>
@@ -43,17 +43,16 @@
                                <td>{{ ++$i }}</td>
                                <td>{{ $row->name }}</td>
                                <td>{{ $row->color_code}}</td>
-                               <td>
-                                   <ul class="list-inline">
-                                       <!-- <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/color/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li> -->
-                                         <li><a href="#" id="{{ url('/andbaazaradmin/color/'.$row->slug).'/edit' }}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
-                                       <li class="list-inline-item">
-                                           <form action="{{ url('/andbaazaradmin/color/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                               @csrf
-                                               @method('delete')
-                                               <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
-                                           </form>
-                                       </li>
+                               <td class="d-flex justify-content-between">
+                                   <ul> 
+                                        <li><a href="#" id="{{ url('/andbaazaradmin/color/'.$row->slug).'/edit' }}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
+                                        <li>
+                                        <form action="{{ url('/andbaazaradmin/color/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                    </li>
                                    </ul>
                                </td>
                             </tr>

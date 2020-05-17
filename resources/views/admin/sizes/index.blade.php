@@ -35,11 +35,11 @@
                         <table class="table table-borderd" id="dataTableNoPagingDesc">
                             <thead>
                               <tr>
-                                  <th>Sl</th>
-                                  <th>Size Name</th>
-                                  <th>Item Size</th>
+                                  <th width="50">Sl</th>
+                                  <th width="100">Size Name</th>
+                                  <th width="100">Item Size</th>
                                   <th>Desription</th>
-                                  <th>Action</th>
+                                  <th width="80" class="text-center">Action</th>
                                 </tr>
                            </thead>
                            <tbody>
@@ -49,11 +49,11 @@
                                      <td>{{ ++$i }}</td>
                                      <td>{{ $row->name }}</td>
                                      <td>{{ $row->item_size }}</td>
-                                     <td>{{  \Illuminate\Support\Str::limit($row->desc,20) }}</td>
-                                     <td>
-                                         <ul class="list-inline">
+                                     <td>{{  \Illuminate\Support\Str::limit($row->desc,100) }}</td>
+                                     <td class="d-flex justify-content-between"> 
+                                         <ul>
                                             <li><a href="#" id="{{ url('/andbaazaradmin/size/'.$row->slug).'/edit' }}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
-                                             <li class="list-inline-item">
+                                             <li>
                                                  <form action="{{ url('/andbaazaradmin/size/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                      @csrf
                                                      @method('delete')
