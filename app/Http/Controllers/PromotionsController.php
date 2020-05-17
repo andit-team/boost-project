@@ -42,7 +42,7 @@ class PromotionsController extends Controller
     public function store(Promotion $promotion,Request $request)
     {
       $this->validateForm($request);
-      $slug = Baazar::getUniqueSlug($promotion,$request->name);
+      $slug = Baazar::getUniqueSlug($promotion,$request->title);
         $data = [
             'title' => $request->title,
             'description' => $request->description,

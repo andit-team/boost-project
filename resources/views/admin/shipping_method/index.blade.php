@@ -3,12 +3,13 @@
 
 @section('content')
 @push('css')
-<style>
-    .m-l{
-        margin-left:-100px;
+<style> 
+    .fa{
+        padding:4px;
+      font-size:16px;
     }
 </style>
-@endpush
+@endpush  
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
@@ -32,10 +33,10 @@
                             <thead>
                             <tr>
                                 <th width="50">Sl</th>
-                                <th>Method</th>
-                                <th>Fees</th>
-                                <th>Description</th>
-                                <th>Courier</th>
+                                <th width="50">Method</th>
+                                <th width="50">Fees</th>
+                                <th width="50">Courier</th>
+                                <th width="50">Description</th> 
                                 <th width="150">Action</th>
                             </tr>
                         </thead>
@@ -43,18 +44,21 @@
                             @php $i=0; @endphp
                             @foreach($shippingmethod as $row)
                                 <tr>
-                                    <td>{{ ++$i}}</td>
-                                    <td>{{ $row->name }}</td>
-                                    <td>{{ $row->fees }}</td>
-                                    <td>{{ $row->courier->name }}</td>
-                                    <td>{{ $row->desc }}</td>
-                                    <td class="d-flex justify-content-between"> 
-                                        <a href="#" id="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#shippingEditModal{{$row->id}}">Edit</button></a> 
-                                        <form action="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-sm btn-primary m-l">Delete</button>
-                                        </form>
+                                    <td width="50">{{ ++$i}}</td>
+                                    <td width="50">{{ $row->name }}</td>
+                                    <td width="50">{{ $row->fees }}</td>
+                                    <td width="50">{{ $row->courier->name }}</td>
+                                    <td width="50">{{ $row->desc }}</td>
+                                    <td class="d-flex justify-content-between" width="150"> 
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#shippingEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a> </li>
+                                            <li class="list-inline-item">
+                                                <form action="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
+                                                </form>
+                                            </li>
                                     </td>
                                 </tr> 
 
@@ -95,9 +99,8 @@
                                                             <span class="text-danger">{{ $errors->first('desc') }}</span>
                                                         </div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary" type="button">Save</button>
-                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                    <div class="mt-3 text-right">
+                                                        <button type="submit" class="btn btn-success" type="button">Update</button> 
                                                     </div>
                                                 </form>
                                             </div> 
@@ -122,7 +125,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="shipping">Shipping Method:</label>
-                                <input type="text"  name="name" required class="form-control @error('name') border-danger @enderror"> 
+                                <input type="text"  name="name" value="{{ old('name') }}" required class="form-control @error('name') border-danger @enderror"> 
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             </div>
                             <div class="form-group">
@@ -137,7 +140,7 @@
 
                             <div class="form-group">
                                 <label for="fees">Fees:</label>
-                                <input type="number" name="fees" required class="form-control @error('fees') border-danger @enderror">
+                                <input type="number" name="fees" value="{{ old('fees') }}" required class="form-control @error('fees') border-danger @enderror">
                                 <span class="text-danger">{{ $errors->first('fees') }}</span>
                             </div>
 

@@ -15,6 +15,7 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::resource('/size','SizesController');
     Route::resource('/paymentmethod','PaymentMethodsController');
     Route::resource('/shippingmethod','ShippingMethodsController');
+    Route::resource('promotion','PromotionsController');
     Route::resource('/promotionhead','PromotionHeadsController');
     Route::resource('/promotionplan','PromotionPlansController');
     Route::resource('/currency','CurrenciesController');
@@ -22,7 +23,7 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
 
     Route::resource('/tag','TagsController');
     Route::resource('/color','ColorsController');
-    Route::resource('/promotion','PromotionsController');
+    
 
     Route::resource('/shop','ShopsController');
 

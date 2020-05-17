@@ -2,12 +2,13 @@
 
 @section('content')
 @push('css')
-<style>
-    .m-l{
-        margin-left:-100px;
+<style> 
+    .fa{
+        padding:4px;
+      font-size:16px;
     }
 </style>
-@endpush
+@endpush 
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
@@ -31,8 +32,8 @@
                             <thead>
                             <tr>
                                 <th width="50">Sl</th>
-                                <th>Tag</th>
-                                <th>Description</th>
+                                <th width="50">Tag</th>
+                                <th width="50">Description</th>
                                 <th width="150">Action</th>
                             </tr>
                         </thead>
@@ -40,16 +41,20 @@
                             @php $i=0; @endphp
                             @foreach($tag as $row)
                                 <tr>
-                                    <td>{{ ++$i}}</td>
-                                    <td>{{ $row->name }}</td>
-                                    <td>{{ $row->description }}</td>
-                                    <td class="d-flex justify-content-between">
-                                        <a href="#" id="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}">Edit</button></a>
-                                        <form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
+                                    <td width="50">{{ ++$i}}</td>
+                                    <td width="50">{{ $row->name }}</td>
+                                    <td width="50">{{  \Illuminate\Support\Str::limit($row->description) }}</td>
+                                    <td class="d-flex justify-content-between" width="150">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
+                                        
+                                            <li class="list-inline-item"><form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" class="btn btn-sm btn-primary m-l">Delete</button>
-                                        </form>
+                                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
+                                            </form>
+                                            </li>
+                                        </ul>
                                     </td>
                                 </tr>
 
@@ -61,7 +66,7 @@
                                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post" enctype="multipart/form-data">
+                                                <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post" enctype="multipart/form-data" id="validateForm">
                                                     @csrf
                                                     @method('put')
                                                     <div class="form">
@@ -76,9 +81,8 @@
                                                             <span class="text-danger">{{ $errors->first('description') }}</span>
                                                         </div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary" type="button">Save</button>
-                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                    <div class=" mt-3 text-right">
+                                                        <button type="submit" class="btn btn-success" type="button">Update</button> 
                                                     </div>
                                                 </form>
                                             </div>

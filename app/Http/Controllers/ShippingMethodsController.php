@@ -89,6 +89,7 @@ class ShippingMethodsController extends Controller
      */
     public function update(ShippingMethod $shippingmethod,Request $request)
     {
+      $this->validateForm($request);
       $data =[
           'name' => $request->name,
           'fees' => $request->fees,
@@ -118,7 +119,7 @@ class ShippingMethodsController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required',
-            'fees' => 'required',
+            'fees' => 'required|max:4',
             'courier_id' => 'required',
         ]);
     }

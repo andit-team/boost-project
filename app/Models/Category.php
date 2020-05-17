@@ -11,7 +11,7 @@ use App\User;
 class Category extends Model
 {
 
-    protected $fillable = ['name','slug','thumb','parent','sort','parent_id','active','user_id'];
+    protected $fillable = ['name','desc','slug','thumb','parent','sort','parent_id','active','user_id'];
 
     public function getRouteKeyName()
     {

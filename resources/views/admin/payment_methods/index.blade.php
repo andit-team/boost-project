@@ -1,11 +1,12 @@
 @extends('admin.layout.master')
 
 
-@section('content')
+@section('content') 
 @push('css')
-<style>
-    .m-l{
-        margin-left:-100px;
+<style> 
+    .fa{
+        padding:4px;
+      font-size:16px;
     }
 </style>
 @endpush
@@ -28,29 +29,33 @@
                         <h5>Payment Method</h5>
                     </div>
                     <div class="card-body">
-                        <table class="table" id="example">
+                        <table class="table table-borderd" id="dataTableNoPagingDesc">
                             <thead>
                             <tr>
-                                <th>Sl</th>
-                                <th>Payment Name</th>
-                                <th>Description</th>
-                                <th>Action</th>
+                                <th width="50">Sl</th>
+                                <th width="50">Payment Name</th>
+                                <th width="50">Description</th>
+                                <th width="150">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @php $i=0; @endphp
                             @foreach( $paymentmethod as $row)
                                 <tr>
-                                    <td>{{ ++$i }}</td>
-                                    <td>{{ $row->name }}</td>
-                                    <td>{{ \Illuminate\Support\Str::limit($row->desc,20)  }}</td>
-                                    <td class="d-flex justify-content-between">
-                                       <a href="#" id="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug).'/edit' }}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#paymentEditModal{{$row->id}}">Edit</button></a>
-                                        <form action="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-sm btn-primary m-l">Delete</button>
-                                        </form>   
+                                    <td width="50">{{ ++$i }}</td>
+                                    <td width="50">{{ $row->name }}</td>
+                                    <td width="50">{{ \Illuminate\Support\Str::limit($row->desc,20)  }}</td>
+                                    <td class="d-flex justify-content-between" width="150">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug).'/edit' }}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#paymentEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
+                                            <li class="list-inline-item">
+                                                <form action="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
+                                                </form> 
+                                            </li> 
+                                        </ul> 
                                     </td>
                                 </tr>
                                 <div class="modal fade" id="paymentEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -76,9 +81,8 @@
                                                             <span class="text-danger">{{ $errors->first('desc') }}</span>
                                                         </div>
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary" type="button">Save</button>
-                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                    <div class="mt-3 text-right">
+                                                        <button type="submit" class="btn btn-success" type="button">Update</button> 
                                                     </div>
                                                 </form>
                                             </div> 
@@ -100,7 +104,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Payment Method:</label>  
-                                <input type="text"  name="name" required class="form-control @error('name') border-danger @enderror"> 
+                                <input type="text"  name="name" value="{{ old('name') }}" required class="form-control @error('name') border-danger @enderror"> 
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             </div>
 
@@ -122,10 +126,4 @@
     </div>
 </div>
 @endsection
-@push('js')
-<script>
-    $(document).ready(function() {
-    $('#example').DataTable();
-   } ); 
-</script>
-@endpush
+
