@@ -33,26 +33,26 @@
                             <thead>
                             <tr>
                                 <th width="50">Sl</th>
-                                <th width="50">Method</th>
+                                <th width="100">Method</th>
                                 <th width="50">Fees</th>
                                 <th width="50">Courier</th>
-                                <th width="50">Description</th> 
-                                <th width="150">Action</th>
+                                <th>Description</th> 
+                                <th width="80" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php $i=0; @endphp
                             @foreach($shippingmethod as $row)
                                 <tr>
-                                    <td width="50">{{ ++$i}}</td>
-                                    <td width="50">{{ $row->name }}</td>
-                                    <td width="50">{{ $row->fees }}</td>
-                                    <td width="50">{{ $row->courier->name }}</td>
-                                    <td width="50">{{ $row->desc }}</td>
-                                    <td class="d-flex justify-content-between" width="150"> 
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#shippingEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a> </li>
-                                            <li class="list-inline-item">
+                                    <td>{{ ++$i}}</td>
+                                    <td>{{ $row->name }}</td>
+                                    <td>{{ $row->fees }}</td>
+                                    <td>{{ $row->courier->name }}</td>
+                                    <td>{{ \Illuminate\Support\Str::limit($row->desc,100) }}</td>
+                                    <td class="d-flex justify-content-between"> 
+                                        <ul>
+                                            <li><a href="#" id="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#shippingEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a> </li>
+                                            <li>
                                                 <form action="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                                     @csrf
                                                     @method('delete')

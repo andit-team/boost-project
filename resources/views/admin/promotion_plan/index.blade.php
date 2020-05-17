@@ -32,26 +32,26 @@
                             <thead>
                             <tr>
                                 <th width="50">Sl</th>
-                                <th width="50">Promotion</th>
-                                <th width="50">From Price</th>
-                                <th width="50">To Price</th>
-                                <th width="50">Amount</th>
-                                <th width="150">Action</th>
+                                <th width="150">Promotion</th>
+                                <th width="100">From Price</th>
+                                <th width="100">To Price</th>
+                                <th width="100">Amount</th>
+                                <th width="80" class="text-center">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @php $i=0; @endphp
                             @foreach($promotionplan as $row)
                             <tr>
-                                <td width="50">{{ ++$i }}</td>
-                                <td width="50">{{ $row->promotion->title }}</td>
-                                <td width="50">{{ $row->from_price }}</td>
-                                <td width="50">{{ $row->to_price }}</td>
-                                <td width="50">{{ $row->amount }}</td>
-                                <td class="d-flex justify-content-between" width="150">
-                                    <ul class="list-inline"> 
-                                        <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/promotionplan/'.$row->id.'/edit' )}}" title="Edit"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#promotionPlaneEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
-                                        <li class="list-inline-item">
+                                <td>{{ ++$i }}</td>
+                                <td>{{ $row->promotion->title }}</td>
+                                <td>{{ $row->from_price }}</td>
+                                <td>{{ $row->to_price }}</td>
+                                <td>{{ $row->amount }}</td>
+                                <td class="d-flex justify-content-between">
+                                    <ul> 
+                                        <li><a href="#" id="{{ url('/andbaazaradmin/promotionplan/'.$row->id.'/edit' )}}" title="Edit"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#promotionPlaneEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
+                                        <li>
                                             <form action="{{ url('/andbaazaradmin/promotionplan/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                 @csrf
                                                 @method('delete')

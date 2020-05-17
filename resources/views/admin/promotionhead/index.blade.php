@@ -31,22 +31,22 @@
                             <thead>
                             <tr>
                                 <th width="50">Sl</th>
-                                <th width="50">Promotion Head</th>
-                                <th width="50">Description</th>
-                                <th width="150">Action</th>
+                                <th width="200">Promotion Head</th>
+                                <th>Description</th>
+                                <th width="80" class="text-center">Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @php $i=0; @endphp
                             @foreach($promotionhead as $row)
                             <tr>
-                                <td width="50">{{ ++$i }}</td>
-                                <td width="50">{{ $row->promotion_name }}</td>
-                                <td width="50">{{ $row->description }}</td>
-                                <td class="d-flex justify-content-between" width="150">
-                                    <ul class="list-inline"> 
-                                        <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/promotionhead/'.$row->slug.'/edit' )}}" title="Edit"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#promotionHeadEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a> </li>
-                                        <li class="list-inline-item">
+                                <td>{{ ++$i }}</td>
+                                <td>{{ $row->promotion_name }}</td>
+                                <td>{{ \Illuminate\Support\Str::limit($row->description,100) }}</td>
+                                <td class="d-flex justify-content-between">
+                                    <ul> 
+                                        <li><a href="#" id="{{ url('/andbaazaradmin/promotionhead/'.$row->slug.'/edit' )}}" title="Edit"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#promotionHeadEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a> </li>
+                                        <li>
                                             <form action="{{ url('/andbaazaradmin/promotionhead/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                 @csrf
                                                 @method('delete')

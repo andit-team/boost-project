@@ -8,9 +8,11 @@
     <meta name="description" content="Multikart admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Multikart admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="{{asset('')}}/assets/images/dashboard/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="{{asset('')}}/assets/images/dashboard/favicon.png" type="image/x-icon">
-    <title>Multikart - Premium Admin Template</title>
+    {{-- <link rel="icon" href="{{asset('')}}/assets/images/dashboard/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('')}}/assets/images/dashboard/favicon.png" type="image/x-icon"> --}}
+    <link rel="icon" href="{{asset('frontend')}}/assets/images/favicon/fav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/favicon/fav.png" type="image/x-icon">
+    <title>Andbaazar Admin Panel</title>
 
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -61,7 +63,9 @@
     <div class="page-main-header">
         <div class="main-header-right row">
             <div class="main-header-left d-lg-none">
-                <div class="logo-wrapper"><a href="index.html"><img class="blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/multikart-logo.png" alt=""></a></div>
+                {{-- <a href="index.html"><img src="{{asset('frontend')}}/assets/images/icon/logo.png" 
+                    class="img-fluid blur-up lazyload" alt="image"></a>--}}
+                <div class="logo-wrapper"><a href="index.html"><img class="blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/multikart-logo.png" alt="img"></a></div>
             </div>
             <div class="mobile-sidebar">
                 <div class="media-body text-right switch-sm">

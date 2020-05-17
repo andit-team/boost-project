@@ -30,14 +30,14 @@
                         <table class="table table-borderd" id="dataTableNoPagingDesc">
                             <thead>
                             <tr>
-                                <th>Sl</th>
-                                <th>Promotion Head</th>
-                                <th>Title</th>
+                                <th width="50">Sl</th>
+                                <th width="130">promotion Head</th>
+                                <th width="100">Title</th>
+                                <th width="50">Coupon</th> 
+                                <th width="100">Valid From</th>
+                                <th width="100">Valid To</th>
                                 <th>Description</th>
-                                <th>Valid From</th>
-                                <th>Valid To</th>
-                                <th>Coupon Code</th>
-                                <th>Action</th>
+                                <th width="80" class="text-center">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -50,14 +50,17 @@
                                 <td>{{ $row->coupon_code }}</td>
                                 <td>{{ $row->valid_from }}</td>
                                 <td>{{ $row->valid_to }}</td>
-                                <td>{{ $row->description }}</td> 
+                                <td>{{ \Illuminate\Support\Str::limit($row->description,50) }}</td> 
                                 <td class="d-flex justify-content-between"> 
-                                    <a href="#" id="{{ url('/andbaazaradmin/promotion/'.$row->slug.'/edit' )}}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#promotionEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a> 
-                                    <form action="{{ url('/andbaazaradmin/promotion/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
-                                    </form> 
+                                    <ul>
+                                        <li><a href="#" id="{{ url('/andbaazaradmin/promotion/'.$row->slug.'/edit' )}}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#promotionEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li> 
+                                        <li><form action="{{ url('/andbaazaradmin/promotion/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                        </li> 
+                                    </ul>
                                 </td>
                             </tr>
                             <div class="modal fade" id="promotionEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

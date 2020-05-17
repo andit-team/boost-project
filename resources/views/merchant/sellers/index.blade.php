@@ -1,24 +1,24 @@
-@extends('layouts.master')
+@extends('admin.layout.master')
 
 @section('content')
-
+@push('css')
+<style> 
+    .fa{
+        padding:4px;
+      font-size:16px;
+    }
+</style>
+@endpush 
 @include('elements.alert')
-@component('layouts.inc.breadcrumb')
+@component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
-      Vendor Dashboard
+      Seller profile
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">Profile</li>
+      <li class="breadcrumb-item active" aria-current="page">Seller profile</li>
   @endslot
 @endcomponent
-
-    <!--  dashboard section start -->
-    <section class="dashboard-section section-b-space">
-        <div class="container">
-            <div class="row">
-                
-                @include('layouts.inc.sidebar.vendor-sidebar',[$active='profile'])
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -27,7 +27,7 @@
                         <h5>Seller Profile</h5>
                     </div>
                     <div class="card-body order-datatable">
-                        <table class="display" id="basic-1">
+                        <table class="table table-borderd" id="dataTableNoPagingDesc">
                             <thead>
                             <tr>
                                 <th>Sl</th>
@@ -47,7 +47,7 @@
                                     <td>{{ $row->phone }}</td>
                                     <td>
                                         <ul class="list-inline">
-    {{--                                            <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/courier/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>--}}
+       {{--                                            <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/courier/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>--}}
                                                     <li class="list-inline-item"><a href="{{ url('/merchant/seller/'.$row->id.'/edit') }}" title="Edit" class="btn btn-sm btn-info"><i class="fa fa-check"></i> </a> </li>
                                                     <li class="list-inline-item">
                                                     <form action="{{ url('/merchant/seller/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
@@ -67,6 +67,5 @@
             </div>
         </div>
     </div>
-            </div>
-        </div></section>
+</div>         
 @endsection
