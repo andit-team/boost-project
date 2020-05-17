@@ -16,7 +16,7 @@ class CreateShippingMethodsTable extends Migration
         Schema::create('shipping_methods', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->decimal('fees',8,2);
+            $table->decimal('fees',8,0);
             $table->text('desc');
             $table->string('slug')->nullable();
             $table->boolean('active')->default(1)->change();

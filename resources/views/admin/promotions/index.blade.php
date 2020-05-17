@@ -1,13 +1,6 @@
 @extends('admin.layout.master')
 
-@section('content')
-@push('css')
-<style>
-    .m-l{
-        margin-left:-100px;
-    }
-</style>
-@endpush
+@section('content') 
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
@@ -51,11 +44,11 @@
                                 <td>{{ $row->valid_to }}</td>
                                 <td>{{ $row->description }}</td> 
                                 <td class="d-flex justify-content-between"> 
-                                    <a href="#" id="{{ url('/andbaazaradmin/promotion/'.$row->slug.'/edit' )}}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#promotionEditModal{{$row->id}}">Edit</button></a> 
+                                    <a href="#" id="{{ url('/andbaazaradmin/promotion/'.$row->slug.'/edit' )}}" title="Edit"><button class="btn btn-md btn-warning"  data-toggle="modal" data-original-title="test" data-target="#promotionEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a> 
                                     <form action="{{ url('/andbaazaradmin/promotion/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit" class="btn btn-sm btn-primary">Delete</button>
+                                        <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-trash"></i></button>
                                     </form> 
                                 </td>
                             </tr>
