@@ -8,8 +8,8 @@
     }
 
     .fa{
-      padding:10px;
-      font-size:18px;
+        padding:4px;
+      font-size:16px;
     }
 </style>
 @endpush
