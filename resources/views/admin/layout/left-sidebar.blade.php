@@ -31,12 +31,12 @@
                                 </ul>
                             </li>
                             
-                            <li><a class="sidebar-header" href="{{ url('andbaazaradmin/tag') }}"><i class="fa fa-circle"></i><span>Tags</span></a></li>
+                            <li><a class="sidebar-header" href="{{ url('andbaazaradmin/tag') }}"><i class="fas fa-tags"></i></i><span>Tags</span></a></li>
                             
 
                             <li>
                                 <a href="{{ url('andbaazaradmin/color') }}"><i class="fa fa-circle"></i>
-                                    <span>Color</span> <i class="fa fa-angle-right pull-right"></i>
+                                    <span>Color</span> 
                                 </a>
                                 <!-- <ul class="sidebar-submenu">
                                     <li><a href="{{ url('andbaazaradmin/color') }}"><i class="fa fa-circle"></i>All Color</a></li>
@@ -45,7 +45,7 @@
                             </li>
                             <li>
                                 <a href="{{ url('andbaazaradmin/size') }}"><i class="fa fa-circle"></i>
-                                    <span>Size</span> <i class="fa fa-angle-right pull-right"></i>
+                                    <span>Size</span> 
                                 </a>
                               
                             </li>
@@ -92,12 +92,12 @@
                             <li><a href="{{ url('andbaazaradmin/promotionhead/create') }}"><i class="fa fa-circle"></i>Promotion Head</a></li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/currency') }}"><i data-feather="chrome"></i><span>Currencies</span><i class="fa fa-angle-right pull-right"></i></a>
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/currency') }}"><i class="icon-usd"></i> </i><span>Currency</span></a>
                         {{-- <ul class="sidebar-submenu">
                             <li><a href="{{ url('andbaazaradmin/currency') }}"><i class="fa fa-circle"></i>Currencies</a></li>
                         </ul> --}}
                     </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/courier')}}"><i data-feather="settings" ></i><span>Couriers</span><i class="fa fa-angle-right pull-right"></i></a>
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/courier')}}"><i data-feather="settings" ></i><span>Courier</span></a>
                         {{-- <ul class="sidebar-submenu">
                             <li><a href="{{ url('andbaazaradmin/courier')}}"><i class="fa fa-circle"></i>Couriers</a></li>
                             <li><a href="{{ url('andbaazaradmin/courier/create') }}"><i class="fa fa-circle"></i>Courier</a></li>

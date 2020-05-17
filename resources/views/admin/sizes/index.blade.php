@@ -93,8 +93,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary" type="button">Update</button>
-                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-success" type="button">Update</button>                                                         
                                                         </div>
                                                 </form>
                                           </div>
@@ -133,7 +132,7 @@
                                       <span class="text-danger">{{ $errors->first('desc') }}</span>
                                   </div>
                                       <div class="text-right">
-                                          <button type="submit"  class="btn btn-primary">Save</button>
+                                          <button type="submit"  class="btn btn-success">Save</button>
                                       </div>
                               </div>
                           </div>
