@@ -80,17 +80,11 @@
                         
                     </li>
                     {{-- <li><a class="sidebar-header" href="media.html"><i data-feather="camera"></i><span>Media</span></a></li> --}}
-                    <li><a class="sidebar-header" href="#"><i data-feather="align-left"></i><span>Promotion</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{ url('andbaazaradmin/promotion') }}"><i class="fa fa-circle"></i> All Promotion</a></li>
-                            <li><a href="{{ url('andbaazaradmin/promotion/create') }}"><i class="fa fa-circle"></i>Add Promotion</a></li>
-                        </ul>
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotion') }}"><i data-feather="align-left"></i><span>Promotion</span></a>
+                        
                     </li>
-                    <li><a class="sidebar-header" href=""><i data-feather="user-plus"></i><span>Promotion plane</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{ url('andbaazaradmin/promotionplan') }}"><i class="fa fa-circle"></i> All Promotion Plan</a></li>
-                             <li><a href="{{ url('andbaazaradmin/promotionplan/create') }}"><i class="fa fa-circle"></i>Add Promotion Plan</a></li>
-                        </ul>
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotionplan') }}"><i data-feather="user-plus"></i><span>Promotion plane</span></i></a>
+                        
                     </li>
                     <li><a class="sidebar-header" href=""><i data-feather="users"></i><span>Promotion Head</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">

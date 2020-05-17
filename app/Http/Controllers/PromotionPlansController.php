@@ -41,15 +41,13 @@ class PromotionPlansController extends Controller
      */
     public function store(Promotionplan $promotionplan,Request $request)
     {
-      $this->validateForm($request);
-      $slug = Baazar::getUniqueSlug($promotionplan,$request->name);
+      $this->validateForm($request); 
         $data = [
+          'promotion_id' => $request->promotion_id, 
             'from_price' => $request->from_price,
-            'to_price' => $request->to_price,
-            'amount' => $request->amount,
-            'promotion_id' => $request->promotion_id,
-            'slug' => $slug,
-            'user_id' => Sentinel::getUser()->id,
+            'to_price'   => $request->to_price,
+            'amount'     => $request->amount, 
+            'user_id'    => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
 
@@ -90,13 +88,14 @@ class PromotionPlansController extends Controller
      */
     public function update(Promotionplan $promotionplan,Request $request)
     {
+      $this->validateForm($request);
       $data = [
-          'from_price' => $request->from_price,
-          'to_price' => $request->to_price,
-          'amount' => $request->amount,
           'promotion_id' => $request->promotion_id,
-          'user_id' => Sentinel::getUser()->id,
-          'created_at' => now(),
+          'from_price'   => $request->from_price,
+          'to_price'     => $request->to_price,
+          'amount'       => $request->amount, 
+          'user_id'      => Sentinel::getUser()->id,
+          'created_at'   => now(),
       ];
       $promotionplan->update($data);
     Session::flash('success', 'Promotion Plan Updated Successfully!');
@@ -118,9 +117,9 @@ class PromotionPlansController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'from_price' => 'required',
-            'to_price' => 'required',
-            'amount' => 'required',
+            'from_price'   => 'required|max:4',
+            'to_price'     => 'required|max:4',
+            'amount'       => 'required|max:4',
             'promotion_id' => 'required',
         ]);
     }
