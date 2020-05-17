@@ -21,11 +21,7 @@
                                     <li><a href="{{ url('andbaazaradmin/category') }}"><i class="fa fa-circle"></i>Categories</a></li>
 
                                     <li><a href="{{ url('andbaazaradmin/category/create') }}"><i class="fa fa-circle"></i>Category</a></li>
-                                    <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>
-
-                                    {{-- <li><a href="{{ url('andbaazaradmin/category/create') }}"><i class="fa fa-circle"></i>Category</a></li> --}}
-
-                                    {{-- <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>                                --}}
+                                    <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li> 
 
                                     <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>
                                 </ul>
@@ -33,31 +29,9 @@
                             
                             <li><a class="sidebar-header" href="{{ url('andbaazaradmin/tag') }}"><i class="fa fa-circle"></i><span>Tags</span></a></li>
                             
+                            <li><a class="sidebar-header" href="{{ url('andbaazaradmin/color') }}"><i class="fa fa-circle"></i><span>Color</span></a></li>
 
-                            <li>
-                                <a href="{{ url('andbaazaradmin/color') }}"><i class="fa fa-circle"></i>
-                                    <span>Color</span> <i class="fa fa-angle-right pull-right"></i>
-                                </a>
-                                <!-- <ul class="sidebar-submenu">
-                                    <li><a href="{{ url('andbaazaradmin/color') }}"><i class="fa fa-circle"></i>All Color</a></li>
-                                    <li><a href="{{ url('andbaazaradmin/color/create') }}"><i class="fa fa-circle"></i> Add Color</a></li>
-                                </ul> -->
-                            </li>
-                            <li>
-                                <a href="{{ url('andbaazaradmin/size') }}"><i class="fa fa-circle"></i>
-                                    <span>Size</span> <i class="fa fa-angle-right pull-right"></i>
-                                </a>
-                              
-                            </li>
-                            {{-- <li>
-                                <a href="#"><i class="fa fa-circle"></i>
-                                    <span>Products</span> <i class="fa fa-angle-right pull-right"></i>
-                                </a>
-                                <ul class="sidebar-submenu">
-                                    <li><a href="{{ url('merchant/product/adminIndex')}}"><i class="fa fa-circle"></i>Products list</a></li>
-                                </ul>
-
-                            </li> --}}
+                            <li><a class="sidebar-header" href="{{ url('andbaazaradmin/size') }}"><i class="fa fa-circle"></i><span>Color</span></a></li> 
                             </li>   
 
                             </li>
@@ -79,7 +53,7 @@
                     <li><a class="sidebar-header" href="{{ url('andbaazaradmin/shippingmethod') }}"><i data-feather="tag"></i><span>Shipping Method</span></a>
                         
                     </li>
-                    {{-- <li><a class="sidebar-header" href="media.html"><i data-feather="camera"></i><span>Media</span></a></li> --}}
+                    
                     <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotion') }}"><i data-feather="align-left"></i><span>Promotion</span></a>
                         
                     </li>
@@ -89,16 +63,11 @@
                     <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotionhead') }}"><i data-feather="users"></i><span>Promotion Head</span></a>
                        
                     </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/currency') }}"><i data-feather="chrome"></i><span>Currencies</span><i class="fa fa-angle-right pull-right"></i></a>
-                        {{-- <ul class="sidebar-submenu">
-                            <li><a href="{{ url('andbaazaradmin/currency') }}"><i class="fa fa-circle"></i>Currencies</a></li>
-                        </ul> --}}
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/currency') }}"><i data-feather="chrome"></i><span>Currencies</span></a>
+                        
                     </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/courier')}}"><i data-feather="settings" ></i><span>Couriers</span><i class="fa fa-angle-right pull-right"></i></a>
-                        {{-- <ul class="sidebar-submenu">
-                            <li><a href="{{ url('andbaazaradmin/courier')}}"><i class="fa fa-circle"></i>Couriers</a></li>
-                            <li><a href="{{ url('andbaazaradmin/courier/create') }}"><i class="fa fa-circle"></i>Courier</a></li>
-                        </ul> --}}
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/courier')}}"><i data-feather="settings" ></i><span>Couriers</span></a>
+                     
                     </li>
                     <li><a class="sidebar-header" href=""><i data-feather="settings" ></i><span>Vendor Profile</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
