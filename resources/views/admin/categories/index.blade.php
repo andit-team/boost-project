@@ -122,7 +122,7 @@
                                                             </div>
                                                             <div class="uploadbtn"> 
                                                                 <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                                                <input id="file-upload" type="file" name="thumb" onchange="loadImage(event)"/>
+                                                                <input id="file-upload" type="file" name="thumb" onchange="loadImage()"/>
                                                                 <input type="hidden" value="{{$row->thumb}}" name="old_image">   
                                                             </div>
                                                         </div>
@@ -201,7 +201,7 @@
     
     var loadImage = function(event){
         var result = document.getElementById('result');
-        result.src = URL.createObjectURL(event.targen.files[0]);
+        result.src = URL.createObjectURL(event.target.files[0]);
     }
 
 </script>

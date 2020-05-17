@@ -38,41 +38,41 @@
                         </ul>
                     </li>
 
-                    <li><a class="sidebar-header" href="#"><i data-feather="clipboard"></i><span>Shops</span><i class="fa fa-angle-right pull-right"></i></a>
+                    <li><a class="sidebar-header" href="#"><i data-feather="shopping-bag"></i><span>Shops</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
                             <li><a href="<a href="{{ 'andbaazaradmin/shop' }}"><i class="fa fa-circle"></i>All Shop</a></li>
                             <li><a href="<a href="{{ 'andbaazaradmin/shop/create' }}"><i class="fa fa-circle"></i>Create Shop</a></li>
                         </ul>
                     </li>
                     
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/paymentmethod') }}"><i data-feather="dollar-sign"></i><span>Payment Method</span></a>
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/paymentmethod') }}"><i data-feather="credit-card"></i><span>Payment Method</span></a>
                         
                     </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/shippingmethod') }}"><i data-feather="tag"></i><span>Shipping Method</span></a>
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/shippingmethod') }}"><i data-feather="truck"></i><span>Shipping Method</span></a>
                         
                     </li>
                     
                     <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotion') }}"><i data-feather="align-left"></i><span>Promotion</span></a>
                         
                     </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotionplan') }}"><i data-feather="user-plus"></i><span>Promotion plane</span></i></a>
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotionplan') }}"><i data-feather="archive"></i><span>Promotion plane</span></i></a>
                         
                     </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotionhead') }}"><i data-feather="users"></i><span>Promotion Head</span></a>
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotionhead') }}"><i data-feather="droplet"></i><span>Promotion Head</span></a>
                        
                     </li>
 
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/currency') }}"><i data-feather="chrome"></i><span>Currencies</span></a>
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/currency') }}"><i data-feather="dollar-sign"></i><span>Currencies</span></a>
                         
                     </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/courier')}}"><i data-feather="settings" ></i><span>Couriers</span></a> 
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/courier')}}"><i data-feather="send" ></i><span>Couriers</span></a> 
 
-                    <li><a class="sidebar-header" href=""><i data-feather="settings" ></i><span>Vendor Profile</span><i class="fa fa-angle-right pull-right"></i></a>
+                    <li><a class="sidebar-header" href=""><i data-feather="users" ></i><span>Vendor Profile</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ url('merchant/seller')}}"><i class="fa fa-circle"></i>Profile list</a></li>
                         </ul>
                     </li>
-                    <li><a class="sidebar-header" href=""><i data-feather="settings" ></i><span>Product Request</span><i class="fa fa-angle-right pull-right"></i></a>
+                    <li><a class="sidebar-header" href=""><i data-feather="menu" ></i><span>Product Request</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ url('merchant/product/adminIndex')}}"><i class="fa fa-circle"></i>Products list</a></li>
                         </ul>
