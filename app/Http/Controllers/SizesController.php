@@ -84,14 +84,14 @@ class SizesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Size $size)
+    public function update( Size $size,Request $request)
     {
         $data = [
             'name' => $request->name,
             'item_size' => $request->item_size,
             'desc' => $request->desc,
             'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
+            'updated_at' => now(),
         ];
 
         $size->update($data);

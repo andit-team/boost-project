@@ -15,7 +15,7 @@ class TagsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Tag $tag)
     {
       $tag = Tag::all();
       return view('admin.tags.index',compact('tag'));
@@ -44,17 +44,11 @@ class TagsController extends Controller
 
         $data = Tag::create([
             'name' => $request->name,
+            'description' => $request->description,
             'slug' => $slug,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ]);
-
-        $itemtag = ItemTag::create([
-            'tag_id' => $data->id,
-            'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
-        ]);
-        //Tag::create($data);
 
        Session::flash('success', 'Tags Inserted Successfully');
        return redirect('andbaazaradmin/tag');
@@ -92,9 +86,10 @@ class TagsController extends Controller
      */
     public function update(Tag $tag, Request $request)
     {
-
+        $this->validateForm($request);
           $data = [
               'name' => $request->name,
+              'description' => $request->description,
               'user_id' => Sentinel::getUser()->id,
               'created_at' => now(),
           ];

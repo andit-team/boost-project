@@ -63,8 +63,8 @@
                                 <label for="last_name" class="mt-2">Last Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('last_name') }}</span>
                                 <input type="text" class="form-control @error('last_name') border-danger @enderror" required name="last_name" value="{{ old('last_name',$userprofile->last_name) }}" id="" placeholder="Last Name">
                                 
-                                <label for="phone_number" class="mt-2">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone_number') }}</span>
-                                <input type="number" class="form-control @error('phone_number') border-danger @enderror" required  name="phone_number" value="{{ old('phone_number',$profile->phone_number) }}" id="" placeholder="Phone Number">
+                                <label for="phone" class="mt-2">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                <input type="number" class="form-control @error('phone') border-danger @enderror" required  name="phone" value="{{ old('phone',$profile->phone) }}" id="" placeholder="Phone Number">
                             </div>
 
 

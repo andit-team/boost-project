@@ -16,11 +16,10 @@ class CreateBuyersTable extends Migration
       //Schema::dropIfExists('buyers');
       Schema::create('buyers', function (Blueprint $table) {
            $table->bigIncrements('id');
-           $table->unsignedBigInteger('user_id');
-        //    $table->string('full_name')->nullable();
+           $table->unsignedBigInteger('user_id'); 
            $table->string('first_name')->nullable();
            $table->string('last_name')->nullable();
-           $table->string('phone_number')->nullable();
+           $table->string('phone')->nullable();
            $table->string('picture')->nullable();
            $table->date('dob')->nullable();
            $table->enum('gender',['Male','Female','Other'])->nullable();

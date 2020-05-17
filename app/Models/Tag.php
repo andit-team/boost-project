@@ -9,7 +9,7 @@ use App\User;
 
 class Tag extends Model
 {
-   protected $fillable = ['name','active','user_id','slug'];
+   protected $fillable = ['name','description','slug','active','user_id'];
 
    public function getRouteKeyName()
    {
