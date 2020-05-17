@@ -4,12 +4,41 @@
 @section('content')
 @push('css')
 <style>
+    .imagestyleIndex{
+        width: 100px;
+        height:100px;
+        /* border-width: 4px 4px 4px 4px; */
+        /* border-style: solid;
+        border-color: #ccc; */
+    } 
+
     .imagestyle{
-        width: 50px;
-        height: 50px;
-        border-width: 4px 4px 4px 4px;
+        width: 200px;
+        height: 200px;
+        border-width: 1px;
         border-style: solid;
         border-color: #ccc;
+        border-bottom: 0px;
+        padding: 10px;
+    }
+
+    #file-upload{
+        display: none;
+    }
+    .uploadbtn{
+        width: 200px;background: #ddd;float: left;text-align: center;
+    }
+    .custom-file-upload {
+        /* border: 1px solid #ccc; */
+        display: inline-block;
+        padding: 9px 40px;
+        cursor: pointer;
+        border-top: 0px;
+    }
+
+    .fa{
+        padding:4px;
+      font-size:16px;
     } 
 </style> 
 @endpush
@@ -36,8 +65,9 @@
                             <thead>
                             <tr>
                                 <th width="50">Sl</th>
-                                <th width="50">Category</th>
-                                <th width="50">Thumb</th>
+                                <th width="100">Thumb</th>
+                                <th width="50">Category</th> 
+                                <th width="50">Description</th>
                                 <th width="150">Action</th>
                             </tr>
                             </thead>
@@ -46,21 +76,23 @@
                             @foreach($category as $row)
                             <tr>
                                 <td width="50">{{ ++$i }}</td>
-                                <td width="50">{{ $row->name }}</td>
-                                <td width="50">
+                                <td width="100">
                                     @if(!empty($row->thumb))
-                                       <img class="imagestyle" src="{{ asset($row->thumb ) }}"></td>
+                                       <img class="imagestyleIndex" src="{{ asset($row->thumb ) }}">
                                     @else
-                                        <img class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}">
+                                        <img class="imagestyleIndex" src="{{ asset('/uploads/category_image/user.png') }}">
                                     @endif
+                                </td>  
+                                <td width="50">{{ $row->name }}</td>  
+                                <td width="50">{{ $row->desc }}</td> 
                                 <td class="d-flex justify-content-between" width="150"> 
                                     <ul class="list-inline">
-                                        <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/category/'.$row->slug.'/edit')}}" title="Edit"><button class="btn btn-md btn-warning"  data-toggle="modal" data-original-title="test" data-target="#categoryEditModal{{$row->id}}"><i class="fa fa-edit"></i></button> </a></li>
+                                        <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/category/'.$row->slug.'/edit')}}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#categoryEditModal{{$row->id}}"><i class="fa fa-edit"></i></button> </a></li>
                                         <li class="list-inline-item"> 
                                             <form action="{{ url('/andbaazaradmin/category/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-trash"></i></button>
+                                                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
                                             </form> 
                                         </li>
                                     </ul>
@@ -79,23 +111,32 @@
                                                     @csrf
                                                     @method('put')
                                                     <div class="form">
-                                                        <div class="form-group">
-                                                            <label for="validationCustom01" class="mb-1">Name :</label>
-                                                        <input type="text"  name="name" value="{{old('name',$row->name)}}" required class="form-control @error('name') border-danger @enderror"> 
-                                                            <span class="text-danger">{{ $errors->first('name') }}</span>
-                                                        </div>
-                                                        <div class="form-group mb-0">
-                                                        <label for="validationCustom02" class="mb-1">Image :</label>
-                                                        <input type="file" class="form-control" name="thumb" id="image" onchange="loadImage(event)">
-                                                        <input type="hidden" value="{{$row->thumb}}" name="old_image">
-                                                            <div class="divmargin mt-2">
+                                                        <div class="form-goup text-left text-left mb-5 pb-3">  
+                                                            <label for="validationCustom02">image :</label>
+                                                            <div class="mt-0">
                                                                 @if(!empty($row->thumb))
-                                                                <img id="result"  class="imagestyle" src="{{ asset($row->thumb) }}" />
+                                                                <img id="result"  class="imagestyle" src="{{ asset($row->thumb) }}"/>
                                                                 @else
                                                                     <img id="result"  class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}" />
                                                                 @endif
                                                             </div>
+                                                            <div class="uploadbtn"> 
+                                                                <label for="file-upload" class="custom-file-upload">Upload Here</label>
+                                                                <input id="file-upload" type="file" name="thumb" onchange="loadImage(event)"/>
+                                                                <input type="hidden" value="{{$row->thumb}}" name="old_image">   
+                                                            </div>
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label for="validationCustom01" class="mb-1">category Name :</label>
+                                                            <input type="text"  name="name" value="{{old('name',$row->name)}}" required class="form-control @error('name') border-danger @enderror"> 
+                                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                        </div> 
+                                                        <div class="form-group">
+                                                            <label for="desc">Description:</label>
+                                                            <textarea type="validationCustom01"  name="desc"  class="form-control @error('name') border-danger @enderror" rows="5">{{$row->desc}}</textarea>
+                                                            <span class="text-danger">{{ $errors->first('desc') }}</span>
+                                                        </div> 
+                                                        
                                                     </div>
                                                     <div class="mt-3 text-right">
                                                         <button type="submit" class="btn btn-success" type="button">Update</button> 
@@ -118,19 +159,26 @@
                     <div class="card-body">
                         <form action="{{ route('category.store') }}" method="post" class="form" id="validateForm" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
-                                <label for="category">category Name:</label>
-                                <input type="text"  name="name" required class="form-control @error('name') border-danger @enderror"> 
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                            </div>
-
-                            <div class="form-group">
+                            <div class="form-group text-left mb-5 pb-3">  
                                 <label for="thumb">Image:</label>
-                                <input type="file" class="form-control" name="thumb" id="image" onchange="loadFile(event)">
-                                <div class="divmargin mt-2">
+                                <div class="mt-0">
                                     <img id="output"  class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}" />
                                 </div>
+                                <div class="uploadbtn"> 
+                                    <label for="file-upload" class="custom-file-upload">Upload Here</label>
+                                    <input id="file-upload" type="file" name="thumb" onchange="loadFile(event)"/>
+                                </div>
                             </div>
+                            <div class="form-group">
+                                <label for="category">category Name:</label>
+                                <input type="text"  name="name" value="{{ old('name') }}" required class="form-control @error('name') border-danger @enderror"> 
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="desc">Description:</label>
+                                <textarea type="text"  name="desc"  class="form-control @error('name') border-danger @enderror" rows="5"> </textarea>
+                                <span class="text-danger">{{ $errors->first('desc') }}</span>
+                            </div>   
                             <div class="text-right">
                                 <button type="submit" class="btn btn-success">Save</button>
                             </div>

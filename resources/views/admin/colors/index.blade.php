@@ -2,10 +2,7 @@
 
 @section('content')
 @push('css')
-<style>
-    .m-l{
-        margin-left:-100px;
-    }
+<style> 
     .fa{
         padding:4px;
       font-size:16px;

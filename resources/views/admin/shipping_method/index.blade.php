@@ -1,7 +1,15 @@
 @extends('admin.layout.master')
 
 
-@section('content')  
+@section('content')
+@push('css')
+<style> 
+    .fa{
+        padding:4px;
+      font-size:16px;
+    }
+</style>
+@endpush  
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
@@ -43,12 +51,12 @@
                                     <td width="50">{{ $row->desc }}</td>
                                     <td class="d-flex justify-content-between" width="150"> 
                                         <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug.'/edit' )}}"><button class="btn btn-md btn-warning"  data-toggle="modal" data-original-title="test" data-target="#shippingEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a> </li>
+                                            <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#shippingEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a> </li>
                                             <li class="list-inline-item">
                                                 <form action="{{ url('/andbaazaradmin/shippingmethod/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-md btn-primary"><i class="fa fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             </li>
                                     </td>

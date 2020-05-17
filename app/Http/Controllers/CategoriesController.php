@@ -45,12 +45,13 @@ class CategoriesController extends Controller
         $this->validateForm($request);
         $slug = Baazar::getUniqueSlug($category,$request->name);
         $data = Category::create([
-            'name' => $request->name,
-            'slug' => $slug,
-            'thumb' => Baazar::fileUpload($request,'thumb','','/uploads/category_image'),
-            'parent' => $request->parent,
-            'sort' => $request->sort,
-            'user_id' => Sentinel::getUser()->id,
+            'name'       => $request->name,
+            'desc'       => $request->desc,
+            'slug'       => $slug,
+            'thumb'      => Baazar::fileUpload($request,'thumb','','/uploads/category_image'),
+            'parent'     => $request->parent,
+            'sort'       => $request->sort,
+            'user_id'    => Sentinel::getUser()->id,
             'created_at' => now(),
             ]);
 
@@ -98,11 +99,12 @@ class CategoriesController extends Controller
     {
         $this->validateForm($request);
         $data =[
-            'name' => $request->name,
-            'thumb' => Baazar::fileUpload($request,'thumb','old_image','/uploads/category_image'),
-            'parent' => $request->parent,
-            'sort' => $request->sort,
-            'user_id' => Sentinel::getUser()->id,
+            'name'       => $request->name,
+            'desc'       => $request->desc,
+            'thumb'      => Baazar::fileUpload($request,'thumb','old_image','/uploads/category_image'),
+            'parent'     => $request->parent,
+            'sort'       => $request->sort,
+            'user_id'    => Sentinel::getUser()->id,
             'updated_at' => now(),
         ];
 
