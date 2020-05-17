@@ -27,11 +27,13 @@
                                 </ul>
                             </li>
                             
-                            <li><a class="sidebar-header" href="{{ url('andbaazaradmin/tag') }}"><i class="fa fa-circle"></i><span>Tags</span></a></li>
+                            <li><a class="sidebar-header" href="{{ url('andbaazaradmin/tag') }}"><i class="fa fa-circle"></i></i><span>Tags</span></a></li>
                             
                             <li><a class="sidebar-header" href="{{ url('andbaazaradmin/color') }}"><i class="fa fa-circle"></i><span>Color</span></a></li>
 
-                            <li><a class="sidebar-header" href="{{ url('andbaazaradmin/size') }}"><i class="fa fa-circle"></i><span>Color</span></a></li> 
+
+                            <li><a class="sidebar-header" href="{{ url('andbaazaradmin/size') }}"><i class="fa fa-circle"></i><span>Size</span></a></li>  
+
                             </li>   
 
                             </li>
@@ -63,12 +65,12 @@
                     <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotionhead') }}"><i data-feather="users"></i><span>Promotion Head</span></a>
                        
                     </li>
+
                     <li><a class="sidebar-header" href="{{ url('andbaazaradmin/currency') }}"><i data-feather="chrome"></i><span>Currencies</span></a>
                         
                     </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/courier')}}"><i data-feather="settings" ></i><span>Couriers</span></a>
-                     
-                    </li>
+                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/courier')}}"><i data-feather="settings" ></i><span>Couriers</span></a> 
+                        
                     <li><a class="sidebar-header" href=""><i data-feather="settings" ></i><span>Vendor Profile</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ url('merchant/seller')}}"><i class="fa fa-circle"></i>Profile list</a></li>
