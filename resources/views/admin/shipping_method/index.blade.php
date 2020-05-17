@@ -117,7 +117,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="shipping">Shipping Method:</label>
-                                <input type="text"  name="name" required class="form-control @error('name') border-danger @enderror"> 
+                                <input type="text"  name="name" value="{{ old('name') }}" required class="form-control @error('name') border-danger @enderror"> 
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             </div>
                             <div class="form-group">
@@ -132,7 +132,7 @@
 
                             <div class="form-group">
                                 <label for="fees">Fees:</label>
-                                <input type="number" name="fees" required class="form-control @error('fees') border-danger @enderror">
+                                <input type="number" name="fees" value="{{ old('fees') }}" required class="form-control @error('fees') border-danger @enderror">
                                 <span class="text-danger">{{ $errors->first('fees') }}</span>
                             </div>
 

@@ -96,7 +96,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Payment Method:</label>  
-                                <input type="text"  name="name" required class="form-control @error('name') border-danger @enderror"> 
+                                <input type="text"  name="name" value="{{ old('name') }}" required class="form-control @error('name') border-danger @enderror"> 
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             </div>
 
