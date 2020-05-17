@@ -293,7 +293,7 @@
 			
 			{{-- <img id="cspio-logo" src="https://static.comingsoonpage.com/cspio-assets/1.0.0/seedprod-logo-white.png"> --}}
 
-			<a href="index.html"><img src="{{asset('frontend')}}/assets/images/icon/andbaazar.png"
+			<a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/andbaazar.png"
 				class="img-fluid blur-up lazyload" alt="image" style ="padding:40px;"></a>
 			    				
 			<h1 id="cspio-headline">Coming Soon Page</h1>			    				

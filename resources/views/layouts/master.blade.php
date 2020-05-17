@@ -81,7 +81,7 @@
                                     </a>
                                 </div>
                                 <div class="brand-logo">
-                                    <a href="index.html"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
+                                    <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
                                             class="img-fluid blur-up lazyload" alt="image"></a>
                                 </div>
                             </div>
@@ -326,7 +326,7 @@
                                 </div> --}}
                             </div>
                             <div class="brand-logo">
-                                <a href="index.html"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
+                                <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
                                         class="img-fluid blur-up lazyload" alt=""></a>
                             </div>
                         </div>
@@ -609,7 +609,8 @@
                             <h4>about</h4>
                         </div>
                         <div class="footer-contant">
-                            <div class="footer-logo"><img src="{{asset('frontend')}}/assets/images/icon/logo.png" alt=""></div>
+                            <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
+                                class="img-fluid blur-up lazyload" alt=""></a>                       
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
                             <div class="footer-social">

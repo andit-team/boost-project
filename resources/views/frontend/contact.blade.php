@@ -79,12 +79,12 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <label for="name">First Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Your name"
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Your First Name"
                                         required="">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="email">Last Name</label>
-                                    <input type="text" class="form-control" id="last-name" placeholder="Email" required="">
+                                    <input type="text" class="form-control" id="last-name" placeholder="Enter Your Last Name" required="">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="review">Phone number</label>
