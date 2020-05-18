@@ -25,7 +25,7 @@ class InventoriesController extends Controller
         
         $size= Size::all();
         $color = Color::all();
-        return view ('admin.inventory.index',compact('inventory','item','size','color'));
+        return view ('merchant.inventory.index',compact('inventory','item','size','color'));
     }
 
     /**
@@ -41,7 +41,7 @@ class InventoriesController extends Controller
         //dd($item);
         $size= Size::all();
         $color = Color::all();
-        return view ('admin.inventory.create',compact('inventory','item','size','color'));
+        return view ('merchant.inventory.create',compact('inventory','item','size','color'));
     }
 
     /**
@@ -77,7 +77,7 @@ class InventoriesController extends Controller
     public function show(Inventory $inventory)
     {
        
-        return view ('admin.inventory.show',compact('inventory'));
+        return view ('merchant.inventory.show',compact('inventory'));
     }
 
     /**
@@ -95,7 +95,7 @@ class InventoriesController extends Controller
          //dd($item);
          $size= Size::all();
          $color = Color::all();
-         return view ('admin.inventory.edit',compact('inventory','item','size','color'));     
+         return view ('merchant.inventory.edit',compact('inventory','item','size','color'));     
     }
 
     /**
