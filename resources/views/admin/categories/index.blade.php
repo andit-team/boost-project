@@ -65,31 +65,28 @@
                             <thead>
                             <tr>
                                 <th width="50">Sl</th>
-                                <th width="100">Thumb</th>
-                                <th width="50">Category</th> 
-                                <th width="50">Description</th>
-                                <th width="150">Action</th>
+                                {{-- <th width="100">Thumb</th> --}}
+                                <th width="200">Category</th> 
+                                <th>Description</th>
+                                <th width="80" class="text-center">Action</th>
                             </tr>
                             </thead>
                           <tbody>
                             @php $i=0; @endphp
                             @foreach($category as $row)
                             <tr>
-                                <td width="50">{{ ++$i }}</td>
-                                <td width="100">
-                                    @if(!empty($row->thumb))
-                                       <img class="imagestyleIndex" src="{{ asset($row->thumb ) }}">
-                                    @else
-                                        <img class="imagestyleIndex" src="{{ asset('/uploads/category_image/user.png') }}">
-                                    @endif
-                                </td>  
-                                <td width="50">{{ $row->name }}</td>  
-                                <td width="50">{{ $row->desc }}</td> 
-                                <td class="d-flex justify-content-between" width="150"> 
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item"><a href="#" id="{{ url('/andbaazaradmin/category/'.$row->slug.'/edit')}}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#categoryEditModal{{$row->id}}"><i class="fa fa-edit"></i></button> </a></li>
-                                        <li class="list-inline-item"> 
-                                            <form action="{{ url('/andbaazaradmin/category/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                <td>{{ ++$i }}</td>
+                                <td>
+                                    <a data-toggle="tooltip" title="<img src='{{ $row->thumb ? asset($row->thumb) : asset('/uploads/category_image/user.png') }}' height='100' width='100' />">
+                                        {{ $row->name }}
+                                    </a>
+                                </td>
+                                <td>{{ $row->desc }}</td> 
+                                <td class=""> 
+                                    <ul class="d-flex justify-content-between">
+                                        <li><a href="#" id="{{ url('/andbaazaradmin/category/'.$row->slug.'/edit')}}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#categoryEditModal{{$row->id}}"><i class="fa fa-edit"></i></button> </a></li>
+                                        <li> 
+                                            <form action="{{ url('/andbaazaradmin/category/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
@@ -112,18 +109,13 @@
                                                     @method('put')
                                                     <div class="form">
                                                         <div class="form-goup text-left text-left mb-5 pb-3">  
-                                                            <label for="validationCustom02">image :</label>
+                                                            <label for="thumb">Image:</label>
                                                             <div class="mt-0">
-                                                                @if(!empty($row->thumb))
-                                                                <img id="result"  class="imagestyle" src="{{ asset($row->thumb) }}"/>
-                                                                @else
-                                                                    <img id="result"  class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}" />
-                                                                @endif
+                                                                <img id="output{{$row->id}}"  class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}" />
                                                             </div>
                                                             <div class="uploadbtn"> 
                                                                 <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                                                <input id="file-upload" type="file" name="thumb" onchange="loadImage()"/>
-                                                                <input type="hidden" value="{{$row->thumb}}" name="old_image">   
+                                                                <input id="file-upload" type="file" name="thumb" onchange="loadimg(event)"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -145,6 +137,17 @@
                                             </div> 
                                         </div>
                                     </div> 
+                                    @push('js')
+                                    <script>
+                                        var loadimg = function(event) {
+                                            var outputss = document.getElementById('output{{$row->id}}');
+                                            outputss.src = URL.createObjectURL(event.target.files[0]);
+                                            console.log(outputss.src);
+                                            $('#output{{$row->id}}').attr('src',outputss.src);
+                                            // outputss.src = ;
+                                        }; 
+                                    </script>
+                                    @endpush
                             @endforeach
                             </tbody>
                         </table>
@@ -191,18 +194,20 @@
         </div>
     </div>
 </div>
+
 @endsection
 @push('js')
 <script> 
+$('a[data-toggle="tooltip"]').tooltip({
+    animated: 'fade',
+    placement: 'bottom',
+    html: true
+});
+
     var loadFile = function(event) {
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
+        var outputs = document.getElementById('output');
+        outputs.src = URL.createObjectURL(event.target.files[0]);
     }; 
-    
-    var loadImage = function(event){
-        var result = document.getElementById('result');
-        result.src = URL.createObjectURL(event.target.files[0]);
-    }
 
 </script>
 @endpush
