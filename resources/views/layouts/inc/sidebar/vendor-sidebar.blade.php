@@ -20,9 +20,9 @@
                 <li class="nav-item"><a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventory') }}">All Inventory</a>
                 </li>
                 </li>
-                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">orders</a>
+                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">Orders</a>
                 </li>
-                <li class="nav-item"><a  class="nav-link {{$active == 'profile' ? 'active' : ''}}" href="{{ url('merchant/seller/') }}">profile</a>
+                <li class="nav-item"><a  class="nav-link {{$active == 'profile' ? 'active' : ''}}" href="{{ url('merchant/seller/') }}">Profile</a>
                 </li>
                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a>
                 </li>
