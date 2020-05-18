@@ -60,7 +60,9 @@
 	
 	html{
 		height:100%;
-		background: #ffffff url(https://images.unsplash.com/photo-1449168013943-3a15804bb41c?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=1958d4bfb59a246c6092ff0daabd284b); no-repeat center bottom fixed;
+		/* background: #ffffff url(https://www.kindpng.com/imgv/biomJw_transparent-fruit-and-vegetables-clipart-vegetables-with-basket/#gal_transparent-fruit-and-vegetables-clipart-vegetables-with-basket-png-png-download_biomJw_598263.png); no-repeat center bottom fixed; */
+		background: #ffffff url(https://images.alphacoders.com/768/76811.jpg);no-repeat center bottom fixed;
+		/* background: #ffffff url(https://images.unsplash.com/photo-1449168013943-3a15804bb41c?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=1958d4bfb59a246c6092ff0daabd284b); no-repeat center bottom fixed; */
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
@@ -125,6 +127,12 @@
 				font-size: 48px;
 		color:#ffffff;
 		line-height: 1.00em;
+	}
+
+	img{
+		background: #e6f2ff;
+		border: 3px dotted #004d99;
+		margin-bottom:50px;
 	}
 
 	.cspio button{
