@@ -40,7 +40,7 @@ class UserTableSeeder extends Seeder
                 'first_name'    => 'Rofiq',
                 'last_name'     => 'Mia',
                 // 'email'         => 'seller@andit.com',
-                'email'         => 'jalalk53@ymail.com',
+                'email'         => 'and.baazar@yahoo.com',
                 'password'      => '123456', //123456
                 'type'          => 'sellers',
                 'created_at'    => now(),

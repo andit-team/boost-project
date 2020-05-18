@@ -9,11 +9,14 @@
 </head>
 <body>
 
-<h1>Hello, <p style="font-size: x-small;">{{$sellerId->name }}</p></h1>
+    <h1>Hello, <p style="font-size: x-small;">{{ $sellerId->first_name.' '.$sellerId->last_name }}</p></h1>
 
-<P>
-
-</P>
+    <P>
+      Dear,
+      <br>
+      {{ $sellerId->first_name.' '.$sellerId->last_name }},We got your profile request. 
+      After approve your profile request can update your profile.
+    </P>
 
 
 

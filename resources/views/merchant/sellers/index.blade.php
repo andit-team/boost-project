@@ -30,11 +30,13 @@
                         <table class="table table-borderd" id="dataTableNoPagingDesc">
                             <thead>
                             <tr>
-                                <th>Sl</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Action</th>
+                                <th width="50">Sl</th>
+                                <th width="200">First Name</th>
+                                <th width="200">Last Name</th>
+                                <th width="200">Email</th>
+                                <th width="200">Phone</th>
+                                <th width="200">Description</th>
+                                <th width="80" class="text-center">Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -42,19 +44,21 @@
                             @foreach($sellers as $row)
                                 <tr>
                                     <td>{{ ++$i }}</td>
-                                    <td>{{ $row->name }}</td>
+                                    <td>{{ $row->first_name }}</td>
+                                    <td>{{ $row->last_name }}</td>
                                     <td>{{ $row->email }}</td>
                                     <td>{{ $row->phone }}</td>
-                                    <td>
-                                        <ul class="list-inline">
-       {{--                                            <li class="list-inline-item"><a href="{{ url('/andbaazaradmin/courier/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>--}}
-                                                    <li class="list-inline-item"><a href="{{ url('/merchant/seller/'.$row->id.'/edit') }}" title="Edit" class="btn btn-sm btn-info"><i class="fa fa-check"></i> </a> </li>
-                                                    <li class="list-inline-item">
-                                                    <form action="{{ url('/merchant/seller/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
-                                                </form>
+                                    <td>{{ $row->description }}</td>
+                                    <td class="d-flex justify-content-between">
+                                    <ul>
+                                            <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"><i class="fa fa-check"></i> </a> </li>
+                                            <li><a href="{{ url('/merchant/seller/'.$row->id.'/edit') }}" title="Edit" class="btn btn-sm btn-info"><i class="fa fa-check"></i> </a> </li>
+                                            <li>
+                                                <form action="{{ url('/merchant/seller/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
+                                            </form>
                                             </li>
                                         </ul>
                                     </td>
