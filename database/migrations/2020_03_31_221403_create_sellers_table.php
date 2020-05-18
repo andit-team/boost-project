@@ -15,7 +15,8 @@ class CreateSellersTable extends Migration
     {
         Schema::create('sellers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('picture')->nullable();
             $table->string('email')->nullable();
             $table->date('dob');

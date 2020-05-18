@@ -12,17 +12,17 @@
         </div>
         <div class="faq-tab">
             <ul class="nav nav-tabs" id="top-tab" role="tablist">
-                <li class="nav-item {{$active == 'dashboard' ? 'active' : ''}}"><a data-toggle="tab" class="nav-link active" href="#dashboard">dashboard</a></li>
+                <li class="nav-item {{$active == 'dashboard' ? 'active' : ''}}"><a  class="nav-link  {{$active == 'dashboard' ? 'active' : ''}}" href="{{ url('merchant/dashboard') }}">dashboard</a></li>
                 <!-- <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a></li>                             -->
 
-                <li class="nav-item {{$active == 'product' ? 'active' : ''}}"><a  class="nav-link" href="{{ url('merchant/product') }}">All Products</a>
+                <li class="nav-item"><a  class="nav-link {{$active == 'product' ? 'active' : ''}}" href="{{ url('merchant/product') }}">All Products</a>
                 </li>
-                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/inventory') }}">All Inventory</a>
+                <li class="nav-item"><a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventory') }}">All Inventory</a>
                 </li>
                 </li>
                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">orders</a>
                 </li>
-                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/seller/create') }}">profile</a>
+                <li class="nav-item"><a  class="nav-link {{$active == 'profile' ? 'active' : ''}}" href="{{ url('merchant/seller/') }}">profile</a>
                 </li>
                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a>
                 </li>
