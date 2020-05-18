@@ -121,10 +121,11 @@ class SellersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Seller $seller)
+    public function show($id)
     {
-        $seller = Seller::where('user_id',Sentinel::getUser()->id)->first();
-        dd($seller);
+        $seller = Seller::find($id); 
+
+        return view('merchant.sellers.show',compact('seller'));
     }
 
     /**

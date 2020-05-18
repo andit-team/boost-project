@@ -51,8 +51,7 @@
                                     <td>{{ $row->description }}</td>
                                     <td class="d-flex justify-content-between">
                                     <ul>
-                                            <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"><i class="fa fa-check"></i> </a> </li>
-                                            <li><a href="{{ url('/merchant/seller/'.$row->id.'/edit') }}" title="Edit" class="btn btn-sm btn-info"><i class="fa fa-check"></i> </a> </li>
+                                            <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"><i class="fa fa-check"></i> </a> </li> 
                                             <li>
                                                 <form action="{{ url('/merchant/seller/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                 @csrf
