@@ -52,13 +52,13 @@
                                     <td class="d-flex justify-content-between">
                                     <ul>
                                             <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"><i class="fa fa-check"></i> </a> </li> 
-                                            <li>
-                                                <form action="{{ url('/merchant/seller/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                            {{-- <li>
+                                                <form action="{{ url('/andbaazaradmin/seller/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
                                             </form>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </td>
                                 </tr>

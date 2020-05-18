@@ -189,6 +189,7 @@ class SellersController extends Controller
     {
         //
     }
+    
 
     private function validateForm($request){
         $validatedData = $request->validate([
