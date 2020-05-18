@@ -98,9 +98,9 @@
                         <div class="col-md-12 mt-4">
                             <button type="submit" class="btn btn-sm btn-solid" >Save</button>
                         </div>
-                        </div>
-                </form>
-                </div>
+                    </div>
+                 </form>
+             </div>
             </div>
         </div>
 </section>
