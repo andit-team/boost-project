@@ -22,7 +22,7 @@
                 </li>
                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">orders</a>
                 </li>
-                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/seller/create') }}">profile</a>
+                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/seller/') }}">profile</a>
                 </li>
                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a>
                 </li>

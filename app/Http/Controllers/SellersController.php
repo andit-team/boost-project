@@ -30,9 +30,14 @@ class SellersController extends Controller
      */
     public function create()
     {
+        $userprofile = Sentinel::getUser();
+        //dd($userprofile);
         $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
         //dd($sellerProfile);
-       return view('merchant.sellers.create',compact('sellerProfile'));
+        if(!empty($sellerProfile))
+           return view('merchant.sellers.update',compact('sellerProfile','userprofile'));
+         else
+           return view('merchant.sellers.create',compact('sellerProfile','userprofile'));
     }
 
     /**
@@ -43,44 +48,68 @@ class SellersController extends Controller
      */
     public function store(Request $request)
     {
+        $userprofile = Sentinel::getUser();
         $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
         //dd($sellerId);
         $this->validateForm($request);
         if($sellerId){
             $sellerId->update([
-                'name' => $request->name,
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
                 'phone' => $request->phone,
                 'email' => $request->email,
                 'picture' => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
                 'dob'  =>$request->dob,
                 'gender' => $request->gender,
                 'description' => $request->description,
-                'last_visited_at' => $request->last_visited_at,
+                'last_visited_at' => now(),
                 'last_visited_from' => $request->last_visited_from,
-                'verification_token' => $request->verification_token,
-                'remember_token' => $request->remember_token,
+                // 'verification_token' => $request->verification_token,
+                // 'remember_token' => $request->remember_token,
                 'user_id' => Sentinel::getUser()->id,
                 'updated_at' => now(),
             ]);
+
+            $userprofile->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'updated_at' => now(),
+            ]);
+
+            session()->flash('success','your profile is updated');
+            return back();
+
         }else{
             $sellerId=Seller::create([
-                'name' => $request->name,
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
                 'phone' => $request->phone,
                 'email' => $request->email,
                 'picture' => Baazar::fileUpload($request,'picture','','/uploads/vendor_profile'),
                 'dob'  =>$request->dob,
                 'gender' => $request->gender,
                 'description' => $request->description,
-                'last_visited_at' => $request->last_visited_at,
+                'last_visited_at' => now(),
                 'last_visited_from' => $request->last_visited_from,
-                'verification_token' => $request->verification_token,
-                'remember_token' => $request->remember_token,
+                // 'verification_token' => $request->verification_token,
+                // 'remember_token' => $request->remember_token,
                 'user_id' => Sentinel::getUser()->id,
+                'created_at' => now(),
+            ]);
+
+            $userprofile->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
                 'updated_at' => now(),
             ]);
 
+
+
             \Mail::to($sellerId)->send(new VendorProfileApprovalMail($sellerId));
-            session()->flash('message','Thanks for create profile! Your Message Sent Successfully');
+            session()->flash('success','Thanks for create profile! Your Message Sent Successfully');
+            return back();
         }
 
         return back();
@@ -161,7 +190,8 @@ class SellersController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'email' => 'required',
             'dob' => 'required',
             'gender' => 'required',

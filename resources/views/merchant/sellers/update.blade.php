@@ -58,7 +58,7 @@
                             <input type="text" class="form-control @error('last_name') border-danger @enderror" required name="last_name" value="{{ old('last_name',$userprofile->last_name) }}" id="" placeholder="Last Name">
                             
                             <label for="phone" class="mt-2">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
-                            <input type="number" class="form-control @error('phone') border-danger @enderror" required  name="phone" value="{{ old('phone') }}" id="" placeholder="Phone Number">
+                            <input type="number" class="form-control @error('phone') border-danger @enderror" required  name="phone" value="{{ old('phone', $sellerProfile->phone) }}" id="" placeholder="Phone Number">
 
                             <label for="email" class="mt-2">Email<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('email') }}</span>
                             <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$userprofile->email) }}" id="" placeholder="Email">
@@ -68,30 +68,35 @@
                         <div class="col-md-4 text-right">  
                             <label for="picture">Picture</label>
                             <div class="mt-0">
-                                <img id="output"  class="imagestyle" src="{{ asset('/uploads/vendor_profile/user.png') }}" />
+                                @if(!empty($sellerProfile->picture))
+                                 <img id="output"  class="imagestyle" src="{{ asset($sellerProfile->picture) }}"/>
+                                @else
+                                 <img id="output"  class="imagestyle" src="{{ asset('/uploads/vendor_profile/user.png') }}" />
+                                @endif
                             </div>
                             <div class="uploadbtn"> 
                                 <label for="file-upload" class="custom-file-upload">Upload Here</label>
                                 <input id="file-upload" type="file" name="picture" onchange="loadFile(event)"/>
+                                <input type="hidden" value="{{$sellerProfile->picture}}" name="old_image"> 
                             </div>
                         </div>
                     </div> 
 
                     <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
-                    <textarea class="form-control mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" ></textarea>
+                    <textarea class="form-control mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $sellerProfile->description }}</textarea>
 
 
                     <div class="form-row"> 
                         <div class="col-md-6 mt-2">
                             <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span> 
-                            <input type="date" class="form-control datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob') }}" id="" placeholder="">  
+                            <input type="date" class="form-control datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob',$sellerProfile->dob) }}" id="" placeholder="">  
                         </div> 
                         <div class="col-md-6 mt-2"> 
                             <label for="gender">Gender (select one)<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('gender') }}</span>
                             <select name="gender" class="form-control px-10 @error('gender') border-danger @enderror" id="" required autocomplete="off" style="height: 51px;">                                         
-                                <option value="Male" selected>Male</option>
-                                <option value="Female">Female</option> 
-                                <option value="Other">Other</option>  
+                                <option value="Male" @if($sellerProfile->gender == 'Male') selected @endif>Male</option>
+                                <option value="Female" @if($sellerProfile->gender =='Female' ) selected @endif>Female</option> 
+                                <option value="Other" @if($sellerProfile->gender == 'Other') selected @endif>Other</option>   
                         </select>
                         </div>
                     
