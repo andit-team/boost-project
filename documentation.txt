@@ -1,2 +1,8 @@
 validator js:
 https://jqueryvalidation.org/
+
+Date Pickers
+https://github.com/eternicode/bootstrap-datepicker
+
+Sweetalert
+https://sweetalert2.github.io/

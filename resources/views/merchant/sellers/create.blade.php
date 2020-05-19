@@ -27,6 +27,7 @@
         border-top: 0px;
     }
 </style> 
+@endpush
 @include('elements.alert')
 @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
@@ -89,8 +90,8 @@
                     <div class="form-row"> 
                         <div class="col-md-6 mt-2">
                             <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span> 
-                            <input type="date" class="form-control datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob') }}" id="" placeholder="">  
-                        </div> 
+                            <input type="text"  class="form-control  @error('dob') border-danger @enderror datepickerPreviousOnly" required name="dob" value="{{ old('dob') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">  
+                        </div>  
                         <div class="col-md-6 mt-2"> 
                             <label for="gender">Gender (select one)<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('gender') }}</span>
                             <select name="gender" class="form-control px-10 @error('gender') border-danger @enderror" id="" required autocomplete="off" style="height: 51px;">                                         

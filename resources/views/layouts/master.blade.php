@@ -36,6 +36,7 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/color1.css" media="screen" id="color">
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
     @stack('css')
 
 </head>
@@ -1630,7 +1631,7 @@
     <script src="{{asset('frontend')}}/assets/js/script.js"></script>
     <script src="{{asset('/')}}js/validator.js"></script>
     <script src="{{asset('/')}}js/validatorRules.js"></script>
-
+    @include('elements.myjs')
     <script>
         $(window).on('load', function () {
             setTimeout(function () {
