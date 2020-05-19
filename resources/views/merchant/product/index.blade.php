@@ -1,15 +1,13 @@
 @extends('layouts.master')
-
-@section('content')
-
+@section('content') 
 @include('elements.alert')
 @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
-      Dashboard
+      Vendor Dashboard
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">Profile</li>
+      <li class="breadcrumb-item active" aria-current="page">Inventory</li>
   @endslot
 @endcomponent
 
@@ -20,8 +18,8 @@
   }
 </style>
 
-<section class="section-b-space">
-  <div class="container">
+<section class="dashboard-section section-b-space">
+  <div class="container"> 
       <div class="row">
         @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
           <div class="col-md-9"> 
