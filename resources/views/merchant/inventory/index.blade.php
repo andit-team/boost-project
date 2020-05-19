@@ -41,7 +41,7 @@
                         </thead>
                         <tbody>
                             @php $i=0; @endphp
-                            @foreach($inventory as $row)
+                            @forelse($inventory as $row)
                             <tr>
                                 <td>{{ ++$i }}</td>                                    
                                 <td>{{ $row->item->name}}</td>                                     
@@ -61,7 +61,13 @@
                                         </li>
                                     </ul>
                                 </td>
-                            @endforeach
+                                @empty
+                                <div class="card mt-2"> 
+                                    <div class="card-body text-center">
+                                        <img  src="{{ asset('frontend')}}/assets/images/no_data_found/not-found-2.png" class="img image-responsive thumbnial w-50">
+                                    </div>
+                                </div> 
+                                @endforelse
                             </tbody>
                         </table>
                         </div>
