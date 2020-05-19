@@ -91,7 +91,7 @@
                     </div> 
 
                     <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
-                <textarea class="form-control mb-0 @error('description') border-danger @enderror" readonly placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $seller->description }}</textarea>
+                    <textarea class="form-control mb-0 @error('description') border-danger @enderror" readonly placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $seller->description }}</textarea>
 
 
                     <div class="form-row"> 
