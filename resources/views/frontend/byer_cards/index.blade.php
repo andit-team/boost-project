@@ -51,7 +51,7 @@
                             <form action="{{ url('/profile/card/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="btn btn-sm btn-solid ml-2"><i class="fa fa-trash"> Delete</i></button>
+                                <button type="submit" class="btn btn-sm btn-solid ml-2" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash"> Delete</i></button>
                             </form>
                        </div>
                     </div>

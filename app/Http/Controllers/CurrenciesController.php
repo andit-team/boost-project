@@ -53,7 +53,7 @@ class CurrenciesController extends Controller
 
        Currency::create($data);
      
-       Session::flash('success', 'Currency Inserted Successfully!');
+       Session()->flash('success', 'Currency Inserted Successfully!');
        return redirect('andbaazaradmin/currency');
     }
 
@@ -100,7 +100,7 @@ class CurrenciesController extends Controller
 
         $currency->update($data);
 
-        Session::flash('success', 'Currency Updated Successfully!');
+        Session()->flash('success', 'Currency Updated Successfully!');
         return redirect('andbaazaradmin/currency');
     }
 
@@ -114,8 +114,8 @@ class CurrenciesController extends Controller
     {
         $currency->delete();
 
-        // alert()->error('DangerAlert','Currency Deleted Successfully.');
-        Session::flash('success', 'Currency Deleted Successfully!');
+       
+        Session()->flash('warning', 'Currency Deleted Successfully!');
         return redirect('andbaazaradmin/currency');
     }
 

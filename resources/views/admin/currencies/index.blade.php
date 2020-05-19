@@ -57,7 +57,7 @@
                                             <form action="{{ url('/andbaazaradmin/currency/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                 @csrf
                                                 @method('delete')
-                                                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
+                                                <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
                                             </form>
                                         </li>
                                     </ul>
@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="form-group ">
                                         <label for="validationCustom0" >Symbol:</label>
-                                        <input class="form-control name="symbol" id="symbol" type="text" required="">
+                                        <input class="form-control" name="symbol" id="symbol" type="text" required="">
                                     </div>
                                     <div class="text-right ">                                    
                                             <button type="submit"  class="btn btn-success">Save</button>

@@ -48,11 +48,12 @@
                                         <ul>
                                             <li><a href="#" id="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
                                         
-                                            <li><form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
-                                            </form>
+                                            <li>
+                                                <form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
+                                               </form>
                                             </li>
                                         </ul>
                                     </td>

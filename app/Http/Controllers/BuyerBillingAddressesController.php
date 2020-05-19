@@ -139,7 +139,7 @@ class BuyerBillingAddressesController extends Controller
     {
         $billing->delete();
 
-        Session::flash('success', 'Billing Address Deleted');
+        Session::flash('warning', 'Billing Address Deleted');
 
         return back();
     }

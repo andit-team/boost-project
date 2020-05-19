@@ -109,7 +109,7 @@ class TagsController extends Controller
     {
 
           $tag->delete();
-          Session::flash('success', 'Tags Deleted Successfully');
+          Session::flash('warning', 'Tags Deleted Successfully');
           return redirect('andbaazaradmin/tag');
     }
 

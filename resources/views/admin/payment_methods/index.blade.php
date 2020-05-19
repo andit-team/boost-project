@@ -50,9 +50,9 @@
                                             <li><a href="#" id="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug).'/edit' }}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#paymentEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
                                             <li>
                                                 <form action="{{ url('/andbaazaradmin/paymentmethod/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
                                                 </form> 
                                             </li> 
                                         </ul> 

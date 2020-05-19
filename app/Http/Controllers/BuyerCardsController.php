@@ -124,7 +124,7 @@ class BuyerCardsController extends Controller
     {
         $card->delete();
 
-        Session::flash('success', 'Billing Card Deleted');
+        Session::flash('warning', 'Billing Card Deleted');
 
         return back();
     }

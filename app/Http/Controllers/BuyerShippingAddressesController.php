@@ -117,7 +117,7 @@ class BuyerShippingAddressesController extends Controller
     {
         $shipping->delete();
 
-        Session::flash('success','Shipping address Deleted');
+        Session::flash('warning','Shipping address Deleted');
 
         return back();
     }
