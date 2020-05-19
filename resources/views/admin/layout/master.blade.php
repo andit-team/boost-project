@@ -244,7 +244,7 @@
 
 <!--Datepicker js-->
 
-<script src="{{asset('')}}/assets/js/bootstrap-datepicker.min.js"></script>
+{{-- <script src="{{asset('')}}/assets/js/bootstrap-datepicker.min.js"></script> --}}
 <script src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
 <script src="{{ asset('') }}/js/treeview.js"></script>
@@ -257,6 +257,26 @@ $(document).ready( function () {
 } );
 
 $('#dataTableNoPagingDesc').DataTable({
+    dom: 'Bfrtip',
+    "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
+    paging: false,
+    buttons: [
+        'excel', 'csv', 'pdf'
+    ],
+    "ordering": false
+});
+
+$('#dataTableNoPagingDesc1').DataTable({
+    dom: 'Bfrtip',
+    "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
+    paging: false,
+    buttons: [
+        'excel', 'csv', 'pdf'
+    ],
+    "ordering": false
+});
+
+$('#dataTableNoPagingDesc2').DataTable({
     dom: 'Bfrtip',
     "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
     paging: false,
