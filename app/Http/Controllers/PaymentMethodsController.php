@@ -113,7 +113,7 @@ class PaymentMethodsController extends Controller
     {
         // $paymentMethod = PaymentMethod::find($id);
         $paymentmethod->delete();
-        Session::flash('success', 'Payment Method Deleted Successfully!');
+        Session::flash('warning', 'Payment Method Deleted Successfully!');
         return redirect('andbaazaradmin/paymentmethod');
     }
 

@@ -111,7 +111,7 @@ class PromotionPlansController extends Controller
     public function destroy(Promotionplan $promotionplan)
     {
       $promotionplan->delete();
-      Session::flash('success', 'Promotion Plan Deleted Successfully!');
+      Session::flash('warning', 'Promotion Plan Deleted Successfully!');
       return redirect('andbaazaradmin/promotionplan');
     }
 

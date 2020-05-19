@@ -88,8 +88,8 @@
                                         <li> 
                                             <form action="{{ url('/andbaazaradmin/category/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                                 @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
+                                                @method('delete') 
+                                                <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
                                             </form> 
                                         </li>
                                     </ul>

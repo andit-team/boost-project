@@ -116,7 +116,7 @@ class PromotionHeadsController extends Controller
     {
           $promotionhead->delete();
 
-        Session::flash('success', 'Promotion Heads Deleted  Successfully!');
+        Session::flash('warning', 'Promotion Heads Deleted  Successfully!');
           return redirect('andbaazaradmin/promotionhead');
     }
 

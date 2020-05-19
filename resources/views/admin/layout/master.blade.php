@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 
     <link href="{{ asset('/') }}css/treeview.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
     @stack('css')
     <link href="{{ asset('/') }}css/admin-custom.css" rel="stylesheet">
 </head>
@@ -249,6 +250,7 @@
 <script src="{{ asset('') }}/js/treeview.js"></script>
 <script src="{{asset('/')}}js/validator.js"></script>
 <script src="{{asset('/')}}js/validatorRules.js"></script>
+@include('elements.myjs')
 <script>
 $(document).ready( function () {
     $('#myTable').DataTable();

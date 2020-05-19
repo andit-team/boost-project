@@ -112,7 +112,7 @@ class ShippingMethodsController extends Controller
     public function destroy(ShippingMethod $shippingmethod)
     {
       $shippingmethod->delete();
-      Session::flash('success', 'Shipping Method Deleted Successfully!');
+      Session::flash('warning', 'Shipping Method Deleted Successfully!');
       return redirect('andbaazaradmin/shippingmethod');
     }
 

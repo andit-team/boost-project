@@ -108,7 +108,7 @@ class SizesController extends Controller
     public function destroy(Size $size)
     {
         $size->delete();
-        Session::flash('success', 'Size Deleted Successfully!');
+        Session::flash('warning', 'Size Deleted Successfully!');
         return redirect('andbaazaradmin/size');
     }
 
