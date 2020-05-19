@@ -97,12 +97,14 @@
                                                     </div> 
                                                     <div class="form-group">
                                                         <label for="valid_from">Valid From:</label>
-                                                        <input type="date"  name="valid_from" value="{{old('valid_from',$row->valid_from)}}" required class="form-control @error('valid_from') border-danger @enderror">
+                                                        <input type="text"  class="form-control   @error('valid_from') border-danger @enderror datepickerDB" required name="valid_from" value="{{old('valid_from',$row->valid_from)}}" id="" placeholder="YYYY/MM/DD" autocomplete="off">         
+                                                        {{-- <input type="date"  name="valid_from" value="{{old('valid_from',$row->valid_from)}}" required class="form-control @error('valid_from') border-danger @enderror"> --}}
                                                         <span class="text-danger">{{ $errors->first('valid_from') }}</span>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="valid_to">Valid To:</label>
-                                                        <input type="date"  name="valid_to" value="{{old('valid_to',$row->valid_from)}}" required class="form-control @error('valid_to') border-danger @enderror">
+                                                        <input type="text"  class="form-control   @error('valid_to') border-danger @enderror datepickerDB" required name="valid_to" value="{{old('valid_to',$row->valid_from)}}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">        
+                                                        {{-- <input type="date"  name="valid_to" value="{{old('valid_to',$row->valid_from)}}" required class="form-control @error('valid_to') border-danger @enderror"> --}}
                                                         <span class="text-danger">{{ $errors->first('valid_to') }}</span>
                                                     </div>
                                                     <div class="form-group mb-0">
@@ -157,12 +159,12 @@
                             </div>
                             <div class="form-group">
                                 <label for="valid_from">Valid From:</label>
-                                <input type="date"  name="valid_from" required class="form-control @error('valid_from') border-danger @enderror">
+                                <input type="text"  class="form-control   @error('valid_from') border-danger @enderror datepickerDB" required name="valid_from" value="{{ old('valid_from') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">         
                                 <span class="text-danger">{{ $errors->first('valid_from') }}</span>
                             </div>
                             <div class="form-group">
                                 <label for="valid_to">Valid To:</label>
-                                <input type="date"  name="valid_to" required class="form-control @error('valid_to') border-danger @enderror">
+                                <input type="text"  class="form-control   @error('valid_to') border-danger @enderror datepickerDB" required name="valid_to" value="{{ old('valid_from') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">       
                                 <span class="text-danger">{{ $errors->first('valid_to') }}</span>
                             </div>
 

@@ -58,11 +58,12 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label for="valid_from" class="col-xl-3 col-md-4">Valid From  <span>*</span></label>
-                                               <input type="date" name="valid_from" value="{{old('date',date('Y-m-d'))}}" class="form-control col-md-8 datepickerDB" id="showDate" required autocomplete="off">
+                                                <input type="text"  class="form-control   @error('valid_from') border-danger @enderror datepickerDB" required name="valid_from" value="{{ old('valid_from') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">          
                                             </div>
                                             <div class="form-group row">
                                                 <label for="valid_to" class="col-xl-3 col-md-4">Valid To  <span>*</span></label>
-                                               <input type="date" name="valid_to" value="{{old('date',date('Y-m-d'))}}" class="form-control col-md-8 datepickerDB" id="valid_to" required autocomplete="off">
+                                                <input type="text"  class="form-control   @error('valid_to') border-danger @enderror datepickerDB" required name="valid_to" value="{{ old('valid_from') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">          
+                                               {{-- <input type="date" name="valid_to" value="{{old('date',date('Y-m-d'))}}" class="form-control col-md-8 datepickerDB" id="valid_to" required autocomplete="off"> --}}
                                             </div>
                                             <div class="form-group row">
                                                 <label for="coupon_code" class="col-xl-3 col-md-4">Coupon Code <span>*</span></label>
@@ -84,16 +85,4 @@
         </div>
 @endsection
 
-<script>
 
-     $(document).ready(function(){
-           $("#showDate").datepicker({
-             showOn:'both',
-             buttonText:'Show Date',
-             dateFormat:'yy/mm/dd',
-             changeMonth:true,
-             changeYear:true,
-           });
- });
-
-</script>

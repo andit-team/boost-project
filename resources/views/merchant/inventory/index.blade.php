@@ -11,88 +11,67 @@
   @endslot
 @endcomponent
 
-    <!--  dashboard section start -->
+
+<style>
+  .mt{
+      margin-top: -60px;
+  }
+</style>
+
 <section class="dashboard-section section-b-space">
-<div class="container">
-    <div class="row">  
-        @include('layouts.inc.sidebar.vendor-sidebar',[$active='inventory'])
-<div class="col-lg-9">
-<div class="faq-content tab-content" id="top-tabContent">
-    <div class="tab-pane fade show active" id="dashboard">
-        <div class="row">
-            <div class="col-12">
-                <div class="card dashboard-table mt-0">
-                    <div class="card-body">
-                        <div class="top-sec">
-                            <h3>all inventory</h3>
-                            <a href="{{ url('merchant/inventory/create') }}" class="btn btn-sm btn-solid">add inventory</a>
-                        </div>
+  <div class="container"> 
+      <div class="row">
+        @include('layouts.inc.sidebar.vendor-sidebar',[$active ='inventory'])
+          <div class="col-md-9"> 
+            <div  class="text-right mt">                       
+                <a href="{{ url('merchant/inventory/create') }}" class="btn btn-sm btn-solid">add inventory</a>
+            </div>             
+            @forelse($inventory as $row)
+                <div class="card mb-4">      
+                    <div class="card-header">              
+                        {{ $row->item->name}}
+                    </div>                      
+                      <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                             <h5 class="card-title">Color</h5>
+                             <p class="card-text">{{ $row->color->name }}</p>
+                            </div>
 
-                        <table class="table-responsive-md table mb-0">
-                        <thead>
-                        <tr>
-                            <th>Sl</th>                                   
-                            <th>Product Name</th>                                   
-                            <th>Color</th>
-                            <th>Size</th>
-                            <th>Stock Quantity</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            @php $i=0; @endphp
-                            @foreach($inventory as $row)
-                            <tr>
-                                <td>{{ ++$i }}</td>                                    
-                                <td>{{ $row->item->name}}</td>                                     
-                                <td>{{ $row->color->name }}</td>
-                                <td>{{ $row->size->name }}</td>
-                                <td>{{ $row->qty_stock}}</td>
-                                <td>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item"><a href="{{ url('/merchant/inventory/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> </li>
-                                        <li class="list-inline-item"><a href="{{ url('/merchant/inventory/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a> </li>
-                                        <li class="list-inline-item">
-                                            <form action="{{ url('/merchant/inventory/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </td>
-                            @endforeach
-                            </tbody>
-                        </table>
+                            <div class="col-md-2">
+                             <h5 class="card-title">Size</h5>
+                             <p class="card-text">{{ $row->size->name }}</p>
+                            </div>
+
+                            <div class="col-md-2">
+                                <h5 class="card-title">Stock Quantity</h5>
+                                <p class="card-text">{{ $row->qty_stock}}</p>
+                           </div>
+
+                        </div> 
+                        <div class="row">     
+                         <a href="{{ url('/merchant/inventory/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> 
+                        <a href="{{ url('/merchant/inventory/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a>
+             
+                        
+                         <form action="{{ url('/merchant/inventory/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
+                          @csrf
+                          @method('delete')
+                          <button type="submit" class="btn btn-sm btn-solid ml-2"><i class="fa fa-trash"> </i></button>
+                      </form>
                         </div>
+                  </div>                     
+               </div> 
+               @empty
+                <div class="card mt-2"> 
+                    <div class="card-body text-center">
+                        <img  src="{{ asset('frontend')}}/assets/images/no_data_found/not-found-2.png" class="img image-responsive thumbnial w-50">
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div> 
+            @endforelse
+         </div>
+      </div>
+   </div>
 </section>
-<!--  dashboard section end -->
-
-
-<!-- Modal start -->
-<div class="modal logout-modal fade" id="logout" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Logging Out</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Do you want to log out?
-            </div>
-            <div class="modal-footer">
-                <a href="#" class="btn btn-dark btn-custom" data-dismiss="modal">no</a>
-                <a href="index.html" class="btn btn-solid btn-custom">yes</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- modal end -->
 @endsection
+
