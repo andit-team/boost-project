@@ -49,9 +49,14 @@
                 <h3>PERSONAL DETAIL</h3>
                 @if($sellerProfile->status == 'Inactive')
                 <div class="card mt-2"> 
+                    <h3 class="card-header text-danger">Seller profile Status</h3>
                     <div class="card-body text-center">
-                        <img  src="{{ asset('frontend')}}/assets/images/approval/approval-1.jpg" class="img image-responsive thumbnial w-50">
+                        <h4>Thank Your for your request</h4>
+                        <p>We nedd to review your request a little longer. please back hare after some time.</p>
                     </div>
+                    {{-- <div class="card-body text-center">
+                        <img  src="{{ asset('frontend')}}/assets/images/approval/approval-1.jpg" class="img image-responsive thumbnial w-50">
+                    </div> --}}
                 </div>
                 @elseif($sellerProfile->status == 'Active') 
                 <form class="theme-form" action="{{ route('sellerUpdate') }}" method="post" enctype="multipart/form-data" id="validateForm">

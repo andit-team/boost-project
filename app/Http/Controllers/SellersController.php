@@ -19,8 +19,11 @@ class SellersController extends Controller
     public function index()
     {
         $sellers = Seller::orderBy('id', 'DESC')->get();
+        $activesellers = Seller::where('status','Active')->orderBy('id', 'DESC')->get();
+        $requestSellers = Seller::where('status','Inactive')->orderBy('id','DESC')->get();
+        $rejectSellers = Seller::where('status','Reject')->orderBy('id','DESC')->get();
         //dd($sellers);
-        return view('merchant.sellers.index',compact('sellers'));
+        return view('merchant.sellers.index',compact('sellers','activesellers','requestSellers','rejectSellers'));
     }
 
     /**
