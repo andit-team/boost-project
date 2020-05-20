@@ -138,50 +138,8 @@
                                                 <td>{{ $row->description }}</td>
                                                 <td class="d-flex justify-content-between">
                                                 <ul>
-                                                        {{-- <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-md btn-warning" data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-check"></i>Approve</a> </li>  --}}
+                                                        {{-- <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-md btn-warning"><i class="fa fa-check"></i>Approve</a> </li>  --}}
                                                         <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-check"></i> </a> </li>
-                                                        {{-- <li>
-                                                            <form action="{{ url('/andbaazaradmin/seller/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
-                                                        </form>
-                                                        </li> --}}
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="reject">
-                                <div class="card-body order-datatable">
-                                    <table class="table table-borderd" id="dataTableNoPagingDesc2">
-                                        <thead>
-                                        <tr>
-                                            <th width="50">Sl</th>
-                                            <th width="200">First Name</th>
-                                            <th width="200">Last Name</th>
-                                            <th width="200">Email</th>
-                                            <th width="200">Phone</th>
-                                            <th width="200">Description</th>
-                                            <th width="80" class="text-center">Action</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @php $i=0; @endphp
-                                        @foreach($rejectSellers as $row)
-                                            <tr>
-                                                <td>{{ ++$i }}</td>
-                                                <td>{{ $row->first_name }}</td>
-                                                <td>{{ $row->last_name }}</td>
-                                                <td>{{ $row->email }}</td>
-                                                <td>{{ $row->phone }}</td>
-                                                <td>{{ $row->description }}</td>
-                                                <td class="d-flex justify-content-between">
-                                                <ul>
-                                                        <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-md btn-primary"><i class="fa fa-close"></i>Rejected</a> </li> 
                                                         {{-- <li>
                                                             <form action="{{ url('/andbaazaradmin/seller/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                             @csrf
@@ -279,6 +237,48 @@
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                            <div class="tab-pane" id="reject">
+                                <div class="card-body order-datatable">
+                                    <table class="table table-borderd" id="dataTableNoPagingDesc2">
+                                        <thead>
+                                        <tr>
+                                            <th width="50">Sl</th>
+                                            <th width="200">First Name</th>
+                                            <th width="200">Last Name</th>
+                                            <th width="200">Email</th>
+                                            <th width="200">Phone</th>
+                                            <th width="200">Description</th>
+                                            <th width="80" class="text-center">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @php $i=0; @endphp
+                                        @foreach($rejectSellers as $row)
+                                            <tr>
+                                                <td>{{ ++$i }}</td>
+                                                <td>{{ $row->first_name }}</td>
+                                                <td>{{ $row->last_name }}</td>
+                                                <td>{{ $row->email }}</td>
+                                                <td>{{ $row->phone }}</td>
+                                                <td>{{ $row->description }}</td>
+                                                <td class="d-flex justify-content-between">
+                                                <ul>
+                                                        <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-md btn-primary"><i class="fa fa-close"></i>Rejected</a> </li> 
+                                                        {{-- <li>
+                                                            <form action="{{ url('/andbaazaradmin/seller/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-trash"></i></button>
+                                                        </form>
+                                                        </li> --}}
+                                                    </ul>
+                                                </td>
+                                            </tr> 
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>    
                           </div>
                     </div>
@@ -319,9 +319,9 @@
                                             </li> --}}
                                         {{-- </ul>
                                     </td>
-                                </tr> --}}
+                                </tr>
 
-                                {{-- <div class="modal fade" id="tagEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                                <div class="modal fade" id="tagEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                                     <div class="modal-dialog modal-xl" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -403,18 +403,18 @@
                                      </div>
                                      
                                   </div>
-                               </div> --}}
-                            {{-- </div>
+                               </div>
+                            </div>
                          </div>
                       @endforeach
                    </tbody>
                </table>
 
-                </div> 
+                </div>  --}}
 
             </div>
          </div>
-     </div> --}}
+     </div>
  </div>
 </div>
 </div>         
