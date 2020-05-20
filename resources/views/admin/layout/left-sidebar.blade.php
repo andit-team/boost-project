@@ -19,14 +19,14 @@
                     <li class="{{ request()->is('andbaazaradmin/products/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="box"></i> <span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
                             <li class="{{ request()->is('andbaazaradmin/products/category*') ? 'active' : '' }}">
-                                <a href="#" ><i class="fa fa-facebook"></i> <span>Categories</span> <i class="fa fa-angle-right pull-right"></i></a>
+                                <a href="#" ><i data-feather="layers"></i> <span>Categories</span> <i class="fa fa-angle-right pull-right"></i></a>
                                 <ul class="sidebar-submenu">
-                                    <li class="{{ request()->is('andbaazaradmin/products/category') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/products/category') }}" class="{{ request()->is('andbaazaradmin/products/category') ? 'active' : '' }}" ><i class="fa fa-circle"></i>Category</a></li>
-                                    <li class="{{ request()->is('andbaazaradmin/products/category/*') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/products/category-tree-view') }}" class="{{ request()->is('andbaazaradmin/products/category-tree-view') ? 'active' : '' }}"><i class="fa fa-circle"></i>Sub Category</a></li>
+                                    <li class="{{ request()->is('andbaazaradmin/products/category') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/products/category') }}" class="{{ request()->is('andbaazaradmin/products/category') ? 'active' : '' }}" ><i class="fa fa-object-group"></i>Category</a></li>
+                                    <li class="{{ request()->is('andbaazaradmin/products/category/*') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/products/category-tree-view') }}" class="{{ request()->is('andbaazaradmin/products/category-tree-view') ? 'active' : '' }}"><i class="fa fa-object-ungroup"></i>Sub Category</a></li>
                                 </ul>
                             </li>
 
-                            <li class="{{ request()->is('andbaazaradmin/products/tag/*') ? 'active' : '' }}"><a href="{{url('andbaazaradmin/products/tag')}}" class="{{ request()->is('andbaazaradmin/products/tag') ? 'active' : '' }}"><i class="fa fa-circle"></i>Tags</a></li>
+                            <li class="{{ request()->is('andbaazaradmin/products/tag/*') ? 'active' : '' }}"><a href="{{url('andbaazaradmin/products/tag')}}" class="{{ request()->is('andbaazaradmin/products/tag') ? 'active' : '' }}"><i class="fa fa-tags"></i>Tags</a></li>
 
                             <li class="{{ request()->is('andbaazaradmin/products/color/*') ? 'active' : '' }}"><a href="{{url('andbaazaradmin/products/color')}}" class="{{ request()->is('andbaazaradmin/products/color') ? 'active' : '' }}"><i class="fa fa-circle"></i>Color</a></li>
                             
@@ -35,7 +35,7 @@
                         </ul>
                     </li>
                  
-                    {{-- <li class="{{ request()->is('andbaazaradmin/products/tag/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="shopping-bag"></i><span>Shops</span><i class="fa fa-angle-right pull-right"></i></a>
+                    {{-- <li class="{{ request()->is('andbaazaradmin/products/shop/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="shopping-bag"></i><span>Shops</span><i class="fa fa-angle-right pull-right"></i></a>
                        
                         <ul class="sidebar-submenu">
                             <li><a href="<a href="{{ 'andbaazaradmin/shop' }}"><i class="fa fa-circle"></i>All Shop</a></li>
@@ -67,9 +67,9 @@
                     </li>
 
 
-                    <li class="{{ request()->is('andbaazaradmin/adminIndex/*') ? 'active' : '' }}"><a class="sidebar-header" href=""><i data-feather="menu" ></i><span>Product Request</span><i class="fa fa-angle-right pull-right"></i></a>
+                    <li class="{{ request()->is('merchant/product/adminIndex/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="menu" ></i><span>Product Request</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
-                            <li class="{{ request()->is('andbaazaradmin/adminIndex') ? 'active' : '' }}"><a href="{{ url('merchant/product/adminIndex')}}" class="{{ request()->is('andbaazaradmin/adminIndex') ? 'active' : '' }}" ><i class="fa fa-circle"></i>Products list</a></li>
+                            <li class="{{ request()->is('merchant/product/adminIndex') ? 'active' : '' }}"><a href="{{ url('merchant/product/adminIndex')}}" class="{{ request()->is('merchant/product/adminIndex') ? 'active' : '' }}" ><i class="fa fa-circle"></i>Products list</a></li>
                         </ul>
                     </li>
 
@@ -79,75 +79,6 @@
                     <li><a class="sidebar-header" href="login.html"><i data-feather="log-in"></i><span>Login</span></a>
                     </li> --}}
                                 
-                </ul>
-
-                {{-- <ul class="sidebar-menu">
-                    <li><a class="sidebar-header" href="index.html"><i data-feather="home"></i><span>Dashboard</span></a></li>
-                
-                    <li><a class="sidebar-header" href="#"><i data-feather="box"></i> <span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li>
-                                <a href="#"><i class="fa fa-circle"></i>
-                                    <span>Category</span> <i class="fa fa-angle-right pull-right"></i>
-                                </a>
-                                <ul class="sidebar-submenu">
-                                    <li><a href="{{ url('andbaazaradmin/category') }}"><i class="fa fa-circle"></i>Categories</a></li> 
-                                    <li><a href="{{ url('andbaazaradmin/category-tree-view') }}"><i class="fa fa-circle"></i>Category parent</a></li>  
-                                </ul>
-                            </li>
-                            
-                            <li><a class="sidebar-header" href="{{ url('andbaazaradmin/product/tag') }}"><i class="fa fa-circle"></i></i><span>Tags</span></a></li>
-                            
-                            <li><a class="sidebar-header" href="{{ url('andbaazaradmin/color') }}"><i class="fa fa-circle"></i><span>Color</span></a></li>
-
-
-                            <li><a class="sidebar-header" href="{{ url('andbaazaradmin/size') }}"><i class="fa fa-circle"></i><span>Size</span></a></li>  
-
-                        </li>   
-                        
-
-                    <li><a class="sidebar-header" href="#"><i data-feather="shopping-bag"></i><span>Shops</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="<a href="{{ 'andbaazaradmin/shop' }}"><i class="fa fa-circle"></i>All Shop</a></li>
-                            <li><a href="<a href="{{ 'andbaazaradmin/shop/create' }}"><i class="fa fa-circle"></i>Create Shop</a></li>
-                        </ul>
-                    </li>
-                    
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/paymentmethod') }}"><i data-feather="credit-card"></i><span>Payment Method</span></a>
-                        
-                    </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/shippingmethod') }}"><i data-feather="truck"></i><span>Shipping Method</span></a>
-                        
-                    </li>
-                    
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotion') }}"><i data-feather="align-left"></i><span>Promotion</span></a>
-                        
-                    </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotionplan') }}"><i data-feather="archive"></i><span>Promotion plane</span></i></a>
-                        
-                    </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/promotionhead') }}"><i data-feather="droplet"></i><span>Promotion Head</span></a>
-                       
-                    </li>
-
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/currency') }}"><i data-feather="dollar-sign"></i><span>Currencies</span></a>
-                        
-                    </li>
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/courier')}}"><i data-feather="send" ></i><span>Couriers</span></a> 
-
-                    <li><a class="sidebar-header" href=""><i data-feather="users" ></i><span>Vendor Profile</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{ url('andbaazaradmin/seller/')}}"><i class="fa fa-circle"></i>Profile list</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="sidebar-header" href=""><i data-feather="menu" ></i><span>Product Request</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li><a href="{{ url('merchant/product/adminIndex')}}"><i class="fa fa-circle"></i>Products list</a></li>
-                        </ul>
-                    </li>
-                    {{-- <li><a class="sidebar-header" href="invoice.html"><i data-feather="archive"></i><span>Invoice</span></a>
-                    </li>
-                    <li><a class="sidebar-header" href="login.html"><i data-feather="log-in"></i><span>Login</span></a>
-                    </li> --}}
+                </ul>            
             </div>
         </div>
