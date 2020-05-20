@@ -8,9 +8,9 @@ Route::post('andbaazaradmin/login','AuthController@adminloginprocess')->name('lo
 
 Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::get('dashboard','AdminHomeController@dashboard');
-    Route::get('/category-tree-view',['uses'=>'CategoriesController@manageCategory']);
+    Route::get('products/category-tree-view',['uses'=>'CategoriesController@manageCategory']);
     Route::post('/add-category',['as'=>'add.category','uses'=>'CategoriesController@addCategory']); 
-    Route::resource('/category','CategoriesController');
+    Route::resource('products/category','CategoriesController');
     Route::resource('/child','ChildrenController');
     Route::resource('/size','SizesController');
     Route::resource('/paymentmethod','PaymentMethodsController');
@@ -23,7 +23,7 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::get('/seller','SellersController@index');
     
 
-    Route::resource('/tag','TagsController');
+    Route::resource('products/tag','TagsController');
     Route::resource('/color','ColorsController');
     
 
