@@ -16,7 +16,7 @@
                 <ul class="sidebar-menu">
                     <li><a class="sidebar-header" href="index.html"><i data-feather="home"></i><span>Dashboard</span></a></li>
 
-                    <li class="{{ request()->is('andbaazaradmin/products/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="box"></i> <span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
+                    <li class="{{ request()->is('andbaazaradmin/products/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="briefcase"></i> <span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
                             <li class="{{ request()->is('andbaazaradmin/products/category*') ? 'active' : '' }}">
                                 <a href="#" ><i data-feather="layers"></i> <span>Categories</span> <i class="fa fa-angle-right pull-right"></i></a>

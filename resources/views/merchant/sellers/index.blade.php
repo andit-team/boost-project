@@ -87,10 +87,31 @@
                                                     <td>{{ $row->description }}</td>
                                                     <td class="d-flex justify-content-between">
                                                         <ul>
-                                                            <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-check"></i> </a> </li>
+                                                            <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"  data-toggle="modal" data-target=".requested{{$row->id}}"><i class="fa fa-check"></i> </a> </li>
                                                         </ul>
                                                     </td>
                                                 </tr>
+                                            <div class="modal fade requested{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="row p-3">
+                                                        <div class="col-md-4">
+                                                            <img src="http://localhost/andbaazar/public//assets/images/dashboard/man.png" class="img" alt="">
+                                                            <h3 class="display-6">M Jone Doe</h3>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <ul>
+                                                                <li>fasd</li>
+                                                                <li>fasd</li>
+                                                                <li>fasd</li>
+                                                                <li>fasd</li>
+                                                                <li>fasd</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
                                             @endforeach
                                         </tbody>
                                     </table>
