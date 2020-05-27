@@ -192,6 +192,18 @@ class SellersController extends Controller
     {
         //
     }
+
+    public function approvement($id){
+
+        $data = Seller::where('id',$id)->first();
+        
+        
+        $data->update(['status' => 'Active']);
+        //dd($data);
+
+        return back();
+
+    }
     
 
     private function validateForm($request){

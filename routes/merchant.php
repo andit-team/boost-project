@@ -23,9 +23,10 @@ Route::prefix('merchant')->group(function () {
     Route::get('/product/adminIndex','ItemsController@adminIndex');
     Route::get('/product/vendorshow/{slug}','ItemsController@vendorshow');
     // Route::resource('/seller','SellersController'); 
+    Route::post('/seller/approvement/{id}','SellersController@approvement');
     Route::get('/seller','SellersController@create');
     Route::post('/seller','SellersController@store')->name('sellerUpdate');
-    Route::get('/seller/{id}','SellersController@show');
+    Route::get('/seller/{id}','SellersController@show'); 
     Route::get('dropzone', 'DropzoneController@ItemsController');
     Route::post('dropzone/store', 'DropzoneController@ItemsController')->name('dropzone.store');
     Route::resource('/product','ItemsController');

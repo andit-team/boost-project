@@ -1,3 +1,7 @@
 .card .card-header {
     padding: 10px;
 }
+
+.br-2{
+    border-right: 2px dashed #ddd;
+}

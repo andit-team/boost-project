@@ -28,7 +28,7 @@ class CreateSellersTable extends Migration
             $table->string('verification_token')->nullable();
             $table->string('remember_token')->nullable();
             $table->enum('status',['Active','Inactive','Reject'])->default('Inactive');
-            $table->boolean('active')->default(1)->change();
+            // $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
