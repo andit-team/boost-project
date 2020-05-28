@@ -209,6 +209,23 @@ class SellersController extends Controller
         return back();
 
     }
+
+    public function rejected(Request $request,$id){
+
+        $data = Seller::where('id',$id)->first();
+        
+
+        $data->update([
+            'status'   => 'Reject',
+            'rej_desc' => $request->rej_desc,
+        ]);
+        //dd($data);
+
+        session()->flash('warning','Profile Rejected Successfully and Sent Mail to the user');
+
+        return back();
+
+    }
     
 
     private function validateForm($request){

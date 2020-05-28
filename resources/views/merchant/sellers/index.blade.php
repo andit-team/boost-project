@@ -192,25 +192,24 @@
                                                                             <div class="modal-dialog" role="document">
                                                                                 <div class="modal-content">
                                                                                     <div class="modal-header">
-                                                                                        <h5 class="modal-title f-w-600" id="exampleModalLabel">Reject</h5>
-                                                                                        {{-- <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> --}}
+                                                                                        <h5 class="modal-title f-w-600" id="exampleModalLabel">Reject</h5> 
                                                                                     </div>
                                                                                     <div class="modal-body">
-                                                                                        {{-- <form action="{{ url('merchant/product/rejected/'.$seller->id)}}" method="post" style="margin-top:-2px" id="deleteButton({{ $seller->id }})"> --}}
-                                                                                        @csrf
-                                                                                        @method('put')
-                                                                                        <div class="form">
-                                                                                            <div class="form-group">
-                                                                                                <label for="validationCustom01" class="mb-1">Description :</label>
-                                                                                                <textarea class="form-control" name="rej_desc" id="validationCustom01" type="text" rows="10" required></textarea>
+                                                                                        <form action="{{ url('merchant/seller/rejected/'.$row->id)}}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">
+                                                                                            @csrf
+                                                                                            @method('put')
+                                                                                            <div class="form">
+                                                                                                <div class="form-group">
+                                                                                                    <label for="validationCustom01" class="mb-1">Description :</label>
+                                                                                                    <textarea class="form-control" name="rej_desc" id="validationCustom01" type="text" rows="10" required></textarea>
+                                                                                                </div>
                                                                                             </div>
-                                                                                        </div>
-                                                                                        <div class="text-right"> 
-                                                                                            <button type="submit" class="btn btn-success">Reject</button>
-                                                                                        </div>
-                                                                                        {{-- <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button> --}}
+                                                                                            <div class="text-right"> 
+                                                                                                <button type="submit" class="btn btn-success">Reject</button>
+                                                                                            </div> 
+                                                                                        </form>
                                                                                     </div>
-                                                                                        {{-- </form> --}}
+                                                                                        
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -238,7 +237,7 @@
                                                             <div class="modal-footer">
                                                                 <form action="{{ url('merchant/seller/approvement/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">
                                                                     @csrf
-                                                                    <button type="submit" class="btn btn-warning">Approve</button>
+                                                                    <button type="submit" class="btn btn-warning" onclick="sweetalertDelete({{$row->id}})">Approve</button>
                                                                 </form>
                                                                 <button type="button" class="btn btn-primary ml-1" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Reject</button>
                                                             </div> 

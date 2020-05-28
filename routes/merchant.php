@@ -24,6 +24,7 @@ Route::prefix('merchant')->group(function () {
     Route::get('/product/vendorshow/{slug}','ItemsController@vendorshow');
     // Route::resource('/seller','SellersController'); 
     Route::post('/seller/approvement/{id}','SellersController@approvement');
+    Route::put('/seller/rejected/{id}','SellersController@rejected');
     Route::get('/seller','SellersController@create');
     Route::post('/seller','SellersController@store')->name('sellerUpdate');
     Route::get('/seller/{id}','SellersController@show'); 

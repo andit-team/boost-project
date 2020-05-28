@@ -23,6 +23,7 @@ class CreateSellersTable extends Migration
             $table->integer('phone')->nullable();
             $table->enum('gender',['Male','Female','Other'])->default('Male');
             $table->text('description')->nullable();
+            $table->text('rej_desc')->nullable();
             $table->date('last_visited_at')->nullable();
             $table->string('last_visited_from')->nullable();
             $table->string('verification_token')->nullable();
