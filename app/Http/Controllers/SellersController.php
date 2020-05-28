@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Seller;
 use App\Mail\VendorProfileApprovalMail;
 use App\Mail\VendorProfileAcceptMail;
+use App\Mail\VendorProfileRejectMail;
 use Sentinel;
 use Baazar;
 
@@ -220,6 +221,11 @@ class SellersController extends Controller
             'rej_desc' => $request->rej_desc,
         ]);
         //dd($data);
+
+         $name    = $data['first_name'];
+         $surname = $data['last_name'];
+         $rej_desc = $data['rej_desc'];
+        \Mail::to($data['email'])->send(new VendorProfileRejectMail($data,$name,$surname,$rej_desc));
 
         session()->flash('warning','Profile Rejected Successfully and Sent Mail to the user');
 
