@@ -28,11 +28,12 @@ class ItemsController extends Controller
      */
     public function index()
     {
+      $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
       $category = Category::all();
       $item = Item::where('status','Active')->get();
       $size= Size::all();
       $color = Color::all();
-      return view ('merchant.product.index',compact('category','item','size','color'));
+      return view ('merchant.product.index',compact('category','item','size','color','sellerProfile'));
     // return view('merchant.product.index');
     }
 

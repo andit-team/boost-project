@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Seller;
 use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\Color;
@@ -20,12 +21,14 @@ class InventoriesController extends Controller
      */
     public function index()
     {
+        $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        //dd($sellerProfile);
         $inventory = Inventory::all();
         $item = Item::where('user_id',Sentinel::getUser()->id)->get();
         
         $size= Size::all();
         $color = Color::all();
-        return view ('merchant.inventory.index',compact('inventory','item','size','color'));
+        return view ('merchant.inventory.index',compact('inventory','item','size','color','sellerProfile'));
     }
 
     /**

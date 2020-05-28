@@ -23,6 +23,26 @@
       <div class="row">
         @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
           <div class="col-md-9"> 
+            @if($sellerProfile->status == 'Inactive')
+            <h3>PERSONAL DETAIL</h3>
+            <div class="card mt-2"> 
+              <h3 class="card-header text-danger">Seller profile Status</h3>
+              <div class="card-body text-center">
+                  <h4>Thank Your for your request</h4>
+                  <p>We nedd to review your request a little longer. After approve your request you can add Product.</p>
+              </div> 
+            </div>
+            @elseif($sellerProfile->status == 'Reject')
+            <h3>PERSONAL DETAIL</h3>
+            <div class="card mt-2">
+              <h3 class="card-header text-danger">Seller profile Status</h3>
+                  <div class="card-body text-center">
+                      <h4>Your profile is Rejected</h4>
+                      <p>Resubmit your Profile for adding Product</p>
+                  <a href="{{ url('merchant/seller/'.$sellerProfile->slug.'/resubmit') }}" title="Resubmit" class="btn btn-sm btn-solid">Resubmit</a>
+                  </div>
+          </div>
+            @elseif($sellerProfile->status == 'Active')
             <div  class="text-right mt">                       
                 <a href="{{ url('merchant/product/create') }}" class="btn btn-sm btn-solid">add product</a> 
             </div>             
@@ -70,6 +90,7 @@
                     </div>
                 </div> 
             @endforelse
+            @endif
          </div>
       </div>
    </div>

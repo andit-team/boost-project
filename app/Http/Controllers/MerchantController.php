@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Sentinel;
+use App\Models\Seller;
 class MerchantController extends Controller{
 
     public function dashboard(){
-       return view('vendor-deshboard');
+        $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
+       return view('vendor-deshboard',compact('sellerProfile'));
     }
 
     public function merchantlogin(){
