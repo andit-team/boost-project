@@ -7,8 +7,10 @@ use App\Models\Seller;
 use App\Mail\VendorProfileApprovalMail;
 use App\Mail\VendorProfileAcceptMail;
 use App\Mail\VendorProfileRejectMail;
+use App\Mail\VendorProfilResubmitMail;
 use Sentinel;
 use Baazar;
+use Session;
 
 class SellersController extends Controller
 {
@@ -50,12 +52,13 @@ class SellersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Seller $seller)
     {
         $userprofile = Sentinel::getUser();
         $sellerId    = Seller::where('user_id',Sentinel::getUser()->id)->first();
         //dd($sellerId);
         $this->validateForm($request);
+        $slug = Baazar::getUniqueSlug($seller,$request->first_name);
         if($sellerId){
             $sellerId->update([
                 'first_name'        => $request->first_name,
@@ -88,6 +91,7 @@ class SellersController extends Controller
             $sellerId=Seller::create([
                 'first_name'        => $request->first_name,
                 'last_name'         => $request->last_name,
+                'slug'              => $slug,
                 'phone'             => $request->phone,
                 'email'             => $request->email,
                 'picture'           => Baazar::fileUpload($request,'picture','','/uploads/vendor_profile'),
@@ -138,10 +142,10 @@ class SellersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         $userprofile = Sentinel::getUser();
-        $seller = Seller::find($id); 
+        $seller = Seller::where('slug',$slug)->first(); 
         return view('merchant.sellers.edit',compact('seller','userprofile'));
     }
 
@@ -152,11 +156,11 @@ class SellersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
       
         $userprofile = Sentinel::getUser();
-        $sellerProfile = Seller::find($id);
+        $sellerProfile = Seller::where('slug',$slug)->first();
         $this->validateForm($request);
 
             $data = [
@@ -186,9 +190,13 @@ class SellersController extends Controller
                 'updated_at' => now(),
             ]);
 
-        //    $name = $data['name'];
+         $name    = $data['first_name'];
+         $surname = $data['last_name'];
 
-        // \Mail::to($data['email'])->send(new VendorProfileAcceptMail($data,$name)); 
+        \Mail::to($data['email'])->send(new VendorProfilResubmitMail($data,$name,$surname)); 
+
+        Session::flash('success', 'Profile Resubmit successfully!');
+
         return redirect('merchant/seller');
     }
 

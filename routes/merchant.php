@@ -27,8 +27,8 @@ Route::prefix('merchant')->group(function () {
     Route::put('/seller/rejected/{id}','SellersController@rejected');
     Route::get('/seller','SellersController@create');
     Route::post('/seller','SellersController@store')->name('sellerUpdate');
-    Route::get('/seller/{id}/resubmit','SellersController@edit');
-    Route::put('/seller/{id}','SellersController@update');
+    Route::get('/seller/{slug}/resubmit','SellersController@edit');
+    Route::put('/seller/{slug}','SellersController@update');
     Route::get('/seller/{id}','SellersController@show'); 
     Route::get('dropzone', 'DropzoneController@ItemsController');
     Route::post('dropzone/store', 'DropzoneController@ItemsController')->name('dropzone.store');

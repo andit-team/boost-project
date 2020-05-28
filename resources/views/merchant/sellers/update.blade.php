@@ -60,7 +60,7 @@
                         <h3 class="card-header text-danger">Seller profile Status</h3>
                             <div class="card-body text-center">
                                 <h4>Your profile is Rejected</h4>
-                            <a href="{{ url('merchant/seller/'.$sellerProfile->id.'/resubmit') }}" title="Resubmit" class="btn btn-sm btn-solid">Resubmit</a>
+                            <a href="{{ url('merchant/seller/'.$sellerProfile->slug.'/resubmit') }}" title="Resubmit" class="btn btn-sm btn-solid">Resubmit</a>
                             </div>
                     </div>    
                 @elseif($sellerProfile->status == 'Active') 
