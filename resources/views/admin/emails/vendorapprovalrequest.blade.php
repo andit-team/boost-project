@@ -15,7 +15,7 @@
       Dear,
       <br>
       {{ $sellerId->first_name.' '.$sellerId->last_name }},We got your profile request. 
-      After approve your profile request can update your profile.
+      After approve your profile request you can update your profile.
     </P>
 
 

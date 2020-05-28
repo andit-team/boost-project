@@ -18,10 +18,12 @@ class VendorProfileAcceptMail extends Mailable
      */
     public $data;
     public $name;
-    public function __construct($data,$name)
+    public $surname;
+    public function __construct($data,$name,$surname)
     {
        $this->data = $data;
        $this->name = $name;
+       $this->surname = $surname;
     }
 
     /**
@@ -31,6 +33,6 @@ class VendorProfileAcceptMail extends Mailable
      */
     public function build()
     {
-        return $this->view('admin.emails.vendorAcceptProfile',['data'=>$this->data,'name'=>$this->name]);
+        return $this->view('admin.emails.vendorAcceptProfile',['data'=>$this->data,'name'=>$this->name,'surname'=>$this->surname]);
     }
 }
