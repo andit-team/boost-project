@@ -7,7 +7,7 @@ use Sentinel;
 class MerchantController extends Controller{
 
     public function dashboard(){
-
+       return view('vendor-deshboard');
     }
 
     public function merchantlogin(){

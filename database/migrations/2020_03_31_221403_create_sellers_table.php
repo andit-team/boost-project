@@ -17,6 +17,7 @@ class CreateSellersTable extends Migration
             $table->bigIncrements('id');
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('slug')->nullable();
             $table->string('picture')->nullable();
             $table->string('email')->nullable();
             $table->date('dob');

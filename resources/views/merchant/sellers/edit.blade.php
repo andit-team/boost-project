@@ -1,277 +1,126 @@
-{{-- @extends('layouts.vendor')
+@extends('layouts.master')
 
 @section('content')
-    <!-- breadcrumb start -->
-    <div class="breadcrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="page-title">
-                        <h2>vendor dashboard</h2>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">vendor dashboard</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- breadcrumb End -->
+@push('css')
+<style>
+    .imagestyle{
+        width: 200px;
+        height: 200px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #ccc;
+        border-bottom: 0px;
+        padding: 10px;
+    }
 
+    #file-upload{
+        display: none;
+    }
+    .uploadbtn{
+        width: 200px;background: #ddd;float: right;text-align: center;
+    }
+    .custom-file-upload {
+        /* border: 1px solid #ccc; */
+        display: inline-block;
+        padding: 9px 40px;
+        cursor: pointer;
+        border-top: 0px;
+    }
+</style> 
+@include('elements.alert')
+@component('layouts.inc.breadcrumb')
+  @slot('pageTitle')
+      Vendor Dashboard
+  @endslot
+  @slot('page')
+      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+      <li class="breadcrumb-item active" aria-current="page">Profile</li>
+  @endslot
+@endcomponent
 
     <!--  dashboard section start -->
     <section class="dashboard-section section-b-space">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="dashboard-sidebar">
-                        <div class="profile-top">
-                            <div class="profile-image">
-                                <img src="{{ asset('') }}/assets/images/logos/17.png" alt="" class="img-fluid">
-                            </div>
-                            <div class="profile-detail">
-                                <h5>Fashion Store</h5>
-                                <h6>750 followers | 10 review</h6>
-                                <h6>mark.enderess@mail.com</h6>
-                            </div>
-                        </div>
-                        <div class="faq-tab">
-                            <ul class="nav nav-tabs" id="top-tab" role="tablist">
-                                <li class="nav-item"><a data-toggle="tab" class="nav-link active" href="#dashboard">dashboard</a></li>
-                                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a>
-                                </li>
-                            <!-- <li>
-                                    <a href="#"><i class="fa fa-circle"></i>
-                                        <span>Product</span> <i class="fa fa-angle-right pull-right"></i>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li><a href="{{ url('andbaazaradmin/product') }}"><i class="fa fa-circle"></i>All Product</a></li>
-                                        <li><a href="{{ url('andbaazaradmin/product/create') }}"><i class="fa fa-circle"></i> Add Product</a></li>
-                                    </ul>
-                                </li> -->
-                                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">orders</a>
-                                </li>
-                                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/seller/create') }}">profile</a>
-                                </li>
-                                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="#">logout</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                
+                @include('layouts.inc.sidebar.vendor-sidebar',[$active='profile'])
 
-                <div class="col-sm-9 register-page contact-page">
-                    <h3>PERSONAL DETAIL</h3>
-                    <form class="theme-form" action="{{ url('/merchant/seller/'.$seller->id) }}" method="post" enctype="multipart/form-data">
+             <div class="col-sm-9 register-page contact-page">  
+                    <form class="theme-form" action="{{ url('merchant/seller/'.$seller->id) }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf
                         @method('put')
                         <div class="form-row">
-                            <div class="col-md-6">
-                                <label for="name">Full Name</label>
-                                    <input type="text" class="form-control" readonly name="name" value="{{ old('name',$seller->name) }}"   placeholder="Enter Your name" required="">
-                                @if ($errors->has('name'))
-                                    <span class="text-danger">{{ $errors->first('name') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-md-6">
-                                <label for="phone_number">Phone number</label>
-                                    <input type="number" class="form-control" readonly name="phone" value="{{ old('phone',$seller->phone) }}" maxlength="11" minlength="11" id="review" placeholder="Enter your number">
-                                @if ($errors->has('phone'))
-                                    <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-md-6">
-                                <label for="dob">Date of birth</label>
-                                    <input type="text" class="form-control datepicker" readonly  name="dob" value="{{ old('dob',$seller->dob) }}" id="" placeholder="" >
-                                @if ($errors->has('dob'))
-                                    <span class="text-danger">{{ $errors->first('dob') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-md-6">
-                                <label for="email">Email</label>
-                                    <input type="email" class="form-control" name="email" readonly value="{{ old('email',$seller->email) }}"   placeholder="Enter Your Email" required="">
-                                @if ($errors->has('email'))
-                                    <span class="text-danger">{{ $errors->first('email') }}</span>
-                                @endif
-                            </div>
-                            <div class="col-md-6">
-                                    <input name="gender" value="Male" type="radio" class="with-gap" id="Male" {{$seller->gender == 'Male' ? 'checked' : ''}}>
-                                    <label for="Male">Male</label>
-                                    <input name="gender" value="Female" type="radio" id="Female" class="with-gap" {{$seller->gender == 'Female' ? 'checked' : ''}}>
-                                    <label for="Female">Female</label>
-                                    <input name="gender" value="Other" type="radio" id="Other" class="with-gap" {{$seller->gender == 'Other' ? 'checked' : ''}}>
-                                    <label for="Other">Other</label>
-                            </div>
-                            <div class="col-md-6">
+                            <div class="col-md-8">
+                                <div>
+                                    <label for="first_name">First Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('first_name') }}</span>
+                                    <input type="text" class="form-control @error('first_name') border-danger @enderror" required name="first_name" value="{{ old('first_name',$userprofile->first_name) }}" id="" placeholder="Firest Name">
+                                </div>
+                                <div>
+                                    <label for="last_name" class="mt-2">Last Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('last_name') }}</span>
+                                    <input type="text" class="form-control @error('last_name') border-danger @enderror" required name="last_name" value="{{ old('last_name',$userprofile->last_name) }}" id="" placeholder="Last Name">
+                                </div>
+                                <div>
+                                    <label for="phone" class="mt-2">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                    <input type="number" class="form-control @error('phone') border-danger @enderror" required  name="phone" value="{{ old('phone', $seller->phone) }}" id="" placeholder="Phone Number">
+                                </div> 
+                                <div>
+                                    <label for="email" class="mt-2">Email<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('email') }}</span>
+                                    <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$userprofile->email) }}" id="" placeholder="Email">
+                                </div>
+                            </div> 
+
+
+                            <div class="col-md-4 text-right">  
                                 <label for="picture">Picture</label>
-                                    <input type="file" class="form-control" name="picture" id="" placeholder="" accept=".png, .jpg, .jpeg">
-                                    <input type="hidden" value="{{$seller->picture}}" name="old_image">
+                                <div class="mt-0">
+                                    @if(!empty($seller->picture))
+                                    <img id="output"  class="imagestyle" src="{{ asset($seller->picture) }}"/>
+                                    @else
+                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/vendor_profile/user.png') }}" />
+                                    @endif
+                                </div>
+                                <div class="uploadbtn"> 
+                                    <label for="file-upload" class="custom-file-upload">Upload Here</label>
+                                    <input id="file-upload" type="file" name="picture" onchange="loadFile(event)"/>
+                                    <input type="hidden" value="{{$seller->picture}}" name="old_image"> 
+                                </div>
                             </div>
-                            <div class="col-md-12">
-                                <label for="description">Write Your Message</label>
-                                    <textarea class="form-control mb-0" readonly placeholder="Write Your Message" name="description" id="" rows="6">{{ $seller->description }}</textarea>
-                                @if ($errors->has('description'))
-                                    <span class="text-danger">{{ $errors->first('description') }}</span>
-                                @endif
+                        </div> 
+
+                        <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
+                        <textarea class="form-control mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $seller->description }}</textarea>
+
+
+                        <div class="form-row"> 
+                            <div class="col-md-6 mt-2">
+                                <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span> 
+                                <input type="text"  class="form-control  @error('card_expire_date') border-danger @enderror datepickerPreviousOnly" required name="dob" value="{{ old('dob',$seller->dob) }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">                                                        
+                            </div> 
+                            <div class="col-md-6 mt-2"> 
+                                <label for="gender">Gender (select one)<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('gender') }}</span>
+                                <select name="gender" class="form-control px-10 @error('gender') border-danger @enderror" id="" required autocomplete="off" style="height: 51px;">                                         
+                                    <option value="Male" @if($seller->gender == 'Male') selected @endif>Male</option>
+                                    <option value="Female" @if($seller->gender =='Female' ) selected @endif>Female</option> 
+                                    <option value="Other" @if($seller->gender == 'Other') selected @endif>Other</option>   
+                            </select>
                             </div>
+                        
                             <div class="col-md-12 mt-4">
-                                <button type="submit" class="btn btn-sm btn-solid" >Save & Update</button>
+                                <button type="submit" class="btn btn-sm btn-solid" >Resubmit</button>
                             </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--  dashboard section end -->
-
-
-    <!-- Modal start -->
-    <div class="modal logout-modal fade" id="logout" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Logging Out</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Do you want to log out?
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-dark btn-custom" data-dismiss="modal">no</a>
-                    <a href="index.html" class="btn btn-solid btn-custom">yes</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- modal end -->
-@endsection --}}
-@extends('admin.layout.master')
-
-@section('content')
-    <style>
-        .imagestyle{
-            width: 75px;
-            height: 75px;
-            border-width: 4px 4px 4px 4px;border-style: solid;
-            border-color: #ccc;
-        }
-        .divmargin{
-            margin-top: 20px;
-            margin-left: 250px;
-        }
-    </style>
-    <div class="page-body">
-
-        <!-- Container-fluid starts-->
-        <div class="container-fluid">
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="page-header-left">
-                            <h3>Seler profile Approve
-                                <small>AndBaazar Admin panel</small>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <ol class="breadcrumb pull-right">
-                            <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item">Seller Profile </li>
-                            <li class="breadcrumb-item active">Approve</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Container-fluid Ends-->
-
-        <!-- Container-fluid starts-->
-        <div class="container-fluid">
-            <div class="card tab2-card">
-                <div class="card-header">
-                    <h5>Edit Category</h5>
-                </div>
-                <div class="card-body">
-                    <div class="col-sm-9 register-page contact-page">
-                        <h3>PERSONAL DETAIL</h3>
-                        <form class="theme-form" action="{{ url('/merchant/seller/'.$seller->id) }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            @method('put')
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <label for="name">Full Name</label>
-                                        <input type="text" class="form-control" readonly name="name" value="{{ old('name',$seller->name) }}"   placeholder="Enter Your name" required="">
-                                    @if ($errors->has('name'))
-                                        <span class="text-danger">{{ $errors->first('name') }}</span>
-                                    @endif
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="phone_number">Phone number</label>
-                                        <input type="number" class="form-control" readonly name="phone" value="{{ old('phone',$seller->phone) }}" maxlength="11" minlength="11" id="review" placeholder="Enter your number">
-                                    @if ($errors->has('phone'))
-                                        <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                    @endif
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="dob">Date of birth</label>
-                                        <input type="text" class="form-control datepicker" readonly  name="dob" value="{{ old('dob',$seller->dob) }}" id="" placeholder="" >
-                                    @if ($errors->has('dob'))
-                                        <span class="text-danger">{{ $errors->first('dob') }}</span>
-                                    @endif
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="email">Email</label>
-                                        <input type="email" class="form-control" name="email" readonly value="{{ old('email',$seller->email) }}"   placeholder="Enter Your Email" required="">
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}</span>
-                                    @endif
-                                </div>
-                                <div class="col-md-6">
-                                        <input name="gender" value="Male" type="radio" class="with-gap" id="Male" {{$seller->gender == 'Male' ? 'checked' : ''}}>
-                                        <label for="Male">Male</label>
-                                        <input name="gender" value="Female" type="radio" id="Female" class="with-gap" {{$seller->gender == 'Female' ? 'checked' : ''}}>
-                                        <label for="Female">Female</label>
-                                        <input name="gender" value="Other" type="radio" id="Other" class="with-gap" {{$seller->gender == 'Other' ? 'checked' : ''}}>
-                                        <label for="Other">Other</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="picture">Picture</label>
-                                        <input type="file" class="form-control" name="picture" id="" placeholder="" accept=".png, .jpg, .jpeg">
-                                        <input type="hidden" value="{{$seller->picture}}" name="old_image">
-                                </div>
-                                <div class="col-md-12">
-                                    <label for="description">Write Your Message</label>
-                                        <textarea class="form-control mb-0" readonly placeholder="Write Your Message" name="description" id="" rows="6">{{ $seller->description }}</textarea>
-                                    @if ($errors->has('description'))
-                                        <span class="text-danger">{{ $errors->first('description') }}</span>
-                                    @endif
-                                </div>
-                                <div class="col-md-12 mt-4">
-                                    <button type="submit" class="btn btn-primary" >Approve</button>
-                                </div>
                             </div>
-                        </form>
-                    </div>
+                    </form> 
                 </div>
             </div>
         </div>
-        <!-- Container-fluid Ends-->
-
-    </div>
-@endsection
+</section>
+    <!--  dashboard section end --> 
+@endsection 
+@push('js')
 <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
     };
 </script>
+@endpush

@@ -237,7 +237,7 @@
                                                             <div class="modal-footer">
                                                                 <form action="{{ url('merchant/seller/approvement/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">
                                                                     @csrf
-                                                                    <button type="submit" class="btn btn-warning" onclick="sweetalertDelete({{$row->id}})">Approve</button>
+                                                                    <button type="submit" class="btn btn-warning">Approve</button>
                                                                 </form>
                                                                 <button type="button" class="btn btn-primary ml-1" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Reject</button>
                                                             </div> 

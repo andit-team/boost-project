@@ -53,31 +53,31 @@ class SellersController extends Controller
     public function store(Request $request)
     {
         $userprofile = Sentinel::getUser();
-        $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $sellerId    = Seller::where('user_id',Sentinel::getUser()->id)->first();
         //dd($sellerId);
         $this->validateForm($request);
         if($sellerId){
             $sellerId->update([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'phone' => $request->phone,
-                'email' => $request->email,
-                'picture' => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
-                'dob'  =>$request->dob,
-                'gender' => $request->gender,
-                'description' => $request->description,
-                'last_visited_at' => now(),
+                'first_name'        => $request->first_name,
+                'last_name'         => $request->last_name,
+                'phone'             => $request->phone,
+                'email'             => $request->email,
+                'picture'           => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
+                'dob'               => $request->dob,
+                'gender'            => $request->gender,
+                'description'       => $request->description,
+                'last_visited_at'   => now(),
                 'last_visited_from' => $request->last_visited_from,
                 // 'verification_token' => $request->verification_token,
                 // 'remember_token' => $request->remember_token,
-                'user_id' => Sentinel::getUser()->id,
-                'updated_at' => now(),
+                'user_id'           => Sentinel::getUser()->id,
+                'updated_at'        => now(),
             ]);
 
             $userprofile->update([
                 'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'email' => $request->email,
+                'last_name'  => $request->last_name,
+                'email'      => $request->email,
                 'updated_at' => now(),
             ]);
 
@@ -86,26 +86,26 @@ class SellersController extends Controller
 
         }else{
             $sellerId=Seller::create([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'phone' => $request->phone,
-                'email' => $request->email,
-                'picture' => Baazar::fileUpload($request,'picture','','/uploads/vendor_profile'),
-                'dob'  =>$request->dob,
-                'gender' => $request->gender,
-                'description' => $request->description,
-                'last_visited_at' => now(),
+                'first_name'        => $request->first_name,
+                'last_name'         => $request->last_name,
+                'phone'             => $request->phone,
+                'email'             => $request->email,
+                'picture'           => Baazar::fileUpload($request,'picture','','/uploads/vendor_profile'),
+                'dob'               =>$request->dob,
+                'gender'            => $request->gender,
+                'description'       => $request->description,
+                'last_visited_at'   => now(),
                 'last_visited_from' => $request->last_visited_from,
                 // 'verification_token' => $request->verification_token,
                 // 'remember_token' => $request->remember_token,
-                'user_id' => Sentinel::getUser()->id,
-                'created_at' => now(),
+                'user_id'           => Sentinel::getUser()->id,
+                'created_at'        => now(),
             ]);
 
             $userprofile->update([
                 'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'email' => $request->email,
+                'last_name'  => $request->last_name,
+                'email'      => $request->email,
                 'updated_at' => now(),
             ]);
 
@@ -138,11 +138,11 @@ class SellersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Seller $seller)
+    public function edit($id)
     {
-        //$seller = Seller::where('user_id',Sentinel::getUser()->id)->first();
-        //dd($seller);
-        return view('merchant.sellers.edit',compact('seller'));
+        $userprofile = Sentinel::getUser();
+        $seller = Seller::find($id); 
+        return view('merchant.sellers.edit',compact('seller','userprofile'));
     }
 
     /**
@@ -152,35 +152,44 @@ class SellersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seller $seller)
+    public function update(Request $request, $id)
     {
-        //$seller= Seller::where('user_id',Sentinel::getUser()->id)->first();
-        //dd($seller);
+      
+        $userprofile = Sentinel::getUser();
+        $sellerProfile = Seller::find($id);
         $this->validateForm($request);
 
             $data = [
-                'name' => $request->name,
-                'phone' => $request->phone,
-                'email' => $request->email,
-                'picture' => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
-                'dob'  =>$request->dob,
-                'gender' => $request->gender,
-                'description' => $request->description,
-                'last_visited_at' => $request->last_visited_at,
+                'first_name'        => $request->first_name,
+                'last_name'         => $request->last_name,
+                'phone'             => $request->phone,
+                'email'             => $request->email,
+                'picture'           => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
+                'dob'               => $request->dob,
+                'gender'            => $request->gender,
+                'description'       => $request->description,
+                'last_visited_at'   => now(),
                 'last_visited_from' => $request->last_visited_from,
-                'verification_token' => $request->verification_token,
-                'remember_token' => $request->remember_token,
-                'user_id' => Sentinel::getUser()->id,
-                'updated_at' => now(),
+                // 'verification_token' => $request->verification_token,
+                // 'remember_token' => $request->remember_token,
+                'status'            => 'Inactive',
+                'user_id'           => Sentinel::getUser()->id,
+                'updated_at'        => now(),
             ];
 
-            $seller->update($data);
+            $sellerProfile->update($data);
 
-           $name = $data['name'];
+            $userprofile->update([
+                'first_name' => $request->first_name,
+                'last_name'  => $request->last_name,
+                'email'      => $request->email,
+                'updated_at' => now(),
+            ]);
 
-        \Mail::to($data['email'])->send(new VendorProfileAcceptMail($data,$name));
+        //    $name = $data['name'];
 
-        return back();
+        // \Mail::to($data['email'])->send(new VendorProfileAcceptMail($data,$name)); 
+        return redirect('merchant/seller');
     }
 
     /**

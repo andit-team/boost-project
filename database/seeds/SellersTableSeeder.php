@@ -16,6 +16,7 @@ class SellersTableSeeder extends Seeder
              [
                 'first_name'          => 'Akash',
                 'last_name'           => 'Mia',
+                'email'               => 'akash@gmail.com',
                 'dob'                 => '2000-01-03',
                 'gender'              => 'Male',
                 'description'         => 'Student',
@@ -30,6 +31,7 @@ class SellersTableSeeder extends Seeder
             [
                 'first_name'          => 'Arman',
                 'last_name'           => 'Mia',
+                'email'               => 'arman@gmail.com',
                 'dob'                 => '2000-01-03',
                 'gender'              => 'Male',
                 'description'         => 'Student',
@@ -44,6 +46,7 @@ class SellersTableSeeder extends Seeder
             [
                 'first_name'          => 'Abir',
                 'last_name'           => 'Mia',
+                'email'               => 'abir@gmail.com',
                 'dob'                 => '2000-01-03',
                 'gender'              => 'Male',
                 'description'         => 'Student',
@@ -58,6 +61,7 @@ class SellersTableSeeder extends Seeder
             [
                 'first_name'          => 'Arif',
                 'last_name'           => 'Mia',
+                'email'               => 'arif@gmail.com',
                 'dob'                 => '2000-01-03',
                 'gender'              => 'Male',
                 'description'         => 'Student',
