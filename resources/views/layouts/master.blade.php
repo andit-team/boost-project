@@ -812,7 +812,7 @@
 
 
     <!-- theme setting -->
-    <a href="javascript:void(0)" onclick="openSetting()">
+    {{-- <a href="javascript:void(0)" onclick="openSetting()">
         <div class="setting-sidebar" id="setting-icon">
             <div>
                 <i class="fa fa-cog" aria-hidden="true"></i>
@@ -1519,7 +1519,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- theme setting -->
 
 
@@ -1579,11 +1579,11 @@
 
 
     <!-- cart start -->
-    <div class="addcart_btm_popup" id="fixed_cart_icon">
+    {{-- <div class="addcart_btm_popup" id="fixed_cart_icon">
         <a href="#" class="fixed_cart">
             <i class="ti-shopping-cart"></i>
         </a>
-    </div>
+    </div> --}}
     <!-- cart end -->
 
 
