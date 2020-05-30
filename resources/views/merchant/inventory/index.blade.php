@@ -23,7 +23,16 @@
       <div class="row">
         @include('layouts.inc.sidebar.vendor-sidebar',[$active ='inventory'])
           <div class="col-md-9"> 
-            @if($sellerProfile->status == 'Inactive')
+            @if(empty($sellerProfile))
+                    <h3>PERSONAL DETAIL</h3>
+                    <div class="card mt-2"> 
+                    <h3 class="card-header text-danger">Seller profile Status</h3>
+                    <div class="card-body text-center">
+                        <h4>First create your profile</h4>
+                        {{-- <p>We nedd to review your request a little longer. After approve your request you can see your dashboard.</p> --}}
+                    </div> 
+                    </div>
+            @elseif($sellerProfile->status == 'Inactive')
             <h3>PERSONAL DETAIL</h3>
             <div class="card mt-2"> 
               <h3 class="card-header text-danger">Seller profile Status</h3>
