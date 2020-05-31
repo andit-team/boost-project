@@ -632,6 +632,7 @@
                             </div>
                             <div class="footer-contant">
                                 <ul>
+                                    <li><a href="{{url('merchant/login')}}">merchant login</a></li>
                                     <li><a href="#">mens</a></li>
                                     <li><a href="#">womens</a></li>
                                     <li><a href="#">clothing</a></li>

@@ -119,9 +119,6 @@
                                                                             </div> 
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="modal-footer"> 
-                                                                <h4  class="p-2 bg-success ml-1 rounded">Approved</h4>
                                                             </div> 
                                                         </div> 
                                                     </div> 
@@ -157,7 +154,7 @@
                                                     <td>{{ $row->description }}</td>
                                                     <td class="d-flex justify-content-between">
                                                         <ul>
-                                                            <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"  data-toggle="modal" data-target=".requested{{$row->id}}"><i class="fa fa-check"></i>Approve</a> </li>
+                                                            <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"  data-toggle="modal" data-target=".requested{{$row->id}}"><i class="fa fa-check"></i>View</a> </li>
                                                         </ul>
                                                     </td>
                                                 </tr>
@@ -205,7 +202,7 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="text-right"> 
-                                                                                                <button type="submit" class="btn btn-success">Reject</button>
+                                                                                                <button type="submit" class="btn btn-primary">Reject</button>
                                                                                             </div> 
                                                                                         </form>
                                                                                     </div>
@@ -275,7 +272,7 @@
                                                     <td>{{ $row->description }}</td>
                                                     <td class="d-flex justify-content-between">
                                                         <ul>
-                                                            <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Rejected" class="btn btn-sm btn-primary"  data-toggle="modal" data-target=".rejected{{$row->id}}"><i class="fa fa-close"></i>Rejected</a> </li>  
+                                                            <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Rejected" class="btn btn-sm btn-primary"  data-toggle="modal" data-target=".rejected{{$row->id}}"><i class="fa fa-close"></i>View</a> </li>  
                                                         </ul>
                                                     </td>
                                                 </tr>
@@ -323,9 +320,6 @@
                                                                             </div> 
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="modal-footer"> 
-                                                                <h4  class="p-2 bg-primary ml-1 rounded">Rejected</h4>
                                                             </div> 
                                                         </div> 
                                                     </div> 

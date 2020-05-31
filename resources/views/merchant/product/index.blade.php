@@ -46,8 +46,9 @@
             <div class="card mt-2">
               <h3 class="card-header text-danger">Seller profile Status</h3>
                   <div class="card-body text-center">
-                      <h4>Your profile is Rejected</h4>
-                      <p>Resubmit your Profile for adding Product</p>
+                      <h4>Your profile is Rejected</h4> 
+                      <h6>Reject Reason : <small>{{ $sellerProfile->rej_desc }} .</small></h6> 
+                      <p>Resubmit your Profile.</p> 
                   <a href="{{ url('merchant/seller/'.$sellerProfile->slug.'/resubmit') }}" title="Resubmit" class="btn btn-sm btn-solid">Resubmit</a>
                   </div>
           </div>
