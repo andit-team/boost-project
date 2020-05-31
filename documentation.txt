@@ -6,3 +6,9 @@ https://github.com/eternicode/bootstrap-datepicker
 
 Sweetalert
 https://sweetalert2.github.io/
+
+
+php artisan config:clear 
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear 

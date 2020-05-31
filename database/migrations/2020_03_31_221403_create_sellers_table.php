@@ -21,7 +21,7 @@ class CreateSellersTable extends Migration
             $table->string('picture')->nullable();
             $table->string('email')->nullable();
             $table->date('dob');
-            $table->integer('phone')->nullable();
+            $table->integer('mobile')->nullable();
             $table->enum('gender',['Male','Female','Other'])->default('Male');
             $table->text('description')->nullable();
             $table->text('rej_desc')->nullable();
