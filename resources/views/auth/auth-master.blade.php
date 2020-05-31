@@ -35,6 +35,10 @@
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/admin.css">
 
+     <!-- Custom css-->
+    <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
+
+    @stack('css')
 </head>
 <body>
 
@@ -83,6 +87,6 @@
         }
     );
 </script>
-
+@stack('js')
 </body>
 </html>
