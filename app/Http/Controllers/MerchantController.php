@@ -34,7 +34,7 @@ class MerchantController extends Controller{
             return view('vendor-deshboard');
         else
             //die('somer error here...');
-            return redirect('login')->with('error', 'Invalid email or password');
+            return redirect('merchant/login')->with('error', 'Invalid email or password');
     }
 
     public function sellOnAndbaazar(){

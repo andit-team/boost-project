@@ -35,14 +35,44 @@
 
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/color1.css" media="screen" id="color">
+
+    <link rel="stylesheet" type="text/css" href=" https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.3.3/css-loader.css">
+   
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
     @stack('css')
+
+    <style>
+      .spinner-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;                 
+            overflow: visible;
+           
+             /* background: url( 'https://makebackground.io/bk/mystery/' ) */
+            /* background: url('https://www.studio-aegis.com/uploads/1/0/3/8/10380626/custom_themes/921719032455054188/files/Orphan---Run.gif') no-repeat center center; */
+            background-size: contain;
+           background-color: #1a0602;           
+            z-index: 999999;
+    }
+    .spinner{
+        position: absolute;
+        top: 48%;
+        left: 48%;
+    } 
+    </style>
 
 </head>
 
 <body>
 
+    <!--CSS Spinner preloader-->
+    <div class="spinner-wrapper">
+        <img alt="img" src="{{ asset('assets/images/preloaders/5.gif')}}">
+    <div class="spinner"></div>
+    </div>
 
     <!-- loader start -->
     <div class="loader_skeleton">
@@ -1628,6 +1658,7 @@
     <!-- Fly cart js-->
     <script src="{{asset('frontend')}}/assets/js/fly-cart.js"></script>
 
+   <script  scr ="https://cdnjs.cloudflare.com/ajax/libs/PreloadJS/1.0.1/preloadjs.min.js" ></script>
     <!-- Theme js-->
     <script src="{{asset('frontend')}}/assets/js/script.js"></script>
     <script src="{{asset('/')}}js/validator.js"></script>
@@ -1647,6 +1678,25 @@
             document.getElementById("search-overlay").style.display = "none";
         }
     </script>
+
+    {{-- prelader --}}
+    <script>
+            $(document).ready(function() {
+            //Preloader
+            // preloaderFadeOutTime = 5000;
+            function hidePreloader() {
+            var preloader = $('.spinner-wrapper');
+            preloader.fadeOut(preloaderFadeOutTime);
+            }
+            hidePreloader();
+            });
+   </script>
+{{-- 
+   <script>
+       $(window).load(function() {
+   $('.preloader').fadeOut('slow');
+}); --}}
+   </script>
     @stack('js')
 </body>
 
