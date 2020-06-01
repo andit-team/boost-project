@@ -49,16 +49,22 @@
                         <div class="alert alert-danger">
                                 <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
                         </div>
-                    @endif                      
-                <form class="form-horizontal auth-form" action="{{ url('reset_password') }}" method="post" id="validateForm">
+                    @endif   
+                    
+                    @if (\Session::has('success'))
+                    <div class="alert alert-success">
+                            <p class="text-muted font-weight-bold">{!! \Session::get('success') !!}</p>
+                    </div>
+                @endif  
+                <form class="form-horizontal auth-form" action="{{ url('/forgot_password') }}" method="post" id="validateForm">
                     @csrf 
                         
                         <div class="form-group">
-                            <input required="" name="email" type="email" class="form-control" placeholder="Email" id="exampleInputEmail12">
+                            <input required="" name="email" type="email" class="form-control" placeholder="Enter Your Email" id="exampleInputEmail12">
                             <input type="hidden" name="type" value="sellers">
                         </div>                                          
                         <div class="form-button">
-                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <button class="btn btn-primary" type="submit">Send Password Reset Link</button>
                         </div>                          
                     </form>
               </div>

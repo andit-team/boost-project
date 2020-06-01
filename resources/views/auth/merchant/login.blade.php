@@ -86,7 +86,7 @@
                                 <div class="custom-control custom-checkbox mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" name="remember" id="customControlAutosizing">
                                     <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
-                                    <a href="{{url('#')}}" class="btn btn-default forgot-pass">Forget password</a>
+                                    <a href="{{url('forgot_password')}}" class="btn btn-default forgot-pass">Forget password</a>
                                 </div>
                             </div>
                             <div class="form-button">
