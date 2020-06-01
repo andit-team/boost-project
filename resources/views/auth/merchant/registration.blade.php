@@ -1,6 +1,6 @@
 @extends('auth.auth-master')
 @section('content')
-<div class="row">
+<div class="row"> 
     <div class="col-md-5 p-0 card-left">
         <div class="card bg-primary">
             <div class="svg-icon">
@@ -29,11 +29,14 @@
         </div>
     </div>
     <div class="col-md-7 p-0 card-right">
+        <div class="text-right">
+            <span class=""> {{  $seller->verification_token }}</span> 
+        </div>
         <div class="card tab2-card">
             <div class="card-body">
                 <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link" id="contact-top-tab" data-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="false"><span class="icon-unlock mr-2"></span>Register</a>
+                        <a class="nav-link" id="contact-top-tab" data-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="false"><span class="icon-unlock mr-2"></span>Register</a> 
                     </li>
                 </ul>
                     
@@ -43,16 +46,34 @@
                         </div>
                     @endif
 
-                        
-                        <form class="form-horizontal auth-form">
+                      
+                    <form class="form-horizontal auth-form" action="{{ route('profileRegistration') }}" method="post" enctype="multipart/form-data" id="validateForm">
+                        @csrf 
                             <div class="form-group">
-                                <input required="" name="login[username]" type="email" class="form-control" placeholder="Username" id="exampleInputEmail12">
+                                <input required="" name="verification_token" type="number"  class="form-control" placeholder="varification Code" id="exampleInputEmail12">
+                                <input type="hidden" name="type" value="sellers">
+                                <input type="hidden" name="first_name" value="{{ $seller->first_name }}">
+                                <input type="hidden" name="last_name" value="{{ $seller->last_name }}">
                             </div>
                             <div class="form-group">
-                                <input required="" name="login[password]" type="password" class="form-control" placeholder="Password">
+                                <input required="" name="email" type="email" class="form-control" placeholder="Email" id="exampleInputEmail12">
+                                <input type="hidden" name="type" value="sellers">
                             </div>
                             <div class="form-group">
-                                <input required="" name="login[password]" type="password" class="form-control" placeholder="Confirm Password">
+                                <input type="text"  class="form-control  @error('dob') border-danger @enderror datepickerPreviousOnly" required name="dob" value="{{ old('dob') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off"> 
+                            </div>
+                            <div class="form-group">
+                                <select name="gender" placeholder="Gender" class="form-control px-10 @error('gender') border-danger @enderror" id="" required autocomplete="off" style="height: 51px;">                                         
+                                    <option value="Male" selected>Male</option>
+                                    <option value="Female">Female</option> 
+                                    <option value="Other">Other</option>  
+                                </select>
+                            </div> 
+                            <div class="form-group">
+                                <input required="" name="password" type="password" class="form-control" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <input required="" name="password" type="password" class="form-control" placeholder="Confirm Password">
                             </div>
                             <div class="form-terms">
                                 <div class="custom-control custom-checkbox mr-sm-2">

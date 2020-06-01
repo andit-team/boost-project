@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Sentinel;
 use App\Models\Seller;
+use App\User;
+use App\Events\SellerRegistration;
+use App\Models\Shop;
+use Session;
+use Baazar;
 class MerchantController extends Controller{
 
     public function dashboard(){
@@ -41,12 +46,135 @@ class MerchantController extends Controller{
         return view('merchant.sell-on-andbaazar');
     }
 
-    public function sellOnAndbaazarPost(Request $request){
-        dd($request->all());
+    public function sellOnAndbaazarPost(Request $request,Seller $seller){
+        //dd($request->all());
+
+        $this->validateForm($request);
+        $slug = Baazar::getUniqueSlug($seller,$request->first_name); 
+        $verify_number = mt_rand(10000,99999);
+        $Seller = ([
+            'first_name'         => $request->first_name,
+            'last_name'          => $request->last_name,
+            'slug'               => $slug,
+            'phone'              => $request->phone,
+            'verification_token' => $verify_number, 
+            'created_at' => now(),
+        ]);
+
+        Seller::create($Seller);
+
+        Session::flash('success', 'Profile create successfully!'); 
+
+        // return redirect('seller-registration'.'?slug='.$slug);
+        return redirect('sell-resubmit-toke'.'?slug='.$slug);
     }
 
-    public function registrationStepOne(){
-        return view('auth.merchant.registration');
+    public function resubmitToken(Request $request){
+        $seller = Seller::where('slug',$request->slug)->first();
+        //dd($seller); 
+        return view('auth.merchant.resubmitToken',compact('seller'));
+    }
+
+    public function tokenUpdate(Request $request){
+        $seller    = Seller::where('slug',$request->slug)->first();
+        // dd($seller);
+        $verify_number = mt_rand(10000,99999);
+       
+        $seller->update([
+            'verification_token' => $verify_number,
+        ]); 
+
+        return view('auth.merchant.resubmitToken',compact('seller'));
+
+    }
+
+    public function verifyToken(Request $request){
+        $seller    = Seller::where('slug',$request->slug)->first();
+        $verify_number = mt_rand(10000,99999);
+       
+        $seller->update([
+            'verification_token' => $verify_number,
+        ]); 
+
+        return redirect('seller-registration'.'?slug='.$slug);
+    }
+
+    public function sellerRegistration(Request $request){
+        $seller = Seller::where('slug',$request->slug)->first();
+        //dd($seller);
+        return view('auth.merchant.registration',compact('seller'));
+    }
+
+    public function registrationStepOne(Request $request){
+        //dd($request->all());
+
+       
+        //dd($sellerId);
+        
+        $seller = Sentinel::registerAndActivate([
+            'first_name' => $request->first_name,
+            'last_name'  => $request->last_name,
+            'email'      => $request->email,
+            'password' 	 => $request->password,
+            'type'       => 'sellers', 
+            'create-at'  => now(),
+            ]);
+            //dd($sellerId);
+        // $seller = Sentinel::registerAndActivate($data);
+        // dd($$seller);
+        $sellerprofile = event(new SellerRegistration($seller));
+
+        $sellerId    = Seller::where('slug',$request->slug)->first();
+        if($sellerId->verification_token == $request->verification_token){ 
+       
+            $sellerId->update([
+                'first_name'        => $sellerId->first_name,
+                'last_name'         => $sellerId->last_name,
+                'phone'             => $sellerId->phone,
+                'email'             => $request->email, 
+                'dob'               => $request->dob,
+                'gender'            => $request->gender,
+                'description'       => $request->description,
+                'last_visited_at'   => now(),
+                'last_visited_from' => $request->last_visited_from,
+                'verification_token' => $request->verification_token, 
+                'user_id'           =>  $sellerprofile->id,
+                'updated_at'        => now(),
+            ]);
+       
+      }
+
+   
+       
+        
+        return redirect('seller-shope-registration');
+    }
+
+    public function shopRegistration(){
+        return view('auth.merchant.shopRegistration');
+    }
+
+    public function shopRegistrationStore(Request $request,Shop $shop){
+        // $sellerId    = Seller::where('user_id',Sentinel::getUser())->first();
+        $sellerId = Seller::all();
+        dd($sellerId);
+        $slug = Baazar::getUniqueSlug($shop,$request->name); 
+        if(empty($sellerId)){
+            $shope = [
+                'name'      => $request->name,
+                'slug'      => $slug,
+                'phone'     => $request->phone,
+                'email'     => $request->email,
+                'web'       => $request->web,
+                'seller_id' => $sellerId->id,
+                'user_id'   => $sellerId->user_id,
+                'create_at' => now(),
+            ];
+    
+            Shop::create($shope); 
+        }
+
+        return redirect('dashboard');
     }
     public function registrationStepOneProcess(){
     }
@@ -59,6 +187,18 @@ class MerchantController extends Controller{
         return view();
     }
     public function registrationStepFinalProcess(){
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone'     => 'required',
+            // 'email' => 'required',
+            // 'dob' => 'required',
+            // 'gender' => 'required',
+            // 'description' => 'required',
+        ]);
     }
 
 
