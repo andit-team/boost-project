@@ -47,7 +47,7 @@
     @stack('css')
 
     <style>
-      .spinner-wrapper {
+      /* .spinner-wrapper {
             position: fixed;
             top: 0;
             left: 0;
@@ -55,8 +55,8 @@
             bottom: 0;                 
             overflow: visible;
            
-             /* background: url( 'https://makebackground.io/bk/mystery/' ) */
-            /* background: url('https://www.studio-aegis.com/uploads/1/0/3/8/10380626/custom_themes/921719032455054188/files/Orphan---Run.gif') no-repeat center center; */
+             background: url( 'https://makebackground.io/bk/mystery/' )
+            background: url('https://www.studio-aegis.com/uploads/1/0/3/8/10380626/custom_themes/921719032455054188/files/Orphan---Run.gif') no-repeat center center;
             background-size: contain;
            background-color: #1a0602;           
             z-index: 999999;
@@ -65,7 +65,7 @@
         position: absolute;
         top: 48%;
         left: 48%;
-    } 
+    }  */
     </style>
 
 </head>
@@ -73,10 +73,11 @@
 <body>
 
     <!--CSS Spinner preloader-->
-    <div class="spinner-wrapper">
+    {{-- <div class="spinner-wrapper">
         <img alt="img" src="{{ asset('assets/images/preloaders/5.gif')}}">
     <div class="spinner"></div>
-    </div>
+    </div> --}}
+    
 
     <!-- loader start -->
     <div class="loader_skeleton">
@@ -1687,7 +1688,7 @@
     </script>
 
     {{-- prelader --}}
-    <script>
+    {{-- <script>
             $(document).ready(function() {
             //Preloader
             preloaderFadeOutTime = 1000;
@@ -1697,7 +1698,7 @@
             }
             hidePreloader();
             });
-   </script>
+   </script> --}}
 {{-- 
    <script>
        $(window).load(function() {

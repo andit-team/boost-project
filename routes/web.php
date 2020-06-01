@@ -18,7 +18,7 @@ include('admin.php');
 
 // Frontend Route.....
 
-
+Route::post('reset_password', 'AuthController@resetPassword');
 
 
 
