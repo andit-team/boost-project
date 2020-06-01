@@ -114,5 +114,10 @@
         output.src = URL.createObjectURL(event.target.files[0]);
     };
 </script>
+<script>
+$('#file-upload').croppie(opts);
+// call a method via jquery
+$('#file-upload').croppie(method, args);
+</script>
 @endpush
 
