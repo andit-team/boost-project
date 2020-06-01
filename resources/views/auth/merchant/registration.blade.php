@@ -82,8 +82,10 @@
                             </div>
                             <div class="form-terms">
                                 <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing1">
+                                    <input type="checkbox" name="agreed" class="custom-control-input" id="customControlAutosizing1">
                                     <label class="custom-control-label" for="customControlAutosizing1"><span>I agree all statements in <a href=""  class="pull-right">Terms &amp; Conditions</a></span></label>
+                                    <br>
+                                    <span class="text-danger">{{ $errors->first('agreed') }}</span>
                                 </div>
                             </div>
                             <div class="form-button">

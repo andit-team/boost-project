@@ -255,7 +255,7 @@
                             <span class="text-danger">{{ $errors->first('first_name') }}</span>
                         </div>
                         <div class="col-sm-3">
-                            <input type="text"  required class="form-control" name="last_name @error('last_name') border-danger @enderror"  placeholder="Last Name">
+                            <input type="text"  required class="form-control  @error('last_name') border-danger @enderror" name="last_name"  placeholder="Last Name">
                             <span class="text-danger">{{ $errors->first('last_name') }}</span>
                         </div>
                         <div class="col-sm-6">
