@@ -17,10 +17,17 @@ include('merchant.php');
 include('admin.php');
 
 // Frontend Route.....
+//Forgot password......
+
+Route::get('forgot_password', 'ForgotPassword@forgot');
+
+Route::post('forgot_password', 'ForgotPassword@password');
 
 
+// Route::get('reset_password', 'MerchantController@reset');
+// Route::post('reset_password', 'MerchantController@resetPassword');
 
-
+// Route::post('reset_password_without_token', 'MerchantController@validatePasswordRequest');
 
 
 

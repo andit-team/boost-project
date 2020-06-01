@@ -42,8 +42,8 @@
                     <div>
                         <h3>Welcome to Andbaazar</h3>
                         <p>You can share anything with your friend.Like Comment. You can easily sell door-to-door without much hassle.
-                            Let us take a look at what a multi-vendor marketplace is and
-                             how you can make one successful multi-vendor marketplace using WooCommerce.</p>
+                          Let us take a look at what a multi-vendor marketplace is and
+                          how you can make one successful multi-vendor marketplace using WooCommerce.</p>
                     </div>
                 </div>
                 <div>
@@ -86,7 +86,7 @@
                                 <div class="custom-control custom-checkbox mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" name="remember" id="customControlAutosizing">
                                     <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
-                                    <a href="#" class="btn btn-default forgot-pass">Forget password</a>
+                                    <a href="{{url('forgot_password')}}" class="btn btn-default forgot-pass">Forget password</a>
                                 </div>
                             </div>
                             <div class="form-button">
