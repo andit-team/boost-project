@@ -20,8 +20,8 @@ class CreateSellersTable extends Migration
             $table->string('slug')->nullable();
             $table->string('picture')->nullable();
             $table->string('email')->nullable();
-            $table->date('dob');
-            $table->integer('mobile')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('phone')->nullable();
             $table->enum('gender',['Male','Female','Other'])->default('Male');
             $table->text('description')->nullable();
             $table->text('rej_desc')->nullable();
@@ -31,7 +31,7 @@ class CreateSellersTable extends Migration
             $table->string('remember_token')->nullable();
             $table->enum('status',['Active','Inactive','Reject'])->default('Inactive');
             // $table->boolean('active')->default(1)->change();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

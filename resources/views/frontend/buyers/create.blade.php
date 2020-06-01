@@ -72,10 +72,23 @@
                                 <div class="mt-0">
                                     <img id="output"  class="imagestyle" src="{{ asset('/uploads/buyer_profile/user.png') }}" />
                                 </div>
-                                <div class="uploadbtn"> 
+                                {{-- <div class="uploadbtn"> 
                                     <label for="file-upload" class="custom-file-upload">Upload Here</label>
                                     <input id="file-upload" type="file" name="picture" onchange="loadFile(event)"/>
-                                </div>
+                                </div> --}}
+                                <div id="userpic" class="userpic">
+                                    <div class="js-preview userpic__preview"></div>
+                                    <div class="btn btn-success js-fileapi-wrapper">
+                                       <div class="js-browse">
+                                          <span class="btn-txt">Choose</span>
+                                          <input type="file" name="filedata">
+                                       </div>
+                                       <div class="js-upload" style="display: none;">
+                                          <div class="progress progress-success"><div class="js-progress bar"></div></div>
+                                          <span class="btn-txt">Uploading</span>
+                                       </div>
+                                    </div>
+                                 </div>
                             </div>
                         </div> 
 
@@ -108,11 +121,73 @@
     </section>
 @endsection
 @push('js')
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
+<script>
+	window.FileAPI = {
+		  debug: false // debug mode
+		, staticPath: '/js/jquery.fileapi/FileAPI/' // path to *.swf
+	};
+</script>
+<script src="http://js/jquery.fileapi/FileAPI/FileAPI.min.js"></script>
+<script src="http://js/jquery.fileapi/FileAPI/FileAPI.exif.js"></script>
+<script src="http://js/jquery.fileapi/jquery.fileapi.min.js"></script>
 <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
     };
+</script>
+<script>
+$('#file-upload').croppie(opts);
+// call a method via jquery
+$('#file-upload').croppie(method, args);
+</script>
+
+<script>
+    $('#userpic').fileapi({
+   url: 'http://rubaxa.org/FileAPI/server/ctrl.php',
+   accept: 'image/*',
+   imageSize: { minWidth: 200, minHeight: 200 },
+   elements: {
+      active: { show: '.js-upload', hide: '.js-browse' },
+      preview: {
+         el: '.js-preview',
+         width: 200,
+         height: 200
+      },
+      progress: '.js-progress'
+   },
+   onSelect: function (evt, ui){
+      var file = ui.files[0];
+      if( !FileAPI.support.transform ) {
+         alert('Your browser does not support Flash :(');
+      }
+      else if( file ){
+         $('#popup').modal({
+            closeOnEsc: true,
+            closeOnOverlayClick: false,
+            onOpen: function (overlay){
+               $(overlay).on('click', '.js-upload', function (){
+                  $.modal().close();
+                  $('#userpic').fileapi('upload');
+               });
+               $('.js-img', overlay).cropper({
+                  file: file,
+                  bgColor: '#fff',
+                  maxSize: [$(window).width()-100, $(window).height()-100],
+                  minSize: [200, 200],
+                  selection: '90%',
+                  onSelect: function (coords){
+                     $('#userpic').fileapi('crop', file, coords);
+                  }
+               });
+            }
+         }).open();
+      }
+   }
+});
 </script>
 @endpush
 

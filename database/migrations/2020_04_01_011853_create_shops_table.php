@@ -16,14 +16,14 @@ class CreateShopsTable extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('logo')->nullable();
-            $table->string('cell_phone');
-            $table->string('google_location');
-            $table->string('featured');
-            $table->string('email');
-            $table->string('web');
-            $table->text('description');
+            $table->string('phone')->nullable();
+            $table->string('google_location')->nullable();
+            $table->string('featured')->nullable();
+            $table->string('email')->nullable();
+            $table->string('web')->nullable();
+            $table->text('description')->nullable();
             $table->unsignedInteger('timezone_id')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('seller_id');
@@ -32,7 +32,7 @@ class CreateShopsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('seller_id')->references('id')->on('buyers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('seller_id')->references('id')->on('sellers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }

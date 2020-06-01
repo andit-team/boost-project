@@ -3,7 +3,13 @@
 
 Route::get('sell-on-andbaazar','MerchantController@sellOnAndbaazar');
 Route::post('sell-on-andbaazar','MerchantController@sellOnAndbaazarPost')->name('sellOnAndbaazarPost');
-Route::get('merchant/registration','MerchantController@registrationStepOne');
+Route::get('sell-resubmit-toke','MerchantController@resubmitToken');
+Route::post('sell-resubmit-toke','MerchantController@tokenUpdate')->name('resubmitToken');
+Route::post('sell-varifey','MerchantController@verifyToken')->name('tokenVerify');
+Route::get('seller-registration','MerchantController@sellerRegistration');
+Route::post('seller-registration','MerchantController@registrationStepOne')->name('profileRegistration');
+Route::get('seller-shope-registration','MerchantController@shopRegistration');
+Route::post('seller-shope-registration','MerchantController@shopRegistrationStore')->name('sellerShopeRegistration');
 Route::post('signup-step-one','MerchantController@registrationStepOneProcess')->name('merchantStepOne');
 
 Route::prefix('merchant')->group(function () {
