@@ -68,7 +68,7 @@ class MerchantController extends Controller{
         Seller::create($Seller);
 
         Session::flash('success', 'Profile create successfully!');  
-        
+
         return redirect('sell-resubmit-toke'.'?slug='.$slug);
     }
 
@@ -119,7 +119,7 @@ class MerchantController extends Controller{
         $request->validate([ 
             'password'   => 'required',
             'email'      => 'required|unique:sellers',
-            'checkbox' =>'accepted'
+            'aggred'     =>'accepted'
         ]);
         
         $seller = Sentinel::registerAndActivate([
