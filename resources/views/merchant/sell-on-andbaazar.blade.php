@@ -257,8 +257,8 @@
                             <input type="text" required class="form-control" name="last_name"  placeholder="Last Name">
                         </div>
                         <div class="col-sm-6">
-                            <input type="number" autocomplete="off" name="phone" class="form-control" placeholder="Phone Number e.g. 01900110011">
-                        </div>
+                            <input type="number" autocomplete="off" name="phone" class="form-control" placeholder="Phone Number e.g. 01900110011"> 
+                        </div> 
                     </div>
                     <button type="submit" class="btn btn-solid btn-sm">Start Selling</button>
                 </form>

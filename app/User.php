@@ -32,7 +32,7 @@ use App\Models\Item;
 class User extends EloquentUser
 {
     protected $fillable = [
-        'first_name','last_name', 'email', 'password',
+        'first_name','last_name','type','email', 'password',
     ];
     protected $loginNames = ['email','type'];
 

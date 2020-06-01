@@ -34,6 +34,7 @@
 
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/admin.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
 
      <!-- Custom css-->
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
@@ -80,6 +81,7 @@
 
 <!--script admin-->
 <script src="{{asset('')}}/assets/js/admin-script.js"></script>
+@include('elements.myjs')
 <script>
     $('.single-item').slick({
             arrows: false,

@@ -12,6 +12,11 @@ class Shop extends Model
 {
   protected $fillable = ['name','slug','cell_phone','google_location','featured','email','web','description','active','seller_id','user_id'];
 
+  public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
   public function user(){
    return $this->belongsTo(User::class,'user_id');
     }
