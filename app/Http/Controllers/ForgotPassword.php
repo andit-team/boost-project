@@ -25,7 +25,7 @@ class ForgotPassword extends Controller
 
       if($user == null){
 
-        return redirect()->back()->with(['error'=> 'Email Not Exists']);    
+        return redirect()->back()->with(['error'=> 'Email not exists']);    
       }
        
       $user = Sentinel::findById($user->id);
@@ -34,7 +34,7 @@ class ForgotPassword extends Controller
 
       $this->sendEmail( $user);
 
-      return redirect()->back()->with(['success'=> 'Reset Code Sent To Your Emai']);   
+      return redirect()->back()->with(['success'=> 'Reset code sent to your emai']);   
         // return view('auth.merchant.setnewpassword');
        }
 
@@ -47,6 +47,7 @@ class ForgotPassword extends Controller
                    $message->subject("$user->name,Reset Your password");
                }
             );
-
        }
+
+       
 }
