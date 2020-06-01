@@ -77,7 +77,7 @@
         <img alt="img" src="{{ asset('assets/images/preloaders/5.gif')}}">
     <div class="spinner"></div>
     </div> --}}
-    
+
 
     <!-- loader start -->
     <div class="loader_skeleton">
@@ -1704,7 +1704,7 @@
        $(window).load(function() {
    $('.preloader').fadeOut('slow');
 }); --}}
-   </script>
+   {{-- </script> --}}
     @stack('js')
 </body>
 
