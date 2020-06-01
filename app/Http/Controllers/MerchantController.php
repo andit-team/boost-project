@@ -49,7 +49,11 @@ class MerchantController extends Controller{
     public function sellOnAndbaazarPost(Request $request,Seller $seller){
         //dd($request->all());
 
-        $this->validateForm($request);
+        $request->validate([
+            'first_name' => 'required',
+            'last_name'  => 'required',
+            'phone'      => 'required',
+        ]);
         $slug = Baazar::getUniqueSlug($seller,$request->first_name); 
         $verify_number = mt_rand(10000,99999);
         $Seller = ([
@@ -63,9 +67,8 @@ class MerchantController extends Controller{
 
         Seller::create($Seller);
 
-        Session::flash('success', 'Profile create successfully!'); 
-
-        // return redirect('seller-registration'.'?slug='.$slug);
+        Session::flash('success', 'Profile create successfully!');  
+        
         return redirect('sell-resubmit-toke'.'?slug='.$slug);
     }
 
@@ -89,14 +92,20 @@ class MerchantController extends Controller{
     }
 
     public function verifyToken(Request $request){
-        $seller    = Seller::where('slug',$request->slug)->first();
-        $verify_number = mt_rand(10000,99999);
+        $request->validate([
+            'verification_token'    => 'required|exists:sellers,verification_token'
+        ]);
        
-        $seller->update([
-            'verification_token' => $verify_number,
-        ]); 
-
-        return redirect('seller-registration'.'?slug='.$slug);
+        $seller    = Seller::where('slug',$request->slug)->first();
+        //dd($seller);
+        
+       
+       $seller->update([
+            'verification_token' => $request->verification_token,
+            'slug' => $request->slug,
+        ]);
+        return redirect('seller-registration'.'?slug='.$request->slug);
+    
     }
 
     public function sellerRegistration(Request $request){
@@ -105,11 +114,13 @@ class MerchantController extends Controller{
         return view('auth.merchant.registration',compact('seller'));
     }
 
-    public function registrationStepOne(Request $request){
-        //dd($request->all());
+    public function registrationStepOne(Request $request){ 
 
-       
-        //dd($sellerId);
+        $request->validate([ 
+            'password'   => 'required',
+            'email'      => 'required|unique:sellers',
+            'checkbox' =>'accepted'
+        ]);
         
         $seller = Sentinel::registerAndActivate([
             'first_name' => $request->first_name,
@@ -119,50 +130,49 @@ class MerchantController extends Controller{
             'type'       => 'sellers', 
             'create-at'  => now(),
             ]);
-            //dd($sellerId);
-        // $seller = Sentinel::registerAndActivate($data);
-        // dd($$seller);
-        $sellerprofile = event(new SellerRegistration($seller));
+      
 
         $sellerId    = Seller::where('slug',$request->slug)->first();
-        if($sellerId->verification_token == $request->verification_token){ 
+
+        
        
             $sellerId->update([
-                'first_name'        => $sellerId->first_name,
-                'last_name'         => $sellerId->last_name,
-                'phone'             => $sellerId->phone,
-                'email'             => $request->email, 
-                'dob'               => $request->dob,
-                'gender'            => $request->gender,
-                'description'       => $request->description,
-                'last_visited_at'   => now(),
-                'last_visited_from' => $request->last_visited_from,
+                'first_name'         => $sellerId->first_name,
+                'last_name'          => $sellerId->last_name,
+                'phone'              => $sellerId->phone,
+                'email'              => $request->email, 
+                'dob'                => $request->dob,
+                'gender'             => $request->gender,
+                'description'        => $request->description,
+                'last_visited_at'    => now(),
+                'last_visited_from'  => $request->last_visited_from,
                 'verification_token' => $request->verification_token, 
-                'user_id'           =>  $sellerprofile->id,
-                'updated_at'        => now(),
+                'user_id'            =>  $seller->id,
+                'updated_at'         => now(),
             ]);
        
-      }
+    
 
    
        
         
-        return redirect('seller-shope-registration');
+        return redirect('seller-shope-registration'.'?slug='.$request->slug);
     }
 
-    public function shopRegistration(){
-        return view('auth.merchant.shopRegistration');
+    public function shopRegistration(Request $request){
+        $seller = Seller::where('slug',$request->slug)->first();
+        return view('auth.merchant.shopRegistration',compact('seller'));
     }
 
-    public function shopRegistrationStore(Request $request,Shop $shop){
-        // $sellerId    = Seller::where('user_id',Sentinel::getUser())->first();
-        $sellerId = Seller::all();
-        dd($sellerId);
-        $slug = Baazar::getUniqueSlug($shop,$request->name); 
-        if(empty($sellerId)){
+    public function shopRegistrationStore(Request $request){
+        $request->validate([
+            'name'       => 'required', 
+            'phone'      => 'required|unique:shops',
+        ]);
+        $sellerId = Seller::where('slug',$request->slug)->first(); 
             $shope = [
                 'name'      => $request->name,
-                'slug'      => $slug,
+                'slug'      => $request->slug,
                 'phone'     => $request->phone,
                 'email'     => $request->email,
                 'web'       => $request->web,
@@ -172,9 +182,9 @@ class MerchantController extends Controller{
             ];
     
             Shop::create($shope); 
-        }
+        // }
 
-        return redirect('dashboard');
+        return redirect('merchant/login');
     }
     public function registrationStepOneProcess(){
     }
@@ -194,7 +204,7 @@ class MerchantController extends Controller{
             'first_name' => 'required',
             'last_name' => 'required',
             'phone'     => 'required',
-            // 'email' => 'required',
+            // 'email' => 'required|unique:sellers',
             // 'dob' => 'required',
             // 'gender' => 'required',
             // 'description' => 'required',

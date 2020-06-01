@@ -73,10 +73,10 @@
 <body>
 
     <!--CSS Spinner preloader-->
-    <div class="spinner-wrapper">
+    {{-- <div class="spinner-wrapper">
         <img alt="img" src="{{ asset('assets/images/preloaders/5.gif')}}">
     <div class="spinner"></div>
-    </div>
+    </div> --}}
 
     <!-- loader start -->
     <div class="loader_skeleton">
@@ -1687,7 +1687,7 @@
     </script>
 
     {{-- prelader --}}
-    <script>
+    {{-- <script>
             $(document).ready(function() {
             //Preloader
             preloaderFadeOutTime = 1000;
@@ -1697,13 +1697,13 @@
             }
             hidePreloader();
             });
-   </script>
+   </script> --}}
 {{-- 
    <script>
        $(window).load(function() {
    $('.preloader').fadeOut('slow');
 }); --}}
-   </script>
+   {{-- </script> --}}
     @stack('js')
 </body>
 

@@ -47,11 +47,12 @@
                     @endif
 
                       
-                    <form class="form-horizontal auth-form" action="{{ route('profileRegistration') }}" method="post" enctype="multipart/form-data" id="validateForm">
+                    <form class="form-horizontal auth-form" action="{{ route('tokenVerify') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf 
                             <div class="form-group">
-                                <input required="" name="verification_token" type="number"  class="form-control" placeholder="varification Code" id="exampleInputEmail12">
-                                
+                                <input  name="verification_token" type="number"  class="form-control @error('verification_token') border-danger @enderror"  placeholder="varification Code" id="exampleInputEmail12"> 
+                                <span class="text-danger">{{$errors->first('verification_token')}}</span>
+                                <input type="hidden" name="slug" value={{ $seller->slug }}>
                             </div>  
                             <div class="form-button">
                                 <button class="btn btn-primary" type="submit">Verifey</button> 
@@ -59,6 +60,7 @@
                         </form>
                         <form action="{{ route('resubmitToken') }}" method="post" style="margin-left: 175px;margin-top:-65px">
                             @csrf 
+                            <input type="hidden" name="slug" value={{$seller->slug}}>
                             <button type="submit" class="btn btn-primary">Re-send</button>
                         </form> 
             </div>

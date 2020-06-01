@@ -35,7 +35,7 @@
                     <h3>PERSONAL DETAIL</h3>
                     <div class="card mt-2"> 
                     <h3 class="card-header text-danger">Seller profile Status</h3>
-                    <div class="card-body text-center">
+                    <div class="card-body text-center bg-danger">
                         <h4>Thank Your for your request</h4>
                         <p>We nedd to review your request a little longer. After approve your request you can see your dashboard.</p>
                     </div> 

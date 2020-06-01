@@ -33,7 +33,7 @@
             <div class="card-body">
                 <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link" id="contact-top-tab" data-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="false"><span class="icon-unlock mr-2"></span>Register</a> 
+                        <a class="nav-link" id="contact-top-tab" data-toggle="tab" href="#top-contact" role="tab" aria-controls="top-contact" aria-selected="false"><span class="icon-unlock mr-2"></span>Shop Register</a> 
                     </li>
                 </ul>
                     
@@ -47,16 +47,21 @@
                     <form class="form-horizontal auth-form" action="{{ route('sellerShopeRegistration') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf  
                             <div class="form-group">
-                                <input required="" name="name" type="text" class="form-control" placeholder="Shope Name" id="exampleInputEmail12"> 
+                                <input required="" name="name" type="text" class="form-control @error('name') border-danger @enderror" placeholder="Shope Name" id="exampleInputEmail12"> 
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                               <input type="hidden" name="slug" value="{{ $seller->slug }}">
                             </div> 
                             <div class="form-group">
-                                <input required="" name="phone" type="text" class="form-control" placeholder="Phone">
+                                <input required="" name="phone" type="text" class="form-control @error('name') border-danger @enderror" placeholder="Phone">
+                                <span class="text-danger">{{ $errors->first('name') }}</span>
                             </div>
                             <div class="form-group">
-                                <input required="" name="email" type="email" class="form-control" placeholder="Email">
+                                <input required="" name="email" type="email" class="form-control @error('name') border-danger @enderror" placeholder="Email">
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
                             </div>
                             <div class="form-group">
-                                <input required="" name="web" type="text" class="form-control" placeholder="Web">
+                                <input  name="web" type="text" class="form-control @error('web') border-danger @enderror" placeholder="Web">
+                                <span class="text-danger">{{ $errors->first('web') }}</span>
                             </div> 
                             <div class="form-button">
                                 <button class="btn btn-primary" type="submit">Save</button>
