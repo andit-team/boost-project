@@ -17,8 +17,8 @@ include('merchant.php');
 include('admin.php');
 
 // Frontend Route.....
-
-Route::post('reset_password', 'AuthController@resetPassword');
+Route::get('reset_password', 'MerchantController@resetPassword');
+Route::post('reset_password', 'MerchantController@resetPassword');
 
 
 

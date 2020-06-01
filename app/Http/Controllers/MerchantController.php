@@ -200,6 +200,8 @@ class MerchantController extends Controller{
             // 'description' => 'required',
         ]);
     }
-
+public function resetPassword(){
+    return view('auth.merchant.resetpassword');
+}
 
 }
