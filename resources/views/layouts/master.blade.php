@@ -36,6 +36,10 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/color1.css" media="screen" id="color">
 
+    <!-- Croppie css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/croppie.css>
+
+
     <link rel="stylesheet" type="text/css" href=" https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.3.3/css-loader.css">
    
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
@@ -1630,6 +1634,9 @@
     <!-- latest jquery-->
     <script src="{{asset('frontend')}}/assets/js/jquery-3.3.1.min.js"></script>
 
+    <!-- croppie jquery-->
+    <script src="{{asset('frontend')}}/assets/js/croppie.min.js"></script>
+
     <!-- fly cart ui jquery-->
     <script src="{{asset('frontend')}}/assets/js/jquery-ui.min.js"></script>
 
@@ -1683,7 +1690,7 @@
     <script>
             $(document).ready(function() {
             //Preloader
-            // preloaderFadeOutTime = 5000;
+            preloaderFadeOutTime = 1000;
             function hidePreloader() {
             var preloader = $('.spinner-wrapper');
             preloader.fadeOut(preloaderFadeOutTime);
