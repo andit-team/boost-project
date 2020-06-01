@@ -50,24 +50,55 @@
                     <form class="form-horizontal auth-form" action="{{ route('tokenVerify') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf 
                             <div class="form-group">
-                                <input  name="verification_token" type="number"  class="form-control @error('verification_token') border-danger @enderror"  placeholder="varification Code" id="exampleInputEmail12"> 
+                                <input required  name="verification_token" type="number"  class="form-control @error('verification_token') border-danger @enderror"  placeholder="varification Code" id="exampleInputEmail12"> 
                                 <span class="text-danger">{{$errors->first('verification_token')}}</span>
                                 <input type="hidden" name="slug" value={{ $seller->slug }}>
                             </div>  
-                            <div class="form-button">
-                                <button class="btn btn-primary" type="submit">Verifey</button> 
+                            <div class="form-button float-right">
+                                <button class="btn btn-default" type="submit">Verifey</button> 
+                                <span class="btn btn-warning disabled" id="Resend" type="submit"> <span class="c"></span> Resend </span> 
                             </div> 
                         </form>
-                        <form action="{{ route('resubmitToken') }}" method="post" style="margin-left: 175px;margin-top:-65px">
-                            @csrf 
-                            <input type="hidden" name="slug" value={{$seller->slug}}>
-                            <button type="submit" class="btn btn-primary">Re-send</button>
-                        </form> 
+
+                        
             </div>
+            <form action="{{ route('resubmitToken') }}" method="post" id="resendform" style="d-none">
+                @csrf 
+                <input type="hidden" name="slug" value={{$seller->slug}}>
+            </form> 
         </div>
     </div>
 </div>
 <a href="index.html" class="btn btn-primary back-btn"><i data-feather="arrow-left"></i>Back To Home</a>
 
 @endsection
+
+@push('js')
+    <script>
+        $('#Resend').click(function(){
+            $('#resendform').submit();
+        });
+
+        $(document).ready(function(){
+            c();
+        });
+
+        function c(){
+            var n=60;
+            var c=n;
+            $('.c').text(c);
+            setInterval(function(){
+                c--;
+                if(c>=0){
+                    $('.c').text(c);
+                }
+                if(c==0){
+                    $('.c').text('');
+                    $('#Resend').removeClass('disabled');
+                }
+            },1000);
+        }
+
+    </script>
+@endpush
 

@@ -24,8 +24,8 @@ Route::get('forgot_password', 'ForgotPassword@forgot');
 Route::post('forgot_password', 'ForgotPassword@password');
 
 
-// Route::get('reset_password', 'MerchantController@reset');
-// Route::post('reset_password', 'MerchantController@resetPassword');
+ Route::get('reset_password/{email}', 'ResetPasswordController@reset');
+ Route::post('reset_password/{email}', 'ResetPasswordController@updatePassword');
 
 // Route::post('reset_password_without_token', 'MerchantController@validatePasswordRequest');
 

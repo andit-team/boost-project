@@ -54,6 +54,7 @@ class MerchantController extends Controller{
             'last_name'  => 'required',
             'phone'      => 'required',
         ]);
+
         $slug = Baazar::getUniqueSlug($seller,$request->first_name); 
         $verify_number = mt_rand(10000,99999);
         $Seller = ([
@@ -116,10 +117,10 @@ class MerchantController extends Controller{
 
     public function registrationStepOne(Request $request){ 
 
-        $request->validate([ 
-            'password'   => 'required',
-            'email'      => 'required|unique:sellers',
-            'aggred'     =>'accepted'
+        $request->validate([   
+            'password'      => 'required',
+            'email'         => 'required|unique:sellers',
+            'agreed'        => 'accepted' 
         ]);
         
         $seller = Sentinel::registerAndActivate([
