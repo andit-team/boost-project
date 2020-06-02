@@ -215,6 +215,23 @@
         <table border="0" cellpadding="0" cellspacing="0" class="mcnTextBlock" style="border-collapse: collapse; mso-table-lspace: 0;
             mso-table-rspace: 0; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;
             min-width:100%;" width="100%">
+         <tbody>
+         <tr>
+        <td class="mcnTextContent" style='mso-line-height-rule: exactly;
+            -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; word-break: break-word;
+            color: #2a2a2a; font-family: "Asap", Helvetica, sans-serif; font-size: 12px;
+            line-height: 150%; text-align: left; padding-top:9px; padding-right: 18px;
+            padding-bottom: 9px; padding-left: 18px;' valign="top">
+        <a href="{{url('/')}}" style="mso-line-height-rule: exactly;
+            -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #2a2a2a;
+            font-weight: normal; text-decoration: none" target="_blank" title="Andbaazar is the best way to
+            organize, share and sell all your visual assets in one place.">
+       <img align="none" alt="Andbaazar" height="32" src="https://static.lingoapp.com/assets/images/email/lingo-logo.png";
+            text-decoration: none; height: auto; width: 107px; height: 32px; margin: 0px;" width="107" />
+       </a>
+       </td>
+       </tr>
+       </tbody>
        <tbody class="mcnTextBlockOuter">
        <tr>
        <td class="mcnTextBlockInner" style="mso-line-height-rule: exactly;
@@ -237,7 +254,7 @@
         </a>
         </td>
         </tr>
-        </tbody>
+        </tbody>       
         </table>
         </td>
         </tr>
