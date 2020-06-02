@@ -14,24 +14,6 @@ class ResetPasswordController extends Controller
         return view('auth.merchant.resetpassowrd',compact('email'));
     }
    
-
-    //      public function updatePassword($email)
-    //     {
-    //        dd($request->all());
-    //         $curr_password = $request->curr_password;
-    //         $new_password  = $request->new_password;
-        
-        
-    //     if(!Hash::check($curr_password,Auth::user()->password)){
-    //     echo 'The specified password does not match';
-    //     }
-    //      else{
-    //          $request->user()->fill(['password' => Hash::make($new_password)])->save();
-    //         echo 'Updated Successfully';
-        
-    //       }       
-    //  }
-
      public function updatePassword(Request $request,$email){
          //dd($request->all());
         $request->validate([
@@ -44,8 +26,8 @@ class ResetPasswordController extends Controller
        $user->update([
             'password' => bcrypt($request->password),         
         ]);
-        
-        Session::flash('success', 'Password  Reset Successfully!');
-        return back();  
+
+        Session::flash('success', 'Password  Reset Successfully!');  
+        return redirect('merchant/login'); 
     }
 }

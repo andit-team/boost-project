@@ -23,7 +23,19 @@ Route::prefix('merchant')->group(function () {
     Route::post('signup-step-two','MerchantController@registrationStepTwoProcess')->name('merchantStepTwo');
     Route::get('signup-step-final','MerchantController@registrationStepFinal');
     Route::post('signup-step-final','MerchantController@registrationStepFinalProcess')->name('merchantStepFinal');
+
+   // forgot password route....
+
+    Route::get('forgot_password', 'ForgotPassword@forgot');
+    Route::post('forgot_password', 'ForgotPassword@password');
     
+    // Reset  Password Route....
+    
+    Route::get('reset_password/{email}', 'ResetPasswordController@reset');
+    Route::put('reset_password/{email}', 'ResetPasswordController@updatePassword');
+
+
+
     Route::get('/product/subcategory/{id}','ItemsController@subcategory');
     Route::post('/product/approvement/{slug}','ItemsController@approvement');
     Route::put('/product/rejected/{slug}','ItemsController@rejected');
