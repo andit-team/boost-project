@@ -12,7 +12,7 @@
     <meta name="author" content="multikart">
     <link rel="icon" href="{{asset('frontend')}}/assets/images/favicon/fav.png" type="image/x-icon">
     <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/favicon/fav.png" type="image/x-icon">
-    <title>Andbaazar</title>
+    <title>Andbaazars</title>
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -81,7 +81,7 @@
 
     <!-- loader start -->
     <div class="loader_skeleton">
-        <div class="top-header">
+        {{-- <div class="top-header">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
@@ -103,7 +103,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <header>
             <div class="container">
                 <div class="row">
@@ -1673,11 +1673,11 @@
     <script src="{{asset('/')}}js/validatorRules.js"></script>
     @include('elements.myjs')
     <script>
-        $(window).on('load', function () {
-            setTimeout(function () {
-                $('#exampleModal').modal('show');
-            }, 2500);
-        });
+        // $(window).on('load', function () {
+        //     setTimeout(function () {
+        //         // $('#exampleModal').modal('show');
+        //     }, 2500);
+        // });
         function openSearch() {
             document.getElementById("search-overlay").style.display = "block";
         }

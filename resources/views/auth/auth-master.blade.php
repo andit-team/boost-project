@@ -81,7 +81,10 @@
 
 <!--script admin-->
 <script src="{{asset('')}}/assets/js/admin-script.js"></script>
+<script src="{{asset('/')}}js/validator.js"></script>
+<script src="{{asset('/')}}js/validatorRules.js"></script>
 @include('elements.myjs')
+
 <script>
     $('.single-item').slick({
             arrows: false,
