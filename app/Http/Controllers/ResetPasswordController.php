@@ -7,7 +7,7 @@ use App\User;
 class ResetPasswordController extends Controller
 {
     public function reset(Request $request){
-        
+
         $email = User::whereEmail($request->email)->first();
 
         return view('auth.merchant.resetpassowrd');
@@ -29,5 +29,7 @@ class ResetPasswordController extends Controller
         //     echo 'Updated Successfully';
         
         //  }
+
+        
      }
 }
