@@ -52,7 +52,7 @@
                         </div>
                     @endif
                       
-                    <form class="form-horizontal auth-form" action="{{ url('reset_password/'.$email->email) }}" method="post">
+                    <form class="form-horizontal auth-form" action="{{ url('merchant/reset_password/'.$email->email) }}" method="post">
                        @csrf
                        @method('PUT')       
                         {{-- <input type="hidden" name="token" value="{{ $token }}"> --}}
