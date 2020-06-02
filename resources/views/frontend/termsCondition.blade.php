@@ -16,37 +16,7 @@
         <div class="card bg-light">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-12">
-                        {{-- <form class="theme-form">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <label for="name">First Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Your First Name"
-                                        required="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="email">Last Name</label>
-                                    <input type="text" class="form-control" id="last-name" placeholder="Enter Your Last Name" required="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="review">Phone number</label>
-                                    <input type="text" class="form-control" id="review" placeholder="Enter your number"
-                                        required="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email" placeholder="Email" required="">
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label for="review">Write Your Message</label>
-                                    <textarea class="form-control summernote" placeholder="Write Your Message"
-                                        id="exampleFormControlTextarea1" rows="6"></textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <button class="btn btn-solid" type="submit">Send Your Message</button>
-                                </div>
-                            </div>
-                        </form> --}}
+                    <div class="col-sm-12"> 
                         <h2>Termes and conditon</h3>
                         <p class="mt-3 text-justify font-weight-bold">
                             Introduction :<br><br>
@@ -88,7 +58,7 @@
                             If AndBaazar Ltd Ltd provides you with a user ID and password to enable you to access restricted areas of this website or other content or services, you must ensure that the user ID and password are kept confidential.  
                             
                             AndBaazar Ltd may disable your user ID and password at AndBaazar Ltd sole discretion without notice or explanation.<br><br>
-                            </p>    
+                        </p>    
                     </div>
                 </div>
             </div>
@@ -97,17 +67,4 @@
     </div>
 </section>
 <!--Section ends-->
-@endsection
-@push('css')
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
-@endpush
-@push('js')
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-     $('.summernote').summernote({
-           height: 200,
-      });
-   });
- </script>
-@endpush
+@endsection  

@@ -23,11 +23,7 @@
             <div class="svg-icon">
                 <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
                     class="img-fluid blur-up lazyload" alt="image"></a>
-            </div>
-            {{-- <div class="brand-logo">
-                <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
-                        class="img-fluid blur-up lazyload" alt="image"></a>
-            </div> --}}
+            </div> 
             <div class="single-item">
                 <div>
                     <div>
@@ -74,13 +70,15 @@
                         </div>
                     @endif
 
-                        <form class="form-horizontal auth-form" method="post" action="{{route('merchantloginprocess')}}">
+                        <form class="form-horizontal auth-form" method="post" action="{{route('merchantloginprocess')}}" id="validateForm">
                             @csrf
                             <div class="form-group">
-                                <input required="" name="login[email]" type="email"  value="and.baazar@yahoo.com" class="form-control" placeholder="Email" id="exampleInputEmail1">
+                                <input required="" name="login[email]" type="email"  value="and.baazar@yahoo.com" class="form-control @error('email') border-danger @enderror" placeholder="Email" id="exampleInputEmail1">
+                                <span class="text-danger">{{ $errors->first('email') }}</span>
                             </div>
                             <div class="form-group">
-                                <input required="" name="login[password]" type="password" class="form-control" placeholder="Password">
+                                <input required="" name="login[password]" type="password" class="form-control @error('password') border-danger @enderror" placeholder="Password">
+                                <span class="text-danger">{{ $errors->first('password') }}</span>
                             </div>
                             <div class="form-terms">
                                 <div class="custom-control custom-checkbox mr-sm-2">
