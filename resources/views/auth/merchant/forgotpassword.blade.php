@@ -55,7 +55,7 @@
                     <div class="alert alert-success">
                             <p class="text-muted font-weight-bold">{!! \Session::get('success') !!}</p>
                     </div>
-                @endif  
+                    @endif  
                 <form class="form-horizontal auth-form" action="{{ url('merchant/forgot_password') }}" method="post" id="validateForm">
                     @csrf 
                         

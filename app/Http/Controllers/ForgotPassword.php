@@ -35,7 +35,7 @@ class ForgotPassword extends Controller
       $this->sendEmail( $user);
 
       return redirect()->back()->with(['success'=> 'Reset code sent to your emai']);   
-        // return view('auth.merchant.setnewpassword');
+       
        }
 
        public function sendEmail($user){

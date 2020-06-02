@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Sentinel;
+use App\User;
+use Session;
+use Reminder;
+use Mail;
 use App\Events\CustomerRegistration;
 
 class CustomerController extends Controller{
@@ -51,4 +55,67 @@ class CustomerController extends Controller{
     public function userlogin(){
         return view('auth.customer.login');
     }
+
+// Forgot password......
+    public function forgot(){
+        return view('auth.customer.forgotpassword');
+    }
+
+    public function password(Request $request){
+
+        //   dd($request->all());
+    
+          $user = User::whereEmail($request->email)->first();
+    
+          if($user == null){
+    
+            return redirect()->back()->with(['error'=> 'Email not exists']);    
+          }
+           
+          $user = Sentinel::findById($user->id);
+    
+          $reminder = Reminder::exists($user) ? : Reminder::create($user);
+    
+          $this->sendEmail( $user);
+    
+          return redirect()->back()->with(['success'=> 'Reset code sent to your emai']);   
+            // return view('auth.merchant.setnewpassword');
+           }
+    
+           public function sendEmail($user){
+               Mail::send(
+                   'admin.emails.customerforgot',
+                   ['user' => $user],
+                   function($message) use ($user) {
+                       $message->to($user->email);
+                       $message->subject("$user->name,Reset Your password");
+                   }
+                );
+           }
+    // Reset Password.....
+
+    public function reset(Request $request){
+
+        $email = User::whereEmail($request->email)->first();
+        // $user = User::all();
+        return view('auth.customer.resetpassword',compact('email'));
+    }
+   
+     public function updatePassword(Request $request,$email){
+         //dd($request->all());
+        $request->validate([
+            'password' => 'required|'
+        ]);
+       
+        $user  = User::where('email',$email)->first();
+        //dd($seller);
+           
+       $user->update([
+            'password' => bcrypt($request->password),         
+        ]);
+
+        Session::flash('success', 'Password  Reset Successfully!');  
+        return redirect('login'); 
+    }
+
 }

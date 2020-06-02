@@ -7,14 +7,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>customer's login</h2>
+                        <h2>customer's Reset Password</h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">login</li>
+                            <li class="breadcrumb-item active">Reset Password</li>
                         </ol>
                     </nav>
                 </div>
@@ -28,25 +28,25 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h3>Login</h3>
+                <h3>Reset Password</h3>
                 <div class="theme-card">
                     @if (\Session::has('error'))
                         <div class="alert alert-danger">
                                 <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
                         </div>
                     @endif
-                    <form class="theme-form" action="{{route('userloginprocess')}}" method="post">
+                    <form class="form-horizontal auth-form" action="{{ url('reset_password/'.$email->email) }}" method="post">
                         @csrf
+                        @method('PUT')                          
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="text" name="login[email]" class="form-control" id="email" placeholder="Email" required="">
+                            <input required="" name="password" type="password" class="form-control" placeholder="New Password">
                         </div>
                         <div class="form-group">
-                            <label for="review">Password</label>
-                            <input type="password" class="form-control" id="review" name="login[password]" placeholder="Enter your password" required="">
-                        </div>
-                        <button type="submit" class="btn btn-solid">Login</button>                                       
-                        <a href="{{url('forgot_password')}}" class="btn btn-default forgot-pass">Forget password</a>                               
+                            <input required="" name="password" type="password" class="form-control" placeholder="Confirm Password">
+                        </div>                    
+                        <div class="form-button">
+                            <button class="btn btn-solid" type="submit">Reset Password</button>
+                        </div>   
                     </form>
                 </div>
             </div>
