@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
-
-<!-- Mirrored from themes.pixelstrap.com/multikart/front-end/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 28 Mar 2020 05:17:04 GMT -->
+<html lang="en"> 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -1599,13 +1596,13 @@
 
     <!-- facebook chat section start -->
     <div id="fb-root"></div>
-    <script>(function (d, s, id) {
+    {{-- <script>(function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
             js.src = '{{asset('frontend')}}/connect.facebook.net/en_US/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
             fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        }(document, 'script', 'facebook-jssdk'));</script> --}}
     <!-- Your customer chat code -->
     <div class="fb-customerchat" attribution=setup_tool page_id="2123438804574660" theme_color="#0084ff"
         logged_in_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?"
@@ -1709,5 +1706,5 @@
 </body>
 
 
-<!-- Mirrored from themes.pixelstrap.com/multikart/front-end/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 28 Mar 2020 05:18:16 GMT -->
+
 </html>

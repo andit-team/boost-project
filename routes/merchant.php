@@ -11,6 +11,7 @@ Route::post('seller-registration','MerchantController@registrationStepOne')->nam
 Route::get('seller-shope-registration','MerchantController@shopRegistration');
 Route::post('seller-shope-registration','MerchantController@shopRegistrationStore')->name('sellerShopeRegistration');
 Route::post('signup-step-one','MerchantController@registrationStepOneProcess')->name('merchantStepOne');
+Route::get('terms-condition','MerchantController@termsCondtion');
 
 Route::prefix('merchant')->group(function () {
     Route::get('dashboard','MerchantController@dashboard');

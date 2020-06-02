@@ -4,25 +4,36 @@
     <div class="col-md-5 p-0 card-left">
         <div class="card bg-primary">
             <div class="svg-icon">
-                <i class="fa fa-home"></i>
+                <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
+                    class="img-fluid blur-up lazyload" alt="image"></a>
             </div>
             <div class="single-item">
                 <div>
                     <div>
-                        <h3>Welcome to Multikart</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
+                        <h3>Welcome to Andbaazar</h3>
+                        <p>This a largest  multivendor ecommerce site.You can bye or sell anything. 
+                             It allows you to create an online marketplace.
+                            Independent vendors can sell their products through a single storefront. 
+                            An online vendor is the one who sells in on the internet marketplace. </p>
                     </div>
                 </div>
                 <div>
                     <div>
-                        <h3>Welcome to Multikart</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
+                        <h3>Welcome to Andbaazar</h3>
+                        <p>You can share anything with your friend.Like Comment. You can easily sell door-to-door without much hassle.
+                          Let us take a look at what a multi-vendor marketplace is and
+                          how you can make one successful multi-vendor marketplace using WooCommerce.</p>
                     </div>
                 </div>
                 <div>
                     <div>
-                        <h3>Welcome to Multikart</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
+                        <h3>Welcome to Andbaazar</h3>
+                        <p>You can connect to your friend and chat with them by using our site.
+                            online store with all the tools you need to build, manage, and grow your business. 
+                            Ecwid store in minutes with shipping, tax, payment, advertising options ready.
+                             Payment Gateway Support. Free Social Network App. 
+                             Seamless Upgrades. Always Free Plan. Lightning Fast.
+                            Connect your products to people where they shop</p>
                     </div>
                 </div>
             </div>
@@ -83,7 +94,7 @@
                             <div class="form-terms">
                                 <div class="custom-control custom-checkbox mr-sm-2"> 
                                     <input type="checkbox" name="agreed" class="custom-control-input" id="customControlAutosizing1"> 
-                                    <label class="custom-control-label" for="customControlAutosizing1"><span>I agree all statements in <a href=""  class="pull-right">Terms &amp; Conditions</a></span></label>
+                                    <label class="custom-control-label" for="customControlAutosizing1"><span>I agree all statements in <a href="{{ url('terms-condition') }}"  class="pull-right">Terms &amp; Conditions</a></span></label>
                                     <br>
                                     <span class="text-danger">{{ $errors->first('agreed') }}</span>
                                 </div>
