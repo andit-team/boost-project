@@ -45,8 +45,8 @@
                             <label for="review">Password</label>
                             <input type="password" class="form-control" id="review" name="login[password]" placeholder="Enter your password" required="">
                         </div>
-                        <button type="submit" class="btn btn-solid">Login</button>
-                        <a href="{{url('forgot_password')}}" class="btn btn-default forgot-pass">Forget password</a>
+                        <button type="submit" class="btn btn-solid">Login</button>                                       
+                        <a href="{{url('forgot_password')}}" class="btn btn-default forgot-pass">Forget password</a>                               
                     </form>
                 </div>
             </div>

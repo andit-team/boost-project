@@ -31,7 +31,7 @@ Route::prefix('merchant')->group(function () {
     
     // Reset  Password Route....
     
-    Route::get('reset_password/{email}', 'ResetPasswordController@reset');
+    Route::get('reset_password/', 'ResetPasswordController@reset');
     Route::put('reset_password/{email}', 'ResetPasswordController@updatePassword');
 
 

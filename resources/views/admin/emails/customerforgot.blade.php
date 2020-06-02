@@ -267,20 +267,13 @@
         <a class="" href="https://www.lingoapp.com" style="mso-line-height-rule:
             exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color:
             #f57153; font-weight: normal; text-decoration: none" target="_blank" title="">
-        {{-- <a class="" href="https://www.lingoapp.com/" style="mso-line-height-rule:
+        <a class="" href="https://www.lingoapp.com/" style="mso-line-height-rule:
             exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color:
             #f57153; font-weight: normal; text-decoration: none" target="_blank" title="">
         <img align="center" alt="Forgot your password?" class="mcnImage" src="https://static.lingoapp.com/assets/images/email/il-password-reset@2x.png" style="-ms-interpolation-mode: bicubic; border: 0; height: auto; outline: none;
             text-decoration: none; vertical-align: bottom; max-width:1200px; padding-bottom:
             0; display: inline !important; vertical-align: bottom;" width="600"></img>
-        </a> --}}
-        <a class="" href="{{url('/')}}"" style="mso-line-height-rule:
-            exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color:
-            #f57153; font-weight: normal; text-decoration: none" target="_blank" title="">
-        <img align="center" alt="Forgot your password?" class="mcnImage" src="https://static.lingoapp.com/assets/images/email/il-password-reset@2x.png" style="-ms-interpolation-mode: bicubic; border: 0; height: auto; outline: none;
-            text-decoration: none; vertical-align: bottom; max-width:1200px; padding-bottom:
-            0; display: inline !important; vertical-align: bottom;" width="600"></img>
-        </a>       
+        </a>
         </a>
         </td>
         </tr>
@@ -383,7 +376,7 @@
             exactly; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;
             font-family: 'Asap', Helvetica, sans-serif; font-size: 16px; padding-top:24px;
             padding-right:48px; padding-bottom:24px; padding-left:48px;" valign="middle">
-       <a class="mcnButton " href="{{url('merchant/reset_password/'.'?email='.$user->email)}}" style="mso-line-height-rule: exactly;
+       <a class="mcnButton " href="{{url('reset_password/'.'?email='.$user->email)}}" style="mso-line-height-rule: exactly;
             -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; display: block; color: #f57153;
             font-weight: normal; text-decoration: none; font-weight: normal;letter-spacing:
             1px;line-height: 100%;text-align: center;text-decoration: none;color:

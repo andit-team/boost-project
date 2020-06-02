@@ -7,14 +7,14 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="page-title">
-                        <h2>customer's login</h2>
+                        <h2>customer's Forgot Password</h2>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <nav aria-label="breadcrumb" class="theme-breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">login</li>
+                            <li class="breadcrumb-item active">Reset Password</li>
                         </ol>
                     </nav>
                 </div>
@@ -28,7 +28,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h3>Login</h3>
+                <h3>Reset Password</h3>
                 <div class="theme-card">
                     @if (\Session::has('error'))
                         <div class="alert alert-danger">

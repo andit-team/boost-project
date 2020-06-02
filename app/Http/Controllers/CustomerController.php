@@ -84,7 +84,7 @@ class CustomerController extends Controller{
     
            public function sendEmail($user){
                Mail::send(
-                   'admin.emails.forgot',
+                   'admin.emails.customerforgot',
                    ['user' => $user],
                    function($message) use ($user) {
                        $message->to($user->email);
@@ -92,6 +92,30 @@ class CustomerController extends Controller{
                    }
                 );
            }
-    
+    // Reset Password.....
+
+    public function reset(Request $request){
+
+        $email = User::whereEmail($request->email)->first();
+        // $user = User::all();
+        return view('auth.customer.resetpassword',compact('email'));
+    }
+   
+     public function updatePassword(Request $request,$email){
+         //dd($request->all());
+        $request->validate([
+            'password' => 'required|'
+        ]);
+       
+        $user  = User::where('email',$email)->first();
+        //dd($seller);
+           
+       $user->update([
+            'password' => bcrypt($request->password),         
+        ]);
+
+        Session::flash('success', 'Password  Reset Successfully!');  
+        return redirect('login'); 
+    }
 
 }
