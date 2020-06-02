@@ -15,11 +15,14 @@
     justify-content: center;
     align-items: center;
 } */
+    .padding{
+            padding: 12px!important;
+        }
     </style>
 @endpush
 <div class="row">
     <div class="col-md-5 p-0 card-left">
-        <div class="card bg-primary">
+        <div class="card bg-primary padding">
             <div class="svg-icon">
                 <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
                     class="img-fluid blur-up lazyload" alt="image"></a>

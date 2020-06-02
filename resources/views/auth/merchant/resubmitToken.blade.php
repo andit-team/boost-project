@@ -1,8 +1,23 @@
 @extends('auth.auth-master')
 @section('content')
+@push('css')
+<style>
+    .padding{
+        padding: 12px!important;
+    }
+    #text{ 
+    background-size: 20px; 
+    font-family: monospace;
+    font-size: 40px;
+    padding-left: 20px; 
+    padding-right: 20px;
+    letter-spacing: 50px; 
+}
+</style>
+@endpush
 <div class="row"> 
     <div class="col-md-5 p-0 card-left">
-        <div class="card bg-primary">
+        <div class="card bg-primary padding">
             <div class="svg-icon">
                 <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
                     class="img-fluid blur-up lazyload" alt="image"></a>
@@ -39,11 +54,11 @@
             </div>
         </div>
     </div>
-    <div class="col-md-7 p-0 card-right">
+    <div class="col-md-7 p-0 card-right p">
         <div class="text-right">
             <span class=""> {{  $seller->verification_token }}</span> 
         </div>
-        <div class="card tab2-card">
+        <div class="card tab2-card pt-5 pb-5">
             <div class="card-body">
                 <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
                     <li class="nav-item">
@@ -60,8 +75,8 @@
                       
                     <form class="form-horizontal auth-form" action="{{ route('tokenVerify') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf 
-                            <div class="form-group">
-                                <input required  name="verification_token" type="number"  class="form-control @error('verification_token') border-danger @enderror"  placeholder="varification Code" id="exampleInputEmail12"> 
+                            <div class="form-group pt-3 pb-3">
+                                <input required  name="verification_token" type="text" id="text" maxlength="5" class="form-control font-weight-bold @error('verification_token') border-danger @enderror"  placeholder="" id="exampleInputEmail12"> 
                                 <span class="text-danger">{{$errors->first('verification_token')}}</span>
                                 <input type="hidden" name="slug" value={{ $seller->slug }}>
                             </div>  

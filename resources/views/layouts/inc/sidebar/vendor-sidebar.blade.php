@@ -24,8 +24,10 @@
                 </li>
                 <li class="nav-item"><a  class="nav-link {{$active == 'profile' ? 'active' : ''}}" href="{{ url('merchant/seller/') }}">Profile</a>
                 </li>
-                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a>
+                <li class="nav-item"><a  class="nav-link" href="#">shop</a>
                 </li>
+                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a>
+                </li> 
                 <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="#">logout</a>
                 </li>
             </ul>
