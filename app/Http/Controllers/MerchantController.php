@@ -67,13 +67,14 @@ class MerchantController extends Controller{
 
         Seller::create($Seller);
 
-        Session::flash('success', 'Profile create successfully!');  
+        session()->flash('success','Seller profile registration 1st stape');  
 
         return redirect('sell-resubmit-toke'.'?slug='.$slug);
     }
 
     public function resubmitToken(Request $request){
         $seller = Seller::where('slug',$request->slug)->first();
+        
        
         return view('auth.merchant.resubmitToken',compact('seller'));
     }
@@ -87,13 +88,15 @@ class MerchantController extends Controller{
             'verification_token' => $verify_number,
         ]); 
 
+        session()->flash('success','Verify toke re-send successfully!');
+
         return view('auth.merchant.resubmitToken',compact('seller'));
 
     }
 
     public function verifyToken(Request $request){
         $request->validate([
-            'verification_token'    => 'required|exists:sellers,verification_token'
+            'verification_token'    => 'required|exists:sellers,verification_token|max:5'
         ]);
        
         $seller    = Seller::where('slug',$request->slug)->first();
@@ -104,6 +107,9 @@ class MerchantController extends Controller{
             'verification_token' => $request->verification_token,
             'slug' => $request->slug,
         ]);
+
+        session()->flash('success','Verification Successfully!');
+
         return redirect('seller-registration'.'?slug='.$request->slug);
     
     }
@@ -152,9 +158,8 @@ class MerchantController extends Controller{
             ]);
        
     
-
    
-       
+        session()->flash('success','Registration Successfully!');
         
         return redirect('seller-shope-registration'.'?slug='.$request->slug);
     }
@@ -184,6 +189,7 @@ class MerchantController extends Controller{
     
             Shop::create($shope); 
         
+        session()->flash('success','Shop registration Successfully!');
 
         return redirect('merchant/login');
     }

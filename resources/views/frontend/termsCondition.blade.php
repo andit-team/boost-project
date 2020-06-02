@@ -6,7 +6,7 @@
  Home
   @endslot
   @slot('page')
-      <li class="breadcrumb-item active" aria-current="page">Home</li>
+      {{-- <li class="breadcrumb-item active" aria-current="page">Home</li> --}}
       <li class="breadcrumb-item active" aria-current="page">Terms & Conditon</li>
   @endslot
 @endcomponent
