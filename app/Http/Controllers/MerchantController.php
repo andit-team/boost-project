@@ -96,7 +96,7 @@ class MerchantController extends Controller{
 
     public function verifyToken(Request $request){
         $request->validate([
-            'verification_token'    => 'required|exists:sellers,verification_token'
+            'verification_token'    => 'required|exists:sellers,verification_token|max:5'
         ]);
        
         $seller    = Seller::where('slug',$request->slug)->first();
