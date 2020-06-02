@@ -30,3 +30,13 @@ Route::prefix('profile')->group(function () {
 });
 
 // Buyer Routes Are End Here...............
+// forgot password route....
+
+Route::get('forgot_password', 'CustomerController@forgot');
+Route::post('forgot_password', 'CustomerController@password');
+
+// Reset  Password Route....
+
+Route::get('reset_password/{email}', 'CustomerController@reset');
+Route::put('reset_password/{email}', 'CustomerController@updatePassword');
+
