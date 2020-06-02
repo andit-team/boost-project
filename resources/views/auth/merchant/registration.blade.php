@@ -1,8 +1,15 @@
 @extends('auth.auth-master')
 @section('content')
+@push('css')
+<style>
+    .padding{
+        padding: 12px!important;
+    }
+</style>
+@endpush
 <div class="row"> 
     <div class="col-md-5 p-0 card-left">
-        <div class="card bg-primary">
+        <div class="card bg-primary padding">
             <div class="svg-icon">
                 <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
                     class="img-fluid blur-up lazyload" alt="image"></a>
@@ -73,7 +80,7 @@
                                 <input type="hidden" name="type" value="sellers">
                             </div>
                             <div class="form-group">
-                                <input type="text"  class="form-control  @error('dob') border-danger @enderror datepickerPreviousOnly" required name="dob" value="{{ old('dob') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off"> 
+                                <input type="text"  class="form-control  @error('dob') border-danger @enderror datepickerPreviousOnly" required name="dob" value="{{ old('dob') }}"  id="" placeholder="Date of Birth" autocomplete="off"> 
                                 <span class="text-danger">{{ $errors->first('dob') }}</span>
                             </div>
                             <div class="form-group">
