@@ -52,26 +52,20 @@
                                <input type="hidden" name="slug" value="{{ $seller->slug }}">
                             </div> 
                             <div class="form-group">
-                                <input required="" name="phone" type="text" class="form-control @error('name') border-danger @enderror" placeholder="Phone">
-                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                                <input required="" name="phone" type="text" class="form-control @error('phone') border-danger @enderror" placeholder="Phone">
+                                <span class="text-danger">{{ $errors->first('phone') }}</span>
                             </div>
                             <div class="form-group">
                                 <input required="" name="email" type="email" class="form-control @error('name') border-danger @enderror" placeholder="Email">
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
-                            </div>
-                            <div class="form-group">
-                                <input  name="web" type="text" class="form-control @error('web') border-danger @enderror" placeholder="Web">
-                                <span class="text-danger">{{ $errors->first('web') }}</span>
                             </div> 
-                            <div class="form-button">
-                                <button class="btn btn-primary" type="submit">Save</button>
+                            <div class="form-button float-right">
+                                <button class="btn btn-info" type="submit">Shope Register</button>
                             </div> 
                     </form>
             </div>
         </div>
     </div>
-</div>
-<a href="index.html" class="btn btn-primary back-btn"><i data-feather="arrow-left"></i>Back To Home</a>
-
+</div> 
 @endsection
 

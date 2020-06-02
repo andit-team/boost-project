@@ -77,8 +77,8 @@
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             </div>
                             <div class="form-group">
-                                <input required="" name="password" type="password" class="form-control @error('password') border-danger @enderror" placeholder="Confirm Password">
-                                <span class="text-danger">{{ $errors->first('password') }}</span>
+                                <input required="" name="password_confirmation" type="password" class="form-control @error('password_confirmation') border-danger @enderror" placeholder="Confirm Password">
+                                <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                             </div>
                             <div class="form-terms">
                                 <div class="custom-control custom-checkbox mr-sm-2"> 
@@ -88,15 +88,13 @@
                                     <span class="text-danger">{{ $errors->first('agreed') }}</span>
                                 </div>
                             </div>
-                            <div class="form-button">
-                                <button class="btn btn-primary" type="submit">Register</button>
+                            <div class="form-button mt-2 float-right">
+                                <button class="btn btn-info" type="submit">Register</button>
                             </div> 
                         </form>
             </div>
         </div>
     </div>
-</div>
-<a href="index.html" class="btn btn-primary back-btn"><i data-feather="arrow-left"></i>Back To Home</a>
-
+</div> 
 @endsection
 
