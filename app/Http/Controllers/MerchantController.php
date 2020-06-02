@@ -187,6 +187,10 @@ class MerchantController extends Controller{
 
         return redirect('merchant/login');
     }
+
+    public function termsCondtion(){
+        return view('frontend.termsCondition');
+    }
     public function registrationStepOneProcess(){
     }
     public function registrationStepTwo(){
