@@ -24,18 +24,18 @@
                 <div class="col-lg-9"> 
                     @if($sellerProfile->status == 'Inactive')
                     <h3>Dashboard Detail</h3>
-                    <div class="card mt-2"> 
-                    <h3 class="card-header">Seller profile Status</h3>
-                    <div class="card-body text-center">
+                    <div class="mt-2"> 
+                    {{-- <h3>Seller profile Status</h3> --}}
+                    <div class="bg-warning text-center p-5 rounded">
                         <h4>Thank Your for your request</h4>
                         <p>We nedd to review your request a little longer. After approve your request you can see your dashboard.</p>
                     </div> 
                     </div>
                     @elseif($sellerProfile->status == 'Reject')
                     <h3>Dashboard Detail</h3>
-                    <div class="card mt-2">
-                    <h3 class="card-header text-danger">Seller profile Status</h3>
-                        <div class="card-body text-center">
+                    <div class="mt-2">
+                    {{-- <h3 class="card-header text-danger">Seller profile Status</h3> --}}
+                        <div class="bg-warning p-5 text-center rounded">
                             <h4>Your profile is Rejected</h4>
                             <h6>Reject Reason : <small>{{ $sellerProfile->rej_desc }}</small></h6> 
                             <p>Resubmit your Profile.</p> 

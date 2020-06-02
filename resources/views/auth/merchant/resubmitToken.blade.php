@@ -5,6 +5,14 @@
     .padding{
         padding: 12px!important;
     }
+    #text{ 
+    background-size: 20px; 
+    font-family: monospace;
+    font-size: 40px;
+    padding-left: 20px; 
+    padding-right: 20px;
+    letter-spacing: 50px; 
+}
 </style>
 @endpush
 <div class="row"> 
@@ -68,7 +76,7 @@
                     <form class="form-horizontal auth-form" action="{{ route('tokenVerify') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf 
                             <div class="form-group">
-                                <input required  name="verification_token" type="number"  class="form-control @error('verification_token') border-danger @enderror"  placeholder="varification Code" id="exampleInputEmail12"> 
+                                <input required  name="verification_token" type="text" id="text" maxlength="5" class="form-control font-weight-bold @error('verification_token') border-danger @enderror"  placeholder="" id="exampleInputEmail12"> 
                                 <span class="text-danger">{{$errors->first('verification_token')}}</span>
                                 <input type="hidden" name="slug" value={{ $seller->slug }}>
                             </div>  
