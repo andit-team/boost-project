@@ -26,7 +26,8 @@
                 </li>
                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a>
                 </li>
-                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="#">logout</a>
+                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="{{url('merchant/login')}}">logout</a>
+                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="{{url('merchant/login')}}">logout</a>
                 </li>
             </ul>
         </div>

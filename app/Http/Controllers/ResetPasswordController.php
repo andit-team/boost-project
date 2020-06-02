@@ -27,7 +27,8 @@ class ResetPasswordController extends Controller
             'password' => bcrypt($request->password),         
         ]);
 
-        Session::flash('success', 'Password  Reset Successfully!');  
+        Session::flash('success', 'Password  Reset Successfully!');    
+        // return redirect('merchant/login'.'?email='.$email);     
         return redirect('merchant/login'); 
     }
 }

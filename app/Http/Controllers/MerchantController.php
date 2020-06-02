@@ -36,7 +36,7 @@ class MerchantController extends Controller{
             //return redirect('dashboard');
             // here is redirecing verdor dashboard
             //die('vendoer Dashboard');
-            return view('vendor-deshboard');
+            return redirect('merchant/dashboard');
         else
             //die('somer error here...');
             return redirect('merchant/login')->with('error', 'Invalid email or password');
