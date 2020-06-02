@@ -55,8 +55,8 @@
                                 <input type="hidden" name="slug" value={{ $seller->slug }}>
                             </div>  
                             <div class="form-button float-right">
-                                <button class="btn btn-default" type="submit">Verifey</button> 
-                                <span class="btn btn-warning disabled" id="Resend" type="submit"> <span class="c"></span> Resend </span> 
+                                <button class="btn btn-success" type="submit">Verifey</button> 
+                                <span class="btn btn-info disabled" id="Resend" type="submit"> <span class="c"></span> Resend </span> 
                             </div> 
                         </form>
 
@@ -68,8 +68,7 @@
             </form> 
         </div>
     </div>
-</div>
-<a href="index.html" class="btn btn-primary back-btn"><i data-feather="arrow-left"></i>Back To Home</a>
+</div> 
 
 @endsection
 

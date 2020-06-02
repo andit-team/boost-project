@@ -46,8 +46,7 @@ class MerchantController extends Controller{
         return view('merchant.sell-on-andbaazar');
     }
 
-    public function sellOnAndbaazarPost(Request $request,Seller $seller){
-        //dd($request->all());
+    public function sellOnAndbaazarPost(Request $request,Seller $seller){ 
 
         $request->validate([
             'first_name' => 'required',
@@ -75,13 +74,13 @@ class MerchantController extends Controller{
 
     public function resubmitToken(Request $request){
         $seller = Seller::where('slug',$request->slug)->first();
-        //dd($seller); 
+       
         return view('auth.merchant.resubmitToken',compact('seller'));
     }
 
     public function tokenUpdate(Request $request){
         $seller    = Seller::where('slug',$request->slug)->first();
-        // dd($seller);
+        
         $verify_number = mt_rand(10000,99999);
        
         $seller->update([
@@ -98,7 +97,7 @@ class MerchantController extends Controller{
         ]);
        
         $seller    = Seller::where('slug',$request->slug)->first();
-        //dd($seller);
+       
         
        
        $seller->update([
@@ -111,15 +110,15 @@ class MerchantController extends Controller{
 
     public function sellerRegistration(Request $request){
         $seller = Seller::where('slug',$request->slug)->first();
-        //dd($seller);
+        
         return view('auth.merchant.registration',compact('seller'));
     }
 
     public function registrationStepOne(Request $request){ 
 
         $request->validate([   
-            'password'      => 'required',
-            'email'         => 'required|unique:sellers',
+            'password'      => 'required|confirmed',
+            'email'         => 'required|unique:sellers,email',
             'agreed'        => 'accepted' 
         ]);
         
@@ -168,7 +167,8 @@ class MerchantController extends Controller{
     public function shopRegistrationStore(Request $request){
         $request->validate([
             'name'       => 'required', 
-            'phone'      => 'required|unique:shops',
+            'phone'      => 'required',
+            'email'      => 'required|unique:shops,email',
         ]);
         $sellerId = Seller::where('slug',$request->slug)->first(); 
             $shope = [
@@ -183,7 +183,7 @@ class MerchantController extends Controller{
             ];
     
             Shop::create($shope); 
-        // }
+        
 
         return redirect('merchant/login');
     }
@@ -204,11 +204,7 @@ class MerchantController extends Controller{
         $validatedData = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'phone'     => 'required',
-            // 'email' => 'required|unique:sellers',
-            // 'dob' => 'required',
-            // 'gender' => 'required',
-            // 'description' => 'required',
+            'phone'     => 'required', 
         ]);
     }
 

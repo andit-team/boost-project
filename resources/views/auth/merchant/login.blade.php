@@ -91,19 +91,8 @@
                             </div>
                             <div class="form-button">
                                 <button class="btn btn-primary" type="submit">Login</button>
-                            </div>
-                            {{-- <div class="form-footer">
-                                <span>Or Login up with social platforms</span>
-                                <ul class="social">
-                                    <li><a class="icon-facebook" href=""></a></li>
-                                    <li><a class="icon-twitter" href=""></a></li>
-                                    <li><a class="icon-instagram" href=""></a></li>
-                                    <li><a class="icon-pinterest" href=""></a></li>
-                                </ul>
-                            </div> --}}
-                        </form>
-                    
-
+                            </div>   
+                        </form> 
             </div>
         </div>
     </div>
