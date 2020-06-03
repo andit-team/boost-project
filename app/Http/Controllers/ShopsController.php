@@ -25,7 +25,7 @@ class ShopsController extends Controller
      */
     public function create()
     {
-        return view('admin.shops.create');
+        return view('merchant.shops.update');
     }
 
     /**

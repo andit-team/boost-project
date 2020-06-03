@@ -67,7 +67,7 @@ class MerchantController extends Controller{
 
         Seller::create($Seller);
 
-        session()->flash('success','Seller profile registration 1st stape');  
+        session()->flash('success','Seller profile registration 1st stape complete successfully');  
 
         return redirect('sell-resubmit-toke'.'?slug='.$slug);
     }

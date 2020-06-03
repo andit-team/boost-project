@@ -2,7 +2,7 @@
 @extends('layouts.master',['title' => 'become a vendor'])
 @section('content')
 
-@include('elements.alert')
+@include('elements.alert') 
 @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
       Dashboard
