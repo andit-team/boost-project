@@ -82,6 +82,8 @@
                                    {{-- <a data-toggle="tooltip" title="<img src='{{ $row->logo ? asset($row->logo) : asset('/uploads/brand_image/user.png') }}' height='100' width='100' />"> --}}                                      
                                     {{-- </a> --}}
                                 {{-- </td>                               --}}
+
+                                {{-- <td><img  src="{{ asset($row->image) }}" style = "height:40px;width:70px;"></td> --}}
                                 <td>{{ $row->description }}</td> 
                                 <td class=""> 
                                     <ul class="d-flex justify-content-between">
@@ -112,7 +114,7 @@
                                                         <div class="form-goup text-left text-left mb-5 pb-3">  
                                                             <label for="thumb">Logo:</label>
                                                             <div class="mt-0">
-                                                                <img id="output{{$row->id}}"  class="imagestyle" src="{{ asset('/uploads/brand_image/user.png') }}" />
+                                                                {{-- <img id="output{{$row->id}}"  class="imagestyle" src="{{ asset('/uploads/brand_image/user.png') }}" /> --}}
                                                             </div>
                                                             <div class="uploadbtn"> 
                                                                 <label for="file-upload" class="custom-file-upload">Upload Here</label>
@@ -126,7 +128,7 @@
                                                         </div> 
                                                         <div class="form-group">
                                                             <label for="desc">Description:</label>
-                                                            <textarea type="validationCustom01"  name="desc"  class="form-control @error('name') border-danger @enderror" rows="5">{{$row->description}}</textarea>
+                                                            <textarea type="validationCustom01"  name="description"  class="form-control @error('description') border-danger @enderror" rows="5">{{$row->description}}</textarea>
                                                             <span class="text-danger">{{ $errors->first('description') }}</span>
                                                         </div> 
                                                         
@@ -138,7 +140,7 @@
                                             </div> 
                                         </div>
                                     </div> 
-                                    @push('js')
+                                    {{-- @push('js')
                                     <script>
                                         var loadimg = function(event) {
                                             var outputss = document.getElementById('output{{$row->id}}');
@@ -148,7 +150,7 @@
                                             // outputss.src = ;
                                         }; 
                                     </script>
-                                    @endpush
+                                    @endpush --}}
                             @endforeach
                             </tbody>
                         </table>

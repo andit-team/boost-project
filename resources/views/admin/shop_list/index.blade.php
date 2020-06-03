@@ -43,10 +43,10 @@
                            @foreach($shop as $row)
                            <tr>
                                <td>{{ ++$i }}</td>
-                              <td>{{ $row->seller->first_name }}</td>
+                              <td>{{ $row->seller->first_name . " " .$row->seller->last_name}}</td>
                                <td>{{ $row->name }}</td>
                                <td>{{ $row->web }}</td>
-                               <td><img  src="{{ asset($row->logo) }}"" style = "height:40px;width:70px;"></td>
+                               <td><img  src="{{ asset($row->logo) }}" style = "height:40px;width:70px;"></td>
                                <td class="d-flex justify-content-between">
                                    <ul> 
                                         <li><a href="#" id="{{ url('/andbaazaradmin/shop/'.$row->slug).'/view' }}"><button class="btn btn-sm btn-secondary"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"> View</button></a></li>
@@ -59,32 +59,54 @@
                                 <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title f-w-600" id="exampleModalLabel">Shop Details</h5>
+                                            <h5 class="modal-title f-w-600" id="exampleModalLabel"> Shop Details</h5>
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                        </div>
-
-                                        <div class="modal-body">
-                                            <form class="needs-validation" novalidate="" action={{ url('/andbaazaradmin/color/'.$row->slug) }} method="post" enctype="multipart/form-data">
+                                        </div>                                        
+                                          <div class="modal-body">
+                                            <form class="needs-validation" novalidate="" action={{ url('/andbaazaradmin/shop/'.$row->slug) }} method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('put')
                                                 <div class="form">
-                                                  <div class="col-sm-12">
-                                                    <div class="form-group">
-                                                        <label for="validationCustom01" class="mb-1">Shop Name :</label>
-                                                    <input type="text"  name="name" value="{{old('name',$row->name)}}" required class="form-control @error('name') border-danger @enderror">
-                                                        <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                    <div class="col-md-12">
+                                                        <div class="float-right">
+                                                            <h3 class="display-5 font-weight-bold">Owner Details</h3>
+                                                            <div> {{ $row->seller->first_name . " " .$row->seller->last_name}}</div>
+                                                            <div> {{ $row->seller->email }}</div>  
+                                                            <div> {{ $row->seller->phone }}</div>                         
+                                                        </div>
+                                                        <div class="float-left modal-logo">
+                                                            <img  src="{{ asset($row->logo) }}" style = "height:70px;width:80px;padding:7px;">
+                                                        </div>
+                                                        <div>
+                                                            <h3 class="display-5 font-weight-bold">{{ $row->name }}</h3>
+                                                            <p>{{ $row->web }}</p>
+                                                        </div>
+
+                                                        <br>
+                                                        <div class="d-inline-block mt-3">
+                                                            <p class="text-justify">{{ $row->description }}</p>
+                                                            <h5>{{ $row->featured }}</h5>
+                                                            <h6>{{ $row->email }}</h6>
+                                                            <h6>{{ $row->phone }}</h6>
+                                                        </div> 
+                                                </div>   
+                                                {{-- <div class="col-md-7">
+                                                    <div class="float-left modal-logo">
+                                                        <img  src="{{ asset($row->logo) }}" style = "height:70px;width:80px;padding:7px;">
+                                                    </div>
+                                                    <div>
+                                                        <h3 class="display-5 font-weight-bold">{{ $row->name }}</h3>
+                                                        <p>{{ $row->web }}</p>
                                                     </div>
 
-                                                    <div class="form-group mb-0">
-                                                        <label for="color_code">Color Code:</label>
-                                                        <input class="form-control" name="color_code" value="{{ $row->color_code }}" id="color_code" type="text" rows="5" required="">
-                                                          <span class="text-danger">{{ $errors->first('color_code') }}</span>
-                                                    </div>
-
-                                                </div>
-                                                {{-- <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-success" type="button">Update</button>                                                   
-                                                </div> --}}
+                                                    <br>
+                                                    <div class="d-inline-block mt-3">
+                                                        <p class="text-justify">{{ $row->description }}</p>
+                                                        <h5>{{ $row->featured }}</h5>
+                                                        <h6>{{ $row->email }}</h6>
+                                                        <h6>{{ $row->phone }}</h6>
+                                                    </div> 
+                                            </div>                             --}}
                                             </form>
                                         </div>
                                       </div>
