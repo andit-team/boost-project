@@ -1,6 +1,6 @@
 @extends('auth.auth-master')
 @section('content')
-
+@include('elements.alert') 
 @push('css')
 <style>
 /* .authentication-box .container .svg-icon {

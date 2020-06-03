@@ -15,6 +15,7 @@
 }
 </style>
 @endpush
+@include('elements.alert')
 <div class="row"> 
     <div class="col-md-5 p-0 card-left">
         <div class="card bg-primary padding">
