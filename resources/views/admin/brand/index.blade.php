@@ -45,7 +45,7 @@
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
-      Category
+      Brand
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -64,10 +64,9 @@
                         <table class="table table-borderd" id="dataTableNoPagingDesc">
                             <thead>
                             <tr>
-                                <th width="50">Sl</th>
-                                {{-- <th width="100">Thumb</th> --}}
+                                <th width="50">Sl</th>                               
                                 <th width="200">Brand Name</th> 
-                                <th>Description</th>
+                                <th>Description</th>                            
                                 <th width="80" class="text-center">Action</th>
                             </tr>
                             </thead>
@@ -81,12 +80,12 @@
                                         {{ $row->name }}
                                     </a>
                                 </td>
-                                <td>{{ $row->desc }}</td> 
+                                <td>{{ $row->description }}</td> 
                                 <td class=""> 
                                     <ul class="d-flex justify-content-between">
-                                        <li><a href="#" id="{{ url('/andbaazaradmin/brand/'.$row->id.'/edit')}}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#brandEditModal{{$row->id}}"><i class="fa fa-edit"></i></button> </a></li>
+                                        <li><a href="#" id="{{ url('/andbaazaradmin/products/brand/'.$row->id.'/edit')}}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#brandEditModal{{$row->id}}"><i class="fa fa-edit"></i></button> </a></li>
                                         <li> 
-                                            <form action="{{ url('/andbaazaradmin/brand/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
+                                            <form action="{{ url('/andbaazaradmin/products/brand/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
                                                 @csrf
                                                 @method('delete') 
                                                 <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
@@ -104,7 +103,7 @@
                                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/brand/'.$row->id) }}" method="post" enctype="multipart/form-data">
+                                                <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/products/brand/'.$row->id) }}" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('put')
                                                     <div class="form">
@@ -160,7 +159,7 @@
                         <h5>Manage Brand</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('category.store') }}" method="post" class="form" id="validateForm" enctype="multipart/form-data">
+                        <form action="{{ route('brand.store') }}" method="post" class="form" id="validateForm" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group text-left mb-5 pb-3">  
                                 <label for="thumb">Logo:</label>
@@ -169,7 +168,7 @@
                                 </div>
                                 <div class="uploadbtn"> 
                                     <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                    <input id="file-upload" type="file" name="thumb" onchange="loadFile(event)"/>
+                                    <input id="file-upload" type="file" name="logo" onchange="loadFile(event)"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -178,9 +177,9 @@
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             </div>
                             <div class="form-group">
-                                <label for="desc">Description:</label>
-                                <textarea type="text"  name="desc"  class="form-control @error('name') border-danger @enderror" rows="5"> </textarea>
-                                <span class="text-danger">{{ $errors->first('desc') }}</span>
+                                <label for="description">Description:</label>
+                                <textarea type="text"  name="description"  class="form-control @error('description') border-danger @enderror" rows="5"> </textarea>
+                                <span class="text-danger">{{ $errors->first('description') }}</span>
                             </div>   
                             <div class="text-right">
                                 <button type="submit" class="btn btn-success">Save</button>
