@@ -23,8 +23,9 @@ class DatabaseSeeder extends Seeder
                 DB::table('permissions')->truncate();
                 DB::table('roles')->truncate();
                 DB::table('colors')->truncate();
+                DB::table('brands')->truncate();
                 DB::table('sizes')->truncate();
-                DB::table('users')->truncate();
+                DB::table('users')->truncate();         
               
 
         $this->call([
@@ -40,7 +41,9 @@ class DatabaseSeeder extends Seeder
                 ShopsTableSeeder::class,
                 TagsTableSeeder::class,
                 ColorsTableSeeder::class,
+                BrandTableSeeder::class,
                 SizesTableSeeder::class,
+            
         ]);
     }
 }
