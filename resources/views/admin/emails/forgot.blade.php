@@ -1,9 +1,6 @@
-{{-- <h1>Hello{{$user->name}}</h1>
-<p> Please click the passowrd reset button to reset your password.
-
-<a href ="{{url('reset_password/'.$user->email)}}">Reset Password</a>
-
-</p> --}}
+<?php
+session_start();
+?>
 
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -193,21 +190,22 @@
   </style>
 </head>
 
+
  <?php
-
 // 2 hours in seconds
-$inactive = 60; 
-ini_set('session.gc_maxlifetime', $inactive); // set the session max lifetime to 2 hours
+// $inactive = 60; 
+// ini_set('session.gc_maxlifetime', $inactive); // set the session max lifetime to 2 hours
 
-session_start();
+// session_start();
 
-if (isset($_SESSION['testing']) && (time() - $_SESSION['testing'] > $inactive)) {
+// if (isset($_SESSION['testing']) && (time() - $_SESSION['testing'] > $inactive)) {
     // last request was more than 2 hours ago
-    session_unset();     // unset $_SESSION variable for this page
-    session_destroy();   // destroy session data
-}
-$_SESSION['testing'] = time(); // Update session
-?> 
+//     session_unset();     // unset $_SESSION variable for this page
+//     session_destroy();   // destroy session data
+// }
+// $_SESSION['testing'] = time(); // Update session
+Session::flush();
+ ?> 
 {{-- 
  @if(Session::has('success'))
  <div class="alert alert-success">
