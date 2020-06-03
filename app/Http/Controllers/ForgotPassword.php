@@ -14,6 +14,8 @@ class ForgotPassword extends Controller
 
 
     public function forgot(){
+       
+      Session::forget('merchant/reset_password/');
         return view('auth.merchant.forgotpassword');
     }
 
@@ -49,5 +51,4 @@ class ForgotPassword extends Controller
             );
        }
 
-       
 }
