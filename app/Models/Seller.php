@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Models\Shop;
 class Seller extends Model
 {
       protected $fillable = ['first_name','last_name','slug','picture','dob','phone','email','gender','description','last_visited_at','last_visited_from','verification_token','remember_token','status','rej_desc','user_id'];

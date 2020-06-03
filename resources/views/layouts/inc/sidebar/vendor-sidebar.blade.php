@@ -3,7 +3,7 @@
         <div class="profile-top">
             <div class="profile-image">
                 @if(!empty($shopProfile->logo))
-                <img  src="{{ asset($shopProfile->logo) }} alt="" class="img-fluid">
+                <img  src="{{ asset($shopProfile->logo) }}" alt="" class="img-fluid">
                 @else
                 <img  src="{{ asset('/uploads/shop_logo/user.png') }}" alt="" class="img-fluid">
                 @endif
