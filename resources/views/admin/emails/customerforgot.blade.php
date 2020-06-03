@@ -1,9 +1,6 @@
-{{-- <h1>Hello{{$user->name}}</h1>
-<p> Please click the passowrd reset button to reset your password.
-
-<a href ="{{url('reset_password/'.$user->email)}}">Reset Password</a>
-
-</p> --}}
+<?php
+session_start();
+?>
 
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -192,7 +189,9 @@
   }
   </style>
 </head>
-
+<?php
+Session::flush();
+?>
 <body style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%;
      background-color: #fed149; height: 100%; margin: 0; padding: 0; width: 100%">
    <center>

@@ -10,8 +10,8 @@ class ResetPasswordController extends Controller
     public function reset(Request $request){
 
         $email = User::whereEmail($request->email)->first();
-        // $user = User::all();
-        return view('auth.merchant.resetpassowrd',compact('email'));
+        Session::flush();
+        return view('auth.merchant.resetpassowrd',compact('email'));  
     }
    
      public function updatePassword(Request $request,$email){
@@ -28,7 +28,8 @@ class ResetPasswordController extends Controller
         ]);
 
         Session::flash('success', 'Password  Reset Successfully!');    
-        // return redirect('merchant/login'.'?email='.$email);     
+        // return redirect('merchant/login'.'?email='.$email);
+        // Session::flush();     
         return redirect('merchant/login'); 
     }
 }
