@@ -24,10 +24,10 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::resource('products/size','SizesController');
     Route::resource('products/tag','TagsController');
     Route::resource('products/color','ColorsController');
-    
+    Route::resource('products/brand','BrandController');
 
-    Route::resource('/shop','ShopsController');
+   Route::resource('/shop','ShopsController');
 
-    Route::get('category_setup','CategorySetupController@index');
+   Route::get('category_setup','CategorySetupController@index');
 
 });

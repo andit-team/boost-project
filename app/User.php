@@ -29,6 +29,7 @@ use App\Models\Shop;
 use App\Models\Size;
 use App\Models\Tag;
 use App\Models\Item;
+use App\Models\Brand;
 class User extends EloquentUser
 {
     protected $fillable = [
@@ -116,5 +117,8 @@ class User extends EloquentUser
       }
       public function tag(){
         return $this->hasMany(Tag::class,'user_id');
+      }
+      public function brand(){
+        return $this->hasMany(Brand::class,'user_id');
       }
       }
