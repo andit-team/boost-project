@@ -182,7 +182,7 @@
                                     <form class="form-horizontal auth-form" method="post" action="{{route('loginproces')}}">
                                         @csrf
                                         <div class="form-group">
-                                            <input required="" name="login[email]" type="email" class="form-control" placeholder="Email" id="exampleInputEmail1">
+                                            <input required="" name="login[email]" type="email" value="admin@andit.com" class="form-control" placeholder="Email" id="exampleInputEmail1">
                                         </div>
                                         <div class="form-group">
                                             <input required="" name="login[password]" type="password" class="form-control" placeholder="Password">

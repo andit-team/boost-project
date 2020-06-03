@@ -48,23 +48,23 @@
              <div class="col-sm-9 register-page contact-page">
                 <h3>PERSONAL DETAIL</h3>
                 @if($sellerProfile->status == 'Inactive')
-                    <div class="card mt-2"> 
-                        <h3 class="card-header text-danger">Seller profile Status</h3>
-                        <div class="card-body text-center">
+                <div class="mt-2"> 
+                    {{-- <h3>Seller profile Status</h3> --}}
+                        <div class="bg-warning text-center p-5 rounded">
                             <h4>Thank Your for your request</h4>
-                            <p>We nedd to review your request a little longer. please back hare after some time.</p>
+                            <p>We nedd to review your request a little longer. After approve your request you can see your dashboard.</p>
                         </div> 
                     </div>
                 @elseif($sellerProfile->status == 'Reject')
-                    <div class="card mt-2">
-                        <h3 class="card-header text-danger">Seller profile Status</h3>
-                            <div class="card-body text-center">
-                                <h4>Your profile is Rejected</h4>
-                                <h6>Reject Reason : <small>{{ $sellerProfile->rej_desc }}</small></h6> 
-                                <p>Resubmit your Profile.</p> 
-                            <a href="{{ url('merchant/seller/'.$sellerProfile->slug.'/resubmit') }}" title="Resubmit" class="btn btn-sm btn-solid">Resubmit</a>
-                            </div>
-                    </div>    
+                <div class="mt-2">
+                    {{-- <h3 class="card-header text-danger">Seller profile Status</h3> --}}
+                        <div class="bg-warning p-5 text-center rounded">
+                            <h4>Your profile is Rejected</h4>
+                            <h6>Reject Reason : <small>{{ $sellerProfile->rej_desc }}</small></h6> 
+                            <p>Resubmit your Profile.</p> 
+                        <a href="{{ url('merchant/seller/'.$sellerProfile->slug.'/resubmit') }}" title="Resubmit" class="btn btn-sm btn-solid">Resubmit</a>
+                        </div>
+                </div>    
                 @elseif($sellerProfile->status == 'Active') 
                 <form class="theme-form" action="{{ route('sellerUpdate') }}" method="post" enctype="multipart/form-data" id="validateForm">
                     @csrf
