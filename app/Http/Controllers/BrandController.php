@@ -96,8 +96,7 @@ class BrandController extends Controller
         $brand->update($data);
 
         Session::flash('success', 'Brand Updated Successfully');
-        return redirect('andbaazaradmin/products/brand');
-        
+        return redirect('andbaazaradmin/products/brand');  
     }
 
     /**
@@ -117,7 +116,7 @@ class BrandController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'logo'=>'required',
+            'logo'=>'',
         ]);
     }
 }
