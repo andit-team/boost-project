@@ -1,5 +1,6 @@
 @extends('auth.auth-master')
 @section('content')
+@include('elements.alert') 
 @push('css')
 <style>
     .padding{
@@ -65,16 +66,16 @@
                     <form class="form-horizontal auth-form" action="{{ route('sellerShopeRegistration') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf  
                             <div class="form-group">
-                                <input required="" name="name" type="text" class="form-control @error('name') border-danger @enderror" placeholder="Shope Name" id="exampleInputEmail12"> 
+                                <input required="" name="name" value="{{ old('name') }}" type="text" class="form-control @error('name') border-danger @enderror" placeholder="Shope Name" id="exampleInputEmail12" autocomplete="off"> 
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                                <input type="hidden" name="slug" value="{{ $seller->slug }}">
                             </div> 
                             <div class="form-group">
-                                <input required="" name="phone" type="text" class="form-control @error('phone') border-danger @enderror" placeholder="Phone">
+                                <input required="" name="phone" value="{{ old('phone') }}" type="text" class="form-control @error('phone') border-danger @enderror" placeholder="Shope Phone" autocomplete="off">
                                 <span class="text-danger">{{ $errors->first('phone') }}</span>
                             </div>
                             <div class="form-group">
-                                <input required="" name="email" type="email" class="form-control @error('name') border-danger @enderror" placeholder="Email">
+                                <input required="" name="email" value="{{ old('email') }}" type="email" class="form-control @error('name') border-danger @enderror" placeholder="Shope Email" autocomplete="off">
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             </div> 
                             <div class="form-button float-right">

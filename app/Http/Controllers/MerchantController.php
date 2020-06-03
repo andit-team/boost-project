@@ -8,13 +8,15 @@ use App\Models\Seller;
 use App\User;
 use App\Events\SellerRegistration;
 use App\Models\Shop;
+use App\Mail\VendorProfileApprovalMail;
 use Session;
 use Baazar;
 class MerchantController extends Controller{
 
     public function dashboard(){
         $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
-       return view('vendor-deshboard',compact('sellerProfile'));
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first(); 
+       return view('vendor-deshboard',compact('sellerProfile','shopProfile'));
     }
 
     public function merchantlogin(){
@@ -67,7 +69,7 @@ class MerchantController extends Controller{
 
         Seller::create($Seller);
 
-        session()->flash('success','Seller profile registration 1st stape');  
+        session()->flash('success','Seller profile registration 1st stape complete successfully');  
 
         return redirect('sell-resubmit-toke'.'?slug='.$slug);
     }
@@ -153,11 +155,12 @@ class MerchantController extends Controller{
                 'last_visited_at'    => now(),
                 'last_visited_from'  => $request->last_visited_from,
                 'verification_token' => $request->verification_token, 
+                'status'             => 'Inactive',
                 'user_id'            =>  $seller->id,
                 'updated_at'         => now(),
             ]);
        
-    
+            \Mail::to($sellerId)->send(new VendorProfileApprovalMail($sellerId));
    
         session()->flash('success','Registration Successfully!');
         

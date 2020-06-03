@@ -21,15 +21,15 @@
                 
                 @include('layouts.inc.sidebar.vendor-sidebar',[$active ='dashboard'])
 
-                <div class="col-lg-9"> 
+                <div class="col-lg-9 register-page contact-page"> 
                     @if($sellerProfile->status == 'Inactive')
                     <h3>Dashboard Detail</h3>
                     <div class="mt-2"> 
                     {{-- <h3>Seller profile Status</h3> --}}
-                    <div class="bg-warning text-center p-5 rounded">
-                        <h4>Thank Your for your request</h4>
-                        <p>We nedd to review your request a little longer. After approve your request you can see your dashboard.</p>
-                    </div> 
+                        <div class="bg-warning text-center p-5 rounded">
+                            <h4>Thank Your for your request</h4>
+                            <p>We nedd to review your request a little longer. After approve your request you can see your dashboard.</p>
+                        </div> 
                     </div>
                     @elseif($sellerProfile->status == 'Reject')
                     <h3>Dashboard Detail</h3>

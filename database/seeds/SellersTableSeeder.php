@@ -16,6 +16,7 @@ class SellersTableSeeder extends Seeder
              [
                 'first_name'          => 'Akash',
                 'last_name'           => 'Mia',
+                'slug'                => 'akash',
                 'email'               => 'akash@gmail.com',
                 'dob'                 => '2000-01-03',
                 'gender'              => 'Male',
@@ -31,6 +32,7 @@ class SellersTableSeeder extends Seeder
             [
                 'first_name'          => 'Arman',
                 'last_name'           => 'Mia',
+                'slug'                => 'arman',
                 'email'               => 'arman@gmail.com',
                 'dob'                 => '2000-01-03',
                 'gender'              => 'Male',
@@ -46,6 +48,7 @@ class SellersTableSeeder extends Seeder
             [
                 'first_name'          => 'Abir',
                 'last_name'           => 'Mia',
+                'slug'                => 'abir',
                 'email'               => 'abir@gmail.com',
                 'dob'                 => '2000-01-03',
                 'gender'              => 'Male',
@@ -61,6 +64,7 @@ class SellersTableSeeder extends Seeder
             [
                 'first_name'          => 'Arif',
                 'last_name'           => 'Mia',
+                'slug'                => 'arif',
                 'email'               => 'arif@gmail.com',
                 'dob'                 => '2000-01-03',
                 'gender'              => 'Male',
@@ -74,9 +78,10 @@ class SellersTableSeeder extends Seeder
                 'updated_at'          => now()
             ], 
             [
-                'first_name'    => 'Rofiq',
-                'last_name'     => 'Mia', 
-                'email'         => 'and.baazar@yahoo.com',
+                'first_name'          => 'Rofiq',
+                'last_name'           => 'Mia', 
+                'slug'                => 'rofiq',
+                'email'               => 'seller@andit.com', 
                 'dob'                 => '2000-01-03',
                 'gender'              => 'Male',
                 'description'         => 'Student',

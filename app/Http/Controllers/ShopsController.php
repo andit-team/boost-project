@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
+use App\Models\Seller;
 use Sentinel;
+use Baazar;
+use Session;
 
 class ShopsController extends Controller
 {
@@ -15,7 +18,9 @@ class ShopsController extends Controller
      */
     public function index()
     {
-        //
+        $shop = Shop::all();
+        $seller = Seller::all();
+        return view('admin.shop_list.index',compact('shop','seller'));
     }
 
     /**
@@ -25,7 +30,9 @@ class ShopsController extends Controller
      */
     public function create()
     {
-        return view('admin.shops.create');
+        $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        return view('merchant.shops.update',compact('sellerProfile','shopProfile'));
     }
 
     /**
@@ -36,21 +43,26 @@ class ShopsController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $shop = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        //dd($shop);
         $this->validateForm($request);
-        $data = [
-            'name' => $request->name,
-            'slug' => $request->slug,
-            'cell_phone' => $request->cell_phone,
-            'google_location' => $request->google_location,
-            'featured' => $request->featured,
-            'email' => $request->email,
-            'web' => $request->web,
-            'description' => $request->description,
-            'seller_id' => $request->seller_id,
-            'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
-        ];
-        Shop::create($data);
+       
+            $shop->update([
+                'name'              => $request->name, 
+                'phone'             => $request->phone,
+                'logo'              => Baazar::fileUpload($request,'logo','old_image','/uploads/shop_logo'),
+                'google_location'   => $request->google_location,
+                'featured'          => $request->featured,
+                'email'             => $request->email,
+                'web'               => $request->web,
+                'description'       => $request->description, 
+                'updated_at'        => now(),
+            ]);
+       
+
+        session()->flash('success','your shop profile updated');
+       return back(); 
     }
 
     /**
@@ -101,10 +113,9 @@ class ShopsController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required',
-            'cell_phone' => 'required',
+            'phone' => 'required',
             'featured' => 'required',
-            'email' => 'required',
-            'web' => 'required',
+            'email' => 'required',  
             'description' => 'required',
         ]);
     }

@@ -1,5 +1,6 @@
 @extends('auth.auth-master')
 @section('content')
+@include('elements.alert') 
 @push('css')
 <style>
     .padding{
@@ -68,14 +69,14 @@
                     <form class="form-horizontal auth-form" action="{{ route('profileRegistration') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf 
                             <div class="form-group">
-                            <input required="" name="verification_token" type="hidden" value="{{ $seller->verification_token }}"  class="form-control" placeholder="varification Code" id="exampleInputEmail12">
+                                <input required="" name="verification_token"  type="hidden" value="{{ $seller->verification_token }}"  class="form-control" placeholder="varification Code" id="exampleInputEmail12">
                                 <input type="hidden" name="type" value="sellers">
                                 <input type="hidden" name="first_name" value="{{ $seller->first_name }}">
                                 <input type="hidden" name="last_name" value="{{ $seller->last_name }}">
                                 <input type="hidden" name="slug" value="{{ $seller->slug }}">
                             </div>
                             <div class="form-group">
-                                <input required="" name="email" type="email" class="form-control @error('email') border-danger @enderror" placeholder="Email" id="exampleInputEmail12">
+                                <input required="" name="email" value="{{ old('email') }}" type="email" class="form-control @error('email') border-danger @enderror" placeholder="Email" id="exampleInputEmail12" autocomplete="off">
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                                 <input type="hidden" name="type" value="sellers">
                             </div>
@@ -84,18 +85,18 @@
                                 <span class="text-danger">{{ $errors->first('dob') }}</span>
                             </div>
                             <div class="form-group">
-                                <select name="gender" placeholder="Gender" class="form-control px-10 @error('gender') border-danger @enderror" id="" required autocomplete="off" style="height: 51px;">                                         
+                                <select name="gender" placeholder="Gender" class="form-control px-10 @error('gender') border-danger @enderror" id=""  required autocomplete="off" style="height: 51px;">                                         
                                     <option value="Male" selected>Male</option>
                                     <option value="Female">Female</option> 
                                     <option value="Other">Other</option>  
                                 </select>
                             </div> 
                             <div class="form-group">
-                                <input required="" name="password" type="password" class="form-control @error('password') border-danger @enderror" placeholder="Password">
+                                <input required="" name="password" type="password" class="form-control @error('password') border-danger @enderror" placeholder="Password" autocomplete="off">
                                 <span class="text-danger">{{ $errors->first('password') }}</span>
                             </div>
                             <div class="form-group">
-                                <input required="" name="password_confirmation" type="password" class="form-control @error('password_confirmation') border-danger @enderror" placeholder="Confirm Password">
+                                <input required="" name="password_confirmation" type="password" class="form-control @error('password_confirmation') border-danger @enderror" placeholder="Confirm Password" autocomplete="off">
                                 <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
                             </div>
                             <div class="form-terms">

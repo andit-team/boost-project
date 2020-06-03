@@ -8,6 +8,7 @@ use App\Mail\VendorProfileApprovalMail;
 use App\Mail\VendorProfileAcceptMail;
 use App\Mail\VendorProfileRejectMail;
 use App\Mail\VendorProfilResubmitMail;
+use App\Models\Shop;
 use Sentinel;
 use Baazar;
 use Session;
@@ -22,9 +23,10 @@ class SellersController extends Controller
     public function index()
     {
         $sellers = Seller::orderBy('id', 'DESC')->get();
-        $activesellers = Seller::where('status','Active')->orderBy('id', 'DESC')->get();
-        $requestSellers = Seller::where('status','Inactive')->orderBy('id','DESC')->get();
-        $rejectSellers = Seller::where('status','Reject')->orderBy('id','DESC')->get();
+        $activesellers = Seller::with('shop')->where('status','Active')->orderBy('id', 'DESC')->get();
+        //dd($activesellers);
+        $requestSellers = Seller::with('shop')->where('status','Inactive')->orderBy('id','DESC')->get();
+        $rejectSellers = Seller::with('shop')->where('status','Reject')->orderBy('id','DESC')->get();
         //dd($sellers);
         return view('merchant.sellers.index',compact('sellers','activesellers','requestSellers','rejectSellers'));
     }
@@ -39,11 +41,12 @@ class SellersController extends Controller
         $userprofile = Sentinel::getUser();
         //dd($userprofile);
         $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         //dd($sellerProfile);
         if(!empty($sellerProfile))
-           return view('merchant.sellers.update',compact('sellerProfile','userprofile'));
+           return view('merchant.sellers.update',compact('sellerProfile','userprofile','shopProfile'));
          else
-           return view('merchant.sellers.create',compact('sellerProfile','userprofile'));
+           return view('merchant.sellers.create',compact('sellerProfile','userprofile','shopProfile'));
     }
 
     /**

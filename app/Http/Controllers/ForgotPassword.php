@@ -14,6 +14,9 @@ class ForgotPassword extends Controller
 
 
     public function forgot(){
+       
+      // Session::forget('merchant/reset_password/');
+      // Session::flush();
         return view('auth.merchant.forgotpassword');
     }
 
@@ -33,7 +36,7 @@ class ForgotPassword extends Controller
       $reminder = Reminder::exists($user) ? : Reminder::create($user);
 
       $this->sendEmail( $user);
-
+      // Session::flush();
       return redirect()->back()->with(['success'=> 'Reset code sent to your emai']);   
        
        }
@@ -49,5 +52,4 @@ class ForgotPassword extends Controller
             );
        }
 
-       
 }

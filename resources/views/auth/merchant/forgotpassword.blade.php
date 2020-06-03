@@ -70,7 +70,7 @@
               </div>
          </div>
      </div>
-     <a href="{{url('/')}}" class="btn btn-primary back-btn "><i data-feather="arrow-left"></i>Back To Home</a>
+     <a href="{{url('/')}}" class="btn btn-secondary back-btn "><i data-feather="arrow-left"></i>Back To Home</a>
  </div>
 </div>
 

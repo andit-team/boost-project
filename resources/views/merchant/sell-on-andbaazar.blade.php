@@ -2,7 +2,7 @@
 @extends('layouts.master',['title' => 'become a vendor'])
 @section('content')
 
-@include('elements.alert')
+@include('elements.alert') 
 @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
       Dashboard
@@ -251,15 +251,15 @@
                     @csrf
                     <div class="row">
                         <div class="col-sm-3">
-                            <input type="text" class="form-control @error('first_name') border-danger @enderror" required name="first_name"  placeholder="First Name">
+                            <input type="text" class="form-control @error('first_name') border-danger @enderror" required name="first_name" value="{{ old('first_name') }}"  placeholder="First Name">
                             <span class="text-danger">{{ $errors->first('first_name') }}</span>
                         </div>
                         <div class="col-sm-3"> 
-                            <input type="text"  required class="form-control @error('last_name') border-danger @enderror" name="last_name"  placeholder="Last Name">  
+                            <input type="text"  required class="form-control @error('last_name') border-danger @enderror" name="last_name" value="{{ old('last_name') }}"  placeholder="Last Name">  
                             <span class="text-danger">{{ $errors->first('last_name') }}</span>
                         </div>
                         <div class="col-sm-6">
-                            <input type="number" autocomplete="off" name="phone" class="form-control @error('phone') border-danger @enderror" required placeholder="Phone Number e.g. 01900110011">
+                            <input type="number" autocomplete="off" name="phone" value="{{ old('phone') }}" class="form-control @error('phone') border-danger @enderror" required placeholder="Phone Number e.g. 01900110011">
                             <span class="text-danger">{{ $errors->first('phone') }}</span> 
                         </div> 
                     </div>
