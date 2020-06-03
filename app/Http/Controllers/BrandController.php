@@ -43,7 +43,7 @@ class BrandController extends Controller
         $data = [
             'name'         => $request->name,           
             'description'  => $request->description,
-            'logo'         => Baazar::fileUpload($request,'logo','','/uploads/brand_image'),
+            'image'         => Baazar::fileUpload($request,'image','','/uploads/brand_image'),
             'user_id'      => Sentinel::getUser()->id,
             'created_at'   => now(),
         ];
@@ -88,7 +88,7 @@ class BrandController extends Controller
         $data =[
             'name'         => $request->name,           
             'description'  => $request->description,          
-            'logo'         => Baazar::fileUpload($request,'logo','old_image','/uploads/brand_image'),         
+            'image'         => Baazar::fileUpload($request,'image','old_image','/uploads/brand_image'),         
             'user_id'      => Sentinel::getUser()->id,
             'updated_at'   => now(),
         ];
@@ -109,14 +109,14 @@ class BrandController extends Controller
     {
         $brand->delete();
         Session::flash('success', 'Brand Deleted Successfully!');
-        return redirect('andbaazaradmin/Products/brand');
+        return redirect('andbaazaradmin/products/brand');
     
     }
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'logo'=>'',
+            'image'=>'',
         ]);
     }
 }
