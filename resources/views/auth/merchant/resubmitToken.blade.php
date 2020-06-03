@@ -10,7 +10,7 @@
     font-family: monospace;
     font-size: 40px;
     padding-left: 20px; 
-    padding-right: 20px;
+    padding-right: -100px;
     letter-spacing: 50px; 
 }
 </style>
