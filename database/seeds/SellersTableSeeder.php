@@ -81,7 +81,7 @@ class SellersTableSeeder extends Seeder
                 'first_name'          => 'Rofiq',
                 'last_name'           => 'Mia', 
                 'slug'                => 'rofiq',
-                'email'               => 'and.baazar@yahoo.com', 
+                'email'               => 'seller@andit.com', 
                 'dob'                 => '2000-01-03',
                 'gender'              => 'Male',
                 'description'         => 'Student',

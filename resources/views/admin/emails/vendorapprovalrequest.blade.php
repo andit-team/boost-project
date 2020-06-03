@@ -177,7 +177,7 @@
       Dear,
       <br>
       {{ $sellerId->first_name.' '.$sellerId->last_name }},We got your profile request. 
-      After approve your profile request you can update your profile.
+      After approve your profile request you can update your profile and access othe pageses.
     </P>
     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:30px;">
         <thead>

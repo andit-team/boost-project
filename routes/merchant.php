@@ -47,6 +47,7 @@ Route::prefix('merchant')->group(function () {
     Route::get('/seller','SellersController@create');
     Route::post('/seller','SellersController@store')->name('sellerUpdate');
     Route::get('/shop','ShopsController@create');
+    Route::post('/shop','ShopsController@store')->name('shopUpdate');
     Route::get('/seller/{slug}/resubmit','SellersController@edit');
     Route::put('/seller/{slug}','SellersController@update');
     Route::get('/seller/{id}','SellersController@show'); 

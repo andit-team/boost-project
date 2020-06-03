@@ -76,7 +76,7 @@
                         <form class="form-horizontal auth-form" method="post" action="{{route('merchantloginprocess')}}" id="validateForm">
                             @csrf
                             <div class="form-group">
-                                <input required="" name="login[email]" type="email"  value="and.baazar@yahoo.com" class="form-control @error('email') border-danger @enderror" placeholder="Email" id="exampleInputEmail1">
+                                <input required="" name="login[email]" type="email"  value="seller@andit.com" class="form-control @error('email') border-danger @enderror" placeholder="Email" id="exampleInputEmail1">
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                             </div>
                             <div class="form-group">
