@@ -66,6 +66,7 @@
                             <tr>
                                 <th width="50">Sl</th>                               
                                 <th width="200">Brand Name</th> 
+                                {{-- <th >Logo</th>  --}}
                                 <th>Description</th>                            
                                 <th width="80" class="text-center">Action</th>
                             </tr>
@@ -75,11 +76,12 @@
                             @foreach($brand as $row)
                             <tr>
                                 <td>{{ ++$i }}</td>
-                                <td>
-                                    <a data-toggle="tooltip" title="<img src='{{ $row->logo ? asset($row->logo) : asset('/uploads/brand_image/user.png') }}' height='100' width='100' />">
-                                        {{ $row->name }}
-                                    </a>
-                                </td>
+                                <td> {{ $row->name }}</td>
+                                {{-- <td>                                   --}}
+                                    {{-- <td><img src="{{ asset($row->image) }}" style = "height:40px;width:70px;"></td> --}} 
+                                   {{-- <a data-toggle="tooltip" title="<img src='{{ $row->logo ? asset($row->logo) : asset('/uploads/brand_image/user.png') }}' height='100' width='100' />"> --}}                                      
+                                    {{-- </a> --}}
+                                {{-- </td>                               --}}
                                 <td>{{ $row->description }}</td> 
                                 <td class=""> 
                                     <ul class="d-flex justify-content-between">
@@ -114,7 +116,7 @@
                                                             </div>
                                                             <div class="uploadbtn"> 
                                                                 <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                                                <input id="file-upload" type="file" name="thumb" onchange="loadimg(event)"/>
+                                                                <input id="file-upload" type="file" name="image" onchange="loadimg(event)"/>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
@@ -168,7 +170,7 @@
                                 </div>
                                 <div class="uploadbtn"> 
                                     <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                    <input id="file-upload" type="file" name="logo" onchange="loadFile(event)"/>
+                                    <input id="file-upload" type="file" name="image" onchange="loadFile(event)"/>
                                 </div>
                             </div>
                             <div class="form-group">

@@ -10,7 +10,7 @@ class ResetPasswordController extends Controller
     public function reset(Request $request){
 
         $email = User::whereEmail($request->email)->first();
-        Session::flush();
+        // Session::flush();need work here
         return view('auth.merchant.resetpassowrd',compact('email'));  
     }
    

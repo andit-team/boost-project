@@ -18,7 +18,9 @@ class ShopsController extends Controller
      */
     public function index()
     {
-        //
+        $shop = Shop::all();
+        $seller = Seller::all();
+        return view('admin.shop_list.index',compact('shop','seller'));
     }
 
     /**
