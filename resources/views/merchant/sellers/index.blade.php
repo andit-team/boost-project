@@ -106,7 +106,7 @@
                                                                                 <img src="{{ asset('') }}/assets/images/logos/17.png" class="" height="100" width="100" alt="Logo">
                                                                             </div>
                                                                             <div>
-                                                                                <h3 class="display-5 font-weight-bold">AMER SHOP Ltd.</h3>
+                                                                                <h3 class="display-5 font-weight-bold">{{$row->shop->name}}.</h3>
                                                                                 <p>shot bioasdf asdlfkj ahsfd asdfkjasfd .</p>
                                                                             </div>
 
@@ -123,6 +123,7 @@
                                                         </div> 
                                                     </div> 
                                                 </div>
+                                                @break
                                             @endforeach
                                         </tbody>
                                     </table>
