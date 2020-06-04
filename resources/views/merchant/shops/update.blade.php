@@ -82,15 +82,7 @@
                             <div>
                                 <label for="email" class="mt-2">Shop Email<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('email') }}</span>
                                <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
-                            </div> 
-                            <div>
-                                <label for="featured" class="mt-2">Featured<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('featured') }}</span>
-                                <input type="text" class="form-control @error('featured') border-danger @enderror" required  name="featured" value="{{ old('featured',$shopProfile->featured) }}" id="" placeholder="Featured">
-                            </div>
-                            <div>
-                                <label for="web" class="mt-2">Web<span class="text-danger"> </span></label> <span class="text-danger">{{ $errors->first('web') }}</span>
-                                <input type="url" class="form-control @error('web') border-danger @enderror"  name="web" value="{{ old('Web',$shopProfile->web) }}" id="" placeholder="Shop website">
-                            </div>
+                            </div>  
                         </div> 
 
 
@@ -100,18 +92,21 @@
                                 @if(!empty($shopProfile->logo))
                                  <img id="output"  class="imagestyle" src="{{ asset($shopProfile->logo) }}"/>
                                 @else
-                                 <img id="output"  class="imagestyle" src="{{ asset('/uploads/shop_logo/user.png') }}" />
+                                 <img id="output"  class="imagestyle" src="{{ asset('/uploads/shop_logo/shop-1.png') }}" />
                                 @endif
                             </div>
                             <div class="uploadbtn"> 
                                 <label for="file-upload" class="custom-file-upload">Upload Here</label>
                                 <input id="file-upload" type="file" name="logo" onchange="loadFile(event)"/>
-                                <input type="hidden" value="{{$shopProfile->picture}}" name="old_image"> 
+                                <input type="hidden" value="{{$shopProfile->logo}}" name="old_image"> 
                             </div>
                         </div>
                     </div> 
-
-                    <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
+                    <div>
+                        <label for="web" class="mt-2">Web<span class="text-danger"> </span></label> <span class="text-danger">{{ $errors->first('web') }}</span>
+                        <input type="url" class="form-control @error('web') border-danger @enderror"  name="web" value="{{ old('Web',$shopProfile->web) }}" id="" placeholder="Shop website">
+                    </div>
+                    <label for="description" class="mt-2">Write about your shop</label> <span class="text-danger">{{ $errors->first('description') }}</span>
                     <textarea class="form-control mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea>
 
 

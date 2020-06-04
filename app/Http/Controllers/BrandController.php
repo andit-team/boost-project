@@ -39,13 +39,15 @@ class BrandController extends Controller
      */
     public function store(Brand $brand,Request $request)
     {
+        //dd($request->all());
         $this->validateForm($request);    
         $data = [
-            'name'         => $request->name,           
-            'description'  => $request->description,
-            'image'         => Baazar::fileUpload($request,'image','','/uploads/brand_image'),
-            'user_id'      => Sentinel::getUser()->id,
-            'created_at'   => now(),
+            'name'          => $request->name,           
+            'description'   => $request->description,
+            'image'       => Baazar::fileUpload($request,'image','','/uploads/brand_image'),
+            // 'image'         => Baazar::fileUpload($request,'image','','/uploads/brand_image'),
+            'user_id'       => Sentinel::getUser()->id,
+            'created_at'    => now(),
         ];
         Brand::create($data);
         Session::flash('success', 'Brand Inserted Successfully!');
@@ -84,6 +86,7 @@ class BrandController extends Controller
      */
     public function update(Brand $brand,Request $request)
     {
+       //dd($request->all());
         $this->validateForm($request);
         $data =[
             'name'         => $request->name,           
@@ -115,8 +118,7 @@ class BrandController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required',
-            'description' => 'required',
-            'image'=>'',
+            'description' => 'required', 
         ]);
     }
 }

@@ -5,11 +5,11 @@
                 @if(!empty($shopProfile->logo))
                 <img  src="{{ asset($shopProfile->logo) }}" alt="" class="img-fluid">
                 @else
-                <img  src="{{ asset('/uploads/shop_logo/user.png') }}" alt="" class="img-fluid">
+                <img  src="{{ asset('/uploads/shop_logo/shop-1.png') }}" alt="" class="img-fluid">
                 @endif
             </div>
             <div class="profile-detail">
-                <h5>{{ $shopProfile->name }}</h5>
+                <h5><a href="{{ url('merchant/shop') }}">{{ $shopProfile->name }}</a></h5>
                 <h6>750 followers | 10 review</h6>
                 <h6>{{ $shopProfile->email }}</h6>
             </div>
@@ -28,8 +28,8 @@
                 </li>
                 <li class="nav-item"><a  class="nav-link {{$active == 'profile' ? 'active' : ''}}" href="{{ url('merchant/seller/') }}">Profile</a>
                 </li>
-                <li class="nav-item"><a  class="nav-link {{$active == 'shop' ? 'active' : ''}}" href="{{ url('merchant/shop') }}">shop</a>
-                </li>
+                {{-- <li class="nav-item"><a  class="nav-link {{$active == 'shop' ? 'active' : ''}}" href="{{ url('merchant/shop') }}">shop</a>
+                </li> --}}
                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a>
                 </li> 
                 <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="#">logout</a>

@@ -15,7 +15,7 @@ class ShopsTableSeeder extends Seeder
                    [
                       'name'                 => 'Ak Trades',
                       'slug'                 => 'C111',
-                      'phone'           => '09857648739',
+                      'phone'                => '09857648739',
                       'google_location'      => 'Mirpur,dhaka',
                       'featured'             => 'wtgrete',
                       'email'                => 'aktrades@gmail.com',
@@ -29,7 +29,7 @@ class ShopsTableSeeder extends Seeder
                   [
                      'name'                 => 'Jk Store',
                      'slug'                 => 'C222',
-                     'phone'           => '1198374629',
+                     'phone'                => '1198374629',
                      'google_location'      => 'dhanmondi,dhaka',
                      'featured'             => 'This is good',
                      'email'                => 'jk@gmail.com',
@@ -43,7 +43,7 @@ class ShopsTableSeeder extends Seeder
                  [
                     'name'                 => 'Pk Trade',
                     'slug'                 => 'C666',
-                    'phone'           => '069856524 ',
+                    'phone'                => '069856524 ',
                     'google_location'      => 'malibag,dhaka',
                     'featured'             => 'vfxgnxjg',
                     'email'                => 'pk@gmail.com',
@@ -54,6 +54,20 @@ class ShopsTableSeeder extends Seeder
                     'created_at'           => now(),
                     'updated_at'           => now()
                 ],
+                [
+                  'name'                 => 'Fashion House',
+                  'slug'                 => 'rofiq',
+                  'phone'                => '01719100045 ',
+                  'google_location'      => 'malibag,dhaka',
+                  'featured'             => 'vfxgnxjg',
+                  'email'                => 'fashion@gmail.com',
+                  'web'                  => '',
+                  'description'          => 'dfdghbhsfh',
+                  'seller_id'            => '5',
+                  'user_id'              => '3',
+                  'created_at'           => now(),
+                  'updated_at'           => now()
+              ],
       ];
 
       DB::table('shops')->insert($data);
