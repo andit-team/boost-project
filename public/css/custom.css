@@ -47,3 +47,16 @@ input.form-control.error {
     justify-content: center;
     align-items: center;
 }
+
+.spinner-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

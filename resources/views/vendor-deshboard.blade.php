@@ -1,17 +1,17 @@
-@extends('layouts.master')
+@extends('merchant.master')
 
 @section('content')
 
 @include('elements.alert')
-@component('layouts.inc.breadcrumb')
+{{-- @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
       Dashboard
   @endslot
   @slot('page')
-      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      {{-- <li class="breadcrumb-item active" aria-current="page">Profile</li> --}}
+      <li class="breadcrumb-item active" aria-current="page">Dasssshboard</li>
+      {{-- <li class="breadcrumb-item active" aria-current="page">Profile</li>=
   @endslot
-@endcomponent
+@endcomponent --}}
 
 
     <!--  dashboard section start -->
@@ -28,7 +28,7 @@
                     {{-- <h3>Seller profile Status</h3> --}}
                         <div class="bg-warning text-center p-5 rounded">
                             <h4>Thank Your for your request</h4>
-                            <p>We nedd to review your request a little longer. After approve your request you can see your dashboard.</p>
+                            <p>We nedd to reviesssssssssw your request a little longer. After approve your request you can see your dashboard.</p>
                         </div> 
                     </div>
                     @elseif($sellerProfile->status == 'Reject')
