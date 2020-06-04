@@ -13,12 +13,8 @@
   @endslot
 @endcomponent
 
+<!-- breadcrumb End -->
 
-    <!-- breadcrumb End -->
-
-
-
-    
 @push('css')
 <style>
     .imagestyle{
@@ -67,7 +63,6 @@
                                 <input type="number" class="form-control @error('phone') border-danger @enderror" required  name="phone" value="{{ old('phone',$profile->phone) }}" id="" placeholder="Phone Number">
                             </div>
 
-
                             <div class="col-md-4 text-right">  
                                 <label for="picture">Picture</label>
                                 <div class="mt-0">
@@ -88,7 +83,6 @@
                         <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
                         <textarea class="form-control mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{$profile->description}}</textarea>
 
-
                         <div class="form-row"> 
                             <div class="col-md-6 mt-2">
                                 <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span> 
@@ -106,20 +100,20 @@
                             <div class="col-md-12 mt-4">
                                 <button type="submit" class="btn btn-sm btn-solid" >Update</button>
                             </div>
-                            </div>
+                       </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 @endsection
-@push('js')
-<script>
-    var loadFile = function(event) {
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-    };
-</script>
+    @push('js')
+    <script>
+        var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
 @endpush
 
 

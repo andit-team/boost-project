@@ -111,9 +111,9 @@
                                 <button class="btn btn-info" type="submit">Register</button>
                             </div> 
                         </form>
-            </div>
-        </div>
-    </div>
-</div> 
+                   </div>
+               </div>
+          </div>
+      </div> 
 @endsection
 

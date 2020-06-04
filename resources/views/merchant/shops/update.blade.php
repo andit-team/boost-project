@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('merchant.master')
 
 @section('content')
 @push('css')
@@ -107,7 +107,7 @@
                         <input type="url" class="form-control @error('web') border-danger @enderror"  name="web" value="{{ old('Web',$shopProfile->web) }}" id="" placeholder="Shop website">
                     </div>
                     <label for="description" class="mt-2">Write about your shop</label> <span class="text-danger">{{ $errors->first('description') }}</span>
-                    <textarea class="form-control mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea>
+                    <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea>
 
 
                     <div class="form-row">  
@@ -124,6 +124,13 @@
     <!--  dashboard section end --> 
 @endsection 
 @push('js')
+<script type="text/javascript">
+    $(document).ready(function() {
+     $('.summernote').summernote({
+           height: 200,
+      });
+   });
+ </script>
 <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');
@@ -131,3 +138,4 @@
     };
 </script>
 @endpush
+

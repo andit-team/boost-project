@@ -73,10 +73,5 @@
      <a href="{{url('/')}}" class="btn btn-secondary back-btn "><i data-feather="arrow-left"></i>Back To Home</a>
  </div>
 </div>
-
-
-
-
-
 @endsection
 

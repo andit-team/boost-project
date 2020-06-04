@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('merchant.master')
 
 @section('content')
 @push('css')
@@ -28,7 +28,7 @@
     }
 </style> 
 @include('elements.alert')
-@component('layouts.inc.breadcrumb')
+{{-- @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
       Vendor Dashboard
   @endslot
@@ -36,7 +36,7 @@
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
       <li class="breadcrumb-item active" aria-current="page">Profile</li>
   @endslot
-@endcomponent
+@endcomponent --}}
 
     <!--  dashboard section start -->
     <section class="dashboard-section section-b-space">
@@ -107,7 +107,7 @@
                     </div> 
 
                     <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
-                    <textarea class="form-control mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $sellerProfile->description }}</textarea>
+                    <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $sellerProfile->description }}</textarea>
 
 
                     <div class="form-row"> 
@@ -137,6 +137,20 @@
     <!--  dashboard section end --> 
 @endsection 
 @push('js')
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+     $('.summernote').summernote({
+           height: 150,
+      });
+   });
+ </script>
 <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');

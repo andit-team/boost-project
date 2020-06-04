@@ -1551,7 +1551,6 @@
   </section>
   <!-- instagram section end -->
 
-
   <!--  logo section -->
   <section class="section-b-space">
       <div class="container">
@@ -1604,6 +1603,4 @@
       </div>
   </section>
   <!--  logo section end-->
-
-
 @endsection

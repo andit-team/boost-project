@@ -12,11 +12,7 @@
   @endslot
 @endcomponent
 
-
-    <!-- breadcrumb End -->
-
-
-
+<!-- breadcrumb End -->
     
 @push('css')
 <style>
@@ -71,11 +67,7 @@
                                 <label for="picture">Picture</label>
                                 <div class="mt-0">
                                     <img id="output"  class="imagestyle" src="{{ asset('/uploads/buyer_profile/user.png') }}" />
-                                </div>
-                                {{-- <div class="uploadbtn"> 
-                                    <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                    <input id="file-upload" type="file" name="picture" onchange="loadFile(event)"/>
-                                </div> --}}
+                                </div>                            
                                 <div id="userpic" class="userpic">
                                     <div class="js-preview userpic__preview"></div>
                                     <div class="btn btn-success js-fileapi-wrapper">

@@ -93,11 +93,10 @@
                             <div class="form-button">
                                 <button class="btn btn-primary" type="submit">Login</button>
                             </div>   
-                        </form> 
+                      </form> 
+                </div>
             </div>
         </div>
     </div>
-</div>
 <a href="{{url('/')}}" class="btn btn-secondary back-btn"><i data-feather="arrow-left"></i>Back To Home</a>
-
 @endsection

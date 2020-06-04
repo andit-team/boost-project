@@ -60,6 +60,13 @@
 <!-- page-wrapper Start-->
 <div class="page-wrapper">
 
+    {{-- <div class="loader_skeleton">
+        <!--CSS Spinner-->
+        <div class="spinner-wrapper">
+            <img src="{{asset('preloader.gif')}}" alt="preloader" width="300">
+        </div>
+    </div> --}}
+
     <!-- Page Header Start-->
     <div class="page-main-header">
         <div class="main-header-right row">

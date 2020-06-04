@@ -67,9 +67,9 @@
                     <button class="btn btn-sm btn-solid" type="submit"> Update</button>
                </div>
             </div>
-         </form>
-      </div>
-    </div>
-  </div>
-</section>  
+          </form>
+       </div>
+     </div>
+   </div>
+ </section>  
 @endsection

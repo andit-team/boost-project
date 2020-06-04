@@ -1,7 +1,7 @@
-@extends('layouts.master')
+@extends('merchant.master')
 @section('content') 
 @include('elements.alert')
-@component('layouts.inc.breadcrumb')
+{{-- @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
       Vendor Dashboard
   @endslot
@@ -9,7 +9,7 @@
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
       <li class="breadcrumb-item active" aria-current="page">Inventory</li>
   @endslot
-@endcomponent
+@endcomponent --}}
 
 
 <style>
