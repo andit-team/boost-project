@@ -24,10 +24,10 @@ input.form-control.error {
 .onhover-dropdown .onhover-show-div {
     min-width: 240px;
 }
-.onhover-show-div  li:hover{
-    opacity: 1;
-    font-size: 18px !important;
-} 
+
+.onhover-show-div li:hover {
+    border-bottom: 1px solid;
+}
 /* .onhover-show-div li:hover {
     background-color: #fff;
     color: #ff5a80 !important;
@@ -59,4 +59,9 @@ input.form-control.error {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.section-b-space{
+    padding-bottom: 55px;
+    padding-top: 55px;
 }
