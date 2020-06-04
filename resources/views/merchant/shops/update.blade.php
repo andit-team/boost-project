@@ -92,13 +92,13 @@
                                 @if(!empty($shopProfile->logo))
                                  <img id="output"  class="imagestyle" src="{{ asset($shopProfile->logo) }}"/>
                                 @else
-                                 <img id="output"  class="imagestyle" src="{{ asset('/uploads/shop_logo/user.png') }}" />
+                                 <img id="output"  class="imagestyle" src="{{ asset('/uploads/shop_logo/shop-1.png') }}" />
                                 @endif
                             </div>
                             <div class="uploadbtn"> 
                                 <label for="file-upload" class="custom-file-upload">Upload Here</label>
                                 <input id="file-upload" type="file" name="logo" onchange="loadFile(event)"/>
-                                <input type="hidden" value="{{$shopProfile->picture}}" name="old_image"> 
+                                <input type="hidden" value="{{$shopProfile->logo}}" name="old_image"> 
                             </div>
                         </div>
                     </div> 

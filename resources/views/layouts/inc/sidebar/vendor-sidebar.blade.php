@@ -5,7 +5,7 @@
                 @if(!empty($shopProfile->logo))
                 <img  src="{{ asset($shopProfile->logo) }}" alt="" class="img-fluid">
                 @else
-                <img  src="{{ asset('/uploads/shop_logo/user.png') }}" alt="" class="img-fluid">
+                <img  src="{{ asset('/uploads/shop_logo/shop-1.png') }}" alt="" class="img-fluid">
                 @endif
             </div>
             <div class="profile-detail">
