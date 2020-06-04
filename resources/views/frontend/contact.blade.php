@@ -75,30 +75,33 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-12">
-                        <form class="theme-form">
+                         <form class="theme-form" action="{{ route('contact-us.store') }}" method="post" id="validateForm">
+                            @csrf
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <label for="name">First Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Your First Name"
-                                        required="">
+                                    <label for="first_name">First Name<span class="text-danger"> *</span></label>
+                                    <input type="text" class="form-control @error('first_name') border-danger @enderror" name="first_name" id="" placeholder="Enter Your First Name" required="">
+                                    <span class="text-danger">{{ $errors->first('first_name') }}</span> 
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="email">Last Name</label>
-                                    <input type="text" class="form-control" id="last-name" placeholder="Enter Your Last Name" required="">
+                                    <label for="last_name">Last Name<span class="text-danger"> *</span></label>
+                                    <input type="text" class="form-control @error('last_name') border-danger @enderror" name="last_name" id="last-name" placeholder="Enter Your Last Name" required="">
+                                    <span class="text-danger">{{ $errors->first('last_name') }}</span>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="review">Phone number</label>
-                                    <input type="text" class="form-control" id="review" placeholder="Enter your number"
-                                        required="">
+                                    <label for="phone">Phone number<span class="text-danger"> *</span></label>
+                                    <input type="text" class="form-control @error('phone') border-danger @enderror" name="phone" id="phone" placeholder="Enter your number" required="">
+                                    <span class="text-danger">{{ $errors->first('phone') }}</span>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email" placeholder="Email" required="">
+                                    <label for="email">Email<span class="text-danger"> *</span></label>
+                                    <input type="email" class="form-control @error('email') border-danger @enderror" name="email" id="email" placeholder="Email" required="">
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="review">Write Your Message</label>
-                                    <textarea class="form-control summernote" placeholder="Write Your Message"
-                                        id="exampleFormControlTextarea1" rows="6"></textarea>
+                                    <label for="description">Write Your Message<span class="text-danger"> *</span></label>
+                                    <textarea class="form-control summernote" placeholder="Write Your Message" name="description" id="exampleFormControlTextarea1" rows="6"></textarea>
+                                    <span class="text-danger">{{ $errors->first('description') }}</span>
                                 </div>
                                 <div class="col-md-12">
                                     <button class="btn btn-solid" type="submit">Send Your Message</button>

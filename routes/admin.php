@@ -20,6 +20,8 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::resource('/currency','CurrenciesController');
     Route::resource('/courier','CouriersController');
     Route::get('/seller','SellersController@index');
+    Route::get('/contact-us','ContactController@contactmailList');
+    Route::put('/contact-us/{$id}','ContactController@replayMail'); 
     
     Route::resource('products/size','SizesController');
     Route::resource('products/tag','TagsController');
