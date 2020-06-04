@@ -1,4 +1,4 @@
-@extends('layouts.vendor')
+@extends('merchant.master')
 
 @section('content')
     <!-- breadcrumb start -->
