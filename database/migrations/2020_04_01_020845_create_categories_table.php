@@ -20,7 +20,8 @@ class CreateCategoriesTable extends Migration
             $table->integer('parent_id')->default(0);
             $table->string('slug')->nullable();
             $table->string('thumb')->nullable();
-            $table->string('parent')->nullable();
+            // $table->decimal('Percentage')->nullable();
+            $table->decimal('percentage',8,2)->default(0.00);
             $table->integer('sort')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');

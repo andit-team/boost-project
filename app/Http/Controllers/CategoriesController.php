@@ -49,7 +49,7 @@ class CategoriesController extends Controller
             'desc'       => $request->desc,
             'slug'       => $slug,
             'thumb'      => Baazar::fileUpload($request,'thumb','','/uploads/category_image'),
-            'parent'     => $request->parent,
+            'percentage' => $request->percentage,
             'sort'       => $request->sort,
             'user_id'    => Sentinel::getUser()->id,
             'created_at' => now(),
@@ -102,7 +102,7 @@ class CategoriesController extends Controller
             'name'       => $request->name,
             'desc'       => $request->desc,
             'thumb'      => Baazar::fileUpload($request,'thumb','old_image','/uploads/category_image'),
-            'parent'     => $request->parent,
+            'percentage' => $request->percentage,
             'sort'       => $request->sort,
             'user_id'    => Sentinel::getUser()->id,
             'updated_at' => now(),
@@ -152,7 +152,8 @@ class CategoriesController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'name' => 'required'
+            'name'       => 'required',
+            'percentage' => 'required'
         ]);
     }
 }

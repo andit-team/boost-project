@@ -67,6 +67,7 @@
                                 <th width="50">Sl</th>
                                 {{-- <th width="100">Thumb</th> --}}
                                 <th width="200">Category</th> 
+                                <th width="200">Percentage</th> 
                                 <th>Description</th>
                                 <th width="80" class="text-center">Action</th>
                             </tr>
@@ -123,6 +124,13 @@
                                                             <input type="text"  name="name" value="{{old('name',$row->name)}}" required class="form-control @error('name') border-danger @enderror"> 
                                                             <span class="text-danger">{{ $errors->first('name') }}</span>
                                                         </div> 
+
+                                                        <div class="form-group">
+                                                            <label for="validationCustom01" class="mb-1">Percentage :</label>
+                                                            <input type="text"  name="percentage" value="{{old('percentage',$row->percentage)}}" required class="form-control @error('percentage') border-danger @enderror"> 
+                                                            <span class="text-danger">{{ $errors->first('percentage') }}</span>
+                                                        </div> 
+                                                     
                                                         <div class="form-group">
                                                             <label for="desc">Description:</label>
                                                             <textarea type="validationCustom01"  name="desc"  class="form-control @error('name') border-danger @enderror" rows="5">{{$row->desc}}</textarea>
@@ -177,6 +185,11 @@
                                 <input type="text"  name="name" value="{{ old('name') }}" required class="form-control @error('name') border-danger @enderror"> 
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             </div>
+                            <div class="form-group row">
+                                <label for="percentage">Percentage <span>*</span></label>
+                                {{-- <input class="form-control col-md-8" name="percentage" id="validationCustom0" type="text" required=""> --}}
+                                <input type="text" name="percentage" value="{{old('percentage')}} %" class="form-control" id="amount" placeholder="0.00 " required autocomplete="off">
+                            </div>
                             <div class="form-group">
                                 <label for="desc">Description:</label>
                                 <textarea type="text"  name="desc"  class="form-control @error('name') border-danger @enderror" rows="5"> </textarea>
@@ -187,8 +200,6 @@
                             </div>
                         </form>    
                     </div>
-
-
                 </div>
             </div>
         </div>
