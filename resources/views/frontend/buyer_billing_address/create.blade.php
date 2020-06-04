@@ -65,8 +65,6 @@
             </div>
         </div>
     </section>
-
-           
-       
-    <!-- section end -->
+    
+ <!-- section end -->
 @endsection

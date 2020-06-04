@@ -82,9 +82,9 @@
                                 <button class="btn btn-info" type="submit">Shope Register</button>
                             </div> 
                     </form>
-            </div>
-        </div>
-    </div>
-</div> 
+               </div>
+          </div>
+     </div>
+ </div> 
 @endsection
 

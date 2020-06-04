@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="page-body">
-
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="page-header">
@@ -77,6 +76,5 @@
             </div>
         </div>
         <!-- Container-fluid Ends-->
-
     </div>
 @endsection

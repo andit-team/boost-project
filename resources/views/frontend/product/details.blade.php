@@ -33,38 +33,25 @@
                             @foreach($product_details->itemimage as $itemimg)
                             <div>
                                 
-                                
-                               
                                 @if($loop->first)
                                 @if(!empty($itemimg->list_img))
                                    <img class="img-fluid blur-up lazyload image_zoom_cls-1" src="{{ asset('/uploads/product_image/'.$itemimg->list_img ) }}">
                                 @else
                                     <img class="imagestyle" src="{{ asset('/uploads/product_image/user.png') }}">
                                 @endif
-                                @endif
-                                
-                                
+                                @endif                                         
                                
                                 {{-- <img src="{{ asset( '/uploads/product_image/'.$item->list_img) }}" alt=""
                                     class="img-fluid blur-up lazyload image_zoom_cls-0">  --}}
-                                
-                                
-                                
-                                </div>  
-                                @endforeach 
-                            {{-- <div><img src="{{asset('frontend')}}/assets/images/pro3/2.jpg" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-1"></div>
-                            <div><img src="{{asset('frontend')}}/assets/images/pro3/27.jpg" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-2"></div>
-                            <div><img src="{{asset('frontend')}}/assets/images/pro3/27.jpg" alt=""
-                                    class="img-fluid blur-up lazyload image_zoom_cls-3"></div> --}}
+                                                                                             
+                            </div>  
+                            @endforeach                          
                         </div>
                         <div class="row">
                             <div class="col-12 p-0">
                                 <div class="slider-nav">
                                     @foreach($product_details->itemimage as $itemimg)
-                                    <div>
-                                       
+                                    <div>                                     
                                         {{-- @if($loop->first) --}}
                                         @if(!empty($itemimg->list_img))
                                         <img  src="{{ asset('/uploads/product_image/'.$itemimg->list_img ) }}" alt=""
@@ -72,21 +59,14 @@
                                         @else
                                             <img alt="" class="img-fluid blur-up lazyload" src="{{ asset('/uploads/product_image/user.png') }}">
                                         @endif
-                                        {{-- @endif --}}
-                                       
+                                        {{-- @endif --}}                                       
                                     </div>
-                                    @endforeach 
-                                    {{-- <div><img src="{{asset('frontend')}}/assets/images/pro3/2.jpg" alt=""
-                                            class="img-fluid blur-up lazyload"></div>
-                                    <div><img src="{{asset('frontend')}}/assets/images/pro3/27.jpg" alt=""
-                                            class="img-fluid blur-up lazyload"></div>
-                                    <div><img src="{{asset('frontend')}}/assets/images/pro3/27.jpg" alt=""
-                                            class="img-fluid blur-up lazyload"></div> --}}
+                                    @endforeach                                   
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 rtl-text">
+                     </div>
+                     <div class="col-lg-6 rtl-text">
                         <div class="product-right">
                             <h2 class="mb-0">Women Pink Shirt</h2>
                             <h5 class="mb-2">by <a href="#">zara</a></h5>
@@ -126,11 +106,11 @@
                                 <div class="qty-box">
                                     <div class="input-group"><span class="input-group-prepend"><button type="button"
                                                 class="btn quantity-left-minus" data-type="minus" data-field=""><i
-                                                    class="ti-angle-left"></i></button> </span>
+                                                 class="ti-angle-left"></i></button> </span>
                                         <input type="text" name="quantity" class="form-control input-number" value="1">
                                         <span class="input-group-prepend"><button type="button"
                                                 class="btn quantity-right-plus" data-type="plus" data-field=""><i
-                                                    class="ti-angle-right"></i></button></span></div>
+                                                class="ti-angle-right"></i></button></span></div>
                                 </div>
                             </div>
                             <div class="product-buttons"><a href="{{url('/addto_cart')}}" 

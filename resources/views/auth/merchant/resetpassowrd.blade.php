@@ -35,8 +35,7 @@
         </div>
     </div>
     <div class="col-md-7 p-0 card-right">
-        <div class="text-right">
-           
+      <div class="text-right">
         
         <div class="card tab2-card">
             <div class="card-body">
@@ -46,28 +45,28 @@
                     </li>
                 </ul>
                     
-                    @if (\Session::has('error'))
-                        <div class="alert alert-danger">
-                                <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
-                        </div>
-                    @endif
-                      
-                    <form class="form-horizontal auth-form" action="{{ url('merchant/reset_password/'.$email->email) }}" method="post">
-                       @csrf
-                       @method('PUT')                            
-                            <div class="form-group">
-                                <input required="" name="password" type="password" class="form-control" placeholder=" New Password">
-                            </div>
-                            <div class="form-group">
-                                <input required="" name="password" type="password" class="form-control" placeholder="Confirm Password">
-                            </div>
-                           
-                            <div class="form-button">
-                                <button class="btn btn-primary" type="submit">Reset Password</button>
-                            </div>                       
-                        </form>
+                @if (\Session::has('error'))
+                    <div class="alert alert-danger">
+                            <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
                     </div>
-                </div>
+                @endif
+                      
+                <form class="form-horizontal auth-form" action="{{ url('merchant/reset_password/'.$email->email) }}" method="post">
+                    @csrf
+                    @method('PUT')                            
+                        <div class="form-group">
+                            <input required="" name="password" type="password" class="form-control" placeholder=" New Password">
+                        </div>
+                        <div class="form-group">
+                            <input required="" name="password" type="password" class="form-control" placeholder="Confirm Password">
+                        </div>
+                        
+                        <div class="form-button">
+                            <button class="btn btn-primary" type="submit">Reset Password</button>
+                        </div>                       
+                    </form>
+                 </div>
+             </div>
           </div>
       </div>
  </div>

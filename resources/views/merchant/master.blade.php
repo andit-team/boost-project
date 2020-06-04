@@ -151,7 +151,6 @@
     </footer>
     <!-- footer end -->
 
-<<<<<<< HEAD
 
     <!-- Quick-view modal popup start-->
     <div class="modal fade bd-example-modal-lg theme-modal" id="quick-view" tabindex="-1" role="dialog"
@@ -215,9 +214,6 @@
     <!-- theme setting -->
     
     <!-- theme setting -->
-=======
->>>>>>> c7b435be5ef17fcdf5e4d17badc517f01ba8eb5e
-
 
     <!-- exit modal popup start-->
     <div class="modal fade bd-example-modal-lg theme-modal exit-modal" id="exit_popup" tabindex="-1" role="dialog"

@@ -16,18 +16,6 @@ include('frontend.php');
 include('merchant.php');
 include('admin.php');
 
-// Frontend Route.....
-//Forgot password......
-
-// Route::get('forgot_password', 'ForgotPassword@forgot');
-
-// Route::post('forgot_password', 'ForgotPassword@password');
-
-
-//  Route::get('reset_password/{email}', 'ResetPasswordController@reset');
-//  Route::put('reset_password/{email}', 'ResetPasswordController@updatePassword');
-
-// Route::post('reset_password_without_token', 'MerchantController@validatePasswordRequest');
 
 
 

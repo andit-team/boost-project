@@ -84,7 +84,6 @@
                                 <span class="btn btn-info disabled" id="Resend" type="submit"> <span class="c"></span> Resend </span> 
                             </div> 
                         </form>
-
                         
             </div>
             <form action="{{ route('resubmitToken') }}" method="post" id="resendform" style="d-none">

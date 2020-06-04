@@ -4,14 +4,11 @@
 
 @include('elements.alert')
 
-
     <!--  dashboard section start -->
     <section class="dashboard-section section-b-space">
         <div class="container">
             <div class="row">
-                
                 @include('layouts.inc.sidebar.vendor-sidebar',[$active ='dashboard'])
-
                 <div class="col-lg-9 register-page contact-page"> 
                     @if($sellerProfile->status == 'Inactive')
                     <h3>Dashboard Detail</h3>
@@ -30,9 +27,9 @@
                             <h4>Your profile is Rejected</h4>
                             <h6>Reject Reason : <small>{{ $sellerProfile->rej_desc }}</small></h6> 
                             <p>Resubmit your Profile.</p> 
-                        <a href="{{ url('merchant/seller/'.$sellerProfile->slug.'/resubmit') }}" title="Resubmit" class="btn btn-sm btn-solid">Resubmit</a>
+                            <a href="{{ url('merchant/seller/'.$sellerProfile->slug.'/resubmit') }}" title="Resubmit" class="btn btn-sm btn-solid">Resubmit</a>
                         </div>
-                </div>
+                    </div>
                 @elseif($sellerProfile->status == 'Active')
                         <div class="faq-content tab-content" id="top-tabContent">
                             <div class="tab-pane fade show active" id="dashboard">

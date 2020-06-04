@@ -1,4 +1,4 @@
-@extends('merchant.master')
+@extends('admin.layout.master')
 
 @section('content') 
 @push('css')
@@ -23,7 +23,7 @@
 </style>
 @endpush
 @include('elements.alert')
-{{-- @component('admin.layout.inc.breadcrumb')
+@component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
       Seller profile
   @endslot
@@ -31,7 +31,7 @@
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
       <li class="breadcrumb-item active" aria-current="page">Seller profile</li>
   @endslot
-@endcomponent --}}
+@endcomponent
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12"> 

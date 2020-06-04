@@ -74,11 +74,11 @@
                   </div>                     
                </div> 
                @empty
-                <div class="card mt-2"> 
-                    <div class="card-body text-center">
-                        <img  src="{{ asset('frontend')}}/assets/images/no_data_found/not-found-2.png" class="img image-responsive thumbnial w-50">
-                    </div>
-                </div> 
+              <div class="card mt-2"> 
+                  <div class="card-body text-center">
+                      <img  src="{{ asset('frontend')}}/assets/images/no_data_found/not-found-2.png" class="img image-responsive thumbnial w-50">
+                  </div>
+              </div> 
             @endforelse
          </div>
       </div>
