@@ -54,9 +54,7 @@
                                 <button type="submit" class="btn btn-sm btn-solid ml-2" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash"> Delete</i></button>
                             </form>
                        </div>
-
-                    </div>
-                    
+                    </div>                    
                 </div>
                 @empty
                 <div class="card mt-2"> 

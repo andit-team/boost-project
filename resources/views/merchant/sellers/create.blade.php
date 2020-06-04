@@ -84,7 +84,7 @@
                     </div> 
 
                     <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
-                    <textarea class="form-control mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" ></textarea>
+                    <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" ></textarea>
 
 
                     <div class="form-row"> 
@@ -112,11 +112,30 @@
 </section>
     <!--  dashboard section end --> 
 @endsection 
-@push('js')
+{{-- @push('js')
 <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
     };
 </script>
+@endpush --}}
+@push('js')
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+     $('.summernote').summernote({
+           height: 200,
+      });
+   });
+ </script>
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+@endpush
+@push('css')
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
 @endpush

@@ -10,7 +10,7 @@
     <meta name="author" content="multikart">
     <link rel="icon" href="{{asset('frontend')}}/assets/images/favicon/1.png" type="image/x-icon" />
     <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/favicon/1.png" type="image/x-icon" />
-    <title>Multikart - Multi-purpopse E-commerce Html Template</title>
+    <title>Andbaazar Merchant Panel</title>
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -38,7 +38,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/color1.css" media="screen" id="color">
 
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
+
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
     @stack('css')
     <style>
         .onhover-dropdown .onhover-show-div {
@@ -159,8 +162,6 @@
     </div>
     <!-- tap to top End -->
 
-
-
     <!-- latest jquery-->
     <script src="{{asset('frontend')}}/assets/js/jquery-3.3.1.min.js"></script>
 
@@ -192,6 +193,11 @@
     <!-- Theme js-->
     <script src="{{asset('frontend')}}/assets/js/script.js"></script>
 
+    <!-- Summernote js-->
+
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+
+    @stack('js')
     <script>
         function openSearch() {
             document.getElementById("search-overlay").style.display = "block";
