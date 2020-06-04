@@ -1,9 +1,9 @@
-@extends('layouts.master')
+@extends('merchant.master')
 
 @section('content')
 
 @include('elements.alert')
-@component('layouts.inc.breadcrumb')
+{{-- @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
       Dashboard
   @endslot
@@ -11,7 +11,7 @@
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
       <li class="breadcrumb-item active" aria-current="page">Profile</li>
   @endslot
-@endcomponent
+@endcomponent --}}
 
 
     <!--  dashboard section start -->
@@ -155,14 +155,7 @@
                                                 <span class="text-danger">{{ $errors->first('pack_id') }}</span>
                                             @endif
                                         </div> 
-                                       
-                                        {{-- <div class="col-md-6">
-                                            <label for="review">Total Sale Amount *</label>
-                                            <input type="number" class="form-control" name="total_sale_amount" id="total_sale_amount"  required="">
-                                            @if ($errors->has('total_sale_amount'))
-                                                <span class="text-danger">{{ $errors->first('total_sale_amount') }}</span>
-                                            @endif
-                                        </div> --}}
+                                                                            
                                         <div class="col-md-6">
                                             <label for="last_carted_at">Last Carted </label>
                                             <input type="date" name="last_carted_at" value="{{old('date',date('Y-m-d'))}}" class="form-control  datepickerDB" id="last_carted_at" required autocomplete="off">
@@ -177,16 +170,7 @@
                                                 <span class="text-danger">{{ $errors->first('last_ordered_at') }}</span>
                                             @endif
                                         </div>
-                                       
-                                        {{-- <div class="col-md-6">
-                                            <label for="review">Activated At </label>
-                                            <input type="date" name="activated_at" value="{{old('date',date('Y-m-d'))}}" class="form-control  datepickerDB" id="activated_at" required autocomplete="off">
-                                            @if ($errors->has('activated_at'))
-                                                <span class="text-danger">{{ $errors->first('activated_at') }}</span>
-                                            @endif
-
-                                        </div> --}}
-
+                                                                          
                                         </div>
                                         <div class="col-md-6"> 
                                                 <input type="hidden" class="form-control" name="email" value="{{ $product->email }}"   placeholder="Enter Your Email" > 

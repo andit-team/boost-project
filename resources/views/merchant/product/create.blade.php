@@ -1,9 +1,9 @@
-@extends('layouts.master')
+@extends('merchant.master')
 
 @section('content')
 
 @include('elements.alert')
-@component('layouts.inc.breadcrumb')
+{{-- @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
       Dashboard
   @endslot
@@ -11,7 +11,7 @@
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
       <li class="breadcrumb-item active" aria-current="page">Profile</li>
   @endslot
-@endcomponent
+@endcomponent --}}
 
 
     <!--  dashboard section start -->
@@ -173,27 +173,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-{{-- <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script> --}}
-{{-- <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script> --}}
-{{-- <script>
-    CKEDITOR.replace( 'summary-ckeditor' );
-</script> --}}
-
-{{-- <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script> --}}
-
-{{-- Script for ckeditor --}}
-
-{{-- <script type="text/javascript">
-    CKEDITOR.replace('description',
-        {
-            customConfig: 'config.js',
-            toolbar: 'simple'
-            // config.width = '500;
-            // config.width = '500';
-            // config.width = '25em';
-            config.width = '100%';
-        })
-</script> --}}
 
 {{-- Script for subcategory --}}
 <script>
@@ -217,9 +196,6 @@
     });
     </script>
 
-
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script> --}}
 <script>
 $('select').selectpicker();
 </script>

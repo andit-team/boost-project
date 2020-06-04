@@ -53,11 +53,23 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
     @stack('css')
     <link href="{{ asset('/') }}css/admin-custom.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href=" https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.3.3/css-loader.css">
+   
 </head>
 
 <body>
 {{--@include('sweetalert::alert')--}}
 <!-- page-wrapper Start-->
+
+
+<div class="loader_skeleton">
+    <!--CSS Spinner-->
+    <div class="spinner-wrapper">
+        <img src="{{asset('preloader.gif')}}" alt="preloader" width="300">
+    </div>
+</div>
+
 <div class="page-wrapper">
 
     <!-- Page Header Start-->
@@ -232,7 +244,7 @@
 <!-- lazyload js-->
 <script src="{{asset('')}}/assets/js/lazysizes.min.js"></script>
 
-
+<script  scr ="https://cdnjs.cloudflare.com/ajax/libs/PreloadJS/1.0.1/preloadjs.min.js" ></script>
 
 
 <!--script admin-->

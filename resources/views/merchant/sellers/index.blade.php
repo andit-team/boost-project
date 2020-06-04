@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('merchant.master')
 
 @section('content') 
 @push('css')
@@ -23,7 +23,7 @@
 </style>
 @endpush
 @include('elements.alert')
-@component('admin.layout.inc.breadcrumb')
+{{-- @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
       Seller profile
   @endslot
@@ -31,7 +31,7 @@
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
       <li class="breadcrumb-item active" aria-current="page">Seller profile</li>
   @endslot
-@endcomponent
+@endcomponent --}}
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12"> 
@@ -106,7 +106,7 @@
                                                                                 <img src="{{ asset('') }}/assets/images/logos/17.png" class="" height="100" width="100" alt="Logo">
                                                                             </div>
                                                                             <div>
-                                                                                <h3 class="display-5 font-weight-bold">{{$row->shop->name}}.</h3>
+                                                                                <h3 class="display-5 font-weight-bold">Fashion House</h3>
                                                                                 <p>shot bioasdf asdlfkj ahsfd asdfkjasfd .</p>
                                                                             </div>
 

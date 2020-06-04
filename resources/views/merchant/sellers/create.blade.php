@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('merchant.master')
 
 @section('content')
 @push('css')
@@ -29,7 +29,7 @@
 </style> 
 @endpush
 @include('elements.alert')
-@component('layouts.inc.breadcrumb')
+{{-- @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
       Vendor Dashboard
   @endslot
@@ -37,7 +37,7 @@
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
       <li class="breadcrumb-item active" aria-current="page">Profile</li>
   @endslot
-@endcomponent
+@endcomponent --}}
 
     <!--  dashboard section start -->
     <section class="dashboard-section section-b-space">
