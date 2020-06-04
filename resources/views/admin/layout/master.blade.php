@@ -8,8 +8,8 @@
     <meta name="description" content="Multikart admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Multikart admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    {{-- <link rel="icon" href="{{asset('')}}/assets/images/dashboard/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="{{asset('')}}/assets/images/dashboard/favicon.png" type="image/x-icon"> --}}
+    {{-- <link rel="icon" href="{{asset('frontend')}}/assets/images/dashboard/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/dashboard/favicon.png" type="image/x-icon"> --}}
     <link rel="icon" href="{{asset('frontend')}}/assets/images/favicon/fav.png" type="image/x-icon">
     <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/favicon/fav.png" type="image/x-icon">
     <title>Andbaazar Admin Panel</title>
@@ -19,34 +19,34 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Font Awesome-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/fontawesome.css">
     
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/flag-icon.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/flag-icon.css">
 
     <!-- ico-font-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/icofont.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/icofont.css">
 
     <!-- Prism css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/prism.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/prism.css">
 
     <!-- Chartist css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/chartist.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/chartist.css">
 
     <!-- owlcarousel css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/owlcarousel.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/owlcarousel.css">
 
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/bootstrap.css">
 
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/admin.css">
     <link rel="stylesheet" type="text/css" href="{{asset('')}}/custom.css">
     <!-- Datatables css-->
-    {{-- <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/datatables.css"> --}}
+    {{-- <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/datatables.css"> --}}
     <!--Datepicker css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 
     <link href="{{ asset('/') }}css/treeview.css" rel="stylesheet">
@@ -73,7 +73,7 @@
             <div class="main-header-left d-lg-none">
                 {{-- <a href="index.html"><img src="{{asset('frontend')}}/assets/images/icon/logo.png" 
                     class="img-fluid blur-up lazyload" alt="image"></a>--}}
-                <div class="logo-wrapper"><a href="index.html"><img class="blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/multikart-logo.png" alt="img"></a></div>
+                <div class="logo-wrapper"><a href="index.html"><img class="blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/dashboard/multikart-logo.png" alt="img"></a></div>
             </div>
             <div class="mobile-sidebar">
                 <div class="media-body text-right switch-sm">
@@ -131,7 +131,7 @@
                     </li>
                     <li><a href="#"><i class="right_side_toggle" data-feather="message-square"></i><span class="dot"></span></a></li>
                     <li class="onhover-dropdown">
-                        <div class="media align-items-center"><img class="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/man.png" alt="header-user">
+                        <div class="media align-items-center"><img class="align-self-center pull-right img-50 rounded-circle blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/dashboard/man.png" alt="header-user">
                             <div class="dotted-animation"><span class="animate-circle"></span><span class="main-circle"></span></div>
                         </div>
                         <ul class="profile-dropdown onhover-show-div p-20 profile-dropdown-hover">
@@ -182,76 +182,76 @@
 </div>
 
 <!-- latest jquery-->
-<script src="{{asset('')}}/assets/js/jquery-3.3.1.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/jquery-3.3.1.min.js"></script>
 
 <!-- Bootstrap js-->
-<script src="{{asset('')}}/assets/js/popper.min.js"></script>
-<script src="{{asset('')}}/assets/js/bootstrap.js"></script>
+<script src="{{asset('frontend')}}/assets/js/popper.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/bootstrap.js"></script>
 
 <!-- feather icon js-->
-<script src="{{asset('')}}/assets/js/icons/feather-icon/feather.min.js"></script>
-<script src="{{asset('')}}/assets/js/icons/feather-icon/feather-icon.js"></script>
+<script src="{{asset('frontend')}}/assets/js/icons/feather-icon/feather.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/icons/feather-icon/feather-icon.js"></script>
 
 <!-- Sidebar jquery-->
-<script src="{{asset('')}}/assets/js/sidebar-menu.js"></script>
+<script src="{{asset('frontend')}}/assets/js/sidebar-menu.js"></script>
 
 <!--chartist js-->
-<script src="{{asset('')}}/assets/js/chart/chartist/chartist.js"></script>
+<script src="{{asset('frontend')}}/assets/js/chart/chartist/chartist.js"></script>
 
 <!--chartjs js-->
-<script src="{{asset('')}}/assets/js/chart/chartjs/chart.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/chart/chartjs/chart.min.js"></script>
 
 <!-- lazyload js-->
-<script src="{{asset('')}}/assets/js/lazysizes.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/lazysizes.min.js"></script>
 
 <!--copycode js-->
-<script src="{{asset('')}}/assets/js/prism/prism.min.js"></script>
-<script src="{{asset('')}}/assets/js/clipboard/clipboard.min.js"></script>
-<script src="{{asset('')}}/assets/js/custom-card/custom-card.js"></script>
+<script src="{{asset('frontend')}}/assets/js/prism/prism.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/clipboard/clipboard.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/custom-card/custom-card.js"></script>
 
 <!--counter js-->
-<script src="{{asset('')}}/assets/js/counter/jquery.waypoints.min.js"></script>
-<script src="{{asset('')}}/assets/js/counter/jquery.counterup.min.js"></script>
-<script src="{{asset('')}}/assets/js/counter/counter-custom.js"></script>
+<script src="{{asset('frontend')}}/assets/js/counter/jquery.waypoints.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/counter/jquery.counterup.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/counter/counter-custom.js"></script>
 
 <!--peity chart js-->
-<script src="{{asset('')}}/assets/js/chart/peity-chart/peity.jquery.js"></script>
+<script src="{{asset('frontend')}}/assets/js/chart/peity-chart/peity.jquery.js"></script>
 
 <!--sparkline chart js-->
-<script src="{{asset('')}}/assets/js/chart/sparkline/sparkline.js"></script>
+<script src="{{asset('frontend')}}/assets/js/chart/sparkline/sparkline.js"></script>
 
 <!--Customizer admin-->
-<script src="{{asset('')}}/assets/js/admin-customizer.js"></script>
+<script src="{{asset('frontend')}}/assets/js/admin-customizer.js"></script>
 
 <!--dashboard custom js-->
-<script src="{{asset('')}}/assets/js/dashboard/default.js"></script>
+<script src="{{asset('frontend')}}/assets/js/dashboard/default.js"></script>
 
 <!--right sidebar js-->
-<script src="{{asset('')}}/assets/js/chat-menu.js"></script>
+<script src="{{asset('frontend')}}/assets/js/chat-menu.js"></script>
 
 <!--height equal js-->
-<script src="{{asset('')}}/assets/js/height-equal.js"></script>
+<script src="{{asset('frontend')}}/assets/js/height-equal.js"></script>
 
 <!-- Owlcarousel js-->
-<script src="{{asset('')}}/assets/js/owlcarousel/owl.carousel.js"></script>
-<script src="{{asset('')}}/assets/js/dashboard/product-carousel.js"></script>
+<script src="{{asset('frontend')}}/assets/js/owlcarousel/owl.carousel.js"></script>
+<script src="{{asset('frontend')}}/assets/js/dashboard/product-carousel.js"></script>
 
 <!-- lazyload js-->
-<script src="{{asset('')}}/assets/js/lazysizes.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/lazysizes.min.js"></script>
 
 
 
 
 <!--script admin-->
-<script src="{{asset('')}}/assets/js/admin-script.js"></script>
+<script src="{{asset('frontend')}}/assets/js/admin-script.js"></script>
 
 <!-- Datatable js-->
-{{-- <script src="{{asset('')}}/assets/js/datatables/jquery.dataTables.min.js"></script>
-<script src="{{asset('')}}/assets/js/datatables/custom-basic.js"></script> --}}
+{{-- <script src="{{asset('frontend')}}/assets/js/datatables/jquery.dataTables.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/datatables/custom-basic.js"></script> --}}
 
 <!--Datepicker js-->
 
-{{-- <script src="{{asset('')}}/assets/js/bootstrap-datepicker.min.js"></script> --}}
+{{-- <script src="{{asset('frontend')}}/assets/js/bootstrap-datepicker.min.js"></script> --}}
 <script src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 
 <script src="{{ asset('') }}/js/treeview.js"></script>

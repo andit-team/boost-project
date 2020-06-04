@@ -17,23 +17,23 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Font Awesome-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/fontawesome.css">
 
     <!-- Flag icon-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/themify.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/themify.css">
 
     <!-- slick icon-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/slick.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/slick-theme.css">
 
     <!-- jsgrid css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/jsgrid.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/jsgrid.css">
 
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/bootstrap.css">
 
     <!-- App css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/assets/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/admin.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
 
      <!-- Custom css-->
@@ -54,33 +54,33 @@
 
 
 <!-- latest jquery-->
-<script src="{{asset('')}}/assets/js/jquery-3.3.1.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/jquery-3.3.1.min.js"></script>
 
 <!-- Bootstrap js-->
-<script src="{{asset('')}}/assets/js/popper.min.js"></script>
-<script src="{{asset('')}}/assets/js/bootstrap.js"></script>
+<script src="{{asset('frontend')}}/assets/js/popper.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/bootstrap.js"></script>
 
 <!-- feather icon js-->
-<script src="{{asset('')}}/assets/js/icons/feather-icon/feather.min.js"></script>
-<script src="{{asset('')}}/assets/js/icons/feather-icon/feather-icon.js"></script>
+<script src="{{asset('frontend')}}/assets/js/icons/feather-icon/feather.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/icons/feather-icon/feather-icon.js"></script>
 
 <!-- Sidebar jquery-->
-<script src="{{asset('')}}/assets/js/sidebar-menu.js"></script>
-<script src="{{asset('')}}/assets/js/slick.js"></script>
+<script src="{{asset('frontend')}}/assets/js/sidebar-menu.js"></script>
+<script src="{{asset('frontend')}}/assets/js/slick.js"></script>
 
 <!-- Jsgrid js-->
-<script src="{{asset('')}}/assets/js/jsgrid/jsgrid.min.js"></script>
-<script src="{{asset('')}}/assets/js/jsgrid/griddata-invoice.js"></script>
-<script src="{{asset('')}}/assets/js/jsgrid/jsgrid-invoice.js"></script>
+<script src="{{asset('frontend')}}/assets/js/jsgrid/jsgrid.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/jsgrid/griddata-invoice.js"></script>
+<script src="{{asset('frontend')}}/assets/js/jsgrid/jsgrid-invoice.js"></script>
 
 <!-- lazyload js-->
-<script src="{{asset('')}}/assets/js/lazysizes.min.js"></script>
+<script src="{{asset('frontend')}}/assets/js/lazysizes.min.js"></script>
 
 <!--right sidebar js-->
-<script src="{{asset('')}}/assets/js/chat-menu.js"></script>
+<script src="{{asset('frontend')}}/assets/js/chat-menu.js"></script>
 
 <!--script admin-->
-<script src="{{asset('')}}/assets/js/admin-script.js"></script>
+<script src="{{asset('frontend')}}/assets/js/admin-script.js"></script>
 <script src="{{asset('/')}}js/validator.js"></script>
 <script src="{{asset('/')}}js/validatorRules.js"></script>
 @include('elements.myjs')
