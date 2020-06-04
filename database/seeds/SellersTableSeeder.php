@@ -25,6 +25,7 @@ class SellersTableSeeder extends Seeder
                 'last_visited_from'   => '10.00am',
                 'verification_token'  => '2',
                 'remember_token'      => 'M2',
+                'status'              => 'Inactive',
                 'user_id'             => '1',
                 'created_at'          => now(),
                 'updated_at'          => now()
@@ -41,6 +42,7 @@ class SellersTableSeeder extends Seeder
                 'last_visited_from'   => '10.00am',
                 'verification_token'  => '2',
                 'remember_token'      => 'M2',
+                'status'              => 'Inactive',
                 'user_id'             => '1',
                 'created_at'          => now(),
                 'updated_at'          => now()
@@ -57,6 +59,7 @@ class SellersTableSeeder extends Seeder
                 'last_visited_from'   => '10.00am',
                 'verification_token'  => '2',
                 'remember_token'      => 'M2',
+                'status'              => 'Reject',
                 'user_id'             => '1',
                 'created_at'          => now(),
                 'updated_at'          => now()
@@ -74,6 +77,7 @@ class SellersTableSeeder extends Seeder
                 'verification_token'  => '2',
                 'remember_token'      => 'M2',
                 'user_id'             => '1',
+                'status'              => 'Inactive',
                 'created_at'          => now(),
                 'updated_at'          => now()
             ], 
@@ -89,6 +93,7 @@ class SellersTableSeeder extends Seeder
                 'last_visited_from'   => '10.00am',
                 'verification_token'  => '2',
                 'remember_token'      => 'M2',
+                'status'              => 'Active',
                 'user_id'             => '3',
                 'created_at'          => now(),
                 'updated_at'          => now()
