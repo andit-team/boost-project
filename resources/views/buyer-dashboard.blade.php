@@ -71,7 +71,7 @@
                                         <div class="col-sm-6">
                                             <h6>Default Shipping Address</h6>
                                             <address>You have not set a default shipping address.<br><a
-                                                    href="#">Edit Address</a></address>
+                                             href="#">Edit Address</a></address>
                                         </div>
                                     </div>
                                 </div>
