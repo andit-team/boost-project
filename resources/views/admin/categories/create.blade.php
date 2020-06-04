@@ -54,6 +54,20 @@
                                                 <label for="validationCustom0" class="col-xl-3 col-md-4">Category Name <span>*</span></label>
                                                 <input class="form-control col-md-8" name="name" id="validationCustom0" type="text" required="">
                                             </div>
+
+                                            <div class="form-group row">
+                                                <label for="validationCustom0" class="col-xl-3 col-md-4">Percentage <span>*</span></label>
+                                                {{-- <input class="form-control col-md-8" name="percentage" id="validationCustom0" type="text" required=""> --}}
+                                                <input type="text" name="percentage" value="{{old('percentage')}} %" class="form-control" id="amount" placeholder="0.00 " required autocomplete="off">
+                                            </div>
+
+                                            {{-- <div class="form-group row {{ $errors->has('amount') ? ' has-danger' : '' }}">
+                                                <label for="amount" class="col-sm-4 text-right control-label col-form-label">Amount <sup class="text-danger font-bold">*</sup> :</label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" name="amount" value="{{old('amount')}} %" class="form-control" id="amount" placeholder="Amount " required autocomplete="off">
+                                                    @include('elements.feedback',['field' => 'amount'])
+                                                </div>
+                                            </div> --}}
                                             <div class="form-group row">
                                                 <label for="image" class="col-xl-3 col-md4">Image</label>
                                                 <input type="file" class="form-control col-md-8" name="thumb" id="image" onchange="loadFile(event)">
