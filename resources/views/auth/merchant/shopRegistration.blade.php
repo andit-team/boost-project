@@ -21,22 +21,22 @@
                 <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
                     class="img-fluid blur-up lazyload" alt="image"></a>
             </div>
-            <div class="single-item">
+            <div class="single-item text-justify"">
                 <div>
                     <div>
                         <h3>Welcome to Andbaazar</h3>
-                        <p>This a largest  multivendor ecommerce site.You can bye or sell anything. 
-                             It allows you to create an online marketplace.
-                            Independent vendors can sell their products through a single storefront. 
-                            An online vendor is the one who sells in on the internet marketplace. </p>
+                        <p>It is mandatory for every new shop/establishment to
+                             get it registered under the Shops and Establishment
+                             Act and get the license within few days from the . </p>
                     </div>
                 </div>
                 <div>
                     <div>
                         <h3>Welcome to Andbaazar</h3>
-                        <p>You can share anything with your friend.Like Comment. You can easily sell door-to-door without much hassle.
-                          Let us take a look at what a multi-vendor marketplace is and
-                          how you can make one successful multi-vendor marketplace using WooCommerce.</p>
+                        <p>This a largest  multivendor ecommerce site.You can bye or sell anything. 
+                            It allows you to create an online marketplace.
+                           Independent vendors can sell their products through a single storefront. 
+                           An online vendor is the one who sells in on the internet marketplace.</p>
                     </div>
                 </div>
                 <div>

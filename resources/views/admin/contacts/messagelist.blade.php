@@ -61,7 +61,7 @@
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                         </div>                                        
                                           <div class="modal-body">
-                                            <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/contact-us/'.$row->id) }}" method="post" enctype="multipart/form-data">
+                                            <form class="needs-validation" novalidate="" action="{{ url('andbaazaradmin/contact-us/'.$row->id) }}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('put')
                                                 <div class="form">
@@ -72,7 +72,7 @@
                                                         <div class=" border p-1">{!! $row->description !!}</div> 
                                                         <h5 class="pt-2">Replay</h5>  
                                                         <div>
-                                                            <textarea class="form-control summernote" placeholder="Write Your Message" name="messages" id="exampleFormControlTextarea1" rows="6"></textarea>
+                                                            <textarea class="form-control summernote" placeholder="Write Your Message" name="messages" value="{{ old('messages') }}" rows="6"></textarea>
                                                             <span class="text-danger">{{ $errors->first('messages') }}</span>
                                                         </div> 
                                                         <div class="mt-3 text-right">

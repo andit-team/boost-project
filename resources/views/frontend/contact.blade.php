@@ -74,37 +74,37 @@
         <div class="card bg-light">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-sm-12">
-                         <form class="theme-form" action="{{ route('contact-us.store') }}" method="post" id="validateForm">
+                    <div class="col-sm-12"> 
+                            <form class="theme-form" action="{{url('contact-us')}}" role="form" id="validateForm" method="post">
                             @csrf
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <label for="first_name">First Name<span class="text-danger"> *</span></label>
-                                    <input type="text" class="form-control @error('first_name') border-danger @enderror" name="first_name" id="" placeholder="Enter Your First Name" required="">
+                                    <input type="text" class="form-control @error('first_name') border-danger @enderror" name="first_name" id="first_name" value="{{ old('first_name') }}" id="" placeholder="Enter Your First Name" required>
                                     <span class="text-danger">{{ $errors->first('first_name') }}</span> 
                                 </div>
                                 <div class="col-md-6">
                                     <label for="last_name">Last Name<span class="text-danger"> *</span></label>
-                                    <input type="text" class="form-control @error('last_name') border-danger @enderror" name="last_name" id="last-name" placeholder="Enter Your Last Name" required="">
+                                    <input type="text" class="form-control @error('last_name') border-danger @enderror" name="last_name" id="last-name" value="{{ old('last_name') }}" placeholder="Enter Your Last Name" required="">
                                     <span class="text-danger">{{ $errors->first('last_name') }}</span>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="phone">Phone number<span class="text-danger"> *</span></label>
-                                    <input type="text" class="form-control @error('phone') border-danger @enderror" name="phone" id="phone" placeholder="Enter your number" required="">
+                                    <input type="text" class="form-control @error('phone') border-danger @enderror" name="phone" value="{{ old('phone') }}" id="phone" placeholder="Enter your number" required="">
                                     <span class="text-danger">{{ $errors->first('phone') }}</span>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="email">Email<span class="text-danger"> *</span></label>
-                                    <input type="email" class="form-control @error('email') border-danger @enderror" name="email" id="email" placeholder="Email" required="">
+                                    <input type="email" class="form-control @error('email') border-danger @enderror" name="email" value="{{ old('email') }}" id="email" placeholder="Email" required="">
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="description">Write Your Message<span class="text-danger"> *</span></label>
-                                    <textarea class="form-control summernote" placeholder="Write Your Message" name="description" id="exampleFormControlTextarea1" rows="6"></textarea>
+                                    <textarea required class="form-control" placeholder="Write Your Message" name="description" value="{{ old('description') }}" id="description" rows="6"></textarea>
                                     <span class="text-danger">{{ $errors->first('description') }}</span>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn btn-solid" type="submit">Send Your Message</button>
+                                    <button type="submit" class="btn btn-solid">Send Your Message</button>
                                 </div>
                             </div>
                         </form>
@@ -117,16 +117,29 @@
 </section>
 <!--Section ends-->
 @endsection
-@push('css')
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
-@endpush
+
 @push('js')
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-     $('.summernote').summernote({
-           height: 200,
-      });
-   });
- </script>
+{{-- <script>
+   function saveMessage(e){
+    e.preventDefault(); 
+    //    const first_name  = $('#first_name').val();
+    //    const last_name   = $('#last_name').val();
+    //    const phone       = $('#phone').val();
+    //    const description = $('#description').val();
+    //    if(first_name == '' || last_name == '' || phone == '' || description == ''  ){
+    //     //    alert('Required field must be filled!.');
+    //    }else{
+        var formdata = $('#validateForms').serialize(); 
+        $.ajax({
+            type: 'POST',
+            url: "{{ url('contact-us') }}",
+            data: formdata,
+            dataType: "json",
+            success: function(response){
+                $('#validateForm')[0].reset(); 
+                // swal(response.first_name+" Your comment sent successfully!", {icon: "success",buttons: false,timer: 2000});
+            }
+        })
+       } 
+ </script> --}}
 @endpush
