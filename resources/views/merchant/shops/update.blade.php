@@ -26,6 +26,15 @@
         cursor: pointer;
         border-top: 0px;
     }
+    #map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 </style> 
 @endpush
 @include('elements.alert')
@@ -39,14 +48,17 @@
   @endslot
 @endcomponent
 
+
     <!--  dashboard section start -->
     <section class="dashboard-section section-b-space">
         <div class="container">
-            <div class="row">
+            
+            <div class="row">           
                 
                 @include('layouts.inc.sidebar.vendor-sidebar',[$active='shop'])
 
              <div class="col-sm-9 register-page contact-page">
+              
                 <h3>Shop Detail</h3>
                 @if($sellerProfile->status == 'Inactive')
                 <div class="mt-2"> 
@@ -57,6 +69,7 @@
                         </div> 
                     </div>
                 @elseif($sellerProfile->status == 'Reject')
+
                 <div class="mt-2">
                     {{-- <h3 class="card-header text-danger">Seller profile Status</h3> --}}
                         <div class="bg-warning p-5 text-center rounded">
@@ -66,6 +79,7 @@
                         <a href="{{ url('merchant/seller/'.$sellerProfile->slug.'/resubmit') }}" title="Resubmit" class="btn btn-sm btn-solid">Resubmit</a>
                         </div>
                 </div>
+          
                 @elseif($sellerProfile->status == 'Active')
                 <form class="theme-form" action="{{route('shopUpdate')}}" method="post" enctype="multipart/form-data" id="validateForm">
                     @csrf 
@@ -118,7 +132,21 @@
                  </form>
                  @endif
              </div>
-            </div>
+              <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <div id="map"></div>
+
+                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLCE9-x9OVyUottiBHi_L6UZKB2rvj7eo&callback=initMap"
+type="text/javascript"></script>
+                 
+                </div>
+              </div>
+
+             
+              <!-- Replace the value of the key parameter with your own API key. -->
+         
+            </div>         
         </div>
 </section>
     <!--  dashboard section end --> 
@@ -137,5 +165,38 @@
         output.src = URL.createObjectURL(event.target.files[0]);
     };
 </script>
+
+<script>
+    var marker;
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 13,
+    center: {lat: 59.325, lng: 18.070}
+  });
+
+  marker = new google.maps.Marker({
+    map: map,
+    draggable: true,
+    animation: google.maps.Animation.DROP,
+    position: {lat: 59.327, lng: 18.067}
+  });
+  marker.addListener('click', toggleBounce);
+}
+
+function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}
+</script>
+
+{{-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLCE9-x9OVyUottiBHi_L6UZKB2rvj7eo&callback=initMap"
+type="text/javascript"></script> --}}
+{{-- 
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+  type="text/javascript"></script> --}}
 @endpush
 

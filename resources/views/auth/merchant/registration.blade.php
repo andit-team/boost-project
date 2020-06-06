@@ -19,18 +19,17 @@
                 <div>
                     <div>
                         <h3>Welcome to Andbaazar</h3>
-                        <p>This a largest  multivendor ecommerce site.You can bye or sell anything. 
-                             It allows you to create an online marketplace.
-                            Independent vendors can sell their products through a single storefront. 
-                            An online vendor is the one who sells in on the internet marketplace. </p>
+                        <p> Became a seller on Andbaazar all you need is to register."                         ,
+                              List your catalog and start selling your products.</p>
                     </div>
                 </div>
                 <div>
                     <div>
                         <h3>Welcome to Andbaazar</h3>
-                        <p>You can share anything with your friend.Like Comment. You can easily sell door-to-door without much hassle.
-                          Let us take a look at what a multi-vendor marketplace is and
-                          how you can make one successful multi-vendor marketplace using WooCommerce.</p>
+                        <p>This a largest  multivendor ecommerce site.You can bye or sell anything. 
+                            It allows you to create an online marketplace.
+                           Independent vendors can sell their products through a single storefront. 
+                           An online vendor is the one who sells in on the internet marketplace.</p>
                     </div>
                 </div>
                 <div>
