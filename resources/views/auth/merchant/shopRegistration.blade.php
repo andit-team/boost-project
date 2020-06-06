@@ -6,6 +6,12 @@
     .padding{
         padding: 12px!important;
     }
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 250px;
+        margin-bottom: 20px;
+      }
 </style>
 @endpush
 <div class="row"> 
@@ -61,7 +67,7 @@
                                 <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
                         </div>
                     @endif
-
+                    <div id="map"></div>
                       
                     <form class="form-horizontal auth-form" action="{{ route('sellerShopeRegistration') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf  
@@ -87,4 +93,41 @@
      </div>
  </div> 
 @endsection
+
+@push('js')
+
+<script>
+
+    // The following example creates a marker in Stockholm, Sweden using a DROP
+    // animation. Clicking on the marker will toggle the animation between a BOUNCE
+    // animation and no animation.
+
+    var marker;
+
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: {lat: 22.804547506687953, lng: 89.55519250793455}
+      });
+
+      // var image = 'http://localhost/andbaazar/public/frontend/assets/images/icon/logo.png';
+      marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        position: {lat: 22.804547506687953, lng: 89.55519250793455},
+        title: 'Uluru (Ayers Rock)'
+        // icon: image
+      });
+      marker.addListener('dragend', ddd);
+    }
+
+    function ddd() {
+      console.log(marker.position.lat());
+      console.log(marker.position.lng());
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG7cxLzRJmTIgaNGP5xKDNMT1DNVSGEEU&callback=initMap">
+  </script>
+  @endpush
 
