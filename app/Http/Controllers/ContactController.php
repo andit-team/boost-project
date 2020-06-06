@@ -110,13 +110,16 @@ class ContactController extends Controller
     }
 
     public function replayMail(Request $request,$id){
-        dd($request->all());
+        //dd($request->all());
         $messageList = Contact::find($id);
         $messageList->update([
             'messages' => $request->messages,
             ]);
 
-        \Mail::to($messageList['email'])->send(new ContactusMail($messageList));  
+            $first_name = $messageList['first_name'];
+            $last_name = $messageList['last_name']; 
+
+        \Mail::to($messageList)->send(new ContactusMail($messageList,$first_name,$last_name));  
 
         session()->flash('success','Repley mail send successfully');
 
