@@ -79,10 +79,21 @@ html, body {
             <!-- vendor cover start -->
             <div class="vendor-cover">
                 <div>
-                    <button type="button" class="btn btn-warning"><i class="fa fa-camera " aria-hidden="true"></i> Edit Photo</i> </button>  
+
+                    <div class="mt-0">                                           
+                        <img  id="outputs" src="{{asset('frontend')}}/assets/images/vendor/profile.jpg" alt="" class="bg-img lazyload blur-up">
+                        {{-- <div class="btns">  --}}
+                            <label for="file-upload" class="custom-file-upload bg-warning"><i class="fa fa-camera" aria-hidden="true"> Edit Button</i></label>
+                            {{-- <button type="button" class="btn btn-warning custom-file-upload"><i class="fa fa-camera " aria-hidden="true"></i> Edit Photo</i> </button>   --}}
+                            {{-- <input id="file-upload"  class = "d-none" type="file" name="logo" onchange="loadImage(event)"/>
+                            <input type="hidden" value="{{$shopProfile->logo}}" name="old_image">  --}}
+                        {{-- </div> --}}                                      
+                    </div>  
+
+                    {{-- <button type="button" class="btn btn-warning"><i class="fa fa-camera " aria-hidden="true"></i> Edit Photo</i> </button>  
                     {{-- <label for="file-upload" class="custom-file-upload btns"><i class="fa fa-camera" aria-hidden="true"></i></label> --}}
-                    <input id="file-upload"  class = "d-none" type="file" name="logo" onchange="loadFile(event)"/>                          
-                    <img src="{{asset('frontend')}}/assets/images/vendor/profile.jpg" alt="" class="bg-img lazyload blur-up">
+                    {{-- <input id="file-upload"  class = "d-none" type="file" name="logo" onchange="loadFile(event)"/>                            --}}
+                    {{-- <img src="{{asset('frontend')}}/assets/images/vendor/profile.jpg" alt="" class="bg-img lazyload blur-up"> --}}
                 </div>
                
             </div>
@@ -123,22 +134,7 @@ html, body {
                                     <div>
                                         <h6>follow us:</h6>
                                         <div class="footer-social">
-                                            <ul>                                                
-                                                 {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#facebook">
-                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                                  </button>
-
-                                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#google">
-                                                    <i class="fa fa-youtube" aria-hidden="true"></i>
-                                                  </button>
-
-                                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#twitter">
-                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                                  </button>
-
-                                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#instagram">
-                                                    <i class="fa fa-instagram" aria-hidden="true"></i>
-                                                  </button> --}}
+                                            <ul>                                                                                              
                                                 <li><a href="#" data-toggle="modal" data-target="#facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                                 <li><a href="#" data-toggle="modal" data-target="#youtube"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
                                                 <li><a href="#" data-toggle="modal" data-target="#twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -810,6 +806,13 @@ html, body {
     var loadFile = function(event) {
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
+
+<script>
+    var loadImage = function(event) {
+        var outputs = document.getElementById('outputs');
+        outputs.src = URL.createObjectURL(event.target.files[0]);
     };
 </script>
 
