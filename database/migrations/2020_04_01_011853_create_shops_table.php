@@ -19,8 +19,11 @@ class CreateShopsTable extends Migration
             $table->string('slug')->nullable();
             $table->string('logo')->nullable();
             $table->string('phone')->nullable();
-            $table->string('google_location')->nullable();
-            $table->string('featured')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('banner')->nullable();
             $table->string('email')->nullable();
             $table->string('web')->nullable();
             $table->text('description')->nullable();
