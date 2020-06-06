@@ -9,15 +9,15 @@
 </head>
 <body>
 
-    <h1>Hello, <p style="font-size: x-small;">Andbaazar</p></h1>
+    <h1>Hello, <p style="font-size: x-small;"> {{$first_name.' '.$last_name}}</p></h1>
 
     <P>
       Dear,<br>
-      AndBaazar,{!! $messages !!}.
+      {{$first_name.' '.$last_name}}
     </P>
     
     
-   <p>Reply to : {{$frormmail}}</p>
+   <p>{!!$messageList->messages!!}</p>
 
 
 </body>

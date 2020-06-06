@@ -39,7 +39,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+       
         $this->validateForm($request);
 
         $data = [
@@ -51,19 +51,12 @@ class ContactController extends Controller
             'created_at'  => now(),
         ];   
 
-        Contact::create($data);
+        $comment = Contact::create($data); 
 
-        // $first_name = $data['first_name'];
-        // $last_name  = $data['last_name'];
-        // $messages   = $data['description'];
-        // $frormmail   = $data['email'];
-        // $toeamil = $data['toemail'];
-        
-        // \Mail::to($data['toemail'])->send(new ContactusMail($data,$first_name,$last_name,$messages,$frormmail,$toeamil));  
+        session()->flash('success','Your message sent successfully!');
 
-        session()->flash('success','your comment send successfully');
-
-        return back();
+        return redirect()->back();
+        // echo json_encode($comment);   
     }
 
     /**
@@ -117,13 +110,16 @@ class ContactController extends Controller
     }
 
     public function replayMail(Request $request,$id){
-        dd($request->all());
+        //dd($request->all());
         $messageList = Contact::find($id);
         $messageList->update([
             'messages' => $request->messages,
             ]);
 
-        \Mail::to($messageList['email'])->send(new ContactusMail($messageList));  
+            $first_name = $messageList['first_name'];
+            $last_name = $messageList['last_name']; 
+
+        \Mail::to($messageList)->send(new ContactusMail($messageList,$first_name,$last_name));  
 
         session()->flash('success','Repley mail send successfully');
 
@@ -134,7 +130,7 @@ class ContactController extends Controller
         $validatedData = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'phone' => 'required', 
             'description' => 'required',
         ]);
