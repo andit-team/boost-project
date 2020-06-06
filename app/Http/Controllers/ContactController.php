@@ -110,7 +110,7 @@ class ContactController extends Controller
     }
 
     public function replayMail(Request $request,$id){
-        //dd($request->all());
+        
         $messageList = Contact::find($id);
         $messageList->update([
             'messages' => $request->messages,
