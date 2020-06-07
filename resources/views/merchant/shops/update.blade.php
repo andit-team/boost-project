@@ -51,6 +51,10 @@ html, body {
   text-align: center;
 }
 
+/* .modal-lg{
+width:772px;
+} */
+
 </style>
 @endpush
 @include('elements.alert')
@@ -83,7 +87,7 @@ html, body {
                     <div class="mt-0">                                           
                         <img  id="outputs" src="{{asset('frontend')}}/assets/images/vendor/profile.jpg" alt="" class="bg-img lazyload blur-up">
                         {{-- <div class="btns">  --}}
-                            <label for="file-upload" class="custom-file-upload bg-warning"><i class="fa fa-camera" aria-hidden="true"> Edit Button</i></label>
+                            <label for="file-upload" class="custom-file-upload bg-warning"><i class="fa fa-camera" aria-hidden="true"> Edit Photo</i></label>
                             {{-- <button type="button" class="btn btn-warning custom-file-upload"><i class="fa fa-camera " aria-hidden="true"></i> Edit Photo</i> </button>   --}}
                             {{-- <input id="file-upload"  class = "d-none" type="file" name="logo" onchange="loadImage(event)"/>
                             <input type="hidden" value="{{$shopProfile->logo}}" name="old_image">  --}}
@@ -99,7 +103,6 @@ html, body {
             </div>
             <!-- vendor cover end -->
 
-
             <!-- section start -->
             <section class="vendor-profile pt-0">
                 <div class="container">
@@ -107,26 +110,43 @@ html, body {
                         <div class="col-lg-12">
                             <div class="profile-left">
                                 <div class="profile-image">
-                                    <div>
-                                        <div class="mt-0">                                           
-                                            @if(!empty($shopProfile->logo))                 
-                                             <img id="output"  class="imagestyle" src="{{ asset($shopProfile->logo) }}"/>
-                                            @else
-                                             <img id="output"  class="imagestyle" src="{{ asset('/uploads/shop_logo/shop-1.png') }}" />
-                                            @endif
-                                            {{-- <div class="btns">  --}}
-                                                <label for="file-upload" class="custom-file-upload btns"><i class="fa fa-camera" aria-hidden="true"></i></label>
-                                                <input id="file-upload"  class = "d-none" type="file" name="logo" onchange="loadFile(event)"/>
-                                                <input type="hidden" value="{{$shopProfile->logo}}" name="old_image"> 
+                                    <div>                                    
+                                        <div class="mt-0">   
+                                          <form class="theme-form"  enctype="multipart/form-data" id="upload-form">                                        
+                                                @if(!empty($shopProfile->logo))                 
+                                                <img id="output"  class="imagestyle" src="{{ asset($shopProfile->logo) }}"/>
+                                                @else
+                                                <img id="output"  class="imagestyle" src="{{ asset('/uploads/shop_logo/shop-1.png') }}" />
+                                                @endif
+                                                {{-- <div class="btns">  --}}
+                                                    <label for="file-upload" class="custom-file-upload btns"><i class="fa fa-camera" aria-hidden="true"></i></label>
+                                                    <input id="file-upload"  class = "d-none" type="file" name="logo" onchange="loadFile(event)"/>
+                                                    <input type="hidden" value="{{$shopProfile->logo}}" name="old_image"> 
+                                                    <button type="submit" id = "upload"class="btn btn-primary mt-2"> Upload </button>  
+                                                    
+                                                </form>
+                                                <span id ="uploaded-image"></span>
                                             {{-- </div> --}}                                      
                                         </div>                                                                          
                                         {{-- <h6>750 followers | 10 review</h6> --}}
                                     </div>
                                 </div>
+
+                                
                                 <div class="profile-detail">
                                     <div contenteditable="true">
+
+                                        <button class="btn btn-primary lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                              Show details
+                                          </button>
+                                        </p>
+                                        <div class="collapse" id="collapseExample">
+                                          <div class="card card-body">
+                                            {!!$shopProfile->description !!}
+                                          </div>
+                                        </div>
                                         {{-- <textarea class="form-control  mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea> --}}
-                                        {{ $shopProfile->description }}
+                                        {{-- {{ $shopProfile->description }} --}}
                                         {{-- <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea> --}}
                                     </div>
                                 </div>
@@ -135,18 +155,17 @@ html, body {
                                         <h6>follow us:</h6>
                                         <div class="footer-social">
                                             <ul>                                                                                              
-                                                <li><a href="#" data-toggle="modal" data-target="#facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="#" data-toggle="modal" data-target="#youtube"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                                                <li><a href="#" data-toggle="modal" data-target="#twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                                <li><a href="#" data-toggle="modal" data-target="#instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+                                                <li><a href="http://www.facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                                <li><a href="http://www.youtube.com"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                                                <li><a href="http://www.twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                                <li><a href="http://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
                                             </ul>
                                         </div>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#moreinfo">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#facebook">
                                             More Information
-                                          </button>
-                                        
+                                          </button>                                    
                                     </div>
-                                </div>
+                              </div>
                             </div>
                         </div>
                   </div>
@@ -154,214 +173,66 @@ html, body {
 <!-- Button trigger modal -->
 
             <!-- Modal -->
-            <div class="modal fade" id="facebook" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
+         <div class="modal fade" id="facebook" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter Your Facebook Id</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                        <h5 class="modal-title" id="exampleModalLabel">Enter More Information</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
-                        <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Save changes</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="youtube" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"> Enter Your You Tube Link </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Save changes</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="twitter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter Your Twitter Id</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Save changes</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="instagram" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter Your instagram Id</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                        <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Save changes</button>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="moreinfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter More Information</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body">
-                        <div>
-                            <label for="name">Shop Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('name') }}</span>
-                            <input type="text" class="form-control @error('name') border-danger @enderror" required name="name" value="{{ old('name',$shopProfile->name) }}" id="" placeholder="Shop Name">
-                        </div>
-                        <div>
-                            <label for="phone" class="mt-2">Shop Phone<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
-                            <input type="text" class="form-control @error('phone') border-danger @enderror" required name="phone" value="{{ old('phone',$shopProfile->phone) }}" id="" placeholder="Shop Phone">
-                        </div>
-                        <div>
-                            <label for="email" class="mt-2">Shop Email<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('email') }}</span>
-                           <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
-                        </div> 
-                        <div>
-                            <label for="web" class="mt-2">Web<span class="text-danger"> </span></label> <span class="text-danger">{{ $errors->first('web') }}</span>
-                            <input type="url" class="form-control @error('web') border-danger @enderror"  name="web" value="{{ old('Web',$shopProfile->web) }}" id="" placeholder="Shop website">
+                        <form class="theme-form" action="{{route('shopUpdate')}}" method="post" enctype="multipart/form-data" id="validateForm">
+                            @csrf 
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div>
+                                        <label for="name">Shop Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('name') }}</span>
+                                        <input type="text" class="form-control @error('name') border-danger @enderror" required name="name" value="{{ old('name',$shopProfile->name) }}" id="" placeholder="Shop Name">
+                                    </div>
+                                    <div>
+                                        <label for="phone" class="mt-2">Shop Phone<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
+                                        <input type="text" class="form-control @error('phone') border-danger @enderror" required name="phone" value="{{ old('phone',$shopProfile->phone) }}" id="" placeholder="Shop Phone">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="mt-2">Shop Email<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('email') }}</span>
+                                        <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
+                                    </div>  
+                                </div>           
+                            </div> 
+                            <div>
+                                <label for="web" class="mt-2">Web<span class="text-danger"> </span></label> <span class="text-danger">{{ $errors->first('web') }}</span>
+                                <input type="url" class="form-control @error('web') border-danger @enderror"  name="web" value="{{ old('Web',$shopProfile->web) }}" id="" placeholder="Shop website">
+                            </div>
+                            <label for="description" class="mt-2">Write about your shop</label> <span class="text-danger">{{ $errors->first('description') }}</span>
+                            <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea>
+                    
+                            <div class="form-row">  
+                                <div class="col-md-12 mt-4">
+                                    <button type="submit" class="btn btn-sm btn-solid" >Shop Update</button>
+                                </div>
+                            </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                    {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-                    <button type="button" class="btn btn-danger">Save changes</button>
-                    </div>
                 </div>
-                </div>
-            </div>
-            <div class= "mt-2 text-right">
+            </div>       
+        </div>  
+    </section>
+            {{-- <div class= "mt-2 text-right">
                 <a href="{{url('merchant/shop')}}" class="btn btn-solid btn-sm">Update Your Shop</a>     
-            </div>           
-   </section>
+            </div>      --}}
+        
+            {{-- @endforeach --}}
+   
             <!-- Section ends -->
 
     <!-- collection section start -->
     <section class="section-b-space">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 collection-filter">
-                    <!-- side-bar colleps block stat -->
-                    {{-- <div class="collection-filter-block">
-                        <!-- brand filter start -->
-                        <div class="collection-mobile-back"><span class="filter-back"><i class="fa fa-angle-left"
-                                    aria-hidden="true"></i> back</span></div>
-                        <div class="collection-collapse-block open">
-                            <h3 class="collapse-block-title">vendor category</h3>
-                            <div class="collection-collapse-block-content">
-                                <div class="collection-brand-filter">
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="zara">
-                                        <label class="custom-control-label" for="zara">bags</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="vera-moda">
-                                        <label class="custom-control-label" for="vera-moda">clothes</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="forever-21">
-                                        <label class="custom-control-label" for="forever-21">shoes</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="roadster">
-                                        <label class="custom-control-label" for="roadster">accessories</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="only">
-                                        <label class="custom-control-label" for="only">beauty products</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- color filter start here -->
-                        <div class="collection-collapse-block open">
-                            <h3 class="collapse-block-title">colors</h3>
-                            <div class="collection-collapse-block-content">
-                                <div class="color-selector">
-                                    <ul>
-                                        <li class="color-1 active"></li>
-                                        <li class="color-2"></li>
-                                        <li class="color-3"></li>
-                                        <li class="color-4"></li>
-                                        <li class="color-5"></li>
-                                        <li class="color-6"></li>
-                                        <li class="color-7"></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- price filter start here -->
-                        <div class="collection-collapse-block border-0 open">
-                            <h3 class="collapse-block-title">price</h3>
-                            <div class="collection-collapse-block-content">
-                                <div class="collection-brand-filter">
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="hundred">
-                                        <label class="custom-control-label" for="hundred">$10 - $100</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="twohundred">
-                                        <label class="custom-control-label" for="twohundred">$100 - $200</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="threehundred">
-                                        <label class="custom-control-label" for="threehundred">$200 - $300</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="fourhundred">
-                                        <label class="custom-control-label" for="fourhundred">$300 - $400</label>
-                                    </div>
-                                    <div class="custom-control custom-checkbox collection-filter-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="fourhundredabove">
-                                        <label class="custom-control-label" for="fourhundredabove">$400 above</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
-                    {{-- <div class="collection-sidebar-banner">
-                        <a href="#"><img src="{{asset('frontend')}}/assets/images/side-banner.png" class="img-fluid blur-up lazyload"
-                                alt=""></a>
-                    </div> --}}
-                    <!-- silde-bar colleps block end here -->
+                <div class="col-sm-12 collection-filter">                  
                 </div>
                 <div class="col">
                     <div class="collection-wrapper">
@@ -817,31 +688,26 @@ html, body {
 </script>
 
 <script>
-    var marker;
+   $(document).ready(function(){
+     $('#upload-form').on('submit',function(event){
+         event.preventDefault();
+         $.ajax({
+             url:"{{route('shopUpdate')}}",
+             method:"POST",
+             data:new FormData(this),
+             dataType:'JSON',
+             contentType:false,
+             cache:false,
+             processData:false,
+             success:function(data)
+             {
 
-function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 13,
-    center: {lat: 59.325, lng: 18.070}
-  });
-
-  marker = new google.maps.Marker({
-    map: map,
-    draggable: true,
-    animation: google.maps.Animation.DROP,
-    position: {lat: 59.327, lng: 18.067}
-  });
-  marker.addListener('click', toggleBounce);
-}
-
-function toggleBounce() {
-  if (marker.getAnimation() !== null) {
-    marker.setAnimation(null);
-  } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  }
-}
+             }
+         })    
+     });
+   });
 </script>
+
 
 {{-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLCE9-x9OVyUottiBHi_L6UZKB2rvj7eo&callback=initMap"
 type="text/javascript"></script> --}}
