@@ -40,10 +40,13 @@ include('admin.php');
 
 
 
+// https://stackoverflow.com/questions/26652611/laravel-recursive-relationships
+Route::get('/arr', function () {
+  $cats = App\Models\Category::with('allChilds')->find(3);
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+  // $account->allChildrenAccounts->first()->allChildrenAccounts;
+  dd($cats);
+});
 
 // Route::post('bill/restore/{slug}', 'diagnostic\BillController@restore');
  

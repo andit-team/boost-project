@@ -70,4 +70,21 @@ class Baazar
         }
         return '';
     } 
+
+   public function insertRecords($data, $parent_id = 0,$parent_slug = 0) {
+        foreach($data as $row) {
+            $slug = Str::slug($row['0']);
+            $data = [
+                'name'          => $row['0'],
+                'slug'          => $slug,
+                'parent_slug'   => $parent_slug,
+                'parent_id'     => $parent_id,
+                'percentage'    => 2,
+                'user_id'       => 1,
+            ];
+
+            $cat = Category::create($data);
+            if (isset($row["child"])) $this->insertRecords($row["child"], $cat->id,$slug);
+        }
+    }
 }
