@@ -72,18 +72,28 @@
                     <form class="form-horizontal auth-form" action="{{ route('sellerShopeRegistration') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf  
                             <div class="form-group">
-                                <input required="" name="name" value="{{ old('name') }}" type="text" class="form-control @error('name') border-danger @enderror" placeholder="Shope Name" id="exampleInputEmail12" autocomplete="off"> 
+                                <input required="" name="name" value="{{ old('name') }}" type="text" class="form-control @error('name') border-danger @enderror" placeholder="Shop Name" id="exampleInputEmail12" autocomplete="off"> 
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                                <input type="hidden" name="slug" value="{{ $seller->slug }}">
                             </div> 
                             <div class="form-group">
-                                <input required="" name="phone" value="{{ old('phone') }}" type="text" class="form-control @error('phone') border-danger @enderror" placeholder="Shope Phone" autocomplete="off">
+                                <input required="" name="phone" value="{{ old('phone') }}" type="text" class="form-control @error('phone') border-danger @enderror" placeholder="Shop Phone" autocomplete="off">
                                 <span class="text-danger">{{ $errors->first('phone') }}</span>
                             </div>
                             <div class="form-group">
-                                <input required="" name="email" value="{{ old('email') }}" type="email" class="form-control @error('name') border-danger @enderror" placeholder="Shope Email" autocomplete="off">
+                                <input required="" name="email" value="{{ old('email') }}" type="email" class="form-control @error('name') border-danger @enderror" placeholder="Shop Email" autocomplete="off">
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
-                            </div> 
+                            </div>
+                            <div class="form-group">
+                                <input required="" name="address" value="{{ old('address') }}" type="text" class="form-control @error('name') border-danger @enderror" placeholder="Shop address" autocomplete="off">
+                                <span class="text-danger">{{ $errors->first('address') }}</span>
+                            </div>
+                            <div class="form-group">
+                                <input required="" name="zip" value="{{ old('zip') }}" type="number" class="form-control @error('name') border-danger @enderror" placeholder="Shop zip" autocomplete="off">
+                                <span class="text-danger">{{ $errors->first('zip') }}</span>
+                            </div>
+                            <input type="hidden" id="lat" name="lat" value="22.804547506687953">
+                            <input type="hidden" id="lng" name="lng" value="89.55519250793455">
                             <div class="form-button float-right">
                                 <button class="btn btn-info" type="submit">Shope Register</button>
                             </div> 
@@ -119,12 +129,14 @@
         title: 'Uluru (Ayers Rock)'
         // icon: image
       });
-      marker.addListener('dragend', ddd);
+      marker.addListener('dragend', latLng);
     }
 
-    function ddd() {
-      console.log(marker.position.lat());
-      console.log(marker.position.lng());
+    function latLng() {
+        $('#lat').val(marker.position.lat());
+        $('#lng').val(marker.position.lng());
+    //   console.log(marker.position.lat());
+    //   console.log(marker.position.lng());
     }
   </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG7cxLzRJmTIgaNGP5xKDNMT1DNVSGEEU&callback=initMap">
