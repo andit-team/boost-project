@@ -36,5 +36,53 @@
                 </li>
             </ul>
         </div>
+        <div id="map" class="mt-2"></div>
     </div>
 </div>
+
+@push('css')
+<style>
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: 200px;
+    }
+    /* Optional: Makes the sample page fill the window. */
+  </style>
+@endpush
+
+@push('js')
+<script>
+
+    // The following example creates a marker in Stockholm, Sweden using a DROP
+    // animation. Clicking on the marker will toggle the animation between a BOUNCE
+    // animation and no animation.
+
+    var marker;
+
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: {lat: {{ $shopProfile->lat }}, lng: {{ $shopProfile->lng }}}
+      });
+
+      // var image = 'http://localhost/andbaazar/public/frontend/assets/images/icon/logo.png';
+      marker = new google.maps.Marker({
+        map: map,
+        draggable: false,
+        animation: google.maps.Animation.DROP,
+        position: {lat: {{ $shopProfile->lat }}, lng: {{ $shopProfile->lng }}},
+        title: '{{ $shopProfile->name }}'
+        // icon: image
+      });
+      marker.addListener('dragend', ddd);
+    }
+
+    function ddd() {
+      console.log(marker.position.lat());
+      console.log(marker.position.lng());
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG7cxLzRJmTIgaNGP5xKDNMT1DNVSGEEU&callback=initMap">
+  </script>
+@endpush

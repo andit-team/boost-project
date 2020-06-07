@@ -160,7 +160,7 @@ class MerchantController extends Controller{
                 'updated_at'         => now(),
             ]);
        
-            \Mail::to($sellerId)->send(new VendorProfileApprovalMail($sellerId));
+            // \Mail::to($sellerId)->send(new VendorProfileApprovalMail($sellerId));
    
         session()->flash('success','Registration Successfully!');
         
@@ -173,24 +173,32 @@ class MerchantController extends Controller{
     }
 
     public function shopRegistrationStore(Request $request){
+        // dd($request->all());
         $request->validate([
             'name'       => 'required', 
             'phone'      => 'required',
+            'address'    => 'required',
+            'zip'        => 'numeric|required',
             'email'      => 'required|unique:shops,email',
         ]);
-        $sellerId = Seller::where('slug',$request->slug)->first(); 
-            $shope = [
-                'name'      => $request->name,
-                'slug'      => $request->slug,
-                'phone'     => $request->phone,
-                'email'     => $request->email,
-                'web'       => $request->web,
-                'seller_id' => $sellerId->id,
-                'user_id'   => $sellerId->user_id,
-                'create_at' => now(),
-            ];
-    
-            Shop::create($shope); 
+        $sellerId = Seller::where('slug',$request->slug)->first();
+
+        $shope = [
+            'name'      => $request->name,
+            'slug'      => $request->slug,
+            'phone'     => $request->phone,
+            'email'     => $request->email,
+            'web'       => $request->web,
+            'lat'       => $request->lat,
+            'lng'       => $request->lng,
+            'address'   => $request->address,
+            'zip'       => $request->zip,
+            'seller_id' => $sellerId->id,
+            'user_id'   => $sellerId->user_id,
+            'create_at' => now(),
+        ];
+
+        Shop::create($shope); 
         
         session()->flash('success','Shop registration Successfully!');
 
