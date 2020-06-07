@@ -2,6 +2,7 @@
 
 @section('content')
 @push('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
 <style>
     .imagestyle{
         width: 200px;
@@ -152,6 +153,7 @@ html, body {
     <!--  dashboard section end --> 
 @endsection 
 @push('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
      $('.summernote').summernote({
