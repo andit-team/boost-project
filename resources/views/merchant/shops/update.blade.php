@@ -56,34 +56,18 @@ width:772px;
 } */
 
 </style>
+
 @endpush
 @include('elements.alert')
-{{-- @component('layouts.inc.breadcrumb')
-  @slot('pageTitle')
-      Vendor Dashboard
-  @endslot
-  @slot('page')
-      <li class="breadcrumb-item active" aria-current="page">Profile</li>
-      <li class="breadcrumb-item active" aria-current="page">Shop</li>
-  @endslot
-@endcomponent --}}
-
-
 <!--  dashboard section start -->
 <section class="dashboard-section section-b-space">
     <div class="container">
-
         <div class="row">
-
             @include('layouts.inc.sidebar.vendor-sidebar',[$active='shop'])
-
             <div class="col-sm-9 register-page contact-page">
-
-
             <!-- vendor cover start -->
             <div class="vendor-cover">
                 <div>
-
                     <div class="mt-0">                                           
                         <img  id="outputs" src="{{asset('frontend')}}/assets/images/vendor/profile.jpg" alt="" class="bg-img lazyload blur-up">
                         {{-- <div class="btns">  --}}
@@ -98,81 +82,71 @@ width:772px;
                     {{-- <label for="file-upload" class="custom-file-upload btns"><i class="fa fa-camera" aria-hidden="true"></i></label> --}}
                     {{-- <input id="file-upload"  class = "d-none" type="file" name="logo" onchange="loadFile(event)"/>                            --}}
                     {{-- <img src="{{asset('frontend')}}/assets/images/vendor/profile.jpg" alt="" class="bg-img lazyload blur-up"> --}}
-                </div>
-               
+                </div>              
             </div>
             <!-- vendor cover end -->
 
-            <!-- section start -->
-            <section class="vendor-profile pt-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="profile-left">
-                                <div class="profile-image">
-                                    <div>                                    
-                                        <div class="mt-0">   
-                                          <form class="theme-form"  enctype="multipart/form-data" id="upload-form">                                        
-                                                @if(!empty($shopProfile->logo))                 
-                                                <img id="output"  class="imagestyle" src="{{ asset($shopProfile->logo) }}"/>
-                                                @else
-                                                <img id="output"  class="imagestyle" src="{{ asset('/uploads/shop_logo/shop-1.png') }}" />
-                                                @endif
-                                                {{-- <div class="btns">  --}}
-                                                    <label for="file-upload" class="custom-file-upload btns"><i class="fa fa-camera" aria-hidden="true"></i></label>
-                                                    <input id="file-upload"  class = "d-none" type="file" name="logo" onchange="loadFile(event)"/>
-                                                    <input type="hidden" value="{{$shopProfile->logo}}" name="old_image"> 
-                                                    <button type="submit" id = "upload"class="btn btn-primary mt-2"> Upload </button>  
-                                                    
-                                                </form>
-                                                <span id ="uploaded-image"></span>
-                                            {{-- </div> --}}                                      
-                                        </div>                                                                          
-                                        {{-- <h6>750 followers | 10 review</h6> --}}
-                                    </div>
-                                </div>
-
-                                
-                                <div class="profile-detail">
-                                    <div contenteditable="true">
-
-                                        <button class="btn btn-primary lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                              Show details
-                                          </button>
-                                        </p>
-                                        <div class="collapse" id="collapseExample">
-                                          <div class="card card-body">
-                                            {!!$shopProfile->description !!}
-                                          </div>
-                                        </div>
-                                        {{-- <textarea class="form-control  mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea> --}}
-                                        {{-- {{ $shopProfile->description }} --}}
-                                        {{-- <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea> --}}
-                                    </div>
-                                </div>
-                                <div class="vendor-contact">
-                                    <div>
-                                        <h6>follow us:</h6>
-                                        <div class="footer-social">
-                                            <ul>                                                                                              
-                                                <li><a href="http://www.facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                                <li><a href="http://www.youtube.com"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                                                <li><a href="http://www.twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                                <li><a href="http://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
-                                            </ul>
-                                        </div>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#facebook">
-                                            More Information
-                                          </button>                                    
-                                    </div>
-                              </div>
+    <!-- section start -->
+    <section class="vendor-profile pt-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="profile-left">
+                        <div class="profile-image">
+                            <div>                                    
+                                <div class="mt-0">   
+                                    <form class="theme-form"  enctype="multipart/form-data" id="upload-form">                                        
+                                        @if(!empty($shopProfile->logo))                 
+                                        <img id="output"  class="imagestyle" src="{{ asset($shopProfile->logo) }}"/>
+                                        @else
+                                        <img id="output"  class="imagestyle" src="{{ asset('/uploads/shop_logo/shop-1.png') }}" />
+                                        @endif                                      
+                                            <label for="file-upload" class="custom-file-upload btns"><i class="fa fa-camera" aria-hidden="true"></i></label>
+                                            <input id="file-upload"  class = "d-none" type="file" name="logo" onchange="loadFile(event)"/>
+                                            <input type="hidden" value="{{$shopProfile->logo}}" name="old_image"> 
+                                            <button type="submit" id = "upload"class="btn btn-primary mt-2"> Upload </button>                                              
+                                    </form>
+                                    <span id ="uploaded-image"></span>                                                                       
+                                </div>                                                                          
+                                {{-- <h6>750 followers | 10 review</h6> --}}
                             </div>
                         </div>
-                  </div>
-            </div>
-<!-- Button trigger modal -->
+                        
+                        <div class="profile-detail">
+                            <div contenteditable="true">
 
-            <!-- Modal -->
+                                <button class="btn btn-primary lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        Show details
+                                    </button>
+                                </p>
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card card-body">
+                                    {!!$shopProfile->description !!}
+                                    </div>
+                                </div>
+                                {{-- <textarea class="form-control  mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea> --}}
+                                {{-- {{ $shopProfile->description }} --}}
+                                {{-- <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea> --}}
+                            </div>
+                        </div>
+                        <div class="vendor-contact">
+                            <div>
+                                <h6>follow us:</h6>
+                                <div class="footer-social">
+                                    <ul>                                                                                              
+                                        <li><a href="http://www.facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="http://www.youtube.com"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                                        <li><a href="http://www.twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        <li><a href="http://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+                                    </ul>
+                                </div>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#facebook">More Information </button>                                                                        
+                            </div>
+                        </div>
+                     </div>
+                 </div>
+            </div>        
+
          <div class="modal fade" id="facebook" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                  <div class="modal-content">
@@ -220,22 +194,14 @@ width:772px;
             </div>       
         </div>  
     </section>
-            {{-- <div class= "mt-2 text-right">
-                <a href="{{url('merchant/shop')}}" class="btn btn-solid btn-sm">Update Your Shop</a>     
-            </div>      --}}
-        
-            {{-- @endforeach --}}
-   
-            <!-- Section ends -->
-
+         
     <!-- collection section start -->
     <section class="section-b-space">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 collection-filter">                  
-                </div>
-                <div class="col">
-                    <div class="collection-wrapper">
+                <div class="col-sm-12 collection-filter"> </div>                               
+                  <div class="col">
+                     <div class="collection-wrapper">
                         <div class="collection-content ratio_asos">
                             <div class="page-main-content">
                                 <div class="row">
@@ -308,8 +274,8 @@ width:772px;
                                                                     aria-hidden="true"></i></a> <a href="compare.html"
                                                                 title="Compare"><i class="ti-reload"
                                                                     aria-hidden="true"></i></a></div>
-                                                    </div>
-                                                    <div class="product-detail">
+                                                     </div>
+                                                     <div class="product-detail">
                                                         <div>
                                                             <div class="rating"><i class="fa fa-star"></i> <i
                                                                     class="fa fa-star"></i> <i class="fa fa-star"></i> <i
@@ -646,22 +612,10 @@ width:772px;
             </div>
         </div>
 </section>
-<!-- collection section end -->
-
-              {{-- <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{asset('frontend')}}." alt="Card image cap">
-                <div class="card-body">
-                    <div id="map"></div>
-                    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLCE9-x9OVyUottiBHi_L6UZKB2rvj7eo&callback=initMap"
-                     type="text/javascript"></script>
-                </div>
-              </div> --}}
 
 
-              <!-- Replace the value of the key parameter with your own API key. -->
-
-            </div>
-        </div>
+     </div> 
+   </div>
 </section>
     <!--  dashboard section end -->
 @endsection
@@ -708,10 +662,4 @@ width:772px;
    });
 </script>
 
-
-{{-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLCE9-x9OVyUottiBHi_L6UZKB2rvj7eo&callback=initMap"
-type="text/javascript"></script> --}}
-{{--
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
-  type="text/javascript"></script> --}}
 @endpush
