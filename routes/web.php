@@ -42,10 +42,13 @@ include('admin.php');
 
 // https://stackoverflow.com/questions/26652611/laravel-recursive-relationships
 Route::get('/arr', function () {
-  $cats = App\Models\Category::with('allChilds')->find(3);
+  $userprofile = Sentinel::getUser();
+        //dd($userprofile);
+        $sellerProfile = App\Models\Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $shopProfile = App\Models\Shop::where('user_id',Sentinel::getUser()->id)->first();
 
-  // $account->allChildrenAccounts->first()->allChildrenAccounts;
-  dd($cats);
+        return view('merchant.sellers.products',compact('sellerProfile','userprofile','shopProfile'));
+
 });
 
 // Route::post('bill/restore/{slug}', 'diagnostic\BillController@restore');

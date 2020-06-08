@@ -125,7 +125,7 @@
                         </div>
                     
                         <div class="col-md-12 mt-4">
-                            <button type="submit" class="btn btn-sm btn-solid" >Update</button>
+                            <button type="submit" class="btn btn-sm btn-solid" >Updates</button>
                         </div>
                         </div>
                 </form>
