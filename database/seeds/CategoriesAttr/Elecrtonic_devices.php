@@ -13,7 +13,7 @@ $data = [
 								'lebel'         => 'Chipset Manufacturer',
 								'type'          => 'multi-select',
 								'required'      => 1,
-								'sessagetion'   => 'Brand of the product Please click here to request for a new brand',
+								'succession'   => 'Brand of the product Please click here to request for a new brand',
 								'values'    => [
 									['AMD'],
 									['NVIDIA'],
