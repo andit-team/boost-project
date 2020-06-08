@@ -194,9 +194,6 @@ $data = [
             ],
         ],
     ],
-    [
-      
-    ],
 ];
 /*
 TV Home Appliances

@@ -72,6 +72,7 @@ class Baazar
     } 
 
    public function insertRecords($data, $parent_id = 0,$parent_slug = 0) {
+    //    dd($data);
         foreach($data as $row) {
             $slug = Str::slug($row['0']);
             $data = [
