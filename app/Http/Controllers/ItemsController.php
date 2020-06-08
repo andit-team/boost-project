@@ -15,6 +15,7 @@ use App\Models\ItemCategory;
 use App\Models\ItemTag;
 use App\Models\Tag;
 use App\Models\ItemImage;
+use App\Models\Shop;
 use Sentinel;
 use Session;
 use Baazar;
@@ -29,11 +30,12 @@ class ItemsController extends Controller
     public function index()
     {
       $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
+      $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
       $category = Category::all();
       $item = Item::where('status','Active')->get();
       $size= Size::all();
       $color = Color::all();
-      return view ('merchant.product.index',compact('category','item','size','color','sellerProfile'));
+      return view ('merchant.product.index',compact('category','item','size','color','sellerProfile','shopProfile'));
     // return view('merchant.product.index');
     }
 
@@ -50,10 +52,12 @@ class ItemsController extends Controller
         $color = Color::all();
         $categories = Category::where('parent_id',0)->get();
         $subCategories = Category::where('parent_id','!=',0)->get();
+        $childCategory = Category::where('parent_id','!=',0)->get();
         $tag = Tag::all();
         $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         //dd($sellerId);
-          return view ('merchant.product.create',compact('category','categories','item','size','color','subCategories','tag','sellerId'));
+          return view ('merchant.product.create',compact('category','categories','item','size','color','subCategories','tag','sellerId','shopProfile','childCategory'));
     }
 
     /**
