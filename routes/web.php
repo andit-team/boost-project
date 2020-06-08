@@ -40,39 +40,12 @@ include('admin.php');
 
 
 
+// https://stackoverflow.com/questions/26652611/laravel-recursive-relationships
+Route::get('/arr', function () {
+  $cats = App\Models\Category::with('allChilds')->find(3);
 
-Route::get('arr', function () {
-    $data = [
-        [
-            'name'  => 'Electronic Accessories',
-            'child' => [
-                [
-                  'name'  => 'Mobile Accessories',
-                  'child' => [
-                    ['name'  => 'Phone Cases'],
-                    ['name'  => 'Power Banks'],
-                    ['name'  => 'Cables Converters'],
-                    ['name'  => 'Cables Converters'],
-                    ['name'  => 'Wireless Chargers']
-                  ]
-                ],
-                [
-                  'name'  => 'Audio',
-                  'child' => [
-                    ['name' => 'Phone Cases'],
-                    ['name' => 'Home Entertainment'],
-                    ['name' => 'Bluetooth Speakers'],
-                    ['name' => 'Live sound Stage Equipment'],
-                  ]
-                ]
-            ]
-        ],
-    ];
-
-      // dd($data);
-      Baazar::insertRecords($data);
-      
-
+  // $account->allChildrenAccounts->first()->allChildrenAccounts;
+  dd($cats);
 });
 
 // Route::post('bill/restore/{slug}', 'diagnostic\BillController@restore');

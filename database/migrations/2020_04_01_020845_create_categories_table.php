@@ -17,8 +17,9 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('desc')->nullable();
-            $table->integer('parent_id')->default(0);
-            $table->string('slug')->nullable();
+            $table->string('parent_slug')->default(0);
+            $table->string('parent_id')->default(0);
+            $table->string('slug')->nullable()->unique();
             $table->string('thumb')->nullable();
             // $table->decimal('Percentage')->nullable();
             $table->decimal('percentage',8,2)->default(0.00);

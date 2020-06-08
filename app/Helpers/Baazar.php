@@ -69,19 +69,22 @@ class Baazar
             return $request->$old;
         }
         return '';
-    }
-
-    public function insertRecords($data, $parent = 0) {
-        $i=1;
-        foreach($data as $row) {
-            echo $i.' '.$row['name'].' parent: '.$parent.'<br>';
-            if (isset($row["child"])) $this->insertRecords($row["child"], $i);
-            $i = $i+1;
-            // Replace next echo statement with the code to actually execute this SQL:
-            // echo "insert into tab(name, parent_id, app_id) select '$row[name]', coalesce(min(id), 0), '$row[id]' from tab where app_id = '$parent';\n";
-            // if (isset($row["child"])) $this->insertRecords($row["child"], $i);
-            // $i++;
-        }
     } 
 
+   public function insertRecords($data, $parent_id = 0,$parent_slug = 0) {
+        foreach($data as $row) {
+            $slug = Str::slug($row['0']);
+            $data = [
+                'name'          => $row['0'],
+                'slug'          => $slug,
+                'parent_slug'   => $parent_slug,
+                'parent_id'     => $parent_id,
+                'percentage'    => 2,
+                'user_id'       => 1,
+            ];
+
+            $cat = Category::create($data);
+            if (isset($row["child"])) $this->insertRecords($row["child"], $cat->id,$slug);
+        }
+    }
 }
