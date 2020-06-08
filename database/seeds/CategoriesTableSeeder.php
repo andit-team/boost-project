@@ -114,6 +114,25 @@ class CategoriesTableSeeder extends Seeder
       
     ];
 
+    $data = [
+      'Electronic Accessories' => [
+        'Mobile Accessories' => [
+          'Phone Cases',
+          'Power Banks',
+          'Cables Converters',
+          'Wall Chargers',
+          'Wireless Chargers'
+        ],
+        'Audio' => [
+          'Headphones Headset',
+          'Home Entertainment',
+          'Bluetooth Speakers',
+          'Live sound Stage Equipment',
+        ]
+      ]
+    ];
+
+
     DB::table('categories')->insert($data);
    }
 

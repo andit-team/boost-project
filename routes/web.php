@@ -41,9 +41,39 @@ include('admin.php');
 
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('arr', function () {
+    $data = [
+        [
+            'name'  => 'Electronic Accessories',
+            'child' => [
+                [
+                  'name'  => 'Mobile Accessories',
+                  'child' => [
+                    ['name'  => 'Phone Cases'],
+                    ['name'  => 'Power Banks'],
+                    ['name'  => 'Cables Converters'],
+                    ['name'  => 'Cables Converters'],
+                    ['name'  => 'Wireless Chargers']
+                  ]
+                ],
+                [
+                  'name'  => 'Audio',
+                  'child' => [
+                    ['name' => 'Phone Cases'],
+                    ['name' => 'Home Entertainment'],
+                    ['name' => 'Bluetooth Speakers'],
+                    ['name' => 'Live sound Stage Equipment'],
+                  ]
+                ]
+            ]
+        ],
+    ];
+
+      // dd($data);
+      Baazar::insertRecords($data);
+      
+
+});
 
 // Route::post('bill/restore/{slug}', 'diagnostic\BillController@restore');
  
