@@ -17,13 +17,15 @@ class CreateCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('desc')->nullable();
-            $table->integer('parent_id')->default(0);
-            $table->string('slug')->nullable();
+            $table->string('parent_slug')->default(0);
+            $table->string('parent_id')->default(0);
+            $table->string('slug')->nullable()->unique();
             $table->string('thumb')->nullable();
             // $table->decimal('Percentage')->nullable();
             $table->decimal('percentage',8,2)->default(0.00);
             $table->integer('sort')->nullable();
-            $table->boolean('active')->default(1)->change();
+            $table->integer('active')->default(1);
+            $table->integer('is_last')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
