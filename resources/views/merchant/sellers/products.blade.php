@@ -19,34 +19,43 @@
                                 <div class="search-area d-flex">
                                     <div class="col-md-3 cat-level p-2">
                                         <input type="text" class="form-control" placeholder="search">
-                                        <ul>
-                                            <li>DFads fadf</li> <i class="next-icon next-icon-arrow-right next-xs leaf-icon"></i>
-                                            <li>DFads fadf</li>
-                                            <li>DFads fadf</li>
-                                            <li>DFads fadf</li>
+                                        <ul class="cat-levels">
+                                            <li class="active">DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li> 
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-3 cat-level p-2">
                                         <input type="text" class="form-control" placeholder="search">
-                                        <ul>
-                                            <li>DFads fadf</li>
-                                            <li>DFads fadf</li>
-                                            <li>DFads fadf</li>
-                                            <li>DFads fadf</li>
+                                        <ul class="cat-levels">
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li class="active">DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                            <li>DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-3 cat-level p-2">
                                         <input type="text" class="form-control" placeholder="search">
-                                        <ul>
-                                            <li>DFads fadf</li>
-                                            <li>DFads fadf</li>
-                                            <li>DFads fadf</li>
-                                            <li>DFads fadf</li>
+                                        <ul class="cat-levels">
+                                            <li>DFads fadf <span class="float-right"></li>
+                                            <li>DFads fadf <span class="float-right"</li>
+                                            <li>DFads fadf <span class="float-right"></li>
+                                            <li class="active">DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-3 cat-level p-2">
                                         <input type="text" class="form-control" placeholder="search">
-                                        <ul>
+                                        <ul class="cat-levels">
                                             <li>DFads fadf</li>
                                             <li>DFads fadf</li>
                                             <li>DFads fadf</li>
@@ -56,9 +65,9 @@
                                 </div>
                                 <div class="cat-footer p-2">
                                     <p>Current Selection :</p>
-                                    <button class="btn btn-sm btn-info">Confirm</button>
-                                    <button class="btn btn-sm btn-warning">Cencel</button>
-                                    <button class="btn btn-sm btn-primary">Clear</button>
+                                    <span class="btn btn-sm btn-info m-1">Confirm</span>
+                                    <span class="btn btn-sm btn-warning m-1" id="close">Close</span>
+                                    <span class="btn btn-sm btn-danger m-1">Clear</span>
                                 </div>
                             </div>
                         </div>
@@ -84,30 +93,32 @@
             padding: 5px;
             cursor: pointer;
             border-left: 2px solid #fff;
+            margin: 2px;
         }
-        .cat-level ul li:hover{
+        .cat-level ul li:hover,.active{
             background: #ddd;
-            border-left: 2px solid red;
+            border-left: 2px solid red !important;
         }
         .cat-level{
             border: 1px solid #ddd;
         }
-        </style>
+        .cat-levels{
+            height: 250px;
+            overflow-y: scroll;  
+        }
+        .cat-level input[type=text]{
+            height: 40px;
+        }
+    </style>
 @endpush
 @push('js')
     <script>
         $('#category').click(function(){
             $('#catarea').toggle();
         });
-        $('body').click(function(){
-            
-            console.log ($('#catarea').class());
-            // console.log('clicked');
+        $('#close').click(function(){
+            $('#catarea').hide();
         });
-
-        // document.addEventListener('click', e => {
-        //     console.log(e.target.paren)
-        // })
         
     </script>
 @endpush

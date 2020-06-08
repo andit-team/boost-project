@@ -10,7 +10,7 @@ $data = [
 						'Xiaomi Phones',
 						'attr'	=> [
 							[
-								'lebel'         => 'Chipset Manufacturer',
+								'label'         => 'Chipset Manufacturer',
 								'type'          => 'multi-select',
 								'required'      => 1,
 								'succession'   => 'Brand of the product Please click here to request for a new brand',

@@ -1,7 +1,38 @@
 @extends('merchant.master')
 
 @section('content')
+@push('css')
+<style>
+    .categoryBox{
+        width: 672px;
+        margin-left: 204px;
+        height: 214px;
+    }
+    .keyword{
+        width: 129px;
+        height: 1px;
+    }
+    .attributs{
+        margin-left: 2px;
+    }
+    .button1{
+        background-color: white;
+        color:gray; 
+    }
+    a{
+        color: gray;
+    }
+    a:hover{
+        color: gray; 
+        background-color: rgba(168, 166, 166, 0.3); 
+    }
 
+    .textbox{
+        height: 1px;
+    }
+
+</style>
+@endpush
 @include('elements.alert')
 {{-- @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
@@ -30,28 +61,7 @@
                                     <h5 class="card-header">Basic information</h5>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-sm-12">   
-                                                 <div class="form-group row">
-                                                    <label for="category_id" class="col-xl-3 col-md-4">Category <span>*</span></label>
-                                                    <select name="category_id" class="form-control col-md-8" id="category_id"  autocomplete="off">
-                                                        <option value="" selected disabled>Select Category</option>
-                                                        @foreach ($categories as $row)
-                                                            <option value="{{ $row->id }}">{{$row->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>                                     
-                                                <div class="form-group row">
-                                                    <label for="sub_category" class="col-xl-3 col-md-4"> Sub Category <span>*</span></label>
-                                                    <select name="sub_category" class="form-control col-md-8 sub" id="sub_category"  autocomplete="off">
-                                                        <option value="" selected disabled>Select Sub Category</option>
-                                                       {{-- @foreach ($subCategories as $row)
-                                                    <option value="{{ $row->id }}">{{$row->name}}</option>
-
-                                                @endforeach    --}}
-                                                {{-- <option value="">Select Sub Category</option> --}} 
-                                                  </select>
-                                                </div> 
-
+                                            <div class="col-sm-12"> 
                                                 <div class="form-group row">
                                                     <label for="name" class="col-xl-3 col-md-4">Name <span>*</span></label>                                          
                                                     <input class="form-control col-md-8" type="text" class="form-control" name="name" id="name">
@@ -59,7 +69,73 @@
                                                         <span class="text-danger">{{ $errors->first('name') }}</span>
                                                     @endif
                                                 </div>
-
+                                                <div class="form-group row">
+                                                    <label for="category_id" class="col-xl-3 col-md-4">Category <span>*</span></label>
+                                                    <input type="text" class="form-control col-md-8 sub" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                    <div class="collapse ml-5" id="collapseExample">
+                                                        <div class="form-control categoryBox sub mb-2">
+                                                            <div class="row mt-2 pl-2 pr-2">  
+                                                                <div class="col-md-3 border">
+                                                                    <div class="pt-2 pb-2"><input class="keyword" placeholder="keyword"></div>
+                                                                    @foreach ($categories as $row)
+                                                                     <p value="{{ $row->id }}"><a  href="#"> {{ $row->name }}</a><p>
+                                                                    @endforeach
+                                                                </div>
+                                                                <div class="col-md-3 border">
+                                                                    <div class="pt-2"><input class="keyword" placeholder="keyword"></div>
+                                                                    asdasddd
+                                                                </div>
+                                                                <div class="col-md-3 border">
+                                                                    <div class="pt-2"><input class="keyword" placeholder="keyword"></div>
+                                                                    sdfsdfff
+                                                                </div>
+                                                                <div class="col-md-3 border">
+                                                                    <div class="pt-2"><input class="keyword" placeholder="keyword"></div>
+                                                                    sdfasfsd
+                                                                </div>   
+                                                            </div>
+                                                        </div>
+                                                     </div>
+                                                </div> 
+                                                {{-- <div class="form-group row"> 
+                                                    <div class="collapse ml-5" id="collapseExample">
+                                                        <div class="form-control col-md-9 sub mb-2">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim
+                                                        keffiyeh helvetica,
+                                                        craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                                        </div>
+                                                     </div>
+                                                </div>  --}}
+                                                 {{-- <div class=" row">
+                                                    <label for="category_id" class="col-xl-3 col-md-4">Category <span>*</span></label>
+                                                        <select name="category_id" class="form-control col-md-8" id="category_id"  autocomplete="off">
+                                                            <option value="" selected disabled>Select Category</option>
+                                                                @foreach ($categories as $row)
+                                                                    <option value="{{ $row->id }}">{{$row->name}}</option>
+                                                                    <optgroup>
+                                                                        @foreach($subCategories as $sub)
+                                                                            @if($sub->parent_id == $row->id) 
+                                                                            <optgroup>
+                                                                            <option  value="{{ $sub->id }}">{{$sub->name}}</option> 
+                                                                            </optgroup> 
+                                                                                @foreach($childCategory as $child)
+                                                                                    @if($child->parent_id == $sub->id) 
+                                                                                     <option value="{{$child->parent_id}}">{{ $child->name }}</option> 
+                                                                                    @endif
+                                                                                @endforeach        
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </optgroup>    
+                                                                @endforeach
+                                                        </select> 
+                                                </div>   --}}
+                                                                                  
+                                                {{-- <div class="form-group row">
+                                                    <label for="sub_category" class="col-xl-3 col-md-4"> Sub Category <span>*</span></label>
+                                                    <select name="sub_category" class="form-control col-md-8 sub" id="sub_category"  autocomplete="off">
+                                                        <option value="" selected disabled>Select Sub Category</option> 
+                                                  </select>
+                                                </div>  --}} 
                                                 <div class="form-group row margin">
                                                     <label for="video_url" class="col-xl-3 col-md-4">Video Url<span>*</span></label>
                                                     <input type="text" class="form-control col-md-8" name="video_url" id="video_url"  >
@@ -67,6 +143,26 @@
                                                         <span class="text-danger">{{ $errors->first('video_url') }}</span>
                                                     @endif
                                                 </div> 
+
+                                                <div class="form-group row">
+                                                    <label for="product_attribute" class="col-xl-3 col-md-4">Product Attributes<span>*</span></label> 
+                                                    <div id="demo" class="collapse border categoryBox attributs p-3">
+                                                       <div class="row">
+                                                           <div class="col-md-6 textbox">
+                                                               <label class="mr-2">Size</label>
+                                                               <input class="" type="text">
+                                                           </div>
+                                                           <div class="col-md-6 textbox">
+                                                            <label class="mr-2">Size</label>
+                                                            <input type="text">
+                                                           </div>
+                                                       </div>
+                                                      </div> 
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="product_attribute" class="col-xl-3 col-md-4"></label>
+                                                    <button type="button" class="btn btn-sm btn-secondery col-md-8 button1" data-toggle="collapse" data-target="#demo"><i class="fa fa-angle-double-down"></i>More</button>
+                                                </div>
 
                                             </div>
                                         </div>
