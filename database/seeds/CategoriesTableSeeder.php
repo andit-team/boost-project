@@ -14,7 +14,7 @@ class CategoriesTableSeeder extends Seeder
 
  
 $data = [
-	  [
+	[
         'Electronic Devices',
         'child' => [
             [
@@ -99,9 +99,9 @@ $data = [
                 'Audio',
                 'child' => [
                     ['Headphones Headset'],
-                    ['Home Entertainment'],
+                    ['Audio Home Entertainment'],
                     ['Bluetooth Speakers'],
-                    ['Live sound Stage Equipment'],
+                    ['Audio Live sound Stage Equipment'],
                 ]
             ],
             [
@@ -193,31 +193,45 @@ $data = [
                 ]
             ],
         ],
-    ],
+	],
+	[
+		'TV Home Appliances',
+		'child'	=> [
+			[
+				'Televisions',
+				'child'	=> [
+					['Smart Televisions'],
+					['LED Televisions'],
+					['OLED Televisions'],
+					['Other Televisions'],
+				]
+			],
+			[
+				'Home Audio',
+				'child'	=> [
+					['Soundbars '],
+					['Home Entertainment'],
+					['Portable Players'],
+					['Live Sound Stage Equipment'],
+				],
+			],
+			[
+				'TV Accessories Video Device',
+				'child'	=> [
+					['TV Receivers'],
+					['Projectors'],
+					['TV Remote Controllers'],
+					['Cables'],
+					['Wall Mounts Protectors'],
+					['Blu-Ray/DVD Players'],
+				]
+			],
+
+		],
+	],
 ];
 /*
-TV Home Appliances
- 
-     Televisions 
-	     Smart Televisions 
-		 LED Televisions
-		 OLED Televisions
-		 Other Televisions
-		 
-     Home Audio 
-         Soundbars 
-         Home Entertainment 
-         Portable Players
-         Live Sound Stage Equipment
-	 
-     TV Accessories Video Device 
-         TV Receivers 
-         Projectors 
-         TV Remote Controllers 
-         Cables 
-         Wall Mounts Protectors 
-         Blu-Ray/DVD Players 
-		 
+
      Large Appliances 
 	     Refrigerators 
 		 Freezers 

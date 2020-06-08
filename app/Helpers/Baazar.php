@@ -82,8 +82,8 @@ class Baazar
                 'parent_id'     => $parent_id,
                 'percentage'    => 2,
                 'user_id'       => 1,
+                'is_last'       => isset($row["child"]) ? 0 : 1,
             ];
-
             $cat = Category::create($data);
             if (isset($row["child"])) $this->insertRecords($row["child"], $cat->id,$slug);
         }

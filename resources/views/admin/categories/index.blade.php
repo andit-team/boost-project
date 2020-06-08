@@ -216,10 +216,10 @@ $('a[data-toggle="tooltip"]').tooltip({
     html: true
 });
 
-    var loadFile = function(event) {
-        var outputs = document.getElementById('output');
-        outputs.src = URL.createObjectURL(event.target.files[0]);
-    }; 
+var loadFile = function(event) {
+    var outputs = document.getElementById('output');
+    outputs.src = URL.createObjectURL(event.target.files[0]);
+}; 
 
 </script>
 @endpush

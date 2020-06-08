@@ -24,7 +24,8 @@ class CreateCategoriesTable extends Migration
             // $table->decimal('Percentage')->nullable();
             $table->decimal('percentage',8,2)->default(0.00);
             $table->integer('sort')->nullable();
-            $table->boolean('active')->default(1)->change();
+            $table->integer('active')->default(1);
+            $table->integer('is_last')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();

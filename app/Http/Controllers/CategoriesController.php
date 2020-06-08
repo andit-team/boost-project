@@ -131,10 +131,13 @@ class CategoriesController extends Controller
 
     public function manageCategory()
     {
-        $categories = Category::where('parent_id',0)->get();
-        $subcategories = Children::all();
-        $allCategories = Category::pluck('name','id')->all();
-        return view('admin.categories.categoryTreeview',compact('categories','allCategories','subcategories'));
+        $categories = Category::with('allChilds')->where('parent_id',0)->get();
+        // dd($categories);
+        return view ('admin.categories.tree',compact('categories'));
+        // $categories = Category::where('parent_id',0)->get();
+        // $subcategories = Children::all();
+        // $allCategories = Category::pluck('name','id')->all();
+        // return view('admin.categories.categoryTreeview',compact('categories','allCategories','subcategories'));
     }
 
     public function addCategory(Request $request)
