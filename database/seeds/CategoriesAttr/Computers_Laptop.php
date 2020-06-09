@@ -19,7 +19,7 @@ $Computers_Laptop = [
                                 'meta' => [
                                     'No Brand','Dell','ASUS','MSI','Acer','Lenovo','I-Life','Walton Computers','Razer','IDEAL PRODUCT','HP','KMS'
                                 ],
-                            ],
+                            ],                      
                             [
                                 'label'         => 'Hard Disk (GB)',
                                 'type'          => 'select',                                              
@@ -181,10 +181,49 @@ $Computers_Laptop = [
 
                         ],                 
                     ],          
-                    ['Ultrabooks'],
+                    [
+                        'Ultrabooks',
+                        'child' => [
+                            [
+                                'Touchscreens',
+                                'attr'	=> [
+                                    [
+                                        'label'         => 'Brand',
+                                        'type'          => 'select',
+                                        'required'      => 1,
+                                        'suggestion'    => 'Brand of the product',
+                                        'meta' => [
+                                            'No Brand','Dell','ASUS','MSI','Acer','Lenovo','I-Life','Walton Computers','Razer','IDEAL PRODUCT','HP','KMS'
+                                        ],
+                                    ], 
+                               ], 
+                            ], 
+                            [
+                                'Non-touchscreens',
+                                'attr'	=> [
+                                    [
+                                        'label'         => 'Brand',
+                                        'type'          => 'select',
+                                        'required'      => 1,
+                                        'suggestion'    => 'Brand of the product',
+                                        'meta' => [
+                                            'No Brand','Dell','ASUS','MSI','Acer','Lenovo','I-Life','Walton Computers','Razer','IDEAL PRODUCT','HP','KMS'
+                                        ],
+                                    ], 
+                               ], 
+                            ],                                                         
+                         ],
+                    ],
                     ['Traditional Laptops'],                   
                     ['Basic'],
-                    ['All-purpose'],
+                    [
+                        'All-purpose',
+                        'child' => [
+                            ['Touchscreen'], 
+                            ['Non-touchscreen'],                          
+                       ],                       
+                    ],
+
                     ['2-in-1s'],
                     ['Chromebooks'],
                     ['Macbooks '],           
@@ -208,19 +247,49 @@ $Computers_Laptop = [
                 ['Blank Media'],               
                 ['Cooling PadsCooling Stands'],                
                 ['External DVD Writers'],               
-                ['Keyboards'],              
+                [
+                    'Keyboards',
+                    'child' => [
+                        ['Basic Keyboards'],
+                        ['Gaming Keyboards'],
+                        ['Mice & Keyboard Combos'],
+                        ['Keyboard Accessories'],
+                   ],  
+
+                
+                ],              
                 ['Laptop stands'],              
-                ['Mice'],               
+                [
+                    'Mice',
+                    'child' => [
+                        ['Basic Mice'],
+                        ['Gaming Mice'],                      
+                   ],  
+                ],               
                 ['Monitors'],               
                 ['Speakers'],              
                 ['TV Tuners'],           
                 ['Webcams'],            
                 ['Surge Protector'],             
                 ['Gaming Headphones'],            
-                ['Mousepads'],        
+                [
+                    'Mousepads',
+                    'child' => [
+                        ['Basic Mousepads'],
+                        ['Gaming Mousepads'],                      
+                   ], 
+                ],        
                 ['Uninterrupted Power Supply'],           
                 ['USB Fans'],           
-                ['PC Audio'],          
+                [
+                    'PC Audio',
+                    'child' => [
+                        ['Gaming Headsets'],
+                        ['PC Soundbars'],
+                        ['PC Speaker Systems'],
+                   ], 
+
+                ],          
                 ['Monitor Stands'],           
                 ['Monitor Screen Filters'],             
                 ['USB Hubs'],             
@@ -228,16 +297,70 @@ $Computers_Laptop = [
                 ['Bluetooth Adapters'],    
                 ['Card Reader'],               
                 ['USB Lighting'],              
-                ['Mac Accessories'],            
-                ['Drawing Tools'],             
-                ['Adapters & Cables'],      
+                [
+                    'Mac Accessories',
+                    'child' => [
+                        ['Hard Covers'],
+                        ['Skin & Decal Stickers Accessories'],
+                        ['Power Adapters Accessories'],
+                        ['Screen Filters Accessories'],
+                        ['Storage for Mac Accessories'],
+                        ['Airport Routers Accessories '],
+                        ['USB-Ethernet Adapters Accessories'],
+                        ['USB-Video Adapters Accessories'],
+                        ['Type C-Ethernet Adapters Accessories'],
+                        ['Type C-Video Adapters Accessories '],
+                        ['Firewire Cables Accessories'],
+                        ['ThunderBolt Cables Accessories'],
+                   ], 
+                ],            
+                [
+                    'Drawing Tools',
+                    'child' => [
+                        ['Drawing Display'],
+                        ['Drawing Pad      '],
+                        ['Drawing Stylus'],
+                        ['Display Screen Protectors'],
+                   ], 
+                ],             
+                [
+                    'Adapters & Cables',
+                     'child' => [
+                        ['USB-Ethernet Adapters'],
+                        ['USB-Video Adapters'],
+                        ['Mini Display-Ethernet Adapters'],
+                        ['Mini Display-Video Adapters'],
+                        ['Type C-Ethernet Adapters'],
+                        ['Type C-Video Adapters'],
+                        ['Ethernet Cables'],
+                        ['Firewire Cables'],
+                        ['ThunderBolt Cables'],
+                        ['VGA Cables'],
+                        ['DVI Cables'],
+                        ['PS/2 Cables'],
+                        ['Mini-SAS Cables'],
+                        ['SCSI Cables'],
+                        ['Parallel Cables'],
+                        ['Serial Cables'],
+                        ['SATA Cables'],
+                        ['eSATA Cables'],
+                        ['IDE Ribbon Cables'],
+                        ['Cable Tester'],
+                   ],
+                ],      
            ],
         ],
         [
             'Computer Components',
             'child' => [
                 ['Desktop Casings'],
-                ['Fans & Heatsinks'],          
+                [
+                    'Fans & Heatsinks',
+                    'child' => [
+                        ['Cooling Fans'],
+                        ['Heatsinks'],                   
+                   ], 
+                ],          
                 ['Graphic Cards'],          
                 ['Front Bay Devices'],            
                 ['Motherboards'],             
@@ -250,7 +373,6 @@ $Computers_Laptop = [
                 ['Single Board Computer'],        
            ], 
 
-        
         ],
         [
             'Network Components',
@@ -261,21 +383,58 @@ $Computers_Laptop = [
                 ['Routers'],
                 ['Switches'],
                 ['Wireless USB Adapters'],
-                ['Mobile Broadband'],
+                [
+                'Mobile Broadband',
+                'child' => [
+                    ['Mobile Wi-Fi Hotspots'],
+                    ['USB Modems'],  
+                  ],
+                ],
                 ['Modems'],
                 ['Range extender'],
-                ['Network adaptors'],
+                [
+                    'Network adaptors',
+                    'child' => [
+                        ['Laptop Network adapters'],
+                        ['USB network adapters'],
+                        ['Bluetooth network adapters'],
+                        ['Powerline network adapter'],
+                      ],
+                ],
                 ['Airport Routers'],
            ], 
         ],
         [
             'Printers & Accessories',
             'child' => [
-                ['Printers'],
+                [
+                    'Printers',
+                    'child' => [                      
+                        ['Laser Jet'],
+                        ['Ink Jet'],
+                        ['Photo'],
+                        ['Business'],
+                        ['Dot matrix Printer'],
+                        ['Label Printer '],
+                      ],
+                ],
                 ['Printer stands'],      
                 ['Fax machines'],          
-                ['Ink'],         
-                ['3D Printing'],           
+                [
+                    'Ink',
+                    'child' => [                      
+                        ['Inkjets Inks'],
+                        ['Laser Toners'],                                           
+                      ],
+                ],         
+                [
+                    '3D Printing',
+                    'child' => [                      
+                        ['3D Printers'],
+                        ['3D Printer Parts'], 
+                        ['3D Printing Materials'],                                           
+                      ],
+                ],           
                 ['Printer cutter'],             
                 ['Printer memory modules'],                    
            ], 
