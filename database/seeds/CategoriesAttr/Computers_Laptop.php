@@ -193,7 +193,7 @@ $Computers_Laptop = [
                                         'required'      => 1,
                                         'suggestion'    => 'Brand of the product',
                                         'meta' => [
-                                            'No Brand','Dell','ASUS','MSI','Acer','Lenovo','I-Life','Walton Computers','Razer','IDEAL PRODUCT','HP','KMS'
+                                            'No Brand','Dell',
                                         ],
                                     ], 
                                ], 
@@ -207,26 +207,124 @@ $Computers_Laptop = [
                                         'required'      => 1,
                                         'suggestion'    => 'Brand of the product',
                                         'meta' => [
-                                            'No Brand','Dell','ASUS','MSI','Acer','Lenovo','I-Life','Walton Computers','Razer','IDEAL PRODUCT','HP','KMS'
+                                            'No Brand','Dell',
                                         ],
                                     ], 
                                ], 
                             ],                                                         
                          ],
                     ],
-                    ['Traditional Laptops'],                   
-                    ['Basic'],
+                    [
+                        'Traditional Laptops',
+                        'attr'	=> [
+                            [
+                                'label'         => 'Brand',
+                                'type'          => 'select',
+                                'required'      => 1,
+                                'suggestion'    => 'Brand of the product',
+                                'meta' => [
+                                    'No Brand','Dell'
+                                ],
+                            ], 
+                       ], 
+
+                    ],                   
+                    [
+                        'Basic',
+                        'attr'	=> [
+                            [
+                                'label'         => 'Brand',
+                                'type'          => 'select',
+                                'required'      => 1,
+                                'suggestion'    => 'Brand of the product',
+                                'meta' => [
+                                    'No Brand','Dell'
+                                ],
+                            ], 
+                       ], 
+                    ],
+
                     [
                         'All-purpose',
                         'child' => [
-                            ['Touchscreen'], 
-                            ['Non-touchscreen'],                          
+                            [
+                                'Touchscreen',
+                                'attr'	=> [
+                                    [
+                                        'label'         => 'Brand',
+                                        'type'          => 'select',
+                                        'required'      => 1,
+                                        'suggestion'    => 'Brand of the product',
+                                        'meta' => [
+                                            'No Brand','Dell'
+                                        ],
+                                    ], 
+                               ], 
+                            ],
+
+                            [
+                                'Non-touchscreen',
+                                'attr'	=> [
+                                    [
+                                        'label'         => 'Brand',
+                                        'type'          => 'select',
+                                        'required'      => 1,
+                                        'suggestion'    => 'Brand of the product',
+                                        'meta' => [
+                                            'No Brand','Dell'
+                                        ],
+                                    ], 
+                               ], 
+
+                            ],                          
                        ],                       
                     ],
 
-                    ['2-in-1s'],
-                    ['Chromebooks'],
-                    ['Macbooks '],           
+                    [
+                        '2-in-1s',
+                        'attr'	=> [
+                            [
+                                'label'         => 'Brand',
+                                'type'          => 'select',
+                                'required'      => 1,
+                                'suggestion'    => 'Brand of the product',
+                                'meta' => [
+                                    'No Brand','Dell'
+                                ],
+                            ], 
+                       ], 
+                    ],
+
+                    [
+                        'Chromebooks',
+                        'attr'	=> [
+                            [
+                                'label'         => 'Brand',
+                                'type'          => 'select',
+                                'required'      => 1,
+                                'suggestion'    => 'Brand of the product',
+                                'meta' => [
+                                    'No Brand','Dell'
+                                ],
+                            ], 
+                       ], 
+                    ],
+
+                    [
+                        'Macbooks ',
+                        'attr'	=> [
+                            [
+                                'label'         => 'Brand',
+                                'type'          => 'select',
+                                'required'      => 1,
+                                'suggestion'    => 'Brand of the product',
+                                'meta' => [
+                                    'No Brand','Dell'
+                                ],
+                            ], 
+                       ], 
+
+                    ],           
                 ],                                                
         ], 
         [
