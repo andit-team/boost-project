@@ -330,33 +330,214 @@ $Computers_Laptop = [
         [
             'Desktops Computers',
             'child' => [
-                ['All-In-One'], 
-                [' Gaming Dextop'], 
-                ['DIY'], 
+                [
+                    'All-In-One',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                   ], 
+                ], 
+                [
+                    'Gaming Dextop',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                   ], 
+                ], 
+                [
+                    'DIY',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ], 
+                 ], 
            ],            
         ],
         [
             'Computer Accessories',
             'child' => [
-                ['Gadgets'],
+                [
+                    'Gadgets',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ], 
+                ],
+
                 ['Laptop Screen Filters'],         
-                ['Power Cord & Adaptors'],               
-                ['Laptop Batteries'] ,              
-                ['Blank Media'],               
-                ['Cooling PadsCooling Stands'],                
-                ['External DVD Writers'],               
+                [
+                    'Power Cord & Adaptors',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ], 
+                ],               
+                [
+                    'Laptop Batteries',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ], 
+                ] ,              
+                [
+                    'Blank Media',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ], 
+                ],               
+                [
+                    'Cooling PadsCooling Stands',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ], 
+                ],                
+                [
+                    'External DVD Writers',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ], 
+                ],               
                 [
                     'Keyboards',
                     'child' => [
-                        ['Basic Keyboards'],
-                        ['Gaming Keyboards'],
-                        ['Mice & Keyboard Combos'],
-                        ['Keyboard Accessories'],
+                        [
+                            'Basic Keyboards',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ], 
+                        ],
+                        [
+                            'Gaming Keyboards',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ], 
+                        ],
+                        [
+                            'Mice & Keyboard Combos',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Keyboard Accessories',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
                    ],  
-
-                
                 ],              
-                ['Laptop stands'],              
+                [
+                    'Laptop stands',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],              
                 [
                     'Mice',
                     'child' => [
