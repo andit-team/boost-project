@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
                 DB::table('colors')->truncate();
                 DB::table('brands')->truncate();
                 DB::table('sizes')->truncate();
+                DB::table('attributes')->truncate();         
+                DB::table('attribute_metas')->truncate();         
                 DB::table('users')->truncate();         
               
 

@@ -16,15 +16,12 @@ class CreateAttributesTable extends Migration
         Schema::create('attributes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('label');
-            $table->text('succession');
-            $table->string('type');
-            $table->string('required')->nullable();
-            $table->boolean('search_sidebar')->default(1)->change();
+            $table->text('suggestion');
+            $table->enum('type',['multi-select','select','text','checkbox','radio','number'])->defult('text');
+            $table->integer('required')->default(0);
+            $table->integer('search_sidebar')->default(0);
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('user_id');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');  
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade'); 
         });
     }
