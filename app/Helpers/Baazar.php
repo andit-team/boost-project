@@ -33,6 +33,8 @@ use App\Models\ShippingMethod;
 use App\Models\Size;
 use App\Models\Shop;
 use App\Models\Tag;
+use App\Models\Attribute;
+use App\Models\AttributeMeta;
 use Sentinel;
 use Session;
 
@@ -85,7 +87,31 @@ class Baazar
                 'is_last'       => isset($row["child"]) ? 0 : 1,
             ];
             $cat = Category::create($data);
-            if (isset($row["child"])) $this->insertRecords($row["child"], $cat->id,$slug);
+            if (isset($row["child"])){ 
+                $this->insertRecords($row["child"], $cat->id,$slug);
+            }else{
+                if (isset($row["attr"])){
+                    foreach($row['attr'] as $attr){
+                        $attributes = [
+                            'label'             => $attr['label'],
+                            'suggestion'        => isset($attr['suggestion']) ? $attr['suggestion'] : 0,
+                            'type'              => $attr['type'],
+                            'required'          => isset($attr['required']) ? 1 : 0,
+                            'category_id'       => $cat->id,
+                        ];
+                        $attribute = Attribute::create($attributes);
+                        if (isset($attr["meta"])){
+                            foreach($attr['meta'] as $meta){
+                                $metas = [
+                                    'values'        =>  $meta,
+                                    'attribute_id'  => $attribute->id,
+                                ];
+                                AttributeMeta::create($metas);
+                            }
+                        }
+                    }
+                } 
+            }
         }
     }
 }
