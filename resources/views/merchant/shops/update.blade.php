@@ -4,14 +4,8 @@
 @push('css')
 <style>
     .imagestyle{
-        width: 300px;
-        height: 120px;
-        border-width: 1px;
-        border-style: solid;
+        width: 130px;
         border-radius:100%;
-        border-color: #ccc;
-        /* border-bottom: 0px; */
-        padding: 0px;
     }
     #file-upload{
         display: block;
@@ -27,6 +21,10 @@
         border-top: 0px;
     }
 
+.custom-file-upload{
+    position: absolute;
+    left: 40px;
+}
  .btns {
   /* position: absolute; */
   /* top: 40%;
@@ -62,7 +60,8 @@ width:772px;
                     <div>
                         <div class="mt-0">                                           
                             <img  id="outputs" src="{{asset('frontend')}}/assets/images/vendor/profile.jpg" alt="" class="bg-img lazyload blur-up">
-                                <label for="file-upload" class="custom-file-upload bg-warning"><i class="fa fa-camera" aria-hidden="true"> Edit Photo</i></label>
+                            <label for="file-upload" class="custom-file-upload bg-warning"><i class="fa fa-camera" aria-hidden="true"> Edit Photo</i></label>
+                            <input id="file-upload" accept="image/*"  class ="d-none" type="file" name="logo" onchange="loadFile(event)"/>
                         </div>
                     </div>              
                 </div>
@@ -75,6 +74,23 @@ width:772px;
                             <div class="col-lg-12">
                                 <div class="profile-left">
                                     <div class="profile-image">
+                                        <div>
+                                            <label for="file-upload" class="custom-file-upload"><i class="fa fa-camera" aria-hidden="true"></i></label>
+                                            
+                                            <img src="{{!empty($shopProfile->logo) ? asset($shopProfile->logo) : asset('/uploads/shop_logo/shop-1.png')}}" alt="" class="img-fluid imagestyle">
+                                            <h3 class="mt-1">Fashion Store</h3>
+                                            <div class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <h6>750 followers | 10 review</h6>
+                                        </div>
+                                    </div>
+
+                                    {{-- <div class="profile-image">
                                         <div>                                    
                                             <div class="mt-0">   
                                                 <form class="theme-form"  enctype="multipart/form-data" id="upload-form">                                        
@@ -91,25 +107,23 @@ width:772px;
                                                 <span id ="uploaded-image"></span>                                                                       
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     
                                     <div class="profile-detail">
-                                        <div contenteditable="true">
-
-                                            <button class="btn btn-primary lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                                    Show details
-                                                </button>
+                                        <div>
+                                            <p>Based in United States, Fashion store has been an Multikart member since May 15, 2017.
+                                                Fashion Store are engaged in all kinds of western clothing. In garment field we have
+                                                maintained 3 years exporting experience. company insist in the principle of "Customer
+                                                first, Quality uppermost".Based in United States, Fashion store has been an </p>
+                                            <p>Based in United States, Fashion store has been an Multikart member since May 15, 2017.
+                                                Fashion Store are engaged in all kinds of western clothing. In garment field we have
+                                                maintained 3 years exporting experience. company insist in the principle of "Customer
+                                                first, Quality uppermost"
                                             </p>
-                                            <div class="collapse" id="collapseExample">
-                                                <div class="card card-body">
-                                                {!!$shopProfile->description !!}
-                                                </div>
-                                            </div>
-                                            {{-- <textarea class="form-control  mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea> --}}
-                                            {{-- {{ $shopProfile->description }} --}}
-                                            {{-- <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea> --}}
                                         </div>
                                     </div>
+                                    
+                                    
                                     <div class="vendor-contact">
                                         <div>
                                             <h6>follow us:</h6>
@@ -121,7 +135,8 @@ width:772px;
                                                     <li><a href="http://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
                                                 </ul>
                                             </div>
-                                            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#facebook">More Information </button>                                                                         --}}
+                                            <h6>if you have any query:</h6>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#facebook"> <i class="fa fa-edit"></i> Edit Your Profile</button>                                                                        
                                         </div>
                                     </div>
                                 </div>
@@ -555,7 +570,45 @@ width:772px;
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      ...
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Enter More Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form class="theme-form" action="{{route('shopUpdate')}}" method="post" enctype="multipart/form-data" id="validateForm">
+                @csrf 
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <div>
+                            <label for="name">Shop Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('name') }}</span>
+                            <input type="text" class="form-control @error('name') border-danger @enderror" required name="name" value="{{ old('name',$shopProfile->name) }}" id="" placeholder="Shop Name">
+                        </div>
+                        <div>
+                            <label for="phone" class="mt-2">Shop Phone<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
+                            <input type="text" class="form-control @error('phone') border-danger @enderror" required name="phone" value="{{ old('phone',$shopProfile->phone) }}" id="" placeholder="Shop Phone">
+                        </div>
+                        <div>
+                            <label for="email" class="mt-2">Shop Email<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('email') }}</span>
+                            <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
+                        </div>  
+                    </div>           
+                </div> 
+                <div>
+                    <label for="web" class="mt-2">Web<span class="text-danger"> </span></label> <span class="text-danger">{{ $errors->first('web') }}</span>
+                    <input type="url" class="form-control @error('web') border-danger @enderror"  name="web" value="{{ old('Web',$shopProfile->web) }}" id="" placeholder="Shop website">
+                </div>
+                <label for="description" class="mt-2">Write about your shop</label> <span class="text-danger">{{ $errors->first('description') }}</span>
+                <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea>
+        
+                <div class="form-row">  
+                    <div class="col-md-12 mt-4">
+                        <button type="submit" class="btn btn-sm btn-solid" >Shop Update</button>
+                    </div>
+                </div>
+                </form>
+            </div>
     </div>
   </div>
 </div>
