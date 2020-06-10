@@ -229,4 +229,46 @@ class MerchantController extends Controller{
         ]);
     }
 
+    public function shopLogoCrop(Request $request){
+        // dd($request->all());
+        $shop   = Shop::find($request->shop);
+        if($shop){
+            $image_file = $request->image;
+            list($type, $image_file) = explode(';', $image_file);
+            list(, $image_file)      = explode(',', $image_file);
+            $image_file = base64_decode($image_file);
+            $image_name= "shop-".$shop->id.'.png';
+            $db_img = 'uploads/shops/logos/'.$image_name;
+            $path = public_path($db_img);
+            file_put_contents($path, $image_file);
+            $done = $shop->update(['logo' => $db_img]);
+            // session()->forget('logininfo');
+            // Session::push('logininfo', $this->sessionData($customer));
+            if($done){
+                return response()->json(['status'=>true]);
+            }
+        }
+    }
+
+    public function shopBanarCrop(Request $request){
+        // dd($request->all());
+        $shop   = Shop::find($request->shop);
+        if($shop){
+            $image_file = $request->image;
+            list($type, $image_file) = explode(';', $image_file);
+            list(, $image_file)      = explode(',', $image_file);
+            $image_file = base64_decode($image_file);
+            $image_name= "banner-".$shop->id.'.png';
+            $db_img = 'uploads/shops/banners/'.$image_name;
+            $path = public_path($db_img);
+            file_put_contents($path, $image_file);
+            $done = $shop->update(['banner' => $db_img]);
+            // session()->forget('logininfo');
+            // Session::push('logininfo', $this->sessionData($customer));
+            if($done){
+                return response()->json(['status'=>true]);
+            }
+        }
+    }
+
     }
