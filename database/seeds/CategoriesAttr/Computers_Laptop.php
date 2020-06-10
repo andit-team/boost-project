@@ -116,68 +116,68 @@ $Computers_Laptop = [
                             ['label'=> 'Storage Capacity','type'=> 'text',],
                             ['label'=> 'Adjustable_Fan_Speed','type'=> 'text',],    
                        
-                        [
-                            'label'         => 'CPU Speed (GHz)',
-                            'type'          => 'select',                                              
-                            'suggestion'    => 'Specify the processor speed in GHz for the product. Require format: Valid Value must be a number. The separator between the integer part and the fractional part should be a dot. 2 digits are allowed after the dot.',
-                            'meta' => [
-                               ' 3.20','4.20',  
-                          ],
-                        ],
-                        ['label'=> 'Display Size','type'=> 'number',],                      
-                        [
-                            'label'         => 'Operating System',
-                            'type'          => 'select',                                              
-                            'suggestion'    => 'Enter the operating system of the product. Required format:Please choose one value from the dropdown list.',
-                            'meta' => [
-                                'Windows','Linux','Windows XP Professional','Mac OS X','Android','iOS','No OS','Other','Windows Phone OS','Symbian','Blackberry OS','Chrome OS','Windows 8','Firefox','Android 4.3 Jelly Bean','Android 4.2 Jelly Bean','Android 4.1 Jelly Bean','Android 4.0 Ice Cream Sandwich','Android 4.4 Kitkat','iOS 7','iOS 8','Proprietary','Windows 8.1','Maverick','DOS','X Mavericks','Android 4.3 Jelly','Android 2.1 Eclair','Android 2.2 Froyo','Android 4.0 Ice Cream','Nokia OS','Ubuntu','Android 2.3','Android 2.3.6 Gingerbread','SGP','Symbia','Windows 10','Android OS, v4.2.2 (Jelly Bean)','Android v4.2.2 (Jelly Bean)','Android v4.3 (Jelly Bean)','Android 1.5 Cupcake','Android 1.6 (Donut)','Android 1.6 Donut','Android 4.4.4 KitKat','Android KitKat 4.4','Android OS 4.2.1 (Jelly Bean)','Android OS 4.4 Kitkat','Android OS v1.6 (Donut)','Android OS v4.0','Android OS, v2.2 (Froyo)','Android OS, v2.3 (Gingerbread)','Android OS, v2.3.5 (Gingerbread)','Android OS, v2.3.7 (Gingerbread)','Android OS, v4.0.3 (Ice Cream Sandwich)','Android OS, v4.0.4 Ice Cream Sandwich','Android OS, v4.1 (Jelly Bean)',
-                          ],
-                        ], 
-                        ['label'=> 'Model','type'=> 'text',],
-                        [
-                            'label'         => 'Touch Pad',
-                            'type'          => 'select',                                              
-                            'suggestion'    => 'Indicates if the device has Touchpad. Require format: Please choose one value from the dropdown list.',
-                            'meta' => [
-                               'yes','no',  
-                          ],
-                        ],
-                        
-                        [
-                            'label'         => 'Input Output ports',
-                            'type'          => 'select',                                              
-                            'suggestion'    => 'input/output is the communication between a computer and the outside world, possibly another information processing system. Inputs are the signals or data received by the system and outputs are the signals or data sent from it. Require format: Both numbers and texts are allowed. Maximum number of characters is 255.',
-                            'meta'          =>['Ac Port',]
-                          ],
-                          [
-                            'label'         => 'AC Adapter',
-                            'type'          => 'select',                                              
-                            'suggestion'    => 'AC adapter is an external power supply used with devices that run on batteries or have no other power source. AC adapters help reduce the size of a laptop computer by alleviating the need for a standard sized power supply. Require format: Both numbers and texts are allowed. Maximum number of characters is 255.',
-                            'meta'          => ['no',]
-                        ],
-                        [
-                            'label'         => 'System Memory',
-                            'type'          => 'select',                                              
-                            'suggestion'    => 'Computer system storage. Require format: Both numbers and texts are allowed. Maximum number of characters is 255.',
-                            'meta'          => ['14GB',]
-                        ],
-                        [
-                            'label'         => 'Graphics memory',
-                            'type'          => 'select',                                              
-                            'suggestion'    => 'Graphics Memory. Require format: Both numbers and texts are allowed. Maximum number of characters is 255.',
-                            'meta'          => ['6 GB',]
-                        ],
-                        ['label'=> 'Bluetooth Version','type'=> 'number',],
-                        ['label'=> 'Rotatable','type'=> 'text',],
-                        ['label'=> 'Hard_Drive_Capacity','type'=> 'text',],
-                        ['label'=> 'Barcode Ean','type'=> 'text',],
-                        ['label'=> 'Output_Voltage','type'=> 'text',],
-                        ['label'=> 'Auto_Shut-Off','type'=> 'text',],   
-                        ['label'=> 'Plug_and_Play','type'=> 'text',],
-                        ['label'=> 'Number_of_Modules','type'=> 'Number',],
-                        ['label'=> 'Cord Length','type'=> 'text',],
-                        ['label'=> 'Usb_Generation','type'=> 'text',],
-                        ['label'=> 'Write_Speed','type'=> 'text',],   
+                            [
+                                'label'         => 'CPU Speed (GHz)',
+                                'type'          => 'select',                                              
+                                'suggestion'    => 'Specify the processor speed in GHz for the product. Require format: Valid Value must be a number. The separator between the integer part and the fractional part should be a dot. 2 digits are allowed after the dot.',
+                                'meta' => [
+                                ' 3.20','4.20',  
+                            ],
+                            ],
+                            ['label'=> 'Display Size','type'=> 'number',],                      
+                            [
+                                'label'         => 'Operating System',
+                                'type'          => 'select',                                              
+                                'suggestion'    => 'Enter the operating system of the product. Required format:Please choose one value from the dropdown list.',
+                                'meta' => [
+                                    'Windows','Linux','Windows XP Professional','Mac OS X','Android','iOS','No OS','Other','Windows Phone OS','Symbian','Blackberry OS','Chrome OS','Windows 8','Firefox','Android 4.3 Jelly Bean','Android 4.2 Jelly Bean','Android 4.1 Jelly Bean','Android 4.0 Ice Cream Sandwich','Android 4.4 Kitkat','iOS 7','iOS 8','Proprietary','Windows 8.1','Maverick','DOS','X Mavericks','Android 4.3 Jelly','Android 2.1 Eclair','Android 2.2 Froyo','Android 4.0 Ice Cream','Nokia OS','Ubuntu','Android 2.3','Android 2.3.6 Gingerbread','SGP','Symbia','Windows 10','Android OS, v4.2.2 (Jelly Bean)','Android v4.2.2 (Jelly Bean)','Android v4.3 (Jelly Bean)','Android 1.5 Cupcake','Android 1.6 (Donut)','Android 1.6 Donut','Android 4.4.4 KitKat','Android KitKat 4.4','Android OS 4.2.1 (Jelly Bean)','Android OS 4.4 Kitkat','Android OS v1.6 (Donut)','Android OS v4.0','Android OS, v2.2 (Froyo)','Android OS, v2.3 (Gingerbread)','Android OS, v2.3.5 (Gingerbread)','Android OS, v2.3.7 (Gingerbread)','Android OS, v4.0.3 (Ice Cream Sandwich)','Android OS, v4.0.4 Ice Cream Sandwich','Android OS, v4.1 (Jelly Bean)',
+                            ],
+                            ], 
+                            ['label'=> 'Model','type'=> 'text',],
+                            [
+                                'label'         => 'Touch Pad',
+                                'type'          => 'select',                                              
+                                'suggestion'    => 'Indicates if the device has Touchpad. Require format: Please choose one value from the dropdown list.',
+                                'meta' => [
+                                'yes','no',  
+                            ],
+                            ],
+                            
+                            [
+                                'label'         => 'Input Output ports',
+                                'type'          => 'select',                                              
+                                'suggestion'    => 'input/output is the communication between a computer and the outside world, possibly another information processing system. Inputs are the signals or data received by the system and outputs are the signals or data sent from it. Require format: Both numbers and texts are allowed. Maximum number of characters is 255.',
+                                'meta'          =>['Ac Port',]
+                            ],
+                            [
+                                'label'         => 'AC Adapter',
+                                'type'          => 'select',                                              
+                                'suggestion'    => 'AC adapter is an external power supply used with devices that run on batteries or have no other power source. AC adapters help reduce the size of a laptop computer by alleviating the need for a standard sized power supply. Require format: Both numbers and texts are allowed. Maximum number of characters is 255.',
+                                'meta'          => ['no',]
+                            ],
+                            [
+                                'label'         => 'System Memory',
+                                'type'          => 'select',                                              
+                                'suggestion'    => 'Computer system storage. Require format: Both numbers and texts are allowed. Maximum number of characters is 255.',
+                                'meta'          => ['14GB',]
+                            ],
+                            [
+                                'label'         => 'Graphics memory',
+                                'type'          => 'select',                                              
+                                'suggestion'    => 'Graphics Memory. Require format: Both numbers and texts are allowed. Maximum number of characters is 255.',
+                                'meta'          => ['6 GB',]
+                            ],
+                            ['label'=> 'Bluetooth Version','type'=> 'number',],
+                            ['label'=> 'Rotatable','type'=> 'text',],
+                            ['label'=> 'Hard_Drive_Capacity','type'=> 'text',],
+                            ['label'=> 'Barcode Ean','type'=> 'text',],
+                            ['label'=> 'Output_Voltage','type'=> 'text',],
+                            ['label'=> 'Auto_Shut-Off','type'=> 'text',],   
+                            ['label'=> 'Plug_and_Play','type'=> 'text',],
+                            ['label'=> 'Number_of_Modules','type'=> 'Number',],
+                            ['label'=> 'Cord Length','type'=> 'text',],
+                            ['label'=> 'Usb_Generation','type'=> 'text',],
+                            ['label'=> 'Write_Speed','type'=> 'text',],   
 
                         ],                 
                     ],          
@@ -240,7 +240,7 @@ $Computers_Laptop = [
         [
             'Computer Accessories',
             'child' => [
-                ['Gadgets'],
+                ['Computers Gadgets'],
                 ['Laptop Screen Filters'],         
                 ['Power Cord & Adaptors'],               
                 ['Laptop Batteries'] ,              

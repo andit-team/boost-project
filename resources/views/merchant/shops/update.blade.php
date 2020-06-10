@@ -14,14 +14,13 @@
         width: 200px;background: #ddd;float: right;text-align: center;
     }
     .custom-file-upload {
-        /* border: 1px solid #ccc; */
         display: inline-block;
         padding: 9px 40px;
         cursor: pointer;
         border-top: 0px;
     }
 
-.custom-file-upload{
+.shop-image-upload{
     position: absolute;
     left: 40px;
 }
@@ -75,7 +74,7 @@ width:772px;
                                 <div class="profile-left">
                                     <div class="profile-image">
                                         <div>
-                                            <label for="file-upload" class="custom-file-upload"><i class="fa fa-camera" aria-hidden="true"></i></label>
+                                            <label for="file-upload" class="custom-file-upload shop-image-upload"><i class="fa fa-camera" aria-hidden="true"></i></label>
                                             
                                             <img src="{{!empty($shopProfile->logo) ? asset($shopProfile->logo) : asset('/uploads/shop_logo/shop-1.png')}}" alt="" class="img-fluid imagestyle">
                                             <h3 class="mt-1">Fashion Store</h3>
