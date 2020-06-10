@@ -193,7 +193,7 @@ $Computers_Laptop = [
                                         'required'      => 1,
                                         'suggestion'    => 'Brand of the product',
                                         'meta' => [
-                                            'No Brand','Dell',
+                                            'No Brand','CHUWI','HP',
                                         ],
                                     ], 
                                ], 
@@ -207,7 +207,7 @@ $Computers_Laptop = [
                                         'required'      => 1,
                                         'suggestion'    => 'Brand of the product',
                                         'meta' => [
-                                            'No Brand','Dell',
+                                            'No Brand','ASUS','HP','Dell','Lenovo','MSI','CHUWI','Walton Computers','Acer','I-Life','Gomart BD','BRADOO','AR Tech','Avita','Daraz','Smart Gadget','Razer','Zed Air','Ideal Product','Lenovo Ipad','Gc','Next Book','OHPK','A 2 Z','KMS',
                                         ],
                                     ], 
                                ], 
@@ -223,7 +223,7 @@ $Computers_Laptop = [
                                 'required'      => 1,
                                 'suggestion'    => 'Brand of the product',
                                 'meta' => [
-                                    'No Brand','Dell'
+                                    'No Brand', 'ASUS','HP','Dell','Lenovo','Walton Computers','CHUWI','I-Life','Acer','MSI','Gomart BD','BRADOO','AR Tech','Avita','Gc','Nextbook','OHPK','Zed Air','A 2 Z','Lenovo IdeaPad','Daily Kroy',
                                 ],
                             ], 
                        ], 
@@ -238,7 +238,7 @@ $Computers_Laptop = [
                                 'required'      => 1,
                                 'suggestion'    => 'Brand of the product',
                                 'meta' => [
-                                    'No Brand','Dell'
+                                    'HAVIT','BRADOO','LUCID computers','Micropack','Logitech','RAPOO','Delux','AIRCO ENGINEERING SERVICES BD','Atech','A4Tech','HP','Astrum','Walton Computers','Newmen','Xtreme','Gigasonic','Dell','Computer City Technologies','Value Top','Walton','Brother\'s Hardware','SUNTECH','Fantech','PROLiNK','A-Tech','Micro Gates IT','Easy Buy Store','IT GALLERY', 'Green',
                                 ],
                             ], 
                        ], 
@@ -256,7 +256,7 @@ $Computers_Laptop = [
                                         'required'      => 1,
                                         'suggestion'    => 'Brand of the product',
                                         'meta' => [
-                                            'No Brand','Dell'
+                                            'No Brand','BRADOO','HP',
                                         ],
                                     ], 
                                ], 
@@ -271,7 +271,7 @@ $Computers_Laptop = [
                                         'required'      => 1,
                                         'suggestion'    => 'Brand of the product',
                                         'meta' => [
-                                            'No Brand','Dell'
+                                            'No Brand','BRADOO','HP',
                                         ],
                                     ], 
                                ], 
@@ -289,7 +289,7 @@ $Computers_Laptop = [
                                 'required'      => 1,
                                 'suggestion'    => 'Brand of the product',
                                 'meta' => [
-                                    'No Brand','Dell'
+                                    'No Brand','BRADOO','SP','Dell','Umiwe','CHUWI',
                                 ],
                             ], 
                        ], 
@@ -304,7 +304,7 @@ $Computers_Laptop = [
                                 'required'      => 1,
                                 'suggestion'    => 'Brand of the product',
                                 'meta' => [
-                                    'No Brand','Dell'
+                                    'No Brand', 'BRADOO','Hanif Computer And Technology','Umiwe','LUCID computers','Campus Shop','Geo-Tech','Bright Star Technology','Estima','RK Computer &amp; Technology','HP','R S Tech','Toshiba',
                                 ],
                             ], 
                        ], 
@@ -319,7 +319,7 @@ $Computers_Laptop = [
                                 'required'      => 1,
                                 'suggestion'    => 'Brand of the product',
                                 'meta' => [
-                                    'No Brand','Dell'
+                                    'No Brand','BRADOO','Apple','BASEUS','MacBook Pro','mShop','LUCID computers','COTEETCI','M.S. Collection','JoyLife','Hanif Computer And Technology','Geo-Tech','Planet X','Xiaomi','niceEshop','macbook air','Bright Star','Super Mart','CHOETECH','Lemon','R S Tech','Umiwe','ALLOYSEED','SwitchEasy','Alif','MR Project Shop','NS Trading','RK Computer &amp; Technology','BOQPKAW',
                                 ],
                             ], 
                        ], 
@@ -339,7 +339,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'No Brand','Intel','HP','AIRCO ENGINEERING SERVICES BD','Gomart BD','ItT Gallery','Rahman IT','Shokher Tula 180 Tk','TV Museum','INCREDIX BD','Polo Tech','Alif','I-life','EASY','Dell','Origin Technology','Hisan Enterprise','SANAT','Acer','Walton Computers','GNB MART BD','VISION','HP','CHUWI','Rayns Computer','ALIF TRADE INTERNATIONAL BD','BT','Super Mart',
                             ],
                         ], 
                    ], 
@@ -353,7 +353,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'No Brand','Intel','Gomot BD','IT Gallery','Rahaman IT','Fantech','Shokher Tula 180 Tk','INCREDIX BD','ASUS','Gigabyte','Dell','Deepcool','Alif','Sogood',
                             ],
                         ], 
                    ], 
@@ -367,7 +367,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'No Brand','Intel','HP','AIRCO ENGINEERING SERVICES BD','Gomart BD','ItT Gallery','Rahman IT','Shokher Tula 180 Tk','TV Museum','INCREDIX BD','Polo Tech','Alif','I-life','EASY','Dell','Origin Technology','Hisan Enterprise','SANAT','Acer','Walton Computers','GNB MART BD','VISION','HP','CHUWI','Rayns Computer','ALIF TRADE INTERNATIONAL BD','BT','Super Mart',
                             ],
                         ], 
                     ], 
@@ -386,7 +386,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'Gadget Gift','Gadget N Accessories','Gadget Market','bmi gadget store','BRADOO','Apan gadget bd','Kangaroo Gadget','Gadget Shop','Amar Gadget BD','National Gadget','Gadgets Lab','Logic Gadget','Gadget Park BD','Noakhali Gadget','Gadget onlline','Gadget Ashore','Inspire Gadget','Imam Gadget','Luxury Mobile Gadgets','kitchen Gadget','DAZZLING GADGETS MART','Smart Gadgets BD','Box Gadgets','top gadgets','Imam Gadget Mart','Gadget Bazar','Origin Gadget BD','Smart Gadget BD24','Gadget Gallery Shop','Dhaka Gadget BD',
                             ],
                         ], 
                     ], 
@@ -402,7 +402,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'LUCID computers','Apple','Odheek','Remax','LDNIO','SK Shop bd','Bright Star','Many','HP','Lavish','Planet X','Hanif Computer And Technology','SASIN','R S Tech','RK Computer &amp; Technology','Marvellous Computer','mShop','BASEUS','Rumi\'s Electronics','TECH SECURITY','ASUS','ShafExpress','Beacon','Canton','Brothers Computers','Onix System','Tajmahal 24','BD Technology','Rahman IT',
                             ],
                         ], 
                     ], 
@@ -416,7 +416,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'LUCID computers','Geo-Tech','HP','ASUS','Campus Shop','TECH SECURITY','Trust Me','SONY','LAP','BRADOO','Fujitsu','R S Tech','MacBook Pro','Toshiba','AR Tech','Lenovo','Computer City Technologies','Toshiba Satelite','Power Guard','Lemon','EStore','STAR SHOP BD','Samsung','ALLOYSEED','mShop','TECHSBD','Tech Plus','Easy&amp;Friendship','Santak',
                             ],
                         ], 
                     ], 
@@ -430,7 +430,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'Shopner Shop','BRADOO', 'Micro GAtes IT','Orico',
                             ],
                         ], 
                     ], 
@@ -444,7 +444,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'HAVIT','Pineberry','Best Offer BD','Xtreme','Segotep','ALLOYSEED','Gaming Freak','NiceEstore','Global Zone','Umiwe','Kotha Business Point','AONETECH','Bismillah Treaders','Geartronic','BRAND BOX','Kine Dao','Onliner dokan','AIRCO ENGINEERING SERVICES BD','ShafExpress','Brothers Computers',
                             ],
                         ], 
                     ], 
@@ -458,7 +458,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'Samsung','ASUS','BRADOO','LUCID computers','NS Trading','Any','YDD','Micro Gates IT','Liteon','3D Gadget','SONY','Geartronic','A1 Gadget','JoyLif','AIRCO ENGINEERING SERVICES BD','Proven','Synthetic Zone','JTPC','0 Point','Next Computer','Brother\'s Hardware','Transcend','Chinese','IT GALLERY','Brothers Computers',
                             ],
                         ], 
                     ], 
@@ -475,7 +475,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADO','LUCID Computer','HAVI','Fantech','Campus Shop','RAPOO','Logitech','GAMDIAS','Delux','Newmen','Micropac','HP','Gigasonic','A-Tech','Daily Kroy','Atech','ShafExpress','ASUS','Remax','Micro Gates IT','Bhuiyan IT Solution','Geo-Tech','AIRCO ENGINEERING SERVICES BD ','TECH-SECURITY','Xtreme','Gadgets Corner','A4Tech','AR Tech','Imam Gadget Mart',
                                     ],
                                 ], 
                             ], 
@@ -503,7 +503,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','HAVIT','RAPOO','Logitech','Micropack','GAMDIAS','Fantech','A-Tech','Newmen','A4Tech','Micro Gates IT','Xtreme','Proven','Boyoushop','Atech','ASTEC','Gadgets Corner','JK SHOP','Active4U','Royal Shop','Hot Offer BD','UTHINK','ZANNAT ENGINEERING>Campus Shop','A&amp;T Online Shop','MM','Astrum','PCFIX','My Choice BD',
                                     ],
                                 ], 
                             ],  
@@ -533,7 +533,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'BRADOO','Ajker Bazar','24 Bazaar','HAVIT','Kine Dao','Mukambd-Gadget','Brands Shopping BD','SHOHOZ','Offer Bazar','Gadget Shop','Kangaroo Gadget','Shokher Tula 180 Tk','Gadget Bazar','AIRCO ENGINEERING SERVICES BD','IT GALLERY','Lazada Shopping','Rahman IT','ALLOYSEED','Lemon','Your Gallery','Tanimislam577','Pineberry','Dorkari Ponno','Best Offer BD','SAIFAN FURNITURE AND DOOR','Hit List','Raka Online Shop','PRODUCT VALY','H K Wholesale Enterprise',
                             ],
                         ], 
                     ],  
@@ -550,7 +550,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'No Brand','HAVIT','Fantech','AIRCO ENGINEERING SERVICES BD','Micro pack','Rapoo','Bradoo','Logitech','New Men','Atech','A45 Tech','Comput  er City Technology','Delux','Astrum','Walton Computer','Brother\'s Hardware','Value Top','REhena Enterprise','Walton','Prolink','Easy Buy Store','Dell','Xtreme','SUNTECH','MOTOSPEED','A-Tech','BD Square','IT Solution BD','Bshop Computer','Logic Gadget',
                                     ],
                                 ], 
                             ],  
@@ -563,7 +563,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'No Brand','HAVIT','Fantech','AIRCO ENGINEERING SERVICES BD','Micro pack','Rapoo','Bradoo','Logitech','New Men','Atech','A45 Tech','Comput  er City Technology','Delux','Astrum','Walton Computer','Brother\'s Hardware','Value Top','REhena Enterprise','Walton','Prolink','Easy Buy Store','Dell','Xtreme','SUNTECH','MOTOSPEED','A-Tech','BD Square','IT Solution BD','Bshop Computer','Logic Gadget',
                                     ],
                                 ], 
                             ],  
@@ -579,7 +579,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'No Brand','Hp','BRADOO','AIRCO ENGINEERING SERVICES BD','Viewsonic','Gigasonic','Dell','IT Gallery','Samsung', 'Rehena Enterprise','ESONIC','INTEL','Geo-Tech','Golden Tech','BenQ','LG','Sky View','Walton', 'Philips','Boyoushop','AOC','Giga Sonic','Jk Shop','Acer','TECHSBD','Micro Gates IT','ASUS', 
                             ],
                         ], 
                     ],  
@@ -593,7 +593,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'BRADOO','Microlab','HAVIT','Edifier','Kisonli','F&amp;D','ZANNAT ENGINEERING','MR Project Shop','ZARIN ELECTRONICS','Creative','Micromax','Rakib Accessories','Micrologic','Electronics Shop BD','Awei','Vigo','Perfect','Lemon','DigitalX','Easy Buy Store','Hisonic','Exclusive Shop Bangladesh','Gadget Technology','FAHIM ELECTRONICS','Xtreme','Accessories Mart','Best Collection BD','ALLOYSEED','Elephant',
                             ],
                         ], 
                     ],  
@@ -607,7 +607,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'BRADOO',' Camera Hall','ALLOYSEED','ZANNAT ENGINEERING','Tanix','Dubai Electronics.CTG','Free Spirit','Sima Collections','Box Gadgets','MR Project Shop','Harun Trade','Esolo','Magiccase','Perfect','ZARIN ELECTRONICS','NiceEstore','Global Zone','Shuvo Fancy','OEM',' ShafExpress','Techdealbd',
                             ],
                         ], 
                     ],  
@@ -621,7 +621,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'BRADOO','BuzzBlu','Logitech','BuzzBlu Wholesale','NiceEstore','SuperSym','Create_Online','Janony Enterprise','YST Tech','Geartronic','QUANBU','oobest','PC DOKAN','Healthcare24shop','Techshark','Techdealbd',
                             ],
                         ], 
                     ],  
@@ -635,7 +635,7 @@ $Computers_Laptop = [
                             'required'      => 1,
                             'suggestion'    => 'Brand of the product',
                             'meta' => [
-                                'No Brand','Dell'
+                                'BRADOO','Odheek','Belkin','CyberPower Systems','Many','BASEUS','Imam Gadget Mart','ShafExpress','CyberPower','WIWU','LDNIO','Have It','Farihaz Gallery','Gear Best BD','HIGH POWER','A K Gadget','Ajker Bazar','ipipoo','The Bros Collection','JZIKI','D Discount Shop','Bright Star Technology','Anik Telecom','Smart Global BD','SKROSS','Techdealbd','King Fisher','Imam Gadget','Kosmic Fashion','Planet X',
                             ],
                         ], 
                     ],  
@@ -727,7 +727,8 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'No Brand','Microlab','Microlab ','HAVIT ','Edifier ','Kisonli ','F&amp;D ','ONIKUMA ','GAMDIAS ','Fantech ','Micromax ','Micrologic ','Vigo ','Perfect ','Razer ','Electronics Shop BD ','Logitech ','Amader Mart ','Edifier USA ','DigitalX ','Hisonic ','Gadget Technology ','Digital X ','FAHIM ELECTRONICS ','Computer City Technologies ','Edifire ','Xtreme ','Gadget and Care ','SK Shop bd',
+                                        
                                     ],
                                 ], 
                             ],  
@@ -741,7 +742,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'No Brand','Microlab','Microlab ','HAVIT ','Edifier ','Kisonli ','F&amp;D ','ONIKUMA ','GAMDIAS ','Fantech ','Micromax ','Micrologic ','Vigo ','Perfect ','Razer ','Electronics Shop BD ','Logitech ','Amader Mart ','Edifier USA ','DigitalX ','Hisonic ','Gadget Technology ','Digital X ','FAHIM ELECTRONICS ','Computer City Technologies ','Edifire ','Xtreme ','Gadget and Care ','SK Shop bd',
                                     ],
                                 ], 
                             ],  
@@ -755,7 +756,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'No Brand','Microlab','Microlab ','HAVIT ','Edifier ','Kisonli ','F&amp;D ','ONIKUMA ','GAMDIAS ','Fantech ','Micromax ','Micrologic ','Vigo ','Perfect ','Razer ','Electronics Shop BD ','Logitech ','Amader Mart ','Edifier USA ','DigitalX ','Hisonic ','Gadget Technology ','Digital X ','FAHIM ELECTRONICS ','Computer City Technologies ','Edifire ','Xtreme ','Gadget and Care ','SK Shop bd',
                                     ],
                                 ], 
                             ],  
@@ -1107,8 +1108,8 @@ $Computers_Laptop = [
                                     'type'          => 'select',
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
-                                    'meta' => [
-                                        'No Brand','Dell'
+                                    'meta' => [                                    
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1122,7 +1123,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1136,7 +1137,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1150,7 +1151,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1164,7 +1165,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1178,7 +1179,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1192,7 +1193,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1206,7 +1207,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1220,7 +1221,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1234,7 +1235,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1248,7 +1249,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1262,7 +1263,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1276,7 +1277,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1290,7 +1291,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1304,7 +1305,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1318,7 +1319,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1332,7 +1333,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1346,7 +1347,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1360,7 +1361,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
@@ -1374,7 +1375,7 @@ $Computers_Laptop = [
                                     'required'      => 1,
                                     'suggestion'    => 'Brand of the product',
                                     'meta' => [
-                                        'No Brand','Dell'
+                                        'BRADOO','Bright Star','Hanif Computer And Technology','Planet X','MR Project Shop','SASIN','RK Computer &amp; Technology','Bright Star Technology','D-Link','Dulcet Bangladesh','GetsMart BD','ZANNAT ENGINEERING','DTECH','IT SOLUTION BD','ZARIN ELECTRONICS','UGREEN','Amplab Bangladesh','AIRCO ENGINEERING SERVICES BD','ALLOYSEED','Imam Gadget','BASEUS','ShafExpress','Onix System','MA International Ltd','ZANNAT ELECTRONICS','NS Trading','Robot World','Imam Gadget Mart',
                                     ],
                                 ], 
                             ],  
