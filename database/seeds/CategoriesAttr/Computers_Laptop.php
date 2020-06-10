@@ -82,7 +82,7 @@ $Computers_Laptop = [
                                 'type'          => 'select',                                              
                                 'suggestion'    => 'A graphics card is the device inside a computer that interprets graphics signals from the motherboard and sends them to the monitor, which is plugged into the graphics card. On a graphics card, the chipset is the flat circuitry-board part that is attached to the graphics connectors, which send visuals to the computer monitor. Require format: Both numbers and texts are allowed. Maximum number of characters is 255.',
                                 'meta' => [    
-                                    'Intel 4th Gen Core i5','Intel Core i6','1.5 GB','AMD Radeon(TM) HD 7570M with 1GB GDDR5',                            '2GB GR',                            'NVIDIA 820M 2GB',                            'Nvidia GT940M 4GB',                            'NVIDIA GeForce GT960M 4GB',                            'AMD Radeon R5 M430 2GB',                            'Amd Radeon HD 8750 2Gb DDR3 Graphics',                            'Nvidia 940MX 2GB',                            'Amd Radeon R5 M230 2GB',                            'Intel HD 405',                            '2GB NVIDIA GT 750',                              'Intel(R) HD graphics 620','NVIDIA GeForce 940MX','AMD Radeon 255M','840M 2GB','NVIDIA GeForce GT940M 2GB','Nvidia GTX 960M 4GB','NVIDIA® GeForce® GTX 1050 with 4GB GDDR5','Integrated HD Graphics 620','2GB NVIDIA GeForce 930MX','AMD Radeon(TM) HD R7 M265 2GB DDR3 Graphics','Nvidia Quadro M1200 w/4GB GDDR5','Intel HD Graphics Card','Nvidia GT 920M 1GB',   '4GB GeForce 940MX','NVIDIA GT 820 2GB Graphics','2GB Radeon','Intel HD Graphics 530','GT940M 2GB Graphics','Intel(R) HD graphics 520','AMD 8670M 2GB','Nvidia GTX 1050, 4GB DDR5','Nvidia GT940M 2GB','AMD TM R5 M420 2GB','Intel® HD Graphics 4400','Intel HD Graphics 405 ','Intel UHD 620','2GB GFX','Nvidia GTX 850M 4GB','AMD Radeon HD 8670M','Intel ® HD Graphics 515 integrated graphics','Intel Iris Plus Graphics 640','2GB, AMD Radeon HD 8850M','4GB NVIDIA GeForce GTX 1050 Graphics','AMD Radeon HD 8210M','NVidia GeForce GT940M 4GB VRAM','NVIDIA GeForce 150MX SGDDR5 2GB dedicated Graphics','Intel HD Graphics (512 MB dedicated)','Intel® HD Graphics 5500',  'Intel HD 620 Graphics','Intel HD Graphics 515','NVIDIA GeForce GT 735M (1 GB VRAM)','Intel® HD Graphics','AMD Radeon(TM) R7 M445 with 4GB DDR5','NVIDIA GeForce 820M 2GB VRAM','2GB 940MX Graphics','ATI JET LE R5 M230 DDR3L 2G','8GB Intel UHD Graphics 620','NVIDIA GTX 860M 4GB','Nvidia GT 840M 2 GB Dedicated Graphics','Intel HD Graphics500 (12EUs 650MHZ)','NVIDIA(R) GeForce(R) GTX 1050 with 4GB GDDR5','Integrated HD 5500 ',                     
+                                    'Intel 4th Gen Core i5','Intel Core i6','1.5 GB','AMD Radeon(TM) HD 7570M with 1GB GDDR5', '2GB GR','NVIDIA 820M 2GB', 'Nvidia GT940M 4GB', 'NVIDIA GeForce GT960M 4GB', 'AMD Radeon R5 M430 2GB', 'Amd Radeon HD 8750 2Gb DDR3 Graphics',  'Nvidia 940MX 2GB','Amd Radeon R5 M230 2GB','Intel HD 405', '2GB NVIDIA GT 750','Intel(R) HD graphics 620','NVIDIA GeForce 940MX','AMD Radeon 255M','840M 2GB','NVIDIA GeForce GT940M 2GB','Nvidia GTX 960M 4GB','NVIDIA® GeForce® GTX 1050 with 4GB GDDR5','Integrated HD Graphics 620','2GB NVIDIA GeForce 930MX','AMD Radeon(TM) HD R7 M265 2GB DDR3 Graphics','Nvidia Quadro M1200 w/4GB GDDR5','Intel HD Graphics Card','Nvidia GT 920M 1GB',   '4GB GeForce 940MX','NVIDIA GT 820 2GB Graphics','2GB Radeon','Intel HD Graphics 530','GT940M 2GB Graphics','Intel(R) HD graphics 520','AMD 8670M 2GB','Nvidia GTX 1050, 4GB DDR5','Nvidia GT940M 2GB','AMD TM R5 M420 2GB','Intel® HD Graphics 4400','Intel HD Graphics 405 ','Intel UHD 620','2GB GFX','Nvidia GTX 850M 4GB','AMD Radeon HD 8670M','Intel ® HD Graphics 515 integrated graphics','Intel Iris Plus Graphics 640','2GB, AMD Radeon HD 8850M','4GB NVIDIA GeForce GTX 1050 Graphics','AMD Radeon HD 8210M','NVidia GeForce GT940M 4GB VRAM','NVIDIA GeForce 150MX SGDDR5 2GB dedicated Graphics','Intel HD Graphics (512 MB dedicated)','Intel® HD Graphics 5500',  'Intel HD 620 Graphics','Intel HD Graphics 515','NVIDIA GeForce GT 735M (1 GB VRAM)','Intel® HD Graphics','AMD Radeon(TM) R7 M445 with 4GB DDR5','NVIDIA GeForce 820M 2GB VRAM','2GB 940MX Graphics','ATI JET LE R5 M230 DDR3L 2G','8GB Intel UHD Graphics 620','NVIDIA GTX 860M 4GB','Nvidia GT 840M 2 GB Dedicated Graphics','Intel HD Graphics500 (12EUs 650MHZ)','NVIDIA(R) GeForce(R) GTX 1050 with 4GB GDDR5','Integrated HD 5500 ',                     
                                    
                               ],
                             ], 
@@ -541,90 +541,845 @@ $Computers_Laptop = [
                 [
                     'Mice',
                     'child' => [
-                        ['Basic Mice'],
-                        ['Gaming Mice'],                      
+                        [
+                            'Basic Mice',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Gaming Mice', 'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],                      
                    ],  
                 ],               
-                ['Monitors'],               
-                ['Speakers'],              
-                ['TV Tuners'],           
-                ['Webcams'],            
-                ['Surge Protector'],             
-                ['Gaming Headphones'],            
+                [
+                    'Monitors',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],               
+                [
+                    'Speakers',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],              
+                [
+                    'TV Tuners',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],           
+                [
+                    'Webcams',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],            
+                [
+                    'Surge Protector',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],             
+                [
+                    'Gaming Headphones',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],            
                 [
                     'Mousepads',
                     'child' => [
-                        ['Basic Mousepads'],
-                        ['Gaming Mousepads'],                      
+                        [
+                            'Basic Mousepads',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Gaming Mousepads',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],                      
                    ], 
                 ],        
-                ['Uninterrupted Power Supply'],           
-                ['USB Fans'],           
+                [
+                    'Uninterrupted Power Supply',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],           
+                [
+                    'USB Fans',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],           
                 [
                     'PC Audio',
                     'child' => [
-                        ['Gaming Headsets'],
-                        ['PC Soundbars'],
-                        ['PC Speaker Systems'],
+                        [
+                            'Gaming Headsets',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'PC Soundbars',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'PC Speaker Systems',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
                    ], 
 
                 ],          
-                ['Monitor Stands'],           
-                ['Monitor Screen Filters'],             
-                ['USB Hubs'],             
-                ['Fingerprint Reader'],             
-                ['Bluetooth Adapters'],    
-                ['Card Reader'],               
-                ['USB Lighting'],              
+                [
+                    'Monitor Stands',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],           
+                [
+                    'Monitor Screen Filters',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+
+                ],             
+                [
+                    'USB Hubs',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],             
+                [
+                    'Fingerprint Reader',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],             
+                [
+                    'Bluetooth Adapters',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],    
+                [
+                    'Card Reader',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],               
+                [
+                    'USB Lighting',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],              
                 [
                     'Mac Accessories',
                     'child' => [
-                        ['Hard Covers'],
-                        ['Skin & Decal Stickers Accessories'],
-                        ['Power Adapters Accessories'],
-                        ['Screen Filters Accessories'],
-                        ['Storage for Mac Accessories'],
-                        ['Airport Routers Accessories '],
-                        ['USB-Ethernet Adapters Accessories'],
-                        ['USB-Video Adapters Accessories'],
-                        ['Type C-Ethernet Adapters Accessories'],
-                        ['Type C-Video Adapters Accessories '],
-                        ['Firewire Cables Accessories'],
-                        ['ThunderBolt Cables Accessories'],
+                        [
+                            'Hard Covers',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Skin & Decal Stickers Accessories',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Power Adapters Accessories',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Screen Filters Accessories',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Storage for Mac Accessories',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Airport Routers Accessories ',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'USB-Ethernet Adapters Accessories',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'USB-Video Adapters Accessories',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Type C-Ethernet Adapters Accessories',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Type C-Video Adapters Accessories',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Firewire Cables Accessories',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'ThunderBolt Cables Accessories',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
                    ], 
                 ],            
                 [
                     'Drawing Tools',
                     'child' => [
-                        ['Drawing Display'],
-                        ['Drawing Pad      '],
-                        ['Drawing Stylus'],
-                        ['Display Screen Protectors'],
+                        [
+                            'Drawing Display',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Drawing Pad',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Drawing Stylus',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Display Screen Protectors',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
                    ], 
                 ],             
                 [
                     'Adapters & Cables',
                      'child' => [
-                        ['USB-Ethernet Adapters'],
-                        ['USB-Video Adapters'],
-                        ['Mini Display-Ethernet Adapters'],
-                        ['Mini Display-Video Adapters'],
-                        ['Type C-Ethernet Adapters'],
-                        ['Type C-Video Adapters'],
-                        ['Ethernet Cables'],
-                        ['Firewire Cables'],
-                        ['ThunderBolt Cables'],
-                        ['VGA Cables'],
-                        ['DVI Cables'],
-                        ['PS/2 Cables'],
-                        ['Mini-SAS Cables'],
-                        ['SCSI Cables'],
-                        ['Parallel Cables'],
-                        ['Serial Cables'],
-                        ['SATA Cables'],
-                        ['eSATA Cables'],
-                        ['IDE Ribbon Cables'],
-                        ['Cable Tester'],
+                        [
+                            'USB-Ethernet Adapters',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'USB-Video Adapters',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Mini Display-Ethernet Adapters',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Mini Display-Video Adapters',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Type C-Ethernet Adapters',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Type C-Video Adapters',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Ethernet Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Firewire Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'ThunderBolt Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'VGA Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'DVI Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'PS/2 Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Mini-SAS Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'SCSI Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Parallel Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Serial Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'SATA Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'eSATA Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'IDE Ribbon Cables',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Cable Tester',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+
+                        ],
                    ],
                 ],      
            ],
@@ -632,55 +1387,420 @@ $Computers_Laptop = [
         [
             'Computer Components',
             'child' => [
-                ['Desktop Casings'],
+                [
+                    'Desktop Casings',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
                 [
                     'Fans & Heatsinks',
                     'child' => [
-                        ['Cooling Fans'],
-                        ['Heatsinks'],                   
+                        [
+                            'Cooling Fans',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Heatsinks',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],                   
                    ], 
                 ],          
-                ['Graphic Cards'],          
-                ['Front Bay Devices'],            
-                ['Motherboards'],             
-                ['Power Supply Units'],             
-                ['Processors'],             
-                ['RAM'],             
-                ['TV Tuner'],              
-                ['Sound cards'],                
-                ['Water Cooling System'],               
-                ['Single Board Computer'],        
+                [
+                    'Graphic Cards',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],          
+                [
+                    'Front Bay Devices',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],            
+                [
+                    'Motherboards',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+
+                ],             
+                [
+                    'Power Supply Units',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],             
+                [
+                    'Processors',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],             
+                [
+                    'RAM',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],             
+                [
+                    'TV Tuner',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],              
+                [
+                    'Sound cards',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],                
+                [
+                    'Water Cooling System',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],               
+                [
+                    'Single Board Computer',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],        
            ], 
 
         ],
         [
             'Network Components',
             'child' => [  
-                ['Network Gadgets'],
-                ['Access Points'],
-                ['Network Interface Cards'],
-                ['Routers'],
-                ['Switches'],
-                ['Wireless USB Adapters'],
+                [
+                    'Network Gadgets',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Access Points',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Network Interface Cards',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Routers',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Switches',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Wireless USB Adapters',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
                 [
                 'Mobile Broadband',
                 'child' => [
-                    ['Mobile Wi-Fi Hotspots'],
-                    ['USB Modems'],  
+                    [
+                        'Mobile Wi-Fi Hotspots',
+                        'attr'	=> [
+                            [
+                                'label'         => 'Brand',
+                                'type'          => 'select',
+                                'required'      => 1,
+                                'suggestion'    => 'Brand of the product',
+                                'meta' => [
+                                    'No Brand','Dell'
+                                ],
+                            ], 
+                        ],  
+                    ],
+                    [
+                        'USB Modems',
+                        'attr'	=> [
+                            [
+                                'label'         => 'Brand',
+                                'type'          => 'select',
+                                'required'      => 1,
+                                'suggestion'    => 'Brand of the product',
+                                'meta' => [
+                                    'No Brand','Dell'
+                                ],
+                            ], 
+                        ],  
+                    ],  
                   ],
                 ],
-                ['Modems'],
-                ['Range extender'],
+                [
+                    'Modems',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Range extender',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
                 [
                     'Network adaptors',
                     'child' => [
-                        ['Laptop Network adapters'],
-                        ['USB network adapters'],
-                        ['Bluetooth network adapters'],
-                        ['Powerline network adapter'],
+                        [
+                            'Laptop Network adapters',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'USB network adapters',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Bluetooth network adapters',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Powerline network adapter',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
                       ],
                 ],
-                ['Airport Routers'],
+                [
+                    'Airport Routers',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
            ], 
         ],
         [
@@ -689,70 +1809,525 @@ $Computers_Laptop = [
                 [
                     'Printers',
                     'child' => [                      
-                        ['Laser Jet'],
-                        ['Ink Jet'],
-                        ['Photo'],
-                        ['Business'],
-                        ['Dot matrix Printer'],
-                        ['Label Printer '],
+                        [
+                            'Laser Jet',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Ink Jet',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Photo',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Business',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Dot matrix Printer',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Label Printer',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
                       ],
                 ],
-                ['Printer stands'],      
-                ['Fax machines'],          
+                [
+                    'Printer stands',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],      
+                [
+                    'Fax machines',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],          
                 [
                     'Ink',
                     'child' => [                      
-                        ['Inkjets Inks'],
-                        ['Laser Toners'],                                           
+                        [
+                            'Inkjets Inks',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            'Laser Toners',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],                                           
                       ],
                 ],         
                 [
                     '3D Printing',
                     'child' => [                      
-                        ['3D Printers'],
-                        ['3D Printer Parts'], 
-                        ['3D Printing Materials'],                                           
+                        [
+                            '3D Printers',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],
+                        [
+                            '3D Printer Parts',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ], 
+                        [
+                            '3D Printing Materials',
+                            'attr'	=> [
+                                [
+                                    'label'         => 'Brand',
+                                    'type'          => 'select',
+                                    'required'      => 1,
+                                    'suggestion'    => 'Brand of the product',
+                                    'meta' => [
+                                        'No Brand','Dell'
+                                    ],
+                                ], 
+                            ],  
+                        ],                                           
                       ],
                 ],           
-                ['Printer cutter'],             
-                ['Printer memory modules'],                    
+                [
+                    'Printer cutter',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],             
+                [
+                    'Printer memory modules',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],                    
            ], 
         ],
-        ['Scanners'],
+        [
+            'Scanners',
+            'attr'	=> [
+                [
+                    'label'         => 'Brand',
+                    'type'          => 'select',
+                    'required'      => 1,
+                    'suggestion'    => 'Brand of the product',
+                    'meta' => [
+                        'No Brand','Dell'
+                    ],
+                ], 
+            ],  
+        ],
 
         [
             'Software',
             'child' => [
-                ['Educational Media'],
-                ['Productivity'],               
-                ['Operating System'],               
-                ['Security Software'],              
-                ['PC Games'],           
-                ['VR Games'],
+                [
+                    'Educational Media',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Productivity',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],               
+                [
+                    'Operating System',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],               
+                [
+                    'Security Software',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],              
+                [
+                    'PC Games',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],           
+                [
+                    'VR Games',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
             ],
         
         ],
         [
             'Storage',
             'child' => [
-                ['External Hard Drives'],
-                ['Memory Cards'],
-                ['USB Flash Drives'],
-                ['Internal Hard Drives'],
-                ['Solid State Drives'],
-                ['NAS'],
-                ['Internal Solid State Drives'],
-                ['External Solid State Drives'],
-                ['OTG Drives'],
-                ['Flash Drives'],
-                ['Storage for Mac'],
+                [
+                    'External Hard Drives',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Memory Cards',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'USB Flash Drives',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Internal Hard Drives',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Solid State Drives',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'NAS',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Internal Solid State Drives',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'External Solid State Drives',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'OTG Drives',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Flash Drives',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
+                [
+                    'Storage for Mac',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],
             ],  
         ],
-        ['Clearance'],
+        [
+            'Clearance',
+            'attr'	=> [
+                [
+                    'label'         => 'Brand',
+                    'type'          => 'select',
+                    'required'      => 1,
+                    'suggestion'    => 'Brand of the product',
+                    'meta' => [
+                        'No Brand','Dell'
+                    ],
+                ], 
+            ],  
+        ],
         [
             'PC Gaming',
             'child' => [
-                ['PC Game'],             
+                [
+                    'PC Game',
+                    'attr'	=> [
+                        [
+                            'label'         => 'Brand',
+                            'type'          => 'select',
+                            'required'      => 1,
+                            'suggestion'    => 'Brand of the product',
+                            'meta' => [
+                                'No Brand','Dell'
+                            ],
+                        ], 
+                    ],  
+                ],             
             ],
         ],   
      ],                                                
