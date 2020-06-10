@@ -260,18 +260,37 @@
                                       <div class="card-body">
                                             <div class="form-group row">
                                                 <label for="color_id" class="col-xl-3 col-md-4">Color Family<span class="text-danger"> *</span></label>
-                                                <select name="color_id" autocomplete="off" class="form-control col-md-8" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                {{-- <select name="color_id" autocomplete="off" class="form-control col-md-8" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> --}}
+                                                    <select name="color_id" autocomplete="off" class="form-control col-md-8" id="colorSelect">
                                                     <option value="">Select Color</option>
                                                     @foreach($color as $row)
-                                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                                    <option value="{{ $row->slug }}">{{ $row->name }}</option>
                                                     @endforeach
                                                 </select> 
                                             </div>
                                             <div class="form-group row">
-                                                <label for="color_id" class="col-xl-3 col-md-4"></label>
-                                                <div class="collapse  border p-3 collpanel" id="collapseExample">
+                                                <label for="color_id" class="col-xl-3 col-md-4"></label> 
+                                                    <div class="border p-3 collpanel selectColor red" id="red">
                                                     sadasdadas
-                                                </div>
+                                                   </div>
+                                                   <div class="border p-3 collpanel selectColor yello" id="yello">
+                                                    sadasdadas
+                                                   </div>
+                                                   <div class="border p-3 collpanel selectColor blue" id="blue">
+                                                    sadasdadas
+                                                   </div>
+                                                   <div class="border p-3 collpanel selectColor brown" id="brown">
+                                                    sadasdadas
+                                                   </div>
+                                                   <div class="border p-3 collpanel selectColor pink" id="pink">
+                                                    sadasdadas
+                                                   </div>
+                                                   <div class="border p-3 collpanel selectColor white" id="white">
+                                                    sadasdadas
+                                                   </div>
+                                                   <div class="border p-3 collpanel selectColor black" id="black">
+                                                    sadasdadas
+                                                   </div>
                                             </div>
                                             <div class="form-group">
                                                 <span class="btn btn-primary btn-sm pull-left rowAdd"><i class="fa fa-plus"></i> Add row</span>
@@ -301,9 +320,10 @@
                                                             </td>
                                                             <td>
                                                                 <span class="tbSelectbox">
-                                                                    <select class="form-control tbSelectbox" name="color_id[]">
+                                                                    {{-- <select class="form-control tbSelectbox" name="color_id[]">
                                                                         <option value="">Select color</option>
-                                                                    </select>
+                                                                    </select> --}}
+                                                                    <input type="text" class="form-control tbSelectbox" name="color_id[]">
                                                                 </span>
                                                             </td>
                                                             <td>
@@ -332,7 +352,7 @@
                                                                     <input type="text" class="form-control t1" name="free_item[]">
                                                                 </span>
                                                             </td>
-                                                            <td><span class="btn btn-danger btn-sm pull-right rowRemove"><i class="fa fa-trash"></i></span></td>
+                                                            <td><span class="btn btn-danger btn-secondery pull-right rowRemove"><i class="fa fa-trash"></i></span></td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -499,64 +519,64 @@ $('select').selectpicker();
         } 
         /*  */
         .switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
 
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+        .switch input { 
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
 
-input:checked + .slider {
-  background-color: #FF4C3B;
-}
+        input:checked + .slider {
+            background-color: #FF4C3B;
+        }
 
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
+        input:focus + .slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
 
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
+        input:checked + .slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
 
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
 
-.slider.round:before {
-  border-radius: 50%;
-}
+        .slider.round:before {
+            border-radius: 50%;
+        }
 </style>
 @endpush
 @push('js')
@@ -612,5 +632,19 @@ input:checked + .slider:before {
         $('[data-toggle="tooltip"]').tooltip({ trigger: 'click'});   
        }); 
 // }); 
+$(document).ready(function(){
+    $("select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".selectColor").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".selectColor").hide();
+            }
+        });
+    }).change();
+});
+
  </script>
 @endpush
