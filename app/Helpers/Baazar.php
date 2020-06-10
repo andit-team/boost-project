@@ -114,4 +114,9 @@ class Baazar
             }
         }
     }
+
+    public function short_text($text, $limit){
+        return strlen($text) > $limit ? substr($text,0,$limit).".." : $text;
+    }
+    
 }

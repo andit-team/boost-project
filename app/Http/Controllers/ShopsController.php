@@ -51,7 +51,7 @@ class ShopsController extends Controller
             $shop->update([
                 'name'              => $request->name, 
                 'phone'             => $request->phone,
-                'logo'              => Baazar::fileUpload($request,'logo','old_image','/uploads/shop_logo'),
+                'logo'              => Baazar::fileUpload($request,'logo','old_image','/uploads/shops/logos'),
                 'google_location'   => $request->google_location,
                 'banner'            => Baazar::fileUpload($request,'logo','old_image','/uploads/shop_banner'),
                 'email'             => $request->email,

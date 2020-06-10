@@ -56,5 +56,9 @@ Route::prefix('merchant')->group(function () {
     Route::post('dropzone/store', 'DropzoneController@ItemsController')->name('dropzone.store');
     Route::resource('/product','ItemsController');
     Route::resource('/inventory','InventoriesController');
+
+
+    Route::post('shop-logo-crop', 'MerchantController@shopLogoCrop')->name('shop-logo-crop');
+    Route::post('shop-banar-crop', 'MerchantController@shopBanarCrop')->name('shop-banar-crop');
     
 });

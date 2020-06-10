@@ -3,46 +3,60 @@
 @section('content')
 @push('css')
 <style>
+    .banar{
+        max-width: 100% !important;
+    }
+    /* @media (min-width: 576px)
+    .modal-dialog {
+        max-width: 100%;} */
     .imagestyle{
         width: 130px;
         border-radius:100%;
     }
-    #file-upload{
-        display: block;
-    }
     .uploadbtn{
         width: 200px;background: #ddd;float: right;text-align: center;
     }
-    .custom-file-upload {
-        display: inline-block;
-        padding: 9px 40px;
+    .banar-upload {
         cursor: pointer;
-        border-top: 0px;
+        background: #a5a0a0b5;
+        padding: 10px;
     }
 
-.shop-image-upload{
-    position: absolute;
-    left: 40px;
-}
- .btns {
-  /* position: absolute; */
-  /* top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background-color: white;
-  color:  #555 ;
-  font-size: 16px;
-  padding: 5px 8px;
-  border: none;
-  cursor: pointer;
-  border-radius: 15px;
-  text-align: center; */
+    .shop-image-upload{
+        position: absolute;
+        left: 80px;
+        background: #b5b2b2db;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        align-items: center;
+        padding: 4px;
+        color: #fff;
+    }
+    .vendor-profile .profile-left .profile-detail {
+        align-items: normal;
+    }
+
+    .loader {
+        border: 10px solid #f3f3f3;
+        border-top: 10px solid #3498db;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        animation: spin 2s linear infinite;
+        left: 114px;
+        top: 65px;
+        position: absolute;
+    }
+    .opacity5{
+        opacity: .5;
+    }
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* .modal-lg{
-width:772px;
-} */
 
 </style>
 
@@ -58,14 +72,14 @@ width:772px;
                 <div class="vendor-cover">
                     <div>
                         <div class="mt-0">                                           
-                            <img  id="outputs" src="{{asset('frontend')}}/assets/images/vendor/profile.jpg" alt="" class="bg-img lazyload blur-up">
-                            <label for="file-upload" class="custom-file-upload bg-warning"><i class="fa fa-camera" aria-hidden="true"> Edit Photo</i></label>
-                            <input id="file-upload" accept="image/*"  class ="d-none" type="file" name="logo" onchange="loadFile(event)"/>
+                            <img  id="banner-outputs" src="{{!empty($shopProfile->banner) ? asset($shopProfile->banner) : asset('frontend/assets/images/vendor/profile.jpg')}}" alt="" class="bg-img lazyload blur-up">
+                            <label for="banar-upload" class="banar-upload"><i class="fa fa-camera" aria-hidden="true"> Edit Banar</i></label>
+                            <input id="banar-upload" accept="image/*"  class ="d-none" type="file" name="logo"/>
                         </div>
                     </div>              
                 </div>
                 <!-- vendor cover end -->
-
+                
                 <!-- section start -->
                 <section class="vendor-profile pt-0">
                     <div class="container">
@@ -74,9 +88,10 @@ width:772px;
                                 <div class="profile-left">
                                     <div class="profile-image">
                                         <div>
-                                            <label for="file-upload" class="custom-file-upload shop-image-upload"><i class="fa fa-camera" aria-hidden="true"></i></label>
-                                            
-                                            <img src="{{!empty($shopProfile->logo) ? asset($shopProfile->logo) : asset('/uploads/shop_logo/shop-1.png')}}" alt="" class="img-fluid imagestyle">
+                                            <label for="shop-img-upload" class="custom-file-upload shop-image-upload"><i class="fa fa-camera" aria-hidden="true"></i></label>
+                                            <input id="shop-img-upload" accept="image/*"  class ="d-none" type="file" name="shop-logo"/>
+                                            <img id="shop-img" src="{{!empty($shopProfile->logo) ? asset($shopProfile->logo) : asset('/uploads/shops/logos/shop-1.png')}}" alt="" class="img-fluid imagestyle">
+                                            <div id="loader" class=""></div>
                                             <h3 class="mt-1">Fashion Store</h3>
                                             <div class="rating">
                                                 <i class="fa fa-star"></i>
@@ -96,7 +111,7 @@ width:772px;
                                                     @if(!empty($shopProfile->logo))                 
                                                     <img id="output"  class="imagestyle" src="{{ asset($shopProfile->logo) }}"/>
                                                     @else
-                                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/shop_logo/shop-1.png') }}" />
+                                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/shops/logos/shop-1.png') }}" />
                                                     @endif                                      
                                                         <label for="file-upload" class="custom-file-upload btns"><i class="fa fa-camera" aria-hidden="true"></i></label>
                                                         <input id="file-upload"  class = "d-none" type="file" name="logo" onchange="loadFile(event)"/>
@@ -108,8 +123,9 @@ width:772px;
                                         </div>
                                     </div> --}}
                                     
-                                    <div class="profile-detail">
-                                        <div>
+                                    <div class="profile-detail text-justify">
+                                        {{ Baazar::short_text(strip_tags($shopProfile->description),700) }}
+                                        {{-- <div>
                                             <p>Based in United States, Fashion store has been an Multikart member since May 15, 2017.
                                                 Fashion Store are engaged in all kinds of western clothing. In garment field we have
                                                 maintained 3 years exporting experience. company insist in the principle of "Customer
@@ -119,7 +135,7 @@ width:772px;
                                                 maintained 3 years exporting experience. company insist in the principle of "Customer
                                                 first, Quality uppermost"
                                             </p>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     
                                     
@@ -135,7 +151,8 @@ width:772px;
                                                 </ul>
                                             </div>
                                             <h6>if you have any query:</h6>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#facebook"> <i class="fa fa-edit"></i> Edit Your Profile</button>                                                                        
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-edit"></i> Edit Your Profile</button>
+                                            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#facebook"> <i class="fa fa-edit"></i> Edit Your Profile</button>                                                                         --}}
                                         </div>
                                     </div>
                                 </div>
@@ -154,8 +171,7 @@ width:772px;
                                         <div class="page-main-content">
                                             <div class="row">
                                                 <div class="col-xl-12">
-                                                    <div class="filter-main-btn"><span class="filter-btn btn btn-theme"><i
-                                                                class="fa fa-filter" aria-hidden="true"></i> Filter</span></div>
+                                                    <div class="filter-main-btn"><span class="filter-btn btn btn-theme"><i class="fa fa-filter" aria-hidden="true"></i> Filter</span></div>
                                                 </div>
                                             </div>
                                             <div class="collection-product-wrapper">
@@ -174,14 +190,10 @@ width:772px;
                                                                 </div>
                                                                 <div class="collection-grid-view">
                                                                     <ul>
-                                                                        <li><img src="{{asset('frontend')}}/assets/images/icon/2.png" alt=""
-                                                                                class="product-2-layout-view"></li>
-                                                                        <li><img src="{{asset('frontend')}}/assets/images/icon/3.png" alt=""
-                                                                                class="product-3-layout-view"></li>
-                                                                        <li><img src="{{asset('frontend')}}/assets/images/icon/4.png" alt=""
-                                                                                class="product-4-layout-view"></li>
-                                                                        <li><img src="{{asset('frontend')}}/assets/images/icon/6.png" alt=""
-                                                                                class="product-6-layout-view"></li>
+                                                                        <li><img src="{{asset('frontend')}}/assets/images/icon/2.png" alt="" class="product-2-layout-view"></li>
+                                                                        <li><img src="{{asset('frontend')}}/assets/images/icon/3.png" alt="" class="product-3-layout-view"></li>
+                                                                        <li><img src="{{asset('frontend')}}/assets/images/icon/4.png" alt="" class="product-4-layout-view"></li>
+                                                                        <li><img src="{{asset('frontend')}}/assets/images/icon/6.png" alt="" class="product-6-layout-view"></li>
                                                                     </ul>
                                                                 </div>
                                                                 <div class="product-page-per-view">
@@ -204,32 +216,25 @@ width:772px;
                                                 </div>
                                                 <div class="product-wrapper-grid">
                                                     <div class="row">
+
                                                         <div class="col-xl-3 col-md-6 col-grid-box">
                                                             <div class="product-box">
                                                                 <div class="img-wrapper">
                                                                     <div class="front">
-                                                                        <a href="#"><img src="{{asset('frontend')}}/assets/images/fashion/product/1.jpg"
-                                                                                class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                                                        <a href="#"><img src="{{asset('frontend')}}/assets/images/fashion/product/1.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                                                     </div>
                                                                     <div class="cart-info cart-wrap">
-                                                                        <button data-toggle="modal" data-target="#addtocart"
-                                                                            title="Add to cart"><i
-                                                                                class="ti-shopping-cart"></i></button> <a
-                                                                            href="javascript:void(0)" title="Add to Wishlist"><i
-                                                                                class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                                            data-toggle="modal" data-target="#quick-view"
-                                                                            title="Quick View"><i class="ti-search"
-                                                                                aria-hidden="true"></i></a> <a href="compare.html"
-                                                                            title="Compare"><i class="ti-reload"
-                                                                                aria-hidden="true"></i></a></div>
+                                                                        <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i class="ti-shopping-cart"></i></button> 
+                                                                        <a href="javascript:void(0)" title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="product-detail">
                                                                     <div>
-                                                                        <div class="rating"><i class="fa fa-star"></i> <i
-                                                                                class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                                                class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                                                                        <div class="rating">
+                                                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                                        </div>
                                                                         <a href="product-page(no-sidebar).html">
-                                                                            <h6>Slim Fit Cotton Shirt</h6>
+                                                                            <h6>Slim Fit Cotton Shirtssss</h6>
                                                                         </a>
                                                                         <p>Lorem Ipsum is simply dummy text of the printing and
                                                                             typesetting industry. Lorem Ipsum has been the industry's
@@ -246,279 +251,8 @@ width:772px;
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-xl-3 col-md-6 col-grid-box">
-                                                            <div class="product-box">
-                                                                <div class="img-wrapper">
-                                                                    <div class="front">
-                                                                        <a href="#"><img src="{{asset('frontend')}}/assets/images/pro/1-.jpg"
-                                                                                class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                                                    </div>
-                                                                    <div class="cart-info cart-wrap">
-                                                                        <button data-toggle="modal" data-target="#addtocart"
-                                                                            title="Add to cart"><i
-                                                                                class="ti-shopping-cart"></i></button> <a
-                                                                            href="javascript:void(0)" title="Add to Wishlist"><i
-                                                                                class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                                            data-toggle="modal" data-target="#quick-view"
-                                                                            title="Quick View"><i class="ti-search"
-                                                                                aria-hidden="true"></i></a> <a href="compare.html"
-                                                                            title="Compare"><i class="ti-reload"
-                                                                                aria-hidden="true"></i></a></div>
-                                                                </div>
-                                                                <div class="product-detail">
-                                                                    <div class="rating"><i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i></div><a
-                                                                        href="product-page(no-sidebar).html">
-                                                                        <h6>Slim Fit Cotton Shirt</h6>
-                                                                    </a>
-                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                                        industry. Lorem Ipsum has been the industry's standard dummy
-                                                                        text ever since the 1500s, when an unknown printer took a galley
-                                                                        of type and scrambled it to make a type specimen book</p>
-                                                                    <h4>$500.00</h4>
-                                                                    <ul class="color-variant">
-                                                                        <li class="bg-light0"></li>
-                                                                        <li class="bg-light1"></li>
-                                                                        <li class="bg-light2"></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-3 col-md-6 col-grid-box">
-                                                            <div class="product-box">
-                                                                <div class="img-wrapper">
-                                                                    <div class="front">
-                                                                        <a href="#"><img src="{{asset('frontend')}}/assets/images/fashion/pro/04.jpg"
-                                                                                class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                                                    </div>
-                                                                    <div class="cart-info cart-wrap">
-                                                                        <button data-toggle="modal" data-target="#addtocart"
-                                                                            title="Add to cart"><i
-                                                                                class="ti-shopping-cart"></i></button> <a
-                                                                            href="javascript:void(0)" title="Add to Wishlist"><i
-                                                                                class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                                            data-toggle="modal" data-target="#quick-view"
-                                                                            title="Quick View"><i class="ti-search"
-                                                                                aria-hidden="true"></i></a> <a href="compare.html"
-                                                                            title="Compare"><i class="ti-reload"
-                                                                                aria-hidden="true"></i></a></div>
-                                                                </div>
-                                                                <div class="product-detail">
-                                                                    <div class="rating"><i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i></div><a
-                                                                        href="product-page(no-sidebar).html">
-                                                                        <h6>Slim Fit Cotton Shirt</h6>
-                                                                    </a>
-                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                                        industry. Lorem Ipsum has been the industry's standard dummy
-                                                                        text ever since the 1500s, when an unknown printer took a galley
-                                                                        of type and scrambled it to make a type specimen book</p>
-                                                                    <h4>$500.00</h4>
-                                                                    <ul class="color-variant">
-                                                                        <li class="bg-light0"></li>
-                                                                        <li class="bg-light1"></li>
-                                                                        <li class="bg-light2"></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-3 col-md-6 col-grid-box">
-                                                            <div class="product-box">
-                                                                <div class="img-wrapper">
-                                                                    <div class="front">
-                                                                        <a href="#"><img src="{{asset('frontend')}}/assets/images/fashion/product/4.jpg"
-                                                                                class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                                                    </div>
-                                                                    <div class="cart-info cart-wrap">
-                                                                        <button data-toggle="modal" data-target="#addtocart"
-                                                                            title="Add to cart"><i
-                                                                                class="ti-shopping-cart"></i></button> <a
-                                                                            href="javascript:void(0)" title="Add to Wishlist"><i
-                                                                                class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                                            data-toggle="modal" data-target="#quick-view"
-                                                                            title="Quick View"><i class="ti-search"
-                                                                                aria-hidden="true"></i></a> <a href="compare.html"
-                                                                            title="Compare"><i class="ti-reload"
-                                                                                aria-hidden="true"></i></a></div>
-                                                                </div>
-                                                                <div class="product-detail">
-                                                                    <div class="rating"><i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i></div><a
-                                                                        href="product-page(no-sidebar).html">
-                                                                        <h6>Slim Fit Cotton Shirt</h6>
-                                                                    </a>
-                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                                        industry. Lorem Ipsum has been the industry's standard dummy
-                                                                        text ever since the 1500s, when an unknown printer took a galley
-                                                                        of type and scrambled it to make a type specimen book</p>
-                                                                    <h4>$500.00</h4>
-                                                                    <ul class="color-variant">
-                                                                        <li class="bg-light0"></li>
-                                                                        <li class="bg-light1"></li>
-                                                                        <li class="bg-light2"></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-3 col-md-6 col-grid-box">
-                                                            <div class="product-box">
-                                                                <div class="img-wrapper">
-                                                                    <div class="front">
-                                                                        <a href="#"><img src="{{asset('frontend')}}/assets/images/fashion/product/25.jpg"
-                                                                                class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                                                    </div>
-                                                                    <div class="cart-info cart-wrap">
-                                                                        <button data-toggle="modal" data-target="#addtocart"
-                                                                            title="Add to cart"><i
-                                                                                class="ti-shopping-cart"></i></button> <a
-                                                                            href="javascript:void(0)" title="Add to Wishlist"><i
-                                                                                class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                                            data-toggle="modal" data-target="#quick-view"
-                                                                            title="Quick View"><i class="ti-search"
-                                                                                aria-hidden="true"></i></a> <a href="compare.html"
-                                                                            title="Compare"><i class="ti-reload"
-                                                                                aria-hidden="true"></i></a></div>
-                                                                </div>
-                                                                <div class="product-detail">
-                                                                    <div class="rating"><i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i></div><a
-                                                                        href="product-page(no-sidebar).html">
-                                                                        <h6>Slim Fit Cotton Shirt</h6>
-                                                                    </a>
-                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                                        industry. Lorem Ipsum has been the industry's standard dummy
-                                                                        text ever since the 1500s, when an unknown printer took a galley
-                                                                        of type and scrambled it to make a type specimen book</p>
-                                                                    <h4>$500.00</h4>
-                                                                    <ul class="color-variant">
-                                                                        <li class="bg-light0"></li>
-                                                                        <li class="bg-light1"></li>
-                                                                        <li class="bg-light2"></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-3 col-md-6 col-grid-box">
-                                                            <div class="product-box">
-                                                                <div class="img-wrapper">
-                                                                    <div class="front">
-                                                                        <a href="#"><img src="{{asset('frontend')}}/assets/images/beauty/pro/3.jpg"
-                                                                                class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                                                    </div>
-                                                                    <div class="cart-info cart-wrap">
-                                                                        <button data-toggle="modal" data-target="#addtocart"
-                                                                            title="Add to cart"><i
-                                                                                class="ti-shopping-cart"></i></button> <a
-                                                                            href="javascript:void(0)" title="Add to Wishlist"><i
-                                                                                class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                                            data-toggle="modal" data-target="#quick-view"
-                                                                            title="Quick View"><i class="ti-search"
-                                                                                aria-hidden="true"></i></a> <a href="compare.html"
-                                                                            title="Compare"><i class="ti-reload"
-                                                                                aria-hidden="true"></i></a></div>
-                                                                </div>
-                                                                <div class="product-detail">
-                                                                    <div class="rating"><i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i></div><a
-                                                                        href="product-page(no-sidebar).html">
-                                                                        <h6>Slim Fit Cotton Shirt</h6>
-                                                                    </a>
-                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                                        industry. Lorem Ipsum has been the industry's standard dummy
-                                                                        text ever since the 1500s, when an unknown printer took a galley
-                                                                        of type and scrambled it to make a type specimen book</p>
-                                                                    <h4>$500.00</h4>
-                                                                    <ul class="color-variant">
-                                                                        <li class="bg-light0"></li>
-                                                                        <li class="bg-light1"></li>
-                                                                        <li class="bg-light2"></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-3 col-md-6 col-grid-box">
-                                                            <div class="product-box">
-                                                                <div class="img-wrapper">
-                                                                    <div class="front">
-                                                                        <a href="#"><img src="{{asset('frontend')}}/assets/images/fashion/product/44.jpg"
-                                                                                class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                                                    </div>
-                                                                    <div class="cart-info cart-wrap">
-                                                                        <button data-toggle="modal" data-target="#addtocart"
-                                                                            title="Add to cart"><i
-                                                                                class="ti-shopping-cart"></i></button> <a
-                                                                            href="javascript:void(0)" title="Add to Wishlist"><i
-                                                                                class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                                            data-toggle="modal" data-target="#quick-view"
-                                                                            title="Quick View"><i class="ti-search"
-                                                                                aria-hidden="true"></i></a> <a href="compare.html"
-                                                                            title="Compare"><i class="ti-reload"
-                                                                                aria-hidden="true"></i></a></div>
-                                                                </div>
-                                                                <div class="product-detail">
-                                                                    <div class="rating"><i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i></div><a
-                                                                        href="product-page(no-sidebar).html">
-                                                                        <h6>Slim Fit Cotton Shirt</h6>
-                                                                    </a>
-                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                                        industry. Lorem Ipsum has been the industry's standard dummy
-                                                                        text ever since the 1500s, when an unknown printer took a galley
-                                                                        of type and scrambled it to make a type specimen book</p>
-                                                                    <h4>$500.00</h4>
-                                                                    <ul class="color-variant">
-                                                                        <li class="bg-light0"></li>
-                                                                        <li class="bg-light1"></li>
-                                                                        <li class="bg-light2"></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-3 col-md-6 col-grid-box">
-                                                            <div class="product-box">
-                                                                <div class="img-wrapper">
-                                                                    <div class="front">
-                                                                        <a href="#"><img src="{{asset('frontend')}}/assets/images/beauty/pro/1.jpg"
-                                                                                class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                                                    </div>
-                                                                    <div class="cart-info cart-wrap">
-                                                                        <button data-toggle="modal" data-target="#addtocart"
-                                                                            title="Add to cart"><i class="ti-shopping-cart"></i>
-                                                                        </button> <a href="javascript:void(0)"
-                                                                            title="Add to Wishlist"><i class="ti-heart"
-                                                                                aria-hidden="true"></i></a> <a href="#"
-                                                                            data-toggle="modal" data-target="#quick-view"
-                                                                            title="Quick View"><i class="ti-search"
-                                                                                aria-hidden="true"></i></a> <a href="compare.html"
-                                                                            title="Compare"><i class="ti-reload"
-                                                                                aria-hidden="true"></i></a></div>
-                                                                </div>
-                                                                <div class="product-detail">
-                                                                    <div class="rating"><i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                                            class="fa fa-star"></i> <i class="fa fa-star"></i></div><a
-                                                                        href="product-page(no-sidebar).html">
-                                                                        <h6>Slim Fit Cotton Shirt</h6>
-                                                                    </a>
-                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                                        industry. Lorem Ipsum has been the industry's standard dummy
-                                                                        text ever since the 1500s, when an unknown printer took a galley
-                                                                        of type and scrambled it to make a type specimen book</p>
-                                                                    <h4>$500.00</h4>
-                                                                    <ul class="color-variant">
-                                                                        <li class="bg-light0"></li>
-                                                                        <li class="bg-light1"></li>
-                                                                        <li class="bg-light2"></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+
+                                                       
                                                     </div>
                                                 </div>
                                                 <div class="product-pagination mb-0">
@@ -527,20 +261,11 @@ width:772px;
                                                             <div class="col-xl-6 col-md-6 col-sm-12">
                                                                 <nav aria-label="Page navigation">
                                                                     <ul class="pagination">
-                                                                        <li class="page-item"><a class="page-link" href="#"
-                                                                                aria-label="Previous"><span aria-hidden="true"><i
-                                                                                        class="fa fa-chevron-left"
-                                                                                        aria-hidden="true"></i></span> <span
-                                                                                    class="sr-only">Previous</span></a></li>
-                                                                        <li class="page-item active"><a class="page-link" href="#">1</a>
-                                                                        </li>
+                                                                        <li class="page-item"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-chevron-left" aria-hidden="true"></i></span> <span class="sr-only">Previous</span></a></li>
+                                                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
                                                                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                                                                         <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                                        <li class="page-item"><a class="page-link" href="#"
-                                                                                aria-label="Next"><span aria-hidden="true"><i
-                                                                                        class="fa fa-chevron-right"
-                                                                                        aria-hidden="true"></i></span> <span
-                                                                                    class="sr-only">Next</span></a></li>
+                                                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span> <span class="sr-only">Next</span></a></li>
                                                                     </ul>
                                                                 </nav>
                                                             </div>
@@ -564,7 +289,6 @@ width:772px;
         </div>
     </div>
 </section>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -660,28 +384,196 @@ width:772px;
         </div>
     </div> --}}
 
+    <div class="modal" id="shop-logo-modal" tabindex="-1" role="dialog" aria-labelledby="shop-logo-modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Before upload resize your picture.</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="main-cropper"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary p-2" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary p-2" id="upload-image">Crop & Save</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal" id="banar-modal" tabindex="-1" role="dialog" aria-labelledby="banar-modalTitle" aria-hidden="true">
+        <div class="modal-dialog banar modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Before upload resize your picture.</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="main-cropper-banar"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary p-2" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary p-2" id="upload-image-banar">Crop & Save</button>
+            </div>
+          </div>
+        </div>
+    </div>
+      
+
 @endsection
+
+@push('css')
+  <link rel="stylesheet" href="https://foliotek.github.io/Croppie/croppie.css">
+  <style>
+    input[type="file"] {
+      display: none;
+    }
+    #mainNav {
+      height: 70px;
+    }
+    #mainNav .navbar-brand img, .footer-widget.footer-about a > img {
+      height: 34px;
+    }
+  </style>
+@endpush
+
 @push('js')
+<script src="https://foliotek.github.io/Croppie/croppie.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function() {
      $('.summernote').summernote({
            height: 200,
       });
    });
- </script>
-<script>
-    var loadFile = function(event) {
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-    };
-</script>
 
-<script>
-    var loadImage = function(event) {
-        var outputs = document.getElementById('outputs');
-        outputs.src = URL.createObjectURL(event.target.files[0]);
+
+
+
+
+function readFileLogo(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $("#main-cropper").croppie("bind", {
+        url: e.target.result
+      });
+      $('#shop-logo-modal').modal('show');
     };
-</script>
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+
+$("#shop-img-upload").on("change", function() {
+  readFileLogo(this);
+});
+var basic = $("#main-cropper").croppie({
+    viewport: { width: 250, height: 250 },
+    boundary: { width: 300, height: 300 },
+    showZoomer: true,
+    enableExif: true
+});
+
+
+
+function readFileBanar(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $("#main-cropper-banar").croppie("bind", {
+        url: e.target.result
+      });
+      $('#banar-modal').modal('show');
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#banar-upload").on("change", function() {
+  readFileBanar(this);
+});
+var basic = $("#main-cropper-banar").croppie({
+    viewport: { width: 1370, height: 450 },
+    boundary: { width: 1400, height: 500 },
+    showZoomer: true,
+    enableExif: true
+});
+
+
+$("#upload-image").click(function() {
+  $("#main-cropper")
+    .croppie("result", {
+      type: "canvas",
+      size: "viewport",
+    }).then(function(resp) {
+      $('#shop-logo-modal').modal('hide');
+      $("#result").attr("src", resp);
+    //   console.log(resp);
+      var _token = "{{csrf_token()}}";
+        $.ajax({
+          url: "{{route('shop-logo-crop')}}",
+          type: "POST",
+          dataType:"json",
+          data: {"image":resp,_token:_token,'shop':{{$shopProfile->id}}},
+          beforeSend:function(){
+            $('#loader').addClass('loader');
+            $('#shop-img').addClass('opacity5');
+          },
+          success: function (data) {
+              $('#shop-img').attr('src',resp);
+              $('#shop-img-sidebar').attr('src',resp);
+            // console.log(data);
+            $('#loader').removeClass('loader');
+            $('#shop-img').removeClass('opacity5');
+            $('#shop-img-sidebar').removeClass('opacity5');
+          }
+        });
+
+    });
+});
+$("#upload-image-banar").click(function() {
+  $("#main-cropper-banar")
+    .croppie("result", {
+      type: "canvas",
+      size: "viewport",
+    }).then(function(resp) {
+      $('#banar-modal').modal('hide');
+      $("#result").attr("src", resp);
+      console.log(resp);
+      var _token = "{{csrf_token()}}";
+        $.ajax({
+          url: "{{route('shop-banar-crop')}}",
+          type: "POST",
+          dataType:"json",
+          data: {"image":resp,_token:_token,'shop':{{$shopProfile->id}}},
+          beforeSend:function(){
+            $('.vendor-cover div.mt-0.bg-size.blur-up.lazyloaded').addClass('opacity5');
+            $('#banner-outputs').addClass('opacity5');
+          },
+          success: function (data) {
+            $('.vendor-cover div.mt-0.bg-size.blur-up.lazyloaded').removeClass('opacity5');
+            $('.vendor-cover div.mt-0.bg-size.blur-up.lazyloaded').attr('style',"background-image: url("+resp+"); background-size: cover; background-position: center center; display: block");
+            //   $('#banner-outputs').attr('src',resp);
+            // $('#banner-outputs').removeClass('opacity5');
+            
+          }
+        });
+
+    });
+});
+
+
+
+
+   
+
+ </script>
 
 <script>
    $(document).ready(function(){

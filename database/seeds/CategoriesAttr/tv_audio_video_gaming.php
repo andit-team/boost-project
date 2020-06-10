@@ -489,7 +489,7 @@ $tv_audio_video_gaming = [
             ],
             ['Video'],
             ['Televission'],
-            ['Gadgets'],
+            ['Electronic Gadgets'],
             ['Wearable Technology'],
             ['Console Gaming'],
             ['TV Accessories'],

@@ -2,11 +2,12 @@
     <div class="dashboard-sidebar">
         <div class="profile-top">
             <div class="profile-image">
-                @if(!empty($shopProfile->logo))
+                <img id="shop-img-sidebar" src="{{!empty($shopProfile->logo) ? asset($shopProfile->logo) : asset('/uploads/shops/logos/shop-1.png')}}" alt="" class="img-fluid imagestyle">
+                {{-- @if(!empty($shopProfile->logo))
                 <img  src="{{ asset($shopProfile->logo) }}" alt="" class="img-fluid">
                 @else
-                <img  src="{{ asset('/uploads/shop_logo/shop-1.png') }}" alt="" class="img-fluid">
-                @endif
+                <img  src="{{ asset('/uploads/shops/logos/shop-1.png') }}" alt="" class="img-fluid">
+                @endif --}}
             </div>
             <div class="profile-detail">
                 <h5><a href="{{ url('merchant/shop') }}">{{ $shopProfile->name }}</a></h5>
