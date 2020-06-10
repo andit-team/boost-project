@@ -11,12 +11,14 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run(){
 		include('CategoriesAttr/Mobiles_Tablets.php');
-		include('CategoriesAttr/Computers_Laptop.php');
+    include('CategoriesAttr/Computers_Laptop.php');
+    include('CategoriesAttr/TV_Audio.php');
 
 		// dd($mobiles_tablets);
 
     	\Baazar::insertRecords($mobiles_tablets);
-    	\Baazar::insertRecords($Computers_Laptop);
+      \Baazar::insertRecords($Computers_Laptop);
+      \Baazar::insertRecords($tv_audio_video_gaming);
    	}
 
   }
