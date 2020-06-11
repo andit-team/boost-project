@@ -46,10 +46,10 @@
                                 <td>{{  \Illuminate\Support\Str::limit($row->description) }}</td>
                                 <td class="d-flex justify-content-between">
                                     <ul>
-                                        <li><a href="#" id="{{ url('/andbaazaradmin/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
+                                        <li><a href="#" id="{{ url('/andbaazaradmin/products/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
                                     
                                         <li>
-                                            <form action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
+                                            <form action="{{ url('/andbaazaradmin/products/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
@@ -67,7 +67,7 @@
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/tag/'.$row->slug) }}" method="post" enctype="multipart/form-data" id="validateForm">
+                                            <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/products/tag/'.$row->slug) }}" method="post" enctype="multipart/form-data" id="validateForm">
                                                 @csrf
                                                 @method('put')
                                                 <div class="form">
