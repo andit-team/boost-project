@@ -43,8 +43,8 @@ Route::prefix('merchant')->group(function () {
     // Route::resource('/seller','SellersController'); 
     Route::post('/seller/approvement/{id}','SellersController@approvement');
     Route::put('/seller/rejected/{id}','SellersController@rejected');
-    Route::get('/seller','SellersController@create');
-    Route::post('/seller','SellersController@store')->name('sellerUpdate');
+    Route::get('/profile','SellersController@create');
+    Route::post('/profile','SellersController@store')->name('sellerUpdate');
     Route::get('/shop','ShopsController@create');
     Route::post('/shop','ShopsController@store')->name('shopUpdate');
     // Route::get('/shop','ShopsController@create');

@@ -2,7 +2,7 @@
     <div class="dashboard-sidebar">
         <div class="profile-top">
             <div class="profile-image">
-                <img id="shop-img-sidebar" src="{{!empty($shopProfile->logo) ? asset($shopProfile->logo) : asset('/uploads/shops/logos/shop-1.png')}}" alt="" class="img-fluid imagestyle">
+                <img id="shop-img-sidebar" src="{{!empty($shopProfile->logo) ? asset($shopProfile->logo) : asset('/uploads/shops/logos/shop-1.png')}}" alt="" class="img-fluid">
                 {{-- @if(!empty($shopProfile->logo))
                 <img  src="{{ asset($shopProfile->logo) }}" alt="" class="img-fluid">
                 @else
@@ -27,7 +27,7 @@
                 
                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">Orders</a> </li>
                
-                <li class="nav-item"><a  class="nav-link {{$active == 'profile' ? 'active' : ''}}" href="{{ url('merchant/seller/') }}">Profile</a></li>
+                <li class="nav-item"><a  class="nav-link {{$active == 'profile' ? 'active' : ''}}" href="{{ url('merchant/profile/') }}">Profile</a></li>
                 
                 <li class="nav-item"><a  class="nav-link {{$active == 'shop' ? 'active' : ''}}" href="{{ url('merchant/shop') }}">shop</a>
                 </li>
