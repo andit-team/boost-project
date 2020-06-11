@@ -51,9 +51,9 @@ class ShopsController extends Controller
             $shop->update([
                 'name'              => $request->name, 
                 'phone'             => $request->phone,
-                'logo'              => Baazar::fileUpload($request,'logo','old_image','/uploads/shops/logos'),
-                'google_location'   => $request->google_location,
-                'banner'            => Baazar::fileUpload($request,'logo','old_image','/uploads/shop_banner'),
+                // 'logo'              => Baazar::fileUpload($request,'logo','old_image','/uploads/shops/logos'),
+                // 'google_location'   => $request->google_location,
+                // 'banner'            => Baazar::fileUpload($request,'logo','old_image','/uploads/shop_banner'),
                 'email'             => $request->email,
                 'web'               => $request->web,
                 'facebook'          => $request->facebook,
@@ -118,7 +118,7 @@ class ShopsController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'phone' => 'required', 
-            'email' => 'required',  
+            'email' => 'required|email',  
             'description' => 'required',
         ]);
     }

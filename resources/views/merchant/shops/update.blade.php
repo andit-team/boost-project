@@ -13,9 +13,7 @@
         width: 130px;
         border-radius:100%;
     }
-    .uploadbtn{
-        width: 200px;background: #ddd;float: right;text-align: center;
-    }
+
     .banar-upload {
         cursor: pointer;
         background: #a5a0a0b5;
@@ -103,39 +101,9 @@
                                             <h6>750 followers | 10 review</h6>
                                         </div>
                                     </div>
-
-                                    {{-- <div class="profile-image">
-                                        <div>                                    
-                                            <div class="mt-0">   
-                                                <form class="theme-form"  enctype="multipart/form-data" id="upload-form">                                        
-                                                    @if(!empty($shopProfile->logo))                 
-                                                    <img id="output"  class="imagestyle" src="{{ asset($shopProfile->logo) }}"/>
-                                                    @else
-                                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/shops/logos/shop-1.png') }}" />
-                                                    @endif                                      
-                                                        <label for="file-upload" class="custom-file-upload btns"><i class="fa fa-camera" aria-hidden="true"></i></label>
-                                                        <input id="file-upload"  class = "d-none" type="file" name="logo" onchange="loadFile(event)"/>
-                                                        <input type="hidden" value="{{$shopProfile->logo}}" name="old_image"> 
-                                                        <button type="submit" id = "upload"class="btn btn-primary mt-2"> Upload </button>                                              
-                                                </form>
-                                                <span id ="uploaded-image"></span>                                                                       
-                                            </div>
-                                        </div>
-                                    </div> --}}
                                     
                                     <div class="profile-detail text-justify">
                                         {{ Baazar::short_text(strip_tags($shopProfile->description),700) }}
-                                        {{-- <div>
-                                            <p>Based in United States, Fashion store has been an Multikart member since May 15, 2017.
-                                                Fashion Store are engaged in all kinds of western clothing. In garment field we have
-                                                maintained 3 years exporting experience. company insist in the principle of "Customer
-                                                first, Quality uppermost".Based in United States, Fashion store has been an </p>
-                                            <p>Based in United States, Fashion store has been an Multikart member since May 15, 2017.
-                                                Fashion Store are engaged in all kinds of western clothing. In garment field we have
-                                                maintained 3 years exporting experience. company insist in the principle of "Customer
-                                                first, Quality uppermost"
-                                            </p>
-                                        </div> --}}
                                     </div>
                                     
                                     
@@ -151,7 +119,10 @@
                                                 </ul>
                                             </div>
                                             <h6>if you have any query:</h6>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-edit"></i> Edit Your Profile</button>
+                                            <div class="d-flex">
+                                                <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-edit"></i> Edit</button>
+                                                <a href="{{url('shops/'.$shopProfile->slug)}}" target="_blank" type="button" class="btn btn-info m-1"><i class="fa fa-eye"></i> View</a>
+                                            </div>
                                             {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#facebook"> <i class="fa fa-edit"></i> Edit Your Profile</button>                                                                         --}}
                                         </div>
                                     </div>
@@ -290,6 +261,8 @@
     </div>
 </section>
 
+
+{{-- Shop Update Modal--}}
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
