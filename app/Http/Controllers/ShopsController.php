@@ -60,7 +60,8 @@ class ShopsController extends Controller
                 'instagram'         => $request->instagram,
                 'twitter'           => $request->twitter,    
                 'youtube'           => $request->youtube,
-                'description'       => $request->description, 
+                'description'       => $request->description,
+                'bdesc'             => $request->bdesc,
                 'updated_at'        => now(),
             ]);
        
@@ -119,7 +120,7 @@ class ShopsController extends Controller
             'name' => 'required',
             'phone' => 'required', 
             'email' => 'required|email',  
-            'description' => 'required',
+            'description' => '',
         ]);
     }
 }

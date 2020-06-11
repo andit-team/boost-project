@@ -20,21 +20,20 @@
                 <li class="nav-item {{$active == 'dashboard' ? 'active' : ''}}"><a  class="nav-link  {{$active == 'dashboard' ? 'active' : ''}}" href="{{ url('merchant/dashboard') }}">dashboard</a></li>
                 <!-- <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a></li>                             -->
 
-                <li class="nav-item"><a  class="nav-link {{$active == 'product' ? 'active' : ''}}" href="{{ url('merchant/product') }}">All Products</a>
+                <li class="nav-item"><a  class="nav-link {{$active == 'product' ? 'active' : ''}}" href="{{ url('merchant/product') }}">All Products</a></li>
+                
+                <li class="nav-item"><a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventory') }}">All Inventory</a></li>
+                
+                
+                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">Orders</a> </li>
+               
+                <li class="nav-item"><a  class="nav-link {{$active == 'profile' ? 'active' : ''}}" href="{{ url('merchant/seller/') }}">Profile</a></li>
+                
+                <li class="nav-item"><a  class="nav-link {{$active == 'shop' ? 'active' : ''}}" href="{{ url('merchant/shop') }}">shop</a>
                 </li>
-                <li class="nav-item"><a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventory') }}">All Inventory</a>
-                </li>
-                </li>
-                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">Orders</a>
-                </li>
-                <li class="nav-item"><a  class="nav-link {{$active == 'profile' ? 'active' : ''}}" href="{{ url('merchant/seller/') }}">Profile</a>
-                </li>
-                {{-- <li class="nav-item"><a  class="nav-link {{$active == 'shop' ? 'active' : ''}}" href="{{ url('merchant/shop') }}">shop</a>
-                </li> --}}
-                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a>
-                </li> 
-                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="#">logout</a>
-                </li>
+                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a></li> 
+                
+                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="#">logout</a> </li>           
             </ul>
         </div>
         <div id="map" class="mt-2"></div>
