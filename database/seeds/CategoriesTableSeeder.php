@@ -11,8 +11,8 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run(){
 		include('CategoriesAttr/Mobiles_Tablets.php');
-		include('CategoriesAttr/Computers_Laptop.php');
-		include('CategoriesAttr/tv_audio_video_gaming.php');
+    include('CategoriesAttr/Computers_Laptop.php');
+    include('CategoriesAttr/TV_Audio.php');
 
 		// dd($mobiles_tablets);
 

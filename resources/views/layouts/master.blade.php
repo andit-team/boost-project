@@ -108,7 +108,7 @@
                                     <li class=""><a href="{{ url('profile/shipping') }}" data-lng="es">My Shippin Address</a></li>
                                     <li class=""><a href="{{ url('profile/billing') }}" data-lng="es">My Billing Address</a></li>
                                     <li class=""><a href="{{ url('profile/card') }}" data-lng="es">My Card</a></li>
-                                    <li><a href="{{url('logout')}}" data-lng="es">Logout</a></li>
+                                    {{-- <li><a href="{{url('logout')}}" data-lng="es">Logout</a></li> --}}
                                     @else
                                     <li><a href="{{url('login')}}" data-lng="en">SIGN IN</a></li>
                                     <li><a href="{{url('register')}}" data-lng="en">SIGN UP</a></li>

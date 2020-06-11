@@ -138,6 +138,40 @@ $mobiles_tablets = [
                     ],
                 ],
             ],
+
+            ['Landline Phones'],
+            [
+                'Tablet Accessories',
+                'child' =>[              
+                    ['Stylus Pens'],
+                    ['Cases & Covers'],
+                ]
+            ],
+            [
+                'Mobile Accessories',
+                'child' =>[
+                    ['Wall Chargers'],
+                    ['Wireless Chargers'],
+                    ['Selfie Sticks'],
+                    ['Phone Camera Flash Lights'],
+                    ['Docks & Stands'],
+                    ['Car Chargers'],
+                    ['Cables & Converters'],
+                    ['Car Mounts'],
+                    ['Phone Cases'],
+                    ['Screen Protectors'],
+                    [
+                        'Parts & Tools',
+                        'child' =>[
+                            ['Replacement Parts'],
+                            ['SIM Tools'],
+                        ],
+                    ],
+                    ['Fashion Accessories'],
+                    ['Phone Batteries'],
+                    ['Power Banks'],
+                ]                              
+            ],
         ],
     ],
 ];
