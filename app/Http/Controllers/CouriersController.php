@@ -27,7 +27,7 @@ class CouriersController extends Controller
      */
     public function create()
     {
-        return view('admin.couriers.create');
+        // 
     }
 
     /**
@@ -59,9 +59,9 @@ class CouriersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Courier $courier)
+    public function show($id)
     {
-        return view('admin.couriers.show',compact('courier'));
+        // 
     }
 
     /**
@@ -93,7 +93,7 @@ class CouriersController extends Controller
         ];
 
         $courier->update($data);
-        Session::flash('success', 'Courier Updated Successfully!');
+        Session::flash('warning', 'Courier Updated Successfully!');
         return redirect('andbaazaradmin/courier');
     }
 
@@ -106,7 +106,7 @@ class CouriersController extends Controller
     public function destroy(Courier $courier)
     {
         $courier->delete();
-        Session::flash('success', 'Courier Deleted Successfully!');
+        Session::flash('error', 'Courier Deleted Successfully!');
         return redirect('andbaazaradmin/courier');
     }
 

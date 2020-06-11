@@ -29,7 +29,7 @@ class CurrenciesController extends Controller
      */
     public function create()
     {
-        return view('admin.currencies.create');
+        // 
     }
 
     /**
@@ -63,9 +63,9 @@ class CurrenciesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Currency $currency)
+    public function show($id)
     {
-       return view('admin.currencies.show',compact('currency'));
+    //    
 
     }
 
@@ -100,7 +100,7 @@ class CurrenciesController extends Controller
 
         $currency->update($data);
 
-        Session()->flash('success', 'Currency Updated Successfully!');
+        Session()->flash('warning', 'Currency Updated Successfully!');
         return redirect('andbaazaradmin/currency');
     }
 
@@ -115,7 +115,7 @@ class CurrenciesController extends Controller
         $currency->delete();
 
        
-        Session()->flash('warning', 'Currency Deleted Successfully!');
+        Session()->flash('error', 'Currency Deleted Successfully!');
         return redirect('andbaazaradmin/currency');
     }
 

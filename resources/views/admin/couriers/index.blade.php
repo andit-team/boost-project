@@ -15,11 +15,11 @@
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
- Currier
+  Courier
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">Currier</li>
+      <li class="breadcrumb-item active" aria-current="page">Courier</li>
   @endslot
 @endcomponent
     <div class="container-fluid">
@@ -27,7 +27,7 @@
             <div class="col-sm-7">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Manage Currier</h5>
+                        <h5>Manage Courier</h5>
                     </div>
                     <div class="card-body">
                         <table class="table table-borderd" id="dataTableNoPagingDesc">
@@ -64,7 +64,7 @@
                                 <div class="modal-dialog modal-lg" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title f-w-600" id="exampleModalLabel">Edit Currier</h5>
+                                            <h5 class="modal-title f-w-600" id="exampleModalLabel">Edit Courier</h5>
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                         </div>
 
@@ -105,7 +105,7 @@
             <div class="col-sm-5">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Create Currier</h5>
+                        <h5>Create Courier</h5>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('courier.store') }}" method="post" class="form" id="validateForm">
