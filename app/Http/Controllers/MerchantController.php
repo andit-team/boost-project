@@ -141,9 +141,7 @@ class MerchantController extends Controller{
       
 
         $sellerId    = Seller::where('slug',$request->slug)->first();
-
-        
-       
+ 
             $sellerId->update([
                 'first_name'         => $sellerId->first_name,
                 'last_name'          => $sellerId->last_name,
@@ -172,7 +170,7 @@ class MerchantController extends Controller{
         return view('auth.merchant.shopRegistration',compact('seller'));
     }
 
-    public function shopRegistrationStore(Request $request){
+    public function shopRegistrationStore(Request $request,Shop $shop){
         // dd($request->all());
         $request->validate([
             'name'       => 'required', 
@@ -182,10 +180,10 @@ class MerchantController extends Controller{
             'email'      => 'required|unique:shops,email',
         ]);
         $sellerId = Seller::where('slug',$request->slug)->first();
-
+        $slug = Baazar::getUniqueSlug($shop,$request->name);
         $shope = [
             'name'      => $request->name,
-            'slug'      => $request->slug,
+            'slug'      => $slug,
             'phone'     => $request->phone,
             'email'     => $request->email,
             'web'       => $request->web,

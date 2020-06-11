@@ -31,6 +31,7 @@ class CreateShopsTable extends Migration
             $table->string('email')->nullable();
             $table->string('web')->nullable();
             $table->text('description')->nullable();
+            $table->text('bdesc')->nullable();
             $table->unsignedInteger('timezone_id')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('seller_id');
