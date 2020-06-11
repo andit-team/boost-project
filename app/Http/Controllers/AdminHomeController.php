@@ -10,7 +10,7 @@ class AdminHomeController extends Controller{
         if (Sentinel::check())
 			return view('admin.dashboard');
 		else
-			return redirect('andbaazaradmin/login')->with('error','Invalid email or password');
+			return redirect('andbaazar/login')->with('error','Invalid email or password');
     }
     
 }

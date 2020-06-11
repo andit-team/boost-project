@@ -139,7 +139,8 @@
                             <li><a href="#"><i data-feather="mail"></i>Inbox</a></li>
                             <li><a href="#"><i data-feather="lock"></i>Lock Screen</a></li>
                             <li><a href="#"><i data-feather="settings"></i>Settings</a></li>
-                            <li><a href="#"><i data-feather="log-out"></i>Logout</a></li>
+                            <li><a href="{{url('logout')}}"><i data-feather="log-out"></i>Logout</a></li>
+                            {{-- <li><a href="{{url('logout')}}" data-lng="es">Logout</a></li> --}}
                         </ul>
                     </li>
                 </ul>

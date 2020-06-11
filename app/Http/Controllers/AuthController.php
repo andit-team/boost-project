@@ -30,11 +30,11 @@ class AuthController extends Controller{
 		if($user)
 			return redirect('andbaazaradmin/dashboard');
 		else
-			return redirect('login')->with('error', 'Invalid email or password');
+			return redirect('andbaazaradmin/login')->with('error', 'Invalid email or password');
 	}
 
 	public function logout(){
 		Sentinel::logout(null, true);
-		return redirect('/login');
+		return redirect('/');
 	}
 }
