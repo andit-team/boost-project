@@ -29,8 +29,7 @@ class PromotionPlansController extends Controller
      */
     public function create()
     {
-      $promotion = Promotion::all();
-      return view('admin.promotion_plan.create',compact('promotion'));
+      // 
     }
 
     /**
@@ -62,9 +61,9 @@ class PromotionPlansController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Promotionplan $promotionplan)
+    public function show($id)
     {
-      return  view('admin.promotion_plan.show',compact('promotionplan'));
+      // 
     }
 
     /**
@@ -98,7 +97,7 @@ class PromotionPlansController extends Controller
           'created_at'   => now(),
       ];
       $promotionplan->update($data);
-    Session::flash('success', 'Promotion Plan Updated Successfully!');
+    Session::flash('warning', 'Promotion Plan Updated Successfully!');
      return redirect('andbaazaradmin/promotionplan');
     }
 
@@ -111,7 +110,7 @@ class PromotionPlansController extends Controller
     public function destroy(Promotionplan $promotionplan)
     {
       $promotionplan->delete();
-      Session::flash('warning', 'Promotion Plan Deleted Successfully!');
+      Session::flash('error', 'Promotion Plan Deleted Successfully!');
       return redirect('andbaazaradmin/promotionplan');
     }
 
