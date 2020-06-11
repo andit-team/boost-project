@@ -106,15 +106,7 @@
                                                 @method('put')
                                                 <div class="form">
                                                    <div class="form-goup text-left text-left mb-5 pb-3"> 
-                                                        <label for="thumb">Logo:</label>
-                                                        {{-- <div class="mt-0">
-                                                            <img id="outputss{{$row->id}}"  class="imagestyle" src="{{ asset('/uploads/brand_image/user.png') }}" />
-                                                         </div>
-                                                        <div class="uploadbtn"> 
-                                                            <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                                            <input id="file-upload" type="file" name="image"  onchange="loadimg(event)"/>
-                                                            <input type="hidden" value="{{$row->image}}" name="old_image"> 
-                                                        </div>  --}}
+                                                        <label for="thumb">Logo:</label> 
                                                         <div class="mt-0">
                                                             @if(!empty($row->image))
                                                              <img id="output"  class="imagestyle" src="{{ asset($row->image) }}"/>
@@ -127,19 +119,7 @@
                                                             <input id="file-upload" type="file" name="image" onchange="loadFile(event)"/>
                                                             <input type="hidden" value="{{$row->image}}" name="old_image"> 
                                                         </div>
-                                                     </div> 
-
-                                                    {{-- <div class="col-md-4 text-right">  
-                                                        <label for="picture">Picture</label>
-                                                        <div class="mt-0">
-                                                            <img id="output"  class="imagestyle" src="{{ asset('/uploads/brand_image/user.png') }}" />
-                                                        </div>
-                                                        <div class="uploadbtn"> 
-                                                            <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                                            <input id="file-upload" type="file" name="image" onchange="loadFile(event)"/>
-                                                        </div>
-                                                    </div> --}}
-
+                                                     </div>  
                                                     <div class="form-group">
                                                         <label for="validationCustom01" class="mb-1">Brand Name :</label>
                                                         <input type="text"  name="name" value="{{old('name',$row->name)}}" required class="form-control @error('name') border-danger @enderror"> 
@@ -196,14 +176,7 @@
                             </div>   
                             <div class="text-right">
                                 <button type="submit" class="btn btn-success">Save</button>
-                            </div>
-                            <div class="form-row">                           
-                               </div>       
-                                </div>                           
-                                <div class="col-md-12 mt-4">
-                                    <button type="submit" class="btn btn-sm btn-solid" >Save</button>
-                                </div>
-                            </div>
+                            </div> 
                          </form>
                        </div>                                                 
                     </div>

@@ -39,13 +39,12 @@ class BrandController extends Controller
      */
     public function store(Brand $brand,Request $request)
     {
-        //dd($request->all());
+        
         $this->validateForm($request);    
         $data = [
             'name'          => $request->name,           
             'description'   => $request->description,
-            'image'       => Baazar::fileUpload($request,'image','','/uploads/brand_image'),
-            // 'image'         => Baazar::fileUpload($request,'image','','/uploads/brand_image'),
+            'image'         => Baazar::fileUpload($request,'image','','/uploads/brand_image'), 
             'user_id'       => Sentinel::getUser()->id,
             'created_at'    => now(),
         ];
@@ -86,7 +85,6 @@ class BrandController extends Controller
      */
     public function update(Brand $brand,Request $request)
     {
-       //dd($request->all());
         $this->validateForm($request);
         $data =[
             'name'         => $request->name,           
@@ -98,7 +96,7 @@ class BrandController extends Controller
 
         $brand->update($data);
 
-        Session::flash('success', 'Brand Updated Successfully');
+        Session::flash('warning', 'Brand Updated Successfully');
         return redirect('andbaazaradmin/products/brand');  
     }
 
@@ -111,7 +109,7 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         $brand->delete();
-        Session::flash('success', 'Brand Deleted Successfully!');
+        Session::flash('error', 'Brand Deleted Successfully!');
         return redirect('andbaazaradmin/products/brand');
     
     }
