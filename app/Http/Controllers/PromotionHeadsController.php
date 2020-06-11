@@ -16,8 +16,7 @@ class PromotionHeadsController extends Controller
      */
     public function index()
     {
-      $promotionhead= PromotionHead::all();
-      //dd($promotionhead);
+      $promotionhead= PromotionHead::all(); 
       return view('admin.promotionhead.index',compact('promotionhead'));
     }
 
@@ -28,7 +27,7 @@ class PromotionHeadsController extends Controller
      */
     public function create()
     {
-          return view('admin.promotionhead.create');
+          // 
     }
 
     /**
@@ -65,8 +64,7 @@ class PromotionHeadsController extends Controller
      */
     public function show(PromotionHead $promotionhead)
     {
-      //dd($category);
-     return  view('admin.promotionhead.show',compact('promotionhead'));
+      //  
     }
 
     /**
@@ -101,7 +99,7 @@ class PromotionHeadsController extends Controller
       $promotionhead->update($data);
      
 
-     Session::flash('success', 'Promotion Heads Updated  Successfully!');
+     Session::flash('warning', 'Promotion Heads Updated  Successfully!');
 
       return redirect('andbaazaradmin/promotionhead');
     }
@@ -116,7 +114,7 @@ class PromotionHeadsController extends Controller
     {
           $promotionhead->delete();
 
-        Session::flash('warning', 'Promotion Heads Deleted  Successfully!');
+        Session::flash('error', 'Promotion Heads Deleted  Successfully!');
           return redirect('andbaazaradmin/promotionhead');
     }
 
