@@ -45,9 +45,9 @@
                                <td>{{ $row->color_code}}</td>
                                <td class="d-flex justify-content-between">
                                    <ul> 
-                                        <li><a href="#" id="{{ url('/andbaazaradmin/color/'.$row->slug).'/edit' }}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
+                                        <li><a href="#" id="{{ url('/andbaazaradmin/products/color/'.$row->slug).'/edit' }}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
                                         <li>
-                                        <form action="{{ url('/andbaazaradmin/color/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                        <form action="{{ url('/andbaazaradmin/products/color/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
@@ -65,7 +65,7 @@
                                         </div>
 
                                         <div class="modal-body">
-                                            <form class="needs-validation" novalidate="" action={{ url('/andbaazaradmin/color/'.$row->slug) }} method="post" enctype="multipart/form-data">
+                                            <form class="needs-validation" novalidate="" action={{ url('/andbaazaradmin/products/color/'.$row->slug) }} method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 @method('put')
                                                 <div class="form">
