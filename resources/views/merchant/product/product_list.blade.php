@@ -1,41 +1,53 @@
-@extends('merchant.master')
+@extends('admin.layout.master')
 
 @section('content')
-    <style>
-        .imagestyle{
-            width: 50px;
-            height: 50px;
-            border-width: 4px 4px 4px 4px;
-            border-style: solid;
-            border-color: #ccc;
-        }
-    </style>
-    @include('admin.elements.alert')
-    <div class="page-body">
-
-        <!-- Container-fluid starts-->
-        <div class="container-fluid">
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="page-header-left">
-                            <h3>Product List
-                                <small>Multikart Admin panel</small>
-                            </h3>
-                        </div>
+@push('css')
+<style> 
+    .fa{
+        padding:4px;
+      font-size:16px;
+    }
+</style>
+@endpush
+@include('elements.alert')
+@component('admin.layout.inc.breadcrumb')
+  @slot('pageTitle')
+  Product List
+  @endslot
+  @slot('page')
+      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+      <li class="breadcrumb-item active" aria-current="page">Product List</li>
+  @endslot
+@endcomponent
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5> Product List</h5>
                     </div>
-                    <div class="col-lg-6">
-                        <ol class="breadcrumb pull-right">
-                            <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                            <li class="breadcrumb-item">Physical</li>
-                            <li class="breadcrumb-item active">Product List</li>
-                        </ol>
-                    </div>
+                    <div class="card-body">
+                        <table class="table table-borderd" id="dataTableNoPagingDesc">
+                            <thead>
+                              <tr>
+                                 <th width="50">Sl</th>
+                                 <th >Image</th>
+                                 <th >Name</th>
+                                 <th >Category</th>
+                                 <th > Color</th>
+                                 <th >Size</th>                              
+                                 <th  class="text-center">Action</th>
+                              </tr>
+                          </thead>                     
+                    </table>
+                  </div>
                 </div>
-            </div>
+            </div>          
         </div>
-        <!-- Container-fluid Ends-->
+    </div>
+@endsection
 
+{{--
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="row products-admin ratio_asos">
@@ -86,8 +98,6 @@
         <!-- Container-fluid Ends-->
 
     </div>
-
-   
 @endsection
 @push('js')
 <script>
@@ -95,4 +105,4 @@
     $('#example').DataTable();
 } );
     </script>
-    @endpush
+    @endpush --}}
