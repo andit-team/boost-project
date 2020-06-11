@@ -3,7 +3,7 @@
 @include('elements.alert')
 @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
- About Us
+ About Ussss
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">about us</li>

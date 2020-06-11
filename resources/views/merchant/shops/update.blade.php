@@ -291,99 +291,77 @@
 </section>
 
 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Enter More Information</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <form class="theme-form" action="{{route('shopUpdate')}}" method="post" enctype="multipart/form-data" id="validateForm">
-                @csrf 
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div>
-                            <label for="name">Shop Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('name') }}</span>
-                            <input type="text" class="form-control @error('name') border-danger @enderror" required name="name" value="{{ old('name',$shopProfile->name) }}" id="" placeholder="Shop Name">
-                        </div>
-                        <div>
-                            <label for="phone" class="mt-2">Shop Phone<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
-                            <input type="text" class="form-control @error('phone') border-danger @enderror" required name="phone" value="{{ old('phone',$shopProfile->phone) }}" id="" placeholder="Shop Phone">
-                        </div>
-                        <div>
-                            <label for="email" class="mt-2">Shop Email<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('email') }}</span>
-                            <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
-                        </div>  
-                    </div>           
-                </div> 
-                <div>
-                    <label for="web" class="mt-2">Web<span class="text-danger"> </span></label> <span class="text-danger">{{ $errors->first('web') }}</span>
-                    <input type="url" class="form-control @error('web') border-danger @enderror"  name="web" value="{{ old('Web',$shopProfile->web) }}" id="" placeholder="Shop website">
-                </div>
-                <label for="description" class="mt-2">Write about your shop</label> <span class="text-danger">{{ $errors->first('description') }}</span>
-                <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea>
-        
-                <div class="form-row">  
-                    <div class="col-md-12 mt-4">
-                        <button type="submit" class="btn btn-sm btn-solid" >Shop Update</button>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Enter More Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="theme-form" action="{{route('shopUpdate')}}" method="post" enctype="multipart/form-data" id="validateForm">
+                    @csrf
+                    <div class="form-group">
+                        <label for="name">Shop Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('name') }}</span>
+                        <input type="text" class="form-control @error('name') border-danger @enderror" required name="name" value="{{ old('name',$shopProfile->name) }}" id="" placeholder="Shop Name">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for=""> Shop Phone</label>
+                        <input type="text" class="form-control @error('phone') border-danger @enderror" required name="phone" value="{{ old('phone',$shopProfile->phone) }}" id="" placeholder="Shop Phone">
+                    </div>
+                    <div class="form-group">
+                        <label for=""> Shop Email</label>
+                        <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
+                    </div>
+                    <div class="form-group">
+                        <label for=""> Shop Web Address</label>
+                        <input type="url" class="form-control @error('web') border-danger @enderror"  name="web" value="{{ old('Web',$shopProfile->web) }}" id="" placeholder="Shop website">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Write about your shop</label>
+                        <textarea class="form-control summernote @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="15" >{{ $shopProfile->description }}</textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Facebook</label>
+                                <input type="url" class="form-control" name="Facebook">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Write about your shop</label>
+                                <input type="url" name="Facebook" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Write about your shop</label>
+                                <input type="url" name="Facebook" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Write about your shop</label>
+                                <input type="url" name="Facebook" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-right mt-2">
+                        <button type="submit" class="btn btn-sm btn-solid">Shop Update</button>
+                    </div>
+
                 </form>
             </div>
+        </div>
     </div>
-  </div>
 </div>
 
-    <!--  dashboard section end -->
-    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#facebook">More Information </button>     
-    <div class="modal fade" id="facebook" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-           <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Enter More Information</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-              <div class="modal-body">
-                  <form class="theme-form" action="{{route('shopUpdate')}}" method="post" enctype="multipart/form-data" id="validateForm">
-                      @csrf 
-                      <div class="form-row">
-                          <div class="col-md-12">
-                              <div>
-                                  <label for="name">Shop Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('name') }}</span>
-                                  <input type="text" class="form-control @error('name') border-danger @enderror" required name="name" value="{{ old('name',$shopProfile->name) }}" id="" placeholder="Shop Name">
-                              </div>
-                              <div>
-                                  <label for="phone" class="mt-2">Shop Phone<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
-                                  <input type="text" class="form-control @error('phone') border-danger @enderror" required name="phone" value="{{ old('phone',$shopProfile->phone) }}" id="" placeholder="Shop Phone">
-                              </div>
-                              <div>
-                                  <label for="email" class="mt-2">Shop Email<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('email') }}</span>
-                                  <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
-                              </div>  
-                          </div>           
-                      </div> 
-                      <div>
-                          <label for="web" class="mt-2">Web<span class="text-danger"> </span></label> <span class="text-danger">{{ $errors->first('web') }}</span>
-                          <input type="url" class="form-control @error('web') border-danger @enderror"  name="web" value="{{ old('Web',$shopProfile->web) }}" id="" placeholder="Shop website">
-                      </div>
-                      <label for="description" class="mt-2">Write about your shop</label> <span class="text-danger">{{ $errors->first('description') }}</span>
-                      <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea>
-              
-                      <div class="form-row">  
-                          <div class="col-md-12 mt-4">
-                              <button type="submit" class="btn btn-sm btn-solid" >Shop Update</button>
-                          </div>
-                      </div>
-                      </form>
-                  </div>
-              </div>
-        </div>
-    </div> --}}
 
+    {{-- Shop logo Crop Modal --}}
     <div class="modal" id="shop-logo-modal" tabindex="-1" role="dialog" aria-labelledby="shop-logo-modalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -404,6 +382,7 @@
         </div>
     </div>
 
+    {{-- Banner Image Crop Modal --}}
     <div class="modal" id="banar-modal" tabindex="-1" role="dialog" aria-labelledby="banar-modalTitle" aria-hidden="true">
         <div class="modal-dialog banar modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -448,7 +427,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
      $('.summernote').summernote({
-           height: 200,
+           height: 300,
       });
    });
 

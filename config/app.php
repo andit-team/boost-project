@@ -53,9 +53,11 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-
-    // 'asset_url' => env('ASSET_URL', null),
     'asset_url' => env('ASSET_URL', 'http://localhost/andbaazar/public'),
+
+
+    // 'url' => env('APP_URL', 'https://andbaazar.com'),
+    // 'asset_url' => env('ASSET_URL', 'https://andbaazar.com/public'),
 
     /*
     |--------------------------------------------------------------------------
