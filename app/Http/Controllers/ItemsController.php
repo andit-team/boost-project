@@ -238,12 +238,12 @@ class ItemsController extends Controller
     
 
 
-    public function adminIndex(){
+    public function productList(){
     $category = Category::all();
       $item = Item::all();
       $size= Size::all();
       $color = Color::all();
-     return view('merchant.product.adminIndex',compact('category','item','size','color'));
+     return view('merchant.product.product_list',compact('category','item','size','color'));
     }
 
      public function approvement($slug){

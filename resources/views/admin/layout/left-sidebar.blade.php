@@ -69,9 +69,9 @@
                     </li>
 
 
-                    <li class="{{ request()->is('merchant/product/adminIndex/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="menu" ></i><span>Product Request</span><i class="fa fa-angle-right pull-right"></i></a>
+                    <li class="{{ request()->is('andbaazaradmin/product_list/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="menu" ></i><span>Product Request</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
-                            <li class="{{ request()->is('merchant/product/adminIndex') ? 'active' : '' }}"><a href="{{ url('merchant/product/adminIndex')}}" class="{{ request()->is('merchant/product/adminIndex') ? 'active' : '' }}" ><i class="fa fa-circle"></i>Products list</a></li>
+                            <li class="{{ request()->is('andbaazaradmin/product_list') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/product_list')}}" class="{{ request()->is('andbaazaradmin/product_list') ? 'active' : '' }}" ><i class="fa fa-circle"></i>Products list</a></li>
                         </ul>
                     </li>
 

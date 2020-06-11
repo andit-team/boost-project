@@ -12,7 +12,7 @@
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
-    Meil List
+    Email List
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
@@ -31,7 +31,7 @@
                             <thead>
                               <tr>
                                  <th width="50">Sl</th>
-                                 <th >User nmar</th>
+                                 <th >User name</th>
                                  <th >Emial</th>
                                  <th > Comments</th>                              
                                  <th  class="text-center">Action</th>
