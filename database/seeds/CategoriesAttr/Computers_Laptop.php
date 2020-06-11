@@ -196,6 +196,15 @@ $Computers_Laptop = [
                                             'No Brand','CHUWI','HP',
                                         ],
                                     ], 
+                                    [
+                                        'label'         => 'Brand',
+                                        'type'          => 'select',
+                                        'required'      => 1,
+                                        'suggestion'    => 'Brand of the product',
+                                        'meta' => [
+                                            'No Brand','CHUWI','HP',
+                                        ],
+                                    ], 
                                ], 
                             ], 
                             [
