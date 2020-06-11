@@ -18,8 +18,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $category = Category::where('parent_id',0)->get();
-        //dd($category);
+        $category = Category::where('parent_id',0)->get(); 
         return view('admin.categories.index',compact('category'));
     }
 
@@ -30,7 +29,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        // 
     }
 
     /**
@@ -40,8 +39,7 @@ class CategoriesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Category $category)
-    {
-        //dd($request->all());
+    { 
         $this->validateForm($request);
         $slug = Baazar::getUniqueSlug($category,$request->name);
         $data = Category::create([
@@ -54,14 +52,11 @@ class CategoriesController extends Controller
             'user_id'    => Sentinel::getUser()->id,
             'created_at' => now(),
             ]);
+ 
 
+            Session::flash('success', 'Category Inserted Successfully');
 
-
-        //Category::create($data);
-
-        Session::flash('success', 'Category Inserted Successfully');
-
-        return redirect('andbaazaradmin/category');
+            return redirect('andbaazaradmin/products/category');
     }
 
     /**
@@ -70,10 +65,9 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //dd($category);
-       return  view('admin.categories.show',compact('category'));
+        //    
     }
 
     /**
@@ -84,7 +78,6 @@ class CategoriesController extends Controller
      */
     public function edit(Category $category)
     {
-        //dd($category);
         return view('admin.categories.edit',compact('category'));
     }
 
@@ -110,8 +103,8 @@ class CategoriesController extends Controller
 
         $category->update($data);
 
-        Session::flash('success', 'Category Updated Successfully');
-        return redirect('andbaazaradmin/category');
+        Session::flash('warning', 'Category Updated Successfully');
+        return redirect('andbaazaradmin/products/category');
     }
 
     /**
@@ -124,9 +117,9 @@ class CategoriesController extends Controller
     {
         $category->delete();
 
-       Session::flash('success', 'Category Deleted Successfully');
+       Session::flash('error', 'Category Deleted Successfully');
 
-        return redirect('andbaazaradmin/category');
+        return redirect('andbaazaradmin/products/category');
     }
 
     public function manageCategory()

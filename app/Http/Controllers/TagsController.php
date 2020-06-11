@@ -96,7 +96,7 @@ class TagsController extends Controller
           ];
 
           $tag->update($data);
-         Session::flash('success', 'Tags Updated Successfully');
+         Session::flash('warning', 'Tags Updated Successfully');
          return redirect('andbaazaradmin/products/tag');
     }
 
@@ -110,7 +110,7 @@ class TagsController extends Controller
     {
 
           $tag->delete();
-          Session::flash('danger', 'Tags Deleted Successfully');
+          Session::flash('error', 'Tags Deleted Successfully');
           return redirect('andbaazaradmin/products/tag');
     }
 
