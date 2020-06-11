@@ -29,8 +29,7 @@ class PromotionsController extends Controller
      */
     public function create()
     {
-        $promotionhead = PromotionHead::all();
-        return view('admin.promotions.create',compact('promotionhead'));
+        //
     }
 
     /**
@@ -103,7 +102,7 @@ class PromotionsController extends Controller
       ];
 
      $promotion->update($data);
-     Session::flash('success', 'Promotion Updated Successfully!');
+     Session::flash('warning', 'Promotion Updated Successfully!');
      return redirect('andbaazaradmin/promotion');
     }
 
@@ -116,7 +115,7 @@ class PromotionsController extends Controller
     public function destroy(Promotion $promotion)
     {
       $promotion->delete();
-      Session::flash('warning', 'Promotion Deleted Successfully!');
+      Session::flash('error', 'Promotion Deleted Successfully!');
       return redirect('andbaazaradmin/promotion');
     }
 

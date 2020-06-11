@@ -27,7 +27,7 @@ class PaymentMethodsController extends Controller
      */
     public function create()
     {
-        return view('admin.payment_methods.create');
+        // 
     }
 
     /**
@@ -60,10 +60,10 @@ class PaymentMethodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(PaymentMethod $paymentmethod)
+    public function show($id)
     {
-        // $paymentMethod = PaymentMethod::find($id);
-        return view('admin.payment_methods.show',compact('paymentmethod'));
+        
+        // 
     }
 
     /**
@@ -73,9 +73,7 @@ class PaymentMethodsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(PaymentMethod $paymentmethod)
-    {
-        // $paymentMethod = PaymentMethod::find($id);
-        //dd($paymentMethod);
+    { 
         return view('admin.payment_methods.edit',compact('paymentmethod'));
     }
 
@@ -88,8 +86,7 @@ class PaymentMethodsController extends Controller
      */
     public function update(Request $request,PaymentMethod $paymentmethod)
     {
-        $this->validateForm($request);
-        // $paymentMethod = PaymentMethod::find($id);
+        $this->validateForm($request); 
         $data = [
             'name' => $request->name,
             'desc' => $request->desc,
@@ -98,7 +95,7 @@ class PaymentMethodsController extends Controller
         ];
 
         $paymentmethod->update($data);
-        Session::flash('success', 'Payment Method Updated Successfully!');
+        Session::flash('warning', 'Payment Method Updated Successfully!');
         return redirect('andbaazaradmin/paymentmethod');
 
     }
@@ -111,9 +108,9 @@ class PaymentMethodsController extends Controller
      */
     public function destroy(PaymentMethod $paymentmethod)
     {
-        // $paymentMethod = PaymentMethod::find($id);
+        
         $paymentmethod->delete();
-        Session::flash('warning', 'Payment Method Deleted Successfully!');
+        Session::flash('error', 'Payment Method Deleted Successfully!');
         return redirect('andbaazaradmin/paymentmethod');
     }
 
