@@ -52,9 +52,9 @@
                                     <td>{{  \Illuminate\Support\Str::limit($row->desc,100) }}</td>
                                     <td class="d-flex justify-content-between"> 
                                         <ul>
-                                        <li><a href="#" id="{{ url('/andbaazaradmin/size/'.$row->slug).'/edit' }}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
+                                        <li><a href="#" id="{{ url('/andbaazaradmin/products/size/'.$row->slug).'/edit' }}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
                                             <li>
-                                                <form action="{{ url('/andbaazaradmin/size/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                                <form action="{{ url('/andbaazaradmin/products/size/'.$row->slug) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
@@ -73,7 +73,7 @@
                                         </div>
 
                                         <div class="modal-body">
-                                                <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/size/'. $row->slug) }}" method="post" enctype="multipart/form-data">
+                                                <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/products/size/'. $row->slug) }}" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('put')
                                                     <div class="form">
@@ -84,7 +84,7 @@
                                                             </div>
                                                             <div class="form-group ">
                                                                 <label for="validationCustom0" >Item Size </label>
-                                                                <input class="form-control" name="item_size" value="{{ $row->item_size }}"  id="validationCustom0" type="number" required="">
+                                                                <input class="form-control" name="item_size" value="{{ $row->item_size }}"  id="validationCustom0" type="text" required="">
                                                             </div>
                                                             <div class="form-group ">
                                                                 <label for="validationCustom0">Description</label>

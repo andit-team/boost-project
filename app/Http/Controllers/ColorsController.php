@@ -27,7 +27,7 @@ class ColorsController extends Controller
      */
     public function create()
     {
-          return view('admin.colors.create');
+          // 
     }
 
     /**
@@ -49,7 +49,7 @@ class ColorsController extends Controller
         ];
         Color::create($data);
         Session::flash('success', 'Colors Inserted Successfully!');
-        return redirect('andbaazaradmin/color');
+        return redirect('andbaazaradmin/products/color');
     }
 
     /**
@@ -58,9 +58,9 @@ class ColorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Color $color)
+    public function show($id)
     {
-     return  view('admin.colors.show',compact('color'));
+        // 
     }
 
     /**
@@ -91,8 +91,8 @@ class ColorsController extends Controller
           'created_at' => now(),
       ];
            $color->update($data);
-           Session::flash('success', 'Colors Updated Successfully!');
-           return redirect('andbaazaradmin/color');
+           Session::flash('warning', 'Colors Updated Successfully!');
+           return redirect('andbaazaradmin/products/color');
     }
 
     /**
@@ -104,8 +104,8 @@ class ColorsController extends Controller
     public function destroy(Color $color)
     {
       $color->delete();
-      Session::flash('success', 'Colors Deleted Successfully!');
-      return redirect('andbaazaradmin/color');
+      Session::flash('error', 'Colors Deleted Successfully!');
+      return redirect('andbaazaradmin/products/color');
     }
 
     private function validateForm($request){

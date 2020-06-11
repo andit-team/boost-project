@@ -261,36 +261,20 @@
                                             <div class="form-group row">
                                                 <label for="color_id" class="col-xl-3 col-md-4">Color Family<span class="text-danger"> *</span></label>
                                                 {{-- <select name="color_id" autocomplete="off" class="form-control col-md-8" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> --}}
-                                                    <select name="color_id" autocomplete="off" class="form-control col-md-8" id="colorSelect">
+                                                    <select name="color_id" onchange="popups()" autocomplete="off" class="form-control col-md-8 colorSelect" id="colorSelect">
                                                     <option value="">Select Color</option>
                                                     @foreach($color as $row)
                                                     <option value="{{ $row->slug }}">{{ $row->name }}</option>
                                                     @endforeach
                                                 </select> 
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="color_id" class="col-xl-3 col-md-4"></label> 
-                                                    <div class="border p-3 collpanel selectColor red" id="red">
-                                                    sadasdadas
-                                                   </div>
-                                                   <div class="border p-3 collpanel selectColor yello" id="yello">
-                                                    sadasdadas
-                                                   </div>
-                                                   <div class="border p-3 collpanel selectColor blue" id="blue">
-                                                    sadasdadas
-                                                   </div>
-                                                   <div class="border p-3 collpanel selectColor brown" id="brown">
-                                                    sadasdadas
-                                                   </div>
-                                                   <div class="border p-3 collpanel selectColor pink" id="pink">
-                                                    sadasdadas
-                                                   </div>
-                                                   <div class="border p-3 collpanel selectColor white" id="white">
-                                                    sadasdadas
-                                                   </div>
-                                                   <div class="border p-3 collpanel selectColor black" id="black">
-                                                    sadasdadas
-                                                   </div>
+                                            {{-- <div id="color1"></div> --}}
+                                            <div class="form-group row" id="color1">
+                                                    
+                                            </div>
+                                            <div class="form-group row" id="select1">
+                                                <label for="color_id" class="col-xl-3 col-md-4"><span class="text-danger"></span></label>
+                                                
                                             </div>
                                             <div class="form-group">
                                                 <span class="btn btn-primary btn-sm pull-left rowAdd"><i class="fa fa-plus"></i> Add row</span>
@@ -632,19 +616,14 @@ $('select').selectpicker();
         $('[data-toggle="tooltip"]').tooltip({ trigger: 'click'});   
        }); 
 // }); 
-$(document).ready(function(){
-    $("select").change(function(){
-        $(this).find("option:selected").each(function(){
-            var optionValue = $(this).attr("value");
-            if(optionValue){
-                $(".selectColor").not("." + optionValue).hide();
-                $("." + optionValue).show();
-            } else{
-                $(".selectColor").hide();
-            }
-        });
-    }).change();
-});
 
+
+// $("div.card-body div.row select.colorSelect").on('change',function(){  
+    function popups(){
+        console.log('change');
+        $('#color1').append("<label for='color_id' class='col-xl-3 col-md-4'></label>  <div class='border p-3 collpanel'>sdfdsfsdfsd</div><label for='color_id' class='col-xl-3 col-md-4'></label> <select name='color_id' onchange='popups()' autocomplete='off' class='form-control col-md-8 colorSelect'> <option value=''>Select color</oprion>@foreach($color as $row)<option value='{{ $row->id }}'>{{$row->name}}@endforeach</option></select>");  
+    }
+// });
+ 
  </script>
 @endpush
