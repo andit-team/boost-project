@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="card-body">
-                            <form class="needs-validation" novalidate="" action="{{ url('/merchant/inventory/'.$inventory->slug) }}" method="post">
+                            <form class="needs-validation" novalidate="" action="{{ url('/merchant/inventories/update'.$inventory->slug) }}" method="post">
                                 @csrf
                                 @method('PUT')
                                 <div class="row">

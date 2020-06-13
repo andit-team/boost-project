@@ -52,10 +52,18 @@ Route::prefix('merchant')->group(function () {
     Route::get('dropzone', 'DropzoneController@ItemsController');
     Route::post('dropzone/store', 'DropzoneController@ItemsController')->name('dropzone.store');
     Route::get('/products','ItemsController@index');
-    Route::get('/products/new','ItemsController@create')->name('product.store');
+    Route::get('/products/new','ItemsController@create');
+    Route::post('/products/new','ItemsController@store')->name('product.store');
     Route::get('/products/view/{slug}','ItemsController@show');
     Route::get('/products/update/{slug}/productupdate','ItemsController@edit');
+    Route::put('/products/update/{slug}','ItemsController@update');
     Route::resource('/product','ItemsController');
+    Route::get('/inventories','InventoriesController@index');
+    Route::get('/inventories/new','InventoriesController@create');
+    Route::post('/inventories/new','InventoriesController@store')->name('inventory.store');
+    Route::get('/inventories/view/{slug}','InventoriesController@show');
+    Route::get('/inventories/update/{slug}/invertoryupdate','InventoriesController@edit');
+    Route::put('/inventories/update/{slug}','InventoriesController@update');
     Route::resource('/inventory','InventoriesController');
 
 

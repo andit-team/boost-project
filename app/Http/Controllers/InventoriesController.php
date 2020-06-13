@@ -68,7 +68,8 @@ class InventoriesController extends Controller
         ];
 
         Inventory::create($data);
-        return redirect('merchant/inventory');
+        Session::flash('success', 'Inventory Added Successfully!');
+        return redirect('merchant/inventories');
     }
 
     /**
@@ -108,8 +109,7 @@ class InventoriesController extends Controller
      */
     public function update(Inventory $inventory,Request $request)
     {
-        $this->validateForm($request);
-        // $slug = Baazar::getUniqueSlug($inventory,$request->name);
+        $this->validateForm($request); 
         $data = [
             'item_id' => $request->item_id,
             'color_id' => $request->color_id,
@@ -119,7 +119,8 @@ class InventoriesController extends Controller
             'updated_at' => now(),
         ];
         $inventory->update($data);
-        return redirect('merchant/inventory');
+        Session::flash('error', 'Inventory Added Successfully!');
+        return redirect('merchant/inventories');
     }
 
     /**
