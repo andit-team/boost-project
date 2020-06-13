@@ -60,27 +60,19 @@
                                 
                                 <label for="phone" class="mt-2">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
                                 <input type="number" class="form-control @error('phone') border-danger @enderror" required  name="phone" value="{{ old('phone') }}" id="" placeholder="Phone Number">
-                            </div>
+                            </div>                          
                             <div class="col-md-4 text-right">  
                                 <label for="picture">Picture</label>
-                                <div class="mt-0">
-                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/buyer_profile/user.png') }}" />
-                                </div>                            
-                                <div id="userpic" class="userpic">
-                                    <div class="js-preview userpic__preview"></div>
-                                    <div class="btn btn-success js-fileapi-wrapper">
-                                       <div class="js-browse">
-                                          <span class="btn-txt">Choose</span>
-                                          <input type="file" name="filedata">
-                                       </div>
-                                       <div class="js-upload" style="display: none;">
-                                          <div class="progress progress-success"><div class="js-progress bar"></div></div>
-                                          <span class="btn-txt">Uploading</span>
-                                       </div>
-                                    </div>
-                                 </div>
+                                <div class="mt-0">                                 
+                                  <img id="output"  class="imagestyle" src="{{ asset('/uploads/buyer_profile/user.png') }}" />                                 
+                                </div>
+                                <div class="uploadbtn"> 
+                                    <label for="file-upload" class="custom-file-upload">Upload Here</label>
+                                    <input id="file-upload" type="file" name="picture" onchange="loadFile(event)"/>
+                                    <input type="hidden" value="" name="old_image">   
+                                </div>
                             </div>
-                        </div> 
+                         </div> 
 
                         <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
                         <textarea class="form-control mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" ></textarea>
