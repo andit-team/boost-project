@@ -34,7 +34,7 @@ class BuyerShippingAddressesController extends Controller
         
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
         $this->validateForm($request);
-        // $buyerShippingAddress = BuyerShippingAddress::updateOrCreate(['buyer_id'     =>$buyerId->id],[
+        // $buyerShippingAddress = BuyerShippingAddress::updateOrCreate(['buyer_id'=>$buyerId->id],[
             if( $buyerId){
             $data =[
                 'location'          => $request->location,
@@ -75,8 +75,7 @@ class BuyerShippingAddressesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(BuyerShippingAddress $shipping)
-    {
-        //$buyerShippingAddress = BuyerShippingAddress::find($id);         
+    {        
         return view('frontend.buyer_shipping_addresses.edit',compact('shipping'));
     }
 
@@ -90,7 +89,6 @@ class BuyerShippingAddressesController extends Controller
     public function update(Request $request, BuyerShippingAddress $shipping)
     {     
         $this->validateForm($request);
-        // $buyerShippingAddress = BuyerShippingAddress::updateOrCreate(['buyer_id'     =>$buyerId->id],[
             $data =[
                 'location'          => $request->location,
                 'address'           => $request->address,

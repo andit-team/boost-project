@@ -43,12 +43,8 @@ class BuyersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        //dd($request->all());
-        $userprofile = Sentinel::getUser();// User::where('id',Sentinel::getUser()->id)->first();
-        //dd($userprofile);
+        $userprofile = Sentinel::getUser();
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
-        //dd($buyerId);
-        //$this->validateForm($request);
         if($buyerId){
            $buyerId->update([
                 'first_name'            => $request->first_name,
