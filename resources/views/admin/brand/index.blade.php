@@ -111,7 +111,7 @@
                                                             @if(!empty($row->image))
                                                              <img id="output"  class="imagestyle" src="{{ asset($row->image) }}"/>
                                                             @else
-                                                             <img id="output"  class="imagestyle" src="{{ asset('/uploads/brand_image/user.png') }}" />
+                                                             <img id="output"  class="imagestyle" src="{{ asset('/uploads/brand_image/brand.png') }}" />
                                                             @endif
                                                         </div>
                                                         <div class="uploadbtn"> 
@@ -157,7 +157,7 @@
                             <div class="form-group text-left mb-5 pb-3">  
                                 <label for="thumb">Logo:</label>
                                 <div class="mt-0">
-                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/brand_image/user.png') }}" />
+                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/brand_image/brand.png') }}" />
                                 </div>
                                 <div class="uploadbtn"> 
                                     <label for="file-upload" class="custom-file-upload">Upload Here</label>

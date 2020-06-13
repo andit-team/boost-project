@@ -173,7 +173,7 @@
                             <div class="form-group text-left mb-5 pb-3">  
                                 <label for="thumb">Image:</label>
                                 <div class="mt-0">
-                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}" />
+                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/category_image/categ.png') }}" />
                                 </div>
                                 <div class="uploadbtn"> 
                                     <label for="file-upload" class="custom-file-upload">Upload Here</label>
