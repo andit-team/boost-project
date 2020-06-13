@@ -22,7 +22,7 @@
 
                 <li class="nav-item"><a  class="nav-link {{$active == 'product' ? 'active' : ''}}" href="{{ url('merchant/products') }}">All Products</a></li>
                 
-                <li class="nav-item"><a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventory') }}">All Inventory</a></li>
+                <li class="nav-item"><a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventories') }}">All Inventory</a></li>
                 
                 
                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">Orders</a> </li>

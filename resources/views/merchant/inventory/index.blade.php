@@ -42,7 +42,7 @@
           </div>
             @elseif($sellerProfile->status == 'Active')
             <div  class="text-right mt">                       
-                <a href="{{ url('merchant/inventory/create') }}" class="btn btn-sm btn-solid">add inventory</a>
+                <a href="{{ url('merchant/inventories/new') }}" class="btn btn-sm btn-solid">add inventory</a>
             </div>             
             @forelse($inventory as $row)
                 <div class="card mb-4">      
@@ -68,8 +68,8 @@
 
                         </div> 
                         <div class="row">     
-                         <a href="{{ url('/merchant/inventory/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> 
-                        <a href="{{ url('/merchant/inventory/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a>
+                         <a href="{{ url('/merchant/inventories/view/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> 
+                         <a href="{{ url('/merchant/inventories/update'.$row->slug).'/invertoryupdate' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a>
              
                         
                          <form action="{{ url('/merchant/inventory/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">

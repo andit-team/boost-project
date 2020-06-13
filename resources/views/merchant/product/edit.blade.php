@@ -24,7 +24,7 @@
                 <!-- address section start -->
                 <div class="col-sm-9 contact-page register-page container">
                         <h3>Edit Product</h3>
-                            <form class="theme-form" action="{{ url('merchant/product/'.$product->slug) }}" method="post"  enctype="multipart/form-data">
+                            <form class="theme-form" action="{{ url('merchant/products/update'.$product->slug) }}" method="post"  enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
                                     <div class="form-row">
