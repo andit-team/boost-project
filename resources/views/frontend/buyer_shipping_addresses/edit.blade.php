@@ -66,10 +66,16 @@
                <div class="col-md-12 mt-2">
                     <button class="btn btn-sm btn-solid" type="submit"> Update</button>
                </div>
-            </div>
-          </form>
-       </div>
-     </div>
-   </div>
- </section>  
-@endsection
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    @endsection
+            
+        
+       
+   
+ 
+   

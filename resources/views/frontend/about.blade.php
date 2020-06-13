@@ -37,7 +37,7 @@
             </div>
         </div>
     </div>
-  </section>
+</section>
   <!-- about section end -->
   <!--Testimonial start-->
   <section class="testimonial small-section">

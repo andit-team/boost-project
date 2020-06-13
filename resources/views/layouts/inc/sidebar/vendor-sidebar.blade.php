@@ -53,11 +53,6 @@
 
 @push('js')
 <script>
-
-    // The following example creates a marker in Stockholm, Sweden using a DROP
-    // animation. Clicking on the marker will toggle the animation between a BOUNCE
-    // animation and no animation.
-
     var marker;
 
     function initMap() {
@@ -65,7 +60,6 @@
         zoom: 13,
         center: {lat: {{ $shopProfile->lat }}, lng: {{ $shopProfile->lng }}}
       });
-
       // var image = 'http://localhost/andbaazar/public/frontend/assets/images/icon/logo.png';
       marker = new google.maps.Marker({
         map: map,

@@ -36,42 +36,13 @@
     <!-- Croppie css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/croppie.css>
 
-
     <link rel="stylesheet" type="text/css" href=" https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.3.3/css-loader.css">
    
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
     @stack('css')
-
-    <style>
-      /* .spinner-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;                 
-            overflow: visible;
-           
-             background: url( 'https://makebackground.io/bk/mystery/' )
-            background: url('https://www.studio-aegis.com/uploads/1/0/3/8/10380626/custom_themes/921719032455054188/files/Orphan---Run.gif') no-repeat center center;
-            background-size: contain;
-           background-color: #1a0602;           
-            z-index: 999999;
-    }
-    .spinner{
-        position: absolute;
-        top: 48%;
-        left: 48%;
-    }  */
-    </style>
-
 </head>
-
 <body>
-
-
-
-
     <div class="loader_skeleton">
         <!--CSS Spinner-->
         <div class="spinner-wrapper">
@@ -127,7 +98,7 @@
                         <div class="menu-left">
                             <div class="navbar">
                                 <a href="javascript:void(0)" onclick="openNav()">
-                                    <div class="bar-style"><i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
+                                    <div class="bar-style">
                                     </div>
                                 </a>
                               
@@ -521,7 +492,6 @@
 
     <!-- theme setting -->
 
-
     <!-- exit modal popup start-->
     <div class="modal fade bd-example-modal-lg theme-modal exit-modal" id="exit_popup" tabindex="-1" role="dialog"
         aria-hidden="true">
@@ -566,17 +536,6 @@
         logged_out_greeting="Hi! Welcome to PixelStrap Themes  How can we help you?">
     </div>
     <!-- facebook chat section end -->
-
-
-    <!-- cart start -->
-    {{-- <div class="addcart_btm_popup" id="fixed_cart_icon">
-        <a href="#" class="fixed_cart">
-            <i class="ti-shopping-cart"></i>
-        </a>
-    </div> --}}
-    <!-- cart end -->
-
-
     <!-- tap to top -->
     <div class="tap-top top-cls">
         <div>
@@ -584,7 +543,6 @@
         </div>
     </div>
     <!-- tap to top end -->
-
 
     <!-- latest jquery-->
     <script src="{{asset('frontend')}}/assets/js/jquery-3.3.1.min.js"></script>
@@ -626,12 +584,7 @@
     <script src="{{asset('/')}}js/validator.js"></script>
     <script src="{{asset('/')}}js/validatorRules.js"></script>
     @include('elements.myjs')
-    <script>
-        // $(window).on('load', function () {
-        //     setTimeout(function () {
-        //         // $('#exampleModal').modal('show');
-        //     }, 2500);
-        // });
+    <script>   
         function openSearch() {
             document.getElementById("search-overlay").style.display = "block";
         }
@@ -640,10 +593,6 @@
             document.getElementById("search-overlay").style.display = "none";
         }
     </script>
-
     @stack('js')
 </body>
-
-
-
 </html>
