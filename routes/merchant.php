@@ -3,8 +3,8 @@
 
 Route::get('sell-on-andbaazar','MerchantController@sellOnAndbaazar');
 Route::post('sell-on-andbaazar','MerchantController@sellOnAndbaazarPost')->name('sellOnAndbaazarPost');
-Route::get('sell-resubmit-toke','MerchantController@resubmitToken');
-Route::post('sell-resubmit-toke','MerchantController@tokenUpdate')->name('resubmitToken');
+Route::get('sell-resubmit-token','MerchantController@resubmitToken');
+Route::post('sell-resubmit-token','MerchantController@tokenUpdate')->name('resubmitToken');
 Route::post('sell-varifey','MerchantController@verifyToken')->name('tokenVerify');
 Route::get('seller-registration','MerchantController@sellerRegistration');
 Route::post('seller-registration','MerchantController@registrationStepOne')->name('profileRegistration');

@@ -22,13 +22,13 @@ class SellersController extends Controller
      */
     public function index()
     {
-        $sellers = Seller::orderBy('id', 'DESC')->get();
+        
         $activesellers = Seller::with('shop')->where('status','Active')->orderBy('id', 'DESC')->get();
         //dd($activesellers);
         $requestSellers = Seller::with('shop')->where('status','Inactive')->orderBy('id','DESC')->get();
         $rejectSellers = Seller::with('shop')->where('status','Reject')->orderBy('id','DESC')->get();
-        //dd($sellers);
-        return view('merchant.sellers.index',compact('sellers','activesellers','requestSellers','rejectSellers'));
+        
+        return view('merchant.sellers.index',compact('activesellers','requestSellers','rejectSellers'));
     }
 
     /**
@@ -38,11 +38,9 @@ class SellersController extends Controller
      */
     public function create()
     {
-        $userprofile = Sentinel::getUser();
-        //dd($userprofile);
+        $userprofile = Sentinel::getUser(); 
         $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
-        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        //dd($sellerProfile);
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first(); 
         if(!empty($sellerProfile))
            return view('merchant.sellers.update',compact('sellerProfile','userprofile','shopProfile'));
          else
@@ -58,8 +56,7 @@ class SellersController extends Controller
     public function store(Request $request,Seller $seller)
     {
         $userprofile = Sentinel::getUser();
-        $sellerId    = Seller::where('user_id',Sentinel::getUser()->id)->first();
-        //dd($sellerId);
+        $sellerId    = Seller::where('user_id',Sentinel::getUser()->id)->first(); 
         $this->validateForm($request);
         $slug = Baazar::getUniqueSlug($seller,$request->first_name);
         if($sellerId){
@@ -219,8 +216,7 @@ class SellersController extends Controller
         $data = Seller::where('id',$id)->first();
         
         
-        $data->update(['status' => 'Active']);
-        //dd($data);
+        $data->update(['status' => 'Active']); 
          $name    = $data['first_name'];
          $surname = $data['last_name'];
         \Mail::to($data['email'])->send(new VendorProfileAcceptMail($data,$name,$surname));

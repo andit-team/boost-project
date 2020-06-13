@@ -122,8 +122,7 @@
                                                             </div> 
                                                         </div> 
                                                     </div> 
-                                                </div>
-                                                @break
+                                                </div> 
                                             @endforeach
                                         </tbody>
                                     </table>

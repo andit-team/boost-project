@@ -71,7 +71,7 @@ class MerchantController extends Controller{
 
         session()->flash('success','Seller profile registration 1st stape complete successfully');  
 
-        return redirect('sell-resubmit-toke'.'?slug='.$slug);
+        return redirect('sell-resubmit-token'.'?slug='.$slug);
     }
 
     public function resubmitToken(Request $request){
