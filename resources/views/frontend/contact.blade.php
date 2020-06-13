@@ -68,7 +68,7 @@
                     </div>
                 </div>
             </div>
-          </div>
+        </div>
       
        
         <div class="card bg-light">
@@ -112,34 +112,8 @@
                 </div>
             </div>
           </div>
-        </div>
+       </div>
     </div>
 </section>
 <!--Section ends-->
 @endsection
-
-@push('js')
-{{-- <script>
-   function saveMessage(e){
-    e.preventDefault(); 
-    //    const first_name  = $('#first_name').val();
-    //    const last_name   = $('#last_name').val();
-    //    const phone       = $('#phone').val();
-    //    const description = $('#description').val();
-    //    if(first_name == '' || last_name == '' || phone == '' || description == ''  ){
-    //     //    alert('Required field must be filled!.');
-    //    }else{
-        var formdata = $('#validateForms').serialize(); 
-        $.ajax({
-            type: 'POST',
-            url: "{{ url('contact-us') }}",
-            data: formdata,
-            dataType: "json",
-            success: function(response){
-                $('#validateForm')[0].reset(); 
-                // swal(response.first_name+" Your comment sent successfully!", {icon: "success",buttons: false,timer: 2000});
-            }
-        })
-       } 
- </script> --}}
-@endpush

@@ -61,8 +61,6 @@
                                 <label for="phone" class="mt-2">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
                                 <input type="number" class="form-control @error('phone') border-danger @enderror" required  name="phone" value="{{ old('phone') }}" id="" placeholder="Phone Number">
                             </div>
-
-
                             <div class="col-md-4 text-right">  
                                 <label for="picture">Picture</label>
                                 <div class="mt-0">
