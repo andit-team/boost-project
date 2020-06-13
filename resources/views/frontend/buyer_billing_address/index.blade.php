@@ -24,7 +24,7 @@
           @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'billing'])
             <div class="col-md-9">
                 <div class="text-right mt">
-                <a href="{{url('/profile/billing/create')}}" class="btn btn-sm btn-solid mb-2 text-right">Add New Address</a>
+                   <a href="{{url('/profile/billing/create')}}" class="btn btn-sm btn-solid mb-2 text-right">Add New Address</a>
                 </div> 
                 @forelse($billing as $row)
                 <div class="card mt-2">
