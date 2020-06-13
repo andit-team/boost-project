@@ -21,7 +21,7 @@ class CreateBuyerShippingAddressesTable extends Migration
             $table->string('state');
             $table->string('city');
             $table->integer('zip_code');
-            $table->bigInteger('phone');
+            $table->string('phone');
             $table->string('fax');
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('buyer_id');
