@@ -60,8 +60,8 @@
                     <div class="col-lg-6">
                         <div class="header-contact">
                             <ul>
-                                <li>Welcome to Our Andbaazar</li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 123 - 456 - 7890</li>
+                                <li>Welcome to  Andbaazar</li>
+                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 041 - 722 - 684</li>
                                 <li><a href="{{url('sell-on-andbaazar')}}" style="color: #999999;font-size: 14px; padding-right: 25px;">Start Selling Here</a></li>
                             </ul>
                         </div>

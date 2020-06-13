@@ -3,10 +3,10 @@
 @extends('merchant.master',['title' => 'become a vendor'])
 @section('content')
 
-@include('elements.alert') 
+@include('elements.alert')
 @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
-      Dashboard
+      Andbaazar
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Become a Vendor</li>
@@ -23,19 +23,18 @@
                         class="img-fluid blur-up lazyload" alt=""></div>
             </div>
             <div class="col-sm-12">
-                <h4>Start your business with Multikart & reach customers across the World...</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,</p>
-                <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and
-                    demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee
-                    the pain and trouble that are bound to ensue; and equal blame belongs to those who fail in their
-                    duty through weakness of will, which is the same as saying through shrinking from toil and pain.
-                    These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice
-                    is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is
-                    to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty
-                    or the obligations of business it will frequently occur that pleasures have to be repudiated and
-                    annoyances accepted. The wise man therefore always holds in these matters to this principle of
-                    selection: he rejects pleasures to secure other greater pleasures, or else he endures pains to avoid
-                    worse pains.</p>
+                <h4> Welcome!Start your business with Andbaazar...</h4>              
+                <p>  If you want to start your business and become part of a renowned online selling website in bangladesh,
+                     then Andbaazar.com is the place for you. With the Andbaazar seller center, 
+                     you can set up a Andbaazar seller account and start making online sale! If you’re confused about the process, 
+                     or how to sell on Andbaazar, the rest easy! The process of becoming a Andbaazar seller is very simple.
+                     Three simple steps – register and list your products, receive orders and sell across country,
+                     get payments and grow your business. For details on the process, 
+                     just log on to Andbaazar.com and check the sell-on Andbaazar page. 
+                     With the Andbaazar seller account, you get to reach millions of customers.
+                     In addition, Andbaazar helps your business by assisting with fast and reliable shipping,
+                     professional services to help you, no listing fee, fast and reliable shipping,
+                     secure and timely payment, and so much more!</p>
             </div>
         </div>
     </div>
@@ -194,7 +193,7 @@
 <!-- how to start section start -->
 <section class="section-b-space become-vendor">
     <div class="container">
-        <h4>doing business on multikart is really easy</h4>
+        <h4>doing business on Andbaazar is really easy</h4>
         <div class="step-bg">
             <div class="row">
                 <div class="col-lg-4">
@@ -241,12 +240,12 @@
         <div class="col">
             <div>
                 <h4>start selling</h4>
-                <p>Multikart marketplace is India’s leading platform for selling online. Be it a manufacturer, vendor or
-                    supplier, simply sell your products online on Multikart and become a top ecommerce player with
+                <p>Andbaazar marketplace is Bangladesh’s leading platform for selling online. Be it a manufacturer, vendor or
+                    supplier, simply sell your products online on Andbaazar and become a top ecommerce player with
                     minimum investment. Through a team of experts offering exclusive seller workshops, training, seller
-                    support and convenient seller portal, Multikart focuses on educating and empowering sellers across
-                    India.
-                    Selling on Multikart.com is easy and absolutely free. All you need is to register, list your
+                    support and convenient seller portal, Andbaazar focuses on educating and empowering sellers across
+                   Bangladesh.
+                    Selling on Andbaazar.com is easy and absolutely free. All you need is to register, list your
                     catalogue and start selling your products.</p>
                 <form action="{{route('sellOnAndbaazarPost')}}" method="post" id="validateForm">
                     @csrf
@@ -255,14 +254,14 @@
                             <input type="text" class="form-control @error('first_name') border-danger @enderror" required name="first_name" value="{{ old('first_name') }}"  placeholder="First Name">
                             <span class="text-danger">{{ $errors->first('first_name') }}</span>
                         </div>
-                        <div class="col-sm-3"> 
-                            <input type="text"  required class="form-control @error('last_name') border-danger @enderror" name="last_name" value="{{ old('last_name') }}"  placeholder="Last Name">  
+                        <div class="col-sm-3">
+                            <input type="text"  required class="form-control @error('last_name') border-danger @enderror" name="last_name" value="{{ old('last_name') }}"  placeholder="Last Name">
                             <span class="text-danger">{{ $errors->first('last_name') }}</span>
                         </div>
                         <div class="col-sm-6">
                             <input type="number" autocomplete="off" name="phone" value="{{ old('phone') }}" class="form-control @error('phone') border-danger @enderror" required placeholder="Phone Number e.g. 01900110011">
-                            <span class="text-danger">{{ $errors->first('phone') }}</span> 
-                        </div> 
+                            <span class="text-danger">{{ $errors->first('phone') }}</span>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-solid btn-sm">Start Selling</button>
                 </form>
