@@ -99,6 +99,11 @@
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                 </div>
                                 <div class="col-md-12 mb-3">
+                                    <label for="sub">Subject<span class="text-danger"> *</span></label>
+                                    <input type="text" class="form-control" placeholder="Write Your subject" name="sub" value="{{ old('sub') }}">
+                                    <span class="text-danger">{{ $errors->first('sub') }}</span>
+                                </div>
+                                <div class="col-md-12 mb-3">
                                     <label for="description">Write Your Message<span class="text-danger"> *</span></label>
                                     <textarea required class="form-control" placeholder="Write Your Message" name="description" value="{{ old('description') }}" id="description" rows="6"></textarea>
                                     <span class="text-danger">{{ $errors->first('description') }}</span>
