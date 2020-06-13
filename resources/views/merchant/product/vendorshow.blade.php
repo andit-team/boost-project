@@ -20,8 +20,8 @@
             <div class="row">
                 
             @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
-
-            <!-- Container-fluid starts-->
+            <div class="col-sm-9">
+                <!-- Container-fluid starts-->
             <div class="container-fluid">
                 <div class="card">
                     <div class="row product-page-main card-body">
@@ -62,7 +62,7 @@
                                 </div>                               
                                 <hr>                                
                                 <div class="m-t-15">
-                                    <a href="{{ url('merchant/product') }}"  class="btn btn-primary">Back</a> 
+                                    <a href="{{ url('merchant/products') }}"  class="btn btn-primary">Back</a> 
                                 </div>
                             </div>
                         </div>
@@ -70,6 +70,7 @@
                 </div>
             </div>
             <!-- Container-fluid Ends-->
+            </div> 
       </div>          
  </section>
 @endsection

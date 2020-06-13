@@ -39,20 +39,22 @@ Route::prefix('merchant')->group(function () {
     Route::get('/product/subcategory/{id}','ItemsController@subcategory');
     Route::post('/product/approvement/{slug}','ItemsController@approvement');
     Route::put('/product/rejected/{slug}','ItemsController@rejected');    
-    Route::get('/product/vendorshow/{slug}','ItemsController@vendorshow');
-    // Route::resource('/seller','SellersController'); 
+    Route::get('/product/vendorshow/{slug}','ItemsController@vendorshow'); 
     Route::post('/seller/approvement/{id}','SellersController@approvement');
     Route::put('/seller/rejected/{id}','SellersController@rejected');
     Route::get('/profile','SellersController@create');
     Route::post('/profile','SellersController@store')->name('sellerUpdate');
     Route::get('/shop','ShopsController@create');
-    Route::post('/shop','ShopsController@store')->name('shopUpdate');
-    // Route::get('/shop','ShopsController@create');
+    Route::post('/shop','ShopsController@store')->name('shopUpdate'); 
     Route::get('/seller/{slug}/resubmit','SellersController@edit');
     Route::put('/seller/{slug}','SellersController@update');
     Route::get('/seller/{id}','SellersController@show'); 
     Route::get('dropzone', 'DropzoneController@ItemsController');
     Route::post('dropzone/store', 'DropzoneController@ItemsController')->name('dropzone.store');
+    Route::get('/products','ItemsController@index');
+    Route::get('/products/new','ItemsController@create')->name('product.store');
+    Route::get('/products/view/{slug}','ItemsController@show');
+    Route::get('/products/update/{slug}/productupdate','ItemsController@edit');
     Route::resource('/product','ItemsController');
     Route::resource('/inventory','InventoriesController');
 
