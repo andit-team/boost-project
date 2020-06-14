@@ -90,15 +90,6 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="name">Product Name(English) <span class="text-danger">*</span></label>                                          
-                                                            <input class="form-control" type="text" class="form-control" value="{{ old('name') }}" name="name" id="name">
-                                                            @if ($errors->has('name'))
-                                                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                                                            @endif 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
                                                             <label for="bn_name">Product Name(Bangla) <span class="text-danger">*</span></label>                                          
                                                             <input class="form-control" type="text" class="form-control" name="bn_name" value="{{ old('bn_name') }}" id="bn_name">
                                                             @if ($errors->has('nambn_namee'))
@@ -106,6 +97,15 @@
                                                             @endif 
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="name">Product Name(English) <span class="text-danger">*</span></label>                                          
+                                                            <input class="form-control" type="text" class="form-control" value="{{ old('name') }}" name="name" id="name">
+                                                            @if ($errors->has('name'))
+                                                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                            @endif 
+                                                        </div>
+                                                    </div> 
                                                 </div>  
                                                 <div class="form-group">
                                                     <label for="name">Category Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('first_name') }}</span>

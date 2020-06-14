@@ -79,7 +79,7 @@ class ShopsTableSeeder extends Seeder
                   'twitter'              => 'https://www.twitter.com/fashion',
                   'instagram'            => 'https://www.instragram.com/fashion',
                   'description'          => 'dfdghbhsfh',
-                  'seller_id'            => '5',
+                  'seller_id'            => '4',
                   'user_id'              => '3',
                   'created_at'           => now(),
                   'updated_at'           => now()
