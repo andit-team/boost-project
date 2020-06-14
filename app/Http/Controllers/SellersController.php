@@ -24,9 +24,12 @@ class SellersController extends Controller
     {
         
         $activesellers = Seller::with('shop')->where('status','Active')->orderBy('id', 'DESC')->get();
-        //dd($activesellers);
+        // dd($activesellers);
         $requestSellers = Seller::with('shop')->where('status','Inactive')->orderBy('id','DESC')->get();
+        //dd($requestSellers);
         $rejectSellers = Seller::with('shop')->where('status','Reject')->orderBy('id','DESC')->get();
+
+       
         
         return view('merchant.sellers.index',compact('activesellers','requestSellers','rejectSellers'));
     }

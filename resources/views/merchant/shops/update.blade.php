@@ -280,6 +280,10 @@
                         <input type="text" class="form-control @error('name') border-danger @enderror" required name="name" value="{{ old('name',$shopProfile->name) }}" id="" placeholder="Shop Name">
                     </div>
                     <div class="form-group">
+                        <label for="slogan">Shop slogan<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('slogan') }}</span>
+                        <input type="text" class="form-control @error('slogan') border-danger @enderror" required name="slogan" value="{{ old('slogan',$shopProfile->slogan) }}" id="" placeholder="Shop slogan">
+                    </div>
+                    <div class="form-group">
                         <label for=""> Shop Phone</label>
                         <input type="text" class="form-control @error('phone') border-danger @enderror" required name="phone" value="{{ old('phone',$shopProfile->phone) }}" id="" placeholder="Shop Phone">
                     </div>

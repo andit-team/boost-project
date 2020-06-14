@@ -174,6 +174,7 @@ class MerchantController extends Controller{
         // dd($request->all());
         $request->validate([
             'name'       => 'required', 
+            'slogan'     => 'required',
             'phone'      => 'required',
             'address'    => 'required',
             'zip'        => 'numeric|required',
@@ -183,6 +184,7 @@ class MerchantController extends Controller{
         $slug = Baazar::getUniqueSlug($shop,$request->name);
         $shope = [
             'name'      => $request->name,
+            'slogan'    => $request->slogan,
             'slug'      => $slug,
             'phone'     => $request->phone,
             'email'     => $request->email,
