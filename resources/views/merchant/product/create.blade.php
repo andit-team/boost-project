@@ -255,110 +255,7 @@
                                         </div>
                                   </div>
 
-                                  <div class="card mb-4">
-                                      <h5 class="card-header">Price & Stock</h5>
-                                      <div class="card-body">
-                                            <div class="form-group row">
-                                                <label for="color_id" class="col-xl-3 col-md-4">Color Family<span class="text-danger"> *</span></label>
-                                                {{-- <select name="color_id" autocomplete="off" class="form-control col-md-8" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> --}}
-                                                    <select name="color_id" autocomplete="off" class="form-control col-md-8" id="colorSelect">
-                                                    <option value="">Select Color</option>
-                                                    @foreach($color as $row)
-                                                    <option value="{{ $row->slug }}">{{ $row->name }}</option>
-                                                    @endforeach
-                                                </select> 
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="color_id" class="col-xl-3 col-md-4"></label> 
-                                                    <div class="border p-3 collpanel selectColor red" id="red">
-                                                    sadasdadas
-                                                   </div>
-                                                   <div class="border p-3 collpanel selectColor yello" id="yello">
-                                                    sadasdadas
-                                                   </div>
-                                                   <div class="border p-3 collpanel selectColor blue" id="blue">
-                                                    sadasdadas
-                                                   </div>
-                                                   <div class="border p-3 collpanel selectColor brown" id="brown">
-                                                    sadasdadas
-                                                   </div>
-                                                   <div class="border p-3 collpanel selectColor pink" id="pink">
-                                                    sadasdadas
-                                                   </div>
-                                                   <div class="border p-3 collpanel selectColor white" id="white">
-                                                    sadasdadas
-                                                   </div>
-                                                   <div class="border p-3 collpanel selectColor black" id="black">
-                                                    sadasdadas
-                                                   </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <span class="btn btn-primary btn-sm pull-left rowAdd"><i class="fa fa-plus"></i> Add row</span>
-                                            </div>
-                                            <div class="form-group">
-                                                <table class="table">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Availability</td>
-                                                            <td>Color Family</td>
-                                                            <td>Price<span class="text-danger"> *</span></td>
-                                                            <td>Special Price</td>
-                                                            <td>Quantity</td>
-                                                            <td>SellerSKU</td>
-                                                            <td>Shop SKU</td>
-                                                            <td>Free Items</td> 
-                                                            <td></td> 
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="newRow">
-                                                        <tr class="firstRow">
-                                                            <td>
-                                                                <label class="switch">
-                                                                    <input type="checkbox" checked>
-                                                                    <span class="slider round"></span>
-                                                                  </label>
-                                                            </td>
-                                                            <td>
-                                                                <span class="tbSelectbox">
-                                                                    {{-- <select class="form-control tbSelectbox" name="color_id[]">
-                                                                        <option value="">Select color</option>
-                                                                    </select> --}}
-                                                                    <input type="text" class="form-control tbSelectbox" name="color_id[]">
-                                                                </span>
-                                                            </td>
-                                                            <td>
-                                                                <span class="number1">
-                                                                    <input type="number" class="form-control number1" name="price[]">
-                                                                </span>
-                                                            </td>
-                                                            <td class="pop">  
-                                                                <button type="button" class="" data-toggle="tooltip" data-placement="top" data-original-title="Click any question mark icon to get help and tips with specific tasks" aria-describedby="tooltip">
-                                                                    <i class="fa fa-edit"></i> 
-                                                                  </button>
-                                                            </td>
-                                                            <td>
-                                                                <span class="number1">
-                                                                    <input type="number" class="form-control number1" name="qty[]">
-                                                                </span>
-                                                            </td>
-                                                            <td>
-                                                                <span class="t1">
-                                                                    <input type="text" class="form-control t1" name="seller_sku[]">
-                                                                </span>
-                                                            </td>
-                                                            <td></td>
-                                                            <td>
-                                                                <span class="t1">
-                                                                    <input type="text" class="form-control t1" name="free_item[]">
-                                                                </span>
-                                                            </td>
-                                                            <td><span class="btn btn-danger btn-secondery pull-right rowRemove"><i class="fa fa-trash"></i></span></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                      </div>
-                                  </div>
+                                  @include('merchant.product.priceAndstock')
 
                                   <div class="card mb-4">
                                     <h5 class="card-header">Tag & Model</h5>
@@ -431,9 +328,9 @@
     <!-- section end -->
 @endsection
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script> --}}
 
 
 
@@ -517,66 +414,7 @@ $('select').selectpicker();
         .cat-level input[type=text]{
             height: 40px;
         } 
-        /*  */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        .switch input { 
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        input:checked + .slider {
-            background-color: #FF4C3B;
-        }
-
-        input:focus + .slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
+        
 </style>
 @endpush
 @push('js')
@@ -614,17 +452,7 @@ $('select').selectpicker();
        })
    });
 
-   $(document).ready(function(){
-       $('.rowAdd').click(function(){ 
-        var getTr = $('tr.firstRow:first');  
-            $('tbody.newRow').append("<tr class='removableRow'>"+getTr.html()+"</tr>");
-            var defaultRow = $('tr.removableRow:last'); 
-       })
-   });
 
-   $(document).on("click", "span.rowRemove ", function () {
-        $(this).closest("tr.removableRow").remove();
-    });
 
 
 //    $(document).ready(function(){
@@ -632,19 +460,19 @@ $('select').selectpicker();
         $('[data-toggle="tooltip"]').tooltip({ trigger: 'click'});   
        }); 
 // }); 
-$(document).ready(function(){
-    $("select").change(function(){
-        $(this).find("option:selected").each(function(){
-            var optionValue = $(this).attr("value");
-            if(optionValue){
-                $(".selectColor").not("." + optionValue).hide();
-                $("." + optionValue).show();
-            } else{
-                $(".selectColor").hide();
-            }
-        });
-    }).change();
-});
+// $(document).ready(function(){
+//     $("select").change(function(){
+//         $(this).find("option:selected").each(function(){
+//             var optionValue = $(this).attr("value");
+//             if(optionValue){
+//                 $(".selectColor").not("." + optionValue).hide();
+//                 $("." + optionValue).show();
+//             } else{
+//                 $(".selectColor").hide();
+//             }
+//         });
+//     }).change();
+// });
 
  </script>
 @endpush

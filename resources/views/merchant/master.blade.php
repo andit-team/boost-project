@@ -196,7 +196,7 @@
     <!-- Summernote js-->
 
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
-
+    @include('elements.myjs')
     @stack('js')
     <script>
         function openSearch() {
