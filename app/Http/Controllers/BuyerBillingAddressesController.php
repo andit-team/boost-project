@@ -29,7 +29,6 @@ class BuyerBillingAddressesController extends Controller
      */
     public function create()
     {
-       //$buyerAddress = BuyerBillingAddress::where('user_id',Sentinel::getUser()->id)->first();
         return view('frontend.buyer_billing_address.create');
     }
 

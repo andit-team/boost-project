@@ -26,9 +26,12 @@
   });
   $('.datepickerPreviousOnly').datepicker({
       endDate: '-0d',
+      showOn:'both',
       format:"yyyy-mm-dd",
       autoclose: true,
       todayHighlight: true,
+      changeMonth:true,
+      changeYear:true,
   });
 
   $('.datepickers').datepicker({

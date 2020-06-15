@@ -16,7 +16,7 @@
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">    Shop List</li>
+      <li class="breadcrumb-item active" aria-current="page">Shop List</li>
   @endslot
 @endcomponent
     <div class="container-fluid">

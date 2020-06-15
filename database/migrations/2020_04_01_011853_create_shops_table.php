@@ -16,6 +16,7 @@ class CreateShopsTable extends Migration
         Schema::create('shops', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('slogan')->nullable();
             $table->string('slug')->nullable();
             $table->string('logo')->nullable();
             $table->string('phone')->nullable();
@@ -31,6 +32,7 @@ class CreateShopsTable extends Migration
             $table->string('email')->nullable();
             $table->string('web')->nullable();
             $table->text('description')->nullable();
+            $table->text('bdesc')->nullable();
             $table->unsignedInteger('timezone_id')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('seller_id');

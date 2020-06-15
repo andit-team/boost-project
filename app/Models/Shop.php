@@ -10,7 +10,7 @@ use App\User;
 
 class Shop extends Model
 {
-  protected $fillable = ['name','slug','phone','logo','lat','lng','address','zip','banner','email','web','description','facebook','instagram','twitter','youtube','active','seller_id','user_id'];
+  protected $fillable = ['name','slogan','slug','phone','logo','lat','lng','address','zip','banner','email','web','description','bdesc','facebook','instagram','twitter','youtube','active','seller_id','user_id'];
 
   public function getRouteKeyName()
     {

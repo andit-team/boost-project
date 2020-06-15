@@ -64,8 +64,7 @@
                         <table class="table table-borderd" id="dataTableNoPagingDesc">
                             <thead>
                             <tr>
-                                <th width="50">Sl</th>
-                                {{-- <th width="100">Thumb</th> --}}
+                                <th width="50">Sl</th> 
                                 <th width="200">Category</th> 
                                 <th width="200">Percentage</th> 
                                 <th>Description</th>
@@ -82,12 +81,13 @@
                                         {{ $row->name }}
                                     </a>
                                 </td>
+                                <td>{{ $row->percentage }}</td>
                                 <td>{{ $row->desc }}</td> 
-                                <td class=""> 
-                                    <ul class="d-flex justify-content-between">
-                                        <li><a href="#" id="{{ url('/andbaazaradmin/category/'.$row->slug.'/edit')}}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#categoryEditModal{{$row->id}}"><i class="fa fa-edit"></i></button> </a></li>
+                                <td class="d-flex justify-content-between"> 
+                                    <ul>
+                                        <li><a href="#" id="{{ url('/andbaazaradmin/products/category/'.$row->slug.'/edit')}}" title="Edit"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#categoryEditModal{{$row->id}}"><i class="fa fa-edit"></i></button> </a></li>
                                         <li> 
-                                            <form action="{{ url('/andbaazaradmin/category/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
+                                            <form action="{{ url('/andbaazaradmin/products/category/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                                 @csrf
                                                 @method('delete') 
                                                 <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
@@ -105,7 +105,7 @@
                                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/category/'.$row->slug) }}" method="post" enctype="multipart/form-data">
+                                                <form class="needs-validation" novalidate="" action="{{ url('/andbaazaradmin/products/category/'.$row->slug) }}" method="post" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('put')
                                                     <div class="form">
@@ -173,7 +173,7 @@
                             <div class="form-group text-left mb-5 pb-3">  
                                 <label for="thumb">Image:</label>
                                 <div class="mt-0">
-                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/category_image/user.png') }}" />
+                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/category_image/categ.png') }}" />
                                 </div>
                                 <div class="uploadbtn"> 
                                     <label for="file-upload" class="custom-file-upload">Upload Here</label>
@@ -186,14 +186,13 @@
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             </div>
                             <div class="form-group ">
-                                <label for="percentage">Percentage:</label>
-                              
-                                {{-- <input type="number"  name="percentage" value="{{ old('percentage') }} %" required placeholder="0.00" class="form-control @error('percentage') border-danger @enderror">  --}}
-                                <input type="number" name="percentage" value="{{old('percentage')}} % " class="form-control" id="amount" placeholder="0.00" required autocomplete="off">
+                                <label for="percentage">Percentage:</label> 
+                                <input type="number" name="percentage" value="{{old('percentage')}} % " class="form-control @error('percentage') border-danger @enderror" id="amount" placeholder="0.00" required autocomplete="off">
+                                <span class="text-danger">{{ $errors->first('percentage') }}</span>
                             </div>
                             <div class="form-group">
                                 <label for="desc">Description:</label>
-                                <textarea type="text"  name="desc"  class="form-control @error('name') border-danger @enderror" rows="5"> </textarea>
+                                <textarea   name="desc"  class="form-control @error('desc') border-danger @enderror" rows="5"> </textarea>
                                 <span class="text-danger">{{ $errors->first('desc') }}</span>
                             </div>   
                             <div class="text-right">

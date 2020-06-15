@@ -28,8 +28,6 @@ class BuyerCardsController extends Controller
      */
     public function create()
     {
-        // $buyerCard = BuyerCard::where('user_id',Sentinel::getUser()->id)->first();
-        //dd($buyerCard);
         return view('frontend.byer_cards.create');
     }
 
@@ -42,7 +40,6 @@ class BuyerCardsController extends Controller
     public function store(Request $request)
     {
         $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
-        //dd($buyerId);
         $this->validateForm($request); 
         if($buyerId){
             $data = [

@@ -280,6 +280,10 @@
                         <input type="text" class="form-control @error('name') border-danger @enderror" required name="name" value="{{ old('name',$shopProfile->name) }}" id="" placeholder="Shop Name">
                     </div>
                     <div class="form-group">
+                        <label for="slogan">Shop slogan<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('slogan') }}</span>
+                        <input type="text" class="form-control @error('slogan') border-danger @enderror" required name="slogan" value="{{ old('slogan',$shopProfile->slogan) }}" id="" placeholder="Shop slogan">
+                    </div>
+                    <div class="form-group">
                         <label for=""> Shop Phone</label>
                         <input type="text" class="form-control @error('phone') border-danger @enderror" required name="phone" value="{{ old('phone',$shopProfile->phone) }}" id="" placeholder="Shop Phone">
                     </div>
@@ -293,32 +297,39 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">Write about your shop</label>
+                        <label for="">Write about your shop (English)</label>
                         <textarea class="form-control summernote @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="15" >{{ $shopProfile->description }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Write about your shop (Bangla)</label>
+                        <textarea class="form-control summernote @error('bdesc') border-danger @enderror" placeholder="Write Your Message"  name="bdesc"  id="" rows="15" >{{ $shopProfile->bdesc }}</textarea>
+                    </div>
+                    <div class="mb-4">
+                    <h5 class="modal-title" id="exampleModalLabel">Enter Your Own Link</h5>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Facebook</label>
-                                <input type="url" class="form-control" name="Facebook">
+                                <input type="url" class="form-control @error('facebook') border-danger @enderror"  name="facebook" value="{{ old('Web',$shopProfile->facebook) }}" id="" placeholder="Own Profile ID ">                             
+                            </div>
+                        </div>                       
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Twitter (Optional)</label>
+                                <input type="url" class="form-control @error('twitter') border-danger @enderror"  name="twitter" value="{{ old('Web',$shopProfile->twitter) }}" id="" placeholder="Own Profile ID ">                             
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Write about your shop</label>
-                                <input type="url" name="Facebook" class="form-control">
+                                <label for="">Instagram (Optional)</label>
+                                <input type="url" class="form-control @error('instagram') border-danger @enderror"  name="instagram" value="{{ old('Web',$shopProfile->instagram) }}" id="" placeholder="Own Profile ID ">                                                           
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Write about your shop</label>
-                                <input type="url" name="Facebook" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Write about your shop</label>
-                                <input type="url" name="Facebook" class="form-control">
+                                <label for="">Youtube (Optional)</label>
+                                <input type="url" class="form-control @error('youtube') border-danger @enderror"  name="youtube" value="{{ old('Web',$shopProfile->youtube) }}" id="" placeholder="Own Profile ID ">                             
                             </div>
                         </div>
                     </div>
@@ -400,7 +411,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
      $('.summernote').summernote({
-           height: 300,
+           height: 200,
       });
    });
 

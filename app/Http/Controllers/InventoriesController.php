@@ -8,6 +8,7 @@ use App\Models\Inventory;
 use App\Models\Item;
 use App\Models\Color;
 use App\Models\Size;
+use App\Models\Shop;
 use Sentinel;
 use Session;
 use Baazar;
@@ -22,13 +23,13 @@ class InventoriesController extends Controller
     public function index()
     {
         $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
-        //dd($sellerProfile);
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first(); 
         $inventory = Inventory::all();
         $item = Item::where('user_id',Sentinel::getUser()->id)->get();
         
         $size= Size::all();
         $color = Color::all();
-        return view ('merchant.inventory.index',compact('inventory','item','size','color','sellerProfile'));
+        return view ('merchant.inventory.index',compact('inventory','item','size','color','sellerProfile','shopProfile'));
     }
 
     /**
@@ -38,13 +39,12 @@ class InventoriesController extends Controller
      */
     public function create()
     {
-        $inventory = Inventory::all();
-       // $item = Item::all();
+        $inventory = Inventory::all(); 
         $item = Item::where('user_id',Sentinel::getUser()->id)->get();
-        //dd($item);
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first(); 
         $size= Size::all();
         $color = Color::all();
-        return view ('merchant.inventory.create',compact('inventory','item','size','color'));
+        return view ('merchant.inventory.create',compact('inventory','item','size','color','shopProfile'));
     }
 
     /**
@@ -68,7 +68,8 @@ class InventoriesController extends Controller
         ];
 
         Inventory::create($data);
-        return redirect('merchant/inventory');
+        Session::flash('success', 'Inventory Added Successfully!');
+        return redirect('merchant/inventories');
     }
 
     /**
@@ -91,14 +92,12 @@ class InventoriesController extends Controller
      */
     public function edit(Inventory $inventory)
     {
-        $inventory = Inventory::where('slug',$inventory->slug)->first();
-       //dd( $inventory);
-        //  $item = Item::all();
-         $item = Item::where('user_id',Sentinel::getUser()->id)->get();
-         //dd($item);
-         $size= Size::all();
-         $color = Color::all();
-         return view ('merchant.inventory.edit',compact('inventory','item','size','color'));     
+        $inventory = Inventory::where('slug',$inventory->slug)->first(); 
+        $item = Item::where('user_id',Sentinel::getUser()->id)->get();
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        $size= Size::all();
+        $color = Color::all();
+        return view ('merchant.inventory.edit',compact('inventory','item','size','color','shopProfile'));     
     }
 
     /**
@@ -110,8 +109,7 @@ class InventoriesController extends Controller
      */
     public function update(Inventory $inventory,Request $request)
     {
-        $this->validateForm($request);
-        // $slug = Baazar::getUniqueSlug($inventory,$request->name);
+        $this->validateForm($request); 
         $data = [
             'item_id' => $request->item_id,
             'color_id' => $request->color_id,
@@ -121,7 +119,8 @@ class InventoriesController extends Controller
             'updated_at' => now(),
         ];
         $inventory->update($data);
-        return redirect('merchant/inventory');
+        Session::flash('error', 'Inventory Added Successfully!');
+        return redirect('merchant/inventories');
     }
 
     /**

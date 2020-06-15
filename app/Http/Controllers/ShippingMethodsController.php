@@ -29,8 +29,7 @@ class ShippingMethodsController extends Controller
      */
     public function create()
     {
-      $courier = Courier::all();
-      return view('admin.shipping_method.create',compact('courier'));
+      // 
     }
 
     /**
@@ -63,9 +62,9 @@ class ShippingMethodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ShippingMethod $shippingmethod)
+    public function show($id)
     {
-        return  view('admin.shipping_method.show',compact('shippingmethod'));
+      //  
     }
 
     /**
@@ -99,7 +98,7 @@ class ShippingMethodsController extends Controller
           'updated_at' => now(),
       ];
       $shippingmethod->update($data);
-     Session::flash('success', 'Shipping Method Updated Successfully!');
+     Session::flash('warning', 'Shipping Method Updated Successfully!');
      return redirect('andbaazaradmin/shippingmethod');
     }
 
@@ -112,7 +111,7 @@ class ShippingMethodsController extends Controller
     public function destroy(ShippingMethod $shippingmethod)
     {
       $shippingmethod->delete();
-      Session::flash('warning', 'Shipping Method Deleted Successfully!');
+      Session::flash('error', 'Shipping Method Deleted Successfully!');
       return redirect('andbaazaradmin/shippingmethod');
     }
 

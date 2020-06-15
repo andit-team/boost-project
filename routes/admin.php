@@ -27,6 +27,7 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::resource('products/tag','TagsController');
     Route::resource('products/color','ColorsController');
     Route::resource('products/brand','BrandController');
+    Route::get('product_list','ItemsController@productList');
 
    Route::resource('/shop','ShopsController');
 

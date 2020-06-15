@@ -60,29 +60,19 @@
                                 
                                 <label for="phone" class="mt-2">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
                                 <input type="number" class="form-control @error('phone') border-danger @enderror" required  name="phone" value="{{ old('phone') }}" id="" placeholder="Phone Number">
-                            </div>
-
-
+                            </div>                          
                             <div class="col-md-4 text-right">  
                                 <label for="picture">Picture</label>
-                                <div class="mt-0">
-                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/buyer_profile/user.png') }}" />
-                                </div>                            
-                                <div id="userpic" class="userpic">
-                                    <div class="js-preview userpic__preview"></div>
-                                    <div class="btn btn-success js-fileapi-wrapper">
-                                       <div class="js-browse">
-                                          <span class="btn-txt">Choose</span>
-                                          <input type="file" name="filedata">
-                                       </div>
-                                       <div class="js-upload" style="display: none;">
-                                          <div class="progress progress-success"><div class="js-progress bar"></div></div>
-                                          <span class="btn-txt">Uploading</span>
-                                       </div>
-                                    </div>
-                                 </div>
+                                <div class="mt-0">                                 
+                                  <img id="output"  class="imagestyle" src="{{ asset('/uploads/buyer_profile/user.png') }}" />                                 
+                                </div>
+                                <div class="uploadbtn"> 
+                                    <label for="file-upload" class="custom-file-upload">Upload Here</label>
+                                    <input id="file-upload" type="file" name="picture" onchange="loadFile(event)"/>
+                                    <input type="hidden" value="" name="old_image">   
+                                </div>
                             </div>
-                        </div> 
+                         </div> 
 
                         <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
                         <textarea class="form-control mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" ></textarea>
@@ -130,56 +120,6 @@
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
     };
-</script>
-<script>
-$('#file-upload').croppie(opts);
-// call a method via jquery
-$('#file-upload').croppie(method, args);
-</script>
-
-<script>
-    $('#userpic').fileapi({
-   url: 'http://rubaxa.org/FileAPI/server/ctrl.php',
-   accept: 'image/*',
-   imageSize: { minWidth: 200, minHeight: 200 },
-   elements: {
-      active: { show: '.js-upload', hide: '.js-browse' },
-      preview: {
-         el: '.js-preview',
-         width: 200,
-         height: 200
-      },
-      progress: '.js-progress'
-   },
-   onSelect: function (evt, ui){
-      var file = ui.files[0];
-      if( !FileAPI.support.transform ) {
-         alert('Your browser does not support Flash :(');
-      }
-      else if( file ){
-         $('#popup').modal({
-            closeOnEsc: true,
-            closeOnOverlayClick: false,
-            onOpen: function (overlay){
-               $(overlay).on('click', '.js-upload', function (){
-                  $.modal().close();
-                  $('#userpic').fileapi('upload');
-               });
-               $('.js-img', overlay).cropper({
-                  file: file,
-                  bgColor: '#fff',
-                  maxSize: [$(window).width()-100, $(window).height()-100],
-                  minSize: [200, 200],
-                  selection: '90%',
-                  onSelect: function (coords){
-                     $('#userpic').fileapi('crop', file, coords);
-                  }
-               });
-            }
-         }).open();
-      }
-   }
-});
 </script>
 @endpush
 

@@ -44,29 +44,7 @@ class ShopsController extends Controller
     public function store(Request $request)
     {
         
-        $shop = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        //dd($shop);
-        $this->validateForm($request);
-       
-            $shop->update([
-                'name'              => $request->name, 
-                'phone'             => $request->phone,
-                // 'logo'              => Baazar::fileUpload($request,'logo','old_image','/uploads/shops/logos'),
-                // 'google_location'   => $request->google_location,
-                // 'banner'            => Baazar::fileUpload($request,'logo','old_image','/uploads/shop_banner'),
-                'email'             => $request->email,
-                'web'               => $request->web,
-                'facebook'          => $request->facebook,
-                'instagram'         => $request->instagram,
-                'twitter'           => $request->twitter,    
-                'youtube'           => $request->youtube,
-                'description'       => $request->description, 
-                'updated_at'        => now(),
-            ]);
-       
-
-        session()->flash('success','your shop profile updated');
-       return back(); 
+        //
     }
 
     /**
@@ -98,9 +76,33 @@ class ShopsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $shop = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        //dd($shop);
+        $this->validateForm($request);
+       
+            $shop->update([
+                'name'              => $request->name, 
+                'slogan'            => $request->slogan,
+                'phone'             => $request->phone,
+                // 'logo'              => Baazar::fileUpload($request,'logo','old_image','/uploads/shops/logos'),
+                // 'google_location'   => $request->google_location,
+                // 'banner'            => Baazar::fileUpload($request,'logo','old_image','/uploads/shop_banner'),
+                'email'             => $request->email,
+                'web'               => $request->web,
+                'facebook'          => $request->facebook,
+                'instagram'         => $request->instagram,
+                'twitter'           => $request->twitter,    
+                'youtube'           => $request->youtube,
+                'description'       => $request->description,
+                'bdesc'             => $request->bdesc,
+                'updated_at'        => now(),
+            ]);
+       
+
+        session()->flash('success','your shop profile updated');
+       return back(); 
     }
 
     /**
@@ -119,7 +121,7 @@ class ShopsController extends Controller
             'name' => 'required',
             'phone' => 'required', 
             'email' => 'required|email',  
-            'description' => 'required',
+            'description' => '',
         ]);
     }
 }

@@ -90,15 +90,6 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="name">Product Name(English) <span class="text-danger">*</span></label>                                          
-                                                            <input class="form-control" type="text" class="form-control" value="{{ old('name') }}" name="name" id="name">
-                                                            @if ($errors->has('name'))
-                                                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                                                            @endif 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
                                                             <label for="bn_name">Product Name(Bangla) <span class="text-danger">*</span></label>                                          
                                                             <input class="form-control" type="text" class="form-control" name="bn_name" value="{{ old('bn_name') }}" id="bn_name">
                                                             @if ($errors->has('nambn_namee'))
@@ -106,6 +97,15 @@
                                                             @endif 
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="name">Product Name(English) <span class="text-danger">*</span></label>                                          
+                                                            <input class="form-control" type="text" class="form-control" value="{{ old('name') }}" name="name" id="name">
+                                                            @if ($errors->has('name'))
+                                                                <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                            @endif 
+                                                        </div>
+                                                    </div> 
                                                 </div>  
                                                 <div class="form-group">
                                                     <label for="name">Category Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('first_name') }}</span>
@@ -460,19 +460,14 @@ $('select').selectpicker();
         $('[data-toggle="tooltip"]').tooltip({ trigger: 'click'});   
        }); 
 // }); 
-// $(document).ready(function(){
-//     $("select").change(function(){
-//         $(this).find("option:selected").each(function(){
-//             var optionValue = $(this).attr("value");
-//             if(optionValue){
-//                 $(".selectColor").not("." + optionValue).hide();
-//                 $("." + optionValue).show();
-//             } else{
-//                 $(".selectColor").hide();
-//             }
-//         });
-//     }).change();
-// });
 
+
+// $("div.card-body div.row select.colorSelect").on('change',function(){  
+    function popups(){
+        console.log('change');
+        $('#color1').append("<label for='color_id' class='col-xl-3 col-md-4'></label>  <div class='border p-3 collpanel'>sdfdsfsdfsd</div><label for='color_id' class='col-xl-3 col-md-4'></label> <select name='color_id' onchange='popups()' autocomplete='off' class='form-control col-md-8 colorSelect'> <option value=''>Select color</oprion>@foreach($color as $row)<option value='{{ $row->id }}'>{{$row->name}}@endforeach</option></select>");  
+    }
+// });
+ 
  </script>
 @endpush

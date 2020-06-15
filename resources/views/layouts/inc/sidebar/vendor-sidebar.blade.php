@@ -2,7 +2,7 @@
     <div class="dashboard-sidebar">
         <div class="profile-top">
             <div class="profile-image">
-                <img id="shop-img-sidebar" src="{{!empty($shopProfile->logo) ? asset($shopProfile->logo) : asset('/uploads/shops/logos/shop-1.png')}}" alt="" class="img-fluid imagestyle">
+                <img id="shop-img-sidebar" src="{{!empty($shopProfile->logo) ? asset($shopProfile->logo) : asset('/uploads/shops/logos/shop-1.png')}}" alt="" class="img-fluid">
                 {{-- @if(!empty($shopProfile->logo))
                 <img  src="{{ asset($shopProfile->logo) }}" alt="" class="img-fluid">
                 @else
@@ -20,21 +20,20 @@
                 <li class="nav-item {{$active == 'dashboard' ? 'active' : ''}}"><a  class="nav-link  {{$active == 'dashboard' ? 'active' : ''}}" href="{{ url('merchant/dashboard') }}">dashboard</a></li>
                 <!-- <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a></li>                             -->
 
-                <li class="nav-item"><a  class="nav-link {{$active == 'product' ? 'active' : ''}}" href="{{ url('merchant/product') }}">All Products</a>
+                <li class="nav-item"><a  class="nav-link {{$active == 'product' ? 'active' : ''}}" href="{{ url('merchant/products') }}">All Products</a></li>
+                
+                <li class="nav-item"><a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventories') }}">All Inventory</a></li>
+                
+                
+                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">Orders</a> </li>
+               
+                <li class="nav-item"><a  class="nav-link {{$active == 'profile' ? 'active' : ''}}" href="{{ url('merchant/profile/') }}">Profile</a></li>
+                
+                <li class="nav-item"><a  class="nav-link {{$active == 'shop' ? 'active' : ''}}" href="{{ url('merchant/shop') }}">shop</a>
                 </li>
-                <li class="nav-item"><a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventory') }}">All Inventory</a>
-                </li>
-                </li>
-                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">Orders</a>
-                </li>
-                <li class="nav-item"><a  class="nav-link {{$active == 'profile' ? 'active' : ''}}" href="{{ url('merchant/seller/') }}">Profile</a>
-                </li>
-                {{-- <li class="nav-item"><a  class="nav-link {{$active == 'shop' ? 'active' : ''}}" href="{{ url('merchant/shop') }}">shop</a>
-                </li> --}}
-                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a>
-                </li> 
-                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="#">logout</a>
-                </li>
+                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a></li> 
+                
+                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="#">logout</a> </li>           
             </ul>
         </div>
         <div id="map" class="mt-2"></div>
@@ -54,11 +53,6 @@
 
 @push('js')
 <script>
-
-    // The following example creates a marker in Stockholm, Sweden using a DROP
-    // animation. Clicking on the marker will toggle the animation between a BOUNCE
-    // animation and no animation.
-
     var marker;
 
     function initMap() {
@@ -66,7 +60,6 @@
         zoom: 13,
         center: {lat: {{ $shopProfile->lat }}, lng: {{ $shopProfile->lng }}}
       });
-
       // var image = 'http://localhost/andbaazar/public/frontend/assets/images/icon/logo.png';
       marker = new google.maps.Marker({
         map: map,

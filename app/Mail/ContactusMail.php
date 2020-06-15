@@ -19,14 +19,14 @@ class ContactusMail extends Mailable
     public $messageList;
     public $first_name;
     public $last_name;
-    //public $message;
+    public $sub;
    
-    public function __construct($messageList,$first_name,$last_name)
+    public function __construct($messageList,$first_name,$last_name,$sub)
     {
         $this->messageList = $messageList;
         $this->first_name = $first_name;
         $this->last_name = $last_name;
-        //$this->message = $message;
+        $this->sub = $sub;
        
     }
 
@@ -37,6 +37,6 @@ class ContactusMail extends Mailable
      */
     public function build()
     {
-        return $this->view('admin.emails.contactus',['messageList'=>$this->messageList,'first_name'=>$this->first_name,'last_name'=>$this->last_name]);
+        return $this->subject($this->sub)->view('admin.emails.contactus',['messageList'=>$this->messageList,'first_name'=>$this->first_name,'last_name'=>$this->last_name,'sub'=>$this->sub]);
     }
 }

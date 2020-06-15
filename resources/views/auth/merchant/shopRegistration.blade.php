@@ -77,6 +77,10 @@
                                <input type="hidden" name="slug" value="{{ $seller->slug }}">
                             </div> 
                             <div class="form-group">
+                                <input required="" name="slogan" value="{{ old('slogan') }}" type="text" class="form-control @error('slogan') border-danger @enderror" placeholder="Shop Slogan" id="exampleInputEmail12" autocomplete="off"> 
+                                <span class="text-danger">{{ $errors->first('slogan') }}</span> 
+                            </div>
+                            <div class="form-group">
                                 <input required="" name="phone" value="{{ old('phone') }}" type="text" class="form-control @error('phone') border-danger @enderror" placeholder="Shop Phone" autocomplete="off">
                                 <span class="text-danger">{{ $errors->first('phone') }}</span>
                             </div>

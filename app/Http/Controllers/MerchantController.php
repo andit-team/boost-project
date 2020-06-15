@@ -71,7 +71,7 @@ class MerchantController extends Controller{
 
         session()->flash('success','Seller profile registration 1st stape complete successfully');  
 
-        return redirect('sell-resubmit-toke'.'?slug='.$slug);
+        return redirect('sell-resubmit-token'.'?slug='.$slug);
     }
 
     public function resubmitToken(Request $request){
@@ -141,9 +141,7 @@ class MerchantController extends Controller{
       
 
         $sellerId    = Seller::where('slug',$request->slug)->first();
-
-        
-       
+ 
             $sellerId->update([
                 'first_name'         => $sellerId->first_name,
                 'last_name'          => $sellerId->last_name,
@@ -172,20 +170,22 @@ class MerchantController extends Controller{
         return view('auth.merchant.shopRegistration',compact('seller'));
     }
 
-    public function shopRegistrationStore(Request $request){
+    public function shopRegistrationStore(Request $request,Shop $shop){
         // dd($request->all());
         $request->validate([
             'name'       => 'required', 
+            'slogan'     => 'required',
             'phone'      => 'required',
             'address'    => 'required',
             'zip'        => 'numeric|required',
             'email'      => 'required|unique:shops,email',
         ]);
         $sellerId = Seller::where('slug',$request->slug)->first();
-
+        $slug = Baazar::getUniqueSlug($shop,$request->name);
         $shope = [
             'name'      => $request->name,
-            'slug'      => $request->slug,
+            'slogan'    => $request->slogan,
+            'slug'      => $slug,
             'phone'     => $request->phone,
             'email'     => $request->email,
             'web'       => $request->web,

@@ -28,7 +28,7 @@ class SizesController extends Controller
      */
     public function create()
     {
-        return view('admin.sizes.create');
+        // 
     }
 
     /**
@@ -52,7 +52,7 @@ class SizesController extends Controller
 
         Size::create($data);
         Session::flash('success', 'Size Inserted Successfully!');
-        return redirect('andbaazaradmin/size');
+        return redirect('andbaazaradmin/products/size');
     }
 
     /**
@@ -61,9 +61,9 @@ class SizesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Size $size)
+    public function show($id)
     {
-        return view('admin.sizes.show',compact('size'));
+        // 
     }
 
     /**
@@ -95,8 +95,8 @@ class SizesController extends Controller
         ];
 
         $size->update($data);
-        Session::flash('success', 'Size Updated Successfully!');
-        return redirect('andbaazaradmin/size');
+        Session::flash('warning', 'Size Updated Successfully!');
+        return redirect('andbaazaradmin/products/size');
     }
 
     /**
@@ -108,8 +108,8 @@ class SizesController extends Controller
     public function destroy(Size $size)
     {
         $size->delete();
-        Session::flash('warning', 'Size Deleted Successfully!');
-        return redirect('andbaazaradmin/size');
+        Session::flash('error', 'Size Deleted Successfully!');
+        return redirect('andbaazaradmin/products/size');
     }
 
     private function validateForm($request){

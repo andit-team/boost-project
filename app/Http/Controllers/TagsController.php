@@ -28,7 +28,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-          return view('admin.tags.create');
+          // 
     }
 
     /**
@@ -51,7 +51,8 @@ class TagsController extends Controller
         ]);
 
        Session::flash('success', 'Tags Inserted Successfully');
-       return redirect('andbaazaradmin/tag');
+
+       return redirect('andbaazaradmin/products/tag');
 
     }
 
@@ -61,9 +62,9 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag $tag)
+    public function show($id)
     {
-     return  view('admin.tags.show',compact('tag'));
+      //  
     }
 
     /**
@@ -95,8 +96,8 @@ class TagsController extends Controller
           ];
 
           $tag->update($data);
-         Session::flash('success', 'Tags Updated Successfully');
-         return redirect('andbaazaradmin/tag');
+         Session::flash('warning', 'Tags Updated Successfully');
+         return redirect('andbaazaradmin/products/tag');
     }
 
     /**
@@ -109,8 +110,8 @@ class TagsController extends Controller
     {
 
           $tag->delete();
-          Session::flash('warning', 'Tags Deleted Successfully');
-          return redirect('andbaazaradmin/tag');
+          Session::flash('error', 'Tags Deleted Successfully');
+          return redirect('andbaazaradmin/products/tag');
     }
 
     private function validateForm($request){

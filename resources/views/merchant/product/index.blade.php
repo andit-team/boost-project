@@ -25,16 +25,14 @@
           <div class="col-md-9 register-page contact-page">  
             <h3>Product Detail</h3>
             @if($sellerProfile->status == 'Inactive') 
-            <div class="mt-2"> 
-              {{-- <h3>Seller profile Status</h3> --}}
+            <div class="mt-2">  
                   <div class="bg-warning text-center p-5 rounded">
                       <h4>Thank Your for your request</h4>
                       <p>We nedd to review your request a little longer. After approve your request you can see your dashboard.</p>
                   </div> 
               </div>
             @elseif($sellerProfile->status == 'Reject') 
-            <div class="mt-2">
-              {{-- <h3 class="card-header text-danger">Seller profile Status</h3> --}}
+            <div class="mt-2"> 
                   <div class="bg-warning p-5 text-center rounded">
                       <h4>Your profile is Rejected</h4>
                       <h6>Reject Reason : <small>{{ $sellerProfile->rej_desc }}</small></h6> 
@@ -44,7 +42,7 @@
           </div>
             @elseif($sellerProfile->status == 'Active')
             <div  class="text-right mt">                       
-                <a href="{{ url('merchant/product/create') }}" class="btn btn-sm btn-solid">add product</a> 
+                <a href="{{ url('merchant/products/new') }}" class="btn btn-sm btn-solid">add product</a> 
             </div>             
             @forelse($item as $row)
                 <div class="card mb-4">      
@@ -72,7 +70,7 @@
                         </div> 
                         <div class="row">     
                          <a href="{{ url('/merchant/product/vendorshow/'.$row->slug) }}" title="Show" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> </a> 
-                        <a href="{{ url('/merchant/product/'.$row->slug).'/edit' }}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a>
+                        <a href="{{ url('/merchant/products/update/'.$row->slug.'/productupdate')}}" title="Show" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i> </a>
              
                         
                          <form action="{{ url('/merchant/product/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">

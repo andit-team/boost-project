@@ -35,8 +35,7 @@ class ItemsController extends Controller
       $item = Item::where('status','Active')->get();
       $size= Size::all();
       $color = Color::all();
-      return view ('merchant.product.index',compact('category','item','size','color','sellerProfile','shopProfile'));
-    // return view('merchant.product.index');
+      return view ('merchant.product.index',compact('category','item','size','color','sellerProfile','shopProfile')); 
     }
 
     /**
@@ -56,8 +55,8 @@ class ItemsController extends Controller
         $tag = Tag::all();
         $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        //dd($sellerId);
-          return view ('merchant.product.create',compact('category','categories','item','size','color','subCategories','tag','sellerId','shopProfile','childCategory'));
+        
+        return view ('merchant.product.create',compact('category','categories','item','size','color','subCategories','tag','sellerId','shopProfile','childCategory'));
     }
 
     /**
@@ -67,10 +66,8 @@ class ItemsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Item $item,Request $request)
-    {
-      //dd($request->all());
-      $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
-      //dd($sellerId);
+    { 
+      $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first(); 
     //  $this->validateForm($request);
     //$itemId = Item::where('user_id',Sentinel::getUser()->id)->first();
     if($sellerId != ''){
@@ -161,9 +158,9 @@ class ItemsController extends Controller
      */
     public function show(Item $product)
     {
-      $product = Item::with('itemimage')->where('slug',$product->slug)->first();
-      //dd($product);
-        return view('merchant.product.show',compact('product'));
+        $product = Item::with('itemimage')->where('slug',$product->slug)->first();  
+
+        return view('merchant.product.show',compact('product','shopProfile'));
     }
 
     /**
@@ -174,7 +171,7 @@ class ItemsController extends Controller
      */
     public function edit(Item $product)
     {
-        //dd($product);
+        
         $category = Category::all();
         $item = Item::all();
         $size= Size::all();
@@ -182,8 +179,9 @@ class ItemsController extends Controller
         $categories = Category::where('parent_id',0)->get();
         $subCategories = Category::where('parent_id','!=',0)->get();
         $tag = Tag::all();
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
 
-        return view ('merchant.product.edit',compact('category','categories','item','size','color','subCategories','product','tag'));
+        return view ('merchant.product.edit',compact('category','categories','item','size','color','subCategories','product','tag','shopProfile'));
     }
 
     /**
@@ -238,12 +236,12 @@ class ItemsController extends Controller
     
 
 
-    public function adminIndex(){
+    public function productList(){
     $category = Category::all();
       $item = Item::all();
       $size= Size::all();
       $color = Color::all();
-     return view('merchant.product.adminIndex',compact('category','item','size','color'));
+     return view('merchant.product.product_list',compact('category','item','size','color'));
     }
 
      public function approvement($slug){
@@ -262,10 +260,10 @@ class ItemsController extends Controller
     }
 
     public function rejected(Request $request,$slug){
-      //dd($request->all());
+      
      
       $data = Item::where('slug',$slug)->first();
-      //dd($data);
+      
       
       $data->update([
         'status' => 'Reject',
@@ -305,13 +303,10 @@ class ItemsController extends Controller
 
     //  $product = Item::with('category')->where('user_id',Sentinel::getUser()->id)->first();
       $product = Item::with(['category','itemimage'])->where('slug',$slug)->first();
-      return view('merchant.product.vendorshow',compact('product'));
-    }
+      $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+      return view('merchant.product.vendorshow',compact('product','shopProfile'));
+    } 
 
-    // public function subcategory(Request $request){
-    //   $categoryId = $request->categoryId;
-    //   return Item::getSubcategory($categoryId);
-    // }
 
     // private function validateForm($request){
     //     $validatedData = $request->validate([

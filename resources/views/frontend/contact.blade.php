@@ -68,7 +68,7 @@
                     </div>
                 </div>
             </div>
-          </div>
+        </div>
       
        
         <div class="card bg-light">
@@ -99,6 +99,11 @@
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                 </div>
                                 <div class="col-md-12 mb-3">
+                                    <label for="sub">Subject<span class="text-danger"> *</span></label>
+                                    <input type="text" class="form-control" placeholder="Write Your subject" name="sub" value="{{ old('sub') }}">
+                                    <span class="text-danger">{{ $errors->first('sub') }}</span>
+                                </div>
+                                <div class="col-md-12 mb-3">
                                     <label for="description">Write Your Message<span class="text-danger"> *</span></label>
                                     <textarea required class="form-control" placeholder="Write Your Message" name="description" value="{{ old('description') }}" id="description" rows="6"></textarea>
                                     <span class="text-danger">{{ $errors->first('description') }}</span>
@@ -112,34 +117,8 @@
                 </div>
             </div>
           </div>
-        </div>
+       </div>
     </div>
 </section>
 <!--Section ends-->
 @endsection
-
-@push('js')
-{{-- <script>
-   function saveMessage(e){
-    e.preventDefault(); 
-    //    const first_name  = $('#first_name').val();
-    //    const last_name   = $('#last_name').val();
-    //    const phone       = $('#phone').val();
-    //    const description = $('#description').val();
-    //    if(first_name == '' || last_name == '' || phone == '' || description == ''  ){
-    //     //    alert('Required field must be filled!.');
-    //    }else{
-        var formdata = $('#validateForms').serialize(); 
-        $.ajax({
-            type: 'POST',
-            url: "{{ url('contact-us') }}",
-            data: formdata,
-            dataType: "json",
-            success: function(response){
-                $('#validateForm')[0].reset(); 
-                // swal(response.first_name+" Your comment sent successfully!", {icon: "success",buttons: false,timer: 2000});
-            }
-        })
-       } 
- </script> --}}
-@endpush

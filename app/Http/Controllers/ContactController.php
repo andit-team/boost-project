@@ -46,6 +46,7 @@ class ContactController extends Controller
             'first_name'  => $request->first_name,
             'last_name'   => $request->last_name,
             'phone'       => $request->phone, 
+            'sub'         => $request->sub,  
             'email'       => $request->email,
             'description' => $request->description,
             'created_at'  => now(),
@@ -118,8 +119,9 @@ class ContactController extends Controller
 
             $first_name = $messageList['first_name'];
             $last_name = $messageList['last_name']; 
+            $sub = $messageList['sub'];
 
-        \Mail::to($messageList)->send(new ContactusMail($messageList,$first_name,$last_name));  
+        \Mail::to($messageList)->send(new ContactusMail($messageList,$first_name,$last_name,$sub));  
 
         session()->flash('success','Repley mail send successfully');
 
@@ -128,10 +130,11 @@ class ContactController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required', 
+            'first_name'  => 'required',
+            'last_name'   => 'required',
+            'email'       => 'required|email',
+            'phone'       => 'required', 
+            'sub'         => 'required',
             'description' => 'required',
         ]);
     }

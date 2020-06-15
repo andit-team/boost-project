@@ -68,7 +68,7 @@
                                                     <td>{{ $row->last_name }}</td>
                                                     <td>{{ $row->email }}</td>
                                                     <td>{{ $row->phone }}</td>
-                                                    <td>{{ $row->description }}</td>
+                                                    <td>{{ Baazar::short_text(strip_tags($row->description),100) }}</td>
                                                     <td class="d-flex justify-content-between">
                                                         <ul>
                                                             <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="View" class="btn btn-sm btn-info"  data-toggle="modal" data-target=".approved{{$row->id}}"><i class="fa fa-eye"></i>View</a> </li>  
@@ -86,11 +86,7 @@
                                                             <div class="modal-body">
                                                                 <div class="row p-3">
                                                                     <div class="col-md-5 br-2">
-                                                                        @if(!empty($row->picture))
-                                                                            <img id="output"  class="w-100" src="{{ asset($row->picture) }}" class="img" alt="" />
-                                                                        @else
-                                                                            <img id="output"  class="w-100" src="{{ asset('/uploads/vendor_profile/user.png') }}" />
-                                                                        @endif 
+                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  class="w-100" class="img" alt=""> 
                                                                         <div class="sort-info mt-4"> 
                                                                             <h3 class="display-6 pt-2">{{ $row->first_name.' '.$row->last_name}}</h3>
                                                                             <p class="">
@@ -103,27 +99,26 @@
                                                                 
                                                                     <div class="col-md-7">
                                                                             <div class="float-left modal-logo">
-                                                                                <img src="{{ asset('') }}/assets/images/logos/17.png" class="" height="100" width="100" alt="Logo">
+                                                                                <img src="{{ !empty($row->shop->logo) ? asset($row->shop->logo) : asset('/uploads/shops/logos/shop-1.png') }}" class="" height="100" width="100" alt="Logo">
                                                                             </div>
                                                                             <div>
-                                                                                <h3 class="display-5 font-weight-bold">Fashion House</h3>
-                                                                                <p>shot bioasdf asdlfkj ahsfd asdfkjasfd .</p>
+                                                                            <h3 class="display-5 font-weight-bold">{{ $row->shop->name }}</h3>
+                                                                                <p>{{ $row->shop->slogan }}</p>
                                                                             </div>
 
                                                                             <br>
                                                                             <div class="d-inline-block mt-3">
-                                                                                <p class="text-justify">What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since <br> the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it has?</p>
-                                                                                <h5>Fashion Store</h5>
+                                                                                <p class="text-justify">{{ $row->shop->description }}</p>
+                                                                                <h5>{{ $row->shop->name }}</h5>
                                                                                 <h6>750 followers | 10 review</h6>
-                                                                                <h6>mark.enderess@mail.com</h6>
+                                                                                <h6>{{ $row->shop->email }}</h6>
                                                                             </div> 
                                                                     </div>
                                                                 </div>
                                                             </div> 
                                                         </div> 
                                                     </div> 
-                                                </div>
-                                                @break
+                                                </div> 
                                             @endforeach
                                         </tbody>
                                     </table>
@@ -152,7 +147,7 @@
                                                     <td>{{ $row->last_name }}</td>
                                                     <td>{{ $row->email }}</td>
                                                     <td>{{ $row->phone }}</td>
-                                                    <td>{{ $row->description }}</td>
+                                                    <td>{{ Baazar::short_text(strip_tags($row->description),100) }}</td>
                                                     <td class="d-flex justify-content-between">
                                                         <ul>
                                                             <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"  data-toggle="modal" data-target=".requested{{$row->id}}"><i class="fa fa-check"></i>View</a> </li>
@@ -173,11 +168,7 @@
                                                             <div class="modal-body">
                                                                 <div class="row p-3">
                                                                     <div class="col-md-5 br-2">
-                                                                        @if(!empty($row->picture))
-                                                                            <img id="output"  class="w-100" src="{{ asset($row->picture) }}" class="img" alt="" />
-                                                                        @else
-                                                                            <img id="output"  class="w-100" src="{{ asset('/uploads/vendor_profile/user.png') }}" />
-                                                                        @endif 
+                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  class="w-100" class="img" alt=""> 
                                                                         <div class="sort-info mt-4"> 
                                                                             <h3 class="display-6 pt-2">{{ $row->first_name.' '.$row->last_name}}</h3>
                                                                             <p class="">
@@ -215,19 +206,20 @@
                                                                 
                                                                     <div class="col-md-7">
                                                                             <div class="float-left modal-logo">
-                                                                                <img src="{{ asset('') }}/assets/images/logos/17.png" class="" height="100" width="100" alt="Logo">
+
+                                                                                <img src="{{ !empty($row->shop->logo) ? asset($row->shop->logo) : asset('/uploads/shops/logos/shop-1.png') }}" class="" height="100" width="100" alt="Logo"> 
                                                                             </div>
                                                                             <div>
-                                                                                <h3 class="display-5 font-weight-bold">AMER SHOP Ltd.</h3>
-                                                                                <p>shot bioasdf asdlfkj ahsfd asdfkjasfd .</p>
+                                                                            <h3 class="display-5 font-weight-bold">{{$row->shop->name}}</h3>
+                                                                                <p>{{$row->shop->slogan}}</p>
                                                                             </div>
 
                                                                             <br>
                                                                             <div class="d-inline-block mt-3">
-                                                                                <p class="text-justify">What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since <br> the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it has?</p>
-                                                                                <h5>Fashion Store</h5>
+                                                                                <p class="text-justify">{{ $row->shop->description }}</p>
+                                                                                <h5>{{$row->shop->name}}</h5>
                                                                                 <h6>750 followers | 10 review</h6>
-                                                                                <h6>mark.enderess@mail.com</h6>
+                                                                                <h6>{{$row->shop->email}}</h6>
                                                                             </div> 
                                                                     </div>
                                                                 </div>
@@ -270,7 +262,7 @@
                                                     <td>{{ $row->last_name }}</td>
                                                     <td>{{ $row->email }}</td>
                                                     <td>{{ $row->phone }}</td>
-                                                    <td>{{ $row->description }}</td>
+                                                    <td>{!! $row->description !!}</td>
                                                     <td class="d-flex justify-content-between">
                                                         <ul>
                                                             <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Rejected" class="btn btn-sm btn-primary"  data-toggle="modal" data-target=".rejected{{$row->id}}"><i class="fa fa-close"></i>View</a> </li>  
@@ -288,11 +280,7 @@
                                                             <div class="modal-body">
                                                                 <div class="row p-3">
                                                                     <div class="col-md-5 br-2">
-                                                                        @if(!empty($row->picture))
-                                                                            <img id="output"  class="w-100" src="{{ asset($row->picture) }}" class="img" alt="" />
-                                                                        @else
-                                                                            <img id="output"  class="w-100" src="{{ asset('/uploads/vendor_profile/user.png') }}" />
-                                                                        @endif 
+                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  class="w-100" class="img" alt=""> 
                                                                         <div class="sort-info mt-4"> 
                                                                             <h3 class="display-6 pt-2">{{ $row->first_name.' '.$row->last_name}}</h3>
                                                                             <p class="">
@@ -305,19 +293,19 @@
                                                                 
                                                                     <div class="col-md-7">
                                                                             <div class="float-left modal-logo">
-                                                                                <img src="{{ asset('') }}/assets/images/logos/17.png" class="" height="100" width="100" alt="Logo">
+                                                                                <img src="{{ !empty($row->shop->logo) ? asset($row->shop->logo) : asset('/uploads/shops/logos/shop-1.png') }}" class="" height="100" width="100" alt="Logo">
                                                                             </div>
                                                                             <div>
-                                                                                <h3 class="display-5 font-weight-bold">AMER SHOP Ltd.</h3>
-                                                                                <p>shot bioasdf asdlfkj ahsfd asdfkjasfd .</p>
+                                                                            <h3 class="display-5 font-weight-bold">{{ $row->shop->name }}</h3>
+                                                                                <p>{{ $row->shop->slogan }}</p>
                                                                             </div>
 
                                                                             <br>
                                                                             <div class="d-inline-block mt-3">
-                                                                                <p class="text-justify">What is Lorem Ipsum Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since <br> the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book it has?</p>
-                                                                                <h5>Fashion Store</h5>
+                                                                                <p class="text-justify">{{ $row->shop->description }}</p>
+                                                                                <h5>{{ $row->shop->name }}</h5>
                                                                                 <h6>750 followers | 10 review</h6>
-                                                                                <h6>mark.enderess@mail.com</h6>
+                                                                                <h6>{{ $row->shop->email }}</h6>
                                                                             </div> 
                                                                     </div>
                                                                 </div>
