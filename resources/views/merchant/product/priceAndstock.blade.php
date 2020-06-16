@@ -2,66 +2,6 @@
 <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <style>
-        /*  */
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-
-        .switch input { 
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            -webkit-transition: .4s;
-            transition: .4s;
-        }
-
-        input:checked + .slider {
-            background-color: #FF4C3B;
-        }
-
-        input:focus + .slider {
-            box-shadow: 0 0 1px #2196F3;
-        }
-
-        input:checked + .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(26px);
-        }
-
-        /* Rounded sliders */
-        .slider.round {
-            border-radius: 34px;
-        }
-
-        .slider.round:before {
-            border-radius: 50%;
-        }
         .h-100{
             height: 70px !important;
             padding: 2px;
@@ -125,7 +65,6 @@
               <table class="table">
                   <thead>
                       <tr>
-                          <td>Availability</td>
                           <td>Color Family</td>
                           <td>Price<span class="text-danger"> *</span></td>
                           <td>Special Price</td>
@@ -138,12 +77,6 @@
                   </thead>
                   <tbody class="newRow">
                       <tr class="firstRow">
-                          <td>
-                              <label class="switch">
-                                  <input type="checkbox" checked>
-                                  <span class="slider round"></span>
-                                </label>
-                          </td>
                           <td>
                               <span class="tbSelectbox">
                                   {{-- <select class="form-control tbSelectbox" name="color_id[]">
@@ -196,7 +129,8 @@
                 placeholder: "ui-state-highlight",
                 revert: true,
             });
-//dropzone scripts
+
+        //dropzone scripts
         $('#selectColor').change(function(){
             var color = $(this).val();
             $('.drops').append(
@@ -233,7 +167,6 @@ function setup(id,color) {
     init: function() {
       var self = this;
 
-      //New file added
       self.on("addedfile", function(file) {
           $('.color-'+color).addClass('d-none');
       });
@@ -243,12 +176,15 @@ function setup(id,color) {
           $('#sortable-'+color).css('background-color','#fff');
       });
       self.on("dragleave", function(event) {
-          console.log('leave :'+color);
-        //   $('#sortable-'+color).css('background-color','#fdfbfb');
       });
-      self.on("thumbnail", function(file){
-        //   console.log(file.name);
-          $('.inputs').append(`<input type="hidden" name="${color}-images[]" id="id${file.size}" value="${file.dataURL}">`);
+
+        self.on("thumbnail", function(file){
+            if(file.size < 3000000){
+                $('.inputs').append(`<input type="hidden" name="${color}-images[]" id="id${file.size}" value="${file.dataURL}">`);
+            }else{
+                swal("Maximum size reached", {icon: "warning",buttons: false,timer: 2000});
+                this.removeFile(file);
+            }
         });
 
       self.on("removedfile", function(file) {
