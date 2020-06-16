@@ -91,6 +91,10 @@
             font-weight: 1000;
             font-size: 24px;
         }
+        .collpanel{
+            width: 672px;
+            height: 151px;
+        }
         .ui-state-highlight { height: 125px; width: 125px; border: 1px dashed; line-height: 1.2em; }
     </style>
 @endpush
@@ -223,7 +227,7 @@ function setup(id,color) {
     maxFilesize: 100,
     maxFiles: 5,
     dictResponseError: "Server not Configured",
-      dictFileTooBig: "File too big ({filesize}MB). Must be less than {maxFilesize}MB.",
+      dictFileTooBig: "File too big. Must be less than ",
     dictCancelUpload: "",
     acceptedFiles: ".png,.jpg,.jpeg",
     init: function() {

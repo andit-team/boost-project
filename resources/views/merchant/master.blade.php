@@ -196,6 +196,8 @@
     <!-- Summernote js-->
 
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+    <script src="{{asset('/')}}js/validator.js"></script>
+    <script src="{{asset('/')}}js/validatorRules.js"></script>
     @include('elements.myjs')
     @stack('js')
     <script>
@@ -212,7 +214,10 @@
         $('#datepicker1').datepicker({
             uiLibrary: 'bootstrap4'
         });
-
+        setTimeout(function(){
+            $('body').removeAttr('style');
+            console.log('remove');
+        },3000); 
     </script>
 
 </body>

@@ -328,15 +328,10 @@
     <!-- section end -->
 @endsection
 
-{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script> --}}
 
 
 
-<script>
-$('select').selectpicker();
-</script>
+
 @push('css')
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
 <style>
@@ -380,10 +375,7 @@ $('select').selectpicker();
         height: 37px;
      }
 
-     .collpanel{
-        width: 672px;
-       height: 151px;
-    }
+     
      }
 
    
@@ -420,6 +412,12 @@ $('select').selectpicker();
 @push('js')
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 <script type="text/javascript">
+
+    setTimeout(function(){
+        $('body').removeAttr('style');
+        console.log('remove');
+    },2000);    
+
     $(document).ready(function() {
      $('.summernote').summernote({
            height: 300,
@@ -454,20 +452,6 @@ $('select').selectpicker();
 
 
 
-
-//    $(document).ready(function(){
-       $('.pop').click(function(){
-        $('[data-toggle="tooltip"]').tooltip({ trigger: 'click'});   
-       }); 
-// }); 
-
-
-// $("div.card-body div.row select.colorSelect").on('change',function(){  
-    function popups(){
-        console.log('change');
-        $('#color1').append("<label for='color_id' class='col-xl-3 col-md-4'></label>  <div class='border p-3 collpanel'>sdfdsfsdfsd</div><label for='color_id' class='col-xl-3 col-md-4'></label> <select name='color_id' onchange='popups()' autocomplete='off' class='form-control col-md-8 colorSelect'> <option value=''>Select color</oprion>@foreach($color as $row)<option value='{{ $row->id }}'>{{$row->name}}@endforeach</option></select>");  
-    }
-// });
  
  </script>
 @endpush
