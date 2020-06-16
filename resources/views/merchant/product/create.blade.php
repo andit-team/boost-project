@@ -411,12 +411,7 @@
 @endpush
 @push('js')
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
-<script type="text/javascript">
-
-    setTimeout(function(){
-        $('body').removeAttr('style');
-        console.log('remove');
-    },2000);    
+<script type="text/javascript">   
 
     $(document).ready(function() {
      $('.summernote').summernote({
