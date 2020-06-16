@@ -1,63 +1,6 @@
 @extends('merchant.master')
 
-@section('content')
-{{-- @push('css')
-<style>
-    .categoryBox{
-        width: 672px;
-        margin-left: 204px;
-        height: 214px;
-    }
-    .keyword{
-        width: 129px;
-        height: 1px;
-    }
-    .attributs{
-        margin-left: 2px;
-    }
-    .button1{
-        background-color: white;
-        color:gray; 
-    }
-    a{
-        color: gray;
-    }
-    a:hover{
-        color: gray; 
-        background-color: rgba(168, 166, 166, 0.3); 
-    }
-
-    .textbox{
-        height: 1px;
-    }
-    #catarea{
-            background: #fff;
-            border: 1px solid #ddd;
-            width: 97%;
-        }
-        .cat-level ul li {
-            display: inherit;
-            padding: 5px;
-            cursor: pointer;
-            border-left: 2px solid #fff;
-            margin: 2px;
-        }
-        .cat-level ul li:hover,.active{
-            background: #ddd;
-            border-left: 2px solid red !important;
-        }
-        .cat-level{
-            border: 1px solid #ddd;
-        }
-        .cat-levels{
-            height: 250px;
-            overflow-y: scroll;  
-        }
-        .cat-level input[type=text]{
-            height: 40px;
-        }
-</style>
-@endpush --}}
+@section('content') 
 @include('elements.alert')
 {{-- @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
@@ -75,158 +18,19 @@
         <div class="container">
             <div class="row">
                 
-            @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
+                @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
 
                 <!-- address section start -->
                 <div class="col-sm-9 contact-page register-page container">                      
-                            <form class="theme-form" action="{{ route('product.store') }}" method="post"  enctype="multipart/form-data" id="validateForm">
+                    <form class="theme-form" action="{{ route('product.store') }}" method="post"  enctype="multipart/form-data" id="validateForm">
                                 @csrf
                            
                                 <div class="card mb-4">
-                                    <h5 class="card-header">Basic information</h5>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="bn_name">Product Name(Bangla) <span class="text-danger">*</span></label>                                          
-                                                            <input class="form-control" type="text" class="form-control" name="bn_name" value="{{ old('bn_name') }}" id="bn_name">
-                                                            @if ($errors->has('nambn_namee'))
-                                                                <span class="text-danger">{{ $errors->first('bn_name') }}</span>
-                                                            @endif 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="name">Product Name(English) <span class="text-danger">*</span></label>                                          
-                                                            <input class="form-control" type="text" class="form-control" value="{{ old('name') }}" name="name" id="name">
-                                                            @if ($errors->has('name'))
-                                                                <span class="text-danger">{{ $errors->first('name') }}</span>
-                                                            @endif 
-                                                        </div>
-                                                    </div> 
-                                                </div>  
-                                                <div class="form-group">
-                                                    <label for="name">Category Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('first_name') }}</span>
-                                                    <input type="text" readonly class="form-control @error('first_name') border-danger @enderror" required name="first_name" value="{{ old('name') }}" id="category" placeholder="Category">
-                                                    <div class="position-absolute" id="catarea" style="display: none">
-                                                        <div class="search-area d-flex">
-                                                            <div class="col-md-3 cat-level p-2">
-                                                                <input type="text" class="form-control" placeholder="search">
-                                                                <ul class="cat-levels" id="category_id">
-                                                                    @foreach ($categories as $row)
-                                                                    <li value="{{ $row->id }}">{{$row->name}} <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li> 
-                                                                    @endforeach 
-                                                                </ul>
-                                                            </div>
-                                                            <div class="col-md-3 cat-level p-2">
-                                                                <input type="text" class="form-control" placeholder="search">
-                                                                <ul class="cat-levels" id="sub_category">
-                                                                    <li value="" class="sub"> <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
-                                                                   
-                                                                </ul>
-                                                            </div>
-                                                            <div class="col-md-3 cat-level p-2">
-                                                                <input type="text" class="form-control" placeholder="search">
-                                                                <ul class="cat-levels">
-                                                                    <li>DFads fadf <span class="float-right"></li>
-                                                                    <li>DFads fadf <span class="float-right"</li>
-                                                                    <li>DFads fadf <span class="float-right"></li>
-                                                                    <li class="active">DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="col-md-3 cat-level p-2">
-                                                                <input type="text" class="form-control" placeholder="search">
-                                                                <ul class="cat-levels">
-                                                                    <li>DFads fadf</li>
-                                                                    <li>DFads fadf</li>
-                                                                    <li>DFads fadf</li>
-                                                                    <li>DFads fadf</li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cat-footer p-2">
-                                                            <p>Current Selection :</p>
-                                                            <span class="btn btn-sm btn-info m-1">Confirm</span>
-                                                            <span class="btn btn-sm btn-warning m-1" id="close">Close</span>
-                                                            <span class="btn btn-sm btn-danger m-1">Clear</span>
-                                                        </div>
-                                                    </div>
-                                                </div> 
-                                                <div class="form-group margin">
-                                                    <label for="video_url">Video Url<span>*</span></label>
-                                                    <input type="text" class="form-control" name="video_url" id="video_url"  >
-                                                    @if ($errors->has('video_url'))
-                                                        <span class="text-danger">{{ $errors->first('video_url') }}</span>
-                                                    @endif
-                                                </div> 
-
-                                                {{-- <div class="form-group">
-                                                    <label for="product_attribute">Product Attributes<span>*</span></label> 
-                                                    <div id="demo" class="collapse border categoryBox attributs p-3">
-                                                       <div class="row">
-                                                           <div class="col-md-6 textbox">
-                                                               <label class="mr-2">Size</label>
-                                                               <input class="" type="text">
-                                                           </div>
-                                                           <div class="col-md-6 textbox">
-                                                            <label class="mr-2">Size</label>
-                                                            <input type="text">
-                                                           </div>
-                                                       </div>
-                                                      </div> 
-                                                </div>
-                                                <div class="form-group row">
-                                                    {{-- <label for="product_attribute" class="col-xl-3 col-md-4"></label> --}}
-                                                    {{-- <button type="button" class="btn btn-sm btn-secondery col-md-10 button1" data-toggle="collapse" data-target="#demo"><i class="fa fa-angle-double-down"></i>More</button> --}}
-                                                {{--</div> --}}
-
-                                            </div>
-                                        </div>
-                                     </div>
-                                  </div>
-
-                                    <div class="card mb-4">
-                                      <h5 class="card-header">Product Attributes<span class="text-danger">*</span></h5>
                                     
-                                        <div class="form-group">
-                                                    {{-- <label for="product_attribute">Product Attributes<span>*</span></label>  --}}
-                                                <div id="demo" class="collapse  categoryBox attributs p-3">
-                                                    <div class="row p-3">
-                                                        <div class="col-md-6 ">
-                                                            <div class="form-group textbox">
-                                                                <label class="mr-2">Size</label>
-                                                                <input class="form-control col-md-6" type="text">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="form-gropu textbox">
-                                                                <label class="mr-2">Size</label>
-                                                                <input type="text" class="form-control col-md-6">
-                                                            </div> 
-                                                        </div>
-                                                        <div class="col-md-6 mt-5">
-                                                            <div class="form-group textbox">
-                                                                <label class="mr-2">Size</label>
-                                                                <input class="form-control col-md-6" type="text">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 mt-5">
-                                                            <div class="form-gropu textbox">
-                                                                <label class="mr-2">Size</label>
-                                                                <input type="text" class="form-control col-md-6">
-                                                            </div> 
-                                                        </div>
-                                                    </div>
-                                                    
-                                                </div>  
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="product_attribute" class="col-xl-3 col-md-4"></label>
-                                            <button type="button" class="btn btn-sm btn-secondery col-md-10 button1 ml-5" data-toggle="collapse" data-target="#demo" aria-expanded='false'><i class="fa fa-angle-double-down"></i>More</button>
-                                        </div>
-                                    </div>
+                                    @include('merchant.product.productBasicinfo') 
+                                   
+
+                                    @include('merchant.product.productAttributes')
 
                                   <div class="card  mb-4">
                                      <h5 class="card-header">Detailed Description</h5>
@@ -320,11 +124,12 @@
                                 </div>
                             </div>
                         </form> 
-                    </div>
-
+                    </div>    
                 </div>
+
             </div>
-        </section>
+        </div>
+    </section>
     <!-- section end -->
 @endsection
 
@@ -346,22 +151,7 @@
     }
     .attributs{
         margin-left: 2px; 
-    }
-    .button1{
-        background-color: white;
-        color:gray; 
-    }
-    a{
-        color: gray;
-    }
-    a:hover{
-        color: gray; 
-        background-color: rgba(168, 166, 166, 0.3); 
-    }
-
-    .textbox{
-        height: 1px;
-    }
+    } 
     .tbSelectbox{
         height: 35px;
         width: 94px;
@@ -376,37 +166,7 @@
      }
 
      
-     }
-
-   
-    /*  */
-    #catarea{
-            background: #fff;
-            border: 1px solid #ddd;
-            width: 97%;
-        }
-        .cat-level ul li {
-            display: inherit;
-            padding: 5px;
-            cursor: pointer;
-            border-left: 2px solid #fff;
-            margin: 2px;
-        }
-        .cat-level ul li:hover,.active{
-            background: #ddd;
-            border-left: 2px solid red !important;
-        }
-        .cat-level{
-            border: 1px solid #ddd;
-        }
-        .cat-levels{
-            height: 250px;
-            overflow-y: scroll;  
-        }
-        .cat-level input[type=text]{
-            height: 40px;
-        } 
-        
+     }        
 </style>
 @endpush
 @push('js')
@@ -417,36 +177,6 @@
      $('.summernote').summernote({
            height: 300,
       });
-   });
-   
-        $('#category').click(function(){
-            $('#catarea').toggle();
-        });
-        $('#close').click(function(){
-            $('#catarea').hide();
-        });
-        
-   $(document).ready(function(){
-       $('#category_id li').on('click',function(){
-           var categoryId = $(this).val();
-           var subCategoryId = $('#sub_category').val();
-           var li = '<li value="">Sub categroy</li>' 
-           $.ajax({
-               type:"get",
-               url:"{{ url('/merchant/product/subcategory/{id}')  }}",
-               data:{ 'categoryId': categoryId},
-               success:function(data){
-                   for( var i=0; i<data.length; i++ ){
-                    li = li+'<li value="'+data[i].id+'">'+data[i].name+'<span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>'; 
-                   }
-                   $('.sub').html(li); 
-               }
-           })
-       })
-   });
-
-
-
- 
+   }); 
  </script>
 @endpush
