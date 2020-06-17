@@ -284,9 +284,14 @@ class ItemsController extends Controller
       return Item::getSubcategory($categoryId);
     }
 
-    public function SubCategoryChild(Request $request){
-      $subId = $request->subId;
-      return Item::getSubcategoryChild($subId);
+    public function subCategoryChild(Request $request){
+      $subCatId = $request->subCatId;
+      return Item::getSubcategoryChild($subCatId);
+    }
+
+    public function childCategory(Request $request){
+      $childCatId = $request->childCatId;
+      return Item::getChildCategory($childCatId);
     }
 
     /**

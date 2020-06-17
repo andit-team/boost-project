@@ -37,7 +37,8 @@ Route::prefix('merchant')->group(function () {
 
 
     Route::get('/product/subcategory/{id}','ItemsController@subcategory');
-    Route::get('/product/SubCategoryChild/{id}','ItemsController@SubCategoryChild');
+    Route::get('/product/subCategoryChild/{id}','ItemsController@subCategoryChild');
+    Route::get('/product/childCategory/{id}','ItemsController@childCategory');
     Route::post('/product/approvement/{slug}','ItemsController@approvement');
     Route::put('/product/rejected/{slug}','ItemsController@rejected');    
     Route::get('/product/vendorshow/{slug}','ItemsController@vendorshow'); 

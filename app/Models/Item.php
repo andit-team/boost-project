@@ -71,5 +71,19 @@ class Item extends Model
                     ->where('parent_id','=',$categoryId)
                     ->get();
        }
+
+       public static function getSubcategoryChild($subCatId){
+        return DB::table('categories')
+                   ->select('id','name')
+                   ->where('parent_id','=',$subCatId)
+                   ->get();
+      } 
+
+      public static function getChildCategory($childCatId){
+        return DB::table('categories')
+                   ->select('id','name')
+                   ->where('parent_id','=',$childCatId)
+                   ->get();
+      }
    
 }

@@ -81,20 +81,14 @@
                             </div>
                             <div class="col-md-3 cat-level p-2">
                                 <input type="text" class="form-control" placeholder="search">
-                                <ul class="cat-levels">
-                                    <li>DFads fadf <span class="float-right"></li>
-                                    <li>DFads fadf <span class="float-right"</li>
-                                    <li>DFads fadf <span class="float-right"></li>
-                                    <li class="active">DFads fadf <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
+                                <ul class="cat-levels child" id="child_category">
+                                    
                                 </ul>
                             </div>
                             <div class="col-md-3 cat-level p-2">
                                 <input type="text" class="form-control" placeholder="search">
-                                <ul class="cat-levels">
-                                    <li>DFads fadf</li>
-                                    <li>DFads fadf</li>
-                                    <li>DFads fadf</li>
-                                    <li>DFads fadf</li>
+                                <ul class="cat-levels child1" id="child_of_child">
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -102,7 +96,7 @@
                             <p>Current Selection :</p>
                             <span class="btn btn-sm btn-info m-1">Confirm</span>
                             <span class="btn btn-sm btn-warning m-1" id="close">Close</span>
-                            <span class="btn btn-sm btn-danger m-1">Clear</span>
+                            <span class="btn btn-sm btn-danger m-1" id="clear">Clear</span>
                         </div>
                     </div>
                 </div> 
@@ -149,15 +143,41 @@
         });
 
         function sublevel2(val){
-            console.log(val);
-            var li = '';
+            var subCatId = val;
+            var li =''; 
             $.ajax({
                 type:"get",
-                url:"",
-                success:function(val){
-                    
+                url:"{{ url('/merchant/product/subCategoryChild/{id}') }}",
+                data:{ 'subCatId': subCatId },
+                success:function(data){
+                    for( var i=0; i<data.length; i++ ){
+                        li += `<li onclick="sublevel3(${data[i].id})">${data[i].name}<span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li>`;    
+                    }  
+                    $('.child').html(li);
                 }
             })
-        }
+        };
+
+        function sublevel3(val){ 
+            var childCatId = val;
+            var li ='';
+            $.ajax({
+                type:"get",
+                url:"{{ url('/merchant/product/childCategory/{id}') }}",
+                data:{ 'childCatId': childCatId },
+                success:function(data){
+                    for( var i=0; i<data.length; i++ ){
+                        li += `<li ${data[i].id}>${data[i].name}<span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li>`;    
+                    }
+                    $('.child1').html(li); 
+                }
+            })
+        };
+
+        $('#clear').on('click',function(){ 
+            $('.sub').empty(); 
+            $('.child').empty();
+            $('.child1').empty();
+        })
     </script>
 @endpush
