@@ -85,5 +85,12 @@ class Item extends Model
                    ->where('parent_id','=',$childCatId)
                    ->get();
       }
+
+      public static function getChildCategory1($childCatid_1){
+        return DB::table('categories')
+                   ->select('id','name')
+                   ->where('parent_id','=',$childCatid_1)
+                   ->get();
+      }
    
 }

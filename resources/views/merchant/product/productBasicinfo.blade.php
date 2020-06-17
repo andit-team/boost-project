@@ -4,7 +4,7 @@
      #catarea{
             background: #fff;
             border: 1px solid #ddd;
-            width: 97%;
+            width: 97%;  
         }
         .cat-level ul li {
             display: inherit;
@@ -32,6 +32,9 @@
             background-color: white;
             width: 5em;
             z-index: 100;
+        }
+        .scroll { 
+            overflow-x: auto; 
         }
  </style>
 @endpush 
@@ -61,10 +64,10 @@
                     </div> 
                 </div>  
                 <div class="form-group">
-                    <label for="name">Category Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('first_name') }}</span>
-                    <input type="text" readonly class="form-control @error('first_name') border-danger @enderror" required name="first_name" value="{{ old('name') }}" id="category" placeholder="Category">
-                    <div class="position-absolute foo" id="catarea" style="display: none">
-                        <div class="search-area d-flex">
+                    <label for="name">Category Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('name') }}</span>
+                    <input type="text" readonly class="form-control @error('first_name') border-danger @enderror" required name="name" value="{{ old('name') }}" id="category" placeholder="Category">
+                    <div class="position-absolute foo p-3" id="catarea" style="display: none">
+                        <div class="search-area d-flex scroll border">
                             <div class="col-md-3 cat-level p-2">
                                 <input type="text" class="form-control" placeholder="search">
                                 <ul class="cat-levels" id="category_id">
@@ -73,22 +76,28 @@
                                     @endforeach 
                                 </ul>
                             </div>
-                            <div class="col-md-3 cat-level p-2">
+                            <div class="col-md-3 cat-level p-2 show_hide_1">
                                 <input type="text" class="form-control" placeholder="search">
                                 <ul class="cat-levels sub" id="sub_category">
 
                                 </ul>
                             </div>
-                            <div class="col-md-3 cat-level p-2">
+                            <div class="col-md-3 cat-level p-2 show_hide_2">
                                 <input type="text" class="form-control" placeholder="search">
                                 <ul class="cat-levels child" id="child_category">
                                     
                                 </ul>
                             </div>
-                            <div class="col-md-3 cat-level p-2">
+                            <div class="col-md-3 cat-level p-2 show_hide_3">
                                 <input type="text" class="form-control" placeholder="search">
                                 <ul class="cat-levels child1" id="child_of_child">
                                     
+                                </ul>
+                            </div>
+                            <div class="col-md-3 cat-level p-2 show_hide_4">
+                                <input type="text" class="form-control" placeholder="search">
+                                <ul class="cat-levels child2" id="child_od_child1">
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -124,9 +133,17 @@
             $('#catarea').hide();
         });
         
-        $(document).ready(function(){
+        $(document).ready(function(){ 
+                $('.show_hide_1').hide();
+                $('.show_hide_2').hide();
+                $('.show_hide_3').hide();
+                $('.show_hide_4').hide();
             $('#category_id li').on('click',function(){
-                var categoryId = $(this).val(); 
+                $('.child').empty();
+                $('.child1').empty();
+                $('.child2').empty(); 
+                $('.show_hide_1').show();   
+                var categoryId = $(this).val();  
                 var li = ''; 
                 $.ajax({
                     type:"get",
@@ -143,6 +160,8 @@
         });
 
         function sublevel2(val){
+            $('.child1').empty();
+            $('.show_hide_2').show(); 
             var subCatId = val;
             var li =''; 
             $.ajax({
@@ -158,7 +177,9 @@
             })
         };
 
-        function sublevel3(val){ 
+        function sublevel3(val){
+            $('.child2').empty();
+            $('.show_hide_3').show();  
             var childCatId = val;
             var li ='';
             $.ajax({
@@ -167,9 +188,28 @@
                 data:{ 'childCatId': childCatId },
                 success:function(data){
                     for( var i=0; i<data.length; i++ ){
-                        li += `<li ${data[i].id}>${data[i].name}<span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li>`;    
+                        li += `<li onclick="sublevel4(${data[i].id})">${data[i].name}<span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li>`;    
                     }
                     $('.child1').html(li); 
+                }
+            })
+        };
+
+        function sublevel4(val){
+            $('.child3').empty();
+            $('.show_hide_4').show(); 
+            console.log(val);
+            var childCatid_1 = val;
+            var li ='';
+            $.ajax({
+                type:"get",
+                url:"{{ url('/merchant/product/childCategory-1/{id}') }}",
+                data:{ 'childCatid_1': childCatid_1 },
+                success:function(data){
+                    for( var i=0; i<data.length; i++ ){
+                        li += `<li onclick="sublevel5(${data[i].id})">${data[i].name}<span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li>`;    
+                    }
+                    $('.child2').html(li); 
                 }
             })
         };
@@ -178,6 +218,11 @@
             $('.sub').empty(); 
             $('.child').empty();
             $('.child1').empty();
-        })
+            $('.child2').empty();
+            $('.show_hide_1').hide(); 
+            $('.show_hide_2').hide();
+            $('.show_hide_3').hide();
+            $('.show_hide_4').hide();
+        }); 
     </script>
 @endpush

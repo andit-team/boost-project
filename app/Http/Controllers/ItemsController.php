@@ -294,6 +294,11 @@ class ItemsController extends Controller
       return Item::getChildCategory($childCatId);
     }
 
+    public function childCategory1(Request $request){
+      $childCatid_1 = $request->childCatid_1;
+      return Item::getChildCategory1($childCatid_1);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
