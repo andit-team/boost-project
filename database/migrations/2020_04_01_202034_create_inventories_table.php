@@ -19,7 +19,7 @@ class CreateInventoriesTable extends Migration
             $table->unsignedBigInteger('item_id');
             $table->unsignedBigInteger('color_id');
             $table->integer('qty_stock');
-            $table->unsignedBigInteger('size_id');
+            // $table->unsignedBigInteger('size_id');
             $table->integer('sort')->nullable();
             $table->string('available_on')->nullable();
             $table->boolean('active')->default(1)->change();
@@ -29,7 +29,7 @@ class CreateInventoriesTable extends Migration
 
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }

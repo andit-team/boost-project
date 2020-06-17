@@ -35,7 +35,16 @@
             width: 672px;
             height: 151px;
         }
-        .ui-state-highlight { height: 125px; width: 125px; border: 1px dashed; line-height: 1.2em; }
+        input[type=text],input[type=number],select,.input-group-text,.h-40{
+            height: 40px !important;
+        }
+        .table td {
+            padding: 0 !important;
+        }
+        .rowRemove{
+            line-height: 26px;
+        }
+        .ui-sortable-placeholder { height: 125px; width: 125px; border: 1px dashed; line-height: 1.2em; }
     </style>
 @endpush
 <div class="card mb-4">
@@ -58,77 +67,117 @@
                 </div>
                 <div class="inputs"></div>
           </div>
-          <div class="form-group">
-              <span class="btn btn-primary btn-sm pull-left rowAdd"><i class="fa fa-plus"></i> Add row</span>
-          </div>
-          <div class="form-group">
-              <table class="table">
-                  <thead>
+
+              <span class="btn btn-primary btn-sm pull-left rowAdd" data-row="1"><i class="fa fa-plus"></i> Add row</span>
+              <table class="table table-borderd">
+                  <thead class="">
                       <tr>
-                          <td>Color Family</td>
-                          <td>Price<span class="text-danger"> *</span></td>
-                          <td>Special Price</td>
-                          <td>Quantity</td>
+                          <td width="200">Color Family</td>
+                          <td colspan="2">Price<span class="text-danger"> *</span></td>
+                          <td width="100">Quantity</td>
                           <td>SellerSKU</td>
-                          <td>Shop SKU</td>
-                          <td>Free Items</td> 
                           <td></td> 
                       </tr>
                   </thead>
                   <tbody class="newRow">
-                      <tr class="firstRow">
-                          <td>
-                              <span class="tbSelectbox">
-                                  {{-- <select class="form-control tbSelectbox" name="color_id[]">
-                                      <option value="">Select color</option>
-                                  </select> --}}
-                                  <input type="text" class="form-control tbSelectbox" name="color_id[]">
-                              </span>
-                          </td>
-                          <td>
-                              <span class="number1">
-                                  <input type="number" class="form-control number1" name="price[]">
-                              </span>
-                          </td>
-                          <td class="pop">  
-                              <button type="button" class="" data-toggle="tooltip" data-placement="top" data-original-title="Click any question mark icon to get help and tips with specific tasks" aria-describedby="tooltip">
-                                  <i class="fa fa-edit"></i> 
-                                </button>
-                          </td>
-                          <td>
-                              <span class="number1">
-                                  <input type="number" class="form-control number1" name="qty[]">
-                              </span>
-                          </td>
-                          <td>
-                              <span class="t1">
-                                  <input type="text" class="form-control t1" name="seller_sku[]">
-                              </span>
-                          </td>
-                          <td></td>
-                          <td>
-                              <span class="t1">
-                                  <input type="text" class="form-control t1" name="free_item[]">
-                              </span>
-                          </td>
-                          <td><span class="btn btn-danger btn-secondery pull-right rowRemove"><i class="fa fa-trash"></i></span></td>
-                      </tr>
+                      <tr class="firstRow" data-id="0">
+                            <td>
+                                <select name="color_id[]" class="form-control">
+                                    <option value="" disabled>select color</option>
+                                    <option value="">asdf as</option>
+                                </select>
+                            </td>
+                            <td><input type="number" class="form-control" placeholder="regular price" name="price[]"></td>
+                            <td>
+                                <div class="input-group">
+                                    <input type="text" placeholder="special price" readonly class="form-control" name="sprice[]">
+                                    <div class="input-group-append" style="cursor: pointer;">
+                                        <span class="input-group-text"><span onclick="getmodal(this)"> <i class="fa fa-edit"></i></span></span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><input type="number" class="form-control number1" name="qty[]"></td>
+                            <td><input type="text" class="form-control t1" name="seller_sku[]"></td>
+                            <td><span class="btn btn-danger rowRemove"><i class="fa fa-trash"></i></span></td>
+                        </tr>
                   </tbody>
               </table>
-          </div>
+
+    </div>
+</div>
+  
+  <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Set Special Price</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <table class="table table-striped">
+                <tr>
+                    <th width="150">Price</th>
+                    <td width='5'>:</td>
+                    <td><input type="number" id="spcial_price" class="form-control"></td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <td>:</td>
+                    <td class="d-flex"><input type="text" id="spcial_price_start" class="datepickerRange form-control"> <span class="p-2 bg-info h-40">To</span> <input type="text" id="spcial_price_end" class="datepickerRange form-control"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-id="0" id="setSpecialPrice" class="btn btn-primary" onclick="setSpecialPrices()">Save changes</button>
+        </div>
+      </div>
     </div>
 </div>
 
+  {{-- <input type="text" class="datepickerDB form-control"> to <input type="text" class="datepickerDB form-control"> --}}
 
 @push('js')
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
     <script>
+        function setSpecialPrices(){
+            var spcial_price        = $('#spcial_price').val();
+            var spcial_price_start  = $('#spcial_price_start').val();
+            var spcial_price_end    = $('#spcial_price_end').val();
+            var row = $('#setSpecialPrice').data('id');
+            $('tr#row-'+row+' td .input-group input.form-control').val(spcial_price);
+        }
+        function getmodal(e){
+            var row = $(e).closest('tr').data('id');
+            $('#setSpecialPrice').data('id',row);
+            $('#exampleModalCenter').modal('show');
+        }
 
+        // inventories script
+        $('.rowAdd').click(function(){
+            var rowNo = parseFloat($(this).data("row"))||1;
+            var getTr = $('tr.firstRow:first');
+            $('tbody.newRow').append("<tr data-id="+rowNo+" id='row-"+rowNo+"' class='removableRow'>"+getTr.html()+"</tr>");
+            var defaultRow = $('tr.removableRow:last');
+            $(".rowAdd").data("row",rowNo+1);
+        });
+
+        $(document).on("click", "span.rowRemove ", function () {
+            $(this).closest("tr.removableRow").remove();
+        });
+
+        function inventoryRows(color){
+            console.log(color);
+        }
+
+        //Drug & Drop script start
         $( "#sortable-red").sortable({
-                placeholder: "ui-state-highlight",
-                revert: true,
-            });
+            placeholder: "ui-state-highlight",
+            revert: true,
+        });
 
         //dropzone scripts
         $('#selectColor').change(function(){
@@ -149,140 +198,116 @@
             });
             $( "#sortable-"+color ).disableSelection();
             setup("my-awesome-dropzone"+color,color);
+            inventoryRows(color);
         });
         Dropzone.autoDiscover = false;
-//function 
-function setup(id,color) {
-  let options = {
-    autoProcessQueue: false,
-    url : '/',
-    thumbnailHeight: 200,
-    thumbnailWidth: 300,
-    maxFilesize: 100,
-    maxFiles: 5,
-    dictResponseError: "Server not Configured",
-      dictFileTooBig: "File too big. Must be less than ",
-    dictCancelUpload: "",
-    acceptedFiles: ".png,.jpg,.jpeg",
-    init: function() {
-      var self = this;
 
-      self.on("addedfile", function(file) {
-          $('.color-'+color).addClass('d-none');
-      });
-      
-      self.on("dragenter", function(event) {
-          console.log('enter :'+color);
-          $('#sortable-'+color).css('background-color','#fff');
-      });
-      self.on("dragleave", function(event) {
-      });
+        //function 
+        function setup(id,color) {
+            let options = {
+            autoProcessQueue: false,
+            url : '/',
+            thumbnailHeight: 200,
+            thumbnailWidth: 300,
+            maxFilesize: 100,
+            maxFiles: 5,
+            dictResponseError: "Server not Configured",
+            dictFileTooBig: "File too big. Must be less than ",
+            dictCancelUpload: "",
+            acceptedFiles: ".png,.jpg,.jpeg",
+            init: function() {
+                var self = this;
 
-        self.on("thumbnail", function(file){
-            if(file.size < 3000000){
-                $('.inputs').append(`<input type="hidden" name="${color}-images[]" id="id${file.size}" value="${file.dataURL}">`);
-            }else{
-                swal("Maximum size reached", {icon: "warning",buttons: false,timer: 2000});
-                this.removeFile(file);
-            }
-        });
+                self.on("addedfile", function(file) {
+                    $('.color-'+color).addClass('d-none');
+                });
+            
+                self.on("dragenter", function(event) {
+                    $('#sortable-'+color).css('background-color','#fff');
+                });
+                self.on("dragleave", function(event) {});
 
-      self.on("removedfile", function(file) {
-        var i = 0;
-        $('.color-'+color+'-element').each(function(){
-            i = i+1;
-        });
-        if(i === 0){
-            $('.color-'+color).removeClass('d-none');
+                self.on("thumbnail", function(file){
+                    if(file.size < 3000000){
+                        $('.inputs').append(`<input type="hidden" name="${color}-images[]" id="id${file.size}" value="${file.dataURL}">`);
+                    }else{
+                        swal("Maximum size reached", {icon: "warning",buttons: false,timer: 2000});
+                        this.removeFile(file);
+                    }
+                });
+
+                self.on("removedfile", function(file) {
+                    var i = 0;
+                    $('.color-'+color+'-element').each(function(){
+                        i = i+1;
+                    });
+                    if(i === 0){
+                        $('.color-'+color).removeClass('d-none');
+                    }
+                    $('#id'+file.size).remove();
+                });
+
+                // Send file starts
+                self.on("sending", function(file) {
+                    // console.log("upload started", file);
+                });
+
+                self.on("complete", function(file, response) {
+                    if (file.name !== "442343.jpg") {
+                        //this.removeFile(file);
+                    }
+                });
+
+                self.on("maxFilesize", function(file, response) {
+                    swal("Maximum size reached", {icon: "warning",buttons: false,timer: 2000});
+                    this.removeFile(file);
+                });
+
+                self.on("maxfilesexceeded", function(file, response) {
+                    swal("Maximum file reached", {icon: "warning",buttons: false,timer: 2000});
+                    this.removeFile(file);
+                });
+
+                self.on("addedfile", function(file) {
+                    const pattern = /\d{6}(\.)(jpg|jpeg|png)/;
+                    if (!pattern.test(file.name)) {
+                    //   this.removeFile(file);
+                    }
+                });
+            },
+
+            previewTemplate: `
+                <div class="drop-single color-${color}-element ui-state-default">
+                <a href="javascript:undefined;" data-dz-remove=""><i class="fa fa-trash-o"></i>&nbsp;<span>Remove</span></a>
+                <br/>
+                <span class="dz-upload" data-dz-uploadprogress></span>
+                <img class="h-100" data-dz-thumbnail/>
+                </div>`
+            };
+            var myDropzone = new Dropzone(`.${id}`, options);
         }
-        // console.log('left :'+i);
-        // self.on("thumbnail", function(file){
-          $('#id'+file.size).remove();
-          // console.log(file.dataURL);
-          // $('.inputs').append(`<input type="hidden" name="${color}-images[]" id="${file.name+file.size+file.lastModified+file.height+file.width}" value="${file.dataURL}">`);
-        // });
-      });
-      // Send file starts
-      self.on("sending", function(file) {
-        // console.log("upload started", file);
-      });
 
-      self.on("complete", function(file, response) {
-        if (file.name !== "442343.jpg") {
-          //this.removeFile(file);
+        function removeColorItem(color){
+            swal({
+                title: "Are you sure to delete it?",
+                text: "To continue this action!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("Your action has beed done! :)", {
+                    icon: "success",
+                    buttons: false,
+                    timer: 1000
+                    });
+                    $('#dropzone-'+color).remove();
+                    $('input[name^="'+color+'-images"]').each(function() {
+                        $(this).remove();
+                    });
+                }
+            });    
         }
-      });
-
-      self.on("maxFilesize", function(file, response) {
-        swal("Maximum size reached", {icon: "warning",buttons: false,timer: 2000});
-        this.removeFile(file);
-        //alert("too big");
-      });
-
-      self.on("maxfilesexceeded", function(file, response) {
-        swal("Maximum file reached", {icon: "warning",buttons: false,timer: 2000});
-        this.removeFile(file);
-      });
-
-      self.on("addedfile", function(file) {
-        const pattern = /\d{6}(\.)(jpg|jpeg|png)/;
-
-        if (!pattern.test(file.name)) {
-          //   this.removeFile(file);
-        }
-      });
-    },
-
-    // <span data-dz-name></span>
-    previewTemplate: `
-        <div class="drop-single color-${color}-element ui-state-default">
-          <a href="javascript:undefined;" data-dz-remove=""><i class="fa fa-trash-o"></i>&nbsp;<span>Remove</span></a>
-          <br/>
-          <span class="dz-upload" data-dz-uploadprogress></span>
-          <img class="h-100" data-dz-thumbnail/>
-        </div>`
-    };
-//   $(".my-awesome-dropzonered:first-child").css("background-color", "yellow");
-  var myDropzone = new Dropzone(`.${id}`, options);
-}
-
-function removeColorItem(color){
-    
-    // swal("Item Status has been changed to "+status+"!", {icon: "success",buttons: false,timer: 1500});
-    swal({
-      title: "Are you sure to delete it?",
-      text: "To continue this action!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    })
-    .then((willDelete) => {
-      if (willDelete) {
-        swal("Your action has beed done! :)", {
-          icon: "success",
-          buttons: false,
-          timer: 1000
-        });
-        $('#dropzone-'+color).remove();
-        $('input[name^="'+color+'-images"]').each(function() {
-            $(this).remove();
-        });
-      }
-    });
-
-
-    
-}
-
-// inventories script
-        $('.rowAdd').click(function(){
-            var getTr = $('tr.firstRow:first');  
-            $('tbody.newRow').append("<tr class='removableRow'>"+getTr.html()+"</tr>");
-            var defaultRow = $('tr.removableRow:last'); 
-        });
-
-        $(document).on("click", "span.rowRemove ", function () {
-            $(this).closest("tr.removableRow").remove();
-        });
     </script>
 @endpush

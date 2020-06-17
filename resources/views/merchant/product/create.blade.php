@@ -366,10 +366,6 @@
         height: 35px;
         width: 94px;
      }
-     .number1{
-        height: 38px;
-        width: 100px;
-     }
 
      .t1{
         height: 37px;

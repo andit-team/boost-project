@@ -12,6 +12,12 @@
       autoclose: true,
       todayHighlight: true,
   });
+  $('.datepickerRange').datepicker({
+      startDate: '-0d',
+      format:"yyyy-mm-dd",
+      autoClose: false,
+      todayHighlight: true,
+  });
   $('.datepicker').datepicker({
       startDate: '-0d',
       format:"dd-mm-yyyy",

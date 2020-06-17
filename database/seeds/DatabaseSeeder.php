@@ -27,6 +27,9 @@ class DatabaseSeeder extends Seeder
                 DB::table('sizes')->truncate();
                 DB::table('attributes')->truncate();         
                 DB::table('attribute_metas')->truncate();         
+                DB::table('inventory_attributes')->truncate();         
+                DB::table('inventory_attribute_options')->truncate();         
+                DB::table('inventory_attribute_category')->truncate();         
                 DB::table('users')->truncate();         
               
 
@@ -45,6 +48,7 @@ class DatabaseSeeder extends Seeder
                 ColorsTableSeeder::class,
                 BrandTableSeeder::class,
                 SizesTableSeeder::class,
+                InventoryAttributesSeeder::class,
             
         ]);
     }
