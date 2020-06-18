@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ItemCategory;
 use App\Models\Item;
+use App\Models\InventoryAttribute;
 // use App\Models\Children;
 use App\User;
 
@@ -41,6 +42,10 @@ class Category extends Model
     public function allChilds()
     {
         return $this->child()->with('allChilds');
+    }
+
+    public function inventoryAttributes(){
+      return $this->belongsToMany(InventoryAttribute::class, 'inventory_attribute_category', 'category_id', 'inventory_attribute_id');
     }
 
 

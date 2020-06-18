@@ -76,7 +76,7 @@
                                     @endforeach 
                                 </ul>
                             </div>
-                            <div class="col-md-3 cat-level p-2 show_hide_1">
+                            <div class="col-md-3 cat-level p-2 show_hide_1 d-none">
                                 <input type="text" class="form-control" placeholder="search">
                                 <ul class="cat-levels sub" id="sub_category">
 
@@ -134,7 +134,7 @@
         });
         
         $(document).ready(function(){ 
-                $('.show_hide_1').hide();
+                $('.show_hide_1 d-none').hide();
                 $('.show_hide_2').hide();
                 $('.show_hide_3').hide();
                 $('.show_hide_4').hide();
@@ -142,7 +142,7 @@
                 $('.child').empty();
                 $('.child1').empty();
                 $('.child2').empty(); 
-                $('.show_hide_1').show();   
+                $('.show_hide_1 d-none').show();   
                 var categoryId = $(this).val();  
                 var li = ''; 
                 $.ajax({
@@ -219,7 +219,7 @@
             $('.child').empty();
             $('.child1').empty();
             $('.child2').empty();
-            $('.show_hide_1').hide(); 
+            $('.show_hide_1 d-none').hide(); 
             $('.show_hide_2').hide();
             $('.show_hide_3').hide();
             $('.show_hide_4').hide();

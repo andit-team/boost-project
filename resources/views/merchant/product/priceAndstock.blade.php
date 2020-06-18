@@ -51,6 +51,15 @@
     <h5 class="card-header">Price & Stock</h5>
     <div class="card-body">
           <div class="form-group row">
+              <label for="" class="col-xl-3 col-md-4">category<span class="text-danger"> *</span></label>
+                  <select name="" autocomplete="off" class="form-control col-md-8" id="catfid">
+                  <option value="" disabled selected>Select category</option>
+                  <option value="2">Mobiles</option>
+                  <option value="3">Clothing</option>
+                  
+                </select> 
+          </div>
+          <div class="form-group row">
               <label for="color_id" class="col-xl-3 col-md-4">Color Family<span class="text-danger"> *</span></label>
               {{-- <select name="color_id" autocomplete="off" class="form-control col-md-8" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> --}}
                   <select name="color_id" autocomplete="off" class="form-control col-md-8" id="selectColor">
@@ -62,37 +71,41 @@
           </div>
           <div class="form-group row">
               <label for="color_id" class="col-xl-3 col-md-4"></label>
-                <div class="drops">
-                    
-                </div>
+                <div class="drops"></div>
                 <div class="inputs"></div>
           </div>
 
               <span class="btn btn-primary btn-sm pull-left rowAdd" data-row="1"><i class="fa fa-plus"></i> Add row</span>
               <table class="table table-borderd">
                   <thead class="">
-                      <tr>
-                          <td width="200">Color Family</td>
-                          <td colspan="2">Price<span class="text-danger"> *</span></td>
-                          <td width="100">Quantity</td>
-                          <td>SellerSKU</td>
-                          <td></td> 
+                      <tr class="inventory-head">
+                          
+                          <th width="200">Color Family</th>
+                          <th colspan="2">Price<span class="text-danger"> *</span></th>
+                          <th width="100">Quantity</th>
+                          <th>SellerSKU</th>
+                          <th></th> 
                       </tr>
                   </thead>
                   <tbody class="newRow">
-                      <tr class="firstRow" data-id="0">
+                      <tr class="firstRow" data-id="0" id="row-0">
+                            
+
                             <td>
-                                <select name="color_id[]" class="form-control">
-                                    <option value="" disabled>select color</option>
-                                    <option value="">asdf as</option>
+                                <select name="color_id[]" class="form-control inventory_colors">
+                                    <option value="" selected disabled>Select color</option>
                                 </select>
                             </td>
-                            <td><input type="number" class="form-control" placeholder="regular price" name="price[]"></td>
+                            <td><input type="number" class="form-control" placeholder="Regular price" name="price[]"></td>
                             <td>
                                 <div class="input-group">
-                                    <input type="text" placeholder="special price" readonly class="form-control" name="sprice[]">
+                                    <input type="text" placeholder="Special price" readonly class="form-control" name="sprice[]">
                                     <div class="input-group-append" style="cursor: pointer;">
                                         <span class="input-group-text"><span onclick="getmodal(this)"> <i class="fa fa-edit"></i></span></span>
+                                    </div>
+                                    <div class="days">
+                                        <input type="hidden" name="startday[]" class="startday">
+                                        <input type="hidden" name="endday[]" class="endday">
                                     </div>
                                 </div>
                             </td>
@@ -148,13 +161,57 @@
             var spcial_price_start  = $('#spcial_price_start').val();
             var spcial_price_end    = $('#spcial_price_end').val();
             var row = $('#setSpecialPrice').data('id');
-            $('tr#row-'+row+' td .input-group input.form-control').val(spcial_price);
+            if(spcial_price_start != '' && spcial_price_end != '' && spcial_price != ''){
+                if(Date.parse(spcial_price_start) >= Date.parse(spcial_price_end)){
+                    $('#spcial_price_end').val('');
+                    alert("Please select a different End Date.");
+                }else{
+                    $('tr#row-'+row+' td .input-group input.form-control').val(spcial_price);
+                    $('tr#row-'+row+' td .input-group div.days input.startday').val(spcial_price_start);
+                    $('tr#row-'+row+' td .input-group div.days input.endday').val(spcial_price_end);
+                    $('#exampleModalCenter').modal('hide');
+                }
+            }else{
+                alert("Please input all field");
+            }
+
         }
         function getmodal(e){
             var row = $(e).closest('tr').data('id');
+            var is_set = parseInt($('tr#row-'+row+' td .input-group input.form-control').val())||0
+            if(is_set == 0){
+                $('#spcial_price').val('');
+                $('#spcial_price_start').val('');
+                $('#spcial_price_end').val('');
+            }else{
+                $('#spcial_price').val(is_set);
+                $('#spcial_price_start').val($('tr#row-'+row+' td .input-group div.days input.startday').val());
+                $('#spcial_price_end').val($('tr#row-'+row+' td .input-group div.days input.endday').val());
+            }
             $('#setSpecialPrice').data('id',row);
             $('#exampleModalCenter').modal('show');
         }
+
+        //get inventories attributes
+
+        function getInventoryAttr(cat_id = 2){
+            $.ajax({
+                type:"Post",
+                dataType: "json",
+                url:"{{ url('merchant/get-inventory-attr/')  }}",
+                data:{ 'cat_id': cat_id, '_token' : '{{ csrf_token() }}'},
+                success:function(data){
+                    $('.inventoryAttributes').remove();
+                    $('.inventory-head').prepend(data.label);
+                    $('.firstRow').prepend(data.option);
+                }
+            })
+        }
+        $('#catfid').on('change',function(){
+            getInventoryAttr($(this).val());
+        });
+        
+
 
         // inventories script
         $('.rowAdd').click(function(){
@@ -170,7 +227,10 @@
         });
 
         function inventoryRows(color){
-            console.log(color);
+            var option = `<option value="${color}" data-color="${color}">${color}</option>`;
+            $('.inventory_colors').each(function(){
+                $(this).append(option);
+            });
         }
 
         //Drug & Drop script start
@@ -181,24 +241,34 @@
 
         //dropzone scripts
         $('#selectColor').change(function(){
+            var flag = 0;
             var color = $(this).val();
-            $('.drops').append(
-                `<div id="dropzone-${color}"><label class="mt-3">Color Family: <b>${color}</b></label>
-                <span class="btn btn-sm text-danger" onclick="removeColorItem('${color}')"><i class="fa fa-trash"></i></span>
-                 <div class="border m-0 collpanel drop-area row my-awesome-dropzone${color}" id="sortable-${color}">
-                    <span class="dz-message color-${color}">
-                        <h2>Drag & Drop Your Files</h2>
-                    </span>
-                </div>
-                <small>Remember Your featured file will be the first one.</small><br></div>`
-            );
-            $( "#sortable-"+color ).sortable({
-                placeholder: "ui-state-highlight",
-                revert: true,
+            $('.img-upload-area').each(function(){
+                if(color == $(this).data('color')){
+                    flag = 1;
+                }
             });
-            $( "#sortable-"+color ).disableSelection();
-            setup("my-awesome-dropzone"+color,color);
-            inventoryRows(color);
+            if(flag == 0){
+                $('.drops').append(
+                    `<div id="dropzone-${color}" class="img-upload-area" data-color="${color}"><label class="mt-3">Color Family: <b>${color}</b></label>
+                    <span class="btn btn-sm text-danger" onclick="removeColorItem('${color}')"><i class="fa fa-trash"></i></span>
+                    <div class="border m-0 collpanel drop-area row my-awesome-dropzone${color}" id="sortable-${color}">
+                        <span class="dz-message color-${color}">
+                            <h2>Drag & Drop Your Files</h2>
+                        </span>
+                    </div>
+                    <small>Remember Your featured file will be the first one.</small><br></div>`
+                );
+                $( "#sortable-"+color ).sortable({
+                    placeholder: "ui-state-highlight",
+                    revert: true,
+                });
+                $( "#sortable-"+color ).disableSelection();
+                setup("my-awesome-dropzone"+color,color);
+                inventoryRows(color);
+            }else{
+                swal("The selected color already been exits", {icon: "warning",buttons: false,timer: 2000});
+            }
         });
         Dropzone.autoDiscover = false;
 
@@ -288,6 +358,7 @@
         }
 
         function removeColorItem(color){
+
             swal({
                 title: "Are you sure to delete it?",
                 text: "To continue this action!",
@@ -297,15 +368,26 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    swal("Your action has beed done! :)", {
-                    icon: "success",
-                    buttons: false,
-                    timer: 1000
+                        swal("Your action has beed done! :)", {
+                        icon: "success",
+                        buttons: false,
+                        timer: 1000
                     });
                     $('#dropzone-'+color).remove();
                     $('input[name^="'+color+'-images"]').each(function() {
                         $(this).remove();
                     });
+                    document.querySelectorAll('.newRow option').forEach(item => {
+                        if(item.innerHTML == color){
+                            if(item.selected == true){
+                                item.style.background = 'red';
+                                item.style.color = 'white';
+                                item.parentElement.style.border = '2px solid red';
+                            }else{
+                                item.remove()
+                            }
+                        }
+                    })
                 }
             });    
         }
