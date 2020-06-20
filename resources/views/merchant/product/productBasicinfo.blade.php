@@ -74,7 +74,7 @@
                     <div class="position-absolute foo p-3" id="catarea" style="display: none">
                         <div class="categories search-area d-flex scroll border">
                             <div class="col-md-3 cat-level p-2 level-1">
-                                <input type="text" class="form-control" placeholder="search" id="sss">
+                                <input type="text" class="form-control" onkeyup="categorySearch(1,this)" placeholder="search">
                                 <ul class="cat-levels" id="">
                                     @foreach ($categories as $row)
                                     <li onclick="getNextLevel({{$row->id}},1,this)" value="{{ $row->id }}">{{$row->name}} <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li> 
@@ -125,7 +125,7 @@
                 data:{ 'subCatId': val },
                 success:function(data){
                         li += `<div class="col-md-3 cat-level p-2 level-${nextLevel}">
-                                    <input type="text" class="form-control" placeholder="search">
+                                    <input type="text" onkeyup="categorySearch(${nextLevel},this)" class="form-control" placeholder="search">
                                     <ul class="cat-levels sub">`;
                     for( var i=0; i<data.length; i++ ){
                         if(data[i].is_last == 1){
@@ -187,30 +187,20 @@
 
 
         //search 
+        function categorySearch(level,e){
 
-        $('#sss').on('keyup', function() {
-            var value = $(this).val();
+            var value = $(e).val();
             var patt = new RegExp(value, "i");
 
-            $('.col-md-3.cat-level.p-2.level-1').find('li').each(function() {
-
+            $('.col-md-3.cat-level.p-2.level-'+level).find('li').each(function() {
                 if($(this).text().search(patt) >= 0){
                     $(this).show();
-                    console.log("found "+ $(this).text());
                 }else{
                     $(this).hide();
                 }
-                
-                // if (!($table.find('td').text().search(patt) >= 0)) {
-                // $table.not('.t_head').hide();
-                // }
-                // if (($table.find('td').text().search(patt) >= 0)) {
-                // $(this).show();
-                // }
-                
             });
             
-        });
+        };
 
     </script>
 @endpush
