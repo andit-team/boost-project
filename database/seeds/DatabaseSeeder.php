@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
                 TagsTableSeeder::class,
                 ColorsTableSeeder::class,
                 BrandTableSeeder::class,
-                SizesTableSeeder::class,
+                // SizesTableSeeder::class,
                 InventoryAttributesSeeder::class,
             
         ]);

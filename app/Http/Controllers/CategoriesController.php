@@ -38,18 +38,22 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     
     public function store(Request $request, Category $category)
     { 
         $this->validateForm($request);
-        $slug = Baazar::getUniqueSlug($category,$request->name);
+        $slug = Baazar::getUniqueSlug($category,$request->name); 
+        $parent_slug = Baazar::getUniqueSlug($category,$request->name);       
         $data = Category::create([
-            'name'       => $request->name,
-            'desc'       => $request->desc,
-            'slug'       => $slug,
-            'thumb'      => Baazar::fileUpload($request,'thumb','','/uploads/category_image'),
-            'percentage' => $request->percentage,
-            'sort'       => $request->sort,
-            'user_id'    => Sentinel::getUser()->id,
+            'name'             => $request->name,
+            'desc'             => $request->desc,
+            'slug'             => $slug,
+            'parent_slug'      => $parent_slug,
+            'thumb'            => Baazar::fileUpload($request,'thumb','','/uploads/category_image'),
+            'percentage'       => $request->percentage,
+            'sort'             => $request->sort,
+            'user_id'          => Sentinel::getUser()->id,
             'created_at' => now(),
             ]);
  
@@ -133,16 +137,28 @@ class CategoriesController extends Controller
         // return view('admin.categories.categoryTreeview',compact('categories','allCategories','subcategories'));
     }
 
-    public function addCategory(Request $request)
+    public function manageSubCategory()
     {
+        $categories = Category::with('allChilds')->where('parent_id',0)->get();
+        // dd($categories);
+        // return view ('admin.categories.tree',compact('categories'));
+        $categories = Category::where('parent_id',0)->get();
+        $subcategories = Category::all();
+        $allCategories = Category::pluck('name','id')->all();
+        return view('admin.categories.categoryTreeview',compact('categories','allCategories','subcategories'));
+    }
+
+    public function addCategory(Request $request,Category $category)
+    {
+        $slug = Baazar::getUniqueSlug($category,$request->name);
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required',            
         ]);
         $input = $request->all();
         $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
+        $input['slug'] = $slug;
         $input['user_id'] = Sentinel::getUser()->id;
-
-        Children::create($input); 
+        Category::create($input); 
         return back()->with('success', 'New Category added successfully.');
     }
 
