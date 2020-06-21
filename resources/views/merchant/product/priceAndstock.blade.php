@@ -61,7 +61,6 @@
           </div>
           <div class="form-group row">
               <label for="color_id" class="col-xl-3 col-md-4">Color Family<span class="text-danger"> *</span></label>
-              {{-- <select name="color_id" autocomplete="off" class="form-control col-md-8" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> --}}
                   <select name="color_id" autocomplete="off" class="form-control col-md-8" id="selectColor">
                   <option value="">Select Color</option>
                   @foreach($color as $row)
@@ -150,8 +149,6 @@
     </div>
 </div>
 
-  {{-- <input type="text" class="datepickerDB form-control"> to <input type="text" class="datepickerDB form-control"> --}}
-
 @push('js')
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
@@ -207,12 +204,11 @@
                 }
             })
         }
+
         $('#catfid').on('change',function(){
             getInventoryAttr($(this).val());
         });
-
-
-
+        
         // inventories script
         $('.rowAdd').click(function(){
             var rowNo = parseFloat($(this).data("row"))||1;
