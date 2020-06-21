@@ -17,8 +17,8 @@ Route::prefix('merchant')->group(function () {
     Route::get('dashboard','MerchantController@dashboard');
     Route::get('login','MerchantController@merchantlogin');
     Route::post('login','MerchantController@merchantloginprocess')->name('merchantloginprocess');
-    
-    
+
+
     Route::get('signup-step-two','MerchantController@registrationStepTwo');
     Route::post('signup-step-two','MerchantController@registrationStepTwoProcess')->name('merchantStepTwo');
     Route::get('signup-step-final','MerchantController@registrationStepFinal');
@@ -28,30 +28,28 @@ Route::prefix('merchant')->group(function () {
 
     Route::get('forgot_password', 'ForgotPassword@forgot');
     Route::post('forgot_password', 'ForgotPassword@password');
-    
+
     // Reset  Password Route....
-    
+
     Route::get('reset_password/', 'ResetPasswordController@reset');
     Route::put('reset_password/{email}', 'ResetPasswordController@updatePassword');
 
 
 
-    Route::get('/product/subcategory/{id}','ItemsController@subcategory');
+
     Route::get('/product/subCategoryChild/{id}','ItemsController@subCategoryChild');
-    Route::get('/product/childCategory/{id}','ItemsController@childCategory');
-    Route::get('/product/childCategory-1/{id}','ItemsController@childCategory1');
     Route::post('/product/approvement/{slug}','ItemsController@approvement');
-    Route::put('/product/rejected/{slug}','ItemsController@rejected');    
-    Route::get('/product/vendorshow/{slug}','ItemsController@vendorshow'); 
+    Route::put('/product/rejected/{slug}','ItemsController@rejected');
+    Route::get('/product/vendorshow/{slug}','ItemsController@vendorshow');
     Route::post('/seller/approvement/{id}','SellersController@approvement');
     Route::put('/seller/rejected/{id}','SellersController@rejected');
     Route::get('/profile','SellersController@create');
     Route::post('/profile','SellersController@store')->name('sellerUpdate');
     Route::get('/shop','ShopsController@create');
-    Route::post('/shop','ShopsController@update')->name('shopUpdate'); 
+    Route::post('/shop','ShopsController@update')->name('shopUpdate');
     Route::get('/seller/{slug}/resubmit','SellersController@edit');
     Route::put('/seller/{slug}','SellersController@update');
-    Route::get('/seller/{id}','SellersController@show'); 
+    Route::get('/seller/{id}','SellersController@show');
     Route::get('dropzone', 'DropzoneController@ItemsController');
     Route::post('dropzone/store', 'DropzoneController@ItemsController')->name('dropzone.store');
     Route::get('/products','ItemsController@index');
@@ -73,5 +71,5 @@ Route::prefix('merchant')->group(function () {
 
     Route::post('shop-logo-crop', 'MerchantController@shopLogoCrop')->name('shop-logo-crop');
     Route::post('shop-banar-crop', 'MerchantController@shopBanarCrop')->name('shop-banar-crop');
-    
+
 });

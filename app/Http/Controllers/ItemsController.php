@@ -35,7 +35,7 @@ class ItemsController extends Controller
       $item = Item::where('status','Active')->get();
       $size= Size::all();
       $color = Color::all();
-      return view ('merchant.product.index',compact('category','item','size','color','sellerProfile','shopProfile')); 
+      return view ('merchant.product.index',compact('category','item','size','color','sellerProfile','shopProfile'));
     }
 
     /**
@@ -55,7 +55,7 @@ class ItemsController extends Controller
         $tag = Tag::all();
         $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        
+
         return view ('merchant.product.create',compact('category','categories','item','size','color','subCategories','tag','sellerId','shopProfile','childCategory'));
     }
 
@@ -66,15 +66,16 @@ class ItemsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Item $item,Request $request)
-    { 
-      $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first(); 
+    {
+        dd($request->all());
+      $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
     //  $this->validateForm($request);
     //$itemId = Item::where('user_id',Sentinel::getUser()->id)->first();
     if($sellerId != ''){
       $slug = Baazar::getUniqueSlug($item,$request->name);
         $data = [
             'name' => $request->name,
-            'email'=> $request->email,          
+            'email'=> $request->email,
             //'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
             'slug' => $slug,
             'price' => $request->price,
@@ -87,7 +88,7 @@ class ItemsController extends Controller
             // 'available_on' => $request->available_on,
             // 'availability' => $request->availability,
             'made_in' => $request->made_in,
-            'sub_category' => $request->sub_category,
+            //'sub_category' => $request->sub_category,
             'materials' => $request->materials,
             'labeled' => $request->labeled,
             'video_url' => $request->video_url,
@@ -97,19 +98,20 @@ class ItemsController extends Controller
             'last_carted_at' => $request->last_carted_at,
             // 'total_view' => $request->total_view,
             // 'activated_at' => $request->activated_at,
-            'category_id' => $request->category_id, 
+            //'category_id' => $request->category_id,
             'tag_id'      => $request->tag_id,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
 
-       
-        $product = Item::create($data); 
 
 
-          
+        $product = Item::create($data);
+
+
+
         $itemimage = new ItemImage();
-        
+
         if($request->hasfile('list_img')){
           foreach($request->file('list_img') as $file){
             $imageName = time().$file->getClientOriginalName();
@@ -124,21 +126,36 @@ class ItemsController extends Controller
             ));
           }
         }
-             
 
-        $itemcategory = ItemCategory::create([
-           'category_id' => $product->category_id,
-           'item_id' => $product->id,
-           'user_id' => Sentinel::getUser()->id,
-           'created_at' => now(),
-       ]);
+//        for( $j = 0 ; $j<count($product->category_id);$j++ ){
+//            ItemCategory::create([
+//                'category_id' => $product->category_id[$j],
+//                'item_id' => $product->id,
+//                'user_id' => Sentinel::getUser()->id,
+//                'created_at' => now(),
+//                ]);
+//        }
 
-       $itemtag = ItemTag::create([
-         'tag_id' => $product->tag_id,
-         'item_id' => $product->id,
-         'user_id' => Sentinel::getUser()->id,
-         'created_at' => now(),
-       ]);
+//        $itemcategory = ItemCategory::create([
+//            'category_id' => $product->category_id,
+//            'item_id' => $product->id,
+//            'user_id' => Sentinel::getUser()->id,
+//            'created_at' => now(),
+//        ]);
+//        for( $i = 0 ; $i<count($product->id);$i++ ){
+//            ItemTag::create([
+//                'tag_id' => $product->tag_id[$i],
+//                'item_id' => $product->id,
+//                'user_id' => Sentinel::getUser()->id,
+//                'created_at' => now(),
+//            ]);
+//        }
+//       $itemtag = ItemTag::create([
+//         'tag_id' => $product->tag_id,
+//         'item_id' => $product->id,
+//         'user_id' => Sentinel::getUser()->id,
+//         'created_at' => now(),
+//       ]);
 
         $name = $data['name'];
          \Mail::to($data['email'])->send(new ProductApproveRequestMail($data, $name));
@@ -158,7 +175,7 @@ class ItemsController extends Controller
      */
     public function show(Item $product)
     {
-        $product = Item::with('itemimage')->where('slug',$product->slug)->first();  
+        $product = Item::with('itemimage')->where('slug',$product->slug)->first();
 
         return view('merchant.product.show',compact('product','shopProfile'));
     }
@@ -171,7 +188,7 @@ class ItemsController extends Controller
      */
     public function edit(Item $product)
     {
-        
+
         $category = Category::all();
         $item = Item::all();
         $size= Size::all();
@@ -195,8 +212,8 @@ class ItemsController extends Controller
     {
         $data = [
             'name' => $request->name,
-            'email' => $request->email,         
-            'image' => Baazar::fileUpload($request,'image','old_image','/uploads/product_image'), 
+            'email' => $request->email,
+            'image' => Baazar::fileUpload($request,'image','old_image','/uploads/product_image'),
             'price' => $request->price,
             'model_no' => $request->model_no,
             'org_price' => $request->org_price,
@@ -217,23 +234,23 @@ class ItemsController extends Controller
             'last_carted_at' => $request->last_carted_at,
             // 'total_view' => $request->total_view,
             // 'activated_at' => $request->activated_at,
-            'category_id' => $request->category_id, 
+            'category_id' => $request->category_id,
             'tag_id'      => $request->tag_id,
             'user_id' => Sentinel::getUser()->id,
             'update_at' => now(),
         ];
 
-        
 
-        $product->update($data);  
-      
+
+        $product->update($data);
+
         Session::flash('success', 'Item Added Successfully!');
 
         return back();
     }
 
-   
-    
+
+
 
 
     public function productList(){
@@ -245,12 +262,12 @@ class ItemsController extends Controller
     }
 
      public function approvement($slug){
-      
-     
+
+
       $data = Item::where('slug',$slug)->first();
-      
+
       $data->update(['status' => 'Active']);
-      
+
       $name = $data['name'];
       \Mail::to($data['email'])->send(new productApproveMail($data, $name));
       Session::flash('success', 'Item Approve Successfully!');
@@ -260,16 +277,16 @@ class ItemsController extends Controller
     }
 
     public function rejected(Request $request,$slug){
-      
-     
+
+
       $data = Item::where('slug',$slug)->first();
-      
-      
+
+
       $data->update([
         'status' => 'Reject',
         'rej_desc' => $request->rej_desc,
         ]);
-      
+
       $name = $data['name'];
       $rej_desc = $data['rej_desc'];
       \Mail::to($data['email'])->send(new ProductRejectMail($data, $name,$rej_desc));
@@ -310,7 +327,7 @@ class ItemsController extends Controller
         $product->delete();
 
         Session::flash('success', 'Product Deleted Successfully');
- 
+
          return redirect('merchant/product');
     }
 
@@ -320,7 +337,7 @@ class ItemsController extends Controller
       $product = Item::with(['category','itemimage'])->where('slug',$slug)->first();
       $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
       return view('merchant.product.vendorshow',compact('product','shopProfile'));
-    } 
+    }
 
 
     // private function validateForm($request){
