@@ -158,6 +158,8 @@
                 $('#category_id').val(id);
                 $('#category').val($('.currentSelection').text());
                 $('#catarea').hide();
+                getCategoryAttr(id);
+                getInventoryAttr(id);
             }
         }
 
@@ -191,7 +193,6 @@
 
             var value = $(e).val();
             var patt = new RegExp(value, "i");
-
             $('.col-md-3.cat-level.p-2.level-'+level).find('li').each(function() {
                 if($(this).text().search(patt) >= 0){
                     $(this).show();

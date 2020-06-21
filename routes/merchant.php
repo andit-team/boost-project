@@ -69,6 +69,7 @@ Route::prefix('merchant')->group(function () {
     Route::put('/inventories/update/{slug}','InventoriesController@update');
     Route::resource('/inventory','InventoriesController');
     Route::post('get-inventory-attr','InventoryAttributeController@getInventoryAttr');
+    Route::post('get-category-attr','CategoriesController@getCategoryAttr');
 
 
     Route::post('shop-logo-crop', 'MerchantController@shopLogoCrop')->name('shop-logo-crop');
