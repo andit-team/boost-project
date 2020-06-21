@@ -168,4 +168,46 @@ class CategoriesController extends Controller
             'percentage' => 'required'
         ]);
     }
+
+    public function getCategoryAttr(Request $request){
+        $attributes = Category::find($request->cat_id);
+        $attributesHTML = '';
+        $i = 2;
+
+        
+                    
+                    // <input type='text' class='col-sm-4 form-control'>
+                    // <label for=' class='col-sm-2 text-right'>Brand</label>
+                    // <input type='text' class='col-sm-4 form-control'>
+
+        foreach($attributes->categoryAttr as $att){
+
+            if($i == 4){
+                $attributesHTML .= "<div class='less'>";
+            }
+            if($i%2 == 0){
+                $attributesHTML .= "<div class='from-group row line-40'>";
+            }
+            $attributesHTML .= "<label for='' class='col-sm-3 text-right'>{$att->label}</label>";
+            switch($att->type){
+                case "select":
+                    $attributesHTML .= "<select name='' class='col-sm-3 form-control' id=''>";
+                        foreach($att->options as $opt){
+                            $attributesHTML .= "<option value='{$opt->values}'>{$opt->values}</option>";
+                        }
+                        $attributesHTML .= "</select>";
+                break;
+
+                default: 
+                    $attributesHTML .= "<input type='text' class='col-sm-3 form-control'>";
+            }
+            if($i%2 == 1){
+                $attributesHTML .= "</div>";
+            }
+            $i++;
+            
+        }
+        $attributesHTML .= "</div>";
+        echo json_encode(['attributes' => $attributesHTML, 'status' => 'OK']);
+    }
 }

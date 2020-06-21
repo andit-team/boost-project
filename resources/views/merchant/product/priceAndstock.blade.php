@@ -56,18 +56,17 @@
                   <option value="" disabled selected>Select category</option>
                   <option value="2">Mobiles</option>
                   <option value="3">Clothing</option>
-                  
-                </select> 
+
+                </select>
           </div>
           <div class="form-group row">
               <label for="color_id" class="col-xl-3 col-md-4">Color Family<span class="text-danger"> *</span></label>
-              {{-- <select name="color_id" autocomplete="off" class="form-control col-md-8" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> --}}
                   <select name="color_id" autocomplete="off" class="form-control col-md-8" id="selectColor">
                   <option value="">Select Color</option>
                   @foreach($color as $row)
                   <option value="{{ $row->slug }}">{{ $row->name }}</option>
                   @endforeach
-              </select> 
+              </select>
           </div>
           <div class="form-group row">
               <label for="color_id" class="col-xl-3 col-md-4"></label>
@@ -79,17 +78,17 @@
               <table class="table table-borderd">
                   <thead class="">
                       <tr class="inventory-head">
-                          
+
                           <th width="200">Color Family</th>
                           <th colspan="2">Price<span class="text-danger"> *</span></th>
                           <th width="100">Quantity</th>
                           <th>SellerSKU</th>
-                          <th></th> 
+                          <th></th>
                       </tr>
                   </thead>
                   <tbody class="newRow">
                       <tr class="firstRow" data-id="0" id="row-0">
-                            
+
 
                             <td>
                                 <select name="color_id[]" class="form-control inventory_colors">
@@ -118,7 +117,7 @@
 
     </div>
 </div>
-  
+
   <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -149,8 +148,6 @@
       </div>
     </div>
 </div>
-
-  {{-- <input type="text" class="datepickerDB form-control"> to <input type="text" class="datepickerDB form-control"> --}}
 
 @push('js')
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -207,12 +204,11 @@
                 }
             })
         }
+
         $('#catfid').on('change',function(){
             getInventoryAttr($(this).val());
         });
         
-
-
         // inventories script
         $('.rowAdd').click(function(){
             var rowNo = parseFloat($(this).data("row"))||1;
@@ -272,7 +268,7 @@
         });
         Dropzone.autoDiscover = false;
 
-        //function 
+        //function
         function setup(id,color) {
             let options = {
             autoProcessQueue: false,
@@ -291,7 +287,7 @@
                 self.on("addedfile", function(file) {
                     $('.color-'+color).addClass('d-none');
                 });
-            
+
                 self.on("dragenter", function(event) {
                     $('#sortable-'+color).css('background-color','#fff');
                 });
@@ -389,7 +385,7 @@
                         }
                     })
                 }
-            });    
+            });
         }
     </script>
 @endpush
