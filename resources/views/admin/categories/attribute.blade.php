@@ -45,11 +45,11 @@
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
-      Category
+  Attribute
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">Category</li>
+      <li class="breadcrumb-item active" aria-current="page">Attribute</li>
   @endslot
 @endcomponent
 
@@ -58,7 +58,7 @@
             <div class="col-sm-12 col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Manage Category</h5>
+                        <h5>Manage Attribute</h5>
                     </div>
                     <div class="card-body">
                         <form action="{{ url('category.store') }}" method="post" class="form" id="validateForm" enctype="multipart/form-data">
