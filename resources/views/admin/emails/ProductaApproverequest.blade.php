@@ -879,7 +879,7 @@
                                         class="text_color">
                                         <div style="color: #333333; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; font-weight: 600; mso-line-height-rule: exactly; line-height: 23px;">
 
-                                            Email us: <br/> <a href="mailto:" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;">contact@mdbootstrap.com</a>
+                                          Any Question?  Email us: <br/> <a href="mailto:" style="color: #888888; font-size: 14px; font-family: 'Hind Siliguri', Calibri, Sans-serif; font-weight: 400;">andbaazar@gmail.com</a>
 
                                         </div>
                                     </td>
@@ -961,7 +961,7 @@
                                     <td align="left" style="color: #aaaaaa; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;">
                                         <div style="line-height: 24px;">
 
-                                            <span style="color: #333333;">Material Design for Bootstrap</span>
+                                            <span style="color: #333333;">Choto Mirjapur,khulna</span>
 
                                         </div>
                                     </td>
@@ -984,7 +984,7 @@
                                             <tr>
                                                 <td align="center">
                                                     <a style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;color: #5caad2; text-decoration: none;font-weight:bold;"
-                                                        href="{{UnsubscribeURL}}">UNSUBSCRIBE</a>
+                                                        href="{{subscribeURL}}">SUBSCRIBE</a>
                                                 </td>
                                             </tr>
                                         </table>

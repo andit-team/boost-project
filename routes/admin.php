@@ -9,6 +9,7 @@ Route::post('andbaazaradmin/login','AuthController@adminloginprocess')->name('lo
 Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::get('dashboard','AdminHomeController@dashboard');
     Route::get('products/category-tree-view',['uses'=>'CategoriesController@manageCategory']);
+    Route::get('products/subcategory-tree-view',['uses'=>'CategoriesController@manageSubCategory']);   
     Route::post('/add-category',['as'=>'add.category','uses'=>'CategoriesController@addCategory']); 
     Route::resource('products/category','CategoriesController');
     Route::resource('/child','ChildrenController'); 

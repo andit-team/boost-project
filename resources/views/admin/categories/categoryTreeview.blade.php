@@ -29,13 +29,13 @@
         <div class="container py-3"> 
 
           <div class="row">
-            <div class="col-md-8">
+            {{-- <div class="col-md-8">
 
               <div class="card">
                 <div class="card-header">
                   <h3>Categories</h3>
-                </div>
-                <div class="card-body">
+                </div> --}}
+                {{-- <div class="card-body">
                   <ul class="list-group">
                     @foreach ($categories as $category)
                       <li class="list-group-item">
@@ -69,16 +69,15 @@
                       </li>
                     @endforeach
                   </ul>
-                </div>
-              </div>
-            </div>
+                </div> --}}
+              {{-- </div> --}}
+            {{-- </div> --}}
 
-            <div class="col-md-4">
+            <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h3>Create Category</h3>
+                  <h3>Create Sub Category</h3>
                 </div>
-
                 <div class="card-body">
                   <form action="{{ route('add.category') }}" method="POST">
                     @csrf
@@ -90,7 +89,7 @@
                           <option value="{{ $category->id }}" class="font-weight-bold">{{ $category->name }}</option>
                           @foreach($subcategories as $subcategory)
                             @if($category->id == $subcategory->parent_id)
-                            <option value="{{ $subcategory->id }}">{{$subcategory->name }}</option>
+                            <option value="{{ $subcategory->id }}">{{$subcategory->name }}</option>                          
                             @endif
                           @endforeach 
                         @endforeach
@@ -98,7 +97,7 @@
                     </div>
 
                     <div class="form-group">
-                      <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Category Name" required>
+                      <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Sub Category Name" required>
                     </div>
 
                     <div class="form-group">
