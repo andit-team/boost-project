@@ -22,10 +22,11 @@
     <div class="container-fluid">     
         <div class="row">
             <div class="col-sm-12">
-                <div class="card">                 
-                    <div class="card-header text-right">
+                <div class="card">                                    
+                    <div class="card-header text-right">                      
                         <a href="{{ url('andbaazaradmin/products/subcategory-tree-view') }}" class="btn btn-sm btn-solid color-red"><h4>add subcategory</h4></a> 
-                    </div>
+                        <input type="text"  id="sample_search" onkeyup="search_func(this.value);" placeholder="search">
+                    </div>                 
                     <div class="card-body">
                         <table border="1" class="table table-borderd">
                             <thead>
@@ -66,6 +67,13 @@
                                             <td colspan="2">{{$level3->name}}</td>
                                             <td>{{$level3->slug}}</td>
                                             <td class="text-center">{{$level3->percentage}}%</td>
+                                            {{-- <td class="d-flex justify-content-between">
+                                                <ul> 
+                                                     <li><a href="{{ url('/andbaazaradmin/category/'.$level3->slug.'/edit')}}" class="btn btn-sm btn-primary" title="Edit"><i class="fa fa-edit"></i> </a></li>
+                                                     <li><a href="{{ url('/andbaazaradmin/category/'.$level3->slug.'/edit')}}" class="btn btn-sm btn-success" title="Edit"><i class="fa fa-show"></i> </a></li>                                                       
+                                                 </li>
+                                                </ul>
+                                            </td>     --}}
                                             <td><a href="{{ url('/andbaazaradmin/category/'.$level3->slug.'/edit')}}" class="btn btn-sm btn-primary" title="Edit"><i class="fa fa-edit"></i> </a></td>
                                         </tr>
                                         @php $i++ @endphp
@@ -78,7 +86,13 @@
                                                 <td colspan="1">{{$level4->name}}</td>
                                                 <td>{{$level4->slug}}</td>
                                                 <td class="text-center">{{$level4->percentage}}%</td>
-                                                <td><a href="{{ url('/andbaazaradmin/category/'.$level4->slug.'/edit')}}" class="btn btn-sm btn-primary" title="Edit"><i class="fa fa-edit"></i> </a></td>
+                                                <td class="d-flex justify-content-between">
+                                                    <ul> 
+                                                         <li><a href="{{ url('/andbaazaradmin/category/'.$level4->slug.'/edit')}}" class="btn btn-sm btn-primary" title="Edit"><i class="fa fa-edit"></i> </a></li>
+                                                         <li><a href="{{ url('andbaazaradmin/category/attribute/'.$level4->slug.'/attribute')}}" class="btn btn-sm btn-success" title="Edit"><i class="fa fa-show"></i> </a></li>                                                       
+                                                     </li>
+                                                    </ul>
+                                                </td>                                              
                                             </tr>
                                             @php $i++ @endphp
                                         @endforeach
@@ -93,3 +107,20 @@
         </div>
     </div>
 @endsection
+
+<script language="javascript">
+    
+function search_func(value)
+{
+    $.ajax({
+       type: "GET",
+       url: "{{ url('andbaazaradmin/products/category-tree-view') }}",
+       data: {'search_keyword' : value},
+       dataType: "text",
+       success: function(msg){
+      //Receiving the result of search here
+       }
+    });
+}
+</script>
+
