@@ -208,7 +208,7 @@
         $('#catfid').on('change',function(){
             getInventoryAttr($(this).val());
         });
-        
+
         // inventories script
         $('.rowAdd').click(function(){
             var rowNo = parseFloat($(this).data("row"))||1;
