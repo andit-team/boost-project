@@ -195,7 +195,7 @@ class CategoriesController extends Controller
             $attributesHTML .= "<label for='' class='col-sm-3 text-right'>{$att->label}</label>";
             switch($att->type){
                 case "select":
-                    $attributesHTML .= "<select name='' class='col-sm-3 form-control' id=''>";
+                    $attributesHTML .= "<select name='attribute[{$att->id}]' class='col-sm-3 form-control' id=''>";
                         foreach($att->options as $opt){
                             $attributesHTML .= "<option value='{$opt->values}'>{$opt->values}</option>";
                         }
@@ -203,7 +203,7 @@ class CategoriesController extends Controller
                 break;
 
                 default: 
-                    $attributesHTML .= "<input type='text' class='col-sm-3 form-control'>";
+                    $attributesHTML .= "<input name='attribute[{$att->id}]' type='text' class='col-sm-3 form-control'>";
             }
             if($i%2 == 1){
                 $attributesHTML .= "</div>";
