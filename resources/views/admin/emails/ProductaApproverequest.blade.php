@@ -297,7 +297,7 @@
                             </table>
                         </td>
                     </tr>
-					
+
 					<tr>
 						<td height="10" style="font-size: 20px; line-height: 10px;padding-top:25px; color:brown;">
 						   Let's See Our Product And Blog
@@ -484,7 +484,7 @@
 
 
                                         <div style="line-height: 35px">
-                                          
+
 											Blog For Electronics Devices
 
                                         </div>
@@ -614,7 +614,7 @@
 
 
                                         <div style="line-height: 35px">
-                                         
+
 											Blog For Watches
 
                                         </div>
@@ -744,7 +744,7 @@
 
 
                                         <div style="line-height: 35px">
-                                          
+
 											Blog For Bags
 
                                         </div>
@@ -984,7 +984,7 @@
                                             <tr>
                                                 <td align="center">
                                                     <a style="font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 24px;color: #5caad2; text-decoration: none;font-weight:bold;"
-                                                        href="{{subscribeURL}}">SUBSCRIBE</a>
+                                                        href="#">SUBSCRIBE</a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -1010,7 +1010,7 @@
 
 </html>
 
-{{-- 
+{{--
 <!DOCTYPE html>
 <html lang="en">
 
