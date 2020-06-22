@@ -99,6 +99,26 @@
                     <div class="form-group">
                       <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Sub Category Name" required>
                     </div>
+                    {{-- <div class="form-group text-left mb-5 pb-3">  
+                      <label for="thumb">Image:</label>
+                      <div class="mt-0">
+                          <img id="output"  class="imagestyle" src="{{ asset('/uploads/category_image/categ.png') }}" />
+                      </div>
+                      <div class="uploadbtn"> 
+                          <label for="file-upload" class="custom-file-upload">Upload Here</label>
+                          <input id="file-upload" type="file" name="thumb" onchange="loadFile(event)"/>
+                      </div>
+                  </div> --}}            
+                  <div class="form-group ">
+                      <label for="percentage">Percentage:</label> 
+                      <input type="number" name="percentage" value="{{old('percentage')}} % " class="form-control @error('percentage') border-danger @enderror" id="amount" placeholder="0.00" required autocomplete="off">
+                      <span class="text-danger">{{ $errors->first('percentage') }}</span>
+                  </div>
+                  <div class="form-group">
+                      <label for="desc">Description:</label>
+                      <textarea   name="desc"  class="form-control @error('desc') border-danger @enderror" rows="5"> </textarea>
+                      <span class="text-danger">{{ $errors->first('desc') }}</span>
+                  </div>   
 
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary">Create</button>

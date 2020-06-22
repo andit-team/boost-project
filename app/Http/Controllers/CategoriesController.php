@@ -153,13 +153,39 @@ class CategoriesController extends Controller
         $this->validate($request, [
             'name' => 'required',            
         ]);
+
+
+        // $parent_slug = Category::find($request->parent_id);         
+        // $data = Category::create([
+        //     'name'             =>$request->name,
+        //     'parent_id'        =>  empty($input['parent_id']) ? 0 : ['parent_id'],
+        //     'desc'             => $request->desc,
+        //     'slug'             => $slug,
+        //     'parent_slug'      => $parent_slug->slug,
+        //     'is_last'          => 1,
+        //     'thumb'            => Baazar::fileUpload($request,'thumb','','/uploads/category_image'),
+        //     // 'percentage'       => $request->percentage,
+        //     'sort'             => $request->sort,
+        //     'user_id'          => Sentinel::getUser()->id,
+        //     'created_at' => now(),
+        //     ]);
+        //     $parent_slug->is_last = 0;
+        //     $parent_slug->save();
+        //     return back()->with('success', 'New Category added successfully.');
+ 
+
+
+
+
         $input = $request->all();
         $parent_slug = Category::find($request->parent_id);      
-        $input['parent_id'] = empty($input['parent_id']) ? 0 : $input['parent_id'];
-        $input['slug'] = $slug;
-        $input['parent_slug'] = $parent_slug->slug;
-        $input['user_id'] = Sentinel::getUser()->id;
-        $input['is_last'] = 1;
+        $input['parent_id']      = empty($input['parent_id']) ? 0 : $input['parent_id'];
+        $input['slug']           = $slug;
+        $input['percentage']     = $percentage->percentage;
+        $input['desc']           = $desc->desc;
+        $input['parent_slug']    = $parent_slug->slug;
+        $input['user_id']        = Sentinel::getUser()->id;
+        $input['is_last']        = 1;
         Category::create($input); 
         $parent_slug->is_last = 0;
         $parent_slug->save();
