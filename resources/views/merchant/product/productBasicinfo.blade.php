@@ -51,8 +51,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="bn_name">Product Name(Bangla) <span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" class="form-control" name="bn_name" value="{{ old('bn_name') }}" id="bn_name">
-                            @if ($errors->has('nambn_namee'))
+                            <input class="form-control" type="text"  name="bn_name" value="{{ old('bn_name') }}" id="bn_name">
+                            @if ($errors->has('bn_name'))
                                 <span class="text-danger">{{ $errors->first('bn_name') }}</span>
                             @endif
                         </div>
@@ -60,7 +60,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name">Product Name(English) <span class="text-danger">*</span></label>
-                            <input class="form-control" type="text" class="form-control" value="{{ old('name') }}" name="name" id="name">
+                            <input class="form-control" type="text"  value="{{ old('name') }}" name="name" id="name">
                             @if ($errors->has('name'))
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                             @endif
@@ -68,8 +68,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="category_id">Category Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('category_id') }}</span>
-                    <input type="text" readonly class="form-control @error('category_id') border-danger @enderror" required name="category_id" value="{{ old('category_id') }}" id="category" placeholder="Category">
+                    <label for="category">Category Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('category') }}</span>
+                    <input type="text" readonly class="form-control @error('category') border-danger @enderror" required name="category" value="{{ old('category') }}" id="category" placeholder="Category">
                     <input type="hidden" name="category_id" id="category_id">
                     <div class="position-absolute foo p-3" id="catarea" style="display: none">
                         <div class="categories search-area d-flex scroll border">

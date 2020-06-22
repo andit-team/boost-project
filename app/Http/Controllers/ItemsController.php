@@ -16,6 +16,7 @@ use App\Models\ItemTag;
 use App\Models\Tag;
 use App\Models\ItemImage;
 use App\Models\Shop;
+use App\Models\Inventory;
 use Sentinel;
 use Session;
 use Baazar;
@@ -67,46 +68,47 @@ class ItemsController extends Controller
      */
     public function store(Item $item,Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
       $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
     //  $this->validateForm($request);
     //$itemId = Item::where('user_id',Sentinel::getUser()->id)->first();
     if($sellerId != ''){
       $slug = Baazar::getUniqueSlug($item,$request->name);
-        $data = [
-            'name' => $request->name,
-            'email'=> $request->email,
-            //'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
-            'slug' => $slug,
-            'price' => $request->price,
-            'model_no' => $request->model_no,
-            'org_price' => $request->org_price,
-            'pack_id' => $request->pack_id,
-            // 'sorting' => $request->sorting,
-            'description' => $request->description,
-            'min_order' => $request->min_order,
-            // 'available_on' => $request->available_on,
-            // 'availability' => $request->availability,
-            'made_in' => $request->made_in,
-            //'sub_category' => $request->sub_category,
-            'materials' => $request->materials,
-            'labeled' => $request->labeled,
-            'video_url' => $request->video_url,
-            // 'total_sale_amount' => $request->total_sale_amount,
-            'total_order_qty' => $request->total_order_qty,
-            'last_ordered_at' => $request->last_ordered_at,
-            'last_carted_at' => $request->last_carted_at,
-            // 'total_view' => $request->total_view,
-            // 'activated_at' => $request->activated_at,
-            //'category_id' => $request->category_id,
-            'tag_id'      => $request->tag_id,
-            'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
-        ];
+      $data = Item::create([
+          'name' => $request->name,
+          'email'=> $request->email,
+          //'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
+          'slug' => $slug,
+//          'price' => $request->price,
+//          'model_no' => $request->model_no,
+//          'org_price' => $request->org_price,
+//          'pack_id' => $request->pack_id,
+//          // 'sorting' => $request->sorting,
+//          'description' => $request->description,
+//          'min_order' => $request->min_order,
+//          // 'available_on' => $request->available_on,
+//          // 'availability' => $request->availability,
+//          'made_in' => $request->made_in,
+//          //'sub_category' => $request->sub_category,
+//          'materials' => $request->materials,
+//          'labeled' => $request->labeled,
+//          'video_url' => $request->video_url,
+//          // 'total_sale_amount' => $request->total_sale_amount,
+//          'total_order_qty' => $request->total_order_qty,
+//          'last_ordered_at' => $request->last_ordered_at,
+//          'last_carted_at' => $request->last_carted_at,
+//          // 'total_view' => $request->total_view,
+//          // 'activated_at' => $request->activated_at,
+//          //'category_id' => $request->category_id,
+//          'tag_id'      => $request->tag_id,
+          'user_id' => Sentinel::getUser()->id,
+          'created_at' => now(),
+      ]);
 
 
 
-        $product = Item::create($data);
+
+        //$product = Item::create($data);
 
 
 
@@ -125,6 +127,14 @@ class ItemsController extends Controller
               'created_at' => now(),
             ));
           }
+        }
+
+        for ( $k = 0; $k<count($product->id); $k++ ){
+            Inventory::create([
+                'color_id' => $request->color_id[$k],
+                'item_id' => $product->id,
+                'created_at' => now(),
+            ]);
         }
 
 //        for( $j = 0 ; $j<count($product->category_id);$j++ ){
