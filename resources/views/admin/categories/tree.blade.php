@@ -2,7 +2,7 @@
 
 @section('content')
 @push('css')
-<style> 
+<style>
     .fa{
         padding:4px;
       font-size:16px;
@@ -19,14 +19,14 @@
       <li class="breadcrumb-item active" aria-current="page">Tree</li>
   @endslot
 @endcomponent
-    <div class="container-fluid">     
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card">                                    
-                    <div class="card-header text-right">                      
-                        <a href="{{ url('andbaazaradmin/products/subcategory-tree-view') }}" class="btn btn-sm btn-solid color-red"><h4>add subcategory</h4></a> 
+                <div class="card">
+                    <div class="card-header text-right">
+                        <a href="{{ url('andbaazaradmin/products/subcategory-tree-view') }}" class="btn btn-sm btn-solid color-red"><h4>add subcategory</h4></a>
                         <input type="text"  id="sample_search" onkeyup="search_func(this.value);" placeholder="search">
-                    </div>                 
+                    </div>
                     <div class="card-body">
                         <table border="1" class="table table-borderd">
                             <thead>
@@ -68,9 +68,9 @@
                                             <td>{{$level3->slug}}</td>
                                             <td class="text-center">{{$level3->percentage}}%</td>
                                             {{-- <td class="d-flex justify-content-between">
-                                                <ul> 
+                                                <ul>
                                                      <li><a href="{{ url('/andbaazaradmin/category/'.$level3->slug.'/edit')}}" class="btn btn-sm btn-primary" title="Edit"><i class="fa fa-edit"></i> </a></li>
-                                                     <li><a href="{{ url('/andbaazaradmin/category/'.$level3->slug.'/edit')}}" class="btn btn-sm btn-success" title="Edit"><i class="fa fa-show"></i> </a></li>                                                       
+                                                     <li><a href="{{ url('/andbaazaradmin/category/'.$level3->slug.'/edit')}}" class="btn btn-sm btn-success" title="Edit"><i class="fa fa-show"></i> </a></li>
                                                  </li>
                                                 </ul>
                                             </td>     --}}
@@ -87,12 +87,12 @@
                                                 <td>{{$level4->slug}}</td>
                                                 <td class="text-center">{{$level4->percentage}}%</td>
                                                 <td class="d-flex justify-content-between">
-                                                    <ul> 
+                                                    <ul>
                                                          <li><a href="{{ url('/andbaazaradmin/category/'.$level4->slug.'/edit')}}" class="btn btn-sm btn-primary" title="Edit"><i class="fa fa-edit"></i> </a></li>
-                                                         <li><a href="{{ url('andbaazaradmin/category/attribute/'.$level4->slug.'/attribute')}}" class="btn btn-sm btn-success" title="Edit"><i class="fa fa-show"></i> </a></li>                                                       
+                                                         <li><a href="{{ url('andbaazaradmin/category/attribute/'.$level4->slug.'/attribute')}}" class="btn btn-sm btn-success" title="Edit"><i class="fa fa-show"></i> </a></li>
                                                      </li>
                                                     </ul>
-                                                </td>                                              
+                                                </td>
                                             </tr>
                                             @php $i++ @endphp
                                         @endforeach
@@ -109,7 +109,7 @@
 @endsection
 
 <script language="javascript">
-    
+
 function search_func(value)
 {
     $.ajax({
