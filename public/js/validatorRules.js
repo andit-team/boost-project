@@ -1,4 +1,26 @@
+$(".validateForm").validate({
+    rules: {
+        phone:{
+            required: true,
+            number: true,
+            minlength: 11,
+            maxlength: 11,
+            phoneUS : true,
+        }
+    }
+});
 $("#validateForm").validate({
+    rules: {
+        phone:{
+            required: true,
+            number: true,
+            minlength: 11,
+            maxlength: 11,
+            phoneUS : true,
+        }
+    }
+});
+$("#validateForm2").validate({
     rules: {
         phone:{
             required: true,

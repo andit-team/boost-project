@@ -71,7 +71,7 @@
                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="needs-validation" action="{{ route('promotion.update',$row->slug) }}" method="post" enctype="multipart/form-data" id="validateForm">
+                                    <form  action="{{ route('promotion.update',$row->slug) }}" method="post" enctype="multipart/form-data" class="form validateForm" >
                                         @csrf
                                         @method('PUT')
                                         <div class="form">
@@ -97,19 +97,17 @@
                                             </div> 
                                             <div class="form-group">
                                                 <label for="valid_from">Valid From:</label>
-                                                <input type="text"  class="form-control   @error('valid_from') border-danger @enderror datepickerDB" required name="valid_from" value="{{old('valid_from',$row->valid_from)}}" id="" placeholder="YYYY/MM/DD" autocomplete="off">         
-                                                {{-- <input type="date"  name="valid_from" value="{{old('valid_from',$row->valid_from)}}" required class="form-control @error('valid_from') border-danger @enderror"> --}}
+                                                <input type="text"  class="form-control   @error('valid_from') border-danger @enderror datepickerDB" required name="valid_from" value="{{old('valid_from',$row->valid_from)}}" placeholder="YYYY/MM/DD" autocomplete="off">
                                                 <span class="text-danger">{{ $errors->first('valid_from') }}</span>
                                             </div>
                                             <div class="form-group">
                                                 <label for="valid_to">Valid To:</label>
-                                                <input type="text"  class="form-control   @error('valid_to') border-danger @enderror datepickerDB" required name="valid_to" value="{{old('valid_to',$row->valid_from)}}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">        
-                                                {{-- <input type="date"  name="valid_to" value="{{old('valid_to',$row->valid_from)}}" required class="form-control @error('valid_to') border-danger @enderror"> --}}
+                                                <input type="text"  class="form-control   @error('valid_to') border-danger @enderror datepickerDB" required name="valid_to" value="{{old('valid_to',$row->valid_from)}}"  placeholder="YYYY/MM/DD" autocomplete="off">
                                                 <span class="text-danger">{{ $errors->first('valid_to') }}</span>
                                             </div>
                                             <div class="form-group mb-0">
                                                 <label for="validationCustom02" class="mb-1">Description :</label>
-                                            <textarea name="description" class="form-control @error('description') border-danger @enderror" id="" rows="5">{{$row->description}}</textarea>
+                                                <textarea name="description" class="form-control @error('description') border-danger @enderror" rows="5">{{$row->description}}</textarea>
                                                 <span class="text-danger">{{ $errors->first('description') }}</span>
                                             </div>
                                         </div>
@@ -132,7 +130,7 @@
                 <h5>Manage Promotion</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('promotion.store') }}" method="post" class="form" id="validateForm">
+                <form action="{{ route('promotion.store') }}" method="post" class="form" id="validateForm2" >
                     @csrf
                     <div class="form-group">
                         <label for="promotion_head_id">Promotion Head:</label>
@@ -156,18 +154,18 @@
                     </div>
                     <div class="form-group">
                         <label for="valid_from">Valid From:</label>
-                        <input type="text"  class="form-control   @error('valid_from') border-danger @enderror datepickerDB" required name="valid_from" value="{{ old('valid_from') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">         
+                        <input type="text"  class="form-control   @error('valid_from') border-danger @enderror datepickerDB" required name="valid_from" value="{{ old('valid_from') }}"  placeholder="YYYY/MM/DD" autocomplete="off">         
                         <span class="text-danger">{{ $errors->first('valid_from') }}</span>
                     </div>
                     <div class="form-group">
                         <label for="valid_to">Valid To:</label>
-                        <input type="text"  class="form-control   @error('valid_to') border-danger @enderror datepickerDB" required name="valid_to" value="{{ old('valid_from') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">       
+                        <input type="text"  class="form-control   @error('valid_to') border-danger @enderror datepickerDB" required name="valid_to" value="{{ old('valid_from') }}"  placeholder="YYYY/MM/DD" autocomplete="off">       
                         <span class="text-danger">{{ $errors->first('valid_to') }}</span>
                     </div>
 
                     <div class="form-group">
                         <label for="description">Description:</label>
-                        <textarea name="description" class="form-control @error('description') border-danger @enderror" id="" rows="5"></textarea>
+                        <textarea name="description" class="form-control @error('description') border-danger @enderror" rows="5"></textarea>
                         <span class="text-danger">{{ $errors->first('description') }}</span>
                     </div>
                     <div class="text-right">

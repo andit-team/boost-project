@@ -29,6 +29,18 @@ input.form-control.error {
     padding: 10px 20px 20px 20px !important;
 }
 
+
 .card .card-header {
-    background-color: #D3D3D3; 
+    background-color: #000;
+    border-bottom: none;
+    padding: 10px;
+    border-bottom: 1px solid #f8f8f9;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.card .card-header h5{
+    color: #fff;
+}
+.bg-ddd{
+    background-color: #ddd !important;
 }
