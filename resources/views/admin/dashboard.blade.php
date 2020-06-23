@@ -224,7 +224,7 @@
                 </div>
                <div class="col-xl-3 col-md-6 xl-50">
                  <div class="card order-graph sales-carousel">
-                    <div class="card-header">
+                    <div class="card-header bg-ddd">
                         <h6>Total Sales</h6>
                         <div class="row">
                             <div class="col-6">
@@ -259,7 +259,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 xl-50">
                         <div class="card order-graph sales-carousel">
-                            <div class="card-header">
+                            <div class="card-header bg-ddd">
                                 <h6>Total purchase</h6>
                                 <div class="row">
                                     <div class="col-6">
@@ -294,7 +294,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 xl-50">
                         <div class="card order-graph sales-carousel">
-                            <div class="card-header">
+                            <div class="card-header bg-ddd">
                                 <h6>Total cash transaction</h6>
                                 <div class="row">
                                     <div class="col-6">
@@ -329,7 +329,7 @@
                     </div>
                     <div class="col-xl-3 col-md-6 xl-50">
                         <div class="card order-graph sales-carousel">
-                            <div class="card-header">
+                            <div class="card-header bg-ddd">
                                 <h6>Daily Deposits</h6>
                                 <div class="row">
                                     <div class="col-6">
@@ -553,7 +553,7 @@
                                                 <tbody>
                                                 <tr>
                                                     <td class="bd-t-none u-s-tb">
-                                                        <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/user2.jpg" alt="" data-original-title="" title="">
+                                                        <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/dashboard/user2.jpg" alt="" data-original-title="" title="">
                                                             <div class="d-inline-block">
                                                                 <h6>John Deo <span class="text-muted digits">(14+ Online)</span></h6>
                                                             </div>
@@ -571,7 +571,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="bd-t-none u-s-tb">
-                                                        <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/user1.jpg" alt="" data-original-title="" title="">
+                                                        <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/dashboard/user1.jpg" alt="" data-original-title="" title="">
                                                             <div class="d-inline-block">
                                                                 <h6>Holio Mako <span class="text-muted digits">(250+ Online)</span></h6>
                                                             </div>
@@ -589,7 +589,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="bd-t-none u-s-tb">
-                                                        <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/man.png" alt="" data-original-title="" title="">
+                                                        <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/dashboard/man.png" alt="" data-original-title="" title="">
                                                             <div class="d-inline-block">
                                                                 <h6>Mohsib lara<span class="text-muted digits">(99+ Online)</span></h6>
                                                             </div>
@@ -607,7 +607,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="bd-t-none u-s-tb">
-                                                        <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/user.png" alt="" data-original-title="" title="">
+                                                        <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/dashboard/user.png" alt="" data-original-title="" title="">
                                                             <div class="d-inline-block">
                                                                 <h6>Hileri Soli <span class="text-muted digits">(150+ Online)</span></h6>
                                                             </div>
@@ -625,7 +625,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="bd-t-none u-s-tb">
-                                                        <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/designer.jpg" alt="" data-original-title="" title="">
+                                                        <div class="align-middle image-sm-size"><img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/dashboard/designer.jpg" alt="" data-original-title="" title="">
                                                             <div class="d-inline-block">
                                                                 <h6>Pusiz bia <span class="text-muted digits">(14+ Online)</span></h6>
                                                             </div>
@@ -660,7 +660,7 @@
                                         &lt;tbody&gt;
                                                 &lt;tr&gt;
                                                     &lt;td class="bd-t-none u-s-tb"&gt;
-                                                        &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/user2.jpg" alt="" data-original-title="" title=""&gt;
+                                                        &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/dashboard/user2.jpg" alt="" data-original-title="" title=""&gt;
                                                         &lt;div class="d-inline-block"&gt;
                                                         &lt;h6&gt;John Deo &lt;span class="text-muted digits"&gt;(14+ Online)&lt;/span&gt;&lt;/h6&gt;
                                                         &lt;/div&gt;
@@ -678,7 +678,7 @@
                                                 &lt;/tr&gt;
                                             &lt;tr&gt;
                                                 &lt;td class="bd-t-none u-s-tb"&gt;
-                                                    &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/user1.jpg" alt="" data-original-title="" title=""&gt;
+                                                    &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/dashboard/user1.jpg" alt="" data-original-title="" title=""&gt;
                                                     &lt;div class="d-inline-block"&gt;
                                                     &lt;h6&gt;Holio Mako &lt;span class="text-muted digits"&gt;(250+ Online)&lt;/span&gt;&lt;/h6&gt;
                                                     &lt;/div&gt;
@@ -696,7 +696,7 @@
                                             &lt;/tr&gt;
                                             &lt;tr&gt;
                                                 &lt;td class="bd-t-none u-s-tb"&gt;
-                                                    &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/man.png" alt="" data-original-title="" title=""&gt;
+                                                    &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/dashboard/man.png" alt="" data-original-title="" title=""&gt;
                                                     &lt;div class="d-inline-block"&gt;
                                                     &lt;h6&gt;Mohsib lara&lt;span class="text-muted digits"&gt;(99+ Online)&lt;/span&gt;&lt;/h6&gt;
                                                     &lt;/div&gt;
@@ -714,7 +714,7 @@
                                             &lt;/tr&gt;
                                             &lt;tr&gt;
                                                 &lt;td class="bd-t-none u-s-tb"&gt;
-                                                    &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/user.png" alt="" data-original-title="" title=""&gt;
+                                                    &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/dashboard/user.png" alt="" data-original-title="" title=""&gt;
                                                     &lt;div class="d-inline-block"&gt;
                                                     &lt;h6&gt;Hileri Soli &lt;span class="text-muted digits"&gt;(150+ Online)&lt;/span&gt;&lt;/h6&gt;
                                                     &lt;/div&gt;
@@ -732,7 +732,7 @@
                                             &lt;/tr&gt;
                                             &lt;tr&gt;
                                                 &lt;td class="bd-t-none u-s-tb"&gt;
-                                                    &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('')}}/assets/images/dashboard/designer.jpg" alt="" data-original-title="" title=""&gt;
+                                                    &lt;div class="align-middle image-sm-size"&gt;&lt;img class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/dashboard/designer.jpg" alt="" data-original-title="" title=""&gt;
                                                     &lt;div class="d-inline-block"&gt;
                                                     &lt;h6&gt;Pusiz bia &lt;span class="text-muted digits"&gt;(14+ Online)&lt;/span&gt;&lt;/h6&gt;
                                                     &lt;/div&gt;
@@ -957,3 +957,11 @@
                 </div>
             </div>
 @endsection
+
+@push('js')
+<!--chartist js-->
+<script src="{{asset('frontend')}}/assets/js/chart/chartist/chartist.js"></script>
+
+<!--dashboard custom js-->
+<script src="{{asset('frontend')}}/assets/js/dashboard/default.js"></script>
+@endpush
