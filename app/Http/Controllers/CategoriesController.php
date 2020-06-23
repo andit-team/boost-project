@@ -151,36 +151,6 @@ class CategoriesController extends Controller
     {
         //  dd($request->all());
         $slug = Baazar::getUniqueSlug($category,$request->name);
-        // $this->validate($request, [
-        //     'name' => 'required',            
-        // ]);
-
-
-        // $parent_slug = Category::find($request->parent_id); 
-        // //dd($request);          
-        // $data = [
-        //     'name'             =>$request->name,
-        //     'parent_id'        =>  empty($request['parent_id']) ? 0 : ['parent_id'],
-        //     'desc'             => $request->desc,
-        //     'slug'             => $slug,
-        //     'parent_slug'      => $parent_slug->slug,
-        //     'is_last'          => 1,
-        //     'thumb'            => Baazar::fileUpload($request,'thumb','','/uploads/category_image'),
-        //     'percentage'       => $request->percentage,
-        //     'sort'             => $request->sort,
-        //     'user_id'          => Sentinel::getUser()->id,
-        //     'created_at' => now(),
-        //     ]; 
-        //     Category::create($data);   
-        //     // dd($data);        
-        //     //$parent_slug->is_last = 0;
-        //     //$parent_slug->save();
-        //     return back()->with('success', 'New Category added successfully.');
- 
-
-
-
-
         $input = $request->all();
         $parent_slug = Category::find($request->parent_id);      
         $input['parent_id']      = empty($input['parent_id']) ? 0 : $input['parent_id'];

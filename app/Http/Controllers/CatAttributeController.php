@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Attribute;
+use Sentinel;
+use Session;
+use Baazar;
 use Illuminate\Http\Request;
 
 class CatAttributeController extends Controller
@@ -90,12 +93,13 @@ class CatAttributeController extends Controller
 
     public function attributeset(Request $request,Attribute $attribute)
     {
-        $this->validateForm($request);              
+        // $this->validateForm($request);              
         $data = ([
             'label'            => $request->label,
             'suggestion'       => $request->suggestion,
-            'type'             => $type,
-            'required'         => $required,                          
+            'type'             => $request->type,
+            'required'         => $request->required,  
+            'category_id'      => $request->category_id,                         
             'user_id'          => Sentinel::getUser()->id,
             'created_at' => now(),
             ]);
