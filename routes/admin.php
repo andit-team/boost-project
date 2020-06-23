@@ -10,11 +10,12 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::get('dashboard','AdminHomeController@dashboard');
     Route::get('products/category-tree-view',['uses'=>'CategoriesController@manageCategory']);
     Route::get('/category/attribute/{slug}/attribute','CatAttributeController@attribute'); 
-    // Route::post('/category/attribute/{slug}/attribute','CatAttributeController@attributeset');  
-    Route::get('/category/attribute/{slug}/attribute','CatAttributeController@attribute');
+    Route::post('/category/attribute/{slug}/attribute','CatAttributeController@attributeset');  
+    // Route::get('/category/attribute/{slug}/attribute','CatAttributeController@attribute');
     Route::resource('/category','CatAttributeController');
     Route::get('products/subcategory-tree-view',['uses'=>'CategoriesController@manageSubCategory']);
-    Route::post('/add-category',['as'=>'add.category','uses'=>'CategoriesController@addCategory']);
+    Route::put('/add-category','CategoriesController@addCategory')->name('add.category');
+    // Route::post('/add-category',['as'=>'add.category','uses'=>'CategoriesController@addCategory']);
     Route::resource('products/category','CategoriesController');
     Route::resource('/child','ChildrenController');
     Route::resource('/paymentmethod','PaymentMethodsController');

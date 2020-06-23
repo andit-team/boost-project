@@ -146,7 +146,7 @@
                                         </div>
                                     </div> 
                                     @push('js')
-                                    <script>
+                                    {{-- <script>
                                         var loadimg = function(event) {
                                             var outputss = document.getElementById('output{{$row->id}}');
                                             outputss.src = URL.createObjectURL(event.target.files[0]);
@@ -154,7 +154,7 @@
                                             $('#output{{$row->id}}').attr('src',outputss.src);
                                             // outputss.src = ;
                                         }; 
-                                    </script>
+                                    </script> --}}
                                     @endpush
                             @endforeach
                             </tbody>
@@ -170,7 +170,7 @@
                     <div class="card-body">
                         <form action="{{ route('category.store') }}" method="post" class="form" id="validateForm" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group text-left mb-5 pb-3">  
+                            {{-- <div class="form-group text-left mb-5 pb-3">  
                                 <label for="thumb">Image:</label>
                                 <div class="mt-0">
                                     <img id="output"  class="imagestyle" src="{{ asset('/uploads/category_image/categ.png') }}" />
@@ -179,7 +179,15 @@
                                     <label for="file-upload" class="custom-file-upload">Upload Here</label>
                                     <input id="file-upload" type="file" name="thumb" onchange="loadFile(event)"/>
                                 </div>
+                            </div> --}}
+                            
+                            <div class="form-group text-left mb-5 "> 
+                                <label for="thumb">Image:</label> 
+                                <div class="col-md-6">
+                                    <input type="file" name="thumb" class="form-control">
+                                </div>                  
                             </div>
+
                             <div class="form-group">
                                 <label for="category">category Name:</label>
                                 <input type="text"  name="name" value="{{ old('name') }}" required class="form-control @error('name') border-danger @enderror"> 
@@ -215,10 +223,15 @@ $('a[data-toggle="tooltip"]').tooltip({
     html: true
 });
 
-var loadFile = function(event) {
-    var outputs = document.getElementById('output');
-    outputs.src = URL.createObjectURL(event.target.files[0]);
-}; 
-
+// var loadFile = function(event) {
+//     var outputs = document.getElementById('output');
+//     outputs.src = URL.createObjectURL(event.target.files[0]);
+// }; 
+</script>
+<script>
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
 </script>
 @endpush
