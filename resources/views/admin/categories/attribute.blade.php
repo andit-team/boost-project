@@ -61,7 +61,7 @@
                         <h5>Manage Attribute</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('add.attribute') }}" method="post" class="form" id="validateForm" enctype="multipart/form-data">
+                        <form action="{{ route('add.attribute') }}" method="post" class="form" id="validateForm" enctype="multipart/form-data">
                             @csrf                          
                             <div class="form-group">
                                 <label for="category">Label Name:</label>
@@ -88,11 +88,11 @@
                                 </div> 
                             
                             {{-- @else --}}
-                                <div class="form-group ">
+                                {{-- <div class="form-group ">
                                     <label for="percentage">Type Value:</label> 
                                     <input type="text" name="values" value="{{old('values')}}  " class="form-control @error('values') border-danger @enderror" id="amount" placeholder="0 or 1" required autocomplete="off">
                                     <span class="text-danger">{{ $errors->first('values') }}</span>
-                                </div> 
+                                </div>  --}}
                             {{-- @endif --}}
                             <div class="form-group ">
                                 <label for="percentage">Required:</label> 

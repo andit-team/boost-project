@@ -113,7 +113,7 @@
                   <h3>Create Sub Category</h3>
                 </div>
                 <div class="card-body">
-                  <form action="{{ route('add.category') }}" method="POST">
+                  <form action="{{ route('add.category') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="form-group">
@@ -126,6 +126,7 @@
                             <label for="file-upload" class="custom-file-upload">Upload Here</label>
                             <input id="file-upload" type="file" name="thumb" onchange="loadFile(event)"/>
                         </div>
+                        {{-- <input type="hidden" name="old_thumb"> --}}
                     </div>
                       <select class="form-control" name="parent_id">
                         <option value="">Select Parent Category</option> 

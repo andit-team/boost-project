@@ -187,7 +187,7 @@ class CategoriesController extends Controller
         $input['slug']           = $slug;
         $input['percentage']     = $request->percentage;
         $input['desc']           = $request->desc;
-        // $input['thumb']          = Baazar::fileUpload($request,'thumb',' ','/uploads/category_image');
+        $input['thumb']          = Baazar::fileUpload($request,'thumb','','/uploads/category_image');
         $input['parent_slug']    = $parent_slug->slug;
         $input['user_id']        = Sentinel::getUser()->id;
         $input['is_last']        = 1;
