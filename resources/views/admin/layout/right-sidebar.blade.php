@@ -15,49 +15,49 @@
             <div class="chat-box">
                 <div class="people-list friend-list">
                     <ul class="list">
-                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('')}}/assets/images/dashboard/user.png" alt="">
+                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('frontend')}}/assets/images/dashboard/user.png" alt="">
                             <div class="status-circle online"></div>
                             <div class="about">
                                 <div class="name">Vincent Porter</div>
                                 <div class="status"> Online</div>
                             </div>
                         </li>
-                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('')}}/assets/images/dashboard/user1.jpg" alt="">
+                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('frontend')}}/assets/images/dashboard/user1.jpg" alt="">
                             <div class="status-circle away"></div>
                             <div class="about">
                                 <div class="name">Ain Chavez</div>
                                 <div class="status"> 28 minutes ago</div>
                             </div>
                         </li>
-                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('')}}/assets/images/dashboard/user2.jpg" alt="">
+                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('frontend')}}/assets/images/dashboard/user2.jpg" alt="">
                             <div class="status-circle online"></div>
                             <div class="about">
                                 <div class="name">Kori Thomas</div>
                                 <div class="status"> Online</div>
                             </div>
                         </li>
-                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('')}}/assets/images/dashboard/user3.jpg" alt="">
+                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('frontend')}}/assets/images/dashboard/user3.jpg" alt="">
                             <div class="status-circle online"></div>
                             <div class="about">
                                 <div class="name">Erica Hughes</div>
                                 <div class="status"> Online</div>
                             </div>
                         </li>
-                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('')}}/assets/images/dashboard/man.png" alt="">
+                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('frontend')}}/assets/images/dashboard/man.png" alt="">
                             <div class="status-circle offline"></div>
                             <div class="about">
                                 <div class="name">Ginger Johnston</div>
                                 <div class="status"> 2 minutes ago</div>
                             </div>
                         </li>
-                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('')}}/assets/images/dashboard/user5.jpg" alt="">
+                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('frontend')}}/assets/images/dashboard/user5.jpg" alt="">
                             <div class="status-circle away"></div>
                             <div class="about">
                                 <div class="name">Prasanth Anand</div>
                                 <div class="status"> 2 hour ago</div>
                             </div>
                         </li>
-                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('')}}/assets/images/dashboard/designer.jpg" alt="">
+                        <li class="clearfix"><img class="rounded-circle user-image" src="{{asset('frontend')}}/assets/images/dashboard/designer.jpg" alt="">
                             <div class="status-circle online"></div>
                             <div class="about">
                                 <div class="name">Hileri Jecno</div>

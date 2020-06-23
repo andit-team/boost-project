@@ -8,7 +8,7 @@ Route::post('andbaazaradmin/login','AuthController@adminloginprocess')->name('lo
 
 Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::get('dashboard','AdminHomeController@dashboard');
-    // Route::get('products/category-tree-view',['uses'=>'CategoriesController@manageCategory']);
+    Route::get('products/category-tree-view',['uses'=>'CategoriesController@manageCategory']);
     Route::get('/category/attribute/{slug}/attribute','CatAttributeController@attribute'); 
     // Route::post('/category/attribute/{slug}/attribute','CatAttributeController@attributeset');  
     Route::get('/category/attribute/{slug}/attribute','CatAttributeController@attribute');

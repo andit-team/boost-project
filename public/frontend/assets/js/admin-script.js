@@ -1,5 +1,26 @@
 (function($) {
     "use strict";
+    
+    /*=====================
+     01.Pre loader
+     ==========================*/
+     $(window).on('load', function () {
+        setTimeout(function(){
+            $('.loader_skeleton').fadeOut('slow');
+            $('body').css({
+                'overflow': 'auto'
+            });
+        }, 500);
+        $('.loader_skeleton').remove('slow');
+        $('body').css({
+            'overflow': 'hidden'
+        });
+    });
+    $('#preloader').fadeOut('slow', function() {
+        $(this).remove();
+    });
+
+
     $(".mobile-toggle").click(function(){
         $(".nav-menus").toggleClass("open");
     });

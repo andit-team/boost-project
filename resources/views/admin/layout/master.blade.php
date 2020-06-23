@@ -42,11 +42,11 @@
 
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/admin.css">
-    <link rel="stylesheet" type="text/css" href="{{asset('')}}/custom.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css')}}/custom.css">
     <!-- Datatables css-->
     {{-- <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/datatables.css"> --}}
     <!--Datepicker css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css')}}/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 
     <link href="{{ asset('/') }}css/treeview.css" rel="stylesheet">
@@ -60,6 +60,13 @@
 <!-- page-wrapper Start-->
 <div class="page-wrapper">
 
+    <div class="loader_skeleton">
+        <!--CSS Spinner-->
+        <div class="spinner-wrapper">
+            <img src="{{asset('preloader.gif')}}" alt="preloader" width="300">
+        </div>
+    </div>
+    
     {{-- <div class="loader_skeleton">
         <!--CSS Spinner-->
         <div class="spinner-wrapper">
@@ -196,8 +203,7 @@
 <!-- Sidebar jquery-->
 <script src="{{asset('frontend')}}/assets/js/sidebar-menu.js"></script>
 
-<!--chartist js-->
-<script src="{{asset('frontend')}}/assets/js/chart/chartist/chartist.js"></script>
+
 
 <!--chartjs js-->
 <script src="{{asset('frontend')}}/assets/js/chart/chartjs/chart.min.js"></script>
@@ -222,10 +228,10 @@
 <script src="{{asset('frontend')}}/assets/js/chart/sparkline/sparkline.js"></script>
 
 <!--Customizer admin-->
-<script src="{{asset('frontend')}}/assets/js/admin-customizer.js"></script>
+{{-- <script src="{{asset('frontend')}}/assets/js/admin-customizer.js"></script> --}}
 
-<!--dashboard custom js-->
-<script src="{{asset('frontend')}}/assets/js/dashboard/default.js"></script>
+
+
 
 <!--right sidebar js-->
 <script src="{{asset('frontend')}}/assets/js/chat-menu.js"></script>
