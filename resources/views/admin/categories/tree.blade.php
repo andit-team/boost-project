@@ -19,12 +19,14 @@
       <li class="breadcrumb-item active" aria-current="page">Tree</li>
   @endslot
 @endcomponent
-    <div class="container-fluid">
+<div class="text-right">   
+<a href="{{ url('andbaazaradmin/products/subcategory-tree-view') }}" class="btn btn-sm color-red text-right"><h4>add subcategory</h4></a>
+</div>
+    <div class="container-fluid">      
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header text-right">
-                        <a href="{{ url('andbaazaradmin/products/subcategory-tree-view') }}" class="btn btn-sm btn-solid color-red"><h4>add subcategory</h4></a>
+                    <div class="card-header text-right">           
                         <input type="text"  id="sample_search" onkeyup="search_func(this.value);" placeholder="search">
                     </div>
                     <div class="card-body">
