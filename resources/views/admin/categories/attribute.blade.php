@@ -61,7 +61,7 @@
                         <h5>Manage Attribute</h5>
                     </div>
                     <div class="card-body">
-                        <form action="{{ url('category.store') }}" method="post" class="form" id="validateForm" enctype="multipart/form-data">
+                        <form action="{{ url('add.attribute') }}" method="post" class="form" id="validateForm" enctype="multipart/form-data">
                             @csrf                          
                             <div class="form-group">
                                 <label for="category">Label Name:</label>
@@ -79,8 +79,21 @@
                                   <option value="">radio </option>
                                   <option value="">number </option>                                 
                                 </select>
-                              </div>
-          
+                            </div>                          
+                            {{-- @if($type == 'multi-select' || $type == 'select' || $type == 'checkbox') --}}
+                                <div class="form-group ">
+                                    <label for="percentage">Type Value:</label> 
+                                    <input type="text" name="values" value="{{old('values')}}  " class="form-control @error('values') border-danger @enderror" id="amount" placeholder="0 or 1" required autocomplete="off">
+                                    <span class="text-danger">{{ $errors->first('values') }}</span>
+                                </div> 
+                            
+                            {{-- @else --}}
+                                <div class="form-group ">
+                                    <label for="percentage">Type Value:</label> 
+                                    <input type="text" name="values" value="{{old('values')}}  " class="form-control @error('values') border-danger @enderror" id="amount" placeholder="0 or 1" required autocomplete="off">
+                                    <span class="text-danger">{{ $errors->first('values') }}</span>
+                                </div> 
+                            {{-- @endif --}}
                             <div class="form-group ">
                                 <label for="percentage">Required:</label> 
                                 <input type="number" name="required" value="{{old('required')}}  " class="form-control @error('required') border-danger @enderror" id="amount" placeholder="0 or 1" required autocomplete="off">

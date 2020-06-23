@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Attribute;
 use Illuminate\Http\Request;
 
 class CatAttributeController extends Controller
@@ -86,5 +86,22 @@ class CatAttributeController extends Controller
     public function attribute()
     {
         return view('admin.categories.attribute');
+    }
+
+    public function attributeset(Request $request,Attribute $attribute)
+    {
+        $this->validateForm($request);              
+        $data = ([
+            'label'            => $request->label,
+            'suggestion'       => $request->suggestion,
+            'type'             => $type,
+            'required'         => $required,                          
+            'user_id'          => Sentinel::getUser()->id,
+            'created_at' => now(),
+            ]);
+            Attribute::create($data);
+            Session::flash('success', 'Attribute Inserted Successfully');
+
+            return redirect('andbaazaradmin/products/category');
     }
 }

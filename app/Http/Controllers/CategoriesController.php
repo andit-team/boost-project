@@ -48,7 +48,7 @@ class CategoriesController extends Controller
             'name'             => $request->name,
             'desc'             => $request->desc,
             'slug'             => $slug,
-            'parent_slug'      => $parent_slug,
+            // 'parent_slug'      => $parent_slug,
             'thumb'            => Baazar::fileUpload($request,'thumb','','/uploads/category_image'),
             'percentage'       => $request->percentage,
             'sort'             => $request->sort,
