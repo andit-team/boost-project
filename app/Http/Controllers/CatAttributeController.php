@@ -87,29 +87,55 @@ class CatAttributeController extends Controller
         //
     }
 
-    public function attribute()
+    public function attribute($slug)
     {
-        $category = Category::where('slug', 'slug')->get();
-        // $category = Category::all(); 
-        return view('admin.categories.attribute',compact('category'));
+        $categories = Category::with('allChilds')->where('parent_id',0)->get();
+        $category = Category::where('slug', $slug)->get();
+        return view('admin.categories.attribute',compact('category','categories'));
     }
 
     public function attributeset(Request $request,Attribute $attribute)
-    {
-        // $this->validateForm($request);              
-        $data = ([
-            'label'            => $request->label,
-            'suggestion'       => $request->suggestion,
-            'type'             => $request->type,
-            'required'         => $request->required,
-            // 'required'         => $request->required[0] ? 0: 1,  
-            'category_id'      => $request->category_id,                         
-            'user_id'          => Sentinel::getUser()->id,
-            'created_at' => now(),
-            ]);
-            Attribute::create($data);
-            Session::flash('success', 'Attribute Inserted Successfully');
+    {   
+        // // $this->validateForm($request);              
+        // $data = ([
+        //     'label'            => $request->label,
+        //     'suggestion'       => $request->suggestion,
+        //     'type'             => $request->type,
+        //     'required'         => $request->required,
+        //     // 'required'         => $request->required[0] ? 0: 1,  
+        //     'category_id'      => $request->category_id,                         
+        //     'user_id'          => Sentinel::getUser()->id,
+        //     'created_at' => now(),
+        //     ]);
+        //     Attribute::create($data);
+        //     Session::flash('success', 'Attribute Inserted Successfully');
 
-            return redirect()->back();
-    }
+        //     return redirect()->back();
+    // }
+    $att = count($_POST['label']);
+    // $invColor = count($_POST['color_id']);
+    // $data[$parts[0]] = isset($parts[1]) ? $parts[1] : null;
+    for ( $k = 0; $k<$att; $k++ ){
+        Attribute::create([
+            'label'          => $request->label[$k],
+            'suggestion'     => $request->suggestion[$k],
+            'label'          => $request->label[$k],
+            'required'       => $request->required[$k],
+            'category_id'    => $request->category_id,
+            'user_id'        => Sentinel::getUser()->id,
+            'created_at' => now(),
+        ]);
+     }
+     Session::flash('success', 'Attribute Inserted Successfully');
+
+       return redirect()->back();
+
+ }
+    // foreach ($request->approver as $approver) {
+    //     $approve              = new Approve();
+    //     $approve->approver_id = $approver;
+    //     $approve->save();
+    
+    //     $document->sentToApprovers()->sync([$approve->id],false);
+    // }
 }
