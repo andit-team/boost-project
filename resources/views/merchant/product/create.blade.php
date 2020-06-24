@@ -24,19 +24,20 @@
                 <div class="col-sm-9 contact-page register-page container"> 
                                     <h2 id="heading">Add Product</h2>
                                     <p>Fill all form field to go to next step</p>
-                                    <form id="msform" class="theme-form" action="{{ route('product.store') }}" method="post"  enctype="multipart/form-data">
+                                    <form id="msform" >
                                         <!-- progressbar -->
                                         <ul id="progressbar">
-                                            <li class="active1" id="account"><strong>Basic Information</strong></li>
-                                            <li id="personal"><strong>Details</strong></li>
-                                            <li id="payment"><strong>Price & Stock</strong></li>
-                                            <li id="confirm1"><strong>Finish</strong></li>
+                                            <li class="active1 msform1" id="account"><strong>Basic Information</strong></li>
+                                            <li class="msform1" id="personal"><strong>Details</strong></li>
+                                            <li class="msform1" id="payment"><strong>Price & Stock</strong></li>
+                                            <li class="msform1" id="confirm1"><strong>Finish</strong></li>
                                         </ul>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div> <br> <!-- fieldsets -->
+                                        
                                         <fieldset>
-                                            <div class="form-card">
+                                            <div class="">
                                                 <div class="row">
                                                     <div class="col-7">
                                                         <h2 class="fs-title">Account Information:</h2>
@@ -181,6 +182,7 @@
                                                     </div>
                                                 </div> --}}
                                                 <button class="btn btn-sm btn-solid" type="submit">Save</button>
+                                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                                             </div>
                                         </fieldset>
                                     </form> 
@@ -240,11 +242,16 @@ p {
 
 #heading {
     text-transform: uppercase;
-    color: #673AB7;
+    /* color: #673AB7; */
     font-weight: normal
 }
 
 #msform {
+    /* text-align: center; */
+    position: relative;
+    margin-top: 20px
+}
+.msform1 {
     text-align: center;
     position: relative;
     margin-top: 20px
@@ -255,7 +262,7 @@ p {
     border: 0 none;
     border-radius: 0.5rem;
     box-sizing: border-box;
-    width: 100%;
+    /* width: 100%; */
     margin: 0;
     padding-bottom: 20px;
     position: relative
@@ -271,16 +278,16 @@ p {
 
 #msform input,
 #msform textarea {
-    padding: 8px 15px 8px 15px;
-    border: 1px solid #ccc;
+    /* padding: 8px 15px 8px 15px; */
+    /* border: 1px solid #ccc; */
     border-radius: 0px;
     margin-bottom: 25px;
     margin-top: 2px;
     width: 100%;
     box-sizing: border-box;
-    font-family: montserrat;
-    color: #2C3E50;
-    background-color: #ECEFF1;
+    /* font-family: montserrat; */
+    /* color: #2C3E50; */
+    /* background-color: #ECEFF1; */
     font-size: 16px;
     letter-spacing: 1px
 }
@@ -289,14 +296,15 @@ p {
 #msform textarea:focus {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: 1px solid #673AB7;
+    /* box-shadow: none !important; */
+    /* border: 1px solid #673AB7; */
+    /* border: 1px solid; */
     outline-width: 0
 }
 
 #msform .action-button {
     width: 100px;
-    background: #673AB7;
+    background: #FF4C3B;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -309,7 +317,7 @@ p {
 
 #msform .action-button:hover,
 #msform .action-button:focus {
-    background-color: #311B92
+    background-color: #FF4C3B
 }
 
 #msform .action-button-previous {
@@ -330,11 +338,11 @@ p {
     background-color: #000000
 }
 
-.card {
+/* .card {
     z-index: 0;
     border: none;
     position: relative
-}
+} */
 
 .fs-title {
     font-size: 25px;
@@ -368,8 +376,8 @@ p {
     color: lightgrey
 }
 
-#progressbar .active {
-    color: #673AB7
+#progressbar .active1 {
+    color: #FF4C3B
 }
 
 #progressbar li {
@@ -407,7 +415,7 @@ p {
     line-height: 45px;
     display: block;
     font-size: 20px;
-    color: #ffffff;
+    color: #222222;
     background: lightgray;
     border-radius: 50%;
     margin: 0 auto 10px auto;
@@ -427,7 +435,7 @@ p {
 
 #progressbar li.active1:before,
 #progressbar li.active1:after {
-    background: #673AB7
+    background: #FF4C3B
 }
 
 .progress {
@@ -435,7 +443,7 @@ p {
 }
 
 .progress-bar {
-    background-color: #673AB7
+    background-color: #FF4C3B
 }
 
 .fit-image {
