@@ -89,8 +89,9 @@ class CatAttributeController extends Controller
 
     public function attribute($slug)
     {
+        $categories = Category::with('allChilds')->where('parent_id',0)->get();
         $category = Category::where('slug', $slug)->get();
-        return view('admin.categories.attribute',compact('category'));
+        return view('admin.categories.attribute',compact('category','categories'));
     }
 
     public function attributeset(Request $request,Attribute $attribute)
