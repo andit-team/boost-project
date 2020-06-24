@@ -68,6 +68,11 @@
                         @method('put')   
                         
                         <span class="btn btn-primary btn-sm pull-left  rowAdd" data-row="1"><i class="fa fa-plus"></i> Add row</span>
+                       @foreach($category as $cat)
+                       <div class =" text-center font-weight-bold">    
+                        <label for="percentage">For: {{$cat->slug}}</label>     
+                       </div>                     
+                        @endforeach
                         <table class="table table-borderd">
                             <thead class="">
                                 <tr class="inventory-head">                                    
@@ -113,6 +118,10 @@
                                             </div>
                                         </div> 
                                     </td>
+                                    @foreach($category as $cat)
+                                    <input name="category_id" type="hidden" value="{{$cat->id}}">
+                                    @endforeach
+                                    {{-- <input name="category_id" type="hidden" value="2"> --}}
                                 <td><span class="btn btn-primary rowRemove"><i class="fa fa-trash"></i></span></td>                                    
                                     </tr>
                             </tbody>
