@@ -5,6 +5,7 @@ use App\Models\Attribute;
 use Sentinel;
 use Session;
 use Baazar;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CatAttributeController extends Controller
@@ -88,7 +89,8 @@ class CatAttributeController extends Controller
 
     public function attribute()
     {
-        return view('admin.categories.attribute');
+        $category = Category::all(); 
+        return view('admin.categories.attribute',compact('category'));
     }
 
     public function attributeset(Request $request,Attribute $attribute)
@@ -106,6 +108,6 @@ class CatAttributeController extends Controller
             Attribute::create($data);
             Session::flash('success', 'Attribute Inserted Successfully');
 
-            return redirect('andbaazaradmin/products/category');
+            return redirect()->back();
     }
 }

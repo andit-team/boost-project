@@ -85,8 +85,11 @@
                                     <label for="percentage">Type Value:</label> 
                                     <input type="text" name="values" value="{{old('values')}}  " class="form-control @error('values') border-danger @enderror" id="amount" placeholder="0 or 1" required autocomplete="off">
                                     <span class="text-danger">{{ $errors->first('values') }}</span>
-                                    <input name="category_id" type="hidden" value="">
-                                </div>      
+                                    {{-- <input name="category_id" type="hidden" value=""> --}}
+                                </div> 
+                                <input name="category_id" type="hidden" value="2">
+                                {{-- <input type = "hidden" name = "category_id" value = "{{Auth::user()->id}}"> --}}
+                                {{-- {{ Form::hidden('category_id', $category->category_id) }}      --}}
                             <div class="form-group ">
                                 <label for="percentage">Required:</label> 
                                 <input type="number" name="required" value="{{old('required')}}  " class="form-control @error('required') border-danger @enderror" id="amount" placeholder="0 or 1" required autocomplete="off">
