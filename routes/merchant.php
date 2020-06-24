@@ -13,10 +13,11 @@ Route::post('seller-shope-registration','MerchantController@shopRegistrationStor
 Route::post('signup-step-one','MerchantController@registrationStepOneProcess')->name('merchantStepOne');
 Route::get('terms-condition','MerchantController@termsCondtion');
 
-Route::prefix('merchant')->group(function () {
+Route::get('merchant/login','MerchantController@merchantlogin');
+Route::post('merchant/login','MerchantController@merchantloginprocess')->name('merchantloginprocess');
+
+Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],function () {
     Route::get('dashboard','MerchantController@dashboard');
-    Route::get('login','MerchantController@merchantlogin');
-    Route::post('login','MerchantController@merchantloginprocess')->name('merchantloginprocess');
 
 
     Route::get('signup-step-two','MerchantController@registrationStepTwo');

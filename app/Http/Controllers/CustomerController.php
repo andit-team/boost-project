@@ -11,6 +11,10 @@ use Mail;
 use App\Events\CustomerRegistration;
 
 class CustomerController extends Controller{
+    public function __construct(){
+        $this->middleware(['auth','customer'])->except('register','userlogin','registration','userloginprocess');
+    }
+
     public function dashboard(){
         return view('buyer-dashboard');
     }
