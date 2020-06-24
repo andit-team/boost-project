@@ -42,7 +42,7 @@
         }
  </style>
 @endpush 
-
+<div class="card mb-4">
   <h5 class="card-header">Basic information</h5>
     <div class="card-body">
         <div class="row">
@@ -97,13 +97,10 @@
                         <span class="text-danger">{{ $errors->first('video_url') }}</span>
                     @endif
                 </div> 
-
-                
-
             </div>
         </div>
     </div>
-{{-- </div> --}}
+</div>
 
 @push('js')
     <script>
@@ -158,6 +155,8 @@
                 $('#category_id').val(id);
                 $('#category').val($('.currentSelection').text());
                 $('#catarea').hide();
+                getCategoryAttr(id);
+                getInventoryAttr(id);
             }
         }
 
