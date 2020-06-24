@@ -2,16 +2,6 @@
 
 @section('content')
 @include('elements.alert')
-{{-- @component('layouts.inc.breadcrumb')
-  @slot('pageTitle')
-      Dashboard
-  @endslot
-  @slot('page')
-      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">Profile</li>
-  @endslot
-@endcomponent --}}
-
 
     <!--  dashboard section start -->
     <section class="dashboard-section section-b-space">
@@ -23,44 +13,28 @@
                 <!-- address section start -->
                 <div class="col-sm-9 contact-page register-page container"> 
                                     <h2 id="heading">Add Product</h2>
-                                    <p>Fill all form field to go to next step</p>
                                     <form id="msform" >
                                         <!-- progressbar -->
                                         <ul id="progressbar">
-                                            <li class="active1 msform1" id="account"><strong>Basic Information</strong></li>
+                                            <li class="active1 msform1" id="account"><strong><i class="fa fa-edit"></i> Basic Information</strong></li>
                                             <li class="msform1" id="personal"><strong>Details</strong></li>
                                             <li class="msform1" id="payment"><strong>Price & Stock</strong></li>
                                             <li class="msform1" id="confirm1"><strong>Finish</strong></li>
                                         </ul>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div> <br> <!-- fieldsets -->
+                                        </div><br>
                                         
                                         <fieldset>
-                                            <div class="">
-                                                <div class="row">
-                                                    <div class="col-7">
-                                                        <h2 class="fs-title">Account Information:</h2>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <h2 class="steps">Step 1 - 4</h2>
-                                                    </div>
-                                                </div>  
+                                            <div>
                                                 @include('merchant.product.productBasicinfo')
                                                 @include('merchant.product.productAttributes')
                                             </div> 
-                                            <input type="button" name="next" class="next action-button" value="Next" />
+                                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" />
                                         </fieldset>
                                         <fieldset>
-                                            <div class="form-card">
-                                                <div class="row">
-                                                    <div class="col-7">
-                                                        <h2 class="fs-title">Personal Information:</h2>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <h2 class="steps">Step 2 - 4</h2>
-                                                    </div>
-                                                </div>  
+
+                                            <div class="card mb-4">
                                                 <h5 class="card-header">Detailed Description</h5>
                                                 <div class="card-body">
                                                         <div class="form-group">
@@ -86,35 +60,19 @@
                                                         </div>
                                                 </div>
                                             </div> 
-                                            <input type="button" name="next" class="next action-button" value="Next" /> 
-                                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" />
+                                            <input type="button" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
                                         </fieldset>
                                         <fieldset>
-                                            <div class="form-card">
-                                                <div class="row">
-                                                    <div class="col-7">
-                                                        <h2 class="fs-title">Image Upload:</h2>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <h2 class="steps">Step 3 - 4</h2>
-                                                    </div>
-                                                </div>  
+                                            <div>
                                                 @include('merchant.product.priceAndstock')
                                             </div> 
-                                            {{-- <input type="button" name="next" class="next action-button" value="Submit" />  --}}
-                                            <input type="button" name="next" class="next action-button" value="Next" /> 
-                                            <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" /> 
+                                            <input type="button" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
                                         </fieldset>
+
+                                        
                                         <fieldset>
-                                            <div class="form-card">
-                                                <div class="row">
-                                                    <div class="col-7">
-                                                        <h2 class="fs-title">Finish:</h2>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <h2 class="steps">Step 4 - 4</h2>
-                                                    </div>
-                                                </div> 
                                                 <div class="card mb-4">
                                                     <h5 class="card-header">Tag & Model</h5>
                                                     <div class="card-body">
@@ -169,22 +127,11 @@
                                                           </div>
                                                         </div>
                                                       </div>
-                                                {{-- <br><br>
-                                                <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
-                                                <div class="row justify-content-center">
-                                                    <div class="col-3"> 
-                                                        <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
-                                                </div> 
-                                                <br><br> --}}
-                                                {{-- <div class="row justify-content-center">
-                                                    <div class="col-7 text-center">
-                                                        <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
-                                                    </div>
-                                                </div> --}}
-                                                <button class="btn btn-sm btn-solid" type="submit">Save</button>
-                                                <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                                            </div>
+                                                    <input type="button" name="next" class="next btn btn-primary float-right" value="Next" /> 
+                                                    <input type="button" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
                                         </fieldset>
+                                        
+                                        
                                     </form> 
                     </div>
                 </div>
@@ -240,140 +187,22 @@ p {
     color: grey
 }
 
-#heading {
-    text-transform: uppercase;
-    /* color: #673AB7; */
-    font-weight: normal
-}
-
-#msform {
-    /* text-align: center; */
-    position: relative;
-    margin-top: 20px
-}
+/* Step design  */
 .msform1 {
     text-align: center;
-    position: relative;
     margin-top: 20px
 }
 
-#msform fieldset {
-    background: white;
-    border: 0 none;
-    border-radius: 0.5rem;
-    box-sizing: border-box;
-    /* width: 100%; */
-    margin: 0;
-    padding-bottom: 20px;
-    position: relative
-}
 
-.form-card {
-    text-align: left
-}
+
 
 #msform fieldset:not(:first-of-type) {
     display: none
 }
 
-#msform input,
-#msform textarea {
-    /* padding: 8px 15px 8px 15px; */
-    /* border: 1px solid #ccc; */
-    border-radius: 0px;
-    margin-bottom: 25px;
-    margin-top: 2px;
-    width: 100%;
-    box-sizing: border-box;
-    /* font-family: montserrat; */
-    /* color: #2C3E50; */
-    /* background-color: #ECEFF1; */
-    font-size: 16px;
-    letter-spacing: 1px
-}
-
-#msform input:focus,
-#msform textarea:focus {
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    /* box-shadow: none !important; */
-    /* border: 1px solid #673AB7; */
-    /* border: 1px solid; */
-    outline-width: 0
-}
-
-#msform .action-button {
-    width: 100px;
-    background: #FF4C3B;
-    font-weight: bold;
-    color: white;
-    border: 0 none;
-    border-radius: 0px;
-    cursor: pointer;
-    padding: 10px 5px;
-    margin: 10px 0px 10px 5px;
-    float: right
-}
-
-#msform .action-button:hover,
-#msform .action-button:focus {
-    background-color: #FF4C3B
-}
-
-#msform .action-button-previous {
-    width: 100px;
-    background: #616161;
-    font-weight: bold;
-    color: white;
-    border: 0 none;
-    border-radius: 0px;
-    cursor: pointer;
-    padding: 10px 5px;
-    margin: 10px 5px 10px 0px;
-    float: right
-}
-
-#msform .action-button-previous:hover,
-#msform .action-button-previous:focus {
-    background-color: #000000
-}
-
-/* .card {
-    z-index: 0;
-    border: none;
-    position: relative
-} */
-
-.fs-title {
-    font-size: 25px;
-    color: #673AB7;
-    margin-bottom: 15px;
-    font-weight: normal;
-    text-align: left
-}
-
-.purple-text {
-    color: #673AB7;
-    font-weight: normal
-}
-
-.steps {
-    font-size: 25px;
-    color: gray;
-    margin-bottom: 10px;
-    font-weight: normal;
-    text-align: right
-}
-
-.fieldlabels {
-    color: gray;
-    text-align: left
-}
 
 #progressbar {
-    margin-bottom: 30px;
     overflow: hidden;
-    color: lightgrey
 }
 
 #progressbar .active1 {
@@ -381,78 +210,15 @@ p {
 }
 
 #progressbar li {
-    list-style-type: none;
-    font-size: 15px;
     width: 25%;
     float: left;
-    position: relative;
-    font-weight: 400
 }
 
-#progressbar #account:before {
-    font-family: FontAwesome;
-    content: "\f13e"
-}
-
-#progressbar #personal:before {
-    font-family: FontAwesome;
-    content: "\f007"
-}
-
-#progressbar #payment:before {
-    font-family: FontAwesome;
-    content: "\f030"
-}
-
-#progressbar #confirm1:before {
-    font-family: FontAwesome;
-    content: "\f00c"
-}
-
-#progressbar li:before {
-    width: 50px;
-    height: 50px;
-    line-height: 45px;
-    display: block;
-    font-size: 20px;
-    color: #222222;
-    background: lightgray;
-    border-radius: 50%;
-    margin: 0 auto 10px auto;
-    padding: 2px
-}
-
-#progressbar li:after {
-    content: '';
-    width: 100%;
-    height: 2px;
-    background: lightgray;
-    position: absolute;
-    left: 0;
-    top: 25px;
-    z-index: -1
-}
-
-#progressbar li.active1:before,
-#progressbar li.active1:after {
-    background: #FF4C3B
-}
-
-.progress {
-    height: 20px
-}
 
 .progress-bar {
     background-color: #FF4C3B
 }
 
-.fit-image {
-    width: 100%;
-    object-fit: cover
-}
-.active1{
-    background-color: white;
-}
 
 </style>
 @endpush
@@ -468,6 +234,8 @@ p {
    });
     $('.js-example-basic-multiple').select2();
     //
+
+
     $(document).ready(function(){
 
 var current_fs, next_fs, previous_fs; //fieldsets
