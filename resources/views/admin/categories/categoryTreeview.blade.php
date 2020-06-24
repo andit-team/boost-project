@@ -147,7 +147,7 @@
                   <div class="form-group ">
                       <label for="percentage">Percentage:</label> 
                       <input type="number" name="percentage" value="{{old('percentage')}} % " class="form-control @error('percentage') border-danger @enderror" id="amount" placeholder="0.00" required autocomplete="off">
-                      <span class="text-danger">{{ $errors->first('percentage') }}</span>
+                      <span class="text-danger">{{ $errors->first('percentage') }}</span>                     
                   </div>
                   <div class="form-group">
                       <label for="desc">Description:</label>

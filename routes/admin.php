@@ -10,7 +10,7 @@ Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
     Route::get('dashboard','AdminHomeController@dashboard');
     Route::get('products/category-tree-view',['uses'=>'CategoriesController@manageCategory']);
     Route::get('/category/attribute/{slug}/attribute','CatAttributeController@attribute'); 
-    Route::put('/category/attribute/{slug}/attribute','CatAttributeController@attributeset')->name('add.attribute');  
+    Route::put('/category/attribute','CatAttributeController@attributeset');  
     // Route::get('/category/attribute/{slug}/attribute','CatAttributeController@attribute');
     Route::resource('/category','CatAttributeController');
     Route::get('products/subcategory-tree-view',['uses'=>'CategoriesController@manageSubCategory']);
