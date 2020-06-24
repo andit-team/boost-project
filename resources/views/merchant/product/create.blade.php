@@ -11,15 +11,16 @@
                 @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
 
                 <!-- address section start -->
-                <div class="col-sm-9 contact-page register-page container"> 
+                <div class="col-sm-9 contact-page register-page container">  
                                     <h2 id="heading">Add Product</h2>
-                                    <form id="msform" >
+                                    <form id="msform" action="{{ route('product.store') }}" method="post"  enctype="multipart/form-data" id="validateForm">
+                                        @csrf
                                         <!-- progressbar -->
                                         <ul id="progressbar">
-                                            <li class="active1 msform1" id="account"><strong><i class="fa fa-edit"></i> Basic Information</strong></li>
-                                            <li class="msform1" id="personal"><strong>Details</strong></li>
-                                            <li class="msform1" id="payment"><strong>Price & Stock</strong></li>
-                                            <li class="msform1" id="confirm1"><strong>Finish</strong></li>
+                                            <li class="active1 msform1" id="account"><strong><i class="fa fa-product-hunt "></i> Basic Information</strong></li>
+                                            <li class="msform1" id="personal"><strong><i class="fa fa-info-circle "></i> Details</strong></li>
+                                            <li class="msform1" id="payment"><strong><i class="fa fa-exchange"></i> Price & Stock</strong></li>
+                                            <li class="msform1" id="confirm1"><strong><i class="fa fa-check-circle"></i> Finish</strong></li>
                                         </ul>
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
@@ -60,7 +61,7 @@
                                                         </div>
                                                 </div>
                                             </div> 
-                                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" />
+                                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" id="register" />
                                             <input type="button" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
                                         </fieldset>
                                         <fieldset>
@@ -129,6 +130,9 @@
                                                       </div>
                                                     <input type="button" name="next" class="next btn btn-primary float-right" value="Next" /> 
                                                     <input type="button" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
+                                                    <div class="col-md-12">
+                                                        <button class="btn btn-sm btn-solid" type="submit">Save</button>
+                                                    </div>
                                         </fieldset>
                                         
                                         
@@ -248,24 +252,15 @@ setProgressBar(current);
 $(".next").click(function(){
 
 current_fs = $(this).parent();
-next_fs = $(this).parent().next();
+next_fs = $(this).parent().next(); 
 
-//Add Class Active
-$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active1");
-
-//show the next fieldset
-next_fs.show();
-//hide the current fieldset with style
+next_fs.show(); 
 current_fs.animate({opacity: 0}, {
-step: function(now) {
-// for making fielset appear animation
-opacity = 1 - now;
-
+step: function(now) { 
 current_fs.css({
 'display': 'none',
 'position': 'relative'
-});
-next_fs.css({'opacity': opacity});
+}); 
 },
 duration: 500
 });
@@ -277,16 +272,16 @@ $(".previous").click(function(){
 current_fs = $(this).parent();
 previous_fs = $(this).parent().prev();
 
-//Remove class active
+
 $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active1");
 
-//show the previous fieldset
+
 previous_fs.show();
 
-//hide the current fieldset with style
+
 current_fs.animate({opacity: 0}, {
 step: function(now) {
-// for making fielset appear animation
+
 opacity = 1 - now;
 
 current_fs.css({
