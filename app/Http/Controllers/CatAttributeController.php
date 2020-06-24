@@ -89,7 +89,8 @@ class CatAttributeController extends Controller
 
     public function attribute()
     {
-        $category = Category::all(); 
+        $category = Category::where('slug', 'slug')->get();
+        // $category = Category::all(); 
         return view('admin.categories.attribute',compact('category'));
     }
 
@@ -100,7 +101,8 @@ class CatAttributeController extends Controller
             'label'            => $request->label,
             'suggestion'       => $request->suggestion,
             'type'             => $request->type,
-            'required'         => $request->required,  
+            'required'         => $request->required,
+            // 'required'         => $request->required[0] ? 0: 1,  
             'category_id'      => $request->category_id,                         
             'user_id'          => Sentinel::getUser()->id,
             'created_at' => now(),
