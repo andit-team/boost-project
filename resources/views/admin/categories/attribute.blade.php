@@ -94,7 +94,7 @@
                                 <div class="form-group ">
                                     <label for="percentage">Required:</label>                                  
                                     <div class="form-check form-check-inline">
-                                        {{-- <input name="required" value="1" type="checkbox" class="with-gap" id="required" {{$patient->rerquired == '1' ? 'checked' : ''}}> --}}
+                                        {{-- <input name="required" value="1" type="checkbox" class="with-gap" id="required" {{$category->required == '1' ? 'checked' : ''}}> --}}
                                         <input class="form-check-input" type="checkbox" name="required" id="required" value="1">                                    
                                     </div>
                                 </div>
