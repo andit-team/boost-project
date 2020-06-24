@@ -118,5 +118,30 @@ class Baazar
     public function short_text($text, $limit){
         return strlen($text) > $limit ? substr($text,0,$limit).".." : $text;
     }
-    
+
+    public function buildTree($categories, $mleft = 0) {
+        $html = '';
+        foreach($categories as $cat){
+            $bold = ($cat->is_last != 1) ? 'font-weight-bold' :'';
+            $bl = ($cat->parent_id != 0) ? 'border-left: 1px solid #000;' :'';
+            $editUrl = url('/andbaazaradmin/category/'.$cat->slug.'/edit');
+            $attrUrl = url('andbaazaradmin/category/attribute/'.$cat->slug.'/attribute');
+            $html .= "<tr>
+                <td class='text-center'>{$cat->id}</td>
+                <td><span class='{$bold}' style='margin-left: {$mleft}px;{$bl}'> &nbsp; {$cat->name}</span></td>
+                <td>&nbsp;{$cat->slug}</td>
+                <td class='text-center'>{$cat->percentage}%</td>
+                <td >";
+                $html .="<a href='{$editUrl}' class='btn btn-sm btn-primary' title='Edit'><i class='fa fa-edit'></i> </a>&nbsp;";
+                if($cat->is_last == 1){
+                    $html .= "<a href='{$attrUrl}' class='btn btn-sm btn-info' title='Edit'><i class='fa fa-list-ul'></i> </a>";
+                }
+                $html .="</td></tr>";
+
+            if(!empty($cat->allChilds)){
+                $html .= $this->buildTree($cat->allChilds,$mleft+50);
+            }
+        }
+        return $html;
+    }
 }
