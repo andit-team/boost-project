@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Attribute;
+use Sentinel;
+use Session;
+use Baazar;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CatAttributeController extends Controller
@@ -85,23 +89,27 @@ class CatAttributeController extends Controller
 
     public function attribute()
     {
-        return view('admin.categories.attribute');
+        $category = Category::where('slug', 'slug')->get();
+        // $category = Category::all(); 
+        return view('admin.categories.attribute',compact('category'));
     }
 
     public function attributeset(Request $request,Attribute $attribute)
     {
-        $this->validateForm($request);              
+        // $this->validateForm($request);              
         $data = ([
             'label'            => $request->label,
             'suggestion'       => $request->suggestion,
-            'type'             => $type,
-            'required'         => $required,                          
+            'type'             => $request->type,
+            'required'         => $request->required,
+            // 'required'         => $request->required[0] ? 0: 1,  
+            'category_id'      => $request->category_id,                         
             'user_id'          => Sentinel::getUser()->id,
             'created_at' => now(),
             ]);
             Attribute::create($data);
             Session::flash('success', 'Attribute Inserted Successfully');
 
-            return redirect('andbaazaradmin/products/category');
+            return redirect()->back();
     }
 }
