@@ -585,11 +585,70 @@ $tv_audio_video_gaming = [
                       ],
                    ],
                   ],
-                  ['Fitness & Activity Tracker Accessories'],
-
+                  [
+                    'Fitness & Activity Tracker Accessories',
+                      'child' => [
+                          [' Straps'],
+                          [' Cables & Chargers'],
+                      ],
+                  ],
+                ],
             ],
-            ['Console Gaming'],
-            ['TV Accessories'],
+            [
+              'Console Gaming',
+              'child' => [
+                  [
+                    ' Nintendo',
+                    'child' => [
+                        [' Other Accessories'],
+                        [' Consoles'],
+                        [' Games'],
+                    ],
+                  ],
+              [
+                ' Xbox',
+                'child' => [
+                  [' Digital Downloads'],
+                  [' Controllers'],
+                  [' Cases & Covers'],
+                  [' Mounts & Brackets'],
+                  [' Cables & Chargers'],
+                  [' Consoles'],
+                  [' Games'],
+                ],
+            ],
+            [
+              'Other Gaming',
+              'child' => [
+                  [' Console Accessories'],
+                  [' Games'],
+              ],
+            ],
+            [
+              ' PlayStation',
+              'child' => [
+                  ['Consoles'],
+                  [' Games'],
+                  [' Digital Downloads'],
+                  [' Controllers'],
+              ],
+            ],
+              ],
+            ],
+            ],
+            [
+              'TV Accessories',
+              'child' => [
+                  ['TV Receivers'],
+                  [' Games'],
+                  [' Antennas'],
+                  [' Wall Mounts & Protectors'],
+                  [' TV Remote Controllers'],
+                  [' 3D Glasses'],
+                  [' Cables'],
+                  [' TV Adapters'],
+              ],
+            ],
         ],
     ],
 ];
