@@ -58,9 +58,9 @@ $tv_audio_video_gaming = [
                                     ],
                                 ],
                             ],
-                            ['Cases and Covers'],
-                            ['Microphones'],
-                            ['Screen Guards'],
+                            ['Casescreen-guards and Covers'],
+                            ['Microphone'],
+                            ['Screen Guard'],
                             ['Others'],
                             ['Armband'],
                             ['Mounting kit'],
@@ -151,14 +151,14 @@ $tv_audio_video_gaming = [
                                     [
                                         'label' => 'connector_1',
                                         'type'  => 'select',
-                                        'meta'  => [   
+                                        'meta'  => [
                                             'USB','3.5MM','USB Type C','Lightening','1/4 -INCH',
                                         ],
                                     ],
                                     [
                                         'label' => 'Refresh Rate',
                                         'type'  => 'select',
-                                        'meta'  => [   
+                                        'meta'  => [
                                         '60 Hz','50 Hz',
                                         ],
                                     ],
@@ -168,7 +168,7 @@ $tv_audio_video_gaming = [
                                         'meta'  => [
                                             'iOS','Android','Windows','Universal','Mac OS X','Chrome OS','Symbian','Nokia Asha','Linux','Other','BlackBerry',
                                         ],
-                                    ],                                
+                                    ],
                                     [
                                         'label' => 'Headphone Features',
                                         'type'  => 'multi-select',
@@ -189,7 +189,13 @@ $tv_audio_video_gaming = [
                     [
                         'Portable Players',
                         'child' => [
-                            ['MP3 Player Accessories'],
+                            [
+                              'MP3 Player Accessories',
+                                'child' => [
+                                  ['Cases and Covers'],
+                                  ['Screen Guards'],
+                               ],
+                            ],
                             ['iPods'],
                             [
                                 'MP3/MP4',
@@ -441,8 +447,8 @@ $tv_audio_video_gaming = [
                                             'Bluetooth','Stereo','USB',
                                         ],
                                     ],
-                                    
-                                
+
+
                                     [
                                         'label' => 'External Storage',
                                         'type'  => 'select',
@@ -480,19 +486,169 @@ $tv_audio_video_gaming = [
                     ],
                     ['Other portable Audio'],
                     ['Musical Instruments'],
-                    ['Live Sound & Stage Equipment'],
+                    [
+                      'Live Sound & Stage Equipment',
+                        'child' => [
+                          ['Microphones'],
+                          ['Live, Sound & Stage Accessories'],
+                      ],
+                    ],
                     ['Portable Speakers'],
                     ['Docking Stations'],
                     ['Boomboxes'],
-                    ['Home Entertainment'],
+                    [
+                      'Home Entertainment',
+                        'child' => [
+                            ['Hi-Fi Systems'],
+                            ['Home Theater Systems'],
+                            [
+                              'Component Speakers',
+                                'child' => [
+                                    ['Subwoofer'],
+                                ],
+                            ],
+                            [
+                              'Home Audio Accessories',
+                              'child' => [
+                                  ['BT Transmitters & Receivers'],
+                                  ['Cabled'],
+                                  ['Speaker Stands'],
+                                  ['Other'],
+                              ],
+                            ],
+                      ],
+                    ],
+            ],
+            [
+              'Video',
+              'child' => [
+                  ['Blu-Ray/DVD Players'],
+                  ['Projectors'],
+                  [
+                    'Media Players',
+                      'child' => [
+                      ['Streaming Media Players'],
+                      ['Hard Drive Media Players'],
+                    ],
+                  ],
+                  [
+                    'Projector Accessories',
+                      'child' => [
+                        ['Projector Screens'],
+                        ['Projector Cases & Bags'],
+                        ['Projector Mounts'],
+                        ['Other Projector Accessories'],
+                     ],
+                  ],
+            ],
+            [
+              'Televission',
+                'child' => [
+                    ['CRT Televisions'],
+                    ['LCD Televisions'],
+                    [' LED Televisions'],
+                    [' Plasma Televisions'],
+                    [' Smart Televisions'],
+                    [' OLED Televisions'],
+                    [' Accessories'],
+                  ],
+            ],
+            ['Gadgets',
+              'child' => [
+                    [' Laser Pointers'],
+                    [' Universal Chargers'],
+              ],
+            ],
+            [
+              'Wearable Technology',
+                'child' => [
+                  [' Smartwatches'],
+                  [' Fitness & Activity Trackers'],
+                  [
+                    ' Smartwatches Accessories',
+                    'child' => [
+                        [' Docks & Chargers'],
+                        [' Screen Protectors'],
+                        [' Straps'],
+                   ],
+                  ],
+                  [
+                    ' Virtual Reality',
+                      'child' => [
+                          [' Mobile VR'],
+                          [
+                            ' PC VR Accessories',
+                              'child' => [
+                                  [' VR Remotes'],
+                          ],
+                      ],
+                   ],
+                  ],
+                  [
+                    'Fitness & Activity Tracker Accessories',
+                      'child' => [
+                          [' Straps'],
+                          [' Cables & Charger'],
+                      ],
+                  ],
                 ],
             ],
-            ['Video'],
-            ['Televission'],
-            ['Electronic Gadgets'],
-            ['Wearable Technology'],
-            ['Console Gaming'],
-            ['TV Accessories'],
+            [
+              'Console Gaming',
+              'child' => [
+                  [
+                    ' Nintendo',
+                    'child' => [
+                        [' Other Accessories'],
+                        [' Consoles'],
+                        [' Games'],
+                    ],
+                  ],
+              [
+                ' Xbox',
+                'child' => [
+                  [' Digital Downloads'],
+                  [' Controllers'],
+                  [' Cases & Covers'],
+                  [' Mounts & Brackets'],
+                  [' Cables & Chargers'],
+                  [' Consoles'],
+                  [' Games'],
+                ],
+            ],
+            [
+              'Other Gaming',
+              'child' => [
+                  [' Console Accessories'],
+                  [' Games'],
+              ],
+            ],
+            [
+              ' PlayStation',
+              'child' => [
+                  ['Consoles'],
+                  [' Games'],
+                  [' Digital Downloads'],
+                  [' Controllers'],
+              ],
+            ],
+              ],
+            ],
+            ],
+            [
+              'TV Accessories',
+              'child' => [
+                  ['TV Receivers'],
+                  [' Games'],
+                  [' Antennas'],
+                  [' Wall Mounts & Protectors'],
+                  [' TV Remote Controllers'],
+                  [' 3D Glasses'],
+                  [' Cable'],
+                  [' TV Adapters'],
+              ],
+            ],
         ],
     ],
+  ],
 ];

@@ -18,8 +18,10 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $category = Category::where('parent_id',0)->get(); 
-        return view('admin.categories.index',compact('category'));
+        $categories = Category::with('allChilds')->where('parent_id',0)->get();
+        $category = Category::where('parent_id',0)->get();
+        $subcategories = Category::all();
+        return view('admin.categories.index',compact('category','categories','subcategories'));
     }
 
     /**
@@ -29,7 +31,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        // 
+        //
     }
 
     /**
@@ -39,11 +41,11 @@ class CategoriesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     
+
     public function store(Request $request, Category $category)
-    { 
+    {
         $this->validateForm($request);
-        $slug = Baazar::getUniqueSlug($category,$request->name);            
+        $slug = Baazar::getUniqueSlug($category,$request->name);
         $data = Category::create([
             'name'             => $request->name,
             'desc'             => $request->desc,
@@ -55,7 +57,7 @@ class CategoriesController extends Controller
             'user_id'          => Sentinel::getUser()->id,
             'created_at' => now(),
             ]);
- 
+
 
             Session::flash('success', 'Category Inserted Successfully');
 
@@ -70,7 +72,7 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        //    
+        //
     }
 
     /**
@@ -152,7 +154,7 @@ class CategoriesController extends Controller
         //  dd($request->all());
         $slug = Baazar::getUniqueSlug($category,$request->name);
         $input = $request->all();
-        $parent_slug = Category::find($request->parent_id);      
+        $parent_slug = Category::find($request->parent_id);
         $input['parent_id']      = empty($input['parent_id']) ? 0 : $input['parent_id'];
         $input['slug']           = $slug;
         $input['percentage']     = $request->percentage;
@@ -161,7 +163,7 @@ class CategoriesController extends Controller
         $input['parent_slug']    = $parent_slug->slug;
         $input['user_id']        = Sentinel::getUser()->id;
         $input['is_last']        = 1;
-        Category::create($input); 
+        Category::create($input);
         $parent_slug->is_last = 0;
         $parent_slug->save();
         return back()->with('success', 'New Category added successfully.');
@@ -179,8 +181,8 @@ class CategoriesController extends Controller
         $attributesHTML = '';
         $i = 2;
 
-        
-                    
+
+
                     // <input type='text' class='col-sm-4 form-control'>
                     // <label for=' class='col-sm-2 text-right'>Brand</label>
                     // <input type='text' class='col-sm-4 form-control'>
@@ -203,14 +205,14 @@ class CategoriesController extends Controller
                         $attributesHTML .= "</select>";
                 break;
 
-                default: 
+                default:
                     $attributesHTML .= "<input name='attribute[{$att->id}]' type='text' class='col-sm-3 form-control'>";
             }
             if($i%2 == 1){
                 $attributesHTML .= "</div>";
             }
             $i++;
-            
+
         }
         $attributesHTML .= "</div>";
         echo json_encode(['attributes' => $attributesHTML, 'status' => 'OK']);

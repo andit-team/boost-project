@@ -28,7 +28,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-          // 
+          //
     }
 
     /**
@@ -64,7 +64,7 @@ class TagsController extends Controller
      */
     public function show($id)
     {
-      //  
+      //
     }
 
     /**
