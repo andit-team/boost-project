@@ -2,13 +2,13 @@
 
 @section('content')
 @push('css')
-<style> 
+<style>
     .fa{
         padding:4px;
       font-size:16px;
     }
 </style>
-@endpush 
+@endpush
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
@@ -47,7 +47,7 @@
                                 <td class="d-flex justify-content-between">
                                     <ul>
                                         <li><a href="#" id="{{ url('/andbaazaradmin/products/tag/'.$row->slug.'/edit' )}}"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i></button></a></li>
-                                    
+
                                         <li>
                                             <form action="{{ url('/andbaazaradmin/products/tag/'.$row->slug) }}" method="post"  id="deleteButton{{$row->id}}">
                                                 @csrf
@@ -83,7 +83,7 @@
                                                     </div>
                                                 </div>
                                                 <div class=" mt-3 text-right">
-                                                    <button type="submit" class="btn btn-success" type="button">Update</button> 
+                                                    <button type="submit" class="btn btn-success" type="button">Update</button>
                                                 </div>
                                             </form>
                                         </div>

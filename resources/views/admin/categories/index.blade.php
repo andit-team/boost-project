@@ -308,4 +308,5 @@ $('a[data-toggle="tooltip"]').tooltip({
   };
 </script>
 
+
 @endpush
