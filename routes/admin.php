@@ -6,7 +6,8 @@ Route::get('andbaazaradmin/login','AuthController@adminlogin');
 Route::post('andbaazaradmin/login','AuthController@adminloginprocess')->name('loginproces');
 
 
-Route::middleware(['auth','admin'])->prefix('andbaazaradmin')->group(function () {
+// Route::middleware(['auth','admin'])->prefix('andbaazaradmin')->group(function ()
+Route::prefix('andbaazaradmin')->group(function () {
     Route::get('dashboard','AdminHomeController@dashboard');
     Route::get('products/category-tree-view',['uses'=>'CategoriesController@manageCategory']);
     Route::get('/category/attribute/{slug}/attribute','CatAttributeController@attribute'); 
