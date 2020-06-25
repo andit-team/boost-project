@@ -1,6 +1,6 @@
 <?php
 
-$tv_audio_video_gaming = [
+$tv_audio = [
     [
         'TV, Audio / Video, Gaming & Wearables',
         'child' => [
@@ -61,7 +61,7 @@ $tv_audio_video_gaming = [
                             ['Cases and Covers'],
                             ['Microphones'],
                             ['Screen Guards'],
-                            ['Others'],
+                            ['Other'],
                             ['Armband'],
                             ['Mounting kit'],
                             ['Chargers'],
@@ -152,14 +152,14 @@ $tv_audio_video_gaming = [
                                     [
                                         'label' => 'connector_1',
                                         'type'  => 'select',
-                                        'meta'  => [   
+                                        'meta'  => [
                                             'USB','3.5MM','USB Type C','Lightening','1/4 -INCH',
                                         ],
                                     ],
                                     [
                                         'label' => 'Refresh Rate',
                                         'type'  => 'select',
-                                        'meta'  => [   
+                                        'meta'  => [
                                         '60 Hz','50 Hz',
                                         ],
                                     ],
@@ -169,7 +169,7 @@ $tv_audio_video_gaming = [
                                         'meta'  => [
                                             'iOS','Android','Windows','Universal','Mac OS X','Chrome OS','Symbian','Nokia Asha','Linux','Other','BlackBerry',
                                         ],
-                                    ],                                
+                                    ],
                                     [
                                         'label' => 'Headphone Features',
                                         'type'  => 'multi-select',
@@ -442,8 +442,8 @@ $tv_audio_video_gaming = [
                                             'Bluetooth','Stereo','USB',
                                         ],
                                     ],
-                                    
-                                
+
+
                                     [
                                         'label' => 'External Storage',
                                         'type'  => 'select',
@@ -675,7 +675,7 @@ $tv_audio_video_gaming = [
                                 'meta'  => [
                                     'Water Resistant','Alarm Clock','Docking Station','Radio','Volume control','3D sounds','With DSP','NFC Enabled','Hands-free call function','Others','Clip-on','Plug-in,',
                                 ],
-                             ],                        
+                             ],
                          ],
                     ],
                     ['Docking Stations'],

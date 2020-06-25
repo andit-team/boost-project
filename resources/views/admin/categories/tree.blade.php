@@ -39,9 +39,9 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <input type="text"  id="sample_search" onkeyup="search_func(this.value);" placeholder="search">
-                        <h5>
+                        <!-- <h5>
                             <a href="{{ url('andbaazaradmin/products/subcategory-tree-view') }}">add subcategory</a>
-                        </h5>
+                        </h5> -->
                     </div>
                     <div class="card-body" style="height: 825px;overflow-y: scroll;">
                         <table border="1" class="table table-borderd table-striped">
