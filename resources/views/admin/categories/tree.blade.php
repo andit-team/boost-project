@@ -10,7 +10,7 @@
     .table th, .table td {
         padding: 0rem;
         vertical-align: middle;
-        border-top: 0px solid #dee2e6;    
+        border-top: 0px solid #dee2e6;
     }
     .fa {
         padding: 0px;
@@ -33,15 +33,15 @@
   @endslot
 @endcomponent --}}
 
-    <div class="container-fluid">      
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">           
+                    <div class="card-header d-flex justify-content-between">
                         <input type="text"  id="sample_search" onkeyup="search_func(this.value);" placeholder="search">
-                        <h5>
+                        <!-- <h5>
                             <a href="{{ url('andbaazaradmin/products/subcategory-tree-view') }}">add subcategory</a>
-                        </h5>
+                        </h5> -->
                     </div>
                     <div class="card-body" style="height: 825px;overflow-y: scroll;">
                         <table border="1" class="table table-borderd table-striped">
@@ -95,6 +95,6 @@ function search_func(value)
     });
 }
 </script> --}}
-{{-- <div class="text-right">   
+{{-- <div class="text-right">
     <a href="{{ url('andbaazaradmin/products/subcategory-tree-view') }}" class="btn btn-sm color-red text-right"><h4>add subcategory</h4></a>
 </div> --}}

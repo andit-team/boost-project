@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+<!-- @extends('admin.layout.master')
 
 
 @section('content')
@@ -10,7 +10,7 @@
         /* border-width: 4px 4px 4px 4px; */
         /* border-style: solid;
         border-color: #ccc; */
-    } 
+    }
 
     .imagestyle{
         width: 200px;
@@ -60,7 +60,7 @@
             </div>
         </div>
         <!-- Container-fluid Ends-->
-        <div class="container py-3"> 
+        <div class="container py-3">
 
           <div class="row">
             {{-- <div class="col-md-8">
@@ -74,9 +74,9 @@
                     @foreach ($categories as $category)
                       <li class="list-group-item">
                         <div class="d-flex justify-content-between">
-                          {{ $category->name }} 
+                          {{ $category->name }}
                         </div>
-                        
+
 
                         @if ($category->children)
                           <ul class="list-group mt-2">
@@ -88,7 +88,7 @@
                                   <div class="button-group d-flex">
                                     <a href="{{ url('/andbaazaradmin/child/'.$child->id.'/edit' )}}"  class="btn btn-sm btn-primary mr-1"><i class="fa fa-edit"></i></a>
 
-                                   
+
                                     <form action="{{ url('/andbaazaradmin/child/'.$child->id) }}" method="post"  id="deleteButton{{$child->id}}">
                                         @csrf
                                         @method('delete')
@@ -117,51 +117,51 @@
                     @csrf
                     @method('put')
                     <div class="form-group">
-                      <div class="form-group text-left mb-5 pb-3">  
+                      <div class="form-group text-left mb-5 pb-3">
                         <label for="thumb">Image:</label>
                         <div class="mt-0">
                             <img id="output"  class="imagestyle" src="{{ asset('/uploads/category_image/categ.png') }}" />
                         </div>
-                        <div class="uploadbtn"> 
+                        <div class="uploadbtn">
                             <label for="file-upload" class="custom-file-upload">Upload Here</label>
                             <input id="file-upload" type="file" name="thumb" onchange="loadFile(event)"/>
                         </div>
                         {{-- <input type="hidden" name="old_thumb"> --}}
                     </div>
                       <select class="form-control" name="parent_id">
-                        <option value="">Select Parent Category</option> 
+                        <option value="">Select Parent Category</option>
                         @foreach ($categories as $category)
                           <option value="{{ $category->id }}" class="font-weight-bold">{{ $category->name }}</option>
                           @foreach($subcategories as $subcategory)
                             @if($category->id == $subcategory->parent_id)
-                            <option value="{{ $subcategory->id }}">{{$subcategory->name }}</option>                          
+                            <option value="{{ $subcategory->id }}">{{$subcategory->name }}</option>
                             @endif
-                          @endforeach 
+                          @endforeach
                         @endforeach
                       </select>
                     </div>
 
                     <div class="form-group">
                       <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Sub Category Name" required>
-                    </div>                             
+                    </div>
                   <div class="form-group ">
-                      <label for="percentage">Percentage:</label> 
+                      <label for="percentage">Percentage:</label>
                       <input type="number" name="percentage" value="{{old('percentage')}} % " class="form-control @error('percentage') border-danger @enderror" id="amount" placeholder="0.00" required autocomplete="off">
-                      <span class="text-danger">{{ $errors->first('percentage') }}</span>                     
+                      <span class="text-danger">{{ $errors->first('percentage') }}</span>
                   </div>
                   <div class="form-group">
                       <label for="desc">Description:</label>
                       <textarea   name="desc"  class="form-control @error('desc') border-danger @enderror" rows="5"> </textarea>
                       <span class="text-danger">{{ $errors->first('desc') }}</span>
-                  </div> 
+                  </div>
 
                   <div class="form-group ">
-                    <label for="percentage">Inventory Attribute:</label> 
+                    <label for="percentage">Inventory Attribute:</label>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                       <label class="form-check-label" for="inlineCheckbox1">Storage Capacity</label>
                     </div>
-                  </div>                
+                  </div>
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                     <label class="form-check-label" for="inlineCheckbox1">Storage Capacity</label>
@@ -181,7 +181,7 @@
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                     <label class="form-check-label" for="inlineCheckbox1">Fan Dimensions</label>
-                  </div>                
+                  </div>
                     <div class="form-group">
                       <button type="submit" class="btn btn-primary">Create</button>
                     </div>
@@ -190,7 +190,7 @@
               </div>
             </div>
           </div>
-        </div> 
+        </div>
         <!-- Container-fluid Ends-->
 
     </div>
@@ -202,4 +202,4 @@
       output.src = URL.createObjectURL(event.target.files[0]);
   };
 </script>
-@endpush
+@endpush -->
