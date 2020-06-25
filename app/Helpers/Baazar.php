@@ -71,7 +71,19 @@ class Baazar
             return $request->$old;
         }
         return '';
-    } 
+    }
+
+    public function base64Upload($image_file,$name,$shop,$color){
+            list($type, $image_file) = explode(';', $image_file);
+            list(, $image_file)      = explode(',', $image_file);
+            $image_file = base64_decode($image_file);
+
+            $image_name= $name.time().'.png';
+            $db_img = 'uploads/shops/products/'.$shop.'-'.$name.'-'.$color.'-'.$image_name;
+            $path = public_path($db_img);
+            file_put_contents($path, $image_file);
+            return $db_img;
+    }
 
    public function insertRecords($data, $parent_id = 0,$parent_slug = 0) {
     //    dd($data);

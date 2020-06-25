@@ -63,56 +63,77 @@ class ItemsController extends Controller
         return view ('merchant.product.create',compact('category','categories','item','size','color','subCategories','tag','sellerId','shopProfile','childCategory'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
+    public function tagSlug($tags){
+      $slug = '';
+      foreach($tags as $tag){
+        $slug .= $tag.',';
+      }
+      $slug = rtrim($slug,',');
+      dd($slug);
+    }
+
+    public function addInventory($request,$itemId){
+      $i = 0;
+      foreach($request->inventory_color as $color){
+        $inventories = [
+          'item_id'         => $itemId,
+          'color_id'        => Color::where('name',$color)->first()->id,
+          'color_name'      => $request->color,
+          'qty_stock'       => $request->inventory_qty[$i],
+          'price'           => $request->inventory_price[$i],
+          'special_price'   => $request->special_price[$i],
+          'start_date'      => $request->startday[$i],
+          'end_date'        => $request->endday[$i],
+          'seller_sku'      => $request->seller_sku[$i],
+          'user_id'         => Sentinel::getUser()->id,
+          'created_at'      => now(),
+        ];
+        Inventory::create($inventories);
+        $i++;
+      }
+      $invColor = count($_POST['color_id']);
+        for ( $k = 0; $k<$invColor; $k++ ){
+            Inventory::create([
+                'color_id'   => $request->color_id[$k],
+                'qty_stock'  => $request->qty_stock[$k],
+                'item_id'    => $product->id,
+                'user_id' => Sentinel::getUser()->id,
+                'created_at' => now(),
+            ]);
+        }
+    }
     public function store(Item $item,Request $request)
     {
-        //dd($request->all());
-      $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
-      //dd($sellerId);
-    //  $this->validateForm($request);
-    //$itemId = Item::where('user_id',Sentinel::getUser()->id)->first();
-    if($sellerId != ''){
-      $slug = Baazar::getUniqueSlug($item,$request->name);
-        $data = [
-            'name' => $request->name,
-            //'email'=> $request->email,
-            //'image' => Baazar::fileUpload($request,'image','','/uploads/product_image'),
-            'slug' => $slug,
-            'price' => $request->price,
-            'model_no' => $request->model_no,
-            'org_price' => $request->org_price,
-            'pack_id' => $request->pack_id,
-            // 'sorting' => $request->sorting,
-            'description' => $request->description,
-            'min_order' => $request->min_order,
-            // 'available_on' => $request->available_on,
-            // 'availability' => $request->availability,
-            'made_in' => $request->made_in,
-            //'sub_category' => $request->sub_category,
-            'materials' => $request->materials,
-            'labeled' => $request->labeled,
-            'video_url' => $request->video_url,
-            // 'total_sale_amount' => $request->total_sale_amount,
-            'total_order_qty' => $request->total_order_qty,
-            'last_ordered_at' => $request->last_ordered_at,
-            'last_carted_at' => $request->last_carted_at,
-            // 'total_view' => $request->total_view,
-            // 'activated_at' => $request->activated_at,
-            'category_id' => $request->category_id,
-            //'tag_id'      => $request->tag_id,
-            'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
-        ];
-
-
+        dd($request->all());
+      $shop = Seller::where('user_id',Sentinel::getUser()->id)->first()->shop;
+      if($shop){
+        $slug = Baazar::getUniqueSlug($item,$request->name);
+        $feature = Baazar::base64Upload($request->images['main'][0],$slug,$shop->slug,'main');
+          $data = [
+              'name'          => $request->name,
+              'bn_name'       => $request->bn_name,
+              'slug'          => $slug,
+              'image'         => $feature,
+              'price'         => $request->price,
+              'model_no'      => $request->model_no,
+              'org_price'     => $request->org_price,
+              'description'   => $request->description,
+              'bn_description'=> $request->bn_description,
+              'min_order'     => $request->min_order,
+              'made_in'       => $request->made_in,
+              'materials'     => $request->materials,
+              'video_url'     => $request->video_url,
+              'category_id'   => $request->category_id,
+              'category_slug' => $request->category,
+              'tag_slug'      => $this->tagSlug($request->tag_id),
+              'shop_id'       => $shop->id,
+              'user_id'       => Sentinel::getUser()->id,
+              'created_at'    => now(),
+          ];
 
         $product = Item::create($data);
-
+          $this->addInventory($request,$product->id);
 
 
         $itemimage = new ItemImage();
@@ -130,17 +151,6 @@ class ItemsController extends Controller
               'created_at' => now(),
             ));
           }
-        }
-        
-        $invColor = count($_POST['color_id']);
-        for ( $k = 0; $k<$invColor; $k++ ){
-            Inventory::create([
-                'color_id'   => $request->color_id[$k],
-                'qty_stock'  => $request->qty_stock[$k],
-                'item_id'    => $product->id,
-                'user_id' => Sentinel::getUser()->id,
-                'created_at' => now(),
-            ]);
         }
 
         $productTag = count($_POST['tag_id']);
