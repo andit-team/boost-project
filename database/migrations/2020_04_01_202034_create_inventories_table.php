@@ -20,7 +20,7 @@ class CreateInventoriesTable extends Migration
             $table->string('color_name');
             $table->integer('qty_stock');
             $table->decimal('price',8,2)->default(0);
-            $table->decimal('special_price',8,2)->default(0);
+            $table->decimal('special_price',8,2)->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->string('seller_sku')->nullable();

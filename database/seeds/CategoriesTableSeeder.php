@@ -24,10 +24,10 @@ class CategoriesTableSeeder extends Seeder
       echo  'Computers & Laptops Done....';
       \Baazar::insertRecords($tv_audio_video_gaming);
       echo  'TV, Audio , Video, Gaming Done...';
-      \Baazar::insertRecords($camera);
-      echo  'Computers & Laptops Done....';
-      \Baazar::insertRecords($tv_audio);
-      echo  'TV, Audio , Video, Gaming Done...';
+      // \Baazar::insertRecords($camera);
+      // echo  'Computers & Laptops Done....';
+      // \Baazar::insertRecords($tv_audio);
+      // echo  'TV, Audio , Video, Gaming Done...';
    	}
 
   }

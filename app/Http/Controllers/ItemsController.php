@@ -17,6 +17,8 @@ use App\Models\Tag;
 use App\Models\ItemImage;
 use App\Models\Shop;
 use App\Models\Inventory;
+use App\Models\InventoryMeta;
+use App\Models\ItemMeta;
 use Sentinel;
 use Session;
 use Baazar;
@@ -70,7 +72,7 @@ class ItemsController extends Controller
         $slug .= $tag.',';
       }
       $slug = rtrim($slug,',');
-      dd($slug);
+      return $slug;
     }
 
     public function addInventory($request,$itemId){
@@ -79,45 +81,71 @@ class ItemsController extends Controller
         $inventories = [
           'item_id'         => $itemId,
           'color_id'        => Color::where('name',$color)->first()->id,
-          'color_name'      => $request->color,
-          'qty_stock'       => $request->inventory_qty[$i],
-          'price'           => $request->inventory_price[$i],
-          'special_price'   => $request->special_price[$i],
+          'color_name'      => $color,
+          'qty_stock'       => is_numeric($request->inventory_qty[$i])?$request->inventory_qty[$i]:0,
+          'price'           => is_numeric($request->inventory_price[$i])?$request->inventory_price[$i]:0,
+          'special_price'   => is_numeric($request->special_price[$i])?$request->special_price[$i]:0,
           'start_date'      => $request->startday[$i],
           'end_date'        => $request->endday[$i],
           'seller_sku'      => $request->seller_sku[$i],
           'user_id'         => Sentinel::getUser()->id,
           'created_at'      => now(),
         ];
-        Inventory::create($inventories);
+        $inventory = Inventory::create($inventories);
+        if($request->inventoryAttr){
+          foreach($request->inventoryAttr as $att=>$val){
+              $inventory_meta = [
+                'name'        => $att,
+                'value'       => $val[$i],
+                'inventory_id'=> $inventory->id,
+              ];
+              InventoryMeta::create($inventory_meta);
+          }
+        }
         $i++;
       }
-      $invColor = count($_POST['color_id']);
-        for ( $k = 0; $k<$invColor; $k++ ){
-            Inventory::create([
-                'color_id'   => $request->color_id[$k],
-                'qty_stock'  => $request->qty_stock[$k],
-                'item_id'    => $product->id,
-                'user_id' => Sentinel::getUser()->id,
-                'created_at' => now(),
-            ]);
-        }
     }
-    public function store(Item $item,Request $request)
-    {
-        dd($request->all());
+
+    public function addAttributes($attributes,$itemId){
+      foreach($attributes as $id=>$att){
+        $metas = [
+          'attr_label'    => $id,
+          'attr_value'    => $att,
+          'attribute_id'  => $id,
+          'item_id'       => $itemId,
+        ];
+        ItemMeta::create($metas);
+      }
+    }
+
+    public function addImages($images, $itemId,$shop){
+      foreach($images as $color => $image){
+        foreach($image as $img){
+          $i = 0;
+          $image = [
+            'item_id' => $itemId,
+            'color_slug' => $color,
+            'sort'      => ++$i,
+            'org_img'     => Baazar::base64Upload($img,'orgimg',$shop->slug,$color),
+          ];
+          ItemImage::create($image);
+        }
+      }
+    }
+
+    public function store(Item $item,Request $request){
       $shop = Seller::where('user_id',Sentinel::getUser()->id)->first()->shop;
       if($shop){
         $slug = Baazar::getUniqueSlug($item,$request->name);
-        $feature = Baazar::base64Upload($request->images['main'][0],$slug,$shop->slug,'main');
+        $feature = Baazar::base64Upload($request->images['main'][0],$slug,$shop->slug,'featured');
           $data = [
               'name'          => $request->name,
               'bn_name'       => $request->bn_name,
               'slug'          => $slug,
               'image'         => $feature,
-              'price'         => $request->price,
+              'price'         => is_numeric($request->price)?$request->price:0,
               'model_no'      => $request->model_no,
-              'org_price'     => $request->org_price,
+              'org_price'     => is_numeric($request->org_price)?$request->org_price:0,
               'description'   => $request->description,
               'bn_description'=> $request->bn_description,
               'min_order'     => $request->min_order,
@@ -131,41 +159,18 @@ class ItemsController extends Controller
               'user_id'       => Sentinel::getUser()->id,
               'created_at'    => now(),
           ];
-
-        $product = Item::create($data);
-          $this->addInventory($request,$product->id);
-
-
-        $itemimage = new ItemImage();
-
-        if($request->hasfile('list_img')){
-          foreach($request->file('list_img') as $file){
-            $imageName = time().$file->getClientOriginalName();
-            $upload_success = $file->move(public_path('/uploads/product_image'),$imageName);
-            $itemimage['list_img'] = $imageName;
-
-            ItemImage::create(array(
-              'list_img' => $itemimage['list_img'],
-              'item_id' => $product->id,
-              'user_id' => Sentinel::getUser()->id,
-              'created_at' => now(),
-            ));
-          }
+        $item = Item::create($data);
+        $this->addInventory($request,$item->id);
+        if($request->attribute){
+          $this->addAttributes($request->attribute,$item->id);
         }
-
-        $productTag = count($_POST['tag_id']);
-        for( $i = 0 ; $i<$productTag;$i++ ){
-            ItemTag::create([
-                'tag_id' => $request->tag_id[$i],
-                'item_id' => $product->id,
-                'user_id' => Sentinel::getUser()->id,
-                'created_at' => now(),
-            ]);
+        if($request->images){
+          $this->addImages($request->images,$item->id,$shop);
         }
 
 
-          $name = $data['name'];
-         \Mail::to($sellerId['email'])->send(new ProductApproveRequestMail($sellerId, $name));
+        // $name = $data['name'];
+        //  \Mail::to($sellerId['email'])->send(new ProductApproveRequestMail($sellerId, $name));
         Session::flash('success', 'Item Added Successfully!');
        }else{
         return view('vendor-deshboard');
