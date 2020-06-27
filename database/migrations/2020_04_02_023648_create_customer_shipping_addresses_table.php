@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBuyerShippingAddressesTable extends Migration
+class CreateCustomerShippingAddressesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBuyerShippingAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('buyer_shipping_addresses', function (Blueprint $table) {
+        Schema::create('customer_shipping_addresses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('location');
             $table->text('address');
@@ -24,12 +24,12 @@ class CreateBuyerShippingAddressesTable extends Migration
             $table->string('phone');
             $table->string('fax');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedBigInteger('buyer_id');
+            $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('buyer_id')->references('id')->on('buyers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -41,6 +41,6 @@ class CreateBuyerShippingAddressesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buyer_shipping_addresses');
+        Schema::dropIfExists('customer_shipping_addresses');
     }
 }

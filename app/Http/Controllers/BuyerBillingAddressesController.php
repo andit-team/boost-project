@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\BuyerBillingAddress;
-use App\Models\Buyer;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
 use Sentinel;
 use Session;
@@ -18,7 +18,7 @@ class BuyerBillingAddressesController extends Controller
      */
     public function index()
     {
-        $billing = BuyerBillingAddress::where('user_id',Sentinel::getUser()->id)->get(); 
+        $billing = BuyerBillingAddress::where('user_id',Sentinel::getUser()->id)->get();
         return view('frontend.buyer_billing_address.index',compact('billing'));
     }
 
@@ -40,9 +40,9 @@ class BuyerBillingAddressesController extends Controller
      */
     public function store(Request $request)
     {
-        $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
+        $buyerId = Customer::where('user_id',Sentinel::getUser()->id)->first();
         //dd($buyerId);
-        $this->validateForm($request); 
+        $this->validateForm($request);
         if($buyerId){
             $data = [
                 'location'      => $request->location,
@@ -64,12 +64,12 @@ class BuyerBillingAddressesController extends Controller
 
             return redirect('profile/billing');
          }
-           
+
         Session::flash('danger', 'please create profile correctly');
 
-        return redirect('profile/billing'); 
-         
- 
+        return redirect('profile/billing');
+
+
 
     }
 
@@ -105,8 +105,8 @@ class BuyerBillingAddressesController extends Controller
      */
     public function update(Request $request, BuyerBillingAddress $billing)
     {
-        $this->validateForm($request); 
-        
+        $this->validateForm($request);
+
             $data = [
                 'location'      => $request->location,
                 'address'       => $request->address,
@@ -115,17 +115,17 @@ class BuyerBillingAddressesController extends Controller
                 'city'          => $request->city,
                 'zip_code'      => $request->zip_code,
                 'phone'         => $request->phone,
-                'fax'           => $request->fax, 
+                'fax'           => $request->fax,
                 'user_id'       => Sentinel::getUser()->id,
                 'updated_at'    => now(),
-            ]; 
+            ];
 
             $billing->update($data);
 
             Session::flash('success', 'Billing Address Updated');
 
             return redirect('profile/billing');
-       
+
     }
 
     /**

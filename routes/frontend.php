@@ -17,19 +17,19 @@ Route::resource('contact-us', 'ContactController');
 
 // Frontend Routes Are End Here...............
 
-// Buyer Routes Are Start Here...............
+// Customer Routes Are Start Here...............
 
 // Route::middleware(['auth'])->prefix('andbaazaradmin')->group(function () {
-Route::prefix('profile')->group(function () {
-    Route::get('/','BuyersController@create');
-    Route::post('/','BuyersController@store')->name('profileUpdate');
-    Route::resource('shipping','BuyerShippingAddressesController');
+Route::prefix('customer')->group(function () {
+    Route::get('/','CustomersController@create');
+    Route::post('/','CustomersController@store')->name('profileUpdate');
+    Route::resource('shipping','CustomerShippingAddressesController');
     Route::resource('billing','BuyerBillingAddressesController');
     Route::resource('card','BuyerCardsController');
     Route::resource('buyerpayment','BuyerPaymentsController');
 });
 
-// Buyer Routes Are End Here...............
+// Customer Routes Are End Here...............
 // forgot password route....
 
 Route::get('forgot_password', 'CustomerController@forgot');

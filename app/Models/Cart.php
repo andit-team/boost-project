@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Buyer;
+use App\Models\Customer;
 use App\Models\Shop;
 use App\Models\Item;
 use App\Models\Color;
@@ -17,7 +17,7 @@ class Cart extends Model
      return $this->belongsTo(User::class,'user_id');
 
     public function buyer(){
-      return $this->belongsTo(Buyer::class,'buyer_id');
+      return $this->belongsTo(Customer::class,'buyer_id');
 
     public function shop(){
     return $this->belongsTo(Shop::class,'shop_id');

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Buyer;
-use Illuminate\Http\Request; 
-use App\Models\BuyerCard; 
+use App\Models\Customer;
+use Illuminate\Http\Request;
+use App\Models\BuyerCard;
 use Sentinel;
 use Session;
 
@@ -39,8 +39,8 @@ class BuyerCardsController extends Controller
      */
     public function store(Request $request)
     {
-        $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
-        $this->validateForm($request); 
+        $buyerId = Customer::where('user_id',Sentinel::getUser()->id)->first();
+        $this->validateForm($request);
         if($buyerId){
             $data = [
             'card_number' => $request->card_number,
@@ -93,12 +93,12 @@ class BuyerCardsController extends Controller
      */
     public function update(Request $request, BuyerCard $card)
     {
-        $this->validateForm($request);  
+        $this->validateForm($request);
             $data = [
             'card_number' => $request->card_number,
             'card_holder_name' => $request->card_holder_name,
             'card_expire_date' => $request->card_expire_date,
-            'card_cvc' => $request->card_cvc, 
+            'card_cvc' => $request->card_cvc,
             'user_id' => Sentinel::getUser()->id,
             'updated_at' => now(),
             ];
@@ -108,7 +108,7 @@ class BuyerCardsController extends Controller
             Session::flash('success', 'Billing Card updated');
 
             return redirect('profile/card');
-       
+
     }
 
     /**

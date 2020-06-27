@@ -29,7 +29,7 @@ class CustomerController extends Controller{
 		    'last_name' => $request->last_name,
 		    'email' 	=> $request->email,
 		    'password' 	=> $request->password,
-		    'type' 	    => 'buyers',
+		    'type' 	    => 'customers',
 		];
         $customer = Sentinel::registerAndActivate($data);
         // dd($customer);
@@ -42,7 +42,7 @@ class CustomerController extends Controller{
         $credentials = [
 			'email'		=> $request->login['email'],
 			'password'	=> $request->login['password'],
-			'type'	    => 'buyers',
+			'type'	    => 'customers',
 		];
 
 		// if($request->remember == 'on')
@@ -68,24 +68,24 @@ class CustomerController extends Controller{
     public function password(Request $request){
 
         //   dd($request->all());
-    
+
           $user = User::whereEmail($request->email)->first();
-    
+
           if($user == null){
-    
-            return redirect()->back()->with(['error'=> 'Email not exists']);    
+
+            return redirect()->back()->with(['error'=> 'Email not exists']);
           }
-           
+
           $user = Sentinel::findById($user->id);
-    
+
           $reminder = Reminder::exists($user) ? : Reminder::create($user);
-    
+
           $this->sendEmail( $user);
-    
-          return redirect()->back()->with(['success'=> 'Reset code sent to your emai']);   
+
+          return redirect()->back()->with(['success'=> 'Reset code sent to your emai']);
             // return view('auth.merchant.setnewpassword');
            }
-    
+
            public function sendEmail($user){
                Mail::send(
                    'admin.emails.customerforgot',
@@ -104,22 +104,22 @@ class CustomerController extends Controller{
         // $user = User::all();
         return view('auth.customer.resetpassword',compact('email'));
     }
-   
+
      public function updatePassword(Request $request,$email){
          //dd($request->all());
         $request->validate([
             'password' => 'required|'
         ]);
-       
+
         $user  = User::where('email',$email)->first();
         //dd($seller);
-           
+
        $user->update([
-            'password' => bcrypt($request->password),         
+            'password' => bcrypt($request->password),
         ]);
 
-        Session::flash('success', 'Password  Reset Successfully!');  
-        return redirect('login'); 
+        Session::flash('success', 'Password  Reset Successfully!');
+        return redirect('login');
     }
 
 }

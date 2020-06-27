@@ -21,15 +21,15 @@
   <div class="container">
       <div class="row">
           @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'shipping'])
-          <div class="col-md-9"> 
-            <div  class="text-right mt">          
-                <a href="{{ url('profile/shipping/create') }}" class="btn btn-sm btn-solid mb-3 text-right">add new Shipping</a>  
-            </div>             
-              @forelse($buyerShippingAddress as $row) 
-                <div class="card mb-4">      
-                    <div class="card-header">              
+          <div class="col-md-9">
+            <div  class="text-right mt">
+                <a href="{{ url('customer/shipping/create') }}" class="btn btn-sm btn-solid mb-3 text-right">add new Shipping</a>
+            </div>
+              @forelse($buyerShippingAddress as $row)
+                <div class="card mb-4">
+                    <div class="card-header">
                       {{ $row->country }}
-                    </div>                      
+                    </div>
                       <div class="card-body">
                         <div class="row">
                             <div class="col-md-2">
@@ -61,24 +61,24 @@
                              <h5 class="card-title">State</h5>
                              <p class="card-text">{{ $row->state }}</p>
                             </div>
-                            
-                        </div> 
-                        <div class="row">                              
-                         <a href="{{url('/profile/shipping/'.$row->id.'/edit')}}" class="btn btn-sm btn-solid ml-3"><i class="fa fa-edit"> Edit</i></a>
-                         <form action="{{ url('/profile/shipping/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
+
+                        </div>
+                        <div class="row">
+                         <a href="{{url('/customer/shipping/'.$row->id.'/edit')}}" class="btn btn-sm btn-solid ml-3"><i class="fa fa-edit"> Edit</i></a>
+                         <form action="{{ url('/customer/shipping/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
                           @csrf
                           @method('delete')
                           <button type="submit" class="btn btn-sm btn-solid ml-2" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash"> Delete</i></button>
                       </form>
                         </div>
-                  </div>                     
-               </div> 
+                  </div>
+               </div>
                @empty
-              <div class="card mt-2"> 
+              <div class="card mt-2">
                   <div class="card-body text-center">
                       <img  src="{{ asset('frontend')}}/assets/images/no_data_found/not-found-2.png" class="img image-responsive thumbnial w-50">
                   </div>
-              </div> 
+              </div>
             @endforelse
          </div>
       </div>
