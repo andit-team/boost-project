@@ -21,7 +21,7 @@ class InventoryAttributeController extends Controller
 
             $allTheads .= '<th class="inventoryAttributes">'.ucfirst($label).'</th> '; 
             $allOptions .= '<td class="inventoryAttributes">
-                            <select name="inventoryAttr['.$request->id.']" class="form-control">
+                            <select name="inventoryAttr['.$label.']['.$request->id.']" class="form-control">
                                 <option value="" selected disabled>Select '.$label.'</option>
                                 '.$options.'
                             </select>

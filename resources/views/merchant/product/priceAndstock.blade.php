@@ -50,17 +50,29 @@
 <div class="card mb-4">
     <h5 class="card-header">Price & Stock</h5>
     <div class="card-body">
+        <div class="form-group row">
+            <label for="color_id" class="col-xl-3 col-md-4"></label>
+            <div id="dropzone-main" class="img-upload-area" data-color="main"><label class="mt-3"><b>Feature Images</b></label>
+                <div class="border m-0 collpanel drop-area row my-awesome-dropzone-main" id="sortable-main">
+                    <span class="dz-message color-main">
+                        <h2>Drag & Drop Your Files</h2>
+                    </span>
+                </div>
+                <small>Remember Your featured file will be the first one.</small><br>
+            </div>
+        </div>
+
           <div class="form-group row">
-              <label for="color_id" class="col-xl-3 col-md-4">Color Family<span class="text-danger"> *</span></label>
+              <label for="color_id" class="col-xl-3 col-md-4 mt-1">Color Family<span class="text-danger"> *</span></label>
                   <select name="color_id" autocomplete="off" class="form-control col-md-8" id="selectColor">
                   <option value="">Select Color</option>
                   @foreach($color as $row)
-                  <option value="{{ $row->slug }}">{{ $row->name }}</option>
+                    <option value="{{ $row->slug }}">{{ $row->name }}</option>
                   @endforeach
               </select>
           </div>
           <div class="form-group row">
-              <label for="color_id" class="col-xl-3 col-md-4"></label>
+                <label for="color_id" class="col-xl-3 col-md-4"></label>
                 <div class="drops"></div>
                 <div class="inputs"></div>
           </div>
@@ -79,17 +91,15 @@
                   </thead>
                   <tbody class="newRow">
                       <tr class="firstRow" data-id="0" id="row-0">
-
-
                             <td>
-                                <select name="color_id[]" class="form-control inventory_colors">
+                                <select name="inventory_color[]" class="form-control inventory_colors">
                                     <option value="" selected disabled>Select color</option>
                                 </select>
                             </td>
-                            <td><input type="number" class="form-control" placeholder="Regular price" name="price[]"></td>
+                            <td><input type="number" class="form-control" placeholder="Regular price" name="inventory_price[]"></td>
                             <td>
                                 <div class="input-group">
-                                    <input type="text" placeholder="Special price" readonly class="form-control" name="sprice[]">
+                                    <input type="text" placeholder="Special price" readonly class="form-control" name="special_price[]">
                                     <div class="input-group-append" style="cursor: pointer;">
                                         <span class="input-group-text"><span onclick="getmodal(this)"> <i class="fa fa-edit"></i></span></span>
                                     </div>
@@ -99,7 +109,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td><input type="number" class="form-control number1" name="qty[]"></td>
+                            <td><input type="number" class="form-control number1" name="inventory_qty[]"></td>
                             <td><input type="text" class="form-control t1" name="seller_sku[]"></td>
                             <td><span class="btn btn-danger rowRemove"><i class="fa fa-trash"></i></span></td>
                         </tr>
@@ -246,7 +256,7 @@
                     placeholder: "ui-state-highlight",
                     revert: true,
                 });
-                $( "#sortable-"+color ).disableSelection();
+                $("#sortable-"+color ).disableSelection();
                 setup("my-awesome-dropzone"+color,color);
                 inventoryRows(color);
             }else{
@@ -254,6 +264,13 @@
             }
         });
         Dropzone.autoDiscover = false;
+
+        $( "#sortable-main" ).sortable({
+            placeholder: "ui-state-highlight",
+            revert: true,
+        });
+        $("#sortable-main").disableSelection();
+        setup("my-awesome-dropzone-main",'main');
 
         //function
         function setup(id,color) {
@@ -282,7 +299,7 @@
 
                 self.on("thumbnail", function(file){
                     if(file.size < 3000000){
-                        $('.inputs').append(`<input type="hidden" name="${color}-images[]" id="id${file.size}" value="${file.dataURL}">`);
+                        $('.inputs').append(`<input type="hidden" name="images[${color}][]" id="id${file.size}" value="${file.dataURL}">`);
                     }else{
                         swal("Maximum size reached", {icon: "warning",buttons: false,timer: 2000});
                         this.removeFile(file);
@@ -357,7 +374,7 @@
                         timer: 1000
                     });
                     $('#dropzone-'+color).remove();
-                    $('input[name^="'+color+'-images"]').each(function() {
+                    $('input[name^="images['+color+']"]').each(function() {
                         $(this).remove();
                     });
                     document.querySelectorAll('.newRow option').forEach(item => {

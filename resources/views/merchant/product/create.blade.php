@@ -39,10 +39,10 @@
                                                 <h5 class="card-header">Detailed Description</h5>
                                                 <div class="card-body">
                                                         <div class="form-group">
-                                                            <label for="description" class="">Description (Bangla)<span class="text-danger"> *</span></label>
-                                                            <textarea class="form-control  summernote"  id="description"  name="description"></textarea>
-                                                            @if ($errors->has('description'))
-                                                            <span class="text-danger">{{ $errors->first('description') }}</span>
+                                                            <label for="bn_description" class="">Description (Bangla)<span class="text-danger"> *</span></label>
+                                                            <textarea class="form-control  summernote"  id="bn_description"  name="bn_description"></textarea>
+                                                            @if ($errors->has('bn_description'))
+                                                            <span class="text-danger">{{ $errors->first('bn_description') }}</span>
                                                             @endif
                                                         </div>
                                                         <div class="form-group">
@@ -81,7 +81,7 @@
                                                             <label for="tag_id" class="col-xl-3 col-md-4">Tag <span>*</span></label>
                                                               <select class="js-example-basic-multiple form-control col-md-8" name="tag_id[]" multiple="multiple">
                                                                   @foreach ($tag as $row)
-                                                                        <option value="{{ $row->id }}">{{$row->name}}</option>
+                                                                        <option value="{{ $row->name }}">{{$row->name}}</option>
                                                                    @endforeach
                                                               </select>
                                                        </div>
@@ -240,71 +240,50 @@ p {
     //
 
 
-    $(document).ready(function(){
+$(document).ready(function(){
 
-var current_fs, next_fs, previous_fs; //fieldsets
-var opacity;
-var current = 1;
-var steps = $("fieldset").length;
+    var current_fs, next_fs, previous_fs; //fieldsets
+    var opacity;
+    var current = 1;
+    var steps = $("fieldset").length;
 
-setProgressBar(current);
+    setProgressBar(current);
 
-$(".next").click(function(){
+    $(".next").click(function(){
 
-current_fs = $(this).parent();
-next_fs = $(this).parent().next(); 
+        current_fs = $(this).parent();
+        next_fs = $(this).parent().next(); 
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active1");
+        next_fs.show();
+        current_fs.css({
+            'display': 'none',
+            'position': 'relative'
+        });
+        setProgressBar(++current);
+    });
 
-next_fs.show(); 
-current_fs.animate({opacity: 0}, {
-step: function(now) { 
-current_fs.css({
-'display': 'none',
-'position': 'relative'
-}); 
-},
-duration: 500
-});
-setProgressBar(++current);
-});
+    $(".previous").click(function(){
+        current_fs = $(this).parent();
+        previous_fs = $(this).parent().prev();
+        $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active1");
+        previous_fs.show();
+            current_fs.css({
+                'display': 'none',
+                'position': 'relative'
+            });
+            setProgressBar(--current);
+    });
 
-$(".previous").click(function(){
+    function setProgressBar(curStep){
+        var percent = parseFloat(100 / steps) * curStep;
+        percent = percent.toFixed();
+        $(".progress-bar")
+        .css("width",percent+"%")
+    }
 
-current_fs = $(this).parent();
-previous_fs = $(this).parent().prev();
-
-
-$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active1");
-
-
-previous_fs.show();
-
-
-current_fs.animate({opacity: 0}, {
-step: function(now) {
-
-opacity = 1 - now;
-
-current_fs.css({
-'display': 'none',
-'position': 'relative'
-});
-previous_fs.css({'opacity': opacity});
-},
-duration: 500
-});
-setProgressBar(--current);
-});
-
-function setProgressBar(curStep){
-var percent = parseFloat(100 / steps) * curStep;
-percent = percent.toFixed();
-$(".progress-bar")
-.css("width",percent+"%")
-}
-
-$(".submit").click(function(){
-return false;
-})
+    $(".submit").click(function(){
+        return false;
+    })
 
 });
 
