@@ -5,7 +5,7 @@ $camera = [
 	[
         'Camera',
         'child' => [
-            [
+           
                   ['Point & Shoot'],
                   ['Bridge'],
                   ['DSLR'],
@@ -19,8 +19,7 @@ $camera = [
                   ['Lenses'],
                   ['Car Cameras'],
                   ['Security Cameras & Systems'],
-                  ['Drones'],
-            ],
+                  ['Drones'],        
       ],
   ],
 ];

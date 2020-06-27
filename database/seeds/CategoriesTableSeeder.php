@@ -12,8 +12,9 @@ class CategoriesTableSeeder extends Seeder
     public function run(){
 		include('CategoriesAttr/Mobiles_Tablets.php');
     include('CategoriesAttr/Computers_Laptop.php');
-    include('CategoriesAttr/TV_Audio.php');
+    // include('CategoriesAttr/TV_Audio.php');
     include('CategoriesAttr/Camera.php');
+    // dd($camera);
     include('CategoriesAttr/tv_audio_video_gaming.php');
 
 		// dd($mobiles_tablets);
@@ -25,9 +26,9 @@ class CategoriesTableSeeder extends Seeder
       \Baazar::insertRecords($tv_audio_video_gaming);
       echo  'TV, Audio , Video, Gaming Done...';
       \Baazar::insertRecords($camera);
-      echo  'Computers & Laptops Done....';
-      \Baazar::insertRecords($tv_audio);
-      echo  'TV, Audio , Video, Gaming Done...';
+      echo  'Camera Done....';
+      // \Baazar::insertRecords($tv_audio);
+      // echo  'TV, Audio  Done...';
    	}
 
   }
