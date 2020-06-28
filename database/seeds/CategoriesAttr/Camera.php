@@ -14,13 +14,12 @@ $camera = [
 									],
                   [
 										'Bridge',],
-
-
                   [
 										'DSLR',
 										'child' => [
 										['Sets'],
-										['Body Only'],
+                    ['Body Only'],
+                    ]
 									],
                   [
 										'Instant Camera',
@@ -34,9 +33,9 @@ $camera = [
                   [
 										'Gadgets & Other Cameras',
 										'child' => [
-										['Instant Cameras'],
-										['Instant Camera Films'],
-										['Instant Camera Accessories'],
+										['Gadgets Instant Camera'],
+										['Instant Camera Film'],
+										['Instant Camera Accessorie'],
 									]
 									],
                   [
@@ -58,11 +57,44 @@ $camera = [
                         ['Camera Remote Controls'],
                         ['Dry Box'],
                         ['Flashes'],
-                        ['Lighting & Studio Equipment'],
-                        ['Memory Cards'],
+                        [
+													'Lighting & Studio Equipment',
+													  'child' => [
+													['Light Meters & Color Calibrators'],
+													['Studio Equipment'],
+													['Photography & Studio Lighting'],
+														]
+												],
+                        [
+                          'Memory Cards',
+                          'child' => [
+                            ['SD & SDHC Cards'],
+                            ['Compact Flash Cards'],
+                            ['Micro SD Cards'],
+                            ['Wifi SD Cards'],
+                            ['Card Readers'],
+                          ]
+                        ],
                         ['Straps'],
-                        ['Tripods & Monopods'],
-                        ['Sports & Action Camera Accessories'],
+                        [
+                          'Tripods & Monopods',
+                          'child' => [
+                            ['Monopods'],
+                            [' Tripods'],
+                          ]
+                        ],
+                        [
+                          'Sports & Action Camera Accessorie',
+                          'child' => [
+                            ['Accessory Kits'],
+                            ['Mounts'],
+                            ['Protective Lens'],
+                            ['Action Camera Bags & Cases'],
+                            ['Straps & Harnesses'],
+                            ['Waterproof Cases & Housing'],
+                            ['Other Action Camera Accessories'],
+                          ]
+                        ],
                         ['Camera Screen Protector'],
                         ['Viewfinders'],
                         ['Gimbals & Stabilizers'],
@@ -84,7 +116,21 @@ $camera = [
                     'child' => [
                       ['DSLRs Lenses'],
                       ['Mirrorless Lenses'],
-                      ['Lens Accessories'],
+                      [
+                        'Lens Accessories',
+                        'child' => [
+                            ['Lens Hoods'],
+                            ['Lens Cleaners'],
+                            ['Lens Caps'],
+                            ['Filters'],
+                            ['Lens Cases'],
+                            ['Lens Adapters & Converters'],
+                            ['Follow - Focus Levers'],
+                            ['Matte Boxes'],
+                            ['Extension Tubes'],
+                            ['Other Lens Accessories'],
+                        ]
+                      ],
                       ['Other Lenses'],
                       ['Smartphone Lenses'],
                     ]
@@ -103,11 +149,18 @@ $camera = [
                   [
                     'Drones',
                     'child' => [
-                      ['Drones'],
-                      ['Drone Accessories'],
+                      ['Drone'],
+                      [
+                        'Drone Accessories',
+                        'child' => [
+                          ['Drone Bags and Cases'],
+                          ['Drone Batteries'],
+                          ['Remote Controllers & Accessories'],
+                          ['Propellers & Parts'],
+                        ]
+                      ],
                     ]
                   ],
          ],
      ]
-   ],
 ];
