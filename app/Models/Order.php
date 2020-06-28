@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Customer;
-use App\Models\BuyerBillingAddress;
+use App\Models\CustomerBillingAddress;
 use App\Models\Tag;
 use App\Models\BuyerCard;
 use App\Models\ShippingMethod;
@@ -21,11 +21,11 @@ class Order extends Model
    }
 
     public function tag(){
-      return $this->belongsTo(Customer::class,'buyer_id');
+      return $this->belongsTo(Customer::class,'customer_id');
     }
 
     public function buyerbilliadd(){
-     return $this->belongsTo(BuyerBillingAddress::class,'buyer_billing_address_id');
+     return $this->belongsTo(CustomerBillingAddress::class,'customer_billing_address_id');
    }
 
     public function buyercard(){

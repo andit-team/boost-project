@@ -29,18 +29,18 @@ class CreateOrdersTable extends Migration
             $table->dateTime('cancel_at');
             $table->enum('status',['Active','Voided'])->default('Active');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedBigInteger('buyer_id');
-            $table->unsignedBigInteger('buyer_billing_address_id');
-            $table->unsignedBigInteger('buyer_shipping_address_id');
+            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('customer_billing_address_id');
+            $table->unsignedBigInteger('customer_shipping_address_id');
             $table->unsignedBigInteger('buyer_card_id');
             $table->unsignedBigInteger('shipping_method_id');
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('buyer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('buyer_billing_address_id')->references('id')->on('buyer_billing_addresses')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('buyer_shipping_address_id')->references('id')->on('customer_shipping_addresses')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('customer_billing_address_id')->references('id')->on('customer_billing_addresses')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('customer_shipping_address_id')->references('id')->on('customer_shipping_addresses')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('buyer_card_id')->references('id')->on('buyer_cards')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('shipping_method_id')->references('id')->on('shipping_methods')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
