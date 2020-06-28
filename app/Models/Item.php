@@ -18,8 +18,39 @@ use App\User;
 
 class Item extends Model
 {
-    protected $fillable = ['name','email','slug','price','model_no','org_price','sorting','description','rej_desc','image','min_order','available_on','availability','made_in','materials','labeled','video_url','total_sale_amount','total_order_qty','last_ordered_at','last_carted_at','total_view','activated_at','active','sub_category','pack_id','user_id','shop_id','category_id','tag_id','status'];
-
+    protected $fillable = [
+      'name',
+      'bn_name',
+      'image',
+      'slug',
+      'price',
+      'model_no',
+      'org_price',
+      'pack_id',
+      'sorting',
+      'description',
+      'bn_description',
+      'rej_desc',
+      'min_order',
+      'available_on',
+      'availability',
+      'made_in',
+      'materials',
+      'labeled',
+      'video_url',
+      'total_sale_amount',
+      'total_order_qty',
+      'last_ordered_at',
+      'last_carted_at',
+      'total_view',
+      'activated_at',
+      'active',
+      'user_id',
+      'shop_id',
+      'category_id',
+      'category_slug',
+      'tag_slug',
+    ];
 
     public function getRouteKeyName()
     {

@@ -7,143 +7,136 @@
     <section class="dashboard-section section-b-space">
         <div class="container">
             <div class="row">
-
                 @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
-
-                <!-- address section start -->
                 <div class="col-sm-9 contact-page register-page container">  
-                                    <h2 id="heading">Add Product</h2>
-                                    <form id="msform" action="{{ route('product.store') }}" method="post"  enctype="multipart/form-data" id="validateForm">
-                                        @csrf
-                                        <!-- progressbar -->
-                                        <ul id="progressbar">
-                                            <li class="active1 msform1" id="account"><strong><i class="fa fa-product-hunt "></i> Basic Information</strong></li>
-                                            <li class="msform1" id="personal"><strong><i class="fa fa-info-circle "></i> Details</strong></li>
-                                            <li class="msform1" id="payment"><strong><i class="fa fa-exchange"></i> Price & Stock</strong></li>
-                                            <li class="msform1" id="confirm1"><strong><i class="fa fa-check-circle"></i> Finish</strong></li>
-                                        </ul>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div><br>
-                                        
-                                        <fieldset>
-                                            <div>
-                                                @include('merchant.product.productBasicinfo')
-                                                @include('merchant.product.productAttributes')
-                                            </div> 
-                                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" />
-                                        </fieldset>
-                                        <fieldset>
+                    <h2 id="heading">Add Product</h2>
+                    <form id="msform" action="{{ route('product.store') }}" method="post"  enctype="multipart/form-data" id="validateForm">
+                        @csrf
+                        <!-- progressbar -->
+                        <ul id="progressbar">
+                            <li class="active1 msform1" id="account"><strong><i class="fa fa-product-hunt "></i> Basic Information</strong></li>
+                            <li class="msform1" id="personal"><strong><i class="fa fa-info-circle "></i> Details</strong></li>
+                            <li class="msform1" id="payment"><strong><i class="fa fa-exchange"></i> Price & Stock</strong></li>
+                            <li class="msform1" id="confirm1"><strong><i class="fa fa-check-circle"></i> Finish</strong></li>
+                        </ul>
 
-                                            <div class="card mb-4">
-                                                <h5 class="card-header">Detailed Description</h5>
-                                                <div class="card-body">
-                                                        <div class="form-group">
-                                                            <label for="bn_description" class="">Description (Bangla)<span class="text-danger"> *</span></label>
-                                                            <textarea class="form-control  summernote"  id="bn_description"  name="bn_description"></textarea>
-                                                            @if ($errors->has('bn_description'))
-                                                            <span class="text-danger">{{ $errors->first('bn_description') }}</span>
-                                                            @endif
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="description" class="">Description (English)</label>
-                                                            <textarea class="form-control  summernote"  id="description" name="description"></textarea>
-                                                                @if ($errors->has('description'))
-                                                                <span class="text-danger">{{ $errors->first('description') }}</span>
-                                                                @endif
-                                                        </div>
-                                                    <div class="form-group">
-                                                            <label for="made_in" class="">What in the box<span class="text-danger"> *</span></label>
-                                                            <input type="text" class="form-control" name="made_in" id="made_in" required="">
-                                                            @if ($errors->has('made_in'))
-                                                                <span class="text-danger">{{ $errors->first('made_in') }}</span>
-                                                            @endif
-                                                        </div>
-                                                </div>
-                                            </div> 
-                                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" id="register" />
-                                            <input type="button" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
-                                        </fieldset>
-                                        <fieldset>
-                                            <div>
-                                                @include('merchant.product.priceAndstock')
-                                            </div> 
-                                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" /> 
-                                            <input type="button" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
-                                        </fieldset>
-
-                                        
-                                        <fieldset>
-                                                <div class="card mb-4">
-                                                    <h5 class="card-header">Tag & Model</h5>
-                                                    <div class="card-body">
-                                                      <div class="form-group row">
-                                                            <label for="tag_id" class="col-xl-3 col-md-4">Tag <span>*</span></label>
-                                                              <select class="js-example-basic-multiple form-control col-md-8" name="tag_id[]" multiple="multiple">
-                                                                  @foreach ($tag as $row)
-                                                                        <option value="{{ $row->name }}">{{$row->name}}</option>
-                                                                   @endforeach
-                                                              </select>
-                                                       </div>
-                                                       <div class="form-group row">
-                                                            <label for="video_url" class="col-xl-3 col-md-4">Model No<span>*</span></label>
-                                                            <input type="number" class="form-control col-md-8" name="model_no" id="model_no"  required="">
-                                                              @if ($errors->has('model_no'))
-                                                                <span class="text-danger">{{ $errors->first('model_no') }}</span>
-                                                              @endif
-                                                      </div>
-                                                      <div class="form-group row margin">
-                                                        <label for="materials" class="col-xl-3 col-md-4">Materials<span>*</span></label>
-                                                        <input type="text" class="form-control col-md-8" name="materials" id="materials"  required="">
-                                                            @if ($errors->has('materials'))
-                                                                <span class="text-danger">{{ $errors->first('materials') }}</span>
-                                                            @endif
-                                                      </div>
-                
-                                                     </div>
-                                                    </div>
-                                                    <div class="card mb-4 ">
-                                                        <h5 class="card-header">Price</h5>
-                                                        <div class="card-body">
-                                                            <div class="form-group row">
-                                                                <label for="price" class="col-xl-3 col-md-4">Price<span>*</span></label>
-                                                                <input type="number" class="form-control col-md-8" name="price" id="price" required="">
-                                                                @if ($errors->has('price'))
-                                                                    <span class="text-danger">{{ $errors->first('price') }}</span>
-                                                                @endif
-                                                            </div>
-                                                          <div class="form-group row margin">
-                                                            <label for="org_price" class="col-xl-3 col-md-4">Orginal Price<span>*</span></label>
-                                                            <input type="number" class="form-control col-md-8" name="org_price" id="org_price" required="">
-                                                                @if ($errors->has('org_price'))
-                                                                    <span class="text-danger">{{ $errors->first('org_price') }}</span>
-                                                                @endif
-                                                          </div>
-                                                          <div class="form-group row margin">
-                                                            <label for="min_order" class="col-xl-3 col-md-4">Minimum Order <span>*</span></label>
-                                                            <input type="number" class="form-control col-md-8" name="min_order" id="min_order"  required="">
-                                                                @if ($errors->has('min_order'))
-                                                                    <span class="text-danger">{{ $errors->first('min_order') }}</span>
-                                                                @endif
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                    <input type="button" name="next" class="next btn btn-primary float-right" value="Next" /> 
-                                                    <input type="button" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
-                                                    <div class="col-md-12">
-                                                        <button class="btn btn-sm btn-solid" type="submit">Save</button>
-                                                    </div>
-                                        </fieldset>
-                                        
-                                        
-                                    </form> 
-                    </div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <br>
+                        
+                        <fieldset>
+                            <div>
+                                @include('merchant.product.productBasicinfo')
+                                @include('merchant.product.productAttributes')
+                            </div> 
+                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" />
+                        </fieldset>
+                        <fieldset>
+                            <div class="card mb-4">
+                                <h5 class="card-header">Detailed Description</h5>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="bn_description" class="">Description (Bangla)<span class="text-danger"> *</span></label>
+                                        <textarea class="form-control  summernote"  id="bn_description"  name="bn_description"></textarea>
+                                        @if ($errors->has('bn_description'))
+                                            <span class="text-danger">{{ $errors->first('bn_description') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description" class="">Description (English)</label>
+                                        <textarea class="form-control  summernote"  id="description" name="description"></textarea>
+                                        @if ($errors->has('description'))
+                                            <span class="text-danger">{{ $errors->first('description') }}</span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="made_in" class="">What in the box<span class="text-danger"> *</span></label>
+                                        <input type="text" class="form-control" name="made_in" id="made_in" required="">
+                                        @if ($errors->has('made_in'))
+                                            <span class="text-danger">{{ $errors->first('made_in') }}</span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div> 
+                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" id="register" />
+                            <input type="button" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
+                        </fieldset>
+                        <fieldset>
+                            <div>
+                                @include('merchant.product.priceAndstock')
+                            </div> 
+                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" /> 
+                            <input type="button" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
+                        </fieldset>
+                        <fieldset>
+                            <div>
+                                <div class="card mb-4">
+                                    <h5 class="card-header">Tag & Model</h5>
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label for="tag_id" class="col-xl-3 col-md-4">Tag <span>*</span></label>
+                                            <div class="col-md-8 multiple-tag">
+                                                <select class="js-example-basic-multiple form-control" name="tag_id[]" multiple="multiple">
+                                                    @foreach ($tag as $row)
+                                                        <option value="{{ $row->name }}">{{$row->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="video_url" class="col-xl-3 col-md-4">Model No<span>*</span></label>
+                                            <input type="number" class="form-control col-md-8" name="model_no" id="model_no"  required="">
+                                            @if ($errors->has('model_no'))
+                                                <span class="text-danger">{{ $errors->first('model_no') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="form-group row margin">
+                                            <label for="materials" class="col-xl-3 col-md-4">Materials<span>*</span></label>
+                                            <input type="text" class="form-control col-md-8" name="materials" id="materials"  required="">
+                                            @if ($errors->has('materials'))
+                                                <span class="text-danger">{{ $errors->first('materials') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card mb-4 ">
+                                    <h5 class="card-header">Price</h5>
+                                    <div class="card-body">
+                                        <div class="form-group row">
+                                            <label for="price" class="col-xl-3 col-md-4">Price<span>*</span></label>
+                                            <input type="number" class="form-control col-md-8" name="price" id="price" required="">
+                                            @if ($errors->has('price'))
+                                                <span class="text-danger">{{ $errors->first('price') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="form-group row margin">
+                                            <label for="org_price" class="col-xl-3 col-md-4">Orginal Price<span>*</span></label>
+                                            <input type="number" class="form-control col-md-8" name="org_price" id="org_price" required="">
+                                            @if ($errors->has('org_price'))
+                                                <span class="text-danger">{{ $errors->first('org_price') }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="form-group row margin">
+                                            <label for="min_order" class="col-xl-3 col-md-4">Minimum Order <span>*</span></label>
+                                            <input type="number" class="form-control col-md-8" name="min_order" id="min_order"  required="">
+                                            @if ($errors->has('min_order'))
+                                                <span class="text-danger">{{ $errors->first('min_order') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-success float-right ml-2" type="submit">Save</button>
+                            <input type="button" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
+                        </fieldset>
+                    </form> 
                 </div>
-
             </div>
         </div>
     </section>
     <!-- section end -->
+
 @endsection
 
 
@@ -222,6 +215,24 @@ p {
 .progress-bar {
     background-color: #FF4C3B
 }
+
+span.select2.select2-container.select2-container--default {
+    width: 100% !important;
+}
+
+.multiple-tag{
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+.select2-container--default .select2-selection--multiple {
+    border: 1px solid #ced4da;
+    border-radius: 0px !important;
+    cursor: text;
+    padding-bottom: 0px !important;
+    padding-right: 0px !important;
+    height: 40px !important;
+}
+
 
 
 </style>
