@@ -23,6 +23,8 @@ Route::resource('contact-us', 'ContactController');
 Route::prefix('customer')->group(function () {
     Route::get('/','CustomersController@create');
     Route::post('/','CustomersController@store')->name('profileUpdate');
+    Route::get('shipping/{slug}/edit','CustomerShippingAddressesController@edit');
+    Route::put('shipping/{slug}','CustomerShippingAddressesController@update');
     Route::resource('shipping','CustomerShippingAddressesController');
     Route::resource('billing','BuyerBillingAddressesController');
     Route::resource('card','BuyerCardsController');

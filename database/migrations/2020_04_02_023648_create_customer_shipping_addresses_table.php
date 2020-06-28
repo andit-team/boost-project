@@ -15,6 +15,7 @@ class CreateCustomerShippingAddressesTable extends Migration
     {
         Schema::create('customer_shipping_addresses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('slug')->nullable();
             $table->string('location');
             $table->text('address');
             $table->string('country');
