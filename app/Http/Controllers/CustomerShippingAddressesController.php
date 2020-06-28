@@ -34,11 +34,12 @@ class CustomerShippingAddressesController extends Controller
     public function store(Request $request,CustomerShippingAddress $shipping){
 
         $customerId = Customer::where('user_id',Sentinel::getUser()->id)->first();
+        $slug = Baazar::getUniqueSlug($shipping,$request->location);
         $this->validateForm($request);
-        // $buyerShippingAddress = CustomerShippingAddress::updateOrCreate(['buyer_id'=>$buyerId->id],[
             if( $customerId){
             $data =[
                 'location'          => $request->location,
+                'slug'              => $slug,
                 'address'           => $request->address,
                 'country'           => $request->country,
                 'state'             => $request->state,
@@ -75,8 +76,9 @@ class CustomerShippingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(CustomerShippingAddress $shipping)
+    public function edit($slug)
     {
+        $shipping = CustomerShippingAddress::where('slug',$slug)->first();
 
         return view('frontend.customer_shipping_addresses.edit',compact('shipping'));
     }
@@ -88,8 +90,9 @@ class CustomerShippingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CustomerShippingAddress $shipping)
+    public function update(Request $request, $slug)
     {
+        $shipping = CustomerShippingAddress::where('slug',$slug)->first();
         $this->validateForm($request);
             $data =[
                 'location'          => $request->location,
@@ -118,7 +121,7 @@ class CustomerShippingAddressesController extends Controller
     {
         $shipping->delete();
 
-        Session::flash('danger','Shipping address Deleted');
+        Session::flash('error','Shipping address Deleted');
 
         return back();
     }
