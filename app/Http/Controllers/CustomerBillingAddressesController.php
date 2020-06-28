@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\BuyerBillingAddress;
+use App\Models\CustomerBillingAddress;
 use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
 use Sentinel;
 use Session;
+use Baazar;
 
-class BuyerBillingAddressesController extends Controller
+class CustomerBillingAddressesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +19,8 @@ class BuyerBillingAddressesController extends Controller
      */
     public function index()
     {
-        $billing = BuyerBillingAddress::where('user_id',Sentinel::getUser()->id)->get();
-        return view('frontend.buyer_billing_address.index',compact('billing'));
+        $billing = CustomerBillingAddress::where('user_id',Sentinel::getUser()->id)->get();
+        return view('frontend.customer_billing_address.index',compact('billing'));
     }
 
     /**
@@ -29,7 +30,7 @@ class BuyerBillingAddressesController extends Controller
      */
     public function create()
     {
-        return view('frontend.buyer_billing_address.create');
+        return view('frontend.customer_billing_address.create');
     }
 
     /**
@@ -38,14 +39,16 @@ class BuyerBillingAddressesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,CustomerBillingAddress $billing)
     {
-        $buyerId = Customer::where('user_id',Sentinel::getUser()->id)->first();
+        $customerId = Customer::where('user_id',Sentinel::getUser()->id)->first();
         //dd($buyerId);
+        $slug = Baazar::getUniqueSlug($billing,$request->location);
         $this->validateForm($request);
-        if($buyerId){
+        if($customerId){
             $data = [
                 'location'      => $request->location,
+                'slug'          => $slug,
                 'address'       => $request->address,
                 'country'       => $request->country,
                 'state'         => $request->state,
@@ -53,21 +56,21 @@ class BuyerBillingAddressesController extends Controller
                 'zip_code'      => $request->zip_code,
                 'phone'         => $request->phone,
                 'fax'           => $request->fax,
-                'buyer_id'      =>  $buyerId->id,
+                'customer_id'   =>  $customerId->id,
                 'user_id'       => Sentinel::getUser()->id,
                 'created_at'    => now(),
             ];
 
-            BuyerBillingAddress::create($data);
+            CustomerBillingAddress::create($data);
 
             Session::flash('success', 'Billing Address created');
 
-            return redirect('profile/billing');
+            return redirect('customer/billing');
          }
 
-        Session::flash('danger', 'please create profile correctly');
+        Session::flash('error', 'please create profile correctly');
 
-        return redirect('profile/billing');
+        return redirect('customer/billing');
 
 
 
@@ -90,10 +93,10 @@ class BuyerBillingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(BuyerBillingAddress $billing)
+    public function edit($slug)
     {
-        //dd($billing);
-        return view('frontend.buyer_billing_address.edit',compact('billing'));
+        $billing = CustomerBillingAddress::where('slug',$slug)->first();
+        return view('frontend.customer_billing_address.edit',compact('billing'));
     }
 
     /**
@@ -103,8 +106,9 @@ class BuyerBillingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BuyerBillingAddress $billing)
+    public function update(Request $request, $slug)
     {
+        $billing = CustomerBillingAddress::where('slug',$slug)->first();
         $this->validateForm($request);
 
             $data = [
@@ -122,9 +126,9 @@ class BuyerBillingAddressesController extends Controller
 
             $billing->update($data);
 
-            Session::flash('success', 'Billing Address Updated');
+            Session::flash('warning', 'Billing Address Updated');
 
-            return redirect('profile/billing');
+            return redirect('customer/billing');
 
     }
 
@@ -134,13 +138,13 @@ class BuyerBillingAddressesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BuyerBillingAddress $billing)
+    public function destroy(CustomerBillingAddress $billing)
     {
         $billing->delete();
 
-        Session::flash('warning', 'Billing Address Deleted');
+        Session::flash('error', 'Billing Address Deleted');
 
-        return back();
+        return redirect('customer/billing');
     }
 
     private function validateForm($request){

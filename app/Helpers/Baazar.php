@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 use App\Models\Customer;
-use App\Models\BuyerBillingAddress;
+use App\Models\CustomerBillingAddress;
 use App\Models\BuyerCard;
 use App\Models\BuyerPayment;
 use App\Models\CustomerShippingAddress;

@@ -8,10 +8,10 @@ use App\Models\Customer;
 use App\Models\Order;
 use App\User;
 
-class BuyerBillingAddress extends Model
+class CustomerBillingAddress extends Model
 {
    use SoftDeletes;
-   protected $fillable = ['location','address','country','state','city','zip_code','phone','fax','active','buyer_id','user_id','deleted_at'];
+   protected $fillable = ['location','slug','address','country','state','city','zip_code','phone','fax','active','customer_id','user_id','deleted_at'];
 
    public function user()
    {
