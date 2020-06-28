@@ -15,7 +15,7 @@ class CustomerAccess
      */
     public function handle($request, Closure $next)
     {
-        if (Sentinel::getUser()->type != 'buyers') {
+        if (Sentinel::getUser()->type != 'customers') {
             return redirect('/');//->with('error','Sorry you are not loggedin.');
         }
         return $next($request);

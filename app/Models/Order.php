@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Buyer;
+use App\Models\Customer;
 use App\Models\BuyerBillingAddress;
 use App\Models\Tag;
 use App\Models\BuyerCard;
@@ -21,7 +21,7 @@ class Order extends Model
    }
 
     public function tag(){
-      return $this->belongsTo(Buyer::class,'buyer_id');
+      return $this->belongsTo(Customer::class,'buyer_id');
     }
 
     public function buyerbilliadd(){

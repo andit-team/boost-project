@@ -3,10 +3,10 @@
 namespace App;
 
 use Cartalyst\Sentinel\Users\EloquentUser;
-use App\Models\Buyer;
+use App\Models\Customer;
 use App\Models\BuyerCard;
 use App\Models\BuyerPayment;
-use App\Models\BuyerShippingAddress;
+use App\Models\CustomerShippingAddress;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Color;
@@ -38,7 +38,7 @@ class User extends EloquentUser
     protected $loginNames = ['email','type'];
 
     public function buyer(){
-      return $this->hasMany(Buyer::class,'buyer_id');
+      return $this->hasMany(Customer::class,'buyer_id');
    }
 
      public function buyercard(){
@@ -48,7 +48,7 @@ class User extends EloquentUser
         return $this->hasMany(BuyerPayment::class,'payment_method_id');
      }
      public function buyershippingadd(){
-       return $this->hasMany(BuyerShippingAddress::class,'buyer_id');
+       return $this->hasMany(CustomerShippingAddress::class,'buyer_id');
     }
 
       public function cart(){

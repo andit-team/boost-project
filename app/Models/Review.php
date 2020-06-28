@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Buyer;
+use App\Models\Customer;
 use App\Models\Item;
 use App\User;
 class Review extends Model
@@ -14,7 +14,7 @@ class Review extends Model
        return $this->belongsTo(User::class,'user_id');
 
       public function buyer(){
-        return $this->belongsTo(Buyer::class,'buyer_id');
+        return $this->belongsTo(Customer::class,'buyer_id');
 
       public function item(){
         return $this->belongsTo(Item::class,'item_id');

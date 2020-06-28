@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Buyer;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
 use Sentinel;
 use App\User;
 use Baazar;
 use Session;
 
-class BuyersController extends Controller
+class CustomersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,11 +29,11 @@ class BuyersController extends Controller
      */
     public function create(){
         $userprofile = Sentinel::getUser();
-        $profile = Buyer::where('user_id',Sentinel::getUser()->id)->first();  
+        $profile = Customer::where('user_id',Sentinel::getUser()->id)->first();
         if(!empty($profile))
-            return view('frontend.buyers.update',compact('profile','userprofile'));
-        else 
-        return view('frontend.buyers.create',compact('profile','userprofile'));   
+            return view('frontend.customers.update',compact('profile','userprofile'));
+        else
+        return view('frontend.customers.create',compact('profile','userprofile'));
     }
 
     /**
@@ -44,7 +44,7 @@ class BuyersController extends Controller
      */
     public function store(Request $request){
         $userprofile = Sentinel::getUser();
-        $buyerId = Buyer::where('user_id',Sentinel::getUser()->id)->first();
+        $buyerId = Customer::where('user_id',Sentinel::getUser()->id)->first();
         if($buyerId){
            $buyerId->update([
                 'first_name'            => $request->first_name,
@@ -55,14 +55,14 @@ class BuyersController extends Controller
                 'gender'                => $request->gender,
                 'description'           => $request->description,
                 'updated_at'            => now(),
-            ]); 
-            
+            ]);
+
             $userprofile->update([
                 'first_name'            => $request->first_name,
                 'last_name'             => $request->last_name,
             ]);
 
-            
+
             Session::flash('success','Profile update Successfully');
             return back();
         }else{
@@ -78,7 +78,7 @@ class BuyersController extends Controller
                 'created_at'            => now(),
             ];
 
-            Buyer::create($data);
+            Customer::create($data);
 
             $userprofile->update([
                 'first_name'            => $request->first_name,
@@ -90,7 +90,7 @@ class BuyersController extends Controller
 
         Session::flash('danger','please insert your profile inforation correctley');
         return back();
-        
+
     }
 
     /**
@@ -139,7 +139,7 @@ class BuyersController extends Controller
     }
 
     private function validateForm($request){
-        $validatedData = $request->validate([ 
+        $validatedData = $request->validate([
                'first_name'  => 'required',
                'last_name'   => 'required',
                'dob'         => 'required',

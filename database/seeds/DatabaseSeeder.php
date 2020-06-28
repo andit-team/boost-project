@@ -12,12 +12,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
                 DB::statement('SET FOREIGN_KEY_CHECKS=0');
-                DB::table('buyers')->truncate();
+                DB::table('customers')->truncate();
                 DB::table('categories')->truncate();
                 DB::table('couriers')->truncate();
                 DB::table('currencies')->truncate();
                 DB::table('promotion_heads')->truncate();
-                DB::table('buyers')->truncate();
+                DB::table('customers')->truncate();
                 DB::table('shops')->truncate();
                 DB::table('tags')->truncate();
                 DB::table('permissions')->truncate();
@@ -25,20 +25,20 @@ class DatabaseSeeder extends Seeder
                 DB::table('colors')->truncate();
                 DB::table('brands')->truncate();
                 DB::table('sizes')->truncate();
-                DB::table('attributes')->truncate();         
-                DB::table('attribute_metas')->truncate();         
-                DB::table('inventory_attributes')->truncate();         
-                DB::table('inventory_attribute_options')->truncate();         
-                DB::table('inventory_attribute_category')->truncate();         
-                DB::table('users')->truncate();         
-              
+                DB::table('attributes')->truncate();
+                DB::table('attribute_metas')->truncate();
+                DB::table('inventory_attributes')->truncate();
+                DB::table('inventory_attribute_options')->truncate();
+                DB::table('inventory_attribute_category')->truncate();
+                DB::table('users')->truncate();
+
 
         $this->call([
                 RoleTableSeeder::class,
-                BuyersTableSeeder::class,
+                CustomersTableSeeder::class,
                 PermissionTableSeeder::class,
                 UserTableSeeder::class,
-                CategoriesTableSeeder::class,
+               // CategoriesTableSeeder::class,
                 CuriersTableSeeder::class,
                 CurrenciesTableSeeder::class,
                 PromotionHeadsTableSeeder::class,
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
                 BrandTableSeeder::class,
                 // SizesTableSeeder::class,
                 InventoryAttributesSeeder::class,
-            
+
         ]);
     }
 }

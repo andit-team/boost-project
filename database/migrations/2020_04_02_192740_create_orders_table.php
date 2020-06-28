@@ -38,9 +38,9 @@ class CreateOrdersTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('buyer_id')->references('id')->on('buyers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('buyer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('buyer_billing_address_id')->references('id')->on('buyer_billing_addresses')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('buyer_shipping_address_id')->references('id')->on('buyer_shipping_addresses')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('buyer_shipping_address_id')->references('id')->on('customer_shipping_addresses')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('buyer_card_id')->references('id')->on('buyer_cards')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('shipping_method_id')->references('id')->on('shipping_methods')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

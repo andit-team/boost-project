@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\BuyerBillingAddress;
-use App\Models\BuyerShippingAddress;
+use App\Models\CustomerShippingAddress;
 use App\Models\BuyerCard;
 use App\Models\Cart;
 use App\Models\Order;
@@ -12,7 +12,7 @@ use App\Models\PromotionUse;
 use App\Models\Review;
 use App\User;
 
-class Buyer extends Model
+class Customer extends Model
 {
      protected $fillable = ['first_name','last_name','phone','picture','dob','gender','description','last_visited_at','last_visited_from','verification_token','remember_token','active','user_id'];
 
@@ -28,10 +28,10 @@ class Buyer extends Model
      return $this->hasMany(BuyerCard::class,'buyer_id');
   }
     public function buyershippingadd(){
-      return $this->hasMany(BuyerShippingAddress::class,'buyer_id');
+      return $this->hasMany(CustomerShippingAddress::class,'buyer_id');
    }
    public function cart(){
-     return $this->hasMany(BuyerShippingAddress::class,'buyer_id');
+     return $this->hasMany(CustomerShippingAddress::class,'buyer_id');
     }
     public function order(){
       return $this->hasMany(Order::class,'buyer_id');

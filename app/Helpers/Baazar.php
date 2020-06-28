@@ -4,11 +4,11 @@ namespace App\Helpers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
-use App\Models\Buyer;
+use App\Models\Customer;
 use App\Models\BuyerBillingAddress;
 use App\Models\BuyerCard;
 use App\Models\BuyerPayment;
-use App\Models\BuyerShippingAddress;
+use App\Models\CustomerShippingAddress;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Color;
@@ -99,7 +99,7 @@ class Baazar
                 'is_last'       => isset($row["child"]) ? 0 : 1,
             ];
             $cat = Category::create($data);
-            if (isset($row["child"])){ 
+            if (isset($row["child"])){
                 $this->insertRecords($row["child"], $cat->id,$slug);
             }else{
                 if (isset($row["attr"])){
@@ -122,7 +122,7 @@ class Baazar
                             }
                         }
                     }
-                } 
+                }
             }
         }
     }

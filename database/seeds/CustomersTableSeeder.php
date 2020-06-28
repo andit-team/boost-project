@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class BuyersTableSeeder extends Seeder
+class CustomersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -54,9 +54,9 @@ class BuyersTableSeeder extends Seeder
           'user_id'             => '1',
           'created_at'  => now(),
           'updated_at'  => now()
-      ], 
+      ],
   ];
 
-  DB::table('buyers')->insert($data);
+  DB::table('customers')->insert($data);
  }
 }
