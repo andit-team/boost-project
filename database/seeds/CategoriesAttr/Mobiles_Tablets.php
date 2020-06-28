@@ -66,7 +66,7 @@ $mobiles_tablets = [
                         'type'          => 'select',
                         'suggestion'    => 'Pixel per inch (pixel density)Please choose one value from the dropdown list. Please click here to request new values',
                         'meta' => [
-                            '300-400 PPI','400-500 PPI','200-300 PPI','Above 500 PPI','Below 200 PPI'                      
+                            '300-400 PPI','400-500 PPI','200-300 PPI','Above 500 PPI','Below 200 PPI'
                         ],
                     ],
                     [
@@ -142,7 +142,7 @@ $mobiles_tablets = [
             ['Landline Phones'],
             [
                 'Tablet Accessories',
-                'child' =>[              
+                'child' =>[
                     ['Stylus Pens'],
                     ['Cases & Covers'],
                 ]
@@ -170,7 +170,7 @@ $mobiles_tablets = [
                     ['Fashion Accessories'],
                     ['Phone Batteries'],
                     ['Power Banks'],
-                ]                              
+                ]
             ],
         ],
     ],

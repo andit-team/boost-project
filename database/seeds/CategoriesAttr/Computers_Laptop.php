@@ -2166,7 +2166,7 @@ $Computers_Laptop = [
                     ],
                 ],
                 [
-                    'Memory Cards',
+                    'Memory Card',
                     'attr'	=> [
                         [
                             'label'         => 'Brand',
