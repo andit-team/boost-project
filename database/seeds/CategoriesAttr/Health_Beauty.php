@@ -15,11 +15,32 @@ $health_beauty = [
                         ['Body Soaps & Shower Gels'],
                         ['Hair Removal'],
                         ['Body Moisturizers'],
-                        ['Sun Care for Body'],
+                        [
+                          'Sun Care for Body',
+                          'child' => [
+                            ['Sunscreen & After Sun'],
+                            ['Tanning Oil & Self Tanners'],
+                          ]
+                        ],
                         ['Breast Care'],
-                        ['Hand Care'],
+                        [
+                          'Hand Care',
+                          'child' => [
+                            ['Hand Washes'],
+                            ['Lotion, Cream and Scrubs'],
+                            ['Hand Masks'],
+                            ['Hand Sanitizers '],
+                          ]
+                        ],
                         ['Talcum Powder'],
-                        ['Foot Care'],
+                        [
+                          'Foot Care',
+                          'child' => [
+                            ['Foot Deodorant'],
+                            ['Lotion, Cream and Scrubs'],
+                            ['Foot Masks'],
+                          ]
+                        ],
                       ]
                     ],
                     [
