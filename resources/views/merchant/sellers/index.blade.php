@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 
-@section('content') 
+@section('content')
 @push('css')
 <style>
      .imagestyle{
@@ -34,7 +34,7 @@
 @endcomponent
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12"> 
+            <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
                         <nav>
@@ -45,7 +45,7 @@
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-active-tab"> 
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-active-tab">
                                 <div class="card-body order-datatable">
                                     <table class="table table-borderd" id="dataTableNoPagingDesc">
                                         <thead>
@@ -71,7 +71,7 @@
                                                     <td>{{ Baazar::short_text(strip_tags($row->description),100) }}</td>
                                                     <td class="d-flex justify-content-between">
                                                         <ul>
-                                                            <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="View" class="btn btn-sm btn-info"  data-toggle="modal" data-target=".approved{{$row->id}}"><i class="fa fa-eye"></i>View</a> </li>  
+                                                            <li><a href="{{ url('/merchant/merchant/'.$row->id) }}" title="View" class="btn btn-sm btn-info"  data-toggle="modal" data-target=".approved{{$row->id}}"><i class="fa fa-eye"></i>View</a> </li>
                                                         </ul>
                                                     </td>
                                                 </tr>
@@ -86,17 +86,17 @@
                                                             <div class="modal-body">
                                                                 <div class="row p-3">
                                                                     <div class="col-md-5 br-2">
-                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  class="w-100" class="img" alt=""> 
-                                                                        <div class="sort-info mt-4"> 
+                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  class="w-100" class="img" alt="">
+                                                                        <div class="sort-info mt-4">
                                                                             <h3 class="display-6 pt-2">{{ $row->first_name.' '.$row->last_name}}</h3>
                                                                             <p class="">
                                                                                 Email &nbsp;&nbsp;&nbsp;: {{ $row->email }} <br>
                                                                                 Phone &nbsp;&nbsp;: {{ $row->phone }} <br>
                                                                                 Gender &nbsp;: {{ $row->gender }}
                                                                             </p>
-                                                                        </div> 
-                                                                    </div>       
-                                                                
+                                                                        </div>
+                                                                    </div>
+
                                                                     <div class="col-md-7">
                                                                             <div class="float-left modal-logo">
                                                                                 <img src="{{ !empty($row->shop->logo) ? asset($row->shop->logo) : asset('/uploads/shops/logos/shop-1.png') }}" class="" height="100" width="100" alt="Logo">
@@ -112,18 +112,18 @@
                                                                                 <h5>{{ $row->shop->name }}</h5>
                                                                                 <h6>750 followers | 10 review</h6>
                                                                                 <h6>{{ $row->shop->email }}</h6>
-                                                                            </div> 
+                                                                            </div>
                                                                     </div>
                                                                 </div>
-                                                            </div> 
-                                                        </div> 
-                                                    </div> 
-                                                </div> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             @endforeach
                                         </tbody>
                                     </table>
-                                </div> 
-                            </div> 
+                                </div>
+                            </div>
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-requested-tab">
                                 <div class="card-body order-datatable">
                                     <table class="table table-borderd" id="dataTableNoPagingDesc1">
@@ -150,7 +150,7 @@
                                                     <td>{{ Baazar::short_text(strip_tags($row->description),100) }}</td>
                                                     <td class="d-flex justify-content-between">
                                                         <ul>
-                                                            <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"  data-toggle="modal" data-target=".requested{{$row->id}}"><i class="fa fa-check"></i>View</a> </li>
+                                                            <li><a href="{{ url('/merchant/merchant/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"  data-toggle="modal" data-target=".requested{{$row->id}}"><i class="fa fa-check"></i>View</a> </li>
                                                         </ul>
                                                     </td>
                                                 </tr>
@@ -168,8 +168,8 @@
                                                             <div class="modal-body">
                                                                 <div class="row p-3">
                                                                     <div class="col-md-5 br-2">
-                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  class="w-100" class="img" alt=""> 
-                                                                        <div class="sort-info mt-4"> 
+                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  class="w-100" class="img" alt="">
+                                                                        <div class="sort-info mt-4">
                                                                             <h3 class="display-6 pt-2">{{ $row->first_name.' '.$row->last_name}}</h3>
                                                                             <p class="">
                                                                                 Email &nbsp;&nbsp;&nbsp;: {{ $row->email }} <br>
@@ -181,7 +181,7 @@
                                                                             <div class="modal-dialog" role="document">
                                                                                 <div class="modal-content">
                                                                                     <div class="modal-header">
-                                                                                        <h5 class="modal-title f-w-600" id="exampleModalLabel">Reject</h5> 
+                                                                                        <h5 class="modal-title f-w-600" id="exampleModalLabel">Reject</h5>
                                                                                     </div>
                                                                                     <div class="modal-body">
                                                                                         <form action="{{ url('merchant/seller/rejected/'.$row->id)}}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">
@@ -193,21 +193,21 @@
                                                                                                     <textarea class="form-control" name="rej_desc" id="validationCustom01" type="text" rows="10" required></textarea>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="text-right"> 
+                                                                                            <div class="text-right">
                                                                                                 <button type="submit" class="btn btn-primary">Reject</button>
-                                                                                            </div> 
+                                                                                            </div>
                                                                                         </form>
                                                                                     </div>
-                                                                                        
+
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>       
-                                                                
+                                                                    </div>
+
                                                                     <div class="col-md-7">
                                                                             <div class="float-left modal-logo">
 
-                                                                                <img src="{{ !empty($row->shop->logo) ? asset($row->shop->logo) : asset('/uploads/shops/logos/shop-1.png') }}" class="" height="100" width="100" alt="Logo"> 
+                                                                                <img src="{{ !empty($row->shop->logo) ? asset($row->shop->logo) : asset('/uploads/shops/logos/shop-1.png') }}" class="" height="100" width="100" alt="Logo">
                                                                             </div>
                                                                             <div>
                                                                             <h3 class="display-5 font-weight-bold">{{$row->shop->name}}</h3>
@@ -220,7 +220,7 @@
                                                                                 <h5>{{$row->shop->name}}</h5>
                                                                                 <h6>750 followers | 10 review</h6>
                                                                                 <h6>{{$row->shop->email}}</h6>
-                                                                            </div> 
+                                                                            </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -230,9 +230,9 @@
                                                                     <button type="submit" class="btn btn-warning">Approve</button>
                                                                 </form>
                                                                 <button type="button" class="btn btn-primary ml-1" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Reject</button>
-                                                            </div> 
-                                                        </div> 
-                                                    </div> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             @endforeach
                                         </tbody>
@@ -265,7 +265,7 @@
                                                     <td>{!! $row->description !!}</td>
                                                     <td class="d-flex justify-content-between">
                                                         <ul>
-                                                            <li><a href="{{ url('/merchant/seller/'.$row->id) }}" title="Rejected" class="btn btn-sm btn-primary"  data-toggle="modal" data-target=".rejected{{$row->id}}"><i class="fa fa-close"></i>View</a> </li>  
+                                                            <li><a href="{{ url('/merchant/merchant/'.$row->id) }}" title="Rejected" class="btn btn-sm btn-primary"  data-toggle="modal" data-target=".rejected{{$row->id}}"><i class="fa fa-close"></i>View</a> </li>
                                                         </ul>
                                                     </td>
                                                 </tr>
@@ -280,17 +280,17 @@
                                                             <div class="modal-body">
                                                                 <div class="row p-3">
                                                                     <div class="col-md-5 br-2">
-                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  class="w-100" class="img" alt=""> 
-                                                                        <div class="sort-info mt-4"> 
+                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  class="w-100" class="img" alt="">
+                                                                        <div class="sort-info mt-4">
                                                                             <h3 class="display-6 pt-2">{{ $row->first_name.' '.$row->last_name}}</h3>
                                                                             <p class="">
                                                                                 Email &nbsp;&nbsp;&nbsp;: {{ $row->email }} <br>
                                                                                 Phone &nbsp;&nbsp;: {{ $row->phone }} <br>
                                                                                 Gender &nbsp;: {{ $row->gender }}
                                                                             </p>
-                                                                        </div> 
-                                                                    </div>       
-                                                                
+                                                                        </div>
+                                                                    </div>
+
                                                                     <div class="col-md-7">
                                                                             <div class="float-left modal-logo">
                                                                                 <img src="{{ !empty($row->shop->logo) ? asset($row->shop->logo) : asset('/uploads/shops/logos/shop-1.png') }}" class="" height="100" width="100" alt="Logo">
@@ -306,12 +306,12 @@
                                                                                 <h5>{{ $row->shop->name }}</h5>
                                                                                 <h6>750 followers | 10 review</h6>
                                                                                 <h6>{{ $row->shop->email }}</h6>
-                                                                            </div> 
+                                                                            </div>
                                                                     </div>
                                                                 </div>
-                                                            </div> 
-                                                        </div> 
-                                                    </div> 
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             @endforeach
                                         </tbody>
@@ -323,5 +323,5 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 @endsection

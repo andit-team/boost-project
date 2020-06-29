@@ -15,7 +15,7 @@ class MerchantController extends Controller{
 
     public function dashboard(){
         $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
-        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first(); 
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
        return view('vendor-deshboard',compact('sellerProfile','shopProfile'));
     }
 
@@ -48,7 +48,7 @@ class MerchantController extends Controller{
         return view('merchant.sell-on-andbaazar');
     }
 
-    public function sellOnAndbaazarPost(Request $request,Seller $seller){ 
+    public function sellOnAndbaazarPost(Request $request,Seller $seller){
 
         $request->validate([
             'first_name' => 'required',
@@ -56,39 +56,39 @@ class MerchantController extends Controller{
             'phone'      => 'required',
         ]);
 
-        $slug = Baazar::getUniqueSlug($seller,$request->first_name); 
+        $slug = Baazar::getUniqueSlug($seller,$request->first_name);
         $verify_number = mt_rand(10000,99999);
         $Seller = ([
             'first_name'         => $request->first_name,
             'last_name'          => $request->last_name,
             'slug'               => $slug,
             'phone'              => $request->phone,
-            'verification_token' => $verify_number, 
+            'verification_token' => $verify_number,
             'created_at' => now(),
         ]);
 
         Seller::create($Seller);
 
-        session()->flash('success','Seller profile registration 1st stape complete successfully');  
+        session()->flash('success','Seller profile registration 1st stape complete successfully');
 
         return redirect('sell-resubmit-token'.'?slug='.$slug);
     }
 
     public function resubmitToken(Request $request){
         $seller = Seller::where('slug',$request->slug)->first();
-        
-       
+
+
         return view('auth.merchant.resubmitToken',compact('seller'));
     }
 
     public function tokenUpdate(Request $request){
         $seller    = Seller::where('slug',$request->slug)->first();
-        
+
         $verify_number = mt_rand(10000,99999);
-       
+
         $seller->update([
             'verification_token' => $verify_number,
-        ]); 
+        ]);
 
         session()->flash('success','Verify toke re-send successfully!');
 
@@ -100,11 +100,11 @@ class MerchantController extends Controller{
         $request->validate([
             'verification_token'    => 'required|exists:sellers,verification_token|max:5'
         ]);
-       
+
         $seller    = Seller::where('slug',$request->slug)->first();
-       
-        
-       
+
+
+
        $seller->update([
             'verification_token' => $request->verification_token,
             'slug' => $request->slug,
@@ -113,57 +113,59 @@ class MerchantController extends Controller{
         session()->flash('success','Verification Successfully!');
 
         return redirect('seller-registration'.'?slug='.$request->slug);
-    
+
     }
 
     public function sellerRegistration(Request $request){
         $seller = Seller::where('slug',$request->slug)->first();
+
         if(!$seller){
             return redirect('/');
         }
+
         return view('auth.merchant.registration',compact('seller'));
     }
 
-    public function registrationStepOne(Request $request){ 
+    public function registrationStepOne(Request $request){
 
-        $request->validate([   
+        $request->validate([
             'password'      => 'required|confirmed',
             'email'         => 'required|unique:sellers,email',
-            'agreed'        => 'accepted' 
+            'agreed'        => 'accepted'
         ]);
-        
+
         $seller = Sentinel::registerAndActivate([
             'first_name' => $request->first_name,
             'last_name'  => $request->last_name,
             'email'      => $request->email,
             'password' 	 => $request->password,
-            'type'       => 'sellers', 
+            'type'       => 'sellers',
             'create-at'  => now(),
             ]);
-      
+
 
         $sellerId    = Seller::where('slug',$request->slug)->first();
- 
+
             $sellerId->update([
                 'first_name'         => $sellerId->first_name,
                 'last_name'          => $sellerId->last_name,
                 'phone'              => $sellerId->phone,
-                'email'              => $request->email, 
+                'email'              => $request->email,
                 'dob'                => $request->dob,
                 'gender'             => $request->gender,
                 'description'        => $request->description,
                 'last_visited_at'    => now(),
                 'last_visited_from'  => $request->last_visited_from,
-                'verification_token' => $request->verification_token, 
+                'verification_token' => $request->verification_token,
                 'status'             => 'Inactive',
                 'user_id'            =>  $seller->id,
                 'updated_at'         => now(),
             ]);
-       
+
             // \Mail::to($sellerId)->send(new VendorProfileApprovalMail($sellerId));
-   
+
         session()->flash('success','Registration Successfully!');
-        
+
         return redirect('seller-shope-registration'.'?slug='.$request->slug);
     }
 
@@ -178,7 +180,7 @@ class MerchantController extends Controller{
     public function shopRegistrationStore(Request $request,Shop $shop){
         // dd($request->all());
         $request->validate([
-            'name'       => 'required', 
+            'name'       => 'required',
             'slogan'     => 'required',
             'phone'      => 'required',
             'address'    => 'required',
@@ -203,8 +205,8 @@ class MerchantController extends Controller{
             'create_at' => now(),
         ];
 
-        Shop::create($shope); 
-        
+        Shop::create($shope);
+
         session()->flash('success','Shop registration Successfully!');
 
         return redirect('merchant/login');
@@ -230,7 +232,7 @@ class MerchantController extends Controller{
         $validatedData = $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'phone'     => 'required', 
+            'phone'     => 'required',
         ]);
     }
 
@@ -274,6 +276,144 @@ class MerchantController extends Controller{
                 return response()->json(['status'=>true]);
             }
         }
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+
+        $activesellers = Seller::with('shop')->where('status','Active')->orderBy('id', 'DESC')->get();
+
+        $requestSellers = Seller::with('shop')->where('status','Inactive')->orderBy('id','DESC')->get();
+
+        $rejectSellers = Seller::with('shop')->where('status','Reject')->orderBy('id','DESC')->get();
+
+
+
+        return view('merchant.sellers.index',compact('activesellers','requestSellers','rejectSellers'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $userprofile = Sentinel::getUser();
+        $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        if(!empty($sellerProfile))
+            return view('merchant.sellers.update',compact('sellerProfile','userprofile','shopProfile'));
+        else
+            return view('merchant.sellers.create',compact('sellerProfile','userprofile','shopProfile'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request,Seller $seller)
+    {
+        $userprofile = Sentinel::getUser();
+        $sellerId    = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $this->validateForm($request);
+        $slug = Baazar::getUniqueSlug($seller,$request->first_name);
+        if($sellerId){
+            $sellerId->update([
+                'first_name'        => $request->first_name,
+                'last_name'         => $request->last_name,
+                'phone'             => $request->phone,
+                'email'             => $request->email,
+                'picture'           => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
+                'dob'               => $request->dob,
+                'gender'            => $request->gender,
+                'description'       => $request->description,
+                'last_visited_at'   => now(),
+                'last_visited_from' => $request->last_visited_from,
+                // 'verification_token' => $request->verification_token,
+                // 'remember_token' => $request->remember_token,
+                'user_id'           => Sentinel::getUser()->id,
+                'updated_at'        => now(),
+            ]);
+
+            $userprofile->update([
+                'first_name' => $request->first_name,
+                'last_name'  => $request->last_name,
+                'email'      => $request->email,
+                'updated_at' => now(),
+            ]);
+
+            session()->flash('success','your profile is updated');
+            return back();
+
+        }else{
+            $sellerId=Seller::create([
+                'first_name'        => $request->first_name,
+                'last_name'         => $request->last_name,
+                'slug'              => $slug,
+                'phone'             => $request->phone,
+                'email'             => $request->email,
+                'picture'           => Baazar::fileUpload($request,'picture','','/uploads/vendor_profile'),
+                'dob'               =>$request->dob,
+                'gender'            => $request->gender,
+                'description'       => $request->description,
+                'last_visited_at'   => now(),
+                'last_visited_from' => $request->last_visited_from,
+                // 'verification_token' => $request->verification_token,
+                // 'remember_token' => $request->remember_token,
+                'user_id'           => Sentinel::getUser()->id,
+                'created_at'        => now(),
+            ]);
+
+            $userprofile->update([
+                'first_name' => $request->first_name,
+                'last_name'  => $request->last_name,
+                'email'      => $request->email,
+                'updated_at' => now(),
+            ]);
+
+
+
+            \Mail::to($sellerId)->send(new VendorProfileApprovalMail($sellerId));
+            session()->flash('success','Thanks for create profile! Your Message Sent Successfully');
+            return back();
+        }
+
+        return back();
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $seller = Seller::find($id);
+
+        return view('merchant.sellers.show',compact('seller'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($slug)
+    {
+        $userprofile = Sentinel::getUser();
+        $seller = Seller::where('slug',$slug)->first();
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        return view('merchant.sellers.edit',compact('seller','userprofile','shopProfile'));
     }
 
     }
