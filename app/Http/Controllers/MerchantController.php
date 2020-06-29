@@ -118,7 +118,9 @@ class MerchantController extends Controller{
 
     public function sellerRegistration(Request $request){
         $seller = Seller::where('slug',$request->slug)->first();
-        
+        if(!$seller){
+            return redirect('/');
+        }
         return view('auth.merchant.registration',compact('seller'));
     }
 
@@ -167,6 +169,9 @@ class MerchantController extends Controller{
 
     public function shopRegistration(Request $request){
         $seller = Seller::where('slug',$request->slug)->first();
+        if(!$seller){
+            return redirect('/');
+        }
         return view('auth.merchant.shopRegistration',compact('seller'));
     }
 

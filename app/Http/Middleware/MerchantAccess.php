@@ -15,9 +15,9 @@ class MerchantAccess
      */
     public function handle($request, Closure $next)
     {
-        if (Sentinel::getUser()->type != 'sellers') {
-            return redirect('/');//->with('error','Sorry you are not loggedin.');
+        if (Sentinel::getUser()->type == 'sellers' || Sentinel::getUser()->type == 'admin') {
+            return $next($request);
         }
-        return $next($request);
+        return redirect('/');//->with('error','Sorry you are not loggedin.');
     }
 }

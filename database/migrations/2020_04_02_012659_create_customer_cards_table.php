@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBuyerCardsTable extends Migration
+class CreateCustomerCardsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,20 @@ class CreateBuyerCardsTable extends Migration
      */
     public function up()
     {
-        Schema::create('buyer_cards', function (Blueprint $table) {
+        Schema::create('customer_cards', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('card_number');
+            $table->string('slug')->nullable();
             $table->string('card_holder_name');
             $table->date('card_expire_date');
             $table->string('card_cvc');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedBigInteger('buyer_id');
+            $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('buyer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
@@ -37,6 +38,6 @@ class CreateBuyerCardsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buyer_cards');
+        Schema::dropIfExists('customer_cards');
     }
 }

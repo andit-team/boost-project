@@ -7,19 +7,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Customer;
 use App\Models\Order;
 use App\User;
-class BuyerCard extends Model
+class CustomerCard extends Model
 {
   use SoftDeletes;
-  protected $fillable = ['card_number','card_holder_name','card_expire_date','card_cvc','active','buyer_id','user_id','deleted_at'];
+  protected $fillable = ['card_number','slug','card_holder_name','card_expire_date','card_cvc','active','customer_id','user_id','deleted_at'];
 
   public function user(){
    return $this->belongsTo(User::class,'user_id');
    }
 
    public function buyer(){
-    return $this->belongsTo(Customer::class,'buyer_id');
+    return $this->belongsTo(Customer::class,'customer_id');
     }
     public function order(){
-      return $this->hasMany(Order::class,'buyer_card_id');
+      return $this->hasMany(Order::class,'customer_card_id');
     }
 }
