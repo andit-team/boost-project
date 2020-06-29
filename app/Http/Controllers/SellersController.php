@@ -20,111 +20,111 @@ class SellersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        
-        $activesellers = Seller::with('shop')->where('status','Active')->orderBy('id', 'DESC')->get();
-        // dd($activesellers);
-        $requestSellers = Seller::with('shop')->where('status','Inactive')->orderBy('id','DESC')->get();
-        //dd($requestSellers);
-        $rejectSellers = Seller::with('shop')->where('status','Reject')->orderBy('id','DESC')->get();
-
-       
-        
-        return view('merchant.sellers.index',compact('activesellers','requestSellers','rejectSellers'));
-    }
+//    public function index()
+//    {
+//
+//        $activesellers = Seller::with('shop')->where('status','Active')->orderBy('id', 'DESC')->get();
+//        // dd($activesellers);
+//        $requestSellers = Seller::with('shop')->where('status','Inactive')->orderBy('id','DESC')->get();
+//        //dd($requestSellers);
+//        $rejectSellers = Seller::with('shop')->where('status','Reject')->orderBy('id','DESC')->get();
+//
+//
+//
+//        return view('merchant.sellers.index',compact('activesellers','requestSellers','rejectSellers'));
+//    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $userprofile = Sentinel::getUser(); 
-        $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
-        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first(); 
-        if(!empty($sellerProfile))
-           return view('merchant.sellers.update',compact('sellerProfile','userprofile','shopProfile'));
-         else
-           return view('merchant.sellers.create',compact('sellerProfile','userprofile','shopProfile'));
-    }
+//    public function create()
+//    {
+//        $userprofile = Sentinel::getUser();
+//        $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
+//        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+//        if(!empty($sellerProfile))
+//           return view('merchant.sellers.update',compact('sellerProfile','userprofile','shopProfile'));
+//         else
+//           return view('merchant.sellers.create',compact('sellerProfile','userprofile','shopProfile'));
+//    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request,Seller $seller)
-    {
-        $userprofile = Sentinel::getUser();
-        $sellerId    = Seller::where('user_id',Sentinel::getUser()->id)->first(); 
-        $this->validateForm($request);
-        $slug = Baazar::getUniqueSlug($seller,$request->first_name);
-        if($sellerId){
-            $sellerId->update([
-                'first_name'        => $request->first_name,
-                'last_name'         => $request->last_name,
-                'phone'             => $request->phone,
-                'email'             => $request->email,
-                'picture'           => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
-                'dob'               => $request->dob,
-                'gender'            => $request->gender,
-                'description'       => $request->description,
-                'last_visited_at'   => now(),
-                'last_visited_from' => $request->last_visited_from,
-                // 'verification_token' => $request->verification_token,
-                // 'remember_token' => $request->remember_token,
-                'user_id'           => Sentinel::getUser()->id,
-                'updated_at'        => now(),
-            ]);
-
-            $userprofile->update([
-                'first_name' => $request->first_name,
-                'last_name'  => $request->last_name,
-                'email'      => $request->email,
-                'updated_at' => now(),
-            ]);
-
-            session()->flash('success','your profile is updated');
-            return back();
-
-        }else{
-            $sellerId=Seller::create([
-                'first_name'        => $request->first_name,
-                'last_name'         => $request->last_name,
-                'slug'              => $slug,
-                'phone'             => $request->phone,
-                'email'             => $request->email,
-                'picture'           => Baazar::fileUpload($request,'picture','','/uploads/vendor_profile'),
-                'dob'               =>$request->dob,
-                'gender'            => $request->gender,
-                'description'       => $request->description,
-                'last_visited_at'   => now(),
-                'last_visited_from' => $request->last_visited_from,
-                // 'verification_token' => $request->verification_token,
-                // 'remember_token' => $request->remember_token,
-                'user_id'           => Sentinel::getUser()->id,
-                'created_at'        => now(),
-            ]);
-
-            $userprofile->update([
-                'first_name' => $request->first_name,
-                'last_name'  => $request->last_name,
-                'email'      => $request->email,
-                'updated_at' => now(),
-            ]);
-
-
-
-            \Mail::to($sellerId)->send(new VendorProfileApprovalMail($sellerId));
-            session()->flash('success','Thanks for create profile! Your Message Sent Successfully');
-            return back();
-        }
-
-        return back();
-    }
+//    /**
+//     * Store a newly created resource in storage.
+//     *
+//     * @param  \Illuminate\Http\Request  $request
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function store(Request $request,Seller $seller)
+//    {
+//        $userprofile = Sentinel::getUser();
+//        $sellerId    = Seller::where('user_id',Sentinel::getUser()->id)->first();
+//        $this->validateForm($request);
+//        $slug = Baazar::getUniqueSlug($seller,$request->first_name);
+//        if($sellerId){
+//            $sellerId->update([
+//                'first_name'        => $request->first_name,
+//                'last_name'         => $request->last_name,
+//                'phone'             => $request->phone,
+//                'email'             => $request->email,
+//                'picture'           => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
+//                'dob'               => $request->dob,
+//                'gender'            => $request->gender,
+//                'description'       => $request->description,
+//                'last_visited_at'   => now(),
+//                'last_visited_from' => $request->last_visited_from,
+//                // 'verification_token' => $request->verification_token,
+//                // 'remember_token' => $request->remember_token,
+//                'user_id'           => Sentinel::getUser()->id,
+//                'updated_at'        => now(),
+//            ]);
+//
+//            $userprofile->update([
+//                'first_name' => $request->first_name,
+//                'last_name'  => $request->last_name,
+//                'email'      => $request->email,
+//                'updated_at' => now(),
+//            ]);
+//
+//            session()->flash('success','your profile is updated');
+//            return back();
+//
+//        }else{
+//            $sellerId=Seller::create([
+//                'first_name'        => $request->first_name,
+//                'last_name'         => $request->last_name,
+//                'slug'              => $slug,
+//                'phone'             => $request->phone,
+//                'email'             => $request->email,
+//                'picture'           => Baazar::fileUpload($request,'picture','','/uploads/vendor_profile'),
+//                'dob'               =>$request->dob,
+//                'gender'            => $request->gender,
+//                'description'       => $request->description,
+//                'last_visited_at'   => now(),
+//                'last_visited_from' => $request->last_visited_from,
+//                // 'verification_token' => $request->verification_token,
+//                // 'remember_token' => $request->remember_token,
+//                'user_id'           => Sentinel::getUser()->id,
+//                'created_at'        => now(),
+//            ]);
+//
+//            $userprofile->update([
+//                'first_name' => $request->first_name,
+//                'last_name'  => $request->last_name,
+//                'email'      => $request->email,
+//                'updated_at' => now(),
+//            ]);
+//
+//
+//
+//            \Mail::to($sellerId)->send(new VendorProfileApprovalMail($sellerId));
+//            session()->flash('success','Thanks for create profile! Your Message Sent Successfully');
+//            return back();
+//        }
+//
+//        return back();
+//    }
 
     /**
      * Display the specified resource.
@@ -132,25 +132,25 @@ class SellersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $seller = Seller::find($id); 
+//    public function show($id)
+//    {
+//        $seller = Seller::find($id);
+//
+//        return view('merchant.sellers.show',compact('seller'));
+//    }
 
-        return view('merchant.sellers.show',compact('seller'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($slug)
-    {
-        $userprofile = Sentinel::getUser();
-        $seller = Seller::where('slug',$slug)->first(); 
-        return view('merchant.sellers.edit',compact('seller','userprofile'));
-    }
+//    /**
+//     * Show the form for editing the specified resource.
+//     *
+//     * @param  int  $id
+//     * @return \Illuminate\Http\Response
+//     */
+//    public function edit($slug)
+//    {
+//        $userprofile = Sentinel::getUser();
+//        $seller = Seller::where('slug',$slug)->first();
+//        return view('merchant.sellers.edit',compact('seller','userprofile'));
+//    }
 
     /**
      * Update the specified resource in storage.
@@ -161,7 +161,7 @@ class SellersController extends Controller
      */
     public function update(Request $request, $slug)
     {
-      
+
         $userprofile = Sentinel::getUser();
         $sellerProfile = Seller::where('slug',$slug)->first();
         $this->validateForm($request);
@@ -196,7 +196,7 @@ class SellersController extends Controller
          $name    = $data['first_name'];
          $surname = $data['last_name'];
 
-        \Mail::to($data['email'])->send(new VendorProfilResubmitMail($data,$name,$surname)); 
+        \Mail::to($data['email'])->send(new VendorProfilResubmitMail($data,$name,$surname));
 
         Session::flash('success', 'Profile Resubmit successfully!');
 
@@ -217,9 +217,9 @@ class SellersController extends Controller
     public function approvement($id){
 
         $data = Seller::where('id',$id)->first();
-        
-        
-        $data->update(['status' => 'Active']); 
+
+
+        $data->update(['status' => 'Active']);
          $name    = $data['first_name'];
          $surname = $data['last_name'];
         // \Mail::to($data['email'])->send(new VendorProfileAcceptMail($data,$name,$surname));
@@ -233,7 +233,7 @@ class SellersController extends Controller
     public function rejected(Request $request,$id){
 
         $data = Seller::where('id',$id)->first();
-        
+
 
         $data->update([
             'status'   => 'Reject',
@@ -251,7 +251,7 @@ class SellersController extends Controller
         return back();
 
     }
-    
+
 
     private function validateForm($request){
         $validatedData = $request->validate([
