@@ -4,7 +4,7 @@ namespace App;
 
 use Cartalyst\Sentinel\Users\EloquentUser;
 use App\Models\Customer;
-use App\Models\BuyerCard;
+use App\Models\CustomerCard;
 use App\Models\BuyerPayment;
 use App\Models\CustomerShippingAddress;
 use App\Models\Cart;
@@ -42,7 +42,7 @@ class User extends EloquentUser
    }
 
      public function buyercard(){
-       return $this->hasMany(BuyerCard::class,'buyer_id');
+       return $this->hasMany(CustomerCard::class,'buyer_id');
     }
       public function buyerpayment(){
         return $this->hasMany(BuyerPayment::class,'payment_method_id');

@@ -64,7 +64,7 @@
 
                         </div>
                         <div class="row">
-                         <a href="{{url('/customer/shipping/'.$row->id.'/edit')}}" class="btn btn-sm btn-solid ml-3"><i class="fa fa-edit"> Edit</i></a>
+                         <a href="{{url('/customer/shipping/'.$row->slug.'/edit')}}" class="btn btn-sm btn-solid ml-3"><i class="fa fa-edit"> Edit</i></a>
                          <form action="{{ url('/customer/shipping/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
                           @csrf
                           @method('delete')

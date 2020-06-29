@@ -23,9 +23,15 @@ Route::resource('contact-us', 'ContactController');
 Route::prefix('customer')->group(function () {
     Route::get('/','CustomersController@create');
     Route::post('/','CustomersController@store')->name('profileUpdate');
+    Route::get('shipping/{slug}/edit','CustomerShippingAddressesController@edit');
+    Route::put('shipping/{slug}','CustomerShippingAddressesController@update');
     Route::resource('shipping','CustomerShippingAddressesController');
-    Route::resource('billing','BuyerBillingAddressesController');
-    Route::resource('card','BuyerCardsController');
+    Route::get('billing/{slug}/edit','CustomerBillingAddressesController@edit');
+    Route::put('billing/{slug}','CustomerBillingAddressesController@update');
+    Route::resource('billing','CustomerBillingAddressesController');
+    Route::get('card/{slug}/edit','CustomerCardsController@edit');
+    Route::get('card/{slug}','CustomerCardsController@edit');
+    Route::resource('card','CustomerCardsController');
     Route::resource('buyerpayment','BuyerPaymentsController');
 });
 

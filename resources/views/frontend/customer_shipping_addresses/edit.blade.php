@@ -18,7 +18,7 @@
     @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'shipping'])
      <div class="col-sm-9 contact-page register-page container">
        <h3>SHIPPING ADDRESS</h3>
-        <form class="theme-form" action="{{ url('/customer/shipping/'.$shipping->id) }}" method="post" id="validateForm">
+        <form class="theme-form" action="{{ url('/customer/shipping/'.$shipping->slug) }}" method="post" id="validateForm">
            @method('put')
             @csrf
             <div class="form-row">
@@ -29,8 +29,8 @@
                </div>
 
                <div class="col-md-6">
-                    <label for="address">Address <span class="text-danger">*</span></label> <span class="text-danger">{{ $errors->first('address') }}</label>
-                    <input type="text" class="form-control  @error('address') border-danger @enderror" " name="address" value="{{ old('address',$shipping->address) }}" id="" placeholder="Address">
+                   <label for="address">Address <span class="text-danger">*</span></label> <span class="text-danger">{{ $errors->first('address') }}</span></label>
+                    <input type="text" class="form-control  @error('address') border-danger @enderror"  name="address" value="{{ old('address',$shipping->address) }}" id="" placeholder="Address">
                </div>
 
                 <div class="col-md-6">

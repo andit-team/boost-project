@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\BuyerBillingAddress;
+use App\Models\CustomerBillingAddress;
 use App\Models\CustomerShippingAddress;
-use App\Models\BuyerCard;
+use App\Models\CustomerCard;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\PromotionUse;
@@ -21,11 +21,11 @@ class Customer extends Model
      }
 
     public function buyerbilladd(){
-      return $this->hasMany(BuyerBillingAddress::class,'buyer_id');
+      return $this->hasMany(CustomerBillingAddress::class,'buyer_id');
    }
 
    public function buyercard(){
-     return $this->hasMany(BuyerCard::class,'buyer_id');
+     return $this->hasMany(CustomerCard::class,'buyer_id');
   }
     public function buyershippingadd(){
       return $this->hasMany(CustomerShippingAddress::class,'buyer_id');
