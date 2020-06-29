@@ -12,3 +12,11 @@ php artisan config:clear
 php artisan cache:clear
 php artisan route:clear
 php artisan view:clear 
+
+
+//remove db
+DB_HOST=andbaazar.com
+DB_PORT=3306
+DB_DATABASE=andbaazar_andbaazar
+DB_USERNAME=andbaazar_andbaazar
+DB_PASSWORD=andbaazar_andbaazar

@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
                 CustomersTableSeeder::class,
                 PermissionTableSeeder::class,
                 UserTableSeeder::class,
-               // CategoriesTableSeeder::class,
+               CategoriesTableSeeder::class,
                 CuriersTableSeeder::class,
                 CurrenciesTableSeeder::class,
                 PromotionHeadsTableSeeder::class,

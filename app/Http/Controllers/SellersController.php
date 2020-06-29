@@ -222,7 +222,7 @@ class SellersController extends Controller
         $data->update(['status' => 'Active']); 
          $name    = $data['first_name'];
          $surname = $data['last_name'];
-        \Mail::to($data['email'])->send(new VendorProfileAcceptMail($data,$name,$surname));
+        // \Mail::to($data['email'])->send(new VendorProfileAcceptMail($data,$name,$surname));
 
         session()->flash('success','Profile Approved Successfully and Sent Mail to the user');
 

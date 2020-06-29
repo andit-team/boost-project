@@ -38,7 +38,7 @@ class ItemsController extends Controller
       $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
       $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
       $category = Category::all();
-      $item = Item::where('status','Active')->get();
+      $item = Item::where('status','Active')->where('shop_id',$shopProfile->id)->get();
       $size= Size::all();
       $color = Color::all();
       return view ('merchant.product.index',compact('category','item','size','color','sellerProfile','shopProfile'));

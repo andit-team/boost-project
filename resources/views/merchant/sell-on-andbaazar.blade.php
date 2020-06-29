@@ -1,6 +1,6 @@
 
-{{-- @extends('layouts.master',['title' => 'become a vendor']) --}}
-@extends('merchant.master',['title' => 'become a vendor'])
+@extends('layouts.master',['title' => 'become a vendor'])
+{{-- @extends('merchant.master',['title' => 'become a vendor']) --}}
 @section('content')
 
 @include('elements.alert')
