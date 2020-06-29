@@ -29,7 +29,9 @@ Route::prefix('customer')->group(function () {
     Route::get('billing/{slug}/edit','CustomerBillingAddressesController@edit');
     Route::put('billing/{slug}','CustomerBillingAddressesController@update');
     Route::resource('billing','CustomerBillingAddressesController');
-    Route::resource('card','BuyerCardsController');
+    Route::get('card/{slug}/edit','CustomerCardsController@edit');
+    Route::get('card/{slug}','CustomerCardsController@edit');
+    Route::resource('card','CustomerCardsController');
     Route::resource('buyerpayment','BuyerPaymentsController');
 });
 

@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use App\Models\BuyerCard;
+use App\Models\CustomerCard;
 use Sentinel;
 use Session;
+use Baazar;
 
-class BuyerCardsController extends Controller
+class CustomerCardsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class BuyerCardsController extends Controller
      */
     public function index()
     {
-        $card = BuyerCard::where('user_id',Sentinel::getUser()->id)->get();
-        return view('frontend.byer_cards.index',compact('card'));
+        $card = CustomerCard::where('user_id',Sentinel::getUser()->id)->get();
+        return view('frontend.customer_cards.index',compact('card'));
     }
 
     /**
@@ -28,7 +29,7 @@ class BuyerCardsController extends Controller
      */
     public function create()
     {
-        return view('frontend.byer_cards.create');
+        return view('frontend.customer_cards.create');
     }
 
     /**
@@ -37,29 +38,31 @@ class BuyerCardsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,CustomerCard $card)
     {
-        $buyerId = Customer::where('user_id',Sentinel::getUser()->id)->first();
+        $customerId = Customer::where('user_id',Sentinel::getUser()->id)->first();
+        $slug = Baazar::getUniqueSlug($card,$request->card_holder_name);
         $this->validateForm($request);
-        if($buyerId){
+        if($customerId){
             $data = [
-            'card_number' => $request->card_number,
-            'card_holder_name' => $request->card_holder_name,
-            'card_expire_date' => $request->card_expire_date,
-            'card_cvc' => $request->card_cvc,
-            'buyer_id' => $buyerId->id,
-            'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
+            'card_number'       => $request->card_number,
+            'slug'              => $slug,
+            'card_holder_name'  => $request->card_holder_name,
+            'card_expire_date'  => $request->card_expire_date,
+            'card_cvc'          => $request->card_cvc,
+            'customer_id'       => $customerId->id,
+            'user_id'           => Sentinel::getUser()->id,
+            'created_at'        => now(),
             ];
 
-            BuyerCard::create($data);
+            CustomerCard::create($data);
 
             Session::flash('success', 'Billing Card created');
 
             return redirect('profile/card');
         }
         Session::flash('danger', 'Somthing want wrong please fill up the form correctly');
-        return redirect('profile/card');
+        return redirect('customer/card');
     }
 
     /**
@@ -79,9 +82,10 @@ class BuyerCardsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(BuyerCard $card)
+    public function edit($slug)
     {
-        return view('frontend.byer_cards.edit',compact('card'));
+        $card = CustomerCard::where('slug',$slug)->first();
+        return view('frontend.customer_cards.edit',compact('card'));
     }
 
     /**
@@ -91,8 +95,9 @@ class BuyerCardsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BuyerCard $card)
+    public function update(Request $request, $slug)
     {
+        $card = CustomerCard::where('slug',$slug)->first();
         $this->validateForm($request);
             $data = [
             'card_number' => $request->card_number,
@@ -105,9 +110,9 @@ class BuyerCardsController extends Controller
 
             $card->update($data);
 
-            Session::flash('success', 'Billing Card updated');
+            Session::flash('warning', 'Billing Card updated');
 
-            return redirect('profile/card');
+            return redirect('customer/card');
 
     }
 
@@ -117,13 +122,13 @@ class BuyerCardsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BuyerCard $card)
+    public function destroy(CustomerCard $card)
     {
         $card->delete();
 
-        Session::flash('warning', 'Billing Card Deleted');
+        Session::flash('error', 'Billing Card Deleted');
 
-        return back();
+        return redirect('customer/card');
     }
 
     private function validateForm($request){

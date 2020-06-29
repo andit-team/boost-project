@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Customer;
 use App\Models\CustomerBillingAddress;
 use App\Models\Tag;
-use App\Models\BuyerCard;
+use App\Models\CustomerCard;
 use App\Models\ShippingMethod;
 use App\Models\BuyerPayment;
 use App\Models\OrderItem;
@@ -29,7 +29,7 @@ class Order extends Model
    }
 
     public function buyercard(){
-      return $this->belongsTo(BuyerCard::class,'buyer_card_id');
+      return $this->belongsTo(CustomerCard::class,'buyer_card_id');
     }
 
     public function shippingmethod(){
