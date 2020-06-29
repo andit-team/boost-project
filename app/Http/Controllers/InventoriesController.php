@@ -22,14 +22,8 @@ class InventoriesController extends Controller
      */
     public function index()
     {
-        $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
-        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first(); 
-        $inventory = Inventory::all();
-        $item = Item::where('user_id',Sentinel::getUser()->id)->get();
-        
-        $size= Size::all();
-        $color = Color::all();
-        return view ('merchant.inventory.index',compact('inventory','item','size','color','sellerProfile','shopProfile'));
+        $inventories = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->get();
+        return view ('merchant.inventory.index',compact('inventories'));
     }
 
     /**

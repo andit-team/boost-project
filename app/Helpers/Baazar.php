@@ -73,6 +73,16 @@ class Baazar
         return '';
     }
 
+    public function shop(){
+        $shop = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        if(!$shop){return "No Shop Registred";}
+        return $shop;
+    }
+    public function seller(){
+        $seller = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        if(!$seller){return 'No seller registred';}
+        return $seller;
+    }
     public function base64Upload($image_file,$name,$shop,$color){
             list($type, $image_file) = explode(';', $image_file);
             list(, $image_file)      = explode(',', $image_file);
