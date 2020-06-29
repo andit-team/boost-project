@@ -16,6 +16,7 @@ class CategoriesTableSeeder extends Seeder
     include('CategoriesAttr/Camera.php');
     include('CategoriesAttr/tv_audio_video_gaming.php');
     // include('CategoriesAttr/Home_Appliance.php');
+     // include('CategoriesAttr/Fashion.php');
 
 		// dd($mobiles_tablets);
 
@@ -33,6 +34,10 @@ class CategoriesTableSeeder extends Seeder
 
       // \Baazar::insertRecords($home_appliances);
       // echo  'Home Appliance Done....';
+
+      // \Baazar::insertRecords($fashion);
+      // echo  'Fashion Done....';
+
 
       // \Baazar::insertRecords($tv_audio);
       // echo  'TV, Audio  Done...';
