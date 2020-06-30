@@ -10,6 +10,7 @@
         <div class="row">
             @include('layouts.inc.sidebar.vendor-sidebar',[$active='dasboard'])
             <div class="col-lg-9">
+                @include('merchant.merchant-status',[$seller = Baazar::seller()])
                 <div class="faq-content tab-content" id="top-tabContent">
                     <div class="tab-pane fade show active" id="dashboard">
                         <div class="counter-section">

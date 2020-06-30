@@ -51,7 +51,7 @@
                 <div class="mt-2">
                     {{-- <h3>Merchant profile Status</h3> --}}
                         <div class="bg-warning text-center p-5 rounded">
-                            <h4>Thank Your for your request</h4>
+                            <h4>Thank Your for your request asdfasdf</h4>
                             <p>We need to review your request a little longer. After approve your request you can see your dashboard.</p>
                         </div>
                     </div>

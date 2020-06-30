@@ -1,26 +1,56 @@
 @extends('merchant.master')
 @section('content') 
 @include('elements.alert')
-{{-- @component('layouts.inc.breadcrumb')
-  @slot('pageTitle')
-      Vendor Dashboard
-  @endslot
-  @slot('page')
-      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">Inventory</li>
-  @endslot
-@endcomponent --}}
 
 
-<style>
-  .mt{
-      margin-top: -60px;
-  }
-</style>
 
 <section class="dashboard-section section-b-space">
-  <div class="container"> 
-      <div class="row">
+  <div class="container">
+    <div class="row">
+        @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
+        <div class="col-md-9">
+            <div class="card dashboard-table mt-0">
+                <div class="card-body">
+                    <div class="top-sec">
+                        <h3>all products</h3>
+                        <a href="{{ url('merchant/products/new') }}" class="btn btn-sm btn-solid">add product</a>
+                    </div>
+                    <table class="table-responsive-md table mb-0 table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">image</th>
+                                <th scope="col" class="text-left">product name</th>
+                                <th scope="col" class="text-left">category</th>
+                                <th scope="col">price</th>
+                                <th scope="col">stock</th>
+                                <th scope="col">sales</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($items as $row)
+                                <tr>
+                                    <th scope="row"><img src="{{asset($row->image)}}" class="blur-up lazyloaded"></th>
+                                    <td class="text-left">{{$row->name}}</td>
+                                    <td class="text-left">{{$row->category_slug}}</td>
+                                    <td>${{$row->price}}</td>
+                                    <td>100</td>
+                                    <td>2000</td>
+                                    <td><i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i><i class="fa fa-trash-o ml-1" aria-hidden="true"></i></td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="7">No Product found</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+      {{-- <div class="row">
         @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
           <div class="col-md-9 register-page contact-page">  
             <h3>Product Detail</h3>
@@ -39,11 +69,13 @@
                       <p>Resubmit your Profile.</p> 
                   <a href="{{ url('merchant/seller/'.$sellerProfile->slug.'/resubmit') }}" title="Resubmit" class="btn btn-sm btn-solid">Resubmit</a>
                   </div>
-          </div>
+            </div>
+
             @elseif($sellerProfile->status == 'Active')
             <div  class="text-right mt">                       
                 <a href="{{ url('merchant/products/new') }}" class="btn btn-sm btn-solid">add product</a> 
-            </div>             
+            </div>
+
             @forelse($item as $row)
                 <div class="card mb-4">      
                     <div class="card-header">              
@@ -89,8 +121,9 @@
                 </div> 
             @endforelse
             @endif
+
          </div>
-      </div>
+      </div> --}}
    </div>
 </section>
 @endsection
