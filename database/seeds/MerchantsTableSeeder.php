@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SellersTableSeeder extends Seeder
+class MerchantsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -63,12 +63,12 @@ class SellersTableSeeder extends Seeder
                 'user_id'             => '1',
                 'created_at'          => now(),
                 'updated_at'          => now()
-            ], 
+            ],
             [
                 'first_name'          => 'Rofiq',
-                'last_name'           => 'Mia', 
+                'last_name'           => 'Mia',
                 'slug'                => 'rofiq',
-                'email'               => 'seller@andit.com', 
+                'email'               => 'seller@andit.com',
                 'dob'                 => '2000-01-03',
                 'gender'              => 'Male',
                 'description'         => 'Student',
@@ -80,9 +80,9 @@ class SellersTableSeeder extends Seeder
                 'user_id'             => '3',
                 'created_at'          => now(),
                 'updated_at'          => now()
-            ], 
+            ],
         ];
 
-        DB::table('sellers')->insert($data);
+        DB::table('merchants')->insert($data);
        }
 }

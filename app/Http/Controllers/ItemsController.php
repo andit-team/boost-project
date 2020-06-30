@@ -10,7 +10,7 @@ use App\Models\Category;
 use App\Models\Item;
 use App\Models\Size;
 use App\Models\Color;
-use App\Models\Seller;
+use App\Models\Merchant;
 use App\Models\ItemCategory;
 use App\Models\ItemTag;
 use App\Models\Tag;
@@ -35,13 +35,18 @@ class ItemsController extends Controller
      */
     public function index()
     {
-      $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
-      $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-      $category = Category::all();
-      $item = Item::where('status','Active')->where('shop_id',$shopProfile->id)->get();
-      $size= Size::all();
-      $color = Color::all();
-      return view ('merchant.product.index',compact('category','item','size','color','sellerProfile','shopProfile'));
+
+//      $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
+//      $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+//      $category = Category::all();
+//      $item = Item::where('status','Active')->where('shop_id',$shopProfile->id)->get();
+//      $size= Size::all();
+//      $color = Color::all();
+//      return view ('merchant.product.index',compact('category','item','size','color','sellerProfile','shopProfile'));
+
+      $items = Item::where('status','Active')->where('shop_id',Baazar::shop()->id)->get();
+      return view ('merchant.product.index',compact('items'));
+
     }
 
     /**
@@ -59,13 +64,13 @@ class ItemsController extends Controller
         $subCategories = Category::where('parent_id','!=',0)->get();
         $childCategory = Category::where('parent_id','!=',0)->get();
         $tag = Tag::all();
-        $sellerId = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $sellerId = Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
 
         return view ('merchant.product.create',compact('category','categories','item','size','color','subCategories','tag','sellerId','shopProfile','childCategory'));
     }
 
-   
+
     public function tagSlug($tags){
       $slug = '';
       foreach($tags as $tag){
@@ -75,7 +80,7 @@ class ItemsController extends Controller
       return $slug;
     }
 
-    public function addInventory($request,$itemId){
+    public function addInventory($request,$itemId,$shopId){
       $i = 0;
       foreach($request->inventory_color as $color){
         $inventories = [
@@ -88,6 +93,7 @@ class ItemsController extends Controller
           'start_date'      => $request->startday[$i],
           'end_date'        => $request->endday[$i],
           'seller_sku'      => $request->seller_sku[$i],
+          'shop_id'         => $shopId,
           'user_id'         => Sentinel::getUser()->id,
           'created_at'      => now(),
         ];
@@ -134,7 +140,7 @@ class ItemsController extends Controller
     }
 
     public function store(Item $item,Request $request){
-      $shop = Seller::where('user_id',Sentinel::getUser()->id)->first()->shop;
+      $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
       if($shop){
         $slug = Baazar::getUniqueSlug($item,$request->name);
         $feature = Baazar::base64Upload($request->images['main'][0],$slug,$shop->slug,'featured');
@@ -160,7 +166,7 @@ class ItemsController extends Controller
               'created_at'    => now(),
           ];
         $item = Item::create($data);
-        $this->addInventory($request,$item->id);
+        $this->addInventory($request,$item->id,$shop->id);
         if($request->attribute){
           $this->addAttributes($request->attribute,$item->id);
         }

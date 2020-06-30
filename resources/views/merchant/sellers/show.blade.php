@@ -2,12 +2,12 @@
 
 @section('content')
 @push('css')
-<style> 
+<style>
     .fa{
         padding:4px;
       font-size:16px;
     }
-  
+
     .imagestyle{
         width: 200px;
         height: 200px;
@@ -40,16 +40,16 @@
     .m-l-reject{
         margin-left:232px; margin-top:-39px;
     }
-</style> 
-@endpush 
+</style>
+@endpush
 @include('elements.alert')
 {{-- @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
-      Seller profile
+      Merchant profile
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">Seller profile</li>
+      <li class="breadcrumb-item active" aria-current="page">Merchant profile</li>
   @endslot
 @endcomponent --}}
     <div class="row">
@@ -62,19 +62,19 @@
                         <div class="col-md-8">
                             <label for="first_name">First Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('first_name') }}</span>
                             <input type="text" class="form-control input  @error('first_name') border-danger @enderror" readonly required name="first_name" value="{{ old('first_name',$seller->first_name) }}" id="" placeholder="Firest Name">
-                            
+
                             <label for="last_name" class="mt-2">Last Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('last_name') }}</span>
                             <input type="text" class="form-control input @error('last_name') border-danger @enderror" readonly required name="last_name" value="{{ old('last_name',$seller->last_name) }}" id="" placeholder="Last Name">
-                            
+
                             <label for="phone" class="mt-2">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
                             <input type="number" class="form-control input @error('phone') border-danger @enderror" readonly required  name="phone" value="{{ old('phone',$seller->phone) }}" id="" placeholder="Phone Number">
 
                             <label for="email" class="mt-2">Email<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('email') }}</span>
                             <input type="email" class="form-control input @error('email') border-danger @enderror" readonly required  name="email" value="{{ old('email',$seller->email) }}" id="" placeholder="Email">
-                        </div> 
+                        </div>
 
 
-                        <div class="col-md-4 text-right">  
+                        <div class="col-md-4 text-right">
                             <label for="picture">Picture</label>
                             <div class="mt-0">
                                 @if(!empty($seller->picture))
@@ -83,26 +83,26 @@
                                 <img id="output"  class="imagestyle" src="{{ asset('/uploads/vendor_profile/user.png') }}" />
                                 @endif
                             </div>
-                            <div class="uploadbtn"> 
+                            <div class="uploadbtn">
                                 {{-- <label for="file-upload" class="custom-file-upload">Upload Here</label>
                                 <input id="file-upload" type="file" name="picture" onchange="loadFile(event)"/> --}}
                             </div>
                         </div>
-                    </div> 
+                    </div>
 
                     <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
                     <textarea class="form-control mb-0 @error('description') border-danger @enderror" readonly placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $seller->description }}</textarea>
 
 
-                    <div class="form-row"> 
+                    <div class="form-row">
                         <div class="col-md-6 mt-2">
-                            <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span> 
-                            <input type="date" readonly class="form-control input datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob',$seller->dob) }}" id="" placeholder="">  
-                        </div> 
+                            <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span>
+                            <input type="date" readonly class="form-control input datepicker @error('dob') border-danger @enderror" required name="dob" value="{{ old('dob',$seller->dob) }}" id="" placeholder="">
+                        </div>
                         <div class="col-md-6 mt-2">
-                            <label for="gender">Gender<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('gender') }}</span> 
-                            <input type="text"  readonly class="form-control input  @error('gender') border-danger @enderror" required name="gender" value="{{ old('dob',$seller->gender) }}" id="" placeholder="">  
-                        </div> 
+                            <label for="gender">Gender<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('gender') }}</span>
+                            <input type="text"  readonly class="form-control input  @error('gender') border-danger @enderror" required name="gender" value="{{ old('dob',$seller->gender) }}" id="" placeholder="">
+                        </div>
                         <div class="col-md-12 mt-4">
                             <a href="{{ url('andbaazaradmin/seller') }}"  class="btn btn-info">Back</a>
                             @if($seller->status == "Active")
@@ -117,7 +117,7 @@
                             </form>
                             </div>
                             <div>
-                                <div class="m-l-reject"> 
+                                <div class="m-l-reject">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Reject</button>
                                 </div>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -137,7 +137,7 @@
                                                     <textarea class="form-control" name="rej_desc" id="validationCustom01" type="text" required></textarea>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer"> 
+                                            <div class="modal-footer">
                                                 <button type="submit" class="btn btn-primary">Reject</button>
                                             </form>
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
@@ -149,14 +149,14 @@
                                 </div>
                                 {{-- @endif --}}
                             </div>
-                            @endif 
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>         
+</div>
 @endsection
 @push('js')
 <script>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSellersTable extends Migration
+class CreateMerchantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateSellersTable extends Migration
      */
     public function up()
     {
-        Schema::create('sellers', function (Blueprint $table) {
+        Schema::create('merchants', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('first_name');
             $table->string('last_name');
@@ -46,6 +46,6 @@ class CreateSellersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sellers');
+        Schema::dropIfExists('merchants');
     }
 }

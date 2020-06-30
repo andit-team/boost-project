@@ -25,6 +25,7 @@ class CreateInventoriesTable extends Migration
             $table->date('end_date')->nullable();
             $table->string('seller_sku')->nullable();
             $table->integer('sort')->nullable();
+            $table->unsignedBigInteger('shop_id')->nullable();
             $table->string('available_on')->nullable();
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');
@@ -32,6 +33,7 @@ class CreateInventoriesTable extends Migration
             $table->timestamps();
 
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade')->onUpdate('cascade');
             // $table->foreign('size_id')->references('id')->on('sizes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

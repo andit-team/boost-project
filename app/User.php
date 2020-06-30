@@ -23,7 +23,7 @@ use App\Models\PromotionHead;
 use App\Models\PromotionPlan;
 use App\Models\PromotionUse;
 use App\Models\Review;
-use App\Models\Seller;
+use App\Models\Merchant;
 use App\Models\ShippingMethod;
 use App\Models\Shop;
 use App\Models\Size;
@@ -104,7 +104,7 @@ class User extends EloquentUser
         return $this->hasMany(Review::class,'user_id');
       }
       public function seller(){
-        return $this->hasMany(Seller::class,'user_id');
+        return $this->hasMany(Merchant::class,'user_id');
       }
       public function shippingmethod(){
         return $this->hasMany(ShippingMethod::class,'user_id');

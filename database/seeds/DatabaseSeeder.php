@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
                 CuriersTableSeeder::class,
                 CurrenciesTableSeeder::class,
                 PromotionHeadsTableSeeder::class,
-                SellersTableSeeder::class,
+                MerchantsTableSeeder::class,
                 ShopsTableSeeder::class,
                 TagsTableSeeder::class,
                 ColorsTableSeeder::class,
