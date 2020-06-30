@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Models\Cart;
 use App\Models\Inventory;
-use App\Models\ItemCategory;
+use App\Models\ProductCategory;
 use App\Models\ItemImage;
-use App\Models\ItemTag;
+use App\Models\ProductTag;
 use App\Models\OrderItem;
 use App\Models\Review;
 use App\Models\Category;
@@ -16,7 +16,7 @@ use App\Models\Color;
 use App\Models\Size;
 use App\User;
 
-class Item extends Model
+class Product extends Model
 {
     protected $fillable = [
       'name',
@@ -81,13 +81,13 @@ class Item extends Model
        return $this->hasMany(Inventory::class,'item_id');
      }
      public function itemcategory(){
-       return $this->hasMany(ItemCategory::class,'item_id');
+       return $this->hasMany(ProductCategory::class,'item_id');
      }
      public function itemimage(){
        return $this->hasMany(ItemImage::class,'item_id');
      }
      public function itemtag(){
-       return $this->hasMany(ItemTag::class,'item_id');
+       return $this->hasMany(ProductTag::class,'item_id');
      }
      public function orderitem(){
        return $this->hasMany(OrderItem::class,'item_id');
@@ -108,7 +108,7 @@ class Item extends Model
                    ->select('id','name','is_last','slug')
                    ->where('parent_id','=',$subCatId)
                    ->get();
-      } 
+      }
 
       public static function getChildCategory($childCatId){
         return DB::table('categories')
@@ -123,5 +123,5 @@ class Item extends Model
                    ->where('parent_id','=',$childCatid_1)
                    ->get();
       }
-   
+
 }

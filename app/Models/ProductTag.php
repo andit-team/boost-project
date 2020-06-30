@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Item;
+use App\Models\Product;
 use App\Models\Tag;
 use App\User;
 
-class ItemTag extends Model
+class ProductTag extends Model
 {
       protected $fillable = ['tag_id','item_id','user_id','active'];
 
@@ -23,6 +23,6 @@ class ItemTag extends Model
 
       public function item()
       {
-          return $this->belongsTo(Item::class, 'item_id');
+          return $this->belongsTo(Product::class, 'item_id');
       }
 }

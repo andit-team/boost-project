@@ -10,6 +10,6 @@ class ItemMeta extends Model
         'attr_label',
         'attr_value',
         'attribute_id',
-        'item_id',
+        'product_id',
     ];
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Item;
+use App\Models\Product;
 use App\Models\ItemImage;
 use Sentinel;
 class HomeController extends Controller
@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $item = Item::all();
+        $item = Product::all();
         // return view('welcome');
          return view('home',compact('item'));
     }
@@ -28,8 +28,8 @@ class HomeController extends Controller
      */
     // public function details($id)
     // {
-    //     $item = Item::all();
-    //     $product_details = Item::where('id', $item->id)->first();      
+    //     $item = Product::all();
+    //     $product_details = Product::where('id', $item->id)->first();
     // //    dd( $product_details);
     //      return view('frontend.product.details',compact('product_details','item'));
     // }
@@ -51,10 +51,10 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $item)
-    {  
+    public function show(Product $item)
+    {
         //dd($product);
-        $product_details = Item::where('status','Active')->where('slug',$item->slug)->first();      
+        $product_details = Product::where('status','Active')->where('slug',$item->slug)->first();
        //dd( $product_details);
          return view('frontend.product.details',compact('product_details'));
     }

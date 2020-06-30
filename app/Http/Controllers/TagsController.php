@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ItemTag;
+use App\Models\ProductTag;
 use Illuminate\Http\Request;
 use App\Models\Tag;
 use Sentinel;
