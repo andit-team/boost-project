@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Shop;
-class Seller extends Model
+class Merchant extends Model
 {
       protected $fillable = ['first_name','last_name','slug','picture','dob','phone','email','gender','description','last_visited_at','last_visited_from','verification_token','remember_token','status','rej_desc','user_id'];
 
@@ -18,7 +18,7 @@ class Seller extends Model
        return $this->belongsTo(User::class,'user_id');
      }
      public function shop(){
-       return $this->hasOne(Shop::class,'seller_id');
+       return $this->hasOne(Shop::class,'merchant_id');
      }
 
 }

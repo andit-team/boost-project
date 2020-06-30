@@ -28,7 +28,7 @@ use App\Models\PromotionHead;
 use App\Models\PromotionPlan;
 use App\Models\PromotionUse;
 use App\Models\Review;
-use App\Models\Seller;
+use App\Models\Merchant;
 use App\Models\ShippingMethod;
 use App\Models\Size;
 use App\Models\Shop;

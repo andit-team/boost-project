@@ -49,7 +49,7 @@
                 <h3>PERSONAL DETAIL</h3>
                 @if($sellerProfile->status == 'Inactive')
                 <div class="mt-2">
-                    {{-- <h3>Seller profile Status</h3> --}}
+                    {{-- <h3>Merchant profile Status</h3> --}}
                         <div class="bg-warning text-center p-5 rounded">
                             <h4>Thank Your for your request</h4>
                             <p>We need to review your request a little longer. After approve your request you can see your dashboard.</p>
@@ -57,7 +57,7 @@
                     </div>
                 @elseif($sellerProfile->status == 'Reject')
                 <div class="mt-2">
-                    {{-- <h3 class="card-header text-danger">Seller profile Status</h3> --}}
+                    {{-- <h3 class="card-header text-danger">Merchant profile Status</h3> --}}
                         <div class="bg-warning p-5 text-center rounded">
                             <h4>Your profile is Rejected</h4>
                             <h6>Reject Reason : <small>{{ $sellerProfile->rej_desc }}</small></h6>

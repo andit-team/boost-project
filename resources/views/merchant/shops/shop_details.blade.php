@@ -36,7 +36,7 @@ html, body {
   margin: 0;
   padding: 0;
 }
-</style> 
+</style>
 @endpush
 @include('elements.alert')
 @component('layouts.inc.breadcrumb')
@@ -53,37 +53,37 @@ html, body {
     <!--  dashboard section start -->
     <section class="dashboard-section section-b-space">
         <div class="container">
-            
-            <div class="row">           
-                
+
+            <div class="row">
+
                 @include('layouts.inc.sidebar.vendor-sidebar',[$active='shop'])
 
              <div class="col-sm-9 register-page contact-page">
-              
+
                 <h3>Shop Detail</h3>
                 @if($sellerProfile->status == 'Inactive')
-                <div class="mt-2"> 
-                    {{-- <h3>Seller profile Status</h3> --}}
+                <div class="mt-2">
+                    {{-- <h3>Merchant profile Status</h3> --}}
                         <div class="bg-warning text-center p-5 rounded">
                             <h4>Thank Your for your request</h4>
                             <p>We nedd to review your request a little longer. After approve your request you can see your dashboard.</p>
-                        </div> 
+                        </div>
                     </div>
                 @elseif($sellerProfile->status == 'Reject')
 
                 <div class="mt-2">
-                    {{-- <h3 class="card-header text-danger">Seller profile Status</h3> --}}
+                    {{-- <h3 class="card-header text-danger">Merchant profile Status</h3> --}}
                         <div class="bg-warning p-5 text-center rounded">
                             <h4>Your profile is Rejected</h4>
-                            <h6>Reject Reason : <small>{{ $sellerProfile->rej_desc }}</small></h6> 
-                            <p>Resubmit your Profile.</p> 
+                            <h6>Reject Reason : <small>{{ $sellerProfile->rej_desc }}</small></h6>
+                            <p>Resubmit your Profile.</p>
                         <a href="{{ url('merchant/seller/'.$sellerProfile->slug.'/resubmit') }}" title="Resubmit" class="btn btn-sm btn-solid">Resubmit</a>
                         </div>
                 </div>
-          
+
                 @elseif($sellerProfile->status == 'Active')
                 <form class="theme-form" action="{{route('shopUpdate')}}" method="post" enctype="multipart/form-data" id="validateForm">
-                    @csrf 
+                    @csrf
                     <div class="form-row">
                         <div class="col-md-8">
                             <div>
@@ -97,11 +97,11 @@ html, body {
                             <div>
                                 <label for="email" class="mt-2">Shop Email<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('email') }}</span>
                                <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
-                            </div>  
-                        </div> 
+                            </div>
+                        </div>
 
 
-                        <div class="col-md-4 text-right">  
+                        <div class="col-md-4 text-right">
                             <label for="picture">Shop Logo</label>
                             <div class="mt-0">
                                 @if(!empty($shopProfile->logo))
@@ -110,13 +110,13 @@ html, body {
                                  <img id="output"  class="imagestyle" src="{{ asset('/uploads/shops/logos/shop-1.png') }}" />
                                 @endif
                             </div>
-                            <div class="uploadbtn"> 
+                            <div class="uploadbtn">
                                 <label for="file-upload" class="custom-file-upload">Upload Here</label>
                                 <input id="file-upload" type="file" name="logo" onchange="loadFile(event)"/>
-                                <input type="hidden" value="{{$shopProfile->logo}}" name="old_image"> 
+                                <input type="hidden" value="{{$shopProfile->logo}}" name="old_image">
                             </div>
                         </div>
-                    </div> 
+                    </div>
                     <div>
                         <label for="web" class="mt-2">Web<span class="text-danger"> </span></label> <span class="text-danger">{{ $errors->first('web') }}</span>
                         <input type="url" class="form-control @error('web') border-danger @enderror"  name="web" value="{{ old('Web',$shopProfile->web) }}" id="" placeholder="Shop website">
@@ -125,7 +125,7 @@ html, body {
                     <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" >{{ $shopProfile->description }}</textarea>
 
 
-                    <div class="form-row">  
+                    <div class="form-row">
                         <div class="col-md-12 mt-4">
                             <button type="submit" class="btn btn-sm btn-solid" >Shop Update</button>
                         </div>
@@ -140,18 +140,18 @@ html, body {
 
                     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLCE9-x9OVyUottiBHi_L6UZKB2rvj7eo&callback=initMap"
         type="text/javascript"></script>
-                 
+
                 </div>
               </div>
 
-             
+
               <!-- Replace the value of the key parameter with your own API key. -->
-         
-            </div>         
+
+            </div>
         </div>
 </section>
-    <!--  dashboard section end --> 
-@endsection 
+    <!--  dashboard section end -->
+@endsection
 @push('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
 <script type="text/javascript">
@@ -197,7 +197,7 @@ function toggleBounce() {
 
 {{-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLCE9-x9OVyUottiBHi_L6UZKB2rvj7eo&callback=initMap"
 type="text/javascript"></script> --}}
-{{-- 
+{{--
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
   type="text/javascript"></script> --}}
 @endpush

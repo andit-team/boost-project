@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
-use App\Models\Seller;
+use App\Models\Merchant;
 use Sentinel;
 use Baazar;
 use Session;
@@ -19,7 +19,7 @@ class ShopsController extends Controller
     public function index()
     {
         $shop = Shop::all();
-        $seller = Seller::all();
+        $seller = Merchant::all();
         return view('admin.shop_list.index',compact('shop','seller'));
     }
 
@@ -30,7 +30,7 @@ class ShopsController extends Controller
      */
     public function create()
     {
-        $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         return view('merchant.shops.update',compact('sellerProfile','shopProfile'));
     }
@@ -43,7 +43,7 @@ class ShopsController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         //
     }
 
@@ -81,9 +81,9 @@ class ShopsController extends Controller
         $shop = Shop::where('user_id',Sentinel::getUser()->id)->first();
         //dd($shop);
         $this->validateForm($request);
-       
+
             $shop->update([
-                'name'              => $request->name, 
+                'name'              => $request->name,
                 'slogan'            => $request->slogan,
                 'phone'             => $request->phone,
                 // 'logo'              => Baazar::fileUpload($request,'logo','old_image','/uploads/shops/logos'),
@@ -93,16 +93,16 @@ class ShopsController extends Controller
                 'web'               => $request->web,
                 'facebook'          => $request->facebook,
                 'instagram'         => $request->instagram,
-                'twitter'           => $request->twitter,    
+                'twitter'           => $request->twitter,
                 'youtube'           => $request->youtube,
                 'description'       => $request->description,
                 'bdesc'             => $request->bdesc,
                 'updated_at'        => now(),
             ]);
-       
+
 
         session()->flash('success','your shop profile updated');
-       return back(); 
+       return back();
     }
 
     /**
@@ -119,8 +119,8 @@ class ShopsController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             'name' => 'required',
-            'phone' => 'required', 
-            'email' => 'required|email',  
+            'phone' => 'required',
+            'email' => 'required|email',
             'description' => '',
         ]);
     }
