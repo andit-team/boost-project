@@ -184,7 +184,7 @@
                                                                                         <h5 class="modal-title f-w-600" id="exampleModalLabel">Reject</h5>
                                                                                     </div>
                                                                                     <div class="modal-body">
-                                                                                        <form action="{{ url('merchant/seller/rejected/'.$row->id)}}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">
+                                                                                        <form action="{{ url('merchant/merchant/rejected/'.$row->id)}}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">
                                                                                             @csrf
                                                                                             @method('put')
                                                                                             <div class="form">
@@ -225,7 +225,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <form action="{{ url('merchant/seller/approvement/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">
+                                                                <form action="{{ url('merchant/merchant/approvement/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-warning">Approve</button>
                                                                 </form>

@@ -42,8 +42,8 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     Route::post('/product/approvement/{slug}','ItemsController@approvement');
     Route::put('/product/rejected/{slug}','ItemsController@rejected');
     Route::get('/product/vendorshow/{slug}','ItemsController@vendorshow');
-    Route::post('/merchant/approvement/{id}','SellersController@approvement');
-    Route::put('/seller/rejected/{id}','SellersController@rejected');
+    Route::post('/merchant/approvement/{id}','MerchantController@approvement');
+    Route::put('/merchant/rejected/{id}','MerchantController@rejected');
     Route::get('/profile','MerchantController@create');
     Route::post('/profile','MerchantController@store')->name('sellerUpdate');
     Route::get('/shop','ShopsController@create');

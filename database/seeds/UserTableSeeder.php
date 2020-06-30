@@ -42,7 +42,7 @@ class UserTableSeeder extends Seeder
                 'email'         => 'seller@andit.com',
                 // 'email'         => 'and.baazar@yahoo.com',
                 'password'      => '123456', //123456
-                'type'          => 'sellers',
+                'type'          => 'merchant',
                 'created_at'    => now(),
                 'updated_at'    => now()
         ];
