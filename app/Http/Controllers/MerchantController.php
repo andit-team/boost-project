@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VendorProfileRejectMail;
 use App\Mail\VendorProfilResubmitMail;
 use Illuminate\Http\Request;
 use Sentinel;
@@ -10,6 +11,7 @@ use App\User;
 use App\Events\SellerRegistration;
 use App\Models\Shop;
 use App\Mail\VendorProfileApprovalMail;
+use App\Mail\VendorProfileAcceptMail;
 use Session;
 use Baazar;
 class MerchantController extends Controller{
@@ -27,7 +29,7 @@ class MerchantController extends Controller{
         $credentials = [
             'email'		=> $request->login['email'],
             'password'	=> $request->login['password'],
-            'type'	    => 'sellers',
+            'type'	    => 'merchant',
         ];
 
         // if($request->remember == 'on')
@@ -99,7 +101,7 @@ class MerchantController extends Controller{
 
     public function verifyToken(Request $request){
         $request->validate([
-            'verification_token'    => 'required|exists:sellers,verification_token|max:5'
+            'verification_token'    => 'required|exists:merchant,verification_token|max:5'
         ]);
 
         $seller    = Merchant::where('slug',$request->slug)->first();
@@ -131,7 +133,7 @@ class MerchantController extends Controller{
 
         $request->validate([
             'password'      => 'required|confirmed',
-            'email'         => 'required|unique:sellers,email',
+            'email'         => 'required|unique:merchant,email',
             'agreed'        => 'accepted'
         ]);
 
@@ -140,7 +142,7 @@ class MerchantController extends Controller{
             'last_name'  => $request->last_name,
             'email'      => $request->email,
             'password' 	 => $request->password,
-            'type'       => 'sellers',
+            'type'       => 'merchant',
             'create-at'  => now(),
             ]);
 
@@ -179,7 +181,6 @@ class MerchantController extends Controller{
     }
 
     public function shopRegistrationStore(Request $request,Shop $shop){
-        // dd($request->all());
         $request->validate([
             'name'       => 'required',
             'slogan'     => 'required',
@@ -238,7 +239,6 @@ class MerchantController extends Controller{
     }
 
     public function shopLogoCrop(Request $request){
-        // dd($request->all());
         $shop   = Shop::find($request->shop);
         if($shop){
             $image_file = $request->image;
@@ -259,7 +259,6 @@ class MerchantController extends Controller{
     }
 
     public function shopBanarCrop(Request $request){
-        // dd($request->all());
         $shop   = Shop::find($request->shop);
         if($shop){
             $image_file = $request->image;
@@ -295,7 +294,7 @@ class MerchantController extends Controller{
 
 
 
-        return view('merchant.sellers.index',compact('activesellers','requestSellers','rejectSellers'));
+        return view('merchant.merchant.index',compact('activesellers','requestSellers','rejectSellers'));
     }
 
     /**
@@ -309,9 +308,9 @@ class MerchantController extends Controller{
         $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         if(!empty($sellerProfile))
-            return view('merchant.sellers.update',compact('sellerProfile','userprofile','shopProfile'));
+            return view('merchant.merchant.update',compact('sellerProfile','userprofile','shopProfile'));
         else
-            return view('merchant.sellers.create',compact('sellerProfile','userprofile','shopProfile'));
+            return view('merchant.merchant.create',compact('sellerProfile','userprofile','shopProfile'));
     }
 
     /**
@@ -400,7 +399,7 @@ class MerchantController extends Controller{
     {
         $seller = Merchant::find($id);
 
-        return view('merchant.sellers.show',compact('seller'));
+        return view('merchant.merchant.show',compact('seller'));
     }
 
     /**
@@ -414,7 +413,7 @@ class MerchantController extends Controller{
         $userprofile = Sentinel::getUser();
         $seller = Merchant::where('slug',$slug)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        return view('merchant.sellers.edit',compact('seller','userprofile','shopProfile'));
+        return view('merchant.merchant.edit',compact('seller','userprofile','shopProfile'));
     }
 
     public function update(Request $request, $slug)
@@ -469,12 +468,35 @@ class MerchantController extends Controller{
         $data->update(['status' => 'Active']);
         $name    = $data['first_name'];
         $surname = $data['last_name'];
-        // \Mail::to($data['email'])->send(new VendorProfileAcceptMail($data,$name,$surname));
+         \Mail::to($data['email'])->send(new VendorProfileAcceptMail($data,$name,$surname));
 
         session()->flash('success','Profile Approved Successfully and Sent Mail to the user');
 
         return back();
 
     }
+
+    public function rejected(Request $request,$id){
+
+        $data = Merchant::where('id',$id)->first();
+
+
+        $data->update([
+            'status'   => 'Reject',
+            'rej_desc' => $request->rej_desc,
+        ]);
+
+        $name    = $data['first_name'];
+        $surname = $data['last_name'];
+        $rej_desc = $data['rej_desc'];
+        \Mail::to($data['email'])->send(new VendorProfileRejectMail($data,$name,$surname,$rej_desc));
+
+        session()->flash('warning','Profile Rejected Successfully and Sent Mail to the user');
+
+        return back();
+
+    }
+
+
 
     }

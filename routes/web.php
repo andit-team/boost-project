@@ -47,7 +47,7 @@ Route::get('/arr', function () {
         $sellerProfile = App\Models\Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = App\Models\Shop::where('user_id',Sentinel::getUser()->id)->first();
 
-        return view('merchant.sellers.products',compact('sellerProfile','userprofile','shopProfile'));
+        return view('merchant.merchant.products',compact('sellerProfile','userprofile','shopProfile'));
 
 });
 

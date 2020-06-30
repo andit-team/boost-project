@@ -26,6 +26,9 @@
         cursor: pointer;
         border-top: 0px;
     }
+    .inputhight{
+        height: 51px!important;
+    }
 </style>
 @include('elements.alert')
 {{-- @component('layouts.inc.breadcrumb')
@@ -46,26 +49,6 @@
                 @include('layouts.inc.sidebar.vendor-sidebar',[$active='profile'])
 
              <div class="col-sm-9 register-page contact-page">
-                <h3>PERSONAL DETAIL</h3>
-                @if($sellerProfile->status == 'Inactive')
-                <div class="mt-2">
-                    {{-- <h3>Merchant profile Status</h3> --}}
-                        <div class="bg-warning text-center p-5 rounded">
-                            <h4>Thank Your for your request asdfasdf</h4>
-                            <p>We need to review your request a little longer. After approve your request you can see your dashboard.</p>
-                        </div>
-                    </div>
-                @elseif($sellerProfile->status == 'Reject')
-                <div class="mt-2">
-                    {{-- <h3 class="card-header text-danger">Merchant profile Status</h3> --}}
-                        <div class="bg-warning p-5 text-center rounded">
-                            <h4>Your profile is Rejected</h4>
-                            <h6>Reject Reason : <small>{{ $sellerProfile->rej_desc }}</small></h6>
-                            <p>Resubmit your Profile.</p>
-                        <a href="{{ url('merchant/merchant/'.$sellerProfile->slug.'/resubmit') }}" title="Resubmit" class="btn btn-sm btn-solid">Resubmit</a>
-                        </div>
-                </div>
-                @elseif($sellerProfile->status == 'Active')
                 <form class="theme-form" action="{{ route('sellerUpdate') }}" method="post" enctype="multipart/form-data" id="validateForm">
                     @csrf
                     <div class="form-row">
@@ -113,7 +96,7 @@
                     <div class="form-row">
                         <div class="col-md-6 mt-2">
                             <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span>
-                            <input type="text"  class="form-control  @error('card_expire_date') border-danger @enderror datepickerPreviousOnly" required name="dob" value="{{ old('dob',$sellerProfile->dob) }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">
+                            <input type="text"   class="form-control inputhight @error('card_expire_date') border-danger @enderror datepickerPreviousOnly" required name="dob" value="{{ old('dob',$sellerProfile->dob) }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">
                         </div>
                         <div class="col-md-6 mt-2">
                             <label for="gender">Gender (select one)<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('gender') }}</span>
@@ -129,7 +112,6 @@
                         </div>
                         </div>
                 </form>
-                @endif
                 </div>
             </div>
         </div>
