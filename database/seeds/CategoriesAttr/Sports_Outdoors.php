@@ -1,5 +1,4 @@
 <?php
-//multi-select,select,text,checkbox,number
 
 $sports_travels = [
 	  [
