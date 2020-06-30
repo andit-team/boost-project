@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ItemCategory;
-use App\Models\Item;
+use App\Models\ProductCategory;
+use App\Models\Product;
 use App\Models\Attribute;
 use App\Models\InventoryAttribute;
 // use App\Models\Children;
@@ -24,7 +24,7 @@ class Category extends Model
      return $this->belongsTo(HrmEmployee::class,'user_id');
    }
    public function itemcategory(){
-     return $this->hasMany(ItemCategory::class,'category_id');
+     return $this->hasMany(ProductCategory::class,'category_id');
    }
 
     public function childs() {
@@ -32,7 +32,7 @@ class Category extends Model
     }
 
     public function item(){
-       return $this->hasMany(Item::class,'category_id');
+       return $this->hasMany(Product::class,'category_id');
     }
 
     public function child()

@@ -3,14 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Item;
+use App\Models\Product;
 use App\Models\Color;
 use App\User;
 
 class ItemImage extends Model
 {
   protected $fillable = [
-    'item_id',
+    'product_id',
     'color_slug',
     'sort',
     'org_img',
@@ -22,7 +22,7 @@ class ItemImage extends Model
 
   public function item()
   {
-      return $this->belongsTo(Item::class, 'item_id');
+      return $this->belongsTo(Product::class, 'product_id');
   }
 
   // public function color()

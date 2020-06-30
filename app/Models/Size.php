@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Cart;
 use App\Models\Inventory;
 use App\Models\OrderItem;
-use App\Models\Item;
+use App\Models\Product;
 use App\User;
 
 class Size extends Model
@@ -29,7 +29,7 @@ class Size extends Model
     }
 
    public function item(){
-      return $this->hasMany(Item::class,'size_id');
+      return $this->hasMany(Product::class,'size_id');
    }
   public function orderitem(){
     return $this->hasMany(OrderItem::class,'size_id');

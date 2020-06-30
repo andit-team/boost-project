@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Customer;
 use App\Models\Shop;
-use App\Models\Item;
+use App\Models\Product;
 use App\Models\Color;
 use App\Models\Size;
 use App\User;
@@ -23,7 +23,7 @@ class Cart extends Model
     return $this->belongsTo(Shop::class,'shop_id');
 
     public function item(){
-     return $this->belongsTo(Item::class,'item_id');
+     return $this->belongsTo(Product::class,'item_id');
 
     public function color(){
       return $this->belongsTo(Color::class,'color_id');

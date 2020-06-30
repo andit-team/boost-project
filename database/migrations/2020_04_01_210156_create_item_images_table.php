@@ -15,7 +15,7 @@ class CreateItemImagesTable extends Migration
     {
         Schema::create('item_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('item_id')->nullable();
+            $table->unsignedBigInteger('product_id')->nullable();
             $table->string('color_slug')->default('main');
             $table->integer('sort')->nullable();
             $table->text('org_img')->nullable();
@@ -27,7 +27,7 @@ class CreateItemImagesTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             // $table->foreign('color_id')->references('id')->on('colors')->onDelete('cascade')->onUpdate('cascade');
             // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });

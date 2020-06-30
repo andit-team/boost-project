@@ -35,7 +35,7 @@ Route::middleware(['auth','admin'])->prefix('andbaazaradmin')->group(function ()
     Route::resource('products/tag','TagsController');
     Route::resource('products/color','ColorsController');
     Route::resource('products/brand','BrandController');
-    Route::get('product_list','ItemsController@productList');
+    Route::get('product_list','ProductsController@productList');
 
    Route::resource('/shop','ShopsController');
 

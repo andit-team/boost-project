@@ -7,12 +7,12 @@ use App\Mail\ProductApproveRequestMail;
 use App\Mail\productApproveMail;
 use App\Mail\ProductRejectMail;
 use App\Models\Category;
-use App\Models\Item;
+use App\Models\Product;
 use App\Models\Size;
 use App\Models\Color;
 use App\Models\Merchant;
-use App\Models\ItemCategory;
-use App\Models\ItemTag;
+use App\Models\ProductCategory;
+use App\Models\ProductTag;
 use App\Models\Tag;
 use App\Models\ItemImage;
 use App\Models\Shop;
@@ -23,7 +23,7 @@ use Sentinel;
 use Session;
 use Baazar;
 
-class ItemsController extends Controller
+class ProductsController extends Controller
 {
   public function __construct(){
     // $this->middleware('auth');//->except('store');
@@ -39,12 +39,12 @@ class ItemsController extends Controller
 //      $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
 //      $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
 //      $category = Category::all();
-//      $item = Item::where('status','Active')->where('shop_id',$shopProfile->id)->get();
+//      $item = Product::where('status','Active')->where('shop_id',$shopProfile->id)->get();
 //      $size= Size::all();
 //      $color = Color::all();
 //      return view ('merchant.product.index',compact('category','item','size','color','sellerProfile','shopProfile'));
 
-      $items = Item::where('status','Active')->where('shop_id',Baazar::shop()->id)->get();
+      $items = Product::where('status','Active')->where('shop_id',Baazar::shop()->id)->get();
       return view ('merchant.product.index',compact('items'));
 
     }
@@ -57,7 +57,7 @@ class ItemsController extends Controller
     public function create()
     {
         $category = Category::all();
-        $item = Item::all();
+        $item = Product::all();
         $size= Size::all();
         $color = Color::all();
         $categories = Category::where('parent_id',0)->get();
@@ -84,7 +84,7 @@ class ItemsController extends Controller
       $i = 0;
       foreach($request->inventory_color as $color){
         $inventories = [
-          'item_id'         => $itemId,
+          'product_id'         => $itemId,
           'color_id'        => Color::where('name',$color)->first()->id,
           'color_name'      => $color,
           'qty_stock'       => is_numeric($request->inventory_qty[$i])?$request->inventory_qty[$i]:0,
@@ -118,7 +118,7 @@ class ItemsController extends Controller
           'attr_label'    => $id,
           'attr_value'    => $att,
           'attribute_id'  => $id,
-          'item_id'       => $itemId,
+          'product_id'       => $itemId,
         ];
         ItemMeta::create($metas);
       }
@@ -129,7 +129,7 @@ class ItemsController extends Controller
         foreach($image as $img){
           $i = 0;
           $image = [
-            'item_id' => $itemId,
+            'product_id' => $itemId,
             'color_slug' => $color,
             'sort'      => ++$i,
             'org_img'     => Baazar::base64Upload($img,'orgimg',$shop->slug,$color),
@@ -139,7 +139,7 @@ class ItemsController extends Controller
       }
     }
 
-    public function store(Item $item,Request $request){
+    public function store(Product $item, Request $request){
       $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
       if($shop){
         $slug = Baazar::getUniqueSlug($item,$request->name);
@@ -165,7 +165,7 @@ class ItemsController extends Controller
               'user_id'       => Sentinel::getUser()->id,
               'created_at'    => now(),
           ];
-        $item = Item::create($data);
+        $item = Product::create($data);
         $this->addInventory($request,$item->id,$shop->id);
         if($request->attribute){
           $this->addAttributes($request->attribute,$item->id);
@@ -177,7 +177,7 @@ class ItemsController extends Controller
 
         // $name = $data['name'];
         //  \Mail::to($sellerId['email'])->send(new ProductApproveRequestMail($sellerId, $name));
-        Session::flash('success', 'Item Added Successfully!');
+        Session::flash('success', 'Product Added Successfully!');
        }else{
         return view('vendor-deshboard');
        }
@@ -191,9 +191,9 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Item $product)
+    public function show(Product $product)
     {
-        $product = Item::with('itemimage')->where('slug',$product->slug)->first();
+        $product = Product::with('itemimage')->where('slug',$product->slug)->first();
 
         return view('merchant.product.show',compact('product','shopProfile'));
     }
@@ -204,11 +204,11 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Item $product)
+    public function edit(Product $product)
     {
 
         $category = Category::all();
-        $item = Item::all();
+        $item = Product::all();
         $size= Size::all();
         $color = Color::all();
         $categories = Category::where('parent_id',0)->get();
@@ -226,7 +226,7 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $product)
+    public function update(Request $request, Product $product)
     {
         $data = [
             'name' => $request->name,
@@ -262,7 +262,7 @@ class ItemsController extends Controller
 
         $product->update($data);
 
-        Session::flash('success', 'Item Added Successfully!');
+        Session::flash('success', 'Product Added Successfully!');
 
         return back();
     }
@@ -273,7 +273,7 @@ class ItemsController extends Controller
 
     public function productList(){
     $category = Category::all();
-      $item = Item::all();
+      $item = Product::all();
       $size= Size::all();
       $color = Color::all();
      return view('merchant.product.product_list',compact('category','item','size','color'));
@@ -282,13 +282,13 @@ class ItemsController extends Controller
      public function approvement($slug){
 
 
-      $data = Item::where('slug',$slug)->first();
+      $data = Product::where('slug',$slug)->first();
 
       $data->update(['status' => 'Active']);
 
       $name = $data['name'];
       \Mail::to($data['email'])->send(new productApproveMail($data, $name));
-      Session::flash('success', 'Item Approve Successfully!');
+      Session::flash('success', 'Product Approve Successfully!');
 
         return back();
 
@@ -297,7 +297,7 @@ class ItemsController extends Controller
     public function rejected(Request $request,$slug){
 
 
-      $data = Item::where('slug',$slug)->first();
+      $data = Product::where('slug',$slug)->first();
 
 
       $data->update([
@@ -308,7 +308,7 @@ class ItemsController extends Controller
       $name = $data['name'];
       $rej_desc = $data['rej_desc'];
       \Mail::to($data['email'])->send(new ProductRejectMail($data, $name,$rej_desc));
-      Session::flash('success', 'Item Rejected Successfully!');
+      Session::flash('success', 'Product Rejected Successfully!');
 
         return back();
 
@@ -316,22 +316,22 @@ class ItemsController extends Controller
 
     public function subcategory(Request $request){
       $categoryId = $request->categoryId;
-      return Item::getSubcategory($categoryId);
+      return Product::getSubcategory($categoryId);
     }
 
     public function subCategoryChild(Request $request){
       $subCatId = $request->subCatId;
-      return Item::getSubcategoryChild($subCatId);
+      return Product::getSubcategoryChild($subCatId);
     }
 
     public function childCategory(Request $request){
       $childCatId = $request->childCatId;
-      return Item::getChildCategory($childCatId);
+      return Product::getChildCategory($childCatId);
     }
 
     public function childCategory1(Request $request){
       $childCatid_1 = $request->childCatid_1;
-      return Item::getChildCategory1($childCatid_1);
+      return Product::getChildCategory1($childCatid_1);
     }
 
     /**
@@ -340,7 +340,7 @@ class ItemsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Item $product)
+    public function destroy(Product $product)
     {
         $product->delete();
 
@@ -351,8 +351,8 @@ class ItemsController extends Controller
 
     public function vendorshow($slug){
 
-    //  $product = Item::with('category')->where('user_id',Sentinel::getUser()->id)->first();
-      $product = Item::with(['category','itemimage'])->where('slug',$slug)->first();
+    //  $product = Product::with('category')->where('user_id',Sentinel::getUser()->id)->first();
+      $product = Product::with(['category','itemimage'])->where('slug',$slug)->first();
       $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
       return view('merchant.product.vendorshow',compact('product','shopProfile'));
     }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Merchant;
 use App\Models\Inventory;
-use App\Models\Item;
+use App\Models\Product;
 use App\Models\Color;
 use App\Models\Size;
 use App\Models\Shop;
@@ -26,7 +26,7 @@ class InventoriesController extends Controller
 //        $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
 //        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
 //        $inventory = Inventory::all();
-//        $item = Item::where('user_id',Sentinel::getUser()->id)->get();
+//        $item = Product::where('user_id',Sentinel::getUser()->id)->get();
 //
 //        $size= Size::all();
 //        $color = Color::all();
@@ -45,7 +45,7 @@ class InventoriesController extends Controller
     public function create()
     {
         $inventory = Inventory::all();
-        $item = Item::where('user_id',Sentinel::getUser()->id)->get();
+        $item = Product::where('user_id',Sentinel::getUser()->id)->get();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size= Size::all();
         $color = Color::all();
@@ -98,7 +98,7 @@ class InventoriesController extends Controller
     public function edit(Inventory $inventory)
     {
         $inventory = Inventory::where('slug',$inventory->slug)->first();
-        $item = Item::where('user_id',Sentinel::getUser()->id)->get();
+        $item = Product::where('user_id',Sentinel::getUser()->id)->get();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size= Size::all();
         $color = Color::all();

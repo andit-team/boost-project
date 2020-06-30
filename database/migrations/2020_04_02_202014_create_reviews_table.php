@@ -19,14 +19,14 @@ class CreateReviewsTable extends Migration
             $table->text('reply');
             $table->text('review_msg');
             $table->boolean('active')->default(1)->change();
-            $table->unsignedBigInteger('buyer_id');
-            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
 
-            $table->foreign('buyer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }

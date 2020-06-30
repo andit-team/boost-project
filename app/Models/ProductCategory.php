@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Models;
-use App\Models\Item;
+use App\Models\Product;
 use App\Models\Category;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class ItemCategory extends Model
+class ProductCategory extends Model
 {
     protected $fillable = ['active','category_id','item_id','user_id'];
 
@@ -22,6 +22,6 @@ class ItemCategory extends Model
 
     public function item()
     {
-        return $this->belongsTo(Item::class, 'item_id');
+        return $this->belongsTo(Product::class, 'item_id');
     }
 }
