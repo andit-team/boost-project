@@ -16,11 +16,12 @@ class CategoriesTableSeeder extends Seeder
     include('CategoriesAttr/Camera.php');
     include('CategoriesAttr/tv_audio_video_gaming.php');
     // include('CategoriesAttr/Home_Appliance.php');
-     // include('CategoriesAttr/Fashion.php');
-     // include('CategoriesAttr/Bags_Travels.php');
-     // include('CategoriesAttr/Sports_Outdoors.php');
-      // include('CategoriesAttr/Laundry_Cleaning.php');
-      // include('CategoriesAttr/ Kitchen_Dining.php');
+   // include('CategoriesAttr/Fashion.php');
+   // include('CategoriesAttr/Bags_Travels.php');
+   // include('CategoriesAttr/Sports_Outdoors.php');
+   // include('CategoriesAttr/Laundry_Cleaning.php');
+   // include('CategoriesAttr/Kitchen_Dining.php');
+   // include('CategoriesAttr/Stationery_Craft.php');
      
 		// dd($mobiles_tablets);
 
@@ -53,6 +54,9 @@ class CategoriesTableSeeder extends Seeder
 
       // \Baazar::insertRecords($kitchen_dining);
       // echo  'Laundry & Cleaning Done....';
+
+       // \Baazar::insertRecords($stationery_craft);
+      // echo  'Sattinary & Craft  Done....';
 
 
 
