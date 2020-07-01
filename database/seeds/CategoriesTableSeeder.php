@@ -27,6 +27,7 @@ class CategoriesTableSeeder extends Seeder
      // include('CategoriesAttr/Toys_Games.php');
      // include('CategoriesAttr/Medicine.php');
       // include('CategoriesAttr/Pet_Supplies.php');
+       // include('CategoriesAttr/Mother_Baby.php');
 		// dd($mobiles_tablets);
 
       \Baazar::insertRecords($mobiles_tablets);
@@ -76,6 +77,9 @@ class CategoriesTableSeeder extends Seeder
 
          // \Baazar::insertRecords($pet_supplies);
       // echo  'Pet Supplies  Done....';
+
+         // \Baazar::insertRecords($mother_baby);
+      // echo  'Mother & Baby  Done....';
 
 
 
