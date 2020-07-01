@@ -20,7 +20,8 @@ class CategoriesTableSeeder extends Seeder
      // include('CategoriesAttr/Bags_Travels.php');
      // include('CategoriesAttr/Sports_Outdoors.php');
       // include('CategoriesAttr/Laundry_Cleaning.php');
-
+      // include('CategoriesAttr/ Kitchen_Dining.php');
+     
 		// dd($mobiles_tablets);
 
       \Baazar::insertRecords($mobiles_tablets);
@@ -49,6 +50,10 @@ class CategoriesTableSeeder extends Seeder
 
       // \Baazar::insertRecords($laundry_cleaning);
       // echo  'Laundry & Cleaning Done....';
+
+      // \Baazar::insertRecords($kitchen_dining);
+      // echo  'Laundry & Cleaning Done....';
+
 
 
 
