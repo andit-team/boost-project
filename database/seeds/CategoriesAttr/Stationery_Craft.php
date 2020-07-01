@@ -103,6 +103,6 @@ $stationery_craft = [
             'child'=>[]
           ],              
          
-        ],
+        ]
      ], 
 ];
