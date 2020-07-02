@@ -29,6 +29,7 @@ class Product extends Model
       'pack_id',
       'sorting',
       'description',
+       'email',
       'bn_description',
       'rej_desc',
       'min_order',
@@ -50,6 +51,7 @@ class Product extends Model
       'category_id',
       'category_slug',
       'tag_slug',
+       'status'
     ];
 
     public function getRouteKeyName()
