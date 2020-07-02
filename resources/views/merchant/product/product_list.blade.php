@@ -13,6 +13,23 @@
             max-width:1200px;
         }
     }
+    .imagestyle{
+        width: 249px;
+        height: 244px;
+        /* border-width: 1px;
+        border-style: solid;
+        border-color: #ccc;
+        border-bottom: 0px;
+        padding: 10px; */
+    }
+    .mt-10{
+        margin-top: 130px;
+    }
+    .modal-logo{
+        margin-right: 12px;
+        background: #ddd;
+        padding: 10px;
+    }
 </style>
 @endpush
 @include('elements.alert')
@@ -111,13 +128,15 @@
                                                              <img src="{{ !empty($row->image) ? asset($row->image) : asset('/uploads/shops/products/product.png') }}" class="" height="100" width="100" alt="Logo">
                                                          </div>
                                                          <div>
-{{--                                                             <h3 class="display-5 font-weight-bold">{{$row->shop->name}}</h3>--}}
-{{--                                                             <p>{{$row->shop->slogan}}</p>--}}
+                                                             <h3 class="display-5 font-weight-bold ml-5">{{$row->name}}</h3>
                                                          </div>
 
                                                          <br>
                                                          <div class="d-inline-block mt-3">
-{{--                                                             <p class="text-justify">{{ $row->shop->description }}</p>--}}
+                                                             Product price : {{$row->price}} Tk <br>
+                                                             Product Category : {{ $row->category_slug }}
+                                                             <p class="text-justify">{!! $row->description !!} </p>
+                                                             <p class="text-justify">{!! $row->bn_description !!} </p>
 {{--                                                             <h5>{{$row->shop->name}}</h5>--}}
 {{--                                                             <h6>750 followers | 10 review</h6>--}}
 {{--                                                             <h6>{{$row->shop->email}}</h6>--}}
