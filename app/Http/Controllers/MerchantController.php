@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VendorProfileRejectMail;
+use App\Mail\VendorProfilResubmitMail;
 use Illuminate\Http\Request;
 use Sentinel;
-use App\Models\Seller;
+use App\Models\Merchant;
 use App\User;
 use App\Events\SellerRegistration;
 use App\Models\Shop;
 use App\Mail\VendorProfileApprovalMail;
+use App\Mail\VendorProfileAcceptMail;
 use Session;
 use Baazar;
 class MerchantController extends Controller{
 
     public function dashboard(){
-        $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
        return view('vendor-deshboard',compact('sellerProfile','shopProfile'));
     }
@@ -26,7 +29,7 @@ class MerchantController extends Controller{
         $credentials = [
             'email'		=> $request->login['email'],
             'password'	=> $request->login['password'],
-            'type'	    => 'sellers',
+            'type'	    => 'merchant',
         ];
 
         // if($request->remember == 'on')
@@ -48,7 +51,7 @@ class MerchantController extends Controller{
         return view('merchant.sell-on-andbaazar');
     }
 
-    public function sellOnAndbaazarPost(Request $request,Seller $seller){
+    public function sellOnAndbaazarPost(Request $request, Merchant $seller){
 
         $request->validate([
             'first_name' => 'required',
@@ -67,22 +70,22 @@ class MerchantController extends Controller{
             'created_at' => now(),
         ]);
 
-        Seller::create($Seller);
+        Merchant::create($Seller);
 
-        session()->flash('success','Seller profile registration 1st stape complete successfully');
+        session()->flash('success','Merchant profile registration 1st stape complete successfully');
 
         return redirect('sell-resubmit-token'.'?slug='.$slug);
     }
 
     public function resubmitToken(Request $request){
-        $seller = Seller::where('slug',$request->slug)->first();
+        $seller = Merchant::where('slug',$request->slug)->first();
 
 
         return view('auth.merchant.resubmitToken',compact('seller'));
     }
 
     public function tokenUpdate(Request $request){
-        $seller    = Seller::where('slug',$request->slug)->first();
+        $seller    = Merchant::where('slug',$request->slug)->first();
 
         $verify_number = mt_rand(10000,99999);
 
@@ -98,10 +101,10 @@ class MerchantController extends Controller{
 
     public function verifyToken(Request $request){
         $request->validate([
-            'verification_token'    => 'required|exists:sellers,verification_token|max:5'
+            'verification_token'    => 'required|exists:merchant,verification_token|max:5'
         ]);
 
-        $seller    = Seller::where('slug',$request->slug)->first();
+        $seller    = Merchant::where('slug',$request->slug)->first();
 
 
 
@@ -117,7 +120,7 @@ class MerchantController extends Controller{
     }
 
     public function sellerRegistration(Request $request){
-        $seller = Seller::where('slug',$request->slug)->first();
+        $seller = Merchant::where('slug',$request->slug)->first();
 
         if(!$seller){
             return redirect('/');
@@ -130,7 +133,7 @@ class MerchantController extends Controller{
 
         $request->validate([
             'password'      => 'required|confirmed',
-            'email'         => 'required|unique:sellers,email',
+            'email'         => 'required|unique:merchant,email',
             'agreed'        => 'accepted'
         ]);
 
@@ -139,12 +142,12 @@ class MerchantController extends Controller{
             'last_name'  => $request->last_name,
             'email'      => $request->email,
             'password' 	 => $request->password,
-            'type'       => 'sellers',
+            'type'       => 'merchant',
             'create-at'  => now(),
             ]);
 
 
-        $sellerId    = Seller::where('slug',$request->slug)->first();
+        $sellerId    = Merchant::where('slug',$request->slug)->first();
 
             $sellerId->update([
                 'first_name'         => $sellerId->first_name,
@@ -170,7 +173,7 @@ class MerchantController extends Controller{
     }
 
     public function shopRegistration(Request $request){
-        $seller = Seller::where('slug',$request->slug)->first();
+        $seller = Merchant::where('slug',$request->slug)->first();
         if(!$seller){
             return redirect('/');
         }
@@ -178,7 +181,6 @@ class MerchantController extends Controller{
     }
 
     public function shopRegistrationStore(Request $request,Shop $shop){
-        // dd($request->all());
         $request->validate([
             'name'       => 'required',
             'slogan'     => 'required',
@@ -187,7 +189,7 @@ class MerchantController extends Controller{
             'zip'        => 'numeric|required',
             'email'      => 'required|unique:shops,email',
         ]);
-        $sellerId = Seller::where('slug',$request->slug)->first();
+        $sellerId = Merchant::where('slug',$request->slug)->first();
         $slug = Baazar::getUniqueSlug($shop,$request->name);
         $shope = [
             'name'      => $request->name,
@@ -237,7 +239,6 @@ class MerchantController extends Controller{
     }
 
     public function shopLogoCrop(Request $request){
-        // dd($request->all());
         $shop   = Shop::find($request->shop);
         if($shop){
             $image_file = $request->image;
@@ -258,7 +259,6 @@ class MerchantController extends Controller{
     }
 
     public function shopBanarCrop(Request $request){
-        // dd($request->all());
         $shop   = Shop::find($request->shop);
         if($shop){
             $image_file = $request->image;
@@ -286,15 +286,15 @@ class MerchantController extends Controller{
     public function index()
     {
 
-        $activesellers = Seller::with('shop')->where('status','Active')->orderBy('id', 'DESC')->get();
+        $activesellers = Merchant::with('shop')->where('status','Active')->orderBy('id', 'DESC')->get();
 
-        $requestSellers = Seller::with('shop')->where('status','Inactive')->orderBy('id','DESC')->get();
+        $requestSellers = Merchant::with('shop')->where('status','Inactive')->orderBy('id','DESC')->get();
 
-        $rejectSellers = Seller::with('shop')->where('status','Reject')->orderBy('id','DESC')->get();
+        $rejectSellers = Merchant::with('shop')->where('status','Reject')->orderBy('id','DESC')->get();
 
 
 
-        return view('merchant.sellers.index',compact('activesellers','requestSellers','rejectSellers'));
+        return view('merchant.merchant.index',compact('activesellers','requestSellers','rejectSellers'));
     }
 
     /**
@@ -305,12 +305,12 @@ class MerchantController extends Controller{
     public function create()
     {
         $userprofile = Sentinel::getUser();
-        $sellerProfile = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         if(!empty($sellerProfile))
-            return view('merchant.sellers.update',compact('sellerProfile','userprofile','shopProfile'));
+            return view('merchant.merchant.update',compact('sellerProfile','userprofile','shopProfile'));
         else
-            return view('merchant.sellers.create',compact('sellerProfile','userprofile','shopProfile'));
+            return view('merchant.merchant.create',compact('sellerProfile','userprofile','shopProfile'));
     }
 
     /**
@@ -319,10 +319,10 @@ class MerchantController extends Controller{
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Seller $seller)
+    public function store(Request $request, Merchant $seller)
     {
         $userprofile = Sentinel::getUser();
-        $sellerId    = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $sellerId    = Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $this->validateForm($request);
         $slug = Baazar::getUniqueSlug($seller,$request->first_name);
         if($sellerId){
@@ -354,7 +354,7 @@ class MerchantController extends Controller{
             return back();
 
         }else{
-            $sellerId=Seller::create([
+            $sellerId=Merchant::create([
                 'first_name'        => $request->first_name,
                 'last_name'         => $request->last_name,
                 'slug'              => $slug,
@@ -397,9 +397,9 @@ class MerchantController extends Controller{
      */
     public function show($id)
     {
-        $seller = Seller::find($id);
+        $seller = Merchant::find($id);
 
-        return view('merchant.sellers.show',compact('seller'));
+        return view('merchant.merchant.show',compact('seller'));
     }
 
     /**
@@ -411,9 +411,92 @@ class MerchantController extends Controller{
     public function edit($slug)
     {
         $userprofile = Sentinel::getUser();
-        $seller = Seller::where('slug',$slug)->first();
+        $seller = Merchant::where('slug',$slug)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        return view('merchant.sellers.edit',compact('seller','userprofile','shopProfile'));
+        return view('merchant.merchant.edit',compact('seller','userprofile','shopProfile'));
     }
+
+    public function update(Request $request, $slug)
+    {
+
+        $userprofile = Sentinel::getUser();
+        $sellerProfile = Merchant::where('slug',$slug)->first();
+        $this->validateForm($request);
+
+        $data = [
+            'first_name'        => $request->first_name,
+            'last_name'         => $request->last_name,
+            'phone'             => $request->phone,
+            'email'             => $request->email,
+            'picture'           => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
+            'dob'               => $request->dob,
+            'gender'            => $request->gender,
+            'description'       => $request->description,
+            'last_visited_at'   => now(),
+            'last_visited_from' => $request->last_visited_from,
+            // 'verification_token' => $request->verification_token,
+            // 'remember_token' => $request->remember_token,
+            'status'            => 'Inactive',
+            'user_id'           => Sentinel::getUser()->id,
+            'updated_at'        => now(),
+        ];
+
+        $sellerProfile->update($data);
+
+        $userprofile->update([
+            'first_name' => $request->first_name,
+            'last_name'  => $request->last_name,
+            'email'      => $request->email,
+            'updated_at' => now(),
+        ]);
+
+        $name    = $data['first_name'];
+        $surname = $data['last_name'];
+
+        \Mail::to($data['email'])->send(new VendorProfilResubmitMail($data,$name,$surname));
+
+        Session::flash('success', 'Profile Resubmit successfully!');
+
+        return redirect('merchant/merchant');
+    }
+
+    public function approvement($id){
+
+        $data = Merchant::where('id',$id)->first();
+
+
+        $data->update(['status' => 'Active']);
+        $name    = $data['first_name'];
+        $surname = $data['last_name'];
+         \Mail::to($data['email'])->send(new VendorProfileAcceptMail($data,$name,$surname));
+
+        session()->flash('success','Profile Approved Successfully and Sent Mail to the user');
+
+        return back();
+
+    }
+
+    public function rejected(Request $request,$id){
+
+        $data = Merchant::where('id',$id)->first();
+
+
+        $data->update([
+            'status'   => 'Reject',
+            'rej_desc' => $request->rej_desc,
+        ]);
+
+        $name    = $data['first_name'];
+        $surname = $data['last_name'];
+        $rej_desc = $data['rej_desc'];
+        \Mail::to($data['email'])->send(new VendorProfileRejectMail($data,$name,$surname,$rej_desc));
+
+        session()->flash('warning','Profile Rejected Successfully and Sent Mail to the user');
+
+        return back();
+
+    }
+
+
 
     }

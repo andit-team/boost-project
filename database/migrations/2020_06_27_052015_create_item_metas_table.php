@@ -15,13 +15,13 @@ class CreateItemMetasTable extends Migration
     {
         Schema::create('item_metas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('attr_label'); 
-            $table->string('attr_value')->nullable();            
+            $table->string('attr_label');
+            $table->string('attr_value')->nullable();
             $table->unsignedBigInteger('attribute_id');
-            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('product_id');
             $table->timestamps();
-            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade')->onUpdate('cascade'); 
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade')->onUpdate('cascade');      
+            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

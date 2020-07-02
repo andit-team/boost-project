@@ -15,10 +15,10 @@ use App\Models\Color;
 use App\Models\Courier;
 use App\Models\Currency;
 use App\Models\Inventory;
-use App\Models\Item;
-use App\Models\ItemCategory;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\ItemImage;
-use App\Models\ItemTag;
+use App\Models\ProductTag;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\PaymentMethod;
@@ -28,7 +28,7 @@ use App\Models\PromotionHead;
 use App\Models\PromotionPlan;
 use App\Models\PromotionUse;
 use App\Models\Review;
-use App\Models\Seller;
+use App\Models\Merchant;
 use App\Models\ShippingMethod;
 use App\Models\Size;
 use App\Models\Shop;
@@ -79,7 +79,7 @@ class Baazar
         return $shop;
     }
     public function seller(){
-        $seller = Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $seller = Merchant::where('user_id',Sentinel::getUser()->id)->first();
         if(!$seller){return 'No seller registred';}
         return $seller;
     }

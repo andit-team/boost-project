@@ -35,7 +35,7 @@ class RoleTableSeeder extends Seeder
                 'updated_at'    => now(),
             ],
             [
-                'name'          => 'Seller',
+                'name'          => 'Merchant',
                 'slug'          => 'seller',
                 'permissions'   => '{"notifacation":true,"activities":true,"product-management":true,"product-edit":true,"product-show":true,"product-create":true,"product-index":true,"tax-destroy":true,"tax-edit":true,"tax-show":true,"tax-create":true,"tax-index":true,"unit-destroy":true,"unit-edit":true,"unit-show":true,"unit-create":true,"unit-index":true,"type-destroy":true,"type-edit":true,"type-show":true,"type-create":true,"type-index":true,"category-destroy":true,"category-edit":true,"category-show":true,"category-create":true,"category-index":true,"customer-create":true,"sale-management":true,"saleReturn-destroy":true,"saleReturn-show":true,"saleReturn-index":true,"sale-show":true,"sale-create":true,"report-management":true,"report-today":true,"report-sale":true,"stock-management":true,"stock-low":true,"stock-batch":true,"stock-closing":true,"stock-expiry":true}',
                 'created_at'    => now(),

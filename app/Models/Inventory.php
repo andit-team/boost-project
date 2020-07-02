@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Item;
+use App\Models\Product;
 use App\Models\Color;
 use App\Models\Size;
 use App\User;
@@ -11,7 +11,7 @@ class Inventory extends Model
 {
 
     protected $fillable = [
-      'item_id',
+      'product_id',
       'color_id',
       'color_name',
       'qty_stock',
@@ -37,7 +37,7 @@ class Inventory extends Model
      return $this->belongsTo(User::class,'user_id');
     }
     public function item(){
-      return $this->belongsTo(Item::class,'item_id');
+      return $this->belongsTo(Product::class,'product_id');
     }
     public function color(){
       return $this->belongsTo(Color::class,'color_id');

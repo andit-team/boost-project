@@ -35,14 +35,14 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
                 RoleTableSeeder::class,
-                // CustomersTableSeeder::class,
+                CustomersTableSeeder::class,
                 PermissionTableSeeder::class,
                 UserTableSeeder::class,
                 CategoriesTableSeeder::class,
                 CuriersTableSeeder::class,
                 CurrenciesTableSeeder::class,
                 PromotionHeadsTableSeeder::class,
-                SellersTableSeeder::class,
+                MerchantsTableSeeder::class,
                 ShopsTableSeeder::class,
                 TagsTableSeeder::class,
                 ColorsTableSeeder::class,

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\ItemCategory;
+use App\Models\ProductCategory;
 use App\Models\Children;
 use Sentinel;
 use Session;

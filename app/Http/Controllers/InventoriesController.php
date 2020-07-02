@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Seller;
+use App\Models\Merchant;
 use App\Models\Inventory;
-use App\Models\Item;
+use App\Models\Product;
 use App\Models\Color;
 use App\Models\Size;
 use App\Models\Shop;
@@ -22,8 +22,19 @@ class InventoriesController extends Controller
      */
     public function index()
     {
+
+//        $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
+//        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+//        $inventory = Inventory::all();
+//        $item = Product::where('user_id',Sentinel::getUser()->id)->get();
+//
+//        $size= Size::all();
+//        $color = Color::all();
+//        return view ('merchant.inventory.index',compact('inventory','item','size','color','sellerProfile','shopProfile'));
+
         $inventories = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->get();
         return view ('merchant.inventory.index',compact('inventories'));
+
     }
 
     /**
@@ -33,9 +44,9 @@ class InventoriesController extends Controller
      */
     public function create()
     {
-        $inventory = Inventory::all(); 
-        $item = Item::where('user_id',Sentinel::getUser()->id)->get();
-        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first(); 
+        $inventory = Inventory::all();
+        $item = Product::where('user_id',Sentinel::getUser()->id)->get();
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size= Size::all();
         $color = Color::all();
         return view ('merchant.inventory.create',compact('inventory','item','size','color','shopProfile'));
@@ -55,8 +66,8 @@ class InventoriesController extends Controller
             'item_id' => $request->item_id,
             'slug' => $slug,
             'color_id' => $request->color_id,
-            'size_id' => $request->size_id, 
-            'qty_stock' => $request->qty_stock,                    
+            'size_id' => $request->size_id,
+            'qty_stock' => $request->qty_stock,
             'user_id' => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
@@ -74,7 +85,7 @@ class InventoriesController extends Controller
      */
     public function show(Inventory $inventory)
     {
-       
+
         return view ('merchant.inventory.show',compact('inventory'));
     }
 
@@ -86,12 +97,12 @@ class InventoriesController extends Controller
      */
     public function edit(Inventory $inventory)
     {
-        $inventory = Inventory::where('slug',$inventory->slug)->first(); 
-        $item = Item::where('user_id',Sentinel::getUser()->id)->get();
+        $inventory = Inventory::where('slug',$inventory->slug)->first();
+        $item = Product::where('user_id',Sentinel::getUser()->id)->get();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size= Size::all();
         $color = Color::all();
-        return view ('merchant.inventory.edit',compact('inventory','item','size','color','shopProfile'));     
+        return view ('merchant.inventory.edit',compact('inventory','item','size','color','shopProfile'));
     }
 
     /**
@@ -103,12 +114,12 @@ class InventoriesController extends Controller
      */
     public function update(Inventory $inventory,Request $request)
     {
-        $this->validateForm($request); 
+        $this->validateForm($request);
         $data = [
             'item_id' => $request->item_id,
             'color_id' => $request->color_id,
-            'size_id' => $request->size_id, 
-            'qty_stock' => $request->qty_stock,                    
+            'size_id' => $request->size_id,
+            'qty_stock' => $request->qty_stock,
             'user_id' => Sentinel::getUser()->id,
             'updated_at' => now(),
         ];
@@ -134,7 +145,7 @@ class InventoriesController extends Controller
             'item_id' => 'required',
             'color_id' => 'required',
             'qty_stock' => 'required',
-            'size_id' => 'required',           
+            'size_id' => 'required',
         ]);
     }
 }

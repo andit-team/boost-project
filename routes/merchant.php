@@ -38,32 +38,28 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
 
 
 
-    Route::get('/product/subCategoryChild/{id}','ItemsController@subCategoryChild');
-    Route::post('/product/approvement/{slug}','ItemsController@approvement');
-    Route::put('/product/rejected/{slug}','ItemsController@rejected');
-    Route::get('/product/vendorshow/{slug}','ItemsController@vendorshow');
-    Route::post('/seller/approvement/{id}','SellersController@approvement');
-    Route::put('/seller/rejected/{id}','SellersController@rejected');
-//    Route::get('/profile','SellersController@create');
+    Route::get('/product/subCategoryChild/{id}','ProductsController@subCategoryChild');
+    Route::post('/product/approvement/{slug}','ProductsController@approvement');
+    Route::put('/product/rejected/{slug}','ProductsController@rejected');
+    Route::get('/product/vendorshow/{slug}','ProductsController@vendorshow');
+    Route::post('/merchant/approvement/{id}','MerchantController@approvement');
+    Route::put('/merchant/rejected/{id}','MerchantController@rejected');
     Route::get('/profile','MerchantController@create');
-//    Route::post('/profile','SellersController@store')->name('sellerUpdate');
     Route::post('/profile','MerchantController@store')->name('sellerUpdate');
     Route::get('/shop','ShopsController@create');
     Route::post('/shop','ShopsController@update')->name('shopUpdate');
-//    Route::get('/seller/{slug}/resubmit','SellersController@edit');
     Route::get('/merchant/{slug}/resubmit','MerchantController@edit');
-    Route::put('/seller/{slug}','SellersController@update');
-//    Route::get('/seller/{id}','SellersController@show');
+    Route::put('/merchant/{slug}','MerchantController@update');
     Route::get('/merchant/{id}','MerchantController@show');
-    Route::get('dropzone', 'DropzoneController@ItemsController');
-    Route::post('dropzone/store', 'DropzoneController@ItemsController')->name('dropzone.store');
-    Route::get('/products','ItemsController@index')->middleware('isMerchantActive');
-    Route::get('/products/new','ItemsController@create')->middleware('isMerchantActive');;
-    Route::post('/products/new','ItemsController@store')->name('product.store')->middleware('isMerchantActive');;
-    Route::get('/products/view/{slug}','ItemsController@show')->middleware('isMerchantActive');;
-    Route::get('/products/update/{slug}/productupdate','ItemsController@edit');
-    Route::put('/products/update/{slug}','ItemsController@update');
-    Route::resource('/product','ItemsController');
+    Route::get('dropzone', 'DropzoneController@ProductsController');
+    Route::post('dropzone/store', 'DropzoneController@ProductsController')->name('dropzone.store');
+    Route::get('/products','ProductsController@index')->middleware('isMerchantActive');
+    Route::get('/products/new','ProductsController@create')->middleware('isMerchantActive');;
+    Route::post('/products/new','ProductsController@store')->name('product.store')->middleware('isMerchantActive');;
+    Route::get('/products/view/{slug}','ProductsController@show')->middleware('isMerchantActive');;
+    Route::get('/products/update/{slug}/productupdate','ProductsController@edit');
+    Route::put('/products/update/{slug}','ProductsController@update');
+    Route::resource('/product','ProductsController');
     Route::get('/inventories','InventoriesController@index')->middleware('isMerchantActive');
     Route::get('/inventories/new','InventoriesController@create');
     Route::post('/inventories/new','InventoriesController@store')->name('inventory.store');

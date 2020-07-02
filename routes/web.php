@@ -44,15 +44,15 @@ include('admin.php');
 Route::get('/arr', function () {
   $userprofile = Sentinel::getUser();
         //dd($userprofile);
-        $sellerProfile = App\Models\Seller::where('user_id',Sentinel::getUser()->id)->first();
+        $sellerProfile = App\Models\Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = App\Models\Shop::where('user_id',Sentinel::getUser()->id)->first();
 
-        return view('merchant.sellers.products',compact('sellerProfile','userprofile','shopProfile'));
+        return view('merchant.merchant.products',compact('sellerProfile','userprofile','shopProfile'));
 
 });
 
 // Route::post('bill/restore/{slug}', 'diagnostic\BillController@restore');
- 
+
 // Route::get('check', function () {
 
 // 	$credentials = [

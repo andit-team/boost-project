@@ -57,7 +57,7 @@
     });
 
 
-    /*=====================  
+    /*=====================
      02.Tap on Top
      ==========================*/
     $(window).on('scroll', function() {
@@ -1186,7 +1186,7 @@
         $.notify({
             icon: 'fa fa-check',
             title: 'Success!',
-            message: 'Item Successfully added to your cart'
+            message: 'Product Successfully added to your cart'
         },{
             element: 'body',
             position: null,
@@ -1229,7 +1229,7 @@
         $.notify({
             icon: 'fa fa-check',
             title: 'Success!',
-            message: 'Item Successfully added in wishlist'
+            message: 'Product Successfully added in wishlist'
         },{
             element: 'body',
             position: null,
@@ -1272,7 +1272,7 @@
     //      color_picker1 = this.value;
     //      document.documentElement.style.setProperty('--theme-deafult', color_picker1);
     //  };
-     
+
 
  })(jQuery);
 

@@ -12,9 +12,9 @@ use App\Models\Category;
 use App\Models\Color;
 use App\Models\Courier;
 use App\Models\Inventory;
-use App\Models\ItemCategory;
+use App\Models\ProductCategory;
 use App\Models\ItemImage;
-use App\Models\ItemTag;
+use App\Models\ProductTag;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\PaymentMethod;
@@ -23,12 +23,12 @@ use App\Models\PromotionHead;
 use App\Models\PromotionPlan;
 use App\Models\PromotionUse;
 use App\Models\Review;
-use App\Models\Seller;
+use App\Models\Merchant;
 use App\Models\ShippingMethod;
 use App\Models\Shop;
 use App\Models\Size;
 use App\Models\Tag;
-use App\Models\Item;
+use App\Models\Product;
 use App\Models\Brand;
 class User extends EloquentUser
 {
@@ -68,16 +68,16 @@ class User extends EloquentUser
         return $this->hasMany(Inventory::class,'user_id');
       }
       public function item(){
-         return $this->hasMany(Item::class,'user_id');
+         return $this->hasMany(Product::class,'user_id');
       }
       public function itemcategory(){
-        return $this->hasMany(ItemCategory::class,'user_id');
+        return $this->hasMany(ProductCategory::class,'user_id');
       }
       public function itemimage(){
         return $this->hasMany(ItemImage::class,'user_id');
       }
       public function itemtag(){
-        return $this->hasMany(ItemTag::class,'user_id');
+        return $this->hasMany(ProductTag::class,'user_id');
       }
       public function order(){
         return $this->hasMany(Order::class,'user_id');
@@ -104,7 +104,7 @@ class User extends EloquentUser
         return $this->hasMany(Review::class,'user_id');
       }
       public function seller(){
-        return $this->hasMany(Seller::class,'user_id');
+        return $this->hasMany(Merchant::class,'user_id');
       }
       public function shippingmethod(){
         return $this->hasMany(ShippingMethod::class,'user_id');
