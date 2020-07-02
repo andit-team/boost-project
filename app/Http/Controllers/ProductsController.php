@@ -272,11 +272,13 @@ class ProductsController extends Controller
 
 
     public function productList(){
-    $category = Category::all();
-      $item = Product::all();
-      $size= Size::all();
-      $color = Color::all();
-     return view('merchant.product.product_list',compact('category','item','size','color'));
+//    $category = Category::all();
+//      $item = Product::all();
+//      $size= Size::all();
+//      $color = Color::all();
+        $items = Product::all();
+        //dd($items);
+     return view('merchant.product.product_list',compact('items'));
     }
 
      public function approvement($slug){
@@ -356,6 +358,11 @@ class ProductsController extends Controller
       $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
       return view('merchant.product.vendorshow',compact('product','shopProfile'));
     }
+
+//    public function view($id){
+//        $product = Product::find($id);
+//        return view('product');
+//    }
 
 
     // private function validateForm($request){

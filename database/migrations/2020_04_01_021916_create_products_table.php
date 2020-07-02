@@ -42,7 +42,7 @@ class CreateProductsTable extends Migration
             $table->integer('total_view')->nullable();
             $table->dateTime('activated_at')->nullable();
             $table->boolean('active')->default(1)->change();
-            $table->enum('status',['Reject','Active','pending'])->default('Active');
+            $table->enum('status',['Reject','Active','Pending'])->default('Pending');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('shop_id')->nullable();
             $table->unsignedBigInteger('category_id');
