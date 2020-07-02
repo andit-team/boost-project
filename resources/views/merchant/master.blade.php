@@ -183,9 +183,7 @@
     <!-- Bootstrap js-->
     <script src="{{asset('frontend')}}/assets/js/bootstrap.js"></script>
 
-    <!-- chart js -->
-    <script src="{{asset('frontend')}}/assets/js/chart/apex/apexcharts.js"></script>
-    <script src="{{asset('frontend')}}/assets/js/chart/apex/custom-chart.js"></script>
+    
 
     <!-- Bootstrap Notification js-->
     <script src="{{asset('frontend')}}/assets/js/bootstrap-notify.min.js"></script>
@@ -216,7 +214,6 @@
         });
         setTimeout(function(){
             $('body').removeAttr('style');
-            console.log('remove');
         },3000); 
     </script>
 

@@ -158,3 +158,9 @@
 <!--  dashboard section end -->
 
 @endsection
+
+@push('js')
+    <!-- chart js -->
+    <script src="{{asset('frontend')}}/assets/js/chart/apex/apexcharts.js"></script>
+    <script src="{{asset('frontend')}}/assets/js/chart/apex/custom-chart.js"></script>
+@endpush
