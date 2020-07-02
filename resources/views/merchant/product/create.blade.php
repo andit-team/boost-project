@@ -80,7 +80,7 @@
                                         <div class="form-group row">
                                             <label for="tag_id" class="col-xl-3 col-md-4">Tag <span>*</span></label>
                                             <div class="col-md-8 multiple-tag">
-                                                <select class="js-example-basic-multiple form-control" name="tag_id[]" id="tad_id" multiple="multiple">
+                                                <select class="js-example-basic-multiple form-control" name="tag_id[]" id="tagId" multiple="multiple">
                                                     @foreach ($tag as $row)
                                                         <option value="{{ $row->name }}">{{$row->name}}</option>
                                                     @endforeach
@@ -284,7 +284,7 @@ $(document).ready(function(){
     //     });
     //     setProgressBar(++current);
     // });
-    //
+
     // $(".previous").click(function(){
     //     current_fs = $(this).parent();
     //     previous_fs = $(this).parent().prev();
@@ -301,7 +301,7 @@ $(document).ready(function(){
         var percent = parseFloat(100 / steps) * curStep;
         percent = percent.toFixed();
         $(".progress-bar")
-        .css("width",percent+"%")
+            .css("width",percent+"%")
     }
 
     // $(".submit").click(function(){
@@ -345,12 +345,13 @@ $(document).ready(function(){
     }
     function thirdStepValidation(){
        var err = 0;
-       err = checkeEmpty('color_id');
+       err = checkeEmpty('selectColor');
+       err = checkeEmpty('regulerPrice');
        return err;
     }
     function fourthStepValidation(){
         var err = 0;
-        err = checkeEmpty('tag_id');
+        err = checkeEmpty('tagId');
         err = checkeEmpty('model_no');
         err = checkeEmpty('materials');
         err = checkeEmpty('price');
@@ -360,6 +361,7 @@ $(document).ready(function(){
     }
 
     $(document).ready(function(){
+
         $('#next').click(function(){
             var error = 0;
             var current_step = $(this).data('step');
@@ -372,8 +374,10 @@ $(document).ready(function(){
             if(error == 0) {
                 current_fs = $('#basic_information');
                 next_fs = $('#detail_information');
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active1");
                 next_fs.show();
                 current_fs.hide();
+                setProgressBar(++current);
             }
         });
 
@@ -398,8 +402,10 @@ $(document).ready(function(){
             if(error == 0) {
                 current_fs = $('#detail_information');
                 next_fs = $('#pricestock_information');
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active1");
                 next_fs.show();
                 current_fs.hide();
+                setProgressBar(++current);
             }
         });
 
@@ -416,6 +422,7 @@ $(document).ready(function(){
             var error = 0;
             var current_step = $(this).data('step');
 
+
             if(current_step == 3){
                 error = thirdStepValidation();
             }
@@ -424,8 +431,10 @@ $(document).ready(function(){
             if(error == 0) {
                 current_fs = $('#pricestock_information');
                 next_fs = $('#tagmodel_information');
+                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active1");
                 next_fs.show();
                 current_fs.hide();
+                setProgressBar(++current);
             }
         });
 
@@ -462,6 +471,7 @@ $(document).ready(function(){
             current_fs.hide();
         });
     });
+
 
  </script>
 @endpush
