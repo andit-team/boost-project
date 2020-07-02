@@ -28,6 +28,7 @@ class CategoriesTableSeeder extends Seeder
      // include('CategoriesAttr/Medicine.php');
       // include('CategoriesAttr/Pet_Supplies.php');
        // include('CategoriesAttr/Mother_Baby.php');
+       // include('CategoriesAttr/Motors.php');
 		// dd($mobiles_tablets);
 
       \Baazar::insertRecords($mobiles_tablets);
@@ -80,6 +81,10 @@ class CategoriesTableSeeder extends Seeder
 
          // \Baazar::insertRecords($mother_baby);
       // echo  'Mother & Baby  Done....';
+
+          // \Baazar::insertRecords($motors);
+      // echo  'Motors Done....';
+
 
 
 
