@@ -321,6 +321,8 @@ $(document).ready(function(){
         }
     }
     function checkUrl(id){
+        var url = new RegExp(
+            "^(http:\/\/www.|https:\/\/www.|ftp:\/\/www.|www.){1}([0-9A-Za-z]+\.)");
         if (url){
             return 0;
         }else{
@@ -333,7 +335,7 @@ $(document).ready(function(){
         err = checkeEmpty('name');
         err = checkeEmpty('category');
         err = checkeEmpty('video_url');
-        // err = checkUrl('video_url');
+        //err = checkUrl('video_url');
         return err;
     }
     function secondStepValidation(){

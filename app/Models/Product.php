@@ -75,25 +75,25 @@ class Product extends Model
       return $this->belongsTo(HrmEmployee::class,'pack_id');
       }
       public function cart(){
-        return $this->hasMany(cart::class,'item_id');
+        return $this->hasMany(cart::class,'product_id');
      }
      public function inventory(){
-       return $this->hasMany(Inventory::class,'item_id');
+       return $this->hasMany(Inventory::class,'product_id');
      }
      public function itemcategory(){
-       return $this->hasMany(ProductCategory::class,'item_id');
+       return $this->hasMany(ProductCategory::class,'product_id');
      }
      public function itemimage(){
-       return $this->hasMany(ItemImage::class,'item_id');
+       return $this->hasMany(ItemImage::class,'product_id');
      }
      public function itemtag(){
-       return $this->hasMany(ProductTag::class,'item_id');
+       return $this->hasMany(ProductTag::class,'product_id');
      }
      public function orderitem(){
-       return $this->hasMany(OrderItem::class,'item_id');
+       return $this->hasMany(OrderItem::class,'product_id');
      }
      public function review(){
-       return $this->hasMany(Review::class,'item_id');
+       return $this->hasMany(Review::class,'product_id');
      }
 
      public static function getSubcategory($categoryId){

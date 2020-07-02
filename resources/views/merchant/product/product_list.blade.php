@@ -2,10 +2,16 @@
 
 @section('content')
 @push('css')
-<style> 
+<style>
     .fa{
         padding:4px;
       font-size:16px;
+    }
+    @media (min-width: 768px) {
+        .modal-xl {
+            width: 90%;
+            max-width:1200px;
+        }
     }
 </style>
 @endpush
@@ -34,75 +40,107 @@
                                  <th >Image</th>
                                  <th >Name</th>
                                  <th >Category</th>
-                                 <th > Color</th>
-                                 <th >Size</th>                              
+                                 <th> Price</th>
                                  <th  class="text-center">Action</th>
                               </tr>
-                          </thead>                     
+                          </thead>
+                            <tbody>
+                            @php $i=0; @endphp
+                             @foreach($items as $row)
+                                 <tr>
+                                     <td>{{ ++$i }}</td>
+                                     <td scope="row"><img width="50" height="50" src="{{asset($row->image)}}" class="blur-up lazyloaded"></td>
+                                     <td>{{ $row->name }}</td>
+                                     <td>{{ $row->category_slug }}</td>
+                                     <td>{{ $row->price }}</td>
+                                     <td class="d-flex justify-content-between">
+                                         <ul>
+                                             <li><a href="{{ url('andbaazaradmin/product/'.$row->id) }}" title="Approve" class="btn btn-sm btn-info"  data-toggle="modal" data-target=".requested{{ $row->id }}"><i class="fa fa-eye"></i>View</a> </li>
+                                         </ul>
+                                     </td>
+                                 </tr>
+                                 <div class="modal fade requested{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                     <div class="modal-dialog modal-xl">
+                                         <div class="modal-content">
+                                             <div class="modal-header">
+                                                 <h5 class="modal-title f-w-600" id="exampleModalLabel">Products Details</h5>
+                                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                             </div>
+                                             <div class="modal-body">
+                                                 <div class="row p-3">
+                                                     <div class="col-md-6 br-2">
+{{--                                                         <img width="100" height="100" src="{{ !empty($row->image) ? asset($row->image) : asset('/uploads/shops/products/product.png') }}" id="output"   alt="">--}}
+                                                         <div class="sort-info mt-4">
+{{--                                                             <h3 class="display-6 pt-2">{{ $row->first_name.' '.$row->last_name}}</h3>--}}
+                                                             <p class="">
+{{--                                                                 Email &nbsp;&nbsp;&nbsp;: {{ $row->email }} <br>--}}
+{{--                                                                 Phone &nbsp;&nbsp;: {{ $row->phone }} <br>--}}
+{{--                                                                 Gender &nbsp;: {{ $row->gender }}--}}
+                                                             </p>
+                                                         </div>
+                                                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                             <div class="modal-dialog" role="document">
+                                                                 <div class="modal-content">
+                                                                     <div class="modal-header">
+                                                                         <h5 class="modal-title f-w-600" id="exampleModalLabel">Reject</h5>
+                                                                     </div>
+                                                                     <div class="modal-body">
+{{--                                                                         <form action="{{ url('merchant/merchant/rejected/'.$row->id)}}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">--}}
+                                                                             @csrf
+                                                                             @method('put')
+                                                                             <div class="form">
+                                                                                 <div class="form-group">
+                                                                                     <label for="validationCustom01" class="mb-1">Description :</label>
+                                                                                     <textarea class="form-control" name="rej_desc" id="validationCustom01" type="text" rows="10" required></textarea>
+                                                                                 </div>
+                                                                             </div>
+                                                                             <div class="text-right">
+                                                                                 <button type="submit" class="btn btn-primary">Reject</button>
+                                                                             </div>
+{{--                                                                         </form>--}}
+                                                                     </div>
+
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+
+                                                     <div class="col-md-12">
+                                                         <div class="float-left modal-logo">
+
+                                                             <img src="{{ !empty($row->image) ? asset($row->image) : asset('/uploads/shops/products/product.png') }}" class="" height="100" width="100" alt="Logo">
+                                                         </div>
+                                                         <div>
+{{--                                                             <h3 class="display-5 font-weight-bold">{{$row->shop->name}}</h3>--}}
+{{--                                                             <p>{{$row->shop->slogan}}</p>--}}
+                                                         </div>
+
+                                                         <br>
+                                                         <div class="d-inline-block mt-3">
+{{--                                                             <p class="text-justify">{{ $row->shop->description }}</p>--}}
+{{--                                                             <h5>{{$row->shop->name}}</h5>--}}
+{{--                                                             <h6>750 followers | 10 review</h6>--}}
+{{--                                                             <h6>{{$row->shop->email}}</h6>--}}
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                             <div class="modal-footer">
+{{--                                                 <form action="{{ url('merchant/merchant/approvement/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">--}}
+                                                     @csrf
+                                                     <button type="submit" class="btn btn-warning">Approve</button>
+{{--                                                 </form>--}}
+                                                 <button type="button" class="btn btn-primary ml-1" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Reject</button>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             @endforeach
+                            </tbody>
                     </table>
                   </div>
                 </div>
-            </div>          
-        </div>
-    </div>
-@endsection
-
-{{--
-        <!-- Container-fluid starts-->
-        <div class="container-fluid">
-            <div class="row products-admin ratio_asos">
-                @foreach($item as $row)
-                <div class="col-xl-3 col-sm-6">
-                    
-                    <div class="card">
-                        <div class="card-body product-box">
-                            <div class="img-wrapper">
-                                <div class="front">
-                                    @foreach($row->itemimage as $itemimg)
-                                    @if($loop->first)
-                                    <a href="{{ url('/merchant/product/'.$row->slug) }}"><img src="{{ asset('/uploads/product_image/'.$itemimg->list_img ) }}" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                    @endif
-                                    @endforeach
-                                    <div class="product-hover">
-                                        <ul>
-                                            <li>
-                                                <button class="btn" type="button" data-original-title="" title=""><i class="ti-pencil-alt"></i></button>
-                                            </li>
-                                            <li>
-                                                <button class="btn" type="button" data-toggle="modal" data-target="#exampleModalCenter" data-original-title="" title=""><i class="ti-trash"></i></button>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-detail">
-                                <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
-                                <a href="{{ url('/merchant/product/'.$row->slug) }}">
-                                    <h6>{{ $row->name}}</h6>
-                                </a>
-                                <h4>${{$row->price}}</del></h4>
-                                <ul class="color-variant">
-                                    <li class="bg-light0"></li>
-                                    <li class="bg-light1"></li>
-                                    <li class="bg-light2"></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                   
-                </div>
-                @endforeach
-               
             </div>
         </div>
-        <!-- Container-fluid Ends-->
-
     </div>
 @endsection
-@push('js')
-<script>
-    $(document).ready(function() {
-    $('#example').DataTable();
-} );
-    </script>
-    @endpush --}}
