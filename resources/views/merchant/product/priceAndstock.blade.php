@@ -96,7 +96,7 @@
                                     <option value="" selected disabled>Select color</option>
                                 </select>
                             </td>
-                            <td><input type="number" class="form-control" placeholder="Regular price" name="inventory_price[]"></td>
+                            <td><input type="number" class="form-control" placeholder="Regular price" name="inventory_price[]" id="regulerPrice"></td>
                             <td>
                                 <div class="input-group">
                                     <input type="text" placeholder="Special price" readonly class="form-control" name="special_price[]">
@@ -205,7 +205,7 @@
                 }
             })
         }
-        
+
         // inventories script
         $('.rowAdd').click(function(){
             var rowNo = parseFloat($(this).data("row"))||1;
