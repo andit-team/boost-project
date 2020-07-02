@@ -16,10 +16,17 @@ class CategoriesTableSeeder extends Seeder
     include('CategoriesAttr/Camera.php');
     include('CategoriesAttr/tv_audio_video_gaming.php');
     // include('CategoriesAttr/Home_Appliance.php');
-     // include('CategoriesAttr/Fashion.php');
-     // include('CategoriesAttr/Bags_Travels.php');
-     // include('CategoriesAttr/Sports_Outdoors.php');
-
+   // include('CategoriesAttr/Fashion.php');
+   // include('CategoriesAttr/Bags_Travels.php');
+   // include('CategoriesAttr/Sports_Outdoors.php');
+   // include('CategoriesAttr/Laundry_Cleaning.php');
+   // include('CategoriesAttr/Kitchen_Dining.php');
+   // include('CategoriesAttr/Stationery_Craft.php');
+    // include('CategoriesAttr/Bedding_Bath.php');
+     // include('CategoriesAttr/Digital_Goods.php');
+     // include('CategoriesAttr/Toys_Games.php');
+     // include('CategoriesAttr/Medicine.php');
+      // include('CategoriesAttr/Pet_Supplies.php');
 		// dd($mobiles_tablets);
 
       \Baazar::insertRecords($mobiles_tablets);
@@ -45,6 +52,33 @@ class CategoriesTableSeeder extends Seeder
 
        // \Baazar::insertRecords($sports_outdors);
       // echo  'Bags And Travels Done....';
+
+      // \Baazar::insertRecords($laundry_cleaning);
+      // echo  'Laundry & Cleaning Done....';
+
+      // \Baazar::insertRecords($kitchen_dining);
+      // echo  'Laundry & Cleaning Done....';
+
+       // \Baazar::insertRecords($stationery_craft);
+      // echo  'Sattinary & Craft  Done....';
+
+      // \Baazar::insertRecords($bedding_bath);
+      // echo  'Bedding & Bath  Done....';
+
+       // \Baazar::insertRecords($bedding_bath);
+      // echo  'Digital & Goods  Done....';
+
+       // \Baazar::insertRecords($toys_games);
+      // echo  'Toys & Games  Done....';
+
+        // \Baazar::insertRecords($medicine);
+      // echo  'Medicine  Done....';
+
+         // \Baazar::insertRecords($pet_supplies);
+      // echo  'Pet Supplies  Done....';
+
+
+
 
 
 

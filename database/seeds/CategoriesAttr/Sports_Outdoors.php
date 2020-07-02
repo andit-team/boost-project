@@ -1,5 +1,4 @@
 <?php
-//multi-select,select,text,checkbox,number
 
 $sports_travels = [
 	  [
@@ -171,24 +170,90 @@ $sports_travels = [
                   [
                     'Camping & Hiking',
                     'child'=>[
-                      ['Sleeping Gear'],
-                      ['Footwear'],                 
-                      ['Hiking Apparel'],                   
+                      [
+                        'Sleeping Gear',
+                        'child'=>[
+                          ['Sleeping Bags'],
+                          ['Air Mattresses'],
+                          ['Pillows & Accessories'],
+                          ['Hammocks'],
+                        ]
+                      ],
+                      [
+                        'Footwear',
+                        'child'=>[
+                          ['Hiking Boots'],
+                        ]
+                      ],                 
+                      [ 
+                        'Hiking Apparel',
+                        'child'=>[
+                          ['Hiking Chino Shorts'],
+                          ['Fleece Jackets'],
+                          ['Hiking T-Shirts'],
+                          ['Rain Coats'],
+                        ]
+                      ],                   
                       ['Tents'],                   
-                      ['Backpacks'],                
+                      [
+                        'Backpacks',
+                        'child'=>[
+                          ['Hiking Backpacks'],
+                        ]
+                      ],                
                       ['Camp Furniture'],                
-                      ['Camp Kitchen'],               
-                      ['Lighting'],            
+                      [
+                        'Camp Kitchen',
+                        'child'=>[
+                          ['Camping Stoves'],
+                          ['Cookware & Utensils'],
+                        ]                       
+                      ],               
+                      [
+                        'Lighting',
+                        'child'=>[
+                          ['Flashlights'],
+                        ]
+                      ],            
                       ['Survival kits'],
                      ]
                   ],
                   [
                     'Cycling',
                     'child'=>[
-                      ['Bikes'],
-                      ['Bike Accessories'],                  
+                      [
+                        'Bikes',
+                        'child'=>[
+                          ['BMX'],
+                          ['Folding Bikes'],
+                          ['Mountain Bikes'],
+                        ]
+                      ],
+                      [
+                        'Bike Accessories',
+                        'child'=>[
+                          ['Batteries'],
+                          ['Bells & Horns'],
+                          ['Bike Storage'],
+                          ['Helmets & Pads'],
+                          ['Lights & Reflectors'],
+                          ['Locks'],
+                          ['Mount Holders'],
+                          ['Mudguards'],
+                          ['Air Pumps'],
+                          ['Water Bottles & Cages'],
+                          ['Other'],
+                          ['Covers & Cases'],
+                        ]
+                      ],                  
                       ['Bikes Parts'],                   
-                      ['Cycling Clothing'],
+                      [
+                        'Cycling Clothing',
+                        'child'=>[
+                          ['Cycling Gloves'],
+                        ]
+
+                      ],
                      ]
                   ],                
                   [
@@ -230,10 +295,20 @@ $sports_travels = [
                   [
                     'Golf',
                     'child'=>[
-                      ['Clubs'],
+                      [
+                        'Clubs',
+                        'child'=>[
+                          ['Irons'],
+                        ]
+                      ],
                       ['Bags & Covers'],                    
                       ['Accessories'],                  
-                      ['Gloves'],
+                      [
+                        'Gloves',
+                        'child'=>[
+                          ['Golf Carts'],
+                        ]
+                      ],
                       ]
                   ],               
                   [
@@ -253,7 +328,13 @@ $sports_travels = [
                   [
                     'Pool, Darts & Foosball',
                     'child' => [
-                      ['Darts & Dartboards'],
+                      [
+                        'Darts & Dartboards',
+                        'child' => [
+                          ['Darts'],
+                          ['Dartboards'],
+                        ]
+                      ],
                       ['Foosball Tables'],
                       ['Pool & Billiard'],
                        ]
@@ -266,28 +347,144 @@ $sports_travels = [
                   [
                     'Women',
                     'child'=>[
-                      ['Shoes'],
-                      ['Clothing'],
-                      ['Accessories'],
-                      ['Bags'],
+                      [
+                        'Shoes',
+                        'child'=>[
+                          ['Running Shoes'],
+                          ['Golf Shoes'],
+                          ['Futsal Shoes'],
+                          ['Sports Sneakers'],
+                        ]
+                      ],
+                      [
+                        'Clothing',
+                        'child'=>[
+                          ['T-Shirts & Tops'],
+                          ['Jackets'],
+                          ['Hoodies'],
+                          ['Swimwear'],
+                          ['Compression'],
+                          [
+                            'Jerseys',
+                            'child'=>[
+                              ['Football'],
+                            ]
+                          ],
+                          ['Sports Bras'],
+                          ['Shorts'],
+                          ['Skirts & Dresses'],
+                        ]
+                      
+                      ],
+                      [
+                        'Accessories',
+                        'child'=>[
+                          ['Socks'],
+                          ['Hats & Caps'],
+                        ]
+                      
+                      ],
+                      [
+                        'Bags',
+                        'child'=>[
+                          ['Drawstring Bags'],
+                          ['Sport Duffels'],
+                          ['Gym Totes'],
+                        ]                   
+                      ],
                     ]
                   
                   ],
                   [
                     'Men',
                     'child'=>[
-                      ['Shoes'],
-                      ['Clothing'],
-                      ['Accessories'],
-                      ['Bags'],
+                      [
+                        'Shoes',
+                        'child'=>[
+                          ['Running Shoes'],
+                          ['Futsal Shoes'],
+                          ['Basketball Shoes'],
+                          ['Cycling Shoes'],
+                          ['Hiking Shoes'],
+                          ['Training Shoes'],
+                          ['Sports Sneakers'],
+                          ['Tennis Shoes'],
+                        ]                    
+                      ],
+                      [
+                        'Clothing',
+                        'child'=>[
+                          ['Pants'],
+                          ['T-Shirts & Tops'],
+                          ['Jackets'],
+                          [
+                            'Swimwear',
+                            'child'=>[
+                              ['Swim Trunks'],
+                              ['Swim Shorts'],
+                            ]
+                          ],
+                          ['Rashguards'],
+                          ['Compression'],
+                          [
+                            'Jerseys',
+                            'child'=>[
+                              ['Football'],
+                              ['Cycling'],
+                            ]
+                          ],
+                          ['Shorts'],
+                        ]
+                      
+                      ],
+                      [
+                        'Accessories',
+                        'child'=>[
+                          ['Wristbands'],
+                          ['Underwears'],
+                          ['Socks'],
+                          ['Hats & Caps'],
+                          ['Sleeves'],
+                        ]
+                      
+                      ],
+                      [
+                        'Bags',
+                        'child'=>[
+                          ['Sport Backpacks'],
+                          ['Drawstring Bags'],
+                          ['Sport Duffels'],
+                        ]
+                      
+                      ],
                     ]
                   
                   ],                 
                   [
                     'Girls',
                     'child'=>[
-                      ['Shoes'],
-                      ['Clothing'],
+                      [
+                        'Shoes',
+                        'child'=>[
+                          ['Ballet & Dance'],
+                        ]
+                      ],
+                      [
+                        'Clothing',
+                        'child'=>[
+                          [
+                            'Jerseys',
+                            'child'=>[
+                              ['Football'],
+                            ]
+                          ],
+                          ['Sports Bras'],
+                          ['T-Shirts & Tops'],
+                          ['Dresses'],
+                          ['Skirts'],
+                          ['Swimwear'],
+                        ]
+                      ],
                       ['Bags'],
                     ]
                   
@@ -295,15 +492,46 @@ $sports_travels = [
                   [
                     'Boys',
                     'child'=>[
-                      ['Shoes'],
-                      ['Clothing'],
+                      [
+                        'Shoes',
+                        'child'=>[
+                          ['Badminton Shoes'],
+                          ['Cycling Shoes'],
+                          ['Training Shoes'],
+                          ['Football Shoes'],
+                          ['Golf Shoes'],
+                          ['Running Shoes'],
+                          ['Skateboard Shoes'],
+                          ['Sports Sandals'],
+                          ['Tennis Shoes'],
+                          ['Water Shoes'],
+                        ]
+                      ],
+                      [
+                        'Clothing',
+                        'child'=>[
+                          ['Compression'],
+                          ['Jerseys'],
+                          ['T-Shirts & Tops'],
+                          ['Pants'],
+                          ['Shorts'],
+                          ['Jackets'],
+                          ['Swimwear'],
+                          ['Uniforms'],
+                        ]
+                      ],
                       ['Accessories'],
                     ]                 
                   ],              
                   [
                     'Unisex',
                     'child'=>[
-                      ['Shoes'],
+                      [
+                        'Shoes',
+                        'child'=>[
+                          ['Skateboard Shoes'],
+                        ]
+                      ],
                       ['Clothing'],
                       ['Accessories'],
                       ['Bags'],
@@ -351,8 +579,24 @@ $sports_travels = [
                     'child'=>[                     
                       ['Goggles'],
                       ['Swim Caps'],
-                      ['Accessories'],
-                      ['Training Equipment'],
+                      [
+                        'Accessories',
+                        'child'=>[   
+                          ['Earplugs'],
+                          ['Nose Clips'],
+                        ]
+
+                      ],
+                      [
+                        'Training Equipment',
+                        'child'=>[                         
+                            ['Hand Paddles'],
+                            ['Kickboards'],
+                            ['Swim Belts'],
+                            ['Training Fins'],
+                            ['Aquatic Gloves'],
+                        ]
+                      ],
                       ['Floaties'],
                       ['Swimwear'],
                     ]
