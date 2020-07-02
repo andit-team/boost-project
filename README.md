@@ -1,4 +1,4 @@
-<p align="center" style="background:black"><img src="https://www.andbaazar.com/images/logo.png" width="400"></p>
+<p align="center" ><img src="https://www.andbaazar.com/images/logo.png" width="400"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -9,7 +9,7 @@
 
 ## About Andbaazar
 
-Andbaazar is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Andbaazar is a Multi-Vendor E-Commerce Website
 
 ## Live URL
 
@@ -17,4 +17,4 @@ Andbaazar is a web application framework with expressive, elegant syntax. We bel
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Biggest B2B, B2C, C2C Website licensed under the [ANDIT license](https://andit.co).
