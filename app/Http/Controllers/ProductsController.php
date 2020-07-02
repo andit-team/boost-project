@@ -153,6 +153,7 @@ class ProductsController extends Controller
               'model_no'      => $request->model_no,
               'org_price'     => is_numeric($request->org_price)?$request->org_price:0,
               'description'   => $request->description,
+              'email'         => $request->email,
               'bn_description'=> $request->bn_description,
               'min_order'     => $request->min_order,
               'made_in'       => $request->made_in,
@@ -161,6 +162,7 @@ class ProductsController extends Controller
               'category_id'   => $request->category_id,
               'category_slug' => $request->category,
               'tag_slug'      => $this->tagSlug($request->tag_id),
+              'status'            => 'Pending',
               'shop_id'       => $shop->id,
               'user_id'       => Sentinel::getUser()->id,
               'created_at'    => now(),
@@ -277,18 +279,16 @@ class ProductsController extends Controller
 //      $size= Size::all();
 //      $color = Color::all();
         $items = Product::all();
-        //dd($items);
      return view('merchant.product.product_list',compact('items'));
     }
 
-     public function approvement($slug){
+     public function approvement($id){
 
-
-      $data = Product::where('slug',$slug)->first();
+      $data = Product::where('id',$id)->first();
 
       $data->update(['status' => 'Active']);
 
-      $name = $data['name'];
+      $name =  $data['name'];
       \Mail::to($data['email'])->send(new productApproveMail($data, $name));
       Session::flash('success', 'Product Approve Successfully!');
 

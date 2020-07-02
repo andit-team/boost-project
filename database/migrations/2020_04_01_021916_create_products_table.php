@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('bn_name');
             $table->string('image')->nullable();
+            $table->string('email')->nullable();
             $table->string('slug');
             $table->decimal('price',8,2)->default(0);
             $table->string('model_no');
