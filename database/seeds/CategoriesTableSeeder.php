@@ -22,15 +22,16 @@ class CategoriesTableSeeder extends Seeder
    // include('CategoriesAttr/Laundry_Cleaning.php');
    // include('CategoriesAttr/Kitchen_Dining.php');
    // include('CategoriesAttr/Stationery_Craft.php');
-    // include('CategoriesAttr/Bedding_Bath.php');
-     // include('CategoriesAttr/Digital_Goods.php');
-     // include('CategoriesAttr/Toys_Games.php');
-     // include('CategoriesAttr/Medicine.php');
-      // include('CategoriesAttr/Pet_Supplies.php');
-       // include('CategoriesAttr/Mother_Baby.php');
-       // include('CategoriesAttr/Motors.php');
-        // include('CategoriesAttr/ Media_Music_Books.php');
-		// dd($mobiles_tablets);
+   // include('CategoriesAttr/Bedding_Bath.php');
+   // include('CategoriesAttr/Digital_Goods.php');
+   // include('CategoriesAttr/Toys_Games.php');
+   // include('CategoriesAttr/Medicine.php');
+   // include('CategoriesAttr/Pet_Supplies.php');
+   // include('CategoriesAttr/Mother_Baby.php');
+   // include('CategoriesAttr/Motors.php');
+   // include('CategoriesAttr/Media_Music_Books.php');
+   // include('CategoriesAttr/Groceries.php');
+	// dd($mobiles_tablets);
      
       \Baazar::insertRecords($mobiles_tablets);
       echo  'Mobiles & Tablets Done...<>';
@@ -89,6 +90,8 @@ class CategoriesTableSeeder extends Seeder
            // \Baazar::insertRecords($media_music_books);
       // echo  'Media, Music & Books Done....';
 
+   // \Baazar::insertRecords($groceries);
+      // echo  'Groceries Done....';
 
 
 
