@@ -39,7 +39,7 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
 
 
     Route::get('/product/subCategoryChild/{id}','ProductsController@subCategoryChild');
-    Route::post('/product/approvement/{id}','ProductsController@approvement');
+    Route::post('/product/approvement/{slug}','ProductsController@approvement');
     Route::put('/product/rejected/{slug}','ProductsController@rejected');
     Route::get('/product/vendorshow/{slug}','ProductsController@vendorshow');
     Route::post('/merchant/approvement/{id}','MerchantController@approvement');
