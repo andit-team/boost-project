@@ -31,6 +31,8 @@ class CategoriesTableSeeder extends Seeder
    // include('CategoriesAttr/Motors.php');
    // include('CategoriesAttr/Media_Music_Books.php');
    // include('CategoriesAttr/Groceries.php');
+     // include('CategoriesAttr/Furniture_Décor.php');
+     // include('CategoriesAttr/Tools_DIY_Outdoor.php');
 	// dd($mobiles_tablets);
      
       \Baazar::insertRecords($mobiles_tablets);
@@ -92,6 +94,14 @@ class CategoriesTableSeeder extends Seeder
 
    // \Baazar::insertRecords($groceries);
       // echo  'Groceries Done....';
+
+       // \Baazar::insertRecords($furniture_décor);
+      // echo  'Furniture & Décor Done....';
+
+         // \Baazar::insertRecords($tools_diy_outdoor);
+      // echo  'Tools, DIY & Outdoor Done....';
+
+
 
       // \Baazar::insertRecords($tv_audio);
       // echo  'TV, Audio  Done...';
