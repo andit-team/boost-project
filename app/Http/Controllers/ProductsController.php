@@ -196,6 +196,7 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         $product = Product::with('itemimage')->where('slug',$product->slug)->first();
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
 
         return view('merchant.product.show',compact('product','shopProfile'));
     }
@@ -282,9 +283,9 @@ class ProductsController extends Controller
      return view('merchant.product.product_list',compact('items'));
     }
 
-     public function approvement($id){
+     public function approvement($slug){
 
-      $data = Product::where('id',$id)->first();
+      $data = Product::where('slug',$slug)->first();
 
       $data->update(['status' => 'Active']);
 
@@ -295,6 +296,7 @@ class ProductsController extends Controller
         return back();
 
     }
+
 
     public function rejected(Request $request,$slug){
 
@@ -310,7 +312,7 @@ class ProductsController extends Controller
       $name = $data['name'];
       $rej_desc = $data['rej_desc'];
       \Mail::to($data['email'])->send(new ProductRejectMail($data, $name,$rej_desc));
-      Session::flash('success', 'Product Rejected Successfully!');
+      Session::flash('warning', 'Product Rejected Successfully!');
 
         return back();
 
@@ -342,11 +344,15 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
+        $product = Product::find($id);
+        $product->itemimage()->delete();
+        $product->inventory()->delete();
         $product->delete();
 
-        Session::flash('success', 'Product Deleted Successfully');
+
+        Session::flash('error', 'Product Deleted Successfully');
 
          return redirect('merchant/product');
     }
@@ -359,10 +365,7 @@ class ProductsController extends Controller
       return view('merchant.product.vendorshow',compact('product','shopProfile'));
     }
 
-//    public function view($id){
-//        $product = Product::find($id);
-//        return view('product');
-//    }
+
 
 
     // private function validateForm($request){

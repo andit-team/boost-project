@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Cart;
 use App\Models\Inventory;
 use App\Models\ProductCategory;
@@ -18,6 +19,7 @@ use App\User;
 
 class Product extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
       'name',
       'bn_name',
