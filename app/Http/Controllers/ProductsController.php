@@ -160,6 +160,7 @@ class ProductsController extends Controller
               'model_no'      => $request->model_no,
               'org_price'     => is_numeric($request->org_price)?$request->org_price:0,
               'description'   => $request->description,
+              'email'         => $request->email,
               'bn_description'=> $request->bn_description,
               'min_order'     => $request->min_order,
               'made_in'       => $request->made_in,
@@ -168,6 +169,7 @@ class ProductsController extends Controller
               'category_id'   => $request->category_id,
               'category_slug' => $request->category,
               'tag_slug'      => $this->tagSlug($request->tag_id),
+              'status'            => 'Pending',
               'shop_id'       => $shop->id,
               'user_id'       => Sentinel::getUser()->id,
               'created_at'    => now(),
@@ -201,6 +203,7 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         $product = Product::with('itemimage')->where('slug',$product->slug)->first();
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
 
         return view('merchant.product.show',compact('product','shopProfile'));
     }
@@ -279,27 +282,28 @@ class ProductsController extends Controller
 
 
     public function productList(){
-    $category = Category::all();
-      $item = Product::all();
-      $size= Size::all();
-      $color = Color::all();
-     return view('merchant.product.product_list',compact('category','item','size','color'));
+//    $category = Category::all();
+//      $item = Product::all();
+//      $size= Size::all();
+//      $color = Color::all();
+        $items = Product::all();
+     return view('merchant.product.product_list',compact('items'));
     }
 
      public function approvement($slug){
-
 
       $data = Product::where('slug',$slug)->first();
 
       $data->update(['status' => 'Active']);
 
-      $name = $data['name'];
+      $name =  $data['name'];
       \Mail::to($data['email'])->send(new productApproveMail($data, $name));
       Session::flash('success', 'Product Approve Successfully!');
 
         return back();
 
     }
+
 
     public function rejected(Request $request,$slug){
 
@@ -315,7 +319,7 @@ class ProductsController extends Controller
       $name = $data['name'];
       $rej_desc = $data['rej_desc'];
       \Mail::to($data['email'])->send(new ProductRejectMail($data, $name,$rej_desc));
-      Session::flash('success', 'Product Rejected Successfully!');
+      Session::flash('warning', 'Product Rejected Successfully!');
 
         return back();
 
@@ -347,11 +351,15 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
+        $product = Product::find($id);
+        $product->itemimage()->delete();
+        $product->inventory()->delete();
         $product->delete();
 
-        Session::flash('success', 'Product Deleted Successfully');
+
+        Session::flash('error', 'Product Deleted Successfully');
 
          return redirect('merchant/product');
     }
@@ -363,6 +371,8 @@ class ProductsController extends Controller
       $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
       return view('merchant.product.vendorshow',compact('product','shopProfile'));
     }
+
+
 
 
     // private function validateForm($request){

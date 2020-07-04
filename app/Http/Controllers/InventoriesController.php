@@ -45,7 +45,7 @@ class InventoriesController extends Controller
     public function create()
     {
         $inventory = Inventory::all();
-        $item = Product::where('user_id',Sentinel::getUser()->id)->get();
+        $item = Product::where('status','Active')->where('user_id',Sentinel::getUser()->id)->get();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size= Size::all();
         $color = Color::all();
@@ -63,7 +63,7 @@ class InventoriesController extends Controller
         $this->validateForm($request);
         $slug = Baazar::getUniqueSlug($inventory,$request->item_id);
         $data = [
-            'item_id' => $request->item_id,
+            'product_id' => $request->item_id,
             'slug' => $slug,
             'color_id' => $request->color_id,
             'size_id' => $request->size_id,

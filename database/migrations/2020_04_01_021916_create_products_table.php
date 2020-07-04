@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('bn_name');
             $table->string('image')->nullable();
+            $table->string('email')->nullable();
             $table->string('slug');
             $table->decimal('price',8,2)->default(0);
             $table->string('model_no');
@@ -42,7 +43,7 @@ class CreateProductsTable extends Migration
             $table->integer('total_view')->nullable();
             $table->dateTime('activated_at')->nullable();
             $table->boolean('active')->default(1)->change();
-            $table->enum('status',['Reject','Active','pending'])->default('Active');
+            $table->enum('status',['Reject','Active','Pending'])->default('Pending');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('shop_id')->nullable();
             $table->unsignedBigInteger('category_id');
