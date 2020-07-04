@@ -52,7 +52,7 @@
     <div class="card-body">
         <div class="form-group row">
             <label for="color_id" class="col-xl-3 col-md-4"></label>
-            <div id="dropzone-main" class="img-upload-area" data-color="main"><label class="mt-3"><b>Feature Images</b></label>
+            <div id="dropzone-main" class="img-upload-area" data-color="main"><label class="mt-3"><b>Feature Images :</b><span class="text-danger" id="message_main_img"></span></label>
                 <div class="border m-0 collpanel drop-area row my-awesome-dropzone-main" id="sortable-main">
                     <span class="dz-message color-main">
                         <h2>Drag & Drop Your Files</h2>
@@ -65,14 +65,14 @@
           <div class="form-group row">
               <label for="color_id" class="col-xl-3 col-md-4 mt-1">Color Family<span class="text-danger"> *</span></label>
                   <select name="color_id" autocomplete="off" class="form-control col-md-8" id="selectColor">
-                  <option value="">Select Color</option>
-                  @foreach($color as $row)
-                    <option value="{{ $row->slug }}">{{ $row->name }}</option>
-                  @endforeach
+                    <option value="">No Color</option>
+                    @foreach($color as $row)
+                        <option value="{{ $row->slug }}">{{ $row->name }}</option>
+                    @endforeach
               </select>
           </div>
           <div class="form-group row">
-                <label for="color_id" class="col-xl-3 col-md-4"></label>
+                <label for="" class="col-xl-3 col-md-4"></label>
                 <div class="drops"></div>
                 <div class="inputs"></div>
           </div>
@@ -93,7 +93,7 @@
                       <tr class="firstRow" data-id="0" id="row-0">
                             <td>
                                 <select name="inventory_color[]" class="form-control inventory_colors">
-                                    <option value="" selected disabled>Select color</option>
+                                    <option value="" selected disabled>No color</option>
                                 </select>
                             </td>
                             <td><input type="number" class="form-control" placeholder="Regular price" name="inventory_price[]"></td>
@@ -299,7 +299,7 @@
 
                 self.on("thumbnail", function(file){
                     if(file.size < 3000000){
-                        $('.inputs').append(`<input type="hidden" name="images[${color}][]" id="id${file.size}" value="${file.dataURL}">`);
+                        $('.inputs').append(`<input type="hidden" class="image-class-${color}" name="images[${color}][]" id="id${file.size}" value="${file.dataURL}">`);
                     }else{
                         swal("Maximum size reached", {icon: "warning",buttons: false,timer: 2000});
                         this.removeFile(file);

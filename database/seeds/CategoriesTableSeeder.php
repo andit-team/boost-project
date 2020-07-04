@@ -33,14 +33,14 @@ class CategoriesTableSeeder extends Seeder
       \Baazar::insertRecords($mobiles_tablets);
       echo  'Mobiles & Tablets Done...<>';
 
-      \Baazar::insertRecords($Computers_Laptop);
-      echo  'Computers & Laptops Done....';
+      // \Baazar::insertRecords($Computers_Laptop);
+      // echo  'Computers & Laptops Done....';
 
-      \Baazar::insertRecords($tv_audio_video_gaming);
-      echo  'TV, Audio , Video, Gaming Done...';
+      // \Baazar::insertRecords($tv_audio_video_gaming);
+      // echo  'TV, Audio , Video, Gaming Done...';
 
-      \Baazar::insertRecords($camera);
-      echo  'Camera Done....';
+      // \Baazar::insertRecords($camera);
+      // echo  'Camera Done....';
 
       // \Baazar::insertRecords($home_appliances);
       // echo  'Home Appliance Done....';

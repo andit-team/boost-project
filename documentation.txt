@@ -20,3 +20,10 @@ DB_PORT=3306
 DB_DATABASE=andbaazar_andbaazar
 DB_USERNAME=andbaazar_andbaazar
 DB_PASSWORD=andbaazar_andbaazar
+
+//local DB
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=andbaazar
+DB_USERNAME=root
+DB_PASSWORD=

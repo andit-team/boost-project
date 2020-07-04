@@ -30,7 +30,7 @@
                                 @include('merchant.product.productBasicinfo')
                                 @include('merchant.product.productAttributes')
                             </div>
-                            <input type="button" id="next" name="next" class="next btn btn-primary float-right" value="Next" data-step="1"/>
+                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" data-step="1"/>
                         </fieldset>
                         <fieldset id="detail_information">
                             <div class="card mb-4">
@@ -62,14 +62,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" id="next1" data-step="2" />
+                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" data-step="2" />
                             <input type="button" id="previous" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
                         </fieldset>
                         <fieldset id="pricestock_information">
                             <div>
                                 @include('merchant.product.priceAndstock')
                             </div>
-                            <input type="button" id="next2" name="next" class="next btn btn-primary float-right" value="Next" data-step="3"/>
+                            <input type="button" name="next" class="next btn btn-primary float-right" value="Next" data-step="3"/>
                             <input type="button" id="previous2" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
                         </fieldset>
                         <fieldset id="tagmodel_information">
@@ -272,30 +272,37 @@ $(document).ready(function(){
 
     setProgressBar(current);
 
-    // $(".next").click(function(){
-    //
-    //     current_fs = $(this).parent();
-    //     next_fs = $(this).parent().next();
-    //     $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active1");
-    //     next_fs.show();
-    //     current_fs.css({
-    //         'display': 'none',
-    //         'position': 'relative'
-    //     });
-    //     setProgressBar(++current);
-    // });
-    //
-    // $(".previous").click(function(){
-    //     current_fs = $(this).parent();
-    //     previous_fs = $(this).parent().prev();
-    //     $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active1");
-    //     previous_fs.show();
-    //         current_fs.css({
-    //             'display': 'none',
-    //             'position': 'relative'
-    //         });
-    //         setProgressBar(--current);
-    // });
+    $(".next").click(function(){
+        var error = 0;
+        var current_step = $(this).data('step');
+        if(current_step == 1){error = firstStepValidation();}
+        if(current_step == 2){error = secondStepValidation();}
+        if(current_step == 3){error = thirdStepValidation();}
+        if(current_step == 4){error = fourthStepValidation();}
+        if(error == 0) {
+            current_fs = $(this).parent();
+            next_fs = $(this).parent().next();
+            $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active1");
+            next_fs.show();
+            current_fs.css({
+                'display': 'none',
+                'position': 'relative'
+            });
+            setProgressBar(++current);
+        }
+    });
+    
+    $(".previous").click(function(){
+        current_fs = $(this).parent();
+        previous_fs = $(this).parent().prev();
+        $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active1");
+        previous_fs.show();
+            current_fs.css({
+                'display': 'none',
+                'position': 'relative'
+            });
+            setProgressBar(--current);
+    });
 
     function setProgressBar(curStep){
         var percent = parseFloat(100 / steps) * curStep;
@@ -303,10 +310,6 @@ $(document).ready(function(){
         $(".progress-bar")
         .css("width",percent+"%")
     }
-
-    // $(".submit").click(function(){
-    //     return false;
-    // })
 
 });
     function checkeEmpty(id){
@@ -344,8 +347,54 @@ $(document).ready(function(){
         return err;
     }
     function thirdStepValidation(){
+       var img = 0;
        var err = 0;
-       err = checkeEmpty('color_id');
+
+       var album_text = [];
+
+        $("input[name='inventory_price[]']").each(function() {
+            var value = $(this).val();
+            if (!value) {
+                err = 1;
+                $(this).addClass('border-danger');
+            }else{
+                $(this).removeClass('border-danger');
+            }
+        });
+        $("input[name='inventory_qty[]']").each(function() {
+            var value = $(this).val();
+            if (!value) {
+                err = 1;
+                $(this).addClass('border-danger');
+            }else{
+                $(this).removeClass('border-danger');
+            }
+        });
+        $("input[name='seller_sku[]']").each(function() {
+            var value = $(this).val();
+            if (!value) {
+                err = 1;
+                $(this).addClass('border-danger');
+            }else{
+                $(this).removeClass('border-danger');
+            }
+        });
+        $(".image-class-main").each(function() {
+            var value = $(this).val();
+            console.log(value);
+            if (value) {
+                img = img+1;
+            }
+        });
+        console.log(img);
+        if(img == 0){
+            $('.my-awesome-dropzone-main').attr('style', 'border-color:red !important');
+            $('#message_main_img').text('You must put at least one image');
+            err = 1;
+        }else{
+            $('.my-awesome-dropzone-main').removeAttr('style');
+            $('#message_main_img').text('');
+        }
        return err;
     }
     function fourthStepValidation(){
@@ -359,109 +408,106 @@ $(document).ready(function(){
         return err;
     }
 
-    $(document).ready(function(){
-        $('#next').click(function(){
-            var error = 0;
-            var current_step = $(this).data('step');
-            if(current_step == 1){
-                error = firstStepValidation();
-            }
+    // $(document).ready(function(){
+    //     $('#next').click(function(){
+    //         var error = 0;
+    //         var current_step = $(this).data('step');
+    //         if(current_step == 1){
+    //             error = firstStepValidation();
+    //         }
+    //         if(error == 0) {
+    //             current_fs = $('#basic_information');
+    //             next_fs = $('#detail_information');
+    //             next_fs.show();
+    //             current_fs.hide();
+    //         }
+    //     });
 
+    //     $('#previous').click(function(){
+    //         current_fs = $('#detail_information');
+    //         next_fs = $('#basic_information');
+    //         next_fs.show();
+    //         current_fs.hide();
+    //     });
+    // });
 
-            // console.log(current_step);
-            if(error == 0) {
-                current_fs = $('#basic_information');
-                next_fs = $('#detail_information');
-                next_fs.show();
-                current_fs.hide();
-            }
-        });
+    // $(document).ready(function(){
+    //     $('#next1').click(function(){
+    //         var error = 0;
+    //         var current_step = $(this).data('step');
 
-        $('#previous').click(function(){
-            current_fs = $('#detail_information');
-            next_fs = $('#basic_information');
-            next_fs.show();
-            current_fs.hide();
-        });
-    });
+    //         if(current_step == 2){
+    //             error = secondStepValidation();
+    //         }
 
-    $(document).ready(function(){
-        $('#next1').click(function(){
-            var error = 0;
-            var current_step = $(this).data('step');
+    //         // console.log(current_step);
+    //         if(error == 0) {
+    //             current_fs = $('#detail_information');
+    //             next_fs = $('#pricestock_information');
+    //             next_fs.show();
+    //             current_fs.hide();
+    //         }
+    //     });
 
-            if(current_step == 2){
-                error = secondStepValidation();
-            }
+    //     $('#previous1').click(function(){
+    //         current_fs = $('#pricestock_information');
+    //         next_fs = $('#detail_information');
+    //         next_fs.show();
+    //         current_fs.hide();
+    //     });
+    // });
 
-            // console.log(current_step);
-            if(error == 0) {
-                current_fs = $('#detail_information');
-                next_fs = $('#pricestock_information');
-                next_fs.show();
-                current_fs.hide();
-            }
-        });
+    // $(document).ready(function(){
+    //     $('#next2').click(function(){
+    //         var error = 0;
+    //         var current_step = $(this).data('step');
 
-        $('#previous1').click(function(){
-            current_fs = $('#pricestock_information');
-            next_fs = $('#detail_information');
-            next_fs.show();
-            current_fs.hide();
-        });
-    });
+    //         if(current_step == 3){
+    //             error = thirdStepValidation();
+    //         }
 
-    $(document).ready(function(){
-        $('#next2').click(function(){
-            var error = 0;
-            var current_step = $(this).data('step');
+    //         // console.log(current_step);
+    //         if(error == 0) {
+    //             current_fs = $('#pricestock_information');
+    //             next_fs = $('#tagmodel_information');
+    //             next_fs.show();
+    //             current_fs.hide();
+    //         }
+    //     });
 
-            if(current_step == 3){
-                error = thirdStepValidation();
-            }
+    //     $('#previous2').click(function(){
+    //         current_fs = $('#pricestock_information');
+    //         next_fs = $('#detail_information');
+    //         next_fs.show();
+    //         current_fs.hide();
+    //     });
+    // });
 
-            // console.log(current_step);
-            if(error == 0) {
-                current_fs = $('#pricestock_information');
-                next_fs = $('#tagmodel_information');
-                next_fs.show();
-                current_fs.hide();
-            }
-        });
+    // $(document).ready(function(){
+    //     $('#save').click(function(){
+    //         var error = 0;
+    //         var current_step = $(this).data('step');
+    //         //console.log(current_step);
+    //         if(current_step == 4){
+    //             error = fourthStepValidation();
+    //         }
 
-        $('#previous2').click(function(){
-            current_fs = $('#pricestock_information');
-            next_fs = $('#detail_information');
-            next_fs.show();
-            current_fs.hide();
-        });
-    });
+    //         // console.log(current_step);
+    //         // if(error == 0) {
+    //         //     current_fs = $('#personal_information2');
+    //         //     next_fs = $('#account_information1');
+    //         //     next_fs.show();
+    //         //     current_fs.hide();
+    //         // }
+    //     });
 
-    $(document).ready(function(){
-        $('#save').click(function(){
-            var error = 0;
-            var current_step = $(this).data('step');
-            //console.log(current_step);
-            if(current_step == 4){
-                error = fourthStepValidation();
-            }
-
-            // console.log(current_step);
-            // if(error == 0) {
-            //     current_fs = $('#personal_information2');
-            //     next_fs = $('#account_information1');
-            //     next_fs.show();
-            //     current_fs.hide();
-            // }
-        });
-
-        $('#previous3').click(function(){
-            current_fs = $('#tagmodel_information');
-            next_fs = $('#pricestock_information');
-            next_fs.show();
-            current_fs.hide();
-        });
-    });
+    //     $('#previous3').click(function(){
+    //         current_fs = $('#tagmodel_information');
+    //         next_fs = $('#pricestock_information');
+    //         next_fs.show();
+    //         current_fs.hide();
+    //     });
+    // });
 
  </script>
 @endpush

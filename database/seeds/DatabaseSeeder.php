@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
                 DB::statement('SET FOREIGN_KEY_CHECKS=0');
                 DB::table('customers')->truncate();
-                // DB::table('categories')->truncate();
+                DB::table('categories')->truncate();
                 DB::table('couriers')->truncate();
                 DB::table('currencies')->truncate();
                 DB::table('promotion_heads')->truncate();

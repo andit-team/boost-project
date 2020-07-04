@@ -82,11 +82,17 @@ class ProductsController extends Controller
 
     public function addInventory($request,$itemId,$shopId){
       $i = 0;
-      foreach($request->inventory_color as $color){
+      foreach($request->inventory_price as $row){
+        if($request->inventory_color){
+          $color = Color::where('name',$request->inventory_color[$i])->first()->toArray();
+        }else{
+          $color['id'] = 0;
+          $color['name'] = 'no color';
+        }
         $inventories = [
-          'product_id'         => $itemId,
-          'color_id'        => Color::where('name',$color)->first()->id,
-          'color_name'      => $color,
+          'product_id'      => $itemId,
+          'color_id'        => $color['id'],
+          'color_name'      => $color['name'],
           'qty_stock'       => is_numeric($request->inventory_qty[$i])?$request->inventory_qty[$i]:0,
           'price'           => is_numeric($request->inventory_price[$i])?$request->inventory_price[$i]:0,
           'special_price'   => is_numeric($request->special_price[$i])?$request->special_price[$i]:0,
@@ -140,6 +146,7 @@ class ProductsController extends Controller
     }
 
     public function store(Product $item, Request $request){
+      // dd($request->all());
       $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
       if($shop){
         $slug = Baazar::getUniqueSlug($item,$request->name);
