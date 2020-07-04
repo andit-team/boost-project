@@ -93,11 +93,6 @@ class CategoriesTableSeeder extends Seeder
    // \Baazar::insertRecords($groceries);
       // echo  'Groceries Done....';
 
-
-
-
-
-
       // \Baazar::insertRecords($tv_audio);
       // echo  'TV, Audio  Done...';
    	}
