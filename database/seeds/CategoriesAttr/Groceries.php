@@ -309,50 +309,295 @@ $groceries = [
           [
             'Fresh Produce',
             'child'=>[
-              ['Fresh Vegetables'],
+              [
+                'Fresh Vegetables',
+                'child'=>[
+                  ['Radish'],
+                  ['Roots'],
+                  ['Sweet Potatoes'],
+                  ['Turnip'],
+                  ['Yams'],
+                  ['Carrots & Root Vegetables'],
+                  ['Leafy Vegetables'],
+                  ['Peas, Beans & Sweetcorn'],
+                  ['Ginger'],
+                  ['Gourds'],
+                  ['LotusRoot'],
+                  ['Nuts'],
+                  ['Onions'],
+                  ['Parsnips'],
+                  ['Potatoes'],
+                  ['Pumpkin & Squash'],
+                  ['Peas'],
+                  ['Preserved Vegetables'],
+                  ['Spring Onions'],
+                  ['Sprouts Microgreens'],
+                  ['Sweet Corn'],
+                  ['Tomatoes'],
+                  ['Beetroot'],
+                  ['Garlic'],
+                  ['Courgettes'],
+                  ['Cucumber'],
+                  ['Endives'],
+                  ['Fennel'],
+                  ['Okra'],
+                  ['Leeks'],
+                  ['Lettuce'],
+                  ['Mixed'],
+                  ['Brinjal'],
+                  ['Broccoli'],
+                  ['Brussel Sprouts'],
+                  ['Cabbage'],
+                  ['Capsicums'],
+                  ['Cauliflower'],
+                  ['Celery'],
+                  ['Chillies'],
+                  ['Aloe Vera'],
+                  ['Asparagus'],
+                  ['Avocados'],
+                  ['Baby Vegetables & Edible Flowers'],
+                  ['Beans'],
+                ]
+              ],
               ['Fresh Herbs & Spices'],
-              ['Fresh Fruit'],
-              ['Salad'],
+              [
+                'Fresh Fruit',
+                'child'=>[
+                  ['Grapes'],
+                  ['Mangoes'],
+                  ['Melons'],
+                  ['Papaya'],
+                  ['Pineapple'],
+                  ['Apples'],
+                  ['Bananas'],
+                  ['Citrus'],
+                  ['Pears'],
+                  ['Stonefruits'],
+                  ['Berries'],
+                  ['Coconut'],
+                  ['Exotic Fruits'],
+                ]
+              ],
+              [
+                'Salad',               
+                'child'=>[                  
+                  ['Ready-to Eat Salad'],
+                  ['Packaged Salad'],
+                                  ]
+              ],
               ['Mushrooms'],
-              ['Asian Vegetables'],
+              [
+                'Asian Vegetables',
+                'child'=>[  
+                  ['Leaves'],
+                  ['Pak Choi'],
+                  ['Spinach'],
+                  ['Sprouts Microgreens'],
+                  ['Chye Sim/CaiXin'],
+                ]
+              ],
               ['Other Vegetables'],          
             ]
           ],
           [
             'Frozen',
             'child'=>[
-              ['Ice Cream'],
-              ['Seafood'],
-              ['Frozen Desserts'],
-              ['Convenience Foods'],
-              ['Bread, Bagels & Pancakes'],
-              ['Vegetables & Fruits'],
+              [
+                'Ice Cream',
+                'child'=>[
+                  ['Ice Cream'],
+                  ['Frozen Yogurt'],
+                  ['Sorbet'],
+                ]
+              ],
+              [
+                'Seafood',
+                'child'=>[
+                  ['Fish & Fingers Cakes'],
+                  ['Frozen Fish Fillet'],
+                  ['Frozen Shellfish'],
+                  ['Breaded Seafood'],
+                  ['Crabsticks & Fishballs'],
+                ]
+              ],
+              [
+                'Frozen Desserts',
+                'child'=>[
+                  ['Jelly Pudding'],
+                  ['Soy Dessert'],
+                  ['Cakes'],
+                  ['Sweet Pastries'],
+                ]
+              ],
+              [
+                'Convenience Foods',
+                'child'=>[
+                  ['Dim Sum'],
+                  ['Noodles'],
+                  ['Pizza'],
+                  ['Ready Meals'],
+                  ['Ready-to-Eat Meals'],
+                  ['Soups'],
+                  ['Chilled Soup'],
+                ]
+              ],
+              [
+                'Bread, Bagels & Pancakes',
+                'child'=>[
+                  ['Speciality Bread'],
+                  ['Frozen Bread'],
+                  ['Panckaes & Waffles'],
+                ]
+              ],
+              [
+                'Vegetables & Fruits',
+                'child'=>[
+                  ['Fruits'],
+                  ['Vegetables'],
+                ]
+              ],
               ['Mock Meat & Seafood'],
-              ['Meat'], 
+              [
+                'Meat'],
+                  'child'=>[
+                    ['Beef'],
+                    ['Burger & Sausage'],
+                    ['Chicken'],
+                    ['Chicken Franks Nuggets'],
+                    ['Duck'],
+                    ['Lamb'],
+                    ['Pork'],
+                    ['Poultry'],
+                    ['Satay'],
+                    ['Sliced Meat'],
+                    ['Turkey'],
+                  ]
+                , 
             ]
           ],
           [
             'Bakery',
             'child'=>[
-              ['Cakes & Sweet Pies'],
-              ['Breakfast & Treats'],
-              ['Bread'],
+              [
+                'Cakes & Sweet Pies',
+                'child'=>[
+                  ['Cookies & Brownies'],
+                  ['SweetPies'],
+                  ['Cakes'],
+                  ['Fruit Loaves & Scones'],
+                ]
+              ],
+              [
+                'Breakfast & Treats',
+                'child'=>[
+                  ['Croissants & Brioche'],
+                  ['Muffins'],
+                  ['Pancakes'],
+                  ['Pastries & Scones'],
+                ]
+              ],
+              [
+                'Bread',
+                'child'=>[
+                  ['Bagels & Pretzels'],
+                  ['Bread Rolls &Buns'],
+                  ['Cream Rolls'],
+                  ['Loaves & Artisanal Breads'],
+                  ['Prebaked Bread'],
+                  ['Sliced Bread'],
+                  ['Variety Buns'],
+                  ['Wraps, Pitta & Naan'],
+                ]
+              ],
             ]
           ],
           [
             'Dairy & Chilled',
             'child'=>[
-              ['Chilled Drinks'],
-              ['Desserts'],
-              ['Deli'],
-              ['Cooking Ingredients'],
-              ['Convenience Foods'],
+              [
+                'Chilled Drinks',
+                'child'=>[
+                  ['Chilled Tea'],
+                  ['Coconut'],
+                  ['Cold Pressed Juice'],
+                  ['Fresh Apple Juice'],
+                  ['Fresh Orange Juice'],
+                  ['Other Drinks'],
+                  ['Other Fresh Fruit Juice'],
+                  ['Shakes And Smoothies'],
+                  ['Chilled Coffee'],
+                ]
+              ],
+              [
+                'Desserts',
+                'child'=>[
+                  ['Cakes'],
+                  ['Cheese Cakes'],
+                  ['Chocolates'],
+                  ['Jelly Pudding & Custard'],                
+                  ['Ready-to-Roll Pastry'],
+                  ['Soy Dessert'],
+                  ['Sweet Pastries'],
+                  ['Sweet Soups'],
+                  ['Others'],
+                ]
+              ],
+              [
+                'Deli',
+                'child'=>[
+                  ['Antipasti'],
+                  ['Deli Meat'],
+                  ['Dips'],
+                  ['Ethnic'],
+                ]
+              ],
+              [
+                'Cooking Ingredients',
+                'child'=>[
+                  ['Home Baking'],
+                  ['Ready to Roll Pastry'],
+                  ['Seasoning'],
+                  ['Stock, Gravy & Broth'],
+                  ['Asian Pastes & Sauces'],
+                  ['Coconut'],
+                  ['Garlic & Shallots'],
+                ]
+              ],
+              [
+                'Convenience Foods',
+                'child'=>[
+                  ['Ready Meals'],
+                  ['Pickles & Chutneys'],
+                  ['Salad Dressing'],
+                  ['Dim Sum'],
+                  ['Fresh Pasta & Sauce'],
+                  ['Mock Meat & Seafood'],
+                  ['Noodles'],
+                ]
+              ],
               ['Cheese'],
-              ['Yoghurt'],
+              [
+                'Yoghurt',
+                'child'=>[
+                  ['Yogurt'],
+                  ['Yoghurt Drinks'],
+                ]
+              ],
               ['Tofu'],
-              ['Milk, Butter & Eggs'],             
-            ]
-          ],
-        ]
-     ], 
+              [
+                'Milk, Butter & Eggs'],           ,
+                  'child'=>[
+                    ['Butter'],
+                    ['Margarine & Spread'],
+                    ['Cream'],
+                    ['Cultured Milk'],
+                    ['Eggs'],
+                    ['Fresh Milk'],
+                    ['Soy & Dairy Free Milk'],
+                  ]               
+              ]
+            ],
+         ]
+      ]
+    ], 
 ];
