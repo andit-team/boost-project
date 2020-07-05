@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('content') 
+@section('content')
 @include('elements.alert')
 @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
@@ -8,7 +8,7 @@
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">Profile</li>
+      <li class="breadcrumb-item active" aria-current="page">Inventory</li>
   @endslot
 @endcomponent
 
@@ -16,7 +16,7 @@
     <section class="dashboard-section section-b-space">
         <div class="container">
             <div class="row">
-                
+
                 @include('layouts.inc.sidebar.vendor-sidebar',[$active='inventory'])
 
                 <!-- address section start -->
@@ -25,17 +25,17 @@
                             <form class="theme-form" action="{{ route('inventory.store') }}" method="post">
                                 @csrf
                                     <div class="form-row">
-                                                                        
+
                                         <div class="col-md-6 pb-4">
                                             <label for="name">Product *</label>
-                                            <select name="item_id" class="form-control px-10" id="item_id"  autocomplete="off">
+                                            <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Product</option>
                                                 @foreach ($item as $row)
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                  
+
                                         <div class="col-md-6">
                                             <label for="name">Color *</label>
                                             <select name="color_id" class="form-control" id="color_id"  autocomplete="off">
@@ -54,7 +54,7 @@
                                                     <option value="{{ $row->id }}">{{$row->name}}</option>
                                                 @endforeach
                                             </select>
-                                        </div> 
+                                        </div>
                                         <div class="col-md-6">
                                             <label for="qty_stock">Stock Quanty </label>
                                             <input type="number" class="form-control" name="qty_stock" id="qty_stock">
