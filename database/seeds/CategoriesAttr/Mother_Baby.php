@@ -166,8 +166,8 @@ $mother_baby = [
                   [
                     'Toddler Bedding',
                     'child'=>[
-                      ['Bedding Sets']
-                      ['Sheets']                  
+                      ['Bedding Sets'],
+                      ['Sheets'],                
                     ]
                   ],
                   ['Mattresses'],

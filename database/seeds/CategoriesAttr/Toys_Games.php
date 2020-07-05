@@ -139,10 +139,7 @@ $toys_games = [
               [
                 'Reading & Writing',
                 'child' => [
-                  ['Diaries, Journals & Notebooks'],
-                ,
-                
-                
+                  ['Diaries, Journals & Notebooks'],    
                 ]
               ],
              ] 
@@ -293,16 +290,13 @@ $toys_games = [
                   ['Accessories & Batteries'],
                 ]
               ],
-              [
-               ,
-                'child'=>[]
-               '
-               Play Trains & Railway Sets',
-                'child'=>[
-                  ['Buidings & Scenery;],
-                  ['Train Tracks;],
-                  ['Train Cars & Sets;],
-                ]
+              [                          
+               'Play Trains & Railway Sets',
+               'child'=>[
+                ['Buidings & Scenery'],
+                ['Train Tracks'],
+                ['Train Cars & Sets'],
+              ]
               ],
               [
                 'Play Vehicles',

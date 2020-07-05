@@ -1,9 +1,9 @@
 <?php
 //multi-select,select,text,checkbox,number
 
-$bedding_bath = [
+$pet_supplies = [
 	[
-        'Bedding & Bath',
+        'Pet Supplies',
         'child' => [  
           [ 
             'Small Pet',

@@ -585,7 +585,7 @@ $groceries = [
               ],
               ['Tofu'],
               [
-                'Milk, Butter & Eggs'],           ,
+                'Milk, Butter & Eggs'],           
                   'child'=>[
                     ['Butter'],
                     ['Margarine & Spread'],
