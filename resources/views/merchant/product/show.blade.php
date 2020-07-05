@@ -96,31 +96,31 @@
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Reject</button>
                                 </div>
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title f-w-600" id="exampleModalLabel">Reject</h5>
-                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="{{ url('merchant/product/rejected/'.$product->slug)}}" method="post" style="margin-top:-2px" id="deleteButton({{ $product->id }})">
-                                            @csrf
-                                            @method('put')
-                                            <div class="form">
-                                                <div class="form-group">
-                                                    <label for="validationCustom01" class="mb-1">Description :</label>
-                                                    <textarea class="form-control" name="rej_desc" id="validationCustom01" type="text" required></textarea>
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Reject</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ url('merchant/product/rejected/'.$product->slug)}}" method="post" style="margin-top:-2px" id="deleteButton({{ $product->id }})">
+                                                @csrf
+                                                @method('put')
+                                                <div class="form">
+                                                    <div class="form-group">
+                                                        <label for="validationCustom01" class="mb-1">Description :</label>
+                                                        <textarea class="form-control" name="rej_desc" id="validationCustom01" type="text" required></textarea>
+                                                    </div>
                                                 </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Reject</button>
+                                                </form>
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                </div>
+                                                </form>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary">Reject</button>
-                                            </form>
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                                            </div>
-                                            </form>
                                         </div>
                                     </div>
-                                </div>
                                 </div>
                                 {{-- @endif --}}
                             </div>

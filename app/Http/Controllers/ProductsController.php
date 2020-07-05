@@ -44,7 +44,7 @@ class ProductsController extends Controller
 //      $color = Color::all();
 //      return view ('merchant.product.index',compact('category','item','size','color','sellerProfile','shopProfile'));
 
-      $items = Product::where('status','Active')->where('shop_id',Baazar::shop()->id)->get();
+      $items = Product::where('shop_id',Baazar::shop()->id)->get();
       return view ('merchant.product.index',compact('items'));
 
     }

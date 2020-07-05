@@ -69,11 +69,19 @@
                             </div>
                         </div>
                         <div class="product-detail">
-                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                            <div class="rating">
+                                @if($row->status == 'Pending')
+                                    <label class="badge badge-pill badge-info p-2">Pending</label>
+                                @elseif($row->status == 'Active')
+                                    <label class="badge badge-pill badge-success p-2">Active</label>
+                                @else
+                                    <label class="badge badge-pill badge-primary p-2">Reject</label>
+                                @endif
+                            </div>
                             <a href="{{ url('/merchant/product/'.$row->slug) }}">
                                 <h6>{{ $row->name}}</h6>
                             </a>
-                            <h4>${{$row->price}}</del></h4>
+                            <h4>${{$row->price}}</h4>
                             <ul class="color-variant">
                                 <li class="bg-light0"></li>
                                 <li class="bg-light1"></li>
