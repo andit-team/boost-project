@@ -235,6 +235,7 @@ class MerchantController extends Controller{
             'first_name' => 'required',
             'last_name' => 'required',
             'phone'     => 'required',
+            'nid'       => 'required|max:10',
         ]);
     }
 
@@ -333,6 +334,9 @@ class MerchantController extends Controller{
                 'email'             => $request->email,
                 'picture'           => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
                 'dob'               => $request->dob,
+                'nid'               => $request->nid,
+                'nid_img'           => Baazar::fileUpload($request,'nid_img','old_nid_img','/uploads/vendor_profile/nid_image'),
+                'trad_img'           => Baazar::fileUpload($request,'trad_img','old_trad_img','/uploads/vendor_profile/trad_image'),
                 'gender'            => $request->gender,
                 'description'       => $request->description,
                 'last_visited_at'   => now(),
@@ -361,7 +365,10 @@ class MerchantController extends Controller{
                 'phone'             => $request->phone,
                 'email'             => $request->email,
                 'picture'           => Baazar::fileUpload($request,'picture','','/uploads/vendor_profile'),
-                'dob'               =>$request->dob,
+                'dob'               => $request->dob,
+                'nid'               => $request->nid,
+                'nid_img'           => Baazar::fileUpload($request,'nid_img','','/uploads/vendor_profile/nid_image'),
+                'trad_img'          => Baazar::fileUpload($request,'trad_img','','/uploads/vendor_profile/trad_image'),
                 'gender'            => $request->gender,
                 'description'       => $request->description,
                 'last_visited_at'   => now(),

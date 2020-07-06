@@ -60,8 +60,8 @@
                                             <label for="size_id">Size <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
                                             <select name="size_id" class="form-control" id="size_id" autocomplete="off">
                                                 <option value="" selected disabled>Select Size</option>
-                                                @foreach ($size as $row)
-                                                    <option value="{{ $row->id }}">{{$row->name}}</option>
+                                                @foreach ($productAttriOption as $row)
+                                                    <option value="{{ $row->id }}">{{$row->option}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

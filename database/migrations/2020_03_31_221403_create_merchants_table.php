@@ -23,6 +23,9 @@ class CreateMerchantsTable extends Migration
             $table->date('dob')->nullable();
             $table->string('phone')->nullable();
             $table->enum('gender',['Male','Female','Other'])->default('Male');
+            $table->string('nid')->nullable();
+            $table->string('nid_img')->nullable();
+            $table->string('trad_img')->nullable();
             $table->text('description')->nullable();
             $table->text('rej_desc')->nullable();
             $table->date('last_visited_at')->nullable();

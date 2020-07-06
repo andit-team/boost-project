@@ -12,7 +12,7 @@ use App\Models\Shop;
 use Sentinel;
 use Session;
 use Baazar;
-
+use App\Models\InventoryAttributeOption;
 class InventoriesController extends Controller
 {
     /**
@@ -49,7 +49,8 @@ class InventoriesController extends Controller
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size= Size::all();
         $color = Color::all();
-        return view ('merchant.inventory.create',compact('inventory','item','size','color','shopProfile'));
+        $productAttriOption = InventoryAttributeOption::all();
+        return view ('merchant.inventory.create',compact('inventory','item','size','color','shopProfile','productAttriOption'));
     }
 
     /**

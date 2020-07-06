@@ -29,6 +29,9 @@
     .inputhight{
         height: 51px!important;
     }
+    .nidhight{
+        height: 37px!important;
+    }
 </style>
 @include('elements.alert')
 {{-- @component('layouts.inc.breadcrumb')
@@ -86,6 +89,25 @@
                                 <input id="file-upload" type="file" name="picture" onchange="loadFile(event)"/>
                                 <input type="hidden" value="{{$sellerProfile->picture}}" name="old_image">
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mt-2">
+                            <label for="nid">National Identity Card (NID)<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('nid') }}</span>
+                            <input type="number" name="nid" class="form-control nidhight @error('nid') border-danger @enderror" required  value="{{ old('nid',$sellerProfile->nid) }}">
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="nid_img">Nid Image</label>
+                            <input type="file" name="nid_img" class="form-control" value="{{ $sellerProfile->nid_img  }}">
+                            <input type="hidden" value="{{ $sellerProfile->nid_img }}" name="old_nid_img">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mt-2">
+                            <label for="trad_img">Trad Licence Image</label>
+                            <input type="file" name="trad_img" class="form-control" value="{{ $sellerProfile->trad_img }}">
+                            <input type="hidden" value="{{ $sellerProfile->trad_img }}" name="old_trad_img">
                         </div>
                     </div>
 
