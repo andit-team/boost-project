@@ -15,6 +15,7 @@ class Inventory extends Model
       'product_id',
       'color_id',
       'color_name',
+      'slug',
       'qty_stock',
       'price',
       'special_price',

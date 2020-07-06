@@ -26,7 +26,7 @@
         cursor: pointer;
         border-top: 0px;
     }
-</style> 
+</style>
 @endpush
 @include('elements.alert')
 {{-- @component('layouts.inc.breadcrumb')
@@ -43,7 +43,7 @@
     <section class="dashboard-section section-b-space">
         <div class="container">
             <div class="row">
-                
+
                 @include('layouts.inc.sidebar.vendor-sidebar',[$active='profile'])
 
              <div class="col-sm-9 register-page contact-page">
@@ -63,44 +63,61 @@
                             <div>
                                 <label for="phone" class="mt-2">Phone number<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('phone') }}</span>
                                 <input type="number" class="form-control @error('phone') border-danger @enderror" required  name="phone" value="{{ old('phone') }}" id="" placeholder="Phone Number">
-                            </div> 
+                            </div>
                             <div>
                                 <label for="email" class="mt-2">Email<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('email') }}</span>
                                 <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$userprofile->email) }}" id="" placeholder="Email">
                             </div>
-                        </div> 
+                        </div>
 
 
-                        <div class="col-md-4 text-right">  
+                        <div class="col-md-4 text-right">
                             <label for="picture">Picture</label>
                             <div class="mt-0">
                                 <img id="output"  class="imagestyle" src="{{ asset('/uploads/vendor_profile/user.png') }}" />
                             </div>
-                            <div class="uploadbtn"> 
+                            <div class="uploadbtn">
                                 <label for="file-upload" class="custom-file-upload">Upload Here</label>
                                 <input id="file-upload" type="file" name="picture" onchange="loadFile(event)"/>
                             </div>
                         </div>
-                    </div> 
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6 mt-2">
+                            <label for="nid">National Identity Card (NID)<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('nid') }}</span>
+                            <input type="number" name="nid" class="form-control @error('nid') border-danger @enderror" required value="{{ old('nid') }}">
+                        </div>
+                        <div class="col-md-6 mt-2">
+                            <label for="nid_img">Nid Image</label>
+                            <input type="file" name="nid_img" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mt-2">
+                            <label for="trad_img">Trad Licence Image</label>
+                            <input type="file" name="trad_img" class="form-control">
+                        </div>
+                    </div>
 
                     <label for="description" class="mt-2">Write Your Message</label> <span class="text-danger">{{ $errors->first('description') }}</span>
                     <textarea class="form-control summernote mb-0 @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="6" ></textarea>
 
 
-                    <div class="form-row"> 
+                    <div class="form-row">
                         <div class="col-md-6 mt-2">
-                            <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span> 
-                            <input type="text"  class="form-control  @error('dob') border-danger @enderror datepickerPreviousOnly" required name="dob" value="{{ old('dob') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">  
-                        </div>  
-                        <div class="col-md-6 mt-2"> 
+                            <label for="dob">Date of birth<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('dob') }}</span>
+                            <input type="text"  class="form-control  @error('dob') border-danger @enderror datepickerPreviousOnly" required name="dob" value="{{ old('dob') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">
+                        </div>
+                        <div class="col-md-6 mt-2">
                             <label for="gender">Gender (select one)<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('gender') }}</span>
-                            <select name="gender" class="form-control px-10 @error('gender') border-danger @enderror" id="" required autocomplete="off" style="height: 51px;">                                         
+                            <select name="gender" class="form-control px-10 @error('gender') border-danger @enderror" id="" required autocomplete="off" style="height: 51px;">
                                 <option value="Male" selected>Male</option>
-                                <option value="Female">Female</option> 
-                                <option value="Other">Other</option>  
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
                         </select>
                         </div>
-                    
+
                         <div class="col-md-12 mt-4">
                             <button type="submit" class="btn btn-sm btn-solid" >Save</button>
                         </div>
@@ -110,8 +127,8 @@
             </div>
         </div>
 </section>
-    <!--  dashboard section end --> 
-@endsection 
+    <!--  dashboard section end -->
+@endsection
 {{-- @push('js')
 <script>
     var loadFile = function(event) {

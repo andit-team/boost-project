@@ -90,7 +90,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <label for="model_no" class="col-xl-3 col-md-4">Model No<span>*</span></label>
-                                            <input type="number" class="form-control col-md-8" name="model_no" id="model_no"  required="">
+                                            <input type="text" class="form-control col-md-8" name="model_no" id="model_no"  required="">
                                             <label for="model_no" class="col-xl-3 col-md-4"><span></span></label>
                                             <span class="text-danger" id="message_model_no"></span>
                                             @if ($errors->has('model_no'))
