@@ -1,161 +1,103 @@
-
-@extends('layouts.vendor')
+@extends('layouts.master')
 
 @section('content')
-    <!-- breadcrumb start -->
-    <div class="breadcrumb-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="page-title">
-                        <h2>vendor dashboard</h2>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <nav aria-label="breadcrumb" class="theme-breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">vendor dashboard</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- breadcrumb End -->
-
+    @push('css')
+        <style>
+            .inputfield{
+                height: 37px!important;
+            }
+            .bottom{
+                margin-bottom: 25px;
+            }
+        </style>
+    @endpush
+    @include('elements.alert')
+    @component('layouts.inc.breadcrumb')
+        @slot('pageTitle')
+            Vendor Dashboard
+        @endslot
+        @slot('page')
+            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            <li class="breadcrumb-item active" aria-current="page">Inventory</li>
+        @endslot
+    @endcomponent
 
     <!--  dashboard section start -->
-<section class="dashboard-section section-b-space">
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-3">
-              <div class="dashboard-sidebar">
-                  <div class="profile-top">
-                      <div class="profile-image">
-                            <img src="{{ asset('') }}/assets/images/logos/17.png" alt="" class="img-fluid">
-                       </div>
-                       <div class="profile-detail">
-                            <h5>Fashion Store</h5>
-                            <h6>750 followers | 10 review</h6>
-                            <h6>mark.enderess@mail.com</h6>
-                       </div>
-                    </div>
-                    <div class="faq-tab">
-                          <ul class="nav nav-tabs" id="top-tab" role="tablist">
-                                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#dashboard">dashboard</a></li>
-                                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/product') }}">All Products</a>
-                                <li class="nav-item"><a  class="nav-link active" href="{{ url('merchant/inventory') }}">All Inventory</a>
-                                </li>
-                                </li>
-                                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">orders</a>
-                                </li>
-                                <li class="nav-item"><a  class="nav-link" href="{{ url('merchant/seller/create') }}">profile</a>
-                                </li>
-                                <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="#">logout</a>
-                                </li>
-                          </ul>
-                    </div>
-                </div>
-         </div>
-        <div class="col-lg-9">
-          <div class="faq-content tab-content" id="top-tabContent">
-            <div class="tab-pane fade show active" id="dashboard">
-               <div class="row">
-                  <div class="col-12">
-                    <div class="card dashboard-table mt-0">
-                        <div class="card-body">
-                            <div class="top-sec">
-                                <h3>Show inventory</h3>                                 
+    <section class="dashboard-section section-b-space">
+        <div class="container">
+            <div class="row">
+
+            @include('layouts.inc.sidebar.vendor-sidebar',[$active='inventory'])
+
+            <!-- address section start -->
+                <div class="col-sm-9 contact-page register-page container">
+                    <h3>Edit Inventory</h3>
+                    <form class="theme-form" action="{{ url('merchant/inventories/update/'.$inventory->slug) }}" method="post" id="validateForm">
+                        @csrf
+                        @method('put')
+                        <div class="form-row">
+
+                            <div class="col-md-6 pb-4">
+                                <label for="product_id">Product <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('product_id') }}</span>
+                                <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off">
+                                    <option value="" selected disabled>Select Product</option>
+                                    @foreach ($item as $row)
+                                        <option value="{{ $row->id }}" @if($row->id == $inventory->product_id) selected @endif>{{$row->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
 
-                            <div class="card-body">
-                            <form class="needs-validation" novalidate="" action="{{ url('/merchant/inventories/update'.$inventory->slug) }}" method="post">
-                                @csrf
-                                @method('PUT')
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group row">
-                                            <label for="item_id" class="col-xl-3 col-md-4">Product Name <span>*</span></label>
-                                            <select name="item_id" class="form-control col-md-8 " id="item_id" required autocomplete="off">
-                                                <option value="" selected disabled>Select Product Name</option>
-                                                @foreach ($item as $row)
-                                                    <option value="{{ $row->id }}"@if($row->id==$inventory->item_id) selected @endif>{{$row->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                            <div class="col-md-6">
+                                <label for="color_id">Color <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('color_id') }}</span>
+                                <select name="color_id" class="form-control" id="color_id"  autocomplete="off">
+                                    <option value="" selected disabled>Select Color</option>
+                                    @foreach ($color as $row)
+                                        <option value="{{ $row->id }}"@if($row->id == $inventory->color_id) selected @endif>{{$row->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                                      <div class="form-group row">
-                                            <label for="color_id" class="col-xl-3 col-md-4">Product Color <span>*</span></label>
-                                            <select name="color_id" class="form-control col-md-8 " id="color_id" required autocomplete="off">
-                                                <option value="" selected disabled>Select Product Color</option>
-                                                @foreach ($color as $row)
-                                                    <option value="{{ $row->id }}"@if($row->id==$inventory->color_id) selected @endif>{{$row->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                            <div class="col-md-6 pb-4">
+                                <label for="size_id">Size <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
+                                <select name="size_id" class="form-control" id="size_id" autocomplete="off">
+                                    <option value="" selected disabled>Select Size</option>
+                                    @foreach ($size as $row)
+                                        <option value="{{ $row->id }}">{{$row->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="price">Price <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('Price') }}</span>
+                                <input type="number" class="form-control inputfield" name="price" id="price" value="{{ old('price',$inventory->price) }}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="qty_stock">Stock Quantity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('qty_stock') }}</span>
+                                <input type="number" class="form-control inputfield" name="qty_stock" id="qty_stock" value="{{ old('qty_stock',$inventory->qty_stock) }}">
+                            </div>
+                            <div class="col-md-12 mt-2">
+                                <h4>Special price (optional)</h4>
+                                <hr>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="special_price">Special price</label>
+                                <input type="number" class="form-control inputfield" name="special_price" id="special_price" value="{{ old('special_price',$inventory->special_price) }}">
+                            </div>
 
-                                        <div class="form-group row">
-                                            <label for="size_id" class="col-xl-3 col-md-4">Product Size <span>*</span></label>
-                                            <select name="size_id" class="form-control col-md-8 " id="size_id" required autocomplete="off">
-                                                <option value="" selected disabled>Select Product Size</option>
-                                                @foreach ($size as  $row)
-                                                    <option value="{{ $row->id }}"@if($row->id==$inventory->size_id) selected @endif>{{$row->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div> 
-
-                                        <div class="form-group row">
-                                            <label for="qty_stock" class="col-xl-3 col-md-4">Stock Quantity <span>*</span></label>
-                                            <input class="form-control col-md-8" name="qty_stock" value="{{ $inventory->qty_stock }}" id="qty_stock" type="number" required="">
-                                        </div>  
-                                     
-                                        <div class="form-group row ">
-                                            <label  class="col-xl-3 col-md-2"></label>
-                                            {{-- <label class="col-sm-2 text-right control-label col-form-label"></label> --}}
-                                            <div class="checkbox checkbox-primary col-md-6">
-                                                <a href="{{ url('merchant/inventory') }}"  class="btn btn-info">Back</a>
-                                                <button type="submit"  class="btn btn-danger">Update</button>
-                                            </div>
-                                        </div>                                                                                                                                                  
-                                    </div>
+                            <div class="col-md-6">
+                                <label for="" >Special price Period</label>
+                                <div class="input-group">
+                                    <input type="text" id="spcial_price_start" name="start_date" class="datepickerRange form-control inputfield" value="{{ old('start_date',$inventory->start_date) }}"><span class="input-group-addon p-2 bg-success bottom" >To</span><input type="text" id="spcial_price_end" name="end_date" class="datepickerRange form-control inputfield" value="{{ old('end_date',$inventory->end_date) }}">
                                 </div>
-                            </form>
-                        </div>                                                                                                                   
-                    </div>
-                </div>                   
-              </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-sm btn-solid" type="submit">Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </div>
-     </div>
-  </div>
- </div>
-</div>     
-</section>
-    <!--  dashboard section end -->
-
-
-    <!-- Modal start -->
-    <div class="modal logout-modal fade" id="logout" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Logging Out</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Do you want to log out?
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-dark btn-custom" data-dismiss="modal">no</a>
-                    <a href="index.html" class="btn btn-solid btn-custom">yes</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- modal end -->
+    </section>
+    <!-- section end -->
 @endsection

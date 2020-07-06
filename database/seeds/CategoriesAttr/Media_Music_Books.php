@@ -99,7 +99,7 @@ $media_music_books = [
                   [
                     'Text books',
                     'child'=>[
-                      ['High School']
+                      ['High School'],
                       ['University'],                    
                     ]
                   ],

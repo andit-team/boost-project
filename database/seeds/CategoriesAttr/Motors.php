@@ -11,14 +11,14 @@ $motors = [
               [
                 'Exterior Accessories',
                 'child' => [ 
-                  ['Covers']
-                  ['Horns & Accessories']
-                  ['Mirrors']
-                  ['Spoilers, Wings & Styling Kits']
-                  ['Bumpers & Bumper Accessories']
-                  ['Hood Scoops & Vents']
-                  ['Body Armor']
-                  ['Bumper Stickers, Decals & ']
+                  ['Covers'],
+                  ['Horns & Accessories'],
+                  ['Mirrors'],
+                  ['Spoilers, Wings & Styling Kits'],
+                  ['Bumpers & Bumper Accessories'],
+                  ['Hood Scoops & Vents'],
+                  ['Body Armor'],
+                  ['Bumper Stickers, Decals & '],
                 ]
               ],
               [
