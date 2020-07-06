@@ -1,6 +1,6 @@
 <?php
 
-$sports_travels = [
+$sports_outdoors = [
 	  [
         'Sports & Outdoors',
         'child' => [                                
