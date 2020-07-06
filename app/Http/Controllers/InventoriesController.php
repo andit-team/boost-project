@@ -45,7 +45,7 @@ class InventoriesController extends Controller
     public function create()
     {
         $inventory = Inventory::all();
-        $item = Product::where('status','Active')->where('user_id',Sentinel::getUser()->id)->get();
+        $item = Product::where('user_id',Sentinel::getUser()->id)->get();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size= Size::all();
         $color = Color::all();
@@ -60,16 +60,23 @@ class InventoriesController extends Controller
      */
     public function store(Inventory $inventory,Request $request)
     {
+        $shopId = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        $product = Product::where('user_id',Sentinel::getUser()->id)->first();
         $this->validateForm($request);
-        $slug = Baazar::getUniqueSlug($inventory,$request->item_id);
+        $slug = Baazar::getUniqueSlug($inventory, $product->name);
         $data = [
-            'product_id' => $request->item_id,
-            'slug' => $slug,
-            'color_id' => $request->color_id,
-            'size_id' => $request->size_id,
-            'qty_stock' => $request->qty_stock,
-            'user_id' => Sentinel::getUser()->id,
-            'created_at' => now(),
+            'product_id'    => $request->product_id,
+            'slug'          => $slug,
+            'color_id'      => $request->color_id,
+            'size_id'       => $request->size_id,
+            'price'         => $request->price,
+            'qty_stock'     => $request->qty_stock,
+            'special_price' => $request->special_price,
+            'start_date'    => $request->start_date,
+            'end_date'      => $request->end_date,
+            'shop_id'       => $shopId->id,
+            'user_id'       => Sentinel::getUser()->id,
+            'created_at'    => now(),
         ];
 
         Inventory::create($data);
@@ -95,9 +102,9 @@ class InventoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Inventory $inventory)
+    public function edit($slug)
     {
-        $inventory = Inventory::where('slug',$inventory->slug)->first();
+        $inventory = Inventory::where('slug',$slug)->first();
         $item = Product::where('user_id',Sentinel::getUser()->id)->get();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size= Size::all();
@@ -112,19 +119,23 @@ class InventoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Inventory $inventory,Request $request)
+    public function update(Request $request,$slug)
     {
+        $inventory= Inventory::where('slug',$slug)->first();
         $this->validateForm($request);
         $data = [
-            'item_id' => $request->item_id,
-            'color_id' => $request->color_id,
-            'size_id' => $request->size_id,
-            'qty_stock' => $request->qty_stock,
-            'user_id' => Sentinel::getUser()->id,
+            'product_id'    => $request->product_id,
+            'color_id'      => $request->color_id,
+            'size_id'       => $request->size_id,
+            'price'         => $request->price,
+            'qty_stock'     => $request->qty_stock,
+            'special_price' => $request->special_price,
+            'start_date'    => $request->start_date,
+            'end_date'      => $request->end_date,
             'updated_at' => now(),
         ];
         $inventory->update($data);
-        Session::flash('error', 'Inventory Added Successfully!');
+        Session::flash('warning', 'Inventory update Successfully!');
         return redirect('merchant/inventories');
     }
 
@@ -134,18 +145,22 @@ class InventoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inventory $inventory)
+    public function destroy($id)
     {
+        $inventory = Inventory::find($id);
         $inventory->delete();
-        return redirect('merchant/inventory');
+
+        Session::flash('error', 'Inventory Deleted Successfully!');
+        return redirect('merchant/inventories');
     }
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'item_id' => 'required',
-            'color_id' => 'required',
-            'qty_stock' => 'required',
-            'size_id' => 'required',
+            'product_id' => 'required',
+            'color_id'   => 'required',
+            'qty_stock'  => 'required',
+            'price'      => 'required',
+//            'size_id' => 'required',
         ]);
     }
 }
