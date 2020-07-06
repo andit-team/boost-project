@@ -274,8 +274,6 @@ $motors = [
                     ]
                   ],
                   ['Windshield Wipers & Washers'],
-
-
                 ]
               ],
               [
@@ -291,8 +289,6 @@ $motors = [
                   ['Vacuums
                   ',
                   'child'=>[
-
-
                   ]
                 ],
                 ]

@@ -1,5 +1,5 @@
 <?php
-//multi-select,select,text,checkbox,number
+//multi-select,select,text,checkbox,number,
 
 $fashion = [
 	[

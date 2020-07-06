@@ -71,9 +71,6 @@ class CategoriesTableSeeder extends Seeder
       \Baazar::insertRecords($bedding_bath);
       echo  'Bedding & Bath  Done....';
 
-       \Baazar::insertRecords($bedding_bath);
-      echo  'Digital & Goods  Done....';
-
        \Baazar::insertRecords($toys_games);
       echo  'Toys & Games  Done....';
 
