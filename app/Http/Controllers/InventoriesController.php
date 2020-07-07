@@ -46,15 +46,16 @@ class InventoriesController extends Controller
      */
     public function create()
     {
-        $inventory = Inventory::all();
-        $item = Product::where('user_id',Sentinel::getUser()->id)->get();
-        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        $size= Size::all();
-        $color = Color::all();
-        $productAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->get();
-//        dd($productAttriSize);
-        $productAttriCapa = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
-        return view ('merchant.inventory.create',compact('inventory','item','size','color','shopProfile','productAttriSize','productAttriCapa'));
+        $inventory          = Inventory::all();
+        $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
+        $shopProfile        = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        $size               = Size::all();
+        $color              = Color::all();
+        $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
+        $inventoryAttriCapa = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',2)->first();
+        $productAttriSize   = InventoryAttributeOption::where('inventory_attribute_id',1)->get();
+        $productAttriCapa   = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
+        return view ('merchant.inventory.create',compact('inventory','item','size','color','shopProfile','productAttriSize','productAttriCapa','inventoryAttriSize','inventoryAttriCapa'));
     }
 
     /**
@@ -116,11 +117,11 @@ class InventoriesController extends Controller
      */
     public function edit($slug)
     {
-        $inventory = Inventory::where('slug',$slug)->first();
-        $item = Product::where('user_id',Sentinel::getUser()->id)->get();
-        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        $size= Size::all();
-        $color = Color::all();
+        $inventory        = Inventory::where('slug',$slug)->first();
+        $item             = Product::where('user_id',Sentinel::getUser()->id)->get();
+        $shopProfile      = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        $size             = Size::all();
+        $color            = Color::all();
         $productAttriSize = InventoryAttributeOption::where('inventory_attribute_id',1)->get();
         $productAttriCapa = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
         return view ('merchant.inventory.edit',compact('inventory','item','size','color','shopProfile','productAttriSize','productAttriCapa'));
@@ -146,7 +147,7 @@ class InventoriesController extends Controller
             'special_price' => $request->special_price,
             'start_date'    => $request->start_date,
             'end_date'      => $request->end_date,
-            'updated_at' => now(),
+            'updated_at'    => now(),
         ];
         $inventory->update($data);
         Session::flash('warning', 'Inventory update Successfully!');

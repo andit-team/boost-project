@@ -74,7 +74,7 @@ class Baazar
     }
 
     public function pdfUpload($request, $input = 'image', $old = 'old_image', $path = '/uploads',$name = NULL) {
-        
+
         if ($request->hasFile($input)) {
             if(!empty($old)){
                 if(file_exists(public_path().$old)){
