@@ -8,6 +8,8 @@ use App\Models\Product;
 use App\Models\Color;
 use App\Models\Size;
 use App\User;
+use Illuminate\Support\Facades\DB;
+
 class Inventory extends Model
 {
     use SoftDeletes;
@@ -47,4 +49,6 @@ class Inventory extends Model
     public function size(){
       return $this->belongsTo(Size::class,'size_id');
     }
+
+
 }

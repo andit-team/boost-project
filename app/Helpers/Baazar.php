@@ -50,9 +50,31 @@ class Baazar
 
     public function fileUpload($request, $input = 'image', $old = 'old_image', $path = '/uploads',$name = NULL) {
         $request->validate([
-            $input => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            $input => 'image|mimes:jpeg,png,jpg,gif,svg,pdf|max:2048',
         ]);
 
+        if ($request->hasFile($input)) {
+            if(!empty($old)){
+                if(file_exists(public_path().$old)){
+                    unlink(public_path().$old);
+                }
+            }
+            $image = $request->file($input);
+            $name = !empty($name) ? $name : time();
+            $name = $name.'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path($path);
+            $image->move($destinationPath, $name);
+            $url =  $path.'/'.$name;
+            return $url;
+        }
+        if(!empty($old)){
+            return $request->$old;
+        }
+        return '';
+    }
+
+    public function pdfUpload($request, $input = 'image', $old = 'old_image', $path = '/uploads',$name = NULL) {
+        
         if ($request->hasFile($input)) {
             if(!empty($old)){
                 if(file_exists(public_path().$old)){
