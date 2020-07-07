@@ -12,7 +12,7 @@ class InventoryAttributesSeeder extends Seeder
     public function run(){
         $data = [
             [
-                'name'  => 'size'
+                'name'  => 'size',
             ],
             [
                 'name'  => 'storage Capacity'

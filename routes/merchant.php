@@ -70,8 +70,10 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     Route::post('get-inventory-attr','InventoryAttributeController@getInventoryAttr');
     Route::post('get-category-attr','CategoriesController@getCategoryAttr');
 
-
     Route::post('shop-logo-crop', 'MerchantController@shopLogoCrop')->name('shop-logo-crop');
     Route::post('shop-banar-crop', 'MerchantController@shopBanarCrop')->name('shop-banar-crop');
 
 });
+Route::get('importExportView', 'ExportImportController@importExportView');
+Route::get('export', 'ExportImportController@export')->name('export');
+Route::post('import', 'ExportImportController@import')->name('import');

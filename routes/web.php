@@ -16,22 +16,22 @@ include('frontend.php');
 include('merchant.php');
 include('admin.php');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function childpath($childs){
+  $path = '';
+  foreach($childs as $child){    
+    if($child->is_last == 1){
+      $p = '';
+      if($child->parent_id != 0){
+        $p = App\Models\Category::find($child->parent_id)->name.'/';
+      }
+      $path .= $p.$child->slug.'/';
+    }else{
+      $path .= childpath($child->allChilds);
+    }
+    $path .= '<br>';
+  }
+  return $path;
+}
 
 
 
@@ -42,29 +42,34 @@ include('admin.php');
 
 // https://stackoverflow.com/questions/26652611/laravel-recursive-relationships
 Route::get('/arr', function () {
-  $userprofile = Sentinel::getUser();
-        //dd($userprofile);
-        $sellerProfile = App\Models\Merchant::where('user_id',Sentinel::getUser()->id)->first();
-        $shopProfile = App\Models\Shop::where('user_id',Sentinel::getUser()->id)->first();
-
-        return view('merchant.merchant.products',compact('sellerProfile','userprofile','shopProfile'));
-
+  $cats = App\Models\Category::with('allChilds')->where('id',2613)->get();
+  $path = childpath($cats);
+  echo $path;
 });
 
-// Route::post('bill/restore/{slug}', 'diagnostic\BillController@restore');
 
-// Route::get('check', function () {
 
-// 	$credentials = [
-// 	    'email'    => 'tests@example.com',
-// 	    'password' => 'foobar',
-// 	];
 
-// 	$data = Sentinel::authenticate($credentials);
-// 	dd($data);
 
-// });
-// Auth::routes();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
