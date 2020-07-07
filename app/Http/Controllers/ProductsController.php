@@ -124,7 +124,7 @@ class ProductsController extends Controller
           'attr_label'    => $id,
           'attr_value'    => $att,
           'attribute_id'  => $id,
-          'product_id'       => $itemId,
+          'product_id'    => $itemId,
         ];
         ItemMeta::create($metas);
       }
@@ -137,8 +137,8 @@ class ProductsController extends Controller
           $image = [
             'product_id' => $itemId,
             'color_slug' => $color,
-            'sort'      => ++$i,
-            'org_img'     => Baazar::base64Upload($img,'orgimg',$shop->slug,$color),
+            'sort'       => ++$i,
+            'org_img'    => Baazar::base64Upload($img,'orgimg',$shop->slug,$color),
           ];
           ItemImage::create($image);
         }
@@ -344,7 +344,6 @@ class ProductsController extends Controller
       $childCatid_1 = $request->childCatid_1;
       return Product::getChildCategory1($childCatid_1);
     }
-
     /**
      * Remove the specified resource from storage.
      *

@@ -41,7 +41,7 @@
                                             <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Product</option>
                                                 @foreach ($item as $row)
-                                                    <option value="{{ $row->id }}">{{$row->name}}</option>
+                                                    <option data-cat="{{$row->category_id}}" value="{{ $row->id }}">{{$row->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -56,12 +56,23 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-md-6 pb-4">
+                                        <div class="col-md-3 pb-4">
                                             <label for="size_id">Size <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
-                                            <select name="size_id" class="form-control" id="size_id" autocomplete="off">
+                                            <input type="hidden" name="name" value="{{ $productAttriSize->attribute->name }}">
+                                            <select name="value" class="form-control size" id="size_id" autocomplete="off">
                                                 <option value="" selected disabled>Select Size</option>
-                                                @foreach ($productAttriOption as $row)
-                                                    <option value="{{ $row->id }}">{{$row->option}}</option>
+                                                @foreach ($productAttriSize as $row)
+                                                    <option value="{{ $row->option }}">{{$row->option}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3 pb-4">
+                                            <label for="size_id">Storage Capacity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
+                                            <input type="hidden" name="name" value="storage Capacity">
+                                            <select name="value" class="form-control capacity" id="size_id" autocomplete="off">
+                                                <option value="" selected disabled>Select Size</option>
+                                                @foreach ($productAttriCapa as $row)
+                                                    <option value="{{ $row->option }}">{{$row->option}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -100,4 +111,28 @@
                 </section>
     <!-- section end -->
 @endsection
+@push('js')
+    <script>
+        $(document).ready(function () {
+            $('.size').hide();
+            $('.capacity').hide();
+            $('#product_id').on('change',function () {
+                var cat = $(this).find(':selected').data('cat');
+            console.log(cat);
+                if(cat == 2){
+                    $('.size').hide();
+                    $('.capacity').show();
+                }
+                if(cat == 3){
+                    $('.size').show();
+                    $('.capacity').hide();
+                }
+                if(cat == ''){
+                    $('.size').hide();
+                    $('.capacity').hide();
+                }
+            })
+        });
+    </script>
+@endpush
 

@@ -13,6 +13,8 @@ use Sentinel;
 use Session;
 use Baazar;
 use App\Models\InventoryAttributeOption;
+use App\Models\InventoryMeta;
+use App\Models\InventoryAttribute;
 class InventoriesController extends Controller
 {
     /**
@@ -49,8 +51,10 @@ class InventoriesController extends Controller
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size= Size::all();
         $color = Color::all();
-        $productAttriOption = InventoryAttributeOption::all();
-        return view ('merchant.inventory.create',compact('inventory','item','size','color','shopProfile','productAttriOption'));
+        $productAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->get();
+//        dd($productAttriSize);
+        $productAttriCapa = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
+        return view ('merchant.inventory.create',compact('inventory','item','size','color','shopProfile','productAttriSize','productAttriCapa'));
     }
 
     /**
@@ -80,7 +84,14 @@ class InventoriesController extends Controller
             'created_at'    => now(),
         ];
 
-        Inventory::create($data);
+        $inventory = Inventory::create($data);
+
+        $inventoryAtti = [
+            'name'        => $request->name,
+            'value'       => $request->value,
+            'inventory_id'=> $inventory->id,
+        ];
+        InventoryMeta::create($inventoryAtti);
         Session::flash('success', 'Inventory Added Successfully!');
         return redirect('merchant/inventories');
     }
@@ -110,7 +121,9 @@ class InventoriesController extends Controller
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size= Size::all();
         $color = Color::all();
-        return view ('merchant.inventory.edit',compact('inventory','item','size','color','shopProfile'));
+        $productAttriSize = InventoryAttributeOption::where('inventory_attribute_id',1)->get();
+        $productAttriCapa = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
+        return view ('merchant.inventory.edit',compact('inventory','item','size','color','shopProfile','productAttriSize','productAttriCapa'));
     }
 
     /**
@@ -154,6 +167,8 @@ class InventoriesController extends Controller
         Session::flash('error', 'Inventory Deleted Successfully!');
         return redirect('merchant/inventories');
     }
+
+
 
     private function validateForm($request){
         $validatedData = $request->validate([
