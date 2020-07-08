@@ -33,10 +33,14 @@ $camera = [
                   [
 										'Gadgets & Other Cameras',
 										'child' => [
-										['Gadgets Instant Camera'],
-										['Instant Camera Film'],
-										['Instant Camera Accessorie'],
-									]
+                      ['Toy Cameras',],
+                      ['Mini Cameras',],
+                      ['Lomography',],
+                      ['Spy Cameras',],
+                 // 	['Gadgets Instant Camera'],
+									// 	['Instant Camera Film'],
+									// 	['Instant Camera Accessorie'],
+									 ]
 									],
                   [
                     'Video & Action Camcorder',
