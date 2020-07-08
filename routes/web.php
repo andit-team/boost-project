@@ -18,7 +18,7 @@ include('admin.php');
 
 function childpath($childs){
   $path = '';
-  foreach($childs as $child){    
+  foreach($childs as $child){
     if($child->is_last == 1){
       $p = '';
       if($child->parent_id != 0){
@@ -40,12 +40,19 @@ function childpath($childs){
 
 
 
-// https://stackoverflow.com/questions/26652611/laravel-recursive-relationships
-Route::get('/arr', function () {
-  $cats = App\Models\Category::with('allChilds')->where('id',2613)->get();
-  $path = childpath($cats);
-  echo $path;
-});
+// // https://stackoverflow.com/questions/26652611/laravel-recursive-relationships
+// Route::get('/arr', function () {
+//   $inAttr = [
+//     'name'  => 'sf ass',
+//     'description' =>'descas asdf asdf',
+//   ];
+//   $attr = App\Models\InventoryAttribute::create($inAttr);
+//   dd($attr);
+  //
+  // $cats = App\Models\Category::with('allChilds')->where('id',2613)->get();
+  // $path = childpath($cats);
+  // echo $path;
+// });
 
 
 
@@ -56,7 +63,11 @@ Route::get('/arr', function () {
 
 // function childpath($childs){
 //   $path = '';
+<<<<<<< HEAD
+//   foreach($childs as $child){
+=======
 //   foreach($childs as $child){    
+>>>>>>> bf4a0dbb739d23ed189c04002a1c5abde16f3ed9
 //     if($child->is_last == 1){
 //       $p = '';
 //       if($child->parent_id != 0){
@@ -70,6 +81,10 @@ Route::get('/arr', function () {
 //   }
 //   return $path;
 // }
+<<<<<<< HEAD
+
+=======
+>>>>>>> bf4a0dbb739d23ed189c04002a1c5abde16f3ed9
 
 
 
@@ -85,6 +100,14 @@ Route::get('/arr', function () {
 //   echo $path;
 // });
 
+<<<<<<< HEAD
+// https://stackoverflow.com/questions/26652611/laravel-recursive-relationships
+Route::get('/arr', function () {
+  $cats = App\Models\Category::with('allChilds')->where('id',196)->get();
+  $path = childpath($cats);
+  echo $path;
+});
+=======
 
 
 
@@ -93,3 +116,4 @@ Route::get('/arr', function () {
 
 
 
+>>>>>>> bf4a0dbb739d23ed189c04002a1c5abde16f3ed9

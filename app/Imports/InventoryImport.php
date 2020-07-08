@@ -22,9 +22,11 @@ class InventoryImport implements ToModel, WithHeadingRow
       // dd($row);
       $cat = explode('/',$row['category_slug']);
       // dd($cat[1]);
-      $catId = Category::where('slug',$cat[1])->first()->id;
+
+      // $catId = Category::where('slug',$cat[1])->first()->id;
       $inAttr = [
-        'name'  => $row['name']
+        'name'  => $row['name'],
+        'description' =>'descas asdf asdf',
       ];
       $attr = InventoryAttribute::create($inAttr);
 
@@ -34,15 +36,28 @@ class InventoryImport implements ToModel, WithHeadingRow
         foreach($vals as $val){
           $option[] = [
             'option'  => $val,
-            'inventory_attribute_id'  => $attr->id
+            'inventory_attribute_id'  => $attr->id,
           ];
         }
         DB::table('inventory_attribute_options')->insert($option);
       }
-      $relation = [
-        'category_id' => $cat[1],
-        'inventory_attribute_id'  => $attr->id,
-      ];
-    DB::table('inventory_attribute_category')->insert($relation);
+
+      if(!empty($row['category_id'])){
+        $vals = explode(',',$row['category_id']);
+        $relation = [];
+        foreach($vals as $val){
+          $relation []= [
+            'category_id' => $cat->id,
+            'inventory_attribute_id'  => $attr->id,
+          ];
+        }
+         dd($relation[1]);
+        DB::table('inventory_attribute_category')->insert($relation);
+      }
+    //   $relation = [
+    //     'category_id' => $cat[1],
+    //     'inventory_attribute_id'  => $attr->id,
+    //   ];
+    // DB::table('inventory_attribute_category')->insert($relation);
     }
 }
