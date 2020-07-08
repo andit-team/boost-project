@@ -91,6 +91,7 @@ class InventoriesController extends Controller
             'name'        => $request->name,
             'value'       => $request->value,
             'inventory_id'=> $inventory->id,
+            'product_id'  => $inventory->product_id,
         ];
         InventoryMeta::create($inventoryAtti);
         Session::flash('success', 'Inventory Added Successfully!');
@@ -117,14 +118,17 @@ class InventoriesController extends Controller
      */
     public function edit($slug)
     {
-        $inventory        = Inventory::where('slug',$slug)->first();
-        $item             = Product::where('user_id',Sentinel::getUser()->id)->get();
-        $shopProfile      = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        $size             = Size::all();
-        $color            = Color::all();
-        $productAttriSize = InventoryAttributeOption::where('inventory_attribute_id',1)->get();
-        $productAttriCapa = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
-        return view ('merchant.inventory.edit',compact('inventory','item','size','color','shopProfile','productAttriSize','productAttriCapa'));
+        $inventory          = Inventory::where('slug',$slug)->first();
+        $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
+        $shopProfile        = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        $size               = Size::all();
+        $color              = Color::all();
+        $productAttriSize   = InventoryAttributeOption::where('inventory_attribute_id',1)->get();
+        $productAttriCapa   = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
+        $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
+        $inventoryAttriCapa = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',2)->first(); 
+        $inventoryMeta      = InventoryMeta::all(); 
+        return view ('merchant.inventory.edit',compact('inventory','item','size','color','shopProfile','inventoryAttriSize','inventoryAttriCapa','productAttriSize','productAttriCapa','inventoryMeta'));
     }
 
     /**
@@ -136,10 +140,11 @@ class InventoriesController extends Controller
      */
     public function update(Request $request,$slug)
     {
-        $inventory= Inventory::where('slug',$slug)->first();
+        $inventory  = Inventory::where('slug',$slug)->first();
+        $inventMeta = InventoryMeta::where('id',$inventory->id)->first();
+        //dd($inventMeta);
         $this->validateForm($request);
-        $data = [
-            'product_id'    => $request->product_id,
+        $data = [ 
             'color_id'      => $request->color_id,
             'size_id'       => $request->size_id,
             'price'         => $request->price,
@@ -150,6 +155,11 @@ class InventoriesController extends Controller
             'updated_at'    => now(),
         ];
         $inventory->update($data);
+        $inventoryAtti = [
+            'name'        => $request->name,
+            'value'       => $request->value,  
+        ]; 
+        $inventMeta->update($inventoryAtti);
         Session::flash('warning', 'Inventory update Successfully!');
         return redirect('merchant/inventories');
     }
@@ -173,7 +183,7 @@ class InventoriesController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'product_id' => 'required',
+            //'product_id' => 'required',
             'color_id'   => 'required',
             'qty_stock'  => 'required',
             'price'      => 'required',

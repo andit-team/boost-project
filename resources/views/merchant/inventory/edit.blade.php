@@ -39,7 +39,7 @@
 
                             <div class="col-md-6 pb-4">
                                 <label for="product_id">Product <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('product_id') }}</span>
-                                <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off">
+                                <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off" disabled>
                                     <option value="" selected disabled>Select Product</option>
                                     @foreach ($item as $row)
                                         <option data-cat="{{$row->category_id}}" value="{{ $row->id }}" @if($row->id == $inventory->product_id) selected @endif>{{$row->name}}</option>
@@ -57,25 +57,39 @@
                                 </select>
                             </div>
 
-                            <div class="col-md-3 pb-4">
+                            <div class="col-md-3 pb-4"> 
                                 <label for="size_id">Size <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
-                                <input type="hidden" name="name" value="size">
+                               @foreach($inventoryMeta as $meta)
+                               @if($loop->first)
+                               @if($meta->name == 'size')
+                               <input type="hidden" name="name" value="{{ $inventoryAttriCapa->attribute->name }}">
                                 <select name="value" class="form-control size" id="size_id" autocomplete="off">
                                     <option value="" selected disabled>Select Size</option>
                                     @foreach ($productAttriSize as $row)
                                         <option value="{{ $row->option }}">{{$row->option}}</option>
                                     @endforeach
                                 </select>
+                                @else
+                                @endif
+                                @endif
+                                @endforeach 
                             </div>
                             <div class="col-md-3 pb-4">
                                 <label for="size_id">Storage Capacity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
-                                <input type="hidden" name="name" value="storage Capacity">
+                                @foreach($inventoryMeta as $inv)
+                                @if($loop->first)
+                                @if($inv->name == 'storage Capacity')
+                                <input type="hidden" name="name" value="{{ $inventoryAttriCapa->attribute->name }}">
                                 <select name="value" class="form-control capacity" id="size_id" autocomplete="off">
-                                    <option value="" selected disabled>Select Size</option>
+                                    <option value="" selected disabled>Select Capacity</option>
                                     @foreach ($productAttriCapa as $row)
-                                        <option value="{{ $row->option }}">{{$row->option}}</option>
+                                        <option value="{{ $row->option }}" @if($row->option == $inventory->invenMeta->inventory_id) selected @endif>{{$row->option}}</option>
                                     @endforeach
                                 </select>
+                                @else
+                                @endif
+                                @endif
+                                @endforeach
                             </div>
                             <div class="col-md-6">
                                 <label for="price">Price <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('Price') }}</span>

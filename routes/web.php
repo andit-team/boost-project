@@ -63,7 +63,11 @@ function childpath($childs){
 
 // function childpath($childs){
 //   $path = '';
+<<<<<<< HEAD
 //   foreach($childs as $child){
+=======
+//   foreach($childs as $child){    
+>>>>>>> bf4a0dbb739d23ed189c04002a1c5abde16f3ed9
 //     if($child->is_last == 1){
 //       $p = '';
 //       if($child->parent_id != 0){
@@ -77,6 +81,10 @@ function childpath($childs){
 //   }
 //   return $path;
 // }
+<<<<<<< HEAD
+
+=======
+>>>>>>> bf4a0dbb739d23ed189c04002a1c5abde16f3ed9
 
 
 
@@ -86,11 +94,26 @@ function childpath($childs){
 
 
 
+// Route::get('/arr', function () {
+//   $cats = App\Models\Category::with('allChilds')->where('id',25)->get();
+//   $path = childpath($cats);
+//   echo $path;
+// });
 
-
+<<<<<<< HEAD
 // https://stackoverflow.com/questions/26652611/laravel-recursive-relationships
 Route::get('/arr', function () {
   $cats = App\Models\Category::with('allChilds')->where('id',196)->get();
   $path = childpath($cats);
   echo $path;
 });
+=======
+
+
+
+
+
+
+
+
+>>>>>>> bf4a0dbb739d23ed189c04002a1c5abde16f3ed9
