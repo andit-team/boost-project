@@ -170,7 +170,7 @@ class ProductsController extends Controller
               'category_id'   => $request->category_id,
               'category_slug' => $request->category,
               'tag_slug'      => $this->tagSlug($request->tag_id),
-              'status'            => 'Pending',
+              'status'        => 'Pending',
               'shop_id'       => $shop->id,
               'user_id'       => Sentinel::getUser()->id,
               'created_at'    => now(),
@@ -227,8 +227,10 @@ class ProductsController extends Controller
         $subCategories = Category::where('parent_id','!=',0)->get();
         $tag = Tag::all();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        $productInventories = Inventory::where('product_id',$product->id)->get();
+       
 
-        return view ('merchant.product.edit',compact('category','categories','item','size','color','subCategories','product','tag','shopProfile'));
+        return view ('merchant.product.edit',compact('category','categories','item','productInventories','size','color','subCategories','product','tag','shopProfile'));
     }
 
     /**
