@@ -58,7 +58,7 @@
 
                                         <div class="col-md-3 pb-4">
                                             <label for="size_id">Size <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
-                                            <input type="hidden" name="name" value="{{ $productAttriSize->attribute->name }}">
+                                            <input type="hidden" name="name" value="{{ $inventoryAttriSize->attribute->name }}">
                                             <select name="value" class="form-control size" id="size_id" autocomplete="off">
                                                 <option value="" selected disabled>Select Size</option>
                                                 @foreach ($productAttriSize as $row)
@@ -68,7 +68,7 @@
                                         </div>
                                         <div class="col-md-3 pb-4">
                                             <label for="size_id">Storage Capacity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
-                                            <input type="hidden" name="name" value="storage Capacity">
+                                            <input type="hidden" name="name" value="{{ $inventoryAttriCapa->attribute->name }}">
                                             <select name="value" class="form-control capacity" id="size_id" autocomplete="off">
                                                 <option value="" selected disabled>Select Size</option>
                                                 @foreach ($productAttriCapa as $row)

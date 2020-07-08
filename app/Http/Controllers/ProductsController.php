@@ -214,9 +214,10 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($slug)
     {
-
+        $product = Product::where('slug',$slug)->first();
+        //dd($product);
         $category = Category::all();
         $item = Product::all();
         $size= Size::all();

@@ -46,12 +46,17 @@
                                             <a href="#" id="" class="badge badge-pill badge-danger p-2" data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}">Reject</a>
                                         @endif
                                         </td>
-                                    <td>
-                                        <form action="{{ url('/merchant/product/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
-                                        </form>
+                                    <td class="d-flex justify-content-between">
+                                        <ul>
+                                            <li><a href="{{ url('merchant/products/update/'.$row->slug.'/productupdate') }}" ><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i> </button></a></li>
+                                            <li>
+                                                <form action="{{ url('/merchant/product/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
+                                                </form>
+                                            </li>
+                                        </ul>
 {{--                                        <i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i><i class="fa fa-trash-o ml-1" aria-hidden="true"></i></td>--}}
                                 </tr>
                                 <div class="modal fade" id="tagEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
