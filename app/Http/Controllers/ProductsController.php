@@ -110,6 +110,7 @@ class ProductsController extends Controller
                 'name'        => $att,
                 'value'       => $val[$i],
                 'inventory_id'=> $inventory->id,
+                'product_id'  => $itemId,
               ];
               InventoryMeta::create($inventory_meta);
           }

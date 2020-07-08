@@ -9,6 +9,7 @@ use App\Models\Color;
 use App\Models\Size;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use App\Models\InventoryMeta;
 
 class Inventory extends Model
 {
@@ -48,6 +49,9 @@ class Inventory extends Model
     }
     public function size(){
       return $this->belongsTo(Size::class,'size_id');
+    }
+    public function invenMeta(){
+      return $this->belongsTo(InventoryMeta::class,'product_id');
     }
 
 
