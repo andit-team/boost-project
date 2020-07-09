@@ -17,6 +17,7 @@ class CategoriesTableSeeder extends Seeder
     include('CategoriesAttr/tv_audio_video_gaming.php');
     include('CategoriesAttr/Home_Appliance.php');
    include('CategoriesAttr/Fashion.php');
+   include('CategoriesAttr/Health_Beauty.php');
    include('CategoriesAttr/Bags_Travels.php');
    include('CategoriesAttr/Sports_Outdoors.php');
    include('CategoriesAttr/Laundry_Cleaning.php');
@@ -50,6 +51,8 @@ class CategoriesTableSeeder extends Seeder
       \Baazar::insertRecords($home_appliances);
       echo  'Home Appliance Done....';
 
+      \Baazar::insertRecords($health_beauty);
+      echo  'Home Appliance Done....';
       \Baazar::insertRecords($fashion);
       echo  'Fashion Done....';
 
