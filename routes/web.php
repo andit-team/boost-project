@@ -91,6 +91,7 @@ function childpath($childs){
 
 
 
+
 // Route::get('/arr', function () {
 //   $cats = App\Models\Category::with('allChilds')->where('id',25)->get();
 //   $path = childpath($cats);
@@ -100,7 +101,7 @@ function childpath($childs){
 
 // https://stackoverflow.com/questions/26652611/laravel-recursive-relationships
 Route::get('/arr', function () {
-  $cats = App\Models\Category::with('allChilds')->where('id',196)->get();
+  $cats = App\Models\Category::with('allChilds')->where('id',518)->get();
   $path = childpath($cats);
   echo $path;
 });
