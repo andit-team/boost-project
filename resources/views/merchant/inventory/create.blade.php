@@ -51,7 +51,7 @@
                                             <select name="color_id" class="form-control" id="color_id"  autocomplete="off">
                                                 <option value="" selected disabled>Select Color</option>
                                                 @foreach ($color as $row)
-                                                    <option value="{{ $row->id }}">{{$row->name}}</option>
+                                            <option value="{{ $row->id }}">{{$row->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -127,7 +127,7 @@
                     $('.size').show();
                     $('.capacity').hide();
                 }
-                if(cat == ''){
+                if(cat != 2 && cat != 3){
                     $('.size').hide();
                     $('.capacity').hide();
                 }

@@ -21,9 +21,9 @@ class ColorsTableSeeder extends Seeder
                 'updated_at'     => now()
             ],
             [
-                'name'           => 'Yello',
+                'name'           => 'Yellow',
                 'color_code'     => '#12ACD',
-                'slug'           => 'yello' ,                           
+                'slug'           => 'yellow' ,                           
                 'user_id'        => '2',
                 'created_at'     => now(),
                 'updated_at'     => now()

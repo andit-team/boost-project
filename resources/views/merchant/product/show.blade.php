@@ -41,13 +41,13 @@
 
                     <div class="product-slider owl-carousel owl-theme" id="sync1">
 
-                        @foreach ($product->itemimage as $row)
-                            <div class="item"><img src="{{ !empty($row->org_img) ? asset($row->org_img) : asset('/uploads/shops/products/product.png') }}" alt="" class="blur-up lazyloaded"></div>
+                        @foreach ($productImage as $row)
+                            <div class="item"><img id="image-rander" src="{{ !empty($row->org_img) ? asset($row->org_img) : asset('/uploads/shops/products/product.png') }}" alt="" class="blur-up lazyloaded"></div>
                         @endforeach
                     </div>
                     <div class="owl-carousel owl-theme" id="sync2">
-                        @foreach ($product->itemimage as $row)
-                            <div class="item"><img src="{{ !empty($row->org_img) ? asset($row->org_img) : asset('/uploads/shops/products/product.png') }}" alt="" class="blur-up lazyloaded"></div>
+                        @foreach ($productImage as $row)
+                            <div class="item"><img id="image-loop" src="{{ !empty($row->org_img) ? asset($row->org_img) : asset('/uploads/shops/products/product.png') }}" alt="" class="blur-up lazyloaded"></div>
                         @endforeach
                     </div>
                 </div>
@@ -64,17 +64,20 @@
                             <h3>${{$product->price}}</h3>
                         </div>
                         <ul class="color-variant">
-                            <li class="bg-light0"></li>
-                            <li class="bg-light1"></li>
-                            <li class="bg-light2"></li>
+                            @foreach($imageColor as $row)
+                             <li class="imagecolor" data-color="{{ $row->color_slug }}"  style="background: {{ $row->color_slug }}"></li> 
+                            @endforeach
                         </ul>
                         <hr>
                         <div class="size-box">
                             <ul>
-                                <li class="active"><a href="#">s</a></li>
-                                <li><a href="#">m</a></li>
-                                <li><a href="#">l</a></li>
-                                <li><a href="#">xl</a></li>
+                                @foreach($productCapasize as $row)
+                                @if($row->name == 'storage Capacity')
+                                <li>{{ $row->value }}</li>
+                                @elseif($row->name == 'size')
+                                <li>{{ $row->value }}</li>
+                                @endif
+                                @endforeach 
                             </ul>
                         </div>
                         <hr>
@@ -145,3 +148,23 @@
             </div>
         </div>
 @endsection
+
+@push('js')
+ <script>
+     $(document).ready(function(){
+         $('.imagecolor').on('click',function(){
+            var imgcolor = $(this).data('color'); 
+
+            $.ajax({
+                type:"GET",
+                url:"{{url('andbaazaradmin/color-image/{color_slug}')}}",
+                data:{'imgcolor':imgcolor},
+                success:function(data){ 
+                    $('img#image-rander').attr('src','{{asset("/")}}/'+data[0].org_img);
+                    $('img#image-loop').attr('src','{{asset("/")}}/'+data[1].org_img);  
+                }
+            }) 
+         })
+     });
+ </script>
+@endpush

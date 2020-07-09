@@ -203,10 +203,15 @@ class ProductsController extends Controller
      */
     public function show(Product $product)
     {
-        $product = Product::with('itemimage')->where('slug',$product->slug)->first();
+        $product      = Product::with('itemimage')->where('slug',$product->slug)->first();
+        $productImage = ItemImage::select('color_slug')->where('color_slug','main')->where('product_id',$product->id)->limit(5)->distinct()->get();
+        //dd($productImage);
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        $productCapasize = InventoryMeta::where('product_id',$product->id)->get();
+        $imageColor  = ItemImage::select('color_slug')->where('color_slug','!=','main')->where('product_id',$product->id)->get();
+        // dd($imageColor);
 
-        return view('merchant.product.show',compact('product','shopProfile'));
+        return view('merchant.product.show',compact('product','shopProfile','productImage','productCapasize','imageColor'));
     }
 
     /**
@@ -373,6 +378,11 @@ class ProductsController extends Controller
       $product = Product::with(['category','itemimage'])->where('slug',$slug)->first();
       $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
       return view('merchant.product.vendorshow',compact('product','shopProfile'));
+    }
+
+    public function colorWiseImage(Request $request){
+      $imgcolor = $request->imgcolor;
+      return Product::getColorWiseImage($imgcolor);
     }
 
 
