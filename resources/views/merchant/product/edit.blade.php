@@ -3,7 +3,7 @@
 @section('content')
 
 @include('elements.alert')
- @component('layouts.inc.breadcrumb')
+ {{-- @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
       Dashboard
   @endslot
@@ -11,7 +11,7 @@
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
       <li class="breadcrumb-item active" aria-current="page">Product</li>
   @endslot
-@endcomponent
+@endcomponent --}}
 
 
     <!--  dashboard section start -->
@@ -140,7 +140,22 @@
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <style>
+       span.select2.select2-container.select2-container--default {
+         width: 100% !important;
+        }
 
+        .multiple-tag{
+            padding-right: 0px !important;
+            padding-left: 0px !important;
+        }
+        .select2-container--default .select2-selection--multiple {
+            border: 1px solid #ced4da;
+            border-radius: 0px !important;
+            cursor: text;
+            padding-bottom: 0px !important;
+            padding-right: 0px !important;
+            height: 40px !important;
+        }
     </style>
 @endpush
 @push('js')
@@ -155,31 +170,4 @@
         $('.js-example-basic-multiple').select2();
     </script>
 @endpush
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>--}}
-{{--<script>--}}
-{{--    var loadFile = function(event) {--}}
-{{--        var output = document.getElementById('output');--}}
-{{--        output.src = URL.createObjectURL(event.target.files[0]);--}}
-{{--    };--}}
-{{--</script>--}}
 
-{{--<script>--}}
-{{--    $(document).ready(function(){--}}
-{{--        $('#category_id').on('change',function(){--}}
-{{--            var categoryId = $(this).val();--}}
-{{--            var option     = '<option value="">Sub category</option>';--}}
-{{--            $.ajax({--}}
-{{--                type:"GET",--}}
-{{--                url:"{{ url('/merchant/product/subcategory/{id}') }}",--}}
-{{--                data:{'categoryId':categoryId},--}}
-{{--                success:function(data){--}}
-{{--                    for(var i=0; i<data.length; i++){--}}
-{{--                        option = option+'<option value="'+data[i].id+'">'+data[i].name+'</option>';--}}
-{{--                    }--}}
-{{--                    $('.sub').html(option);--}}
-
-{{--                }--}}
-{{--            })--}}
-{{--        })--}}
-{{--    });--}}
-{{--</script>--}}

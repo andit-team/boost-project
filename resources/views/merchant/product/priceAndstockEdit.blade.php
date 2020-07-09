@@ -90,29 +90,31 @@
             </tr>
             </thead>
             <tbody class="newRow">
+            @foreach($productInventories as $row)    
             <tr class="firstRow" data-id="0" id="row-0">
                 <td>
                     <select name="inventory_color[]" class="form-control inventory_colors">
                         <option value="" selected disabled>No color</option>
                     </select>
                 </td>
-                <td><input type="number" class="form-control" placeholder="Regular price" name="inventory_price[]" id="regulerPrice"></td>
+                <td><input type="number" class="form-control regulerPrice" placeholder="Regular price" name="inventory_price[]" id="regulerPrice" value="{{ $row->price }}"></td>
                 <td>
                     <div class="input-group">
-                        <input type="text" placeholder="Special price" readonly class="form-control" name="special_price[]">
+                    <input type="text" placeholder="Special price" readonly class="form-control special_price" name="special_price[]" value="{{ $row->special_price }}">
                         <div class="input-group-append" style="cursor: pointer;">
                             <span class="input-group-text"><span onclick="getmodal(this)"> <i class="fa fa-edit"></i></span></span>
                         </div>
                         <div class="days">
-                            <input type="hidden" name="startday[]" class="startday">
-                            <input type="hidden" name="endday[]" class="endday">
+                            <input type="hidden" name="startday[]" class="startday" value="{{ $row->start_date}}">
+                            <input type="hidden" name="endday[]" class="endday" value="{{ $row->end_date}}">
                         </div>
                     </div>
                 </td>
-                <td><input type="number" class="form-control number1" name="inventory_qty[]"></td>
-                <td><input type="text" class="form-control t1" name="seller_sku[]"></td>
+                <td><input type="number" class="form-control number1" name="inventory_qty[]" value="{{ $row->qty_stock }}"></td>
+                <td><input type="text" class="form-control t1" name="seller_sku[]" value="{{ $row->seller_sku }}"></td>
                 <td><span class="btn btn-danger rowRemove"><i class="fa fa-trash"></i></span></td>
             </tr>
+            @endforeach
             </tbody>
         </table>
 
@@ -148,7 +150,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
 
 @push('js')
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -212,11 +214,18 @@
             var getTr = $('tr.firstRow:first');
             $('tbody.newRow').append("<tr data-id="+rowNo+" id='row-"+rowNo+"' class='removableRow'>"+getTr.html()+"</tr>");
             var defaultRow = $('tr.removableRow:last');
+            defaultRow.find('select.inventory_colors').val('');
+            defaultRow.find('input.regulerPrice').val('');
+            defaultRow.find('input.special_price').val('');
+            defaultRow.find('input.number1').val('');
+            defaultRow.find('input.t1').val('');
             $(".rowAdd").data("row",rowNo+1);
         });
 
         $(document).on("click", "span.rowRemove ", function () {
             $(this).closest("tr.removableRow").remove();
+            var thisRow = $(this).parents("tr");
+            
         });
 
         function inventoryRows(color){

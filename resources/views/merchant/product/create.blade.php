@@ -29,6 +29,7 @@
                             <div>
                                 @include('merchant.product.productBasicinfo')
                                 @include('merchant.product.productAttributes')
+                                <input type="hidden" name="email" value="{{ $sellerId->email }}">
                             </div>
                             <input type="button" name="next" class="next btn btn-primary float-right" value="Next" data-step="1"/>
                         </fieldset>
