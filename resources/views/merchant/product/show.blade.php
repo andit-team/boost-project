@@ -86,7 +86,11 @@
                             @if($product->status == 'Active')
                             <button  class="btn btn-info">Approved</button>
                             @elseif($product->status == 'Reject')
-                            <button  class="btn btn-danger">Rejected</button>
+                            <button  class="btn btn-primary">Rejected</button>
+                            <div class="form">
+                                <h6  class="product-title mt-3">Reject description</h6>
+                                <p>{{$product->rej_desc }}</p>
+                            </div>
                             @elseif($product->status == 'Pending')
                             <div class="m-l-approve">
                             <form action="{{ url('merchant/product/approvement/'.$product->slug) }}" method="post" style="margin-top:-2px" id="deleteButton({{ $product->id }})">
@@ -129,6 +133,8 @@
                             </div>
                             @endif
                         </div>
+                </div>
+            </div>
                     </div>
                 </div>
 {{--                <div class="col-xl-2 text-center">--}}

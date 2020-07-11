@@ -65,15 +65,13 @@ class Product extends Model
      return $this->belongsTo(User::class,'user_id');
           }
     public function category(){
-     return $this->belongsTo(Category::class,'category_id');
-          }
+      return $this->belongsTo(Category::class,'category_id');
+    }
 
     public function color(){
      return $this->belongsTo(Color::class,'color_id');
           }
-    public function size(){
-     return $this->belongsTo(Size::class,'size_id');
-          }
+
 
     public function pack(){
       return $this->belongsTo(HrmEmployee::class,'pack_id');

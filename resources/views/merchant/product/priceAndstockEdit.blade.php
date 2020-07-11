@@ -94,7 +94,7 @@
             <tr class="firstRow" data-id="0" id="row-0">
                 <td>
                     <select name="inventory_color[]" class="form-control inventory_colors">
-                        <option value="" selected disabled>No color</option>
+                     <option value="{{ $row->color_name }}" selected disabled>{{ $row->color_name }}</option>
                     </select>
                 </td>
                 <td><input type="number" class="form-control regulerPrice" placeholder="Regular price" name="inventory_price[]" id="regulerPrice" value="{{ $row->price }}"></td>
