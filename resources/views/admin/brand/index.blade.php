@@ -76,7 +76,7 @@
                             @foreach($brand as $row)
                             <tr>
                                 <td>{{ ++$i }}</td>
-                                <td><img src="{{ asset($row->image) }}" style = "height:40px;width:70px;"></td> 
+                                <td><img src="{{ !empty($row->image) ? asset($row->image) : asset('/uploads/brand_image/brand.png') }}" style = "height:40px;width:70px;"></td> 
                                 <td> {{ $row->name }}</td>                                                                                              
                                 <td>{{ $row->description }}</td> 
                                 <td class=""> 

@@ -82,7 +82,7 @@
                         </div>
                         <hr>
                         <div class="m-t-15">
-                            <a href="{{ url('andbaazaradmin/product_list') }}"  class="btn btn-success">Back</a>
+                            <a href="{{ url('andbaazaradmin/products/product_list') }}"  class="btn btn-success">Back</a>
                             @if($product->status == 'Active')
                             <button  class="btn btn-info">Approved</button>
                             @elseif($product->status == 'Reject')

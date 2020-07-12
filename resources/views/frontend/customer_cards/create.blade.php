@@ -1,5 +1,12 @@
 @extends('layouts.master',['title' => 'Dashboard'])
 @section('content')
+@push('css')
+ <style>
+     .inputfield{
+         height: 40px!important;
+     }
+ </style>
+@endpush
 
 @include('elements.alert')
 @component('layouts.inc.breadcrumb')
@@ -24,19 +31,19 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <label for="card_number">Card Number <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('card_number') }}</span> 
-                            <input type="number" class="form-control @error('card_number') border-danger @enderror" name="card_number" value="{{ old('card_number') }}"  id="" placeholder="Card number" required>
+                            <input type="number" class="form-control inputfield @error('card_number') border-danger @enderror" name="card_number" value="{{ old('card_number') }}"  id="" placeholder="Card number" required>
                         </div>
                         <div class="col-md-6">
                             <label for="card_holder_name">Card holder name <span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('card_holder_name') }}</span>  
-                            <input type="text" class="form-control @error('card_holder_name') border-danger @enderror" name="card_holder_name" value="{{ old('card_holder_name') }}" id="" placeholder="Card holder name" required>
+                            <input type="text" class="form-control inputfield @error('card_holder_name') border-danger @enderror" name="card_holder_name" value="{{ old('card_holder_name') }}" id="" placeholder="Card holder name" required>
                         </div>
                         <div class="col-md-6">
                             <label for="card_expire_date">Card expire date<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('card_expire_date') }}</span> 
-                            <input type="text"  class="form-control  @error('card_expire_date') border-danger @enderror datepickerNexDayOnly" required name="card_expire_date" value="{{ old('card_expire_date') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">                   
+                            <input type="text"  class="form-control inputfield  @error('card_expire_date') border-danger @enderror datepickerNexDayOnly" required name="card_expire_date" value="{{ old('card_expire_date') }}"  id="" placeholder="YYYY/MM/DD" autocomplete="off">                   
                         </div>
                         <div class="col-md-6">
                             <label for="card_cvc">Card cvc<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('card_cvc') }}</span> 
-                            <input type="text" class="form-control @error('card_expire_date') border-danger @enderror" name="card_cvc" value="{{ old('card_cvc') }}" id="" placeholder="Card cvc" required>
+                            <input type="text" class="form-control inputfield @error('card_expire_date') border-danger @enderror" name="card_cvc" value="{{ old('card_cvc') }}" id="" placeholder="Card cvc" required>
                         </div>
                         <div class="col-md-12 mt-4">
                             <button class="btn btn-sm btn-solid" type="submit">Save</button>

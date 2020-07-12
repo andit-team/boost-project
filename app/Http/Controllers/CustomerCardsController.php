@@ -59,7 +59,7 @@ class CustomerCardsController extends Controller
 
             Session::flash('success', 'Billing Card created');
 
-            return redirect('profile/card');
+            return redirect('customer/card');
         }
         Session::flash('danger', 'Somthing want wrong please fill up the form correctly');
         return redirect('customer/card');
