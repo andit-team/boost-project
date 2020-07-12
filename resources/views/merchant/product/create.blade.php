@@ -330,14 +330,16 @@ $(document).ready(function(){
         }else{
             return 1;
         }
+        
     }
+    
     function firstStepValidation(){
         var err = 0;
         err = checkeEmpty('bn_name');
         err = checkeEmpty('name');
         err = checkeEmpty('category');
         err = checkeEmpty('video_url');
-        // err = checkUrl('video_url');
+        //err = checkUrl('video_url');
         return err;
     }
     function secondStepValidation(){

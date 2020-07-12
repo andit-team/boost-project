@@ -204,11 +204,11 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         $product      = Product::with('itemimage')->where('slug',$product->slug)->first();
-        $productImage = ItemImage::select('color_slug')->where('color_slug','main')->where('product_id',$product->id)->limit(5)->distinct()->get();
+        $productImage = ItemImage::where('color_slug','main')->where('product_id',$product->id)->limit(5)->get();
         //dd($productImage);
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $productCapasize = InventoryMeta::where('product_id',$product->id)->get();
-        $imageColor  = ItemImage::select('color_slug')->where('color_slug','!=','main')->where('product_id',$product->id)->get();
+        $imageColor  = ItemImage::select('color_slug')->where('color_slug','!=','main')->where('product_id',$product->id)->distinct()->get();
         // dd($imageColor);
 
         return view('merchant.product.show',compact('product','shopProfile','productImage','productCapasize','imageColor'));
@@ -223,16 +223,18 @@ class ProductsController extends Controller
     public function edit($slug)
     {
         $product = Product::where('slug',$slug)->first();
-        //dd($product);
-        $category = Category::all();
-        $item = Product::all();
-        $size= Size::all();
-        $color = Color::all();
-        $categories = Category::where('parent_id',0)->get();
-        $subCategories = Category::where('parent_id','!=',0)->get();
-        $tag = Tag::all();
-        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        //dd($product->itemimage);
+        $category           = Category::all();
+        $item               = Product::all();
+        $size               = Size::all();
+        $color              = Color::all();
+        $categories         = Category::where('parent_id',0)->get();
+        $subCategories      = Category::where('parent_id','!=',0)->get();
+        $tag                = Tag::all(); 
+        $shopProfile        = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $productInventories = Inventory::where('product_id',$product->id)->get();
+        $porductMeta        = ItemMeta::where('product_id',$product->id)->get();
+        //dd($porductMeta);
        
 
         return view ('merchant.product.edit',compact('category','categories','item','productInventories','size','color','subCategories','product','tag','shopProfile'));
@@ -290,13 +292,14 @@ class ProductsController extends Controller
 
 
 
-    public function productList(){
-//    $category = Category::all();
-//      $item = Product::all();
-//      $size= Size::all();
-//      $color = Color::all();
-        $items = Product::all();
+    public function productList(){ 
+        $items = Product::with('inventory')->get();  
      return view('merchant.product.product_list',compact('items'));
+    }
+
+    public function productTableList(){
+      $product = Product::all();
+      return view('merchant.product.productTableList',compact('product'));
     }
 
      public function approvement($slug){

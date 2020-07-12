@@ -50,22 +50,12 @@
                 <div class="card">
                     <div class="card-body product-box">
                         <div class="img-wrapper">
-                            <div class="front">
+                            <div class="">
                                 @foreach($row->itemimage as $itemimg)
                                     @if($loop->first)
                                         <a href="{{ url('/merchant/product/'.$row->slug) }}"><img src="{{ !empty($row->image) ? asset($row->image) : asset('/uploads/shops/products/product.png') }}" class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                     @endif
-                                @endforeach
-                                <div class="product-hover">
-                                    <ul>
-                                        <li>
-                                            <button class="btn" type="button" data-original-title="" title=""><i class="ti-pencil-alt"></i></button>
-                                        </li>
-                                        <li>
-                                            <button class="btn" type="button" data-toggle="modal" data-target="#exampleModalCenter" data-original-title="" title=""><i class="ti-trash"></i></button>
-                                        </li>
-                                    </ul>
-                                </div>
+                                @endforeach 
                             </div>
                         </div>
                         <div class="product-detail">
@@ -83,9 +73,9 @@
                             </a>
                             <h4>${{$row->price}}</h4>
                             <ul class="color-variant">
-                                <li class="bg-light0"></li>
-                                <li class="bg-light1"></li>
-                                <li class="bg-light2"></li>
+                                @foreach($row->inventory as $color)
+                                 <li class="bg-light0" style="background:{{ $color->color_name }}"></li>
+                                @endforeach 
                             </ul>
                         </div>
                     </div>
@@ -93,5 +83,6 @@
             </div>
         @endforeach
     </div>
+</div>
 </div>
 @endsection
