@@ -25,7 +25,7 @@ Route::middleware(['auth','admin'])->prefix('andbaazaradmin')->group(function ()
     Route::resource('/promotionhead','PromotionHeadsController');
     Route::resource('/promotionplan','PromotionPlansController');
     Route::resource('/currency','CurrenciesController');
-    Route::resource('/courier','CouriersController');
+    Route::resource('/courier','CouriersController'); 
     //Route::get('/seller','SellersController@index');
     Route::get('/merchant','MerchantController@index');
     Route::get('/contact-us','ContactController@contactmailList');
@@ -35,8 +35,8 @@ Route::middleware(['auth','admin'])->prefix('andbaazaradmin')->group(function ()
     Route::resource('products/tag','TagsController');
     Route::resource('products/color','ColorsController');
     Route::resource('products/brand','BrandController');
-    Route::get('product_list','ProductsController@productList');
-    Route::get('Productlist','ProductsController@productTableList');
+    Route::get('products/product_list','ProductsController@productList');
+    Route::get('products/Productlist','ProductsController@productTableList');
     Route::get('color-image/{color_slug}','ProductsController@colorWiseImage');
 
    Route::resource('/shop','ShopsController');

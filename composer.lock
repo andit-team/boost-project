@@ -3462,6 +3462,7 @@
                 "polyfill",
                 "portable"
             ],
+
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3476,6 +3477,8 @@
                     "type": "tidelift"
                 }
             ],
+
+
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -3539,6 +3542,7 @@
                 "portable",
                 "shim"
             ],
+
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3553,6 +3557,8 @@
                     "type": "tidelift"
                 }
             ],
+
+
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -3617,6 +3623,7 @@
                 "portable",
                 "shim"
             ],
+
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3631,6 +3638,8 @@
                     "type": "tidelift"
                 }
             ],
+
+
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -3702,6 +3711,7 @@
                 "portable",
                 "shim"
             ],
+
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3716,6 +3726,7 @@
                     "type": "tidelift"
                 }
             ],
+
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -3783,6 +3794,7 @@
                 "portable",
                 "shim"
             ],
+
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3797,6 +3809,8 @@
                     "type": "tidelift"
                 }
             ],
+
+
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -3860,6 +3874,7 @@
                 "portable",
                 "shim"
             ],
+
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3874,6 +3889,8 @@
                     "type": "tidelift"
                 }
             ],
+
+
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -3937,6 +3954,7 @@
                 "portable",
                 "shim"
             ],
+
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -3951,6 +3969,8 @@
                     "type": "tidelift"
                 }
             ],
+
+
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -4010,6 +4030,7 @@
                 "portable",
                 "shim"
             ],
+
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4024,6 +4045,8 @@
                     "type": "tidelift"
                 }
             ],
+
+
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -4086,6 +4109,7 @@
                 "portable",
                 "shim"
             ],
+
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4100,6 +4124,8 @@
                     "type": "tidelift"
                 }
             ],
+
+
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -4166,6 +4192,7 @@
                 "portable",
                 "shim"
             ],
+
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -4180,6 +4207,8 @@
                     "type": "tidelift"
                 }
             ],
+
+
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -4769,6 +4798,7 @@
                 "env",
                 "environment"
             ],
+
             "funding": [
                 {
                     "url": "https://github.com/GrahamCampbell",
@@ -4779,6 +4809,8 @@
                     "type": "tidelift"
                 }
             ],
+
+
             "time": "2020-07-14T19:22:52+00:00"
         },
         {
@@ -4941,12 +4973,15 @@
                 "flare",
                 "reporting"
             ],
+
             "funding": [
                 {
                     "url": "https://github.com/spatie",
                     "type": "github"
                 }
             ],
+
+
             "time": "2020-07-13T23:25:57+00:00"
         },
         {
@@ -6783,12 +6818,15 @@
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
+
             "funding": [
                 {
                     "url": "https://github.com/theseer",
                     "type": "github"
                 }
             ],
+
+
             "time": "2020-07-12T23:59:07+00:00"
         },
         {

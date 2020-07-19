@@ -20,6 +20,13 @@
         background: #ddd;
         padding: 10px;
     }
+
+    @media (min-width: 768px) {
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
+}
 </style>
 @endpush
 @include('elements.alert')
@@ -77,7 +84,7 @@
                                                 </tr>
 
                                                 <div class="modal fade approved{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg">
+                                                    <div class="modal-dialog modal-xl">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title f-w-600" id="exampleModalLabel">Seller Profile</h5>
@@ -85,8 +92,8 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="row p-3">
-                                                                    <div class="col-md-5 br-2">
-                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  class="w-100" class="img" alt="">
+                                                                    <div class="col-md-6 br-2">
+                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  width="150" height="150" class="img" alt="">
                                                                         <div class="sort-info mt-4">
                                                                             <h3 class="display-6 pt-2">{{ $row->first_name.' '.$row->last_name}}</h3>
                                                                             <p class="">
@@ -97,7 +104,7 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="col-md-7">
+                                                                    <div class="col-md-6">
                                                                             <div class="float-left modal-logo">
                                                                                 <img src="{{ !empty($row->shop->logo) ? asset($row->shop->logo) : asset('/uploads/shops/logos/shop-1.png') }}" class="" height="100" width="100" alt="Logo">
                                                                             </div>
@@ -159,7 +166,7 @@
 
 
                                                 <div class="modal fade requested{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg">
+                                                    <div class="modal-dialog modal-xl">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title f-w-600" id="exampleModalLabel">Seller Profile</h5>
@@ -167,8 +174,8 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="row p-3">
-                                                                    <div class="col-md-5 br-2">
-                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  class="w-100" class="img" alt="">
+                                                                    <div class="col-md-6 br-2">
+                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  width="150" height="150" class="img" alt="">
                                                                         <div class="sort-info mt-4">
                                                                             <h3 class="display-6 pt-2">{{ $row->first_name.' '.$row->last_name}}</h3>
                                                                             <p class="">
@@ -204,22 +211,22 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="col-md-7">
+                                                                    <div class="col-md-6">
                                                                             <div class="float-left modal-logo">
 
                                                                                 <img src="{{ !empty($row->shop->logo) ? asset($row->shop->logo) : asset('/uploads/shops/logos/shop-1.png') }}" class="" height="100" width="100" alt="Logo">
                                                                             </div>
                                                                             <div>
-                                                                            <h3 class="display-5 font-weight-bold">{{$row->shop->name}}</h3>
-                                                                                <p>{{$row->shop->slogan}}</p>
+                                                                            <h3 class="display-5 font-weight-bold">{{!empty($row->shop->name) ? $row->shop->name : 'no shop'}}</h3>
+                                                                                <p>{{!empty($row->shop->slogan) ? $row->shop->slogan : 'no slogan'}}</p>
                                                                             </div>
 
                                                                             <br>
                                                                             <div class="d-inline-block mt-3">
-                                                                                <p class="text-justify">{{ $row->shop->description }}</p>
-                                                                                <h5>{{$row->shop->name}}</h5>
+                                                                                <p class="text-justify">{{ !empty($row->shop->description) ? $row->shop->description : 'no description'}}</p>
+                                                                                <h5>{{!empty($row->shop->name) ? $row->shop->name : 'no shop'}}</h5>
                                                                                 <h6>750 followers | 10 review</h6>
-                                                                                <h6>{{$row->shop->email}}</h6>
+                                                                                <h6>{{!empty($row->shop->email) ? $row->shop->email : 'no email'}}</h6>
                                                                             </div>
                                                                     </div>
                                                                 </div>
@@ -271,7 +278,7 @@
                                                 </tr>
 
                                                 <div class="modal fade rejected{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-lg">
+                                                    <div class="modal-dialog modal-xl">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title f-w-600" id="exampleModalLabel">Seller Profile</h5>
@@ -279,8 +286,8 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="row p-3">
-                                                                    <div class="col-md-5 br-2">
-                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  class="w-100" class="img" alt="">
+                                                                    <div class="col-md-6 br-2">
+                                                                        <img src="{{ !empty($row->picture) ? asset($row->picture) : asset('/uploads/vendor_profile/user.png') }}" id="output"  width="150" height="150" class="img" alt="">
                                                                         <div class="sort-info mt-4">
                                                                             <h3 class="display-6 pt-2">{{ $row->first_name.' '.$row->last_name}}</h3>
                                                                             <p class="">
@@ -291,7 +298,7 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="col-md-7">
+                                                                    <div class="col-md-6">
                                                                             <div class="float-left modal-logo">
                                                                                 <img src="{{ !empty($row->shop->logo) ? asset($row->shop->logo) : asset('/uploads/shops/logos/shop-1.png') }}" class="" height="100" width="100" alt="Logo">
                                                                             </div>

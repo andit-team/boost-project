@@ -30,7 +30,7 @@ Route::prefix('customer')->group(function () {
     Route::put('billing/{slug}','CustomerBillingAddressesController@update');
     Route::resource('billing','CustomerBillingAddressesController');
     Route::get('card/{slug}/edit','CustomerCardsController@edit');
-    Route::get('card/{slug}','CustomerCardsController@edit');
+    Route::put('card/{slug}','CustomerCardsController@update');
     Route::resource('card','CustomerCardsController');
     Route::resource('buyerpayment','BuyerPaymentsController');
 });

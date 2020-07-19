@@ -12,7 +12,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
                 DB::statement('SET FOREIGN_KEY_CHECKS=0');
-                DB::table('categories')->truncate();             
+                DB::table('divisions')->truncate();      
+                DB::table('districts')->truncate();      
+                DB::table('upazilas')->truncate();      
+                DB::table('unions')->truncate();      
+                DB::table('municipals')->truncate();      
+                DB::table('municipal_wards')->truncate();
+                DB::table('villages')->truncate();
+                DB::table('categories')->truncate();
                 DB::table('couriers')->truncate();
                 DB::table('currencies')->truncate();
                 DB::table('promotion_heads')->truncate();
@@ -34,6 +41,7 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call([
+                geotableseeder::class,
                 RoleTableSeeder::class,
                 CustomersTableSeeder::class,
                 PermissionTableSeeder::class,

@@ -7,6 +7,12 @@
         padding:4px;
       font-size:16px;
     }
+    @media (min-width: 768px) {
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
+}
 </style>
 @endpush
 @include('elements.alert')
@@ -46,7 +52,7 @@
                               <td>{{ $row->seller->first_name . " " .$row->seller->last_name}}</td>
                                <td>{{ $row->name }}</td>
                                <td>{{ $row->web }}</td>
-                               <td><img  src="{{ asset($row->logo) }}" style = "height:40px;width:70px;"></td>
+                               <td><img  src="{{ !empty($row->logo) ? asset($row->logo) : asset('/uploads/shops/logos/shop-1.png') }}" style = "height:40px;width:70px;"></td>
                                <td class="d-flex justify-content-between">
                                    <ul> 
                                         <li><a href="#" id="{{ url('/andbaazaradmin/shop/'.$row->slug).'/view' }}"><button class="btn btn-sm btn-secondary"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"> View</button></a></li>
@@ -56,7 +62,7 @@
                                </td>
                             </tr>
                             <div class="modal fade" id="tagEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-dialog modal-xl" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title f-w-600" id="exampleModalLabel"> Shop Details</h5>
@@ -69,13 +75,13 @@
                                                 <div class="form">
                                                     <div class="col-md-12">
                                                         <div class="float-right">
-                                                            <h3 class="display-5 font-weight-bold">Owner Details</h3>
+                                                            <h3 class="display-5 font-weight-bold">Owner Details</h3> 
                                                             <div> {{ $row->seller->first_name . " " .$row->seller->last_name}}</div>
                                                             <div> {{ $row->seller->email }}</div>  
                                                             <div> {{ $row->seller->phone }}</div>                         
                                                         </div>
                                                         <div class="float-left modal-logo">
-                                                            <img  src="{{ asset($row->logo) }}" style = "height:70px;width:80px;padding:7px;">
+                                                            <img  src="{{ !empty($row->logo) ? asset($row->logo) : asset('/uploads/shops/logos/shop-1.png') }}" width="100" height="100" class="pl-3 pr-3 pb-3 pr-0" > 
                                                         </div>
                                                         <div>
                                                             <h3 class="display-5 font-weight-bold">{{ $row->name }}</h3>
