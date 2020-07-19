@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 include('frontend.php');
 include('merchant.php');
+include('agent.php');
 include('admin.php');
 
 
