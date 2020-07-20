@@ -57,16 +57,17 @@
         <div class="top-header">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-7">
                         <div class="header-contact">
                             <ul>
                                 <li>Welcome to  Andbaazar</li>
                                 <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 041 - 722 - 684</li>
                                 <li><a href="{{url('sell-on-andbaazar')}}" style="color: #999999;font-size: 14px; padding-right: 25px;">Start Selling Here</a></li>
+                                <li><a href="{{url('become-an-agent')}}" style="color: #999999;font-size: 14px; padding-right: 25px;">Become an Agent</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-6 text-right">
+                    <div class="col-lg-5 text-right">
                         <ul class="header-dropdown">
                             <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
                             </li>
