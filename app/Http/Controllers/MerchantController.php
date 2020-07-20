@@ -7,6 +7,7 @@ use App\Mail\VendorProfilResubmitMail;
 use Illuminate\Http\Request;
 use Sentinel;
 use App\Models\Merchant;
+use App\Models\Geo\Division;
 use App\User;
 use App\Events\SellerRegistration;
 use App\Models\Shop;
@@ -173,7 +174,8 @@ class MerchantController extends Controller{
         if(!$seller){
             return redirect('/');
         }
-        return view('auth.merchant.shopRegistration',compact('seller'));
+        $divisions = Division::all();
+        return view('auth.merchant.shopRegistration',compact('seller','divisions'));
     }
 
     public function shopRegistrationStore(Request $request,Shop $shop){

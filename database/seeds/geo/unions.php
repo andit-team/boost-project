@@ -1917,7 +1917,7 @@ $unions = array(
   array('id' => '1905','upazilla_id' => '210','name' => 'Sochiadaho','bn_name' => 'সাচিয়াদাহ','url' => 'www.sochiadahoup.khulna.gov.bd'),
   array('id' => '1906','upazilla_id' => '210','name' => 'Modhupur','bn_name' => 'মধুপুর','url' => 'www.modhupurup.khulna.gov.bd'),
   array('id' => '1907','upazilla_id' => '210','name' => 'Ajgora','bn_name' => 'আজগড়া','url' => 'www.ajgoraup.khulna.gov.bd'),
-  array('id' => '1908','upazilla_id' => '211','name' => 'Dumuria','bn_name' => 'ডুমুরিয়া','url' => 'dumuriaup.khulna.gov.bd'),
+  array('id' => '1908','upazilla_id' => '211','name' => 'Dumuria','bn_name' => 'ডুমুরিয়া','url' => 'dumuriaup.khulna.gov.bd','lat'=>'22.807606','lng'=>'89.418731'),
   array('id' => '1909','upazilla_id' => '211','name' => 'Magurghona','bn_name' => 'মাগুরাঘোনা','url' => 'magurghonaup.khulna.gov.bd'),
   array('id' => '1910','upazilla_id' => '211','name' => 'Vandarpara','bn_name' => 'ভান্ডারপাড়া','url' => 'vandarparaup.khulna.gov.bd'),
   array('id' => '1911','upazilla_id' => '211','name' => 'Sahos','bn_name' => 'সাহস','url' => 'sahosup.khulna.gov.bd'),
