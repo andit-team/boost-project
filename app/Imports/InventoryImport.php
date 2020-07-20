@@ -24,11 +24,20 @@ class InventoryImport implements ToModel, WithHeadingRow
       // dd($cat[1]);
 
       // $catId = Category::where('slug',$cat[1])->first()->id;
+
       $inAttr = [
         'name'  => $row['name'],
         'description' =>'descas asdf asdf',
       ];
       $attr = InventoryAttribute::create($inAttr);
+
+      if(empty($row['name'])){
+        $relation = [
+              'category_id' => $cat[1],
+              'inventory_attribute_id'  => $attr->id,
+            ];
+          DB::table('inventory_attribute_category')->insert($relation);
+          }  
 
       if(!empty($row['inventory_value'])){
         $vals = explode(',',$row['inventory_value']);
