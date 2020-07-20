@@ -178,7 +178,6 @@
         zoom: z,
         center: latlng,//{lat: 23.811273, lng: 90.404240}
       });
-
       // var image = 'http://localhost/andbaazar/public/frontend/assets/images/icon/logo.png';
       marker = new google.maps.Marker({
         map: map,
@@ -217,6 +216,8 @@
         $('#upazila').html('<option value="" selected disabled>Select Upazila</option>');
         $('#union').html('<option value="" selected disabled>Select Union</option>');
         $('#village').html('<option value="" selected disabled>Select Village</option>');
+        $('#municipal').html('<option value="" selected disabled>Select Municipal</option>');
+        $('#ward').html('<option value="" selected disabled>Select ward</option>');
     };
     
     $('#district').change(function(){
@@ -239,6 +240,7 @@
         initMap(lat,lng,10);
         $('#union').html('<option value="" selected disabled>Select Union</option>');
         $('#village').html('<option value="" selected disabled>Select Village</option>');
+        $('#ward').html('<option value="" selected disabled>Select ward</option>');
     });
 
 
@@ -260,6 +262,26 @@
             }
         });
         $('#village').html('<option value="" selected disabled>Select Village</option>');
+        // initMap(lat,lng,10);
+    });
+
+    $('#municipal').change(function(){
+        // var upazila = $(this).find('option:selected'); 
+        // var lat = upazila.data("lat"); 
+        // var lng = upazila.data("lng");
+        $.ajax({
+            url : "{{route('get-ward')}}",
+            type : 'POST',
+            data : {'municipal':$(this).val(),'_token':'{{csrf_token()}}'},
+            dataType : 'text',
+            beforeSend : function(){
+                console.log('sending');
+            },
+            success : function(response){
+                console.log(response);
+                $('#ward').html(response);
+            }
+        });
         // initMap(lat,lng,10);
     });
 

@@ -81,6 +81,7 @@ Route::post('get-district', 'AjaxController@getDistrict')->name('get-district');
 Route::post('get-upazila', 'AjaxController@getUpazila')->name('get-upazila');
 Route::post('get-union', 'AjaxController@getUnion')->name('get-union');
 Route::post('get-village', 'AjaxController@getVillage')->name('get-village');
+Route::post('get-ward', 'AjaxController@getWard')->name('get-ward');
 Route::get('importExportView', 'ExportImportController@importExportView');
 Route::get('export', 'ExportImportController@export')->name('export');
 Route::post('import', 'ExportImportController@import')->name('import');
