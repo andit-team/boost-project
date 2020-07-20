@@ -39,7 +39,7 @@ $districts = array(
   array('id' => '27','division_id' => '3','name' => 'Khulna','bn_name' => 'খুলনা','lat' => '22.815774','lon' => '89.568679','url' => 'www.khulna.gov.bd'),
   array('id' => '28','division_id' => '3','name' => 'Bagerhat','bn_name' => 'বাগেরহাট','lat' => '22.651568','lon' => '89.785938','url' => 'www.bagerhat.gov.bd'),
   array('id' => '29','division_id' => '3','name' => 'Jhenaidah','bn_name' => 'ঝিনাইদহ','lat' => '23.5448176','lon' => '89.1539213','url' => 'www.jhenaidah.gov.bd'),
-  array('id' => '30','division_id' => '4','name' => 'Jhalakathi','bn_name' => 'ঝালকাঠি','lat' => NULL,'lon' => NULL,'url' => 'www.jhalakathi.gov.bd'),
+  array('id' => '30','division_id' => '4','name' => 'Jhalakati','bn_name' => 'ঝালকাঠি','lat' => NULL,'lon' => NULL,'url' => 'www.jhalakati.gov.bd'),
   array('id' => '31','division_id' => '4','name' => 'Patuakhali','bn_name' => 'পটুয়াখালী','lat' => '22.3596316','lon' => '90.3298712','url' => 'www.patuakhali.gov.bd'),
   array('id' => '32','division_id' => '4','name' => 'Pirojpur','bn_name' => 'পিরোজপুর','lat' => NULL,'lon' => NULL,'url' => 'www.pirojpur.gov.bd'),
   array('id' => '33','division_id' => '4','name' => 'Barisal','bn_name' => 'বরিশাল','lat' => NULL,'lon' => NULL,'url' => 'www.barisal.gov.bd'),
