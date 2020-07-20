@@ -319,6 +319,7 @@ class MerchantController extends Controller{
      */
     public function store(Request $request, Merchant $seller)
     {
+        //dd($request->all());
         $userprofile = Sentinel::getUser();
         $sellerId    = Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $this->validateForm($request);
@@ -329,7 +330,7 @@ class MerchantController extends Controller{
                 'last_name'         => $request->last_name,
                 'phone'             => $request->phone,
                 'email'             => $request->email,
-                'picture'           => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
+                // 'picture'           => Baazar::fileUpload($request,'picture','old_image','/uploads/vendor_profile'),
                 'dob'               => $request->dob,
                 'nid'               => $request->nid,
                 'nid_img'           => Baazar::pdfUpload($request,'nid_img','old_nid_img','/uploads/vendor_profile/nid_image'),
@@ -361,7 +362,7 @@ class MerchantController extends Controller{
                 'slug'              => $slug,
                 'phone'             => $request->phone,
                 'email'             => $request->email,
-                'picture'           => Baazar::fileUpload($request,'picture','','/uploads/vendor_profile'),
+                // 'picture'           => Baazar::fileUpload($request,'picture','','/uploads/vendor_profile'),
                 'dob'               => $request->dob,
                 'nid'               => $request->nid,
                 'nid_img'           => Baazar::pdfUpload($request,'nid_img','','/uploads/vendor_profile/nid_image'),
@@ -391,6 +392,26 @@ class MerchantController extends Controller{
         }
 
         return back();
+    }
+
+    public function profileImageCrop(Request $request){
+        $profile   = Merchant::find($request->profile); 
+        if($profile){
+            $image_file = $request->picture;
+            list($type, $image_file) = explode(';', $image_file);
+            list(, $image_file)      = explode(',', $image_file);
+            $image_file = base64_decode($image_file);
+            $image_name= "profile-".$profile->id.'.png';
+            $db_img = 'uploads/vendor_profile'.$image_name;
+            $path = public_path($db_img);
+            file_put_contents($path, $image_file);
+            $done = $profile->update(['picture' => $db_img]);
+            // session()->forget('logininfo');
+            // Session::push('logininfo', $this->sessionData($customer));
+            if($done){
+                return response()->json(['status'=>true]);
+            }
+        }
     }
 
     /**
