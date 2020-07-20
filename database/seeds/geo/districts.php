@@ -39,17 +39,14 @@ $districts = array(
   array('id' => '27','division_id' => '3','name' => 'Khulna','bn_name' => 'খুলনা','lat' => '22.815774','lon' => '89.568679','url' => 'www.khulna.gov.bd'),
   array('id' => '28','division_id' => '3','name' => 'Bagerhat','bn_name' => 'বাগেরহাট','lat' => '22.651568','lon' => '89.785938','url' => 'www.bagerhat.gov.bd'),
   array('id' => '29','division_id' => '3','name' => 'Jhenaidah','bn_name' => 'ঝিনাইদহ','lat' => '23.5448176','lon' => '89.1539213','url' => 'www.jhenaidah.gov.bd'),
-<<<<<<< HEAD
   array('id' => '30','division_id' => '4','name' => 'Jhalakati','bn_name' => 'ঝালকাঠি','lat' => '22.643182','lon' => '90.193347','url' => 'www.jhalakati.gov.bd'),
   array('id' => '31','division_id' => '4','name' => 'Patuakhali','bn_name' => 'পটুয়াখালী','lat' => '22.3596316','lon' => '90.3298712','url' => 'www.patuakhali.gov.bd'),
   array('id' => '32','division_id' => '4','name' => 'Pirojpur','bn_name' => 'পিরোজপুর','lat' => '22.598766','lon' => '89.970226','url' => 'www.pirojpur.gov.bd'),
   array('id' => '33','division_id' => '4','name' => 'Barisal','bn_name' => 'বরিশাল','lat' => '22.697055','lon' => '90.338366','url' => 'www.barisal.gov.bd'),
-=======
   array('id' => '30','division_id' => '4','name' => 'Jhalakati','bn_name' => 'ঝালকাঠি','lat' => '22.641915','lon' => '90.211887','url' => 'www.jhalakati.gov.bd'),
   array('id' => '31','division_id' => '4','name' => 'Patuakhali','bn_name' => 'পটুয়াখালী','lat' => '22.3596316','lon' => '90.3298712','url' => 'www.patuakhali.gov.bd'),
   array('id' => '32','division_id' => '4','name' => 'Pirojpur','bn_name' => 'পিরোজপুর','lat' => '22.575943','lon' => '89.986705','url' => 'www.pirojpur.gov.bd'),
   array('id' => '33','division_id' => '4','name' => 'Barisal','bn_name' => 'বরিশাল','lat' => '22.702347','lon' => '90.351057','url' => 'www.barisal.gov.bd'),
->>>>>>> 5bb297870260f4e331db4e9a2da22c0a0a7a3760
   array('id' => '34','division_id' => '4','name' => 'Bhola','bn_name' => 'ভোলা','lat' => '22.685923','lon' => '90.648179','url' => 'www.bhola.gov.bd'),
   array('id' => '35','division_id' => '4','name' => 'Barguna','bn_name' => 'বরগুনা','lat' => '22.160620','lon' => '90.119717','url' => 'www.barguna.gov.bd'),
   array('id' => '36','division_id' => '5','name' => 'Sylhet','bn_name' => 'সিলেট','lat' => '24.8897956','lon' => '91.8697894','url' => 'www.sylhet.gov.bd'),
