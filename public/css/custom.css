@@ -5,11 +5,18 @@
     margin-bottom: 5px;
     height: inherit !important;
 }
+.h-48{
+    height: 48px;
+}
 input[type=file]{
     padding: 9px 10px !important;
 }
 select.form-control{
     padding: 13px 10px;
+}
+
+tbody.newRow tr td select {
+    padding: 9px !important;
 }
 
 .error{
