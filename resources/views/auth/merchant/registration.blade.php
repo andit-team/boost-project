@@ -75,19 +75,14 @@
                                 <input type="hidden" name="slug" value="{{ $seller->slug }}">
                             </div>
                             <div class="form-group">
-                                <input required="" name="email" value="{{ old('email') }}" type="email" class="form-control @error('email') border-danger @enderror" placeholder="Email" id="exampleInputEmail12" autocomplete="off">
+                                <input required="" name="email" autocomplete="off" value="{{ old('email') }}" type="email" class="form-control @error('email') border-danger @enderror" placeholder="Email" id="exampleInputEmail12" autocomplete="off">
                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                                 <input type="hidden" name="type" value="sellers">
                             </div>
                             <div class="form-group">
-                                <input type="text"  class="form-control  @error('dob') border-danger @enderror datepickerPreviousOnly" required name="dob" value="{{ old('dob') }}"  id="" placeholder="Date of Birth" autocomplete="off"> 
-                                <span class="text-danger">{{ $errors->first('dob') }}</span>
-                            </div>
-                            <div class="form-group">
                                 <select name="gender" placeholder="Gender" class="form-control px-10 @error('gender') border-danger @enderror" id=""  required autocomplete="off" style="height: 51px;">                                         
                                     <option value="Male" selected>Male</option>
-                                    <option value="Female">Female</option> 
-                                    <option value="Other">Other</option>  
+                                    <option value="Female">Female</option>
                                 </select>
                             </div> 
                             <div class="form-group">
@@ -101,7 +96,7 @@
                             <div class="form-terms">
                                 <div class="custom-control custom-checkbox mr-sm-2"> 
                                     <input type="checkbox" name="agreed" class="custom-control-input" id="customControlAutosizing1"> 
-                                    <label class="custom-control-label" for="customControlAutosizing1"><span>I agree all statements in <a href="{{ url('terms-condition') }}"  class="pull-right">Terms &amp; Conditions</a></span></label>
+                                    <label class="custom-control-label" for="customControlAutosizing1"><span>I agree all statements in <a href="{{ url('terms-condition') }}" target="_blank"  class="pull-right">Terms &amp; Conditions</a></span></label>
                                     <br>
                                     <span class="text-danger">{{ $errors->first('agreed') }}</span>
                                 </div>

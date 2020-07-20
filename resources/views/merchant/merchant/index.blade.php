@@ -217,16 +217,16 @@
                                                                                 <img src="{{ !empty($row->shop->logo) ? asset($row->shop->logo) : asset('/uploads/shops/logos/shop-1.png') }}" class="" height="100" width="100" alt="Logo">
                                                                             </div>
                                                                             <div>
-                                                                            <h3 class="display-5 font-weight-bold">{{$row->shop->name}}</h3>
-                                                                                <p>{{$row->shop->slogan}}</p>
+                                                                            <h3 class="display-5 font-weight-bold">{{!empty($row->shop->name) ? $row->shop->name : 'no shop'}}</h3>
+                                                                                <p>{{!empty($row->shop->slogan) ? $row->shop->slogan : 'no slogan'}}</p>
                                                                             </div>
 
                                                                             <br>
                                                                             <div class="d-inline-block mt-3">
-                                                                                <p class="text-justify">{{ $row->shop->description }}</p>
-                                                                                <h5>{{$row->shop->name}}</h5>
+                                                                                <p class="text-justify">{{ !empty($row->shop->description) ? $row->shop->description : 'no description'}}</p>
+                                                                                <h5>{{!empty($row->shop->name) ? $row->shop->name : 'no shop'}}</h5>
                                                                                 <h6>750 followers | 10 review</h6>
-                                                                                <h6>{{$row->shop->email}}</h6>
+                                                                                <h6>{{!empty($row->shop->email) ? $row->shop->email : 'no email'}}</h6>
                                                                             </div>
                                                                     </div>
                                                                 </div>

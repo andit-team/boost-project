@@ -7,6 +7,7 @@ use App\Mail\VendorProfilResubmitMail;
 use Illuminate\Http\Request;
 use Sentinel;
 use App\Models\Merchant;
+use App\Models\Geo\Division;
 use App\User;
 use App\Events\SellerRegistration;
 use App\Models\Shop;
@@ -101,14 +102,10 @@ class MerchantController extends Controller{
 
     public function verifyToken(Request $request){
         $request->validate([
-            'verification_token'    => 'required|exists:merchant,verification_token|max:5'
+            'verification_token'    => 'required|exists:merchants,verification_token|max:5'
         ]);
-
         $seller    = Merchant::where('slug',$request->slug)->first();
-
-
-
-       $seller->update([
+        $seller->update([
             'verification_token' => $request->verification_token,
             'slug' => $request->slug,
         ]);
@@ -133,7 +130,7 @@ class MerchantController extends Controller{
 
         $request->validate([
             'password'      => 'required|confirmed',
-            'email'         => 'required|unique:merchant,email',
+            'email'         => 'required|unique:merchants,email',
             'agreed'        => 'accepted'
         ]);
 
@@ -177,7 +174,8 @@ class MerchantController extends Controller{
         if(!$seller){
             return redirect('/');
         }
-        return view('auth.merchant.shopRegistration',compact('seller'));
+        $divisions = Division::all();
+        return view('auth.merchant.shopRegistration',compact('seller','divisions'));
     }
 
     public function shopRegistrationStore(Request $request,Shop $shop){
@@ -202,7 +200,7 @@ class MerchantController extends Controller{
             'lng'       => $request->lng,
             'address'   => $request->address,
             'zip'       => $request->zip,
-            'seller_id' => $sellerId->id,
+            'merchant_id' => $sellerId->id,
             'user_id'   => $sellerId->user_id,
             'create_at' => now(),
         ];
@@ -286,14 +284,13 @@ class MerchantController extends Controller{
      */
     public function index()
     {
-
         $activesellers = Merchant::with('shop')->where('status','Active')->orderBy('id', 'DESC')->get();
 
         $requestSellers = Merchant::with('shop')->where('status','Inactive')->orderBy('id','DESC')->get();
 
         $rejectSellers = Merchant::with('shop')->where('status','Reject')->orderBy('id','DESC')->get();
 
-
+        // dd($requestSellers->shop->name);
 
         return view('merchant.merchant.index',compact('activesellers','requestSellers','rejectSellers'));
     }

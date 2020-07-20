@@ -73,6 +73,6 @@
       console.log(marker.position.lng());
     }
   </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG7cxLzRJmTIgaNGP5xKDNMT1DNVSGEEU&callback=initMap">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtygZ5JPTLgwFLA8nU6bb4d_6SSLlTPGw&callback=initMap">
   </script>
 @endpush

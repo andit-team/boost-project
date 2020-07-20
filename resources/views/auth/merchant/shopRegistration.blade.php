@@ -12,6 +12,9 @@
         height: 250px;
         margin-bottom: 20px;
       }
+      .auth-form .form-control {
+          border-radius: 0px !important;
+      }
 </style>
 @endpush
 <div class="row"> 
@@ -66,9 +69,7 @@
                         <div class="alert alert-danger">
                                 <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
                         </div>
-                    @endif
-                    <div id="map"></div>
-                      
+                    @endif                      
                     <form class="form-horizontal auth-form" action="{{ route('sellerShopeRegistration') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf  
                             <div class="form-group">
@@ -80,7 +81,60 @@
                                 <input required="" name="slogan" value="{{ old('slogan') }}" type="text" class="form-control @error('slogan') border-danger @enderror" placeholder="Shop Slogan" id="exampleInputEmail12" autocomplete="off"> 
                                 <span class="text-danger">{{ $errors->first('slogan') }}</span> 
                             </div>
+                            
                             <div class="form-group">
+                                <select name="division" class="form-control px-10 @error('division') border-danger @enderror" id="division" onchange="getDistrict(this)"  required autocomplete="off" style="height: 45px;">                                         
+                                    <option value="">Division</option>
+                                    @foreach ($divisions as $division)
+                                        <option value="{{$division->id}}" data-lat="{{$division->lat}}" data-lng="{{$division->lng}}">{{$division->bn_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <div class="row">
+                                <select name="district" class="form-control col-md-8 px-10 @error('district') border-danger @enderror" id="district"  required autocomplete="off" style="height: 45px;">
+                                    <option value="" selected disabled>Select District</option>
+                                </select>
+
+                                <select name="type" class="form-control col-md-4 px-10 @error('type') border-danger @enderror" id="type"  required autocomplete="off" style="height: 45px;">
+                                    <option value="Residential" selected>Residential</option>
+                                    <option value="Municipal">Municipal</option>
+                                </select>
+                            </div>
+                            </div>
+
+                            <div class="upazila">
+                                <div class="form-group">
+                                    <select name="upazila" class="form-control px-10 @error('upazila') border-danger @enderror" id="upazila"  required autocomplete="off" style="height: 45px;">
+                                        <option value="" selected disabled>Select Upazila</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="union" class="form-control px-10 @error('union') border-danger @enderror" id="union"  required autocomplete="off" style="height: 45px;">
+                                        <option value="" selected disabled>Select Union</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="village" class="form-control px-10 @error('village') border-danger @enderror" id="village"  required autocomplete="off" style="height: 45px;">
+                                        <option value="" selected disabled>Select Village</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="municipal" style="display: none">
+                                <div class="form-group">
+                                    <select name="municipal" class="form-control px-10 @error('municipal') border-danger @enderror" id="municipal"  required autocomplete="off" style="height: 45px;">
+                                        <option value="" selected disabled>Select municipal</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select name="ward" class="form-control px-10 @error('ward') border-danger @enderror" id="ward"  required autocomplete="off" style="height: 45px;">
+                                        <option value="" selected disabled>Select ward</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            {{-- <div class="form-group">
                                 <input required="" name="phone" value="{{ old('phone') }}" type="text" class="form-control @error('phone') border-danger @enderror" placeholder="Shop Phone" autocomplete="off">
                                 <span class="text-danger">{{ $errors->first('phone') }}</span>
                             </div>
@@ -95,9 +149,10 @@
                             <div class="form-group">
                                 <input required="" name="zip" value="{{ old('zip') }}" type="number" class="form-control @error('name') border-danger @enderror" placeholder="Shop zip" autocomplete="off">
                                 <span class="text-danger">{{ $errors->first('zip') }}</span>
-                            </div>
-                            <input type="hidden" id="lat" name="lat" value="22.804547506687953">
-                            <input type="hidden" id="lng" name="lng" value="89.55519250793455">
+                            </div> --}}
+                            <input type="hidden" id="lat" name="lat" value="23.811273">
+                            <input type="hidden" id="lng" name="lng" value="88.1007585">
+                            <div id="map"></div>
                             <div class="form-button float-right">
                                 <button class="btn btn-info" type="submit">Shope Register</button>
                             </div> 
@@ -117,33 +172,152 @@
     // animation and no animation.
 
     var marker;
-
-    function initMap() {
+    function initMap(l=23.811273,g=90.404240,z=6) {
+    var latlng = new google.maps.LatLng(l,g);
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 13,
-        center: {lat: 22.804547506687953, lng: 89.55519250793455}
+        zoom: z,
+        center: latlng,//{lat: 23.811273, lng: 90.404240}
       });
-
       // var image = 'http://localhost/andbaazar/public/frontend/assets/images/icon/logo.png';
       marker = new google.maps.Marker({
         map: map,
         draggable: true,
         animation: google.maps.Animation.DROP,
-        position: {lat: 22.804547506687953, lng: 89.55519250793455},
-        title: 'Uluru (Ayers Rock)'
+        position: latlng,
+        title: 'Dhaka'
         // icon: image
       });
-      marker.addListener('dragend', latLng);
+      marker.addListener('dragend', latLngs);
     }
 
-    function latLng() {
+    function latLngs() {
         $('#lat').val(marker.position.lat());
         $('#lng').val(marker.position.lng());
-    //   console.log(marker.position.lat());
-    //   console.log(marker.position.lng());
     }
+
+    function getDistrict(e){
+        var division = $(e).find('option:selected'); 
+        var lat = division.data("lat"); 
+        var lng = division.data("lng");
+        $.ajax({
+            url : "{{route('get-district')}}",
+            type : 'POST',
+            data : {'division':$(e).val(),'_token':'{{csrf_token()}}'},
+            dataType : 'text',
+            beforeSend : function(){
+                console.log('sending');
+            },
+            success : function(response){
+                console.log(response);
+                $('#district').html(response);
+            }
+        });
+        initMap(lat,lng,10);
+        $('#upazila').html('<option value="" selected disabled>Select Upazila</option>');
+        $('#union').html('<option value="" selected disabled>Select Union</option>');
+        $('#village').html('<option value="" selected disabled>Select Village</option>');
+        $('#municipal').html('<option value="" selected disabled>Select Municipal</option>');
+        $('#ward').html('<option value="" selected disabled>Select ward</option>');
+    };
+    
+    $('#district').change(function(){
+        var district = $(this).find('option:selected'); 
+        var lat = district.data("lat"); 
+        var lng = district.data("lng");
+        $.ajax({
+            url : "{{route('get-upazila')}}",
+            type : 'POST',
+            data : {'district':$(this).val(),'_token':'{{csrf_token()}}'},
+            dataType : 'json',
+            beforeSend : function(){
+                console.log('sending');
+            },
+            success : function(response){
+                $('#upazila').html(response.upazila);
+                $('#municipal').html(response.municipal);
+            }
+        });
+        initMap(lat,lng,10);
+        $('#union').html('<option value="" selected disabled>Select Union</option>');
+        $('#village').html('<option value="" selected disabled>Select Village</option>');
+        $('#ward').html('<option value="" selected disabled>Select ward</option>');
+    });
+
+
+    $('#upazila').change(function(){
+        // var upazila = $(this).find('option:selected'); 
+        // var lat = upazila.data("lat"); 
+        // var lng = upazila.data("lng");
+        $.ajax({
+            url : "{{route('get-union')}}",
+            type : 'POST',
+            data : {'upazila':$(this).val(),'_token':'{{csrf_token()}}'},
+            dataType : 'text',
+            beforeSend : function(){
+                console.log('sending');
+            },
+            success : function(response){
+                console.log(response);
+                $('#union').html(response);
+            }
+        });
+        $('#village').html('<option value="" selected disabled>Select Village</option>');
+        // initMap(lat,lng,10);
+    });
+
+    $('#municipal').change(function(){
+        // var upazila = $(this).find('option:selected'); 
+        // var lat = upazila.data("lat"); 
+        // var lng = upazila.data("lng");
+        $.ajax({
+            url : "{{route('get-ward')}}",
+            type : 'POST',
+            data : {'municipal':$(this).val(),'_token':'{{csrf_token()}}'},
+            dataType : 'text',
+            beforeSend : function(){
+                console.log('sending');
+            },
+            success : function(response){
+                console.log(response);
+                $('#ward').html(response);
+            }
+        });
+        // initMap(lat,lng,10);
+    });
+
+    $('#union').change(function(){
+        // var upazila = $(this).find('option:selected'); 
+        // var lat = upazila.data("lat"); 
+        // var lng = upazila.data("lng");
+        $.ajax({
+            url : "{{route('get-village')}}",
+            type : 'POST',
+            data : {'union':$(this).val(),'_token':'{{csrf_token()}}'},
+            dataType : 'text',
+            beforeSend : function(){
+                console.log('sending');
+            },
+            success : function(response){
+                console.log(response);
+                $('#village').html(response);
+            }
+        });
+        // initMap(lat,lng,10);
+    });
+
+    $('#type').change(function(){
+        var type = $(this).val();
+        console.log(type);
+        if(type == 'Municipal'){
+            $('.municipal').show();
+            $('.upazila').hide();
+        }else{
+            $('.municipal').hide();
+            $('.upazila').show();
+        }
+    });
+
   </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAG7cxLzRJmTIgaNGP5xKDNMT1DNVSGEEU&callback=initMap">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtygZ5JPTLgwFLA8nU6bb4d_6SSLlTPGw&callback=initMap">
   </script>
   @endpush
-
