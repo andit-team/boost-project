@@ -16,6 +16,9 @@
     #file-upload{
         display: none;
     }
+    #file-upload1{
+        display: none;
+    }
     .uploadbtn{
         width: 200px;background: #ddd;text-align: center;
     }
@@ -100,43 +103,48 @@
                                     <img id="output"  class="imagestyle" src="{{ asset('/uploads/vendor_profile/user.png') }}" />
                                 @endif
                             </div>
-                            <div class="uploadbtn">
-                                <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                <input id="file-upload" type="file" name="picture" onchange="loadFile(event)"/>
+                            <div class="uploadbtn"> 
+                                <label for="img-upload" class="custom-file-upload image-upload"><i aria-hidden="true"></i> Upload Here</label>
+                                <input id="img-upload" accept="image/*"  class ="d-none" type="file" name="picture"/>
                                 <input type="hidden" value="{{$sellerProfile->picture}}" name="old_image">
+                                <div id="loader" class=""></div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="picture">Picture</label>
+                            <label for="nid_image">Nid Imge</label>
                             <div class="mt-0">
-                                @if(!empty($sellerProfile->picture))
-                                    <img id="output"  class="imagestyle" src="{{ asset($sellerProfile->picture) }}"/>
+                                @if(!empty($sellerProfile->nid_img))
+                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/vendor_profile/nid_image/load.jpg') }}"/>
                                 @else
-                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/vendor_profile/user.png') }}" />
+                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/vendor_profile/nid_image/empty.jpg') }}" />
                                 @endif
                             </div>
                             <div class="uploadbtn">
                                 <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                <input type="hidden" value="{{$sellerProfile->picture}}" name="old_image">
+                                <input id="file-upload" type="file" name="nid_img" class="form-control" value="{{ $sellerProfile->nid_img  }}">
+                                <input type="hidden" value="{{$sellerProfile->nid_img}}" name="old_nid_img">
                             </div>
-                            <a href="#">Download Here..</a>
+                            <a href="{{ asset($sellerProfile->nid_img) }}"  download="download">Download Here..</a>
                         </div>
                         <div class="form-group">
-                            <label for="picture">Picture</label>
+                            <label for="picture">Tread Licence</label>
                             <div class="mt-0">
-                                @if(!empty($sellerProfile->picture))
-                                    <img id="output"  class="imagestyle" src="{{ asset($sellerProfile->picture) }}"/>
+                                @if(!empty($sellerProfile->trad_img))
+                                    <img id="output"  class="imagestyle"  src="{{ asset('/uploads/vendor_profile/trad_image/load.jpg') }}"/>
                                 @else
-                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/vendor_profile/user.png') }}" />
+                                    <img id="output"  class="imagestyle" src="{{ asset('/uploads/vendor_profile/trad_image/empty.jpg') }}" />
                                 @endif
                             </div>
                             <div class="uploadbtn">
-                                <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                <input type="hidden" value="{{$sellerProfile->picture}}" name="old_image">
-                            </div>
-                            <a href="#">Download Here..</a>
+                                <label for="file-upload1" class="custom-file-upload">Upload Here</label>
+                                <input id="file-upload1" type="file" name="trad_img" class="form-control" value="{{ $sellerProfile->trad_img  }}">
+                                <input type="hidden" value="{{$sellerProfile->trad_img}}" name="old_trad_img">
+                            </div> 
+                            <a href="{{ asset($sellerProfile->trad_img) }}"  download="download">Download Here..</a>
                         </div>
                     </div>
+
+                    
 
                     {{-- <div class="form-row">
                         <div class="col-md-6 mt-2">
@@ -172,17 +180,51 @@
                         </div> --}}
 
                         <div class="col-md-12 mt-4">
-                            <button type="submit" class="btn btn-sm btn-solid" >Updates</button>
+                            <button type="submit" class="btn btn-sm btn-solid" >Save</button>
                         </div>
                         </div>
                 </form>
                 </div>
             </div>
-        </div>
+        </div> 
 </section>
-    <!--  dashboard section end -->
+    <!--  dashboard section end --> 
+    <div class="modal" id="image-modal" tabindex="-1" role="dialog" aria-labelledby="shop-logo-modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Before upload resize your picture.</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="main-cropper"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary p-2" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary p-2" id="upload-image">Crop & Save</button>
+            </div>
+          </div>
+        </div>
+    </div>
 @endsection
+@push('css')
+  <link rel="stylesheet" href="https://foliotek.github.io/Croppie/croppie.css">
+  <style>
+    input[type="file"] {
+      display: none;
+    }
+    #mainNav {
+      height: 70px;
+    }
+    #mainNav .navbar-brand img, .footer-widget.footer-about a > img {
+      height: 34px;
+    }
+  </style>
+@endpush
 @push('js')
+<script src="https://foliotek.github.io/Croppie/croppie.js"></script>
 <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');
@@ -196,11 +238,65 @@
            height: 300,
       });
    });
+
+   function readFileLogo(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      $("#main-cropper").croppie("bind", {
+        url: e.target.result
+      });
+      $('#image-modal').modal('show');
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#img-upload").on("change", function() { 
+  readFileLogo(this);
+});
+var basic = $("#main-cropper").croppie({
+    viewport: { width: 250, height: 250 },
+    boundary: { width: 300, height: 300 },
+    showZoomer: true,
+    enableExif: true
+});
+$("#upload-image").click(function() {
+  $("#main-cropper")
+    .croppie("result", {
+      type: "canvas",
+      size: "viewport",
+    }).then(function(resp) {
+      $('#image-modal').modal('hide');
+      $("#result").attr("src", resp);
+    //   console.log(resp);
+      var _token = "{{csrf_token()}}";
+        $.ajax({
+          url: "{{route('profile-image-crop')}}",
+          type: "POST",
+          dataType:"json",
+          data: {"picture":resp,_token:_token,'profile':{{$sellerProfile->id}}},
+          beforeSend:function(){
+            $('#loader').addClass('loader');
+            $('#output').addClass('opacity5');
+          },
+          success: function (data) {
+              $('#output').attr('src',resp);
+              $('#img-sidebar').attr('src',resp);
+            // console.log(data);
+            $('#loader').removeClass('loader');
+            $('#output').removeClass('opacity5');
+            $('#img-sidebar').removeClass('opacity5');
+          }
+        });
+
+    });
+}); 
  </script>
-<script>
+{{-- <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
     };
-</script>
+</script>  --}}
 @endpush

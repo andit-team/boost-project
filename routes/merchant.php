@@ -73,6 +73,7 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
 
     Route::post('shop-logo-crop', 'MerchantController@shopLogoCrop')->name('shop-logo-crop');
     Route::post('shop-banar-crop', 'MerchantController@shopBanarCrop')->name('shop-banar-crop');
+    Route::post('profile-image-crop', 'MerchantController@profileImageCrop')->name('profile-image-crop');
 
     //ajax division-district-upazila-union filter
     
