@@ -27,6 +27,8 @@ class geotableseeder extends Seeder
                 'bn_name'       => $division['bn_name'],
                 'slug'          => Str::slug($division['name']),
                 'url'           => $division['url'],
+                'lat'           => $division['lat'],
+                'lng'           => $division['lng'],
                 'created_at'    => now()
             ];
         }
