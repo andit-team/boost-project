@@ -180,15 +180,7 @@ class CategoriesController extends Controller
         $attributes = Category::find($request->cat_id);
         $attributesHTML = '';
         $i = 2;
-
-
-
-                    // <input type='text' class='col-sm-4 form-control'>
-                    // <label for=' class='col-sm-2 text-right'>Brand</label>
-                    // <input type='text' class='col-sm-4 form-control'>
-
         foreach($attributes->categoryAttr as $att){
-
             if($i == 4){
                 $attributesHTML .= "<div class='less'>";
             }

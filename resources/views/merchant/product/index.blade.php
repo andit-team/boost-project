@@ -10,31 +10,42 @@
         @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
         <div class="col-md-9">
                     <div class="top-sec">
-                        <h3>all products</h3>
-                        <a href="{{ url('merchant/products/new') }}" class="btn btn-sm btn-solid">add product</a>
+                        <h3>Products</h3>
+                        <a href="{{ url('merchant/products/new') }}" class="btn btn-sm btn-solid">Add New</a>
                     </div>
-                    <div class="filter-area w-50 d-flex">
-                        <div class="form-group">
+                    <div class="filter-area d-flex">
+                        <div class="form-group mr-1">
                             <input type="text" class="form-control" placeholder="Search Here...">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group mr-1">
                             <div class="input-group">
-                                <span class="input-group-addon bg-primary p-2">Category</span>
+                                <span class="input-group-addon bg-primary p-2 font-weight-bold text-white">Category</span>
                                 <select name="" class="form-control" id="">
-                                    <option value="">Category one</option>
-                                    <option value="">Category two</option>
+                                    <option value="">Computers & Laptops /Laptops/Gaming/</option>
+                                    <option value="">Computers & Laptops /Laptops/PC/</option>
                                     <option value="">Category three</option>
                                     <option value="">Category four</option>
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group mr-2">
+                            <div class="input-group">
+                                <span class="input-group-addon bg-primary p-2 font-weight-bold text-white">Status</span>
+                                <select name="" class="form-control" id="">
+                                    <option value="">Active</option>
+                                    <option value="">Pending</option>
+                                    <option value="">Rejected</option>
+                                </select>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-info btn-sm text-white font-weight-bold" style="padding: 8px;height: 38px;">Clear</a>
                     </div>
                     <table class="table-responsive-md table mb-0 table-striped mt-2">
                         <thead>
                             <tr>
                                 {{-- <th scope="col">image</th> --}}
-                                <th scope="col" class="text-left">product name</th>
-                                <th scope="col" class="text-left">category</th>
+                                <th scope="col" class="text-left">Product name</th>
+                                <th scope="col" class="text-left">Category</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Stock</th>
                                 <th scope="col">Sales</th>

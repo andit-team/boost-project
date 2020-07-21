@@ -3,16 +3,6 @@
 @section('content')
 
 @include('elements.alert')
- {{-- @component('layouts.inc.breadcrumb')
-  @slot('pageTitle')
-      Dashboard
-  @endslot
-  @slot('page')
-      <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">Product</li>
-  @endslot
-@endcomponent --}}
-
 
     <!--  dashboard section start -->
     <section class="dashboard-section section-b-space">
@@ -22,12 +12,12 @@
             @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
 
                 <!-- address section start -->
-                <div class="col-sm-9 contact-page register-page container">
+                <div class="col-sm-9 register-page container">
                         <h3>Edit Product</h3>
                             <form class="theme-form" action="{{ url('merchant/products/update'.$product->slug) }}" method="post"  enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
-                                <div >
+                                <div>
                                         @include('merchant.product.productBasicinfoEdit')
                                         @include('merchant.product.productAttributesEdit')
                                 </div>

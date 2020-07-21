@@ -54,9 +54,11 @@
             <label for="color_id" class="col-xl-3 col-md-4"></label>
             <div id="dropzone-main" class="img-upload-area" data-color="main"><label class="mt-3"><b>Feature Images :</b><span class="text-danger" id="message_main_img"></span></label>
                 <div class="border m-0 collpanel drop-area row my-awesome-dropzone-main" id="sortable-main">
-                    <span class="dz-message color-main">
+                    <span class="dz-message color-main d-none">
                         <h2>Drag & Drop Your Files</h2>
                     </span>
+                        
+
                 </div>
                 <small>Remember Your featured file will be the first one.</small><br>
             </div>
@@ -71,10 +73,13 @@
                 @endforeach
             </select>
         </div>
+        
         <div class="form-group row">
             <label for="" class="col-xl-3 col-md-4"></label>
             <div class="drops"></div>
-            <div class="inputs"></div>
+            <div class="inputs">
+                
+            </div>
         </div>
 
         <span class="btn btn-primary btn-sm pull-left rowAdd" data-row="1"><i class="fa fa-plus"></i> Add row</span>
@@ -156,6 +161,25 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
     <script>
+
+        $( "#sortable-main" ).sortable({
+            placeholder: "ui-state-highlight",
+            revert: true,
+        });
+        $("#sortable-main").disableSelection();
+        setup("my-awesome-dropzone-main",'main');
+
+
+        // $( "#sortable-blue" ).sortable({
+        //     placeholder: "ui-state-highlight",
+        //     revert: true,
+        // });
+        // $("#sortable-blue").disableSelection();
+        // setup("my-awesome-dropzoneblue",'blue');
+
+
+
+
         function setSpecialPrices(){
             var spcial_price        = $('#spcial_price').val();
             var spcial_price_start  = $('#spcial_price_start').val();
@@ -274,13 +298,7 @@
         });
         Dropzone.autoDiscover = false;
 
-        $( "#sortable-main" ).sortable({
-            placeholder: "ui-state-highlight",
-            revert: true,
-        });
-        $("#sortable-main").disableSelection();
-        setup("my-awesome-dropzone-main",'main');
-
+        
         //function
         function setup(id,color) {
             let options = {
@@ -295,6 +313,7 @@
                 dictCancelUpload: "",
                 acceptedFiles: ".png,.jpg,.jpeg",
                 init: function() {
+
                     var self = this;
 
                     self.on("addedfile", function(file) {
@@ -307,6 +326,7 @@
                     self.on("dragleave", function(event) {});
 
                     self.on("thumbnail", function(file){
+                        console.log(file);
                         if(file.size < 3000000){
                             $('.inputs').append(`<input type="hidden" class="image-class-${color}" name="images[${color}][]" id="id${file.size}" value="${file.dataURL}">`);
                         }else{
@@ -353,6 +373,19 @@
                             //   this.removeFile(file);
                         }
                     });
+
+
+                    // Create the mock file:
+                    var mockFile = [
+                        { name: "Filename", size: 12345 , dataURL:"http://localhost/andbaazar/public/uploads/shops/logos/shop-4.png"},
+                        { name: "Filename", size: 12345 , dataURL:"http://localhost/andbaazar/public/uploads/shops/logos/shop-4.png"}
+                    ];
+
+                    mockFile.forEach(mockFile=>{
+                        self.emit("addedfile", mockFile);
+                        self.emit("thumbnail", mockFile, mockFile.dataURL);
+                    });
+
                 },
 
                 previewTemplate: `

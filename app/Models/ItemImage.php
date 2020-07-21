@@ -22,7 +22,7 @@ class ItemImage extends Model
     'active',
   ];
 
-  public function item()
+  public function product()
   {
       return $this->belongsTo(Product::class, 'product_id');
   }

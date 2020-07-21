@@ -25,25 +25,15 @@ use Baazar;
 
 class ProductsController extends Controller
 {
-  public function __construct(){
-    // $this->middleware('auth');//->except('store');
-  }
+    public function __construct(){
+      // $this->middleware('auth');//->except('store');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-
-//      $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
-//      $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-//      $category = Category::all();
-//      $item = Product::where('status','Active')->where('shop_id',$shopProfile->id)->get();
-//      $size= Size::all();
-//      $color = Color::all();
-//      return view ('merchant.product.index',compact('category','item','size','color','sellerProfile','shopProfile'));
-
+    public function index(){
       $items = Product::where('shop_id',Baazar::shop()->id)->get();
       return view ('merchant.product.index',compact('items'));
 
@@ -54,8 +44,7 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         $category = Category::all();
         $item = Product::all();
         $size= Size::all();
@@ -201,8 +190,7 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
-    {
+    public function show(Product $product){
         $product      = Product::with('itemimage')->where('slug',$product->slug)->first();
         $productImage = ItemImage::where('color_slug','main')->where('product_id',$product->id)->limit(5)->get();
         //dd($productImage);
@@ -220,10 +208,13 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
-    {
-        $product = Product::where('slug',$slug)->first();
-        //dd($product->itemimage);
+    public function edit($slug){
+        $product = Product::with('item_meta.attributes.options')->where('slug',$slug)->first();
+        // dd($product->item_meta);
+        echo 'asdf';
+        $itemimg           = ItemImage::all();
+        dd($itemimg);
+
         $category           = Category::all();
         $item               = Product::all();
         $size               = Size::all();
@@ -247,8 +238,7 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
-    {
+    public function update(Request $request, Product $product){
         $data = [
             'name' => $request->name,
             'email' => $request->email,
@@ -362,8 +352,7 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id){
         $product = Product::find($id);
         $product->itemimage()->delete();
         $product->inventory()->delete();

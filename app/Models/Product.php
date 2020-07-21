@@ -9,6 +9,7 @@ use App\Models\Cart;
 use App\Models\Inventory;
 use App\Models\ProductCategory;
 use App\Models\ItemImage;
+use App\Models\ItemMeta;
 use App\Models\ProductTag;
 use App\Models\OrderItem;
 use App\Models\Review;
@@ -62,16 +63,15 @@ class Product extends Model
     }
 
     public function user(){
-     return $this->belongsTo(User::class,'user_id');
-          }
+      return $this->belongsTo(User::class,'user_id');
+    }
     public function category(){
       return $this->belongsTo(Category::class,'category_id');
     }
 
     public function color(){
-     return $this->belongsTo(Color::class,'color_id');
-          }
-
+      return $this->belongsTo(Color::class,'color_id');
+    }
 
     public function pack(){
       return $this->belongsTo(HrmEmployee::class,'pack_id');
@@ -98,33 +98,9 @@ class Product extends Model
        return $this->hasMany(Review::class,'product_id');
      }
 
-     public static function getSubcategory($categoryId){
-         return DB::table('categories')
-                    ->select('id','name')
-                    ->where('parent_id','=',$categoryId)
-                    ->get();
-       }
-
-       public static function getSubcategoryChild($subCatId){
-        return DB::table('categories')
-                   ->select('id','name','is_last','slug')
-                   ->where('parent_id','=',$subCatId)
-                   ->get();
-      }
-
-      public static function getChildCategory($childCatId){
-        return DB::table('categories')
-                   ->select('id','name')
-                   ->where('parent_id','=',$childCatId)
-                   ->get();
-      }
-
-      public static function getChildCategory1($childCatid_1){
-        return DB::table('categories')
-                   ->select('id','name')
-                   ->where('parent_id','=',$childCatid_1)
-                   ->get();
-      }
+     public function item_meta(){
+       return $this->hasMany(ItemMeta::class,'product_id');
+     }
 
       public static function getColorWiseImage($imgcolor){
         return DB::table('item_images')

@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Attribute;
 class ItemMeta extends Model
 {
     protected $fillable = [
@@ -12,4 +12,8 @@ class ItemMeta extends Model
         'attribute_id',
         'product_id',
     ];
+
+    public function attributes(){
+        return $this->belongsTo(Attribute::class,'attribute_id');
+    }
 }
