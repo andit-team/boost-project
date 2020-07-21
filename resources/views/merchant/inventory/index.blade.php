@@ -1,7 +1,52 @@
 @extends('merchant.master')
 @section('content')
 @push('css')
+<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <style>
+     .h-100{
+            height: 70px !important;
+            padding: 2px;
+        }
+        .drop-area{
+            display: flex;
+            padding: 10px;
+            background: #fdfbfb;
+            cursor: pointer;
+            border: 2px dashed #ddd !important
+        }
+        .drop-single{
+            border: 1px solid #ddd;
+            padding: 5px;
+            margin: 5px;
+            background: #fff;
+            cursor: move;
+        }
+        .dz-message{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dz-message h2{
+            color: #b7b0b0;
+            font-weight: 1000;
+            font-size: 24px;
+        }
+        .collpanel{
+            width: 672px;
+            height: 151px;
+        }
+        input[type=text],input[type=number],select,.input-group-text,.h-40{
+            height: 40px !important;
+        }
+        .table td {
+            padding: 0 !important;
+        }
+        .rowRemove{
+            line-height: 26px;
+        }
+        .ui-sortable-placeholder { height: 125px; width: 125px; border: 1px dashed; line-height: 1.2em; }
     .inputfield{
         height: 45px!important;
     }
@@ -30,21 +75,19 @@
                             </select>
                         </div>
 
-                        <div class="col-md-6">
-                            <label for="color_id">Color <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('color_id') }}</span>
-                            <select name="color_id" class="form-control" id="color_id"  autocomplete="off" id="selectColor">
-                                <option value="" selected disabled>Select Color</option>
-                                @foreach ($color as $row)
-                                  <option value="{{ $row->id }}">{{$row->name}}</option>
-                                @endforeach
+                        <div class="col-md-6"> 
+                            <label for="color_id"">Color<span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('color_id') }}</span>
+                                <select name="color_id" autocomplete="off" class="form-control color_id" id="selectColor">
+                                    <option value="">No Color</option>
+                                    @foreach($color as $row)
+                                        <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                    @endforeach
                             </select>
                         </div>
-                        <div class="col-md-12">
-                            {{-- <div class="form-group row"> --}}
-                                <label for="" class="col-xl-3 col-md-4"></label>
+                        <div class="col-md-12 dropImage"> 
+                                <label for="" class="col-xl-3 col-md-8"></label>
                                 <div class="drops"></div>
-                                <div class="inputs"></div>
-                          {{-- </div> --}}
+                                <div class="inputs"></div> 
                         </div>
 
                         <div class="col-md-6">
@@ -67,11 +110,11 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mt-1">
                             <label for="price">Price <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('Price') }}</span>
                             <input type="number" class="form-control inputfield" name="price" id="price" value="{{ old('price') }}">
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mt-1">
                             <label for="qty_stock">Stock Quantity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('qty_stock') }}</span>
                             <input type="number" class="form-control inputfield" name="qty_stock" id="qty_stock" value="{{ old('qty_stock') }}">
                         </div>
@@ -225,7 +268,9 @@
 </section>
 @endsection
 @push('js')
-    <script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    <script> 
         $(document).ready(function () {
             $('.size').hide();
             $('.capacity').hide();
@@ -264,32 +309,48 @@
         $('#selectColor').change(function(){
             var flag = 0;
             var color = $(this).val();
-            $('.img-upload-area').each(function(){
-                if(color == $(this).data('color')){
-                    flag = 1;
-                }
-            });
-            if(flag == 0){
-                $('.drops').append(
-                    `<div id="dropzone-${color}" class="img-upload-area" data-color="${color}"><label class="mt-3">Color Family: <b>${color}</b></label>
-                    <span class="btn btn-sm text-danger" onclick="removeColorItem('${color}')"><i class="fa fa-trash"></i></span>
-                    <div class="border m-0 collpanel drop-area row my-awesome-dropzone${color}" id="sortable-${color}">
-                        <span class="dz-message color-${color}">
-                            <h2>Drag & Drop Your Files</h2>
-                        </span>
-                    </div>
-                    <small>Remember Your featured file will be the first one.</small><br></div>`
-                );
-                $( "#sortable-"+color ).sortable({
-                    placeholder: "ui-state-highlight",
-                    revert: true,
-                });
-                $("#sortable-"+color ).disableSelection();
-                setup("my-awesome-dropzone"+color,color);
-                inventoryRows(color);
-            }else{
-                swal("The selected color already been exits", {icon: "warning",buttons: false,timer: 2000});
-            }
+            var item = $('#product_id').val();
+            // alert('hi');
+            $.ajax({
+                type:'GET',
+                url:"{{url('merchant/inventories/inventorycolor')}}",
+                data:{'color':color,'item':item},
+                success:function(data){
+                    console.log(data);
+                    if(data == true){ 
+                        $('.dropImage').hide();   
+                    }
+                    if(data == false){ 
+                        $('.dropImage').show();
+                        $('.img-upload-area').each(function(){
+                        if(color == $(this).data('color')){
+                            flag = 1;
+                        }
+                        });
+                        if(flag == 0){
+                            $('.drops').html(
+                                `<div id="dropzone-${color}" class="img-upload-area" data-color="${color}"><label class="mt-3">Color Family: <b>${color}</b></label>
+                                <span class="btn btn-sm text-danger" onclick="removeColorItem('${color}')"><i class="fa fa-trash"></i></span>
+                                <div class="border m-0 collpanel drop-area row my-awesome-dropzone${color}" id="sortable-${color}">
+                                    <span class="dz-message color-${color}">
+                                        <h2>Drag & Drop Your Files</h2>
+                                    </span>
+                                </div>
+                                <small>Remember Your featured file will be the first one.</small><br></div>`
+                            );
+                            $( "#sortable-"+color ).sortable({
+                                placeholder: "ui-state-highlight",
+                                revert: true,
+                            });
+                            $("#sortable-"+color ).disableSelection();
+                            setup("my-awesome-dropzone"+color,color);
+                            inventoryRows(color);
+                        }else{
+                            swal("The selected color already been exits", {icon: "warning",buttons: false,timer: 2000});
+                        }
+                                }
+                            }
+                    }) 
         });
         Dropzone.autoDiscover = false;
 

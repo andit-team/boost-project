@@ -67,6 +67,7 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     Route::get('/inventories/update/{slug}/invertoryupdate','InventoriesController@edit');
     Route::put('/inventories/update/{slug}','InventoriesController@update');
     Route::get('/inventories/inventoryAttrioption/{id}','InventoriesController@inventoryAttrioption');
+    Route::get('/inventories/inventorycolor','InventoriesController@inventoryColor');
     Route::resource('/inventories','InventoriesController');
     Route::post('get-inventory-attr','InventoryAttributeController@getInventoryAttr');
     Route::post('get-category-attr','CategoriesController@getCategoryAttr');
