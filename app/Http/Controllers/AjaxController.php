@@ -16,6 +16,7 @@ class AjaxController extends Controller
         $options = '<option value="" selected disabled>Select District</option>';
 
         foreach($division->district as $row){
+           dd($row->upazila);
             $options .= "<option value='{$row->id}' data-lat='{$row->lat}' data-lng='{$row->lng}'>{$row->bn_name}</option>";
         }
         if(empty($options)){

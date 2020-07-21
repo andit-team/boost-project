@@ -66,7 +66,9 @@ class ShopsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        $shop = Shop::all();
+        return view('merchant.shops.edit',compact('shopProfile','shop'));
     }
 
     /**
@@ -91,6 +93,8 @@ class ShopsController extends Controller
                 // 'banner'            => Baazar::fileUpload($request,'logo','old_image','/uploads/shop_banner'),
                 'email'             => $request->email,
                 'web'               => $request->web,
+                'lat'               => $request->lat,
+                'lng'               => $request->lng,
                 'facebook'          => $request->facebook,
                 'instagram'         => $request->instagram,
                 'twitter'           => $request->twitter,
@@ -102,7 +106,7 @@ class ShopsController extends Controller
 
 
         session()->flash('success','your shop profile updated');
-       return back();
+        return redirect('merchant/shop');
     }
 
     /**
@@ -121,7 +125,7 @@ class ShopsController extends Controller
             'name' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
-            'description' => '',
+            'slogan' => 'required',
         ]);
     }
 }

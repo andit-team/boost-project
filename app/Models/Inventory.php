@@ -54,5 +54,13 @@ class Inventory extends Model
       return $this->belongsTo(InventoryMeta::class,'product_id');
     }
 
+    public static function getInventroyColor($color,$item){
+      return DB::table('inventories')
+             ->select('color_id')
+             ->where('product_id','=',$item)
+             ->where('color_id','=',$color)
+             ->get();
+    }
+
 
 }

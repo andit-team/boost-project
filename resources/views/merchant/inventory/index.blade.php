@@ -1,5 +1,57 @@
 @extends('merchant.master')
 @section('content')
+@push('css')
+<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<style>
+     .h-100{
+            height: 70px !important;
+            padding: 2px;
+        }
+        .drop-area{
+            display: flex;
+            padding: 10px;
+            background: #fdfbfb;
+            cursor: pointer;
+            border: 2px dashed #ddd !important
+        }
+        .drop-single{
+            border: 1px solid #ddd;
+            padding: 5px;
+            margin: 5px;
+            background: #fff;
+            cursor: move;
+        }
+        .dz-message{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .dz-message h2{
+            color: #b7b0b0;
+            font-weight: 1000;
+            font-size: 24px;
+        }
+        .collpanel{
+            width: 672px;
+            height: 151px;
+        }
+        input[type=text],input[type=number],select,.input-group-text,.h-40{
+            height: 40px !important;
+        }
+        .table td {
+            padding: 0 !important;
+        }
+        .rowRemove{
+            line-height: 26px;
+        }
+        .ui-sortable-placeholder { height: 125px; width: 125px; border: 1px dashed; line-height: 1.2em; }
+    .inputfield{
+        height: 45px!important;
+    }
+</style>
+@endpush
 @include('elements.alert')
 
 
@@ -8,27 +60,85 @@
       <div class="row">
         @include('layouts.inc.sidebar.vendor-sidebar',[$active ='inventory'])
         <div class="col-md-9">
-            <form class="theme-form row" action="{{ route('sellerUpdate') }}" method="post" enctype="multipart/form-data" id="validateForm">
+            <h3>Added Inventory</h3>
+            <form class="theme-form" action="{{ route('inventory.store') }}" method="post" id="validateForm">
                 @csrf
-                <div class="form-group col-sm-6">
-                    <label for="first_name">First Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('first_name') }}</span>
-                    <input type="text" class="form-control @error('first_name') border-danger @enderror" required name="first_name" value="{{ old('first_name','dsf') }}" id="" placeholder="Firest Name">
-                </div>
-            </form>
-            {{-- <form action="" class="theme-form row">
-                @csrf
-                <div class="form-group">
-                    <label for="">Products</label>
-                    <select name="" class="form-conrtol" id="">
-                        <option value="">Product One</option>
-                        <option value="">Product One</option>
-                        <option value="">Product One</option>
-                        <option value="">Product One</option>
-                        <option value="">Product One</option>
-                    </select>
-                </div>
-            </form> --}}
+                    <div class="form-row">
 
+                        <div class="col-md-6">
+                            <label for="product_id">Product <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('product_id') }}</span>
+                            <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off">
+                                <option value="" selected disabled>Select Product</option>
+                                @foreach ($item as $row)
+                                    <option data-cat="{{$row->category_id}}" value="{{ $row->id }}">{{$row->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-6"> 
+                            <label for="color_id"">Color<span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('color_id') }}</span>
+                                <select name="color_id" autocomplete="off" class="form-control color_id" id="selectColor">
+                                    <option value="">No Color</option>
+                                    @foreach($color as $row)
+                                        <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-12 dropImage"> 
+                                <label for="" class="col-xl-3 col-md-8"></label>
+                                <div class="drops"></div>
+                                <div class="inputs"></div> 
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="size_id" class="siz">Size <span class="text-danger "> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
+                            <input type="hidden" name="name" value="{{ $inventoryAttriSize->attribute->name }}">
+                            <select name="value" class="form-control size" id="size_id" autocomplete="off">
+                                <option value="" selected disabled>Select Size</option>
+                                @foreach ($productAttriSize as $row)
+                                    <option value="{{ $row->option }}">{{$row->option}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="size_id" class="capa">Storage Capacity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
+                            <input type="hidden" name="name" value="{{ $inventoryAttriCapa->attribute->name }}">
+                            <select name="value" class="form-control capacity" id="size_id" autocomplete="off">
+                                <option value="" selected disabled>Select Size</option>
+                                @foreach ($productAttriCapa as $row)
+                                    <option value="{{ $row->option }}">{{$row->option}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6 mt-1">
+                            <label for="price">Price <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('Price') }}</span>
+                            <input type="number" class="form-control inputfield" name="price" id="price" value="{{ old('price') }}">
+                        </div>
+                        <div class="col-md-6 mt-1">
+                            <label for="qty_stock">Stock Quantity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('qty_stock') }}</span>
+                            <input type="number" class="form-control inputfield" name="qty_stock" id="qty_stock" value="{{ old('qty_stock') }}">
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <h4>Special price (optional)</h4>
+                            <hr>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="special_price">Special price</label>
+                            <input type="number" class="form-control inputfield" name="special_price" id="special_price" value="{{ old('special_price') }}">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="" >Special price Period</label>
+                            <div class="input-group">
+                             <input type="text" id="spcial_price_start" name="start_date" class="datepickerRange form-control inputfield" value="{{ old('start_date') }}"><span class="input-group-addon p-2 bg-success bottom" >To</span><input type="text" id="spcial_price_end" name="end_date" class="datepickerRange form-control inputfield" value="{{ old('end_date') }}">
+                        </div>
+                        </div>
+                        <div class="col-md-12 mt-2">
+                            <button class="btn btn-sm btn-solid" type="submit">Save</button>
+                        </div>
+                    </div>
+                </form>
+            <hr>
             <section class="tab-product m-0">
                 <div class="row">
                     {{-- <a href="{{ url('merchant/inventories/new') }}" class="btn btn-sm btn-solid">add inventorys</a> --}}
@@ -157,6 +267,222 @@
    </div>
 </section>
 @endsection
+@push('js')
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    <script> 
+        $(document).ready(function () {
+            $('.size').hide();
+            $('.capacity').hide();
+            $('.siz').hide();
+            $('.capa').hide();
+            $('#product_id').on('change',function () {
+                var cat = $(this).find(':selected').data('cat');
+            console.log(cat);
+                if(cat == 2){
+                    $('.size').hide();
+                    $('.siz').hide();
+                    $('.capacity').show();
+                    $('.capa').show();
+                }
+                if(cat == 3){
+                    $('.size').show();
+                    $('.siz').show();
+                    $('.capacity').hide();
+                    $('.capa').hide();
+                }
+                if(cat != 2 && cat != 3){
+                    $('.size').hide();
+                    $('.siz').hide();
+                    $('.capacity').hide();
+                    $('.capa').hide();
+                }
+            })
+        });
+
+        $( "#sortable-red").sortable({
+            placeholder: "ui-state-highlight",
+            revert: true,
+        });
+
+        //dropzone scripts
+        $('#selectColor').change(function(){
+            var flag = 0;
+            var color = $(this).val();
+            var item = $('#product_id').val();
+            // alert('hi');
+            $.ajax({
+                type:'GET',
+                url:"{{url('merchant/inventories/inventorycolor')}}",
+                data:{'color':color,'item':item},
+                success:function(data){
+                    console.log(data);
+                    if(data == true){ 
+                        $('.dropImage').hide();   
+                    }
+                    if(data == false){ 
+                        $('.dropImage').show();
+                        $('.img-upload-area').each(function(){
+                        if(color == $(this).data('color')){
+                            flag = 1;
+                        }
+                        });
+                        if(flag == 0){
+                            $('.drops').html(
+                                `<div id="dropzone-${color}" class="img-upload-area" data-color="${color}"><label class="mt-3">Color Family: <b>${color}</b></label>
+                                <span class="btn btn-sm text-danger" onclick="removeColorItem('${color}')"><i class="fa fa-trash"></i></span>
+                                <div class="border m-0 collpanel drop-area row my-awesome-dropzone${color}" id="sortable-${color}">
+                                    <span class="dz-message color-${color}">
+                                        <h2>Drag & Drop Your Files</h2>
+                                    </span>
+                                </div>
+                                <small>Remember Your featured file will be the first one.</small><br></div>`
+                            );
+                            $( "#sortable-"+color ).sortable({
+                                placeholder: "ui-state-highlight",
+                                revert: true,
+                            });
+                            $("#sortable-"+color ).disableSelection();
+                            setup("my-awesome-dropzone"+color,color);
+                            inventoryRows(color);
+                        }else{
+                            swal("The selected color already been exits", {icon: "warning",buttons: false,timer: 2000});
+                        }
+                                }
+                            }
+                    }) 
+        });
+        Dropzone.autoDiscover = false;
+
+        $( "#sortable-main" ).sortable({
+            placeholder: "ui-state-highlight",
+            revert: true,
+        });
+        $("#sortable-main").disableSelection();
+        setup("my-awesome-dropzone-main",'main');
+
+        //function
+        function setup(id,color) {
+            let options = {
+            autoProcessQueue: false,
+            url : '/',
+            thumbnailHeight: 200,
+            thumbnailWidth: 300,
+            maxFilesize: 100,
+            maxFiles: 5,
+            dictResponseError: "Server not Configured",
+            dictFileTooBig: "File too big. Must be less than ",
+            dictCancelUpload: "",
+            acceptedFiles: ".png,.jpg,.jpeg",
+            init: function() {
+                var self = this;
+
+                self.on("addedfile", function(file) {
+                    $('.color-'+color).addClass('d-none');
+                });
+
+                self.on("dragenter", function(event) {
+                    $('#sortable-'+color).css('background-color','#fff');
+                });
+                self.on("dragleave", function(event) {});
+
+                self.on("thumbnail", function(file){
+                    if(file.size < 3000000){
+                        $('.inputs').append(`<input type="hidden" class="image-class-${color}" name="images[${color}][]" id="id${file.size}" value="${file.dataURL}">`);
+                    }else{
+                        swal("Maximum size reached", {icon: "warning",buttons: false,timer: 2000});
+                        this.removeFile(file);
+                    }
+                });
+
+                self.on("removedfile", function(file) {
+                    var i = 0;
+                    $('.color-'+color+'-element').each(function(){
+                        i = i+1;
+                    });
+                    if(i === 0){
+                        $('.color-'+color).removeClass('d-none');
+                    }
+                    $('#id'+file.size).remove();
+                });
+
+                // Send file starts
+                self.on("sending", function(file) {
+                    // console.log("upload started", file);
+                });
+
+                self.on("complete", function(file, response) {
+                    if (file.name !== "442343.jpg") {
+                        //this.removeFile(file);
+                    }
+                });
+
+                self.on("maxFilesize", function(file, response) {
+                    swal("Maximum size reached", {icon: "warning",buttons: false,timer: 2000});
+                    this.removeFile(file);
+                });
+
+                self.on("maxfilesexceeded", function(file, response) {
+                    swal("Maximum file reached", {icon: "warning",buttons: false,timer: 2000});
+                    this.removeFile(file);
+                });
+
+                self.on("addedfile", function(file) {
+                    const pattern = /\d{6}(\.)(jpg|jpeg|png)/;
+                    if (!pattern.test(file.name)) {
+                    //   this.removeFile(file);
+                    }
+                });
+            },
+
+            previewTemplate: `
+                <div class="drop-single color-${color}-element ui-state-default">
+                <a href="javascript:undefined;" data-dz-remove=""><i class="fa fa-trash-o"></i>&nbsp;<span>Remove</span></a>
+                <br/>
+                <span class="dz-upload" data-dz-uploadprogress></span>
+                <img class="h-100" data-dz-thumbnail/>
+                </div>`
+            };
+            var myDropzone = new Dropzone(`.${id}`, options);
+        }
+
+        function removeColorItem(color){
+
+            swal({
+                title: "Are you sure to delete it?",
+                text: "To continue this action!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                        swal("Your action has beed done! :)", {
+                        icon: "success",
+                        buttons: false,
+                        timer: 1000
+                    });
+                    $('#dropzone-'+color).remove();
+                    $('input[name^="images['+color+']"]').each(function() {
+                        $(this).remove();
+                    });
+                    document.querySelectorAll('.newRow option').forEach(item => {
+                        if(item.innerHTML == color){
+                            if(item.selected == true){
+                                item.style.background = 'red';
+                                item.style.color = 'white';
+                                item.parentElement.style.border = '2px solid red';
+                            }else{
+                                item.remove()
+                            }
+                        }
+                    })
+                }
+            });
+        }
+    </script>
+@endpush
+
 
 
 
