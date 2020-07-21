@@ -1,9 +1,22 @@
-.contact-page .theme-form input {
+/* .contact-page .theme-form input,select.form-control  {
     border-color: #dddddd;    
     font-size: 15px;
-    padding: 3px 8px;
+    padding: 12px 10px;
     margin-bottom: 5px;
-    height: inherit;
+    height: inherit !important;
+} */
+.h-48{
+    height: 48px;
+}
+input[type=file]{
+    padding: 9px 10px !important;
+}
+/* select.form-control{
+    padding: 13px 10px;
+} */
+
+tbody.newRow tr td select {
+    padding: 9px !important;
 }
 
 .error{

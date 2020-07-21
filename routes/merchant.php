@@ -73,6 +73,7 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
 
     Route::post('shop-logo-crop', 'MerchantController@shopLogoCrop')->name('shop-logo-crop');
     Route::post('shop-banar-crop', 'MerchantController@shopBanarCrop')->name('shop-banar-crop');
+    Route::post('profile-image-crop', 'MerchantController@profileImageCrop')->name('profile-image-crop');
 
     //ajax division-district-upazila-union filter
     
@@ -81,6 +82,7 @@ Route::post('get-district', 'AjaxController@getDistrict')->name('get-district');
 Route::post('get-upazila', 'AjaxController@getUpazila')->name('get-upazila');
 Route::post('get-union', 'AjaxController@getUnion')->name('get-union');
 Route::post('get-village', 'AjaxController@getVillage')->name('get-village');
+Route::post('get-ward', 'AjaxController@getWard')->name('get-ward');
 Route::get('importExportView', 'ExportImportController@importExportView');
 Route::get('export', 'ExportImportController@export')->name('export');
 Route::post('import', 'ExportImportController@import')->name('import');

@@ -3,12 +3,9 @@
 @section('content')
     @push('css')
         <style>
-            .inputfield{
-                height: 37px!important;
-            }
-            .bottom{
+            /* .bottom{
                 margin-bottom: 25px;
-            }
+            } */
         </style>
     @endpush
     @include('elements.alert')
