@@ -34,8 +34,14 @@ class InventoriesController extends Controller
 //        $color = Color::all();
 //        return view ('merchant.inventory.index',compact('inventory','item','size','color','sellerProfile','shopProfile'));
 
-        $inventories = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->get();
-        return view ('merchant.inventory.index',compact('inventories'));
+        $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->get();
+        $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
+        $color              = Color::all();
+        $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
+        $productAttriSize   = InventoryAttributeOption::where('inventory_attribute_id',1)->get();
+        $inventoryAttriCapa = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',2)->first();
+        $productAttriCapa   = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
+        return view ('merchant.inventory.index',compact('inventories','item','color','inventoryAttriSize','productAttriSize','inventoryAttriCapa','productAttriCapa'));
 
     }
 
