@@ -113,7 +113,7 @@
                                 <div class="card dashboard-table mt-0">
                                     <div class="card-body">
                                         <div class="top-sec w-50">
-                                            <input type="text" class="form-control h-48" placeholder="Search">
+                                            <input type="text" class="form-control" placeholder="Search">
                                             <select name="" id="" class="form-control">
                                                 <option value="">Category one</option>
                                                 <option value="">category two</option>

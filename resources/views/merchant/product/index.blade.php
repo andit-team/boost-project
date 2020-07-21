@@ -9,21 +9,35 @@
     <div class="row">
         @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
         <div class="col-md-9">
-            <div class="card dashboard-table mt-0">
-                <div class="card-body">
                     <div class="top-sec">
                         <h3>all products</h3>
                         <a href="{{ url('merchant/products/new') }}" class="btn btn-sm btn-solid">add product</a>
                     </div>
-                    <table class="table-responsive-md table mb-0 table-striped">
+                    <div class="filter-area w-50 d-flex">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search Here...">
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon bg-primary p-2">Category</span>
+                                <select name="" class="form-control" id="">
+                                    <option value="">Category one</option>
+                                    <option value="">Category two</option>
+                                    <option value="">Category three</option>
+                                    <option value="">Category four</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table-responsive-md table mb-0 table-striped mt-2">
                         <thead>
                             <tr>
-                                <th scope="col">image</th>
+                                {{-- <th scope="col">image</th> --}}
                                 <th scope="col" class="text-left">product name</th>
                                 <th scope="col" class="text-left">category</th>
-                                <th scope="col">price</th>
-                                <th scope="col">stock</th>
-                                <th scope="col">sales</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Stock</th>
+                                <th scope="col">Sales</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -31,7 +45,7 @@
                         <tbody>
                             @forelse($items as $row)
                                 <tr>
-                                    <th scope="row"><img src="{{asset($row->image)}}" class="blur-up lazyloaded"></th>
+                                    {{-- <th scope="row"><img src="{{asset($row->image)}}" height="50" width="50" class="blur-up lazyloaded"></th> --}}
                                     <td class="text-left">{{$row->name}}</td>
                                     <td class="text-left">{{$row->category_slug}}</td>
                                     <td>${{$row->price}}</td>
@@ -57,9 +71,8 @@
                                                 </form>
                                             </li>
                                         </ul>
-{{--                                        <i class="fa fa-pencil-square-o mr-1" aria-hidden="true"></i><i class="fa fa-trash-o ml-1" aria-hidden="true"></i></td>--}}
                                 </tr>
-                                <div class="modal fade" id="tagEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                {{-- <div class="modal fade" id="tagEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -80,7 +93,7 @@
                                                 </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 @empty
                                 <tr>
                                     <td colspan="7">No Product found</td>
@@ -88,8 +101,7 @@
                             @endforelse
                         </tbody>
                     </table>
-                </div>
-            </div>
+                
         </div>
     </div>
    </div>
