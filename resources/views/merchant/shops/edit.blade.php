@@ -81,10 +81,8 @@
                         <button type="submit" class="btn btn-sm btn-solid">Shop Update</button>
                     </div>
                 </form>
-            </div>
-        
-        
-    </div>
+            </div>  
+      </div>
 </section>
 @endsection
 
@@ -125,9 +123,6 @@ var marker;
         $('#lat').val(marker.position.lat());
         $('#lng').val(marker.position.lng());
     }
-
-
-    
   </script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtygZ5JPTLgwFLA8nU6bb4d_6SSLlTPGw&callback=initMap">
   </script>
