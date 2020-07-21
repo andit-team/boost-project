@@ -53,7 +53,7 @@
 
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 13,
+        zoom: 8,
         center: {lat: {{ $shop->lat }}, lng: {{ $shop->lng }}}
       });
       // var image = 'http://localhost/andbaazar/public/frontend/assets/images/icon/logo.png';

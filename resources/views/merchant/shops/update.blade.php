@@ -71,15 +71,15 @@
                 <!-- vendor cover start -->
                 <div class="vendor-cover">
                     <div>
-                        <div class="mt-0">                                           
+                        <div class="mt-0">
                             <img  id="banner-outputs" src="{{!empty($shopProfile->banner) ? asset($shopProfile->banner) : asset('frontend/assets/images/vendor/profile.jpg')}}" alt="" class="bg-img lazyload blur-up">
                             <label for="banar-upload" class="banar-upload"><i class="fa fa-camera" aria-hidden="true"> Edit Banar</i></label>
                             <input id="banar-upload" accept="image/*"  class ="d-none" type="file" name="logo"/>
                         </div>
-                    </div>              
+                    </div>
                 </div>
                 <!-- vendor cover end -->
-                
+
                 <!-- section start -->
                 <section class="vendor-profile pt-0">
                     <div class="container">
@@ -103,26 +103,29 @@
                                             <h6>750 followers | 10 review</h6>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="profile-detail text-justify">
                                         {{ Baazar::short_text(strip_tags($shopProfile->description),700) }}
                                     </div>
-                                    
-                                    
+
+
                                     <div class="vendor-contact">
                                         <div>
                                             <h6>follow us:</h6>
                                             <div class="footer-social">
-                                                <ul>                                                                                              
+                                                <ul>
                                                     <li><a href="http://www.facebook.com"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                                     <li><a href="http://www.youtube.com"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
                                                     <li><a href="http://www.twitter.com"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                                    <li><a href="http://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+                                                    <li><a href="http://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                                 </ul>
                                             </div>
                                             <h6>if you have any query:</h6>
                                             <div class="d-flex">
-                                                <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-edit"></i> Edit</button>
+                                                <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-edit"></i> Edit</button> -->
+
+                                                <a href="{{url('merchant/shops/update/'.$shopProfile->slug)}}" target="_blank" type="button" class="btn btn-primary m-1"><i class="fa fa-edit"></i> Edit</a>
+
                                                 <a href="{{url('shops/'.$shopProfile->slug)}}" target="_blank" type="button" class="btn btn-info m-1"><i class="fa fa-eye"></i> View</a>
                                             </div>
                                             {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#facebook"> <i class="fa fa-edit"></i> Edit Your Profile</button>                                                                         --}}
@@ -132,12 +135,12 @@
                             </div>
                         </div>
                 </section>
-            
+
                 <!-- collection section start -->
                 <section class="section-b-space">
                     <div class="container">
                         <div class="row">
-                            <div class="col-sm-12 collection-filter"> </div>                               
+                            <div class="col-sm-12 collection-filter"> </div>
                             <div class="col">
                                 <div class="collection-wrapper">
                                     <div class="collection-content ratio_asos">
@@ -197,7 +200,7 @@
                                                                         <a href="#"><img src="{{asset('frontend')}}/assets/images/fashion/product/1.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                                                     </div>
                                                                     <div class="cart-info cart-wrap">
-                                                                        <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i class="ti-shopping-cart"></i></button> 
+                                                                        <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i class="ti-shopping-cart"></i></button>
                                                                         <a href="javascript:void(0)" title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
                                                                     </div>
                                                                 </div>
@@ -225,7 +228,7 @@
                                                             </div>
                                                         </div>
 
-                                                       
+
                                                     </div>
                                                 </div>
                                                 <div class="product-pagination mb-0">
@@ -258,93 +261,12 @@
                         </div>
                     </div>
                 </section>
-            </div> 
+            </div>
         </div>
     </div>
 </section>
 
 
-{{-- Shop Update Modal--}}
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Enter More Information</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form class="theme-form" action="{{route('shopUpdate')}}" method="post" enctype="multipart/form-data" id="validateForm">
-                    @csrf
-                    <div class="form-group">
-                        <label for="name">Shop Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('name') }}</span>
-                        <input type="text" class="form-control @error('name') border-danger @enderror" required name="name" value="{{ old('name',$shopProfile->name) }}" id="" placeholder="Shop Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="slogan">Shop slogan<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('slogan') }}</span>
-                        <input type="text" class="form-control @error('slogan') border-danger @enderror" required name="slogan" value="{{ old('slogan',$shopProfile->slogan) }}" id="" placeholder="Shop slogan">
-                    </div>
-                    <div class="form-group">
-                        <label for=""> Shop Phone</label>
-                        <input type="text" class="form-control @error('phone') border-danger @enderror" required name="phone" value="{{ old('phone',$shopProfile->phone) }}" id="" placeholder="Shop Phone">
-                    </div>
-                    <div class="form-group">
-                        <label for=""> Shop Email</label>
-                        <input type="email" class="form-control @error('email') border-danger @enderror" required  name="email" value="{{ old('email',$shopProfile->email) }}" id=""  placeholder="Shop Email">
-                    </div>
-                    <div class="form-group">
-                        <label for=""> Shop Web Address</label>
-                        <input type="url" class="form-control @error('web') border-danger @enderror"  name="web" value="{{ old('Web',$shopProfile->web) }}" id="" placeholder="Shop website">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="">Write about your shop (English)</label>
-                        <textarea class="form-control summernote @error('description') border-danger @enderror" placeholder="Write Your Message"  name="description"  id="" rows="15" >{{ $shopProfile->description }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="">Write about your shop (Bangla)</label>
-                        <textarea class="form-control summernote @error('bdesc') border-danger @enderror" placeholder="Write Your Message"  name="bdesc"  id="" rows="15" >{{ $shopProfile->bdesc }}</textarea>
-                    </div>
-                    <div class="mb-4">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter Your Own Link</h5>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Facebook</label>
-                                <input type="url" class="form-control @error('facebook') border-danger @enderror"  name="facebook" value="{{ old('Web',$shopProfile->facebook) }}" id="" placeholder="Own Profile ID ">                             
-                            </div>
-                        </div>                       
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Twitter (Optional)</label>
-                                <input type="url" class="form-control @error('twitter') border-danger @enderror"  name="twitter" value="{{ old('Web',$shopProfile->twitter) }}" id="" placeholder="Own Profile ID ">                             
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Instagram (Optional)</label>
-                                <input type="url" class="form-control @error('instagram') border-danger @enderror"  name="instagram" value="{{ old('Web',$shopProfile->instagram) }}" id="" placeholder="Own Profile ID ">                                                           
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Youtube (Optional)</label>
-                                <input type="url" class="form-control @error('youtube') border-danger @enderror"  name="youtube" value="{{ old('Web',$shopProfile->youtube) }}" id="" placeholder="Own Profile ID ">                             
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group text-right mt-2">
-                        <button type="submit" class="btn btn-sm btn-solid">Shop Update</button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 
     {{-- Shop logo Crop Modal --}}
@@ -388,7 +310,7 @@
           </div>
         </div>
     </div>
-      
+
 
 @endsection
 
@@ -526,7 +448,7 @@ $("#upload-image-banar").click(function() {
             $('.vendor-cover div.mt-0.bg-size.blur-up.lazyloaded').attr('style',"background-image: url("+resp+"); background-size: cover; background-position: center center; display: block");
             //   $('#banner-outputs').attr('src',resp);
             // $('#banner-outputs').removeClass('opacity5');
-            
+
           }
         });
 
@@ -536,7 +458,7 @@ $("#upload-image-banar").click(function() {
 
 
 
-   
+
 
  </script>
 
@@ -556,7 +478,7 @@ $("#upload-image-banar").click(function() {
              {
 
              }
-         })    
+         })
      });
    });
 </script>
