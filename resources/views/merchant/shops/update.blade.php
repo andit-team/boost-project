@@ -5,6 +5,8 @@
 <style>
     .banar{
         max-width: 100% !important;
+        width: 1430px !important;
+        margin: 0 auto;
     }
     /* @media (min-width: 576px)
     .modal-dialog {
