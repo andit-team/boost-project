@@ -47,6 +47,7 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     Route::get('/profile','MerchantController@create');
     Route::post('/profile','MerchantController@store')->name('sellerUpdate');
     Route::get('/shop','ShopsController@create');
+    Route::get('/shops/update/{slug}','ShopsController@edit');
     Route::post('/shop','ShopsController@update')->name('shopUpdate');
     Route::get('/merchant/{slug}/resubmit','MerchantController@edit');
     Route::put('/merchant/{slug}','MerchantController@update');
