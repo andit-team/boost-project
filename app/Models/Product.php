@@ -102,10 +102,6 @@ class Product extends Model
        return $this->hasMany(ItemMeta::class,'product_id');
      }
 
-<<<<<<< HEAD
-     
-=======
->>>>>>> c238c3a71baad68b0c74f518587993613c6726e9
      public static function getSubcategory($categoryId){
       return DB::table('categories')
                  ->select('id','name')
@@ -134,7 +130,7 @@ class Product extends Model
                 ->get();
    }
 
-<<<<<<< HEAD
+
    public static function getColorWiseImage($imgcolor){
      return DB::table('item_images')
             ->select('org_img')
@@ -142,16 +138,15 @@ class Product extends Model
             ->where('color_slug','=',$imgcolor)
             ->get();
    }
-=======
 
-      public static function getColorWiseImage($imgcolor){
-        return DB::table('item_images')
-               ->select('org_img')
-               ->where('color_slug','!=','main')
-               ->where('color_slug','=',$imgcolor)
-               ->get();
-      }
->>>>>>> c238c3a71baad68b0c74f518587993613c6726e9
+
+      // public static function getColorWiseImage($imgcolor){
+      //   return DB::table('item_images')
+      //          ->select('org_img')
+      //          ->where('color_slug','!=','main')
+      //          ->where('color_slug','=',$imgcolor)
+      //          ->get();
+      // }
 
 
 }

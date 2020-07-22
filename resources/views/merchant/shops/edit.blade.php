@@ -49,7 +49,7 @@
                                 <label for="bn_description" class="">Write about your shop (Bangla)<span class="text-danger"> *</span></label>
                                 <textarea class="form-control summernote @error('bdesc') border-danger @enderror" placeholder="Write Your Message"  name="bdesc"  id="" rows="15" >{{ $shopProfile->bdesc }}</textarea>
                             </div>
-                        
+
                         </div>
                     </div>
                     <div class="card mb-4">
@@ -71,7 +71,7 @@
                             <div class="form-group col-md-6">
                                 <label for="slogan" >Youtube (Optional) <span class="text-danger"> *</span></label>
                                 <input type="url" class="form-control @error('youtube') border-danger @enderror" name="youtube" value="{{ old('Web',$shopProfile->youtube) }}" id="" placeholder="Own Profile ID " />
-                            </div>                        
+                            </div>
                         </div>
                         <input type="hidden" id="lat" name="lat" value="23.811273">
                         <input type="hidden" id="lng" name="lng" value="88.1007585">
@@ -81,7 +81,7 @@
                         <button type="submit" class="btn btn-sm btn-solid">Shop Update</button>
                     </div>
                 </form>
-            </div>  
+            </div>
       </div>
 </section>
 @endsection

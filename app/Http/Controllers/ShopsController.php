@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
+use App\Models\ItemImage;
+use App\Models\Product;
+use App\Models\Inventory;
 use App\Models\Merchant;
 use Sentinel;
 use Baazar;
@@ -30,9 +33,11 @@ class ShopsController extends Controller
      */
     public function create()
     {
+        $product = Product::all();
+        $items = Product::with('inventory')->get();  
         $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        return view('merchant.shops.update',compact('sellerProfile','shopProfile'));
+        return view('merchant.shops.update',compact('sellerProfile','shopProfile','product','items'));
     }
 
     /**
