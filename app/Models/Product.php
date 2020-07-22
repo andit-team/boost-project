@@ -102,13 +102,41 @@ class Product extends Model
        return $this->hasMany(ItemMeta::class,'product_id');
      }
 
-      public static function getColorWiseImage($imgcolor){
-        return DB::table('item_images')
-               ->select('org_img')
-               ->where('color_slug','!=','main')
-               ->where('color_slug','=',$imgcolor)
-               ->get();
-      }
+     public static function getSubcategory($categoryId){
+      return DB::table('categories')
+                 ->select('id','name')
+                 ->where('parent_id','=',$categoryId)
+                 ->get();
+    }
+
+    public static function getSubcategoryChild($subCatId){
+     return DB::table('categories')
+                ->select('id','name','is_last','slug')
+                ->where('parent_id','=',$subCatId)
+                ->get();
+   }
+
+   public static function getChildCategory($childCatId){
+     return DB::table('categories')
+                ->select('id','name')
+                ->where('parent_id','=',$childCatId)
+                ->get();
+   }
+
+   public static function getChildCategory1($childCatid_1){
+     return DB::table('categories')
+                ->select('id','name')
+                ->where('parent_id','=',$childCatid_1)
+                ->get();
+   }
+
+   public static function getColorWiseImage($imgcolor){
+     return DB::table('item_images')
+            ->select('org_img')
+            ->where('color_slug','!=','main')
+            ->where('color_slug','=',$imgcolor)
+            ->get();
+   }
 
 
 }
