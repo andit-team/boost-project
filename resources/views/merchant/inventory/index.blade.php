@@ -80,10 +80,25 @@
                                 <select name="color_id" autocomplete="off" class="form-control color_id" id="selectColor">
                                     <option value="">No Color</option>
                                     @foreach($color as $row)
-                                        <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                        <option value="{{ $row->slug }}">{{ $row->name }}</option>
                                     @endforeach
                             </select>
                         </div>
+                        
+                        {{-- <div class="form-group row" id="droparea" style="display: none">
+                            <label for="color_id" class="col-xl-3 col-md-4"></label>
+                            <div id="dropzone-main" class="img-upload-area" data-color="main"><label class="mt-3"><b>Feature Images :</b><span class="text-danger" id="message_main_img"></span></label>
+                                <div class="border m-0 collpanel drop-area row my-awesome-dropzone-main" id="sortable-main">
+                                    <span class="dz-message color-main">
+                                        <h2>Drag & Drop Your Files</h2>
+                                    </span>
+                                        
+                
+                                </div>
+                                <small>Remember Your featured file will be the first one.</small><br>
+                            </div>
+                        </div> --}}
+
                         <div class="col-md-12 dropImage"> 
                                 <label for="" class="col-xl-3 col-md-8"></label>
                                 <div class="drops"></div>
@@ -156,13 +171,13 @@
                                 <div class="card dashboard-table mt-0">
                                     <div class="card-body">
                                         <div class="top-sec w-50">
-                                            <input type="text" class="form-control" placeholder="Search">
+                                            <input type="text" name="search" class="form-control" placeholder="Search" id="search" autocomplete="off">
                                             <select name="" id="" class="form-control">
                                                 <option value="">Category one</option>
                                                 <option value="">category two</option>
                                             </select>
                                         </div>
-                                        <table class="table-responsive-md table mb-0 table-striped">
+                                        <table class="table-responsive-md table mb-0 table-striped" id="example22">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Color</th>
@@ -173,7 +188,7 @@
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="serchInventory">
                                                 @forelse($inventories as $row)
                                                     <tr>
                                                         <td>{{$row->color->name}}</td>
@@ -315,42 +330,58 @@
                 type:'GET',
                 url:"{{url('merchant/inventories/inventorycolor')}}",
                 data:{'color':color,'item':item},
+                dataType:'json',
                 success:function(data){
+                    $('#droparea').show();
                     console.log(data);
-                    if(data == true){ 
-                        $('.dropImage').hide();   
-                    }
-                    if(data == false){ 
-                        $('.dropImage').show();
-                        $('.img-upload-area').each(function(){
-                        if(color == $(this).data('color')){
-                            flag = 1;
-                        }
+                    if(data.count > 0){
+                        $('.inputs').html('');
+                        $('.drops').html(
+                            `<div id="dropzone-${color}" class="img-upload-area" data-color="${color}"><label class="mt-3">Color Family: <b>${color}</b></label>
+                            <span class="btn btn-sm text-danger" onclick="removeColorItem('${color}')"><i class="fa fa-trash"></i></span>
+                            <div class="border m-0 collpanel drop-area row my-awesome-dropzone${color}" id="sortable-${color}">
+                                <span class="dz-message color-${color}">
+                                    <h2>Drag & Drop Your Files</h2>
+                                </span>
+                            </div>
+                            <small>Remember Your featured file will be the first one.</small><br></div>`
+                        );
+                        $( "#sortable-"+color ).sortable({
+                            placeholder: "ui-state-highlight",
+                            revert: true,
                         });
-                        if(flag == 0){
-                            $('.drops').html(
-                                `<div id="dropzone-${color}" class="img-upload-area" data-color="${color}"><label class="mt-3">Color Family: <b>${color}</b></label>
-                                <span class="btn btn-sm text-danger" onclick="removeColorItem('${color}')"><i class="fa fa-trash"></i></span>
-                                <div class="border m-0 collpanel drop-area row my-awesome-dropzone${color}" id="sortable-${color}">
-                                    <span class="dz-message color-${color}">
-                                        <h2>Drag & Drop Your Files</h2>
-                                    </span>
-                                </div>
-                                <small>Remember Your featured file will be the first one.</small><br></div>`
-                            );
-                            $( "#sortable-"+color ).sortable({
-                                placeholder: "ui-state-highlight",
-                                revert: true,
-                            });
-                            $("#sortable-"+color ).disableSelection();
-                            setup("my-awesome-dropzone"+color,color);
-                            inventoryRows(color);
-                        }else{
-                            swal("The selected color already been exits", {icon: "warning",buttons: false,timer: 2000});
-                        }
-                                }
+                        $("#sortable-"+color ).disableSelection();
+                        $('#color-'+color).addClass('d-none');
+                        var mockFile = [];
+                        data.images.forEach(img=>{
+                            mockFiles = {
+                                name:'img-'+img.color_slug,
+                                size:img.id,
+                                dataURL: "{{asset('/')}}"+img.org_img
                             }
-                    }) 
+                            mockFile.push(mockFiles);
+                        });
+                        setup("my-awesome-dropzone"+color,color,mockFile);
+                    }else{
+                        $('.drops').html(
+                            `<div id="dropzone-${color}" class="img-upload-area" data-color="${color}"><label class="mt-3">Color Family: <b>${color}</b></label>
+                            <span class="btn btn-sm text-danger" onclick="removeColorItem('${color}')"><i class="fa fa-trash"></i></span>
+                            <div class="border m-0 collpanel drop-area row my-awesome-dropzone${color}" id="sortable-${color}">
+                                <span class="dz-message color-${color}">
+                                    <h2>Drag & Drop Your Files</h2>
+                                </span>
+                            </div>
+                            <small>Remember Your featured file will be the first one.</small><br></div>`
+                        );
+                        $( "#sortable-"+color ).sortable({
+                            placeholder: "ui-state-highlight",
+                            revert: true,
+                        });
+                        $("#sortable-"+color ).disableSelection();
+                        setup("my-awesome-dropzone"+color,color);
+                    }
+                }
+            });
         });
         Dropzone.autoDiscover = false;
 
@@ -359,10 +390,10 @@
             revert: true,
         });
         $("#sortable-main").disableSelection();
-        setup("my-awesome-dropzone-main",'main');
+        // setup("my-awesome-dropzone-main",'main');
 
         //function
-        function setup(id,color) {
+        function setup(id,color,mockFile='') {
             let options = {
             autoProcessQueue: false,
             url : '/',
@@ -433,6 +464,12 @@
                     //   this.removeFile(file);
                     }
                 });
+                if(mockFile != ''){
+                    mockFile.forEach(mockFile=>{
+                        self.emit("addedfile", mockFile);
+                        self.emit("thumbnail", mockFile, mockFile.dataURL);
+                    });
+                }
             },
 
             previewTemplate: `
@@ -445,6 +482,7 @@
             };
             var myDropzone = new Dropzone(`.${id}`, options);
         }
+
 
         function removeColorItem(color){
 
@@ -479,7 +517,33 @@
                     })
                 }
             });
-        }
+        } 
+    </script>
+    <script>
+      $('#search').keyup(function(){   
+    search_table($(this).val());  
+    });   
+    function search_table(value){  
+        $('#example22 tr').each(function(){  
+            var found = 'false';  
+            $(this).each(function(){  
+                if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
+                {  
+                    found = 'true';  
+                }  
+            });  
+            if(found == 'true')  
+            {  
+                $(this).show();  
+            }  
+            else  
+            {  
+                $(this).hide();  
+            }  
+        });  
+    }  
+
+
     </script>
 @endpush
 

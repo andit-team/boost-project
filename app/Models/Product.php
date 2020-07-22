@@ -130,7 +130,6 @@ class Product extends Model
                 ->get();
    }
 
-
    public static function getColorWiseImage($imgcolor){
      return DB::table('item_images')
             ->select('org_img')
@@ -140,6 +139,7 @@ class Product extends Model
    }
 
 
+
       // public static function getColorWiseImage($imgcolor){
       //   return DB::table('item_images')
       //          ->select('org_img')
@@ -147,6 +147,8 @@ class Product extends Model
       //          ->where('color_slug','=',$imgcolor)
       //          ->get();
       // }
+
+
 
 
 }
