@@ -156,13 +156,13 @@
                                 <div class="card dashboard-table mt-0">
                                     <div class="card-body">
                                         <div class="top-sec w-50">
-                                            <input type="text" class="form-control" placeholder="Search">
+                                            <input type="text" name="search" class="form-control" placeholder="Search" id="search" autocomplete="off">
                                             <select name="" id="" class="form-control">
                                                 <option value="">Category one</option>
                                                 <option value="">category two</option>
                                             </select>
                                         </div>
-                                        <table class="table-responsive-md table mb-0 table-striped">
+                                        <table class="table-responsive-md table mb-0 table-striped" id="example22">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Color</th>
@@ -173,7 +173,7 @@
                                                     <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="serchInventory">
                                                 @forelse($inventories as $row)
                                                     <tr>
                                                         <td>{{$row->color->name}}</td>
@@ -479,7 +479,31 @@
                     })
                 }
             });
-        }
+        } 
+    </script>
+    <script>
+      $('#search').keyup(function(){   
+    search_table($(this).val());  
+    });   
+    function search_table(value){  
+        $('#example22 tr').each(function(){  
+            var found = 'false';  
+            $(this).each(function(){  
+                if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
+                {  
+                    found = 'true';  
+                }  
+            });  
+            if(found == 'true')  
+            {  
+                $(this).show();  
+            }  
+            else  
+            {  
+                $(this).hide();  
+            }  
+        });  
+    }  
     </script>
 @endpush
 
