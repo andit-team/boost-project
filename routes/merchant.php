@@ -49,6 +49,7 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     Route::get('/shop','ShopsController@create');
     Route::get('/shops/update/{slug}','ShopsController@edit');
     Route::post('/shop','ShopsController@update')->name('shopUpdate');
+    // Route::get('/shop','ShopsController@sort')->name('shortData');
     Route::get('/merchant/{slug}/resubmit','MerchantController@edit');
     Route::put('/merchant/{slug}','MerchantController@update');
     Route::get('/merchant/{id}','MerchantController@show');

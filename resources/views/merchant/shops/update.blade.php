@@ -67,7 +67,7 @@
     <div class="container">
         <div class="row">
             @include('layouts.inc.sidebar.vendor-sidebar',[$active='shop'])
-            <div class="col-sm-9 register-page contact-page">
+            <div class="col-sm-9 ">
                 <!-- vendor cover start -->
                 <div class="vendor-cover">
                     <div>
@@ -174,16 +174,17 @@
                                                                 </div>
                                                                 <div class="product-page-per-view">
                                                                     <select>
-                                                                        <option value="High to low">24 Products Par Page</option>
+                                                                        <option value="High to low">24 Products Par Page</option></a>
                                                                         <option value="Low to High">50 Products Par Page</option>
                                                                         <option value="Low to High">100 Products Par Page</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="product-page-filter">
-                                                                    <select>
-                                                                        <option value="High to low">Sorting items</option>
-                                                                        <option value="Low to High">50 Products</option>
-                                                                        <option value="Low to High">100 Products</option>
+
+                                                                    <select id="category">
+                                                                       @foreach($category as $row)
+                                                                         <option value="{{ $row->id }}">{{$row->name}}</option>
+                                                                       @endforeach
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -203,7 +204,7 @@
                                                                       @if($loop->first)
                                                                           <a href="#"><img src="{{ !empty($row->image) ? asset($row->image) : asset('/uploads/shops/products/product.png') }}" class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                                                       @endif
-                                                                  @endforeach 
+                                                                  @endforeach
                                                                       <div class="product-hover">
                                                                           <ul>
                                                                               <li>
@@ -225,7 +226,7 @@
                                                                   <ul class="color-variant">
                                                                       @foreach($row->inventory as $color)
                                                                       <li class="bg-light0" style="background:{{ $color->color_name }}"></li>
-                                                                      @endforeach 
+                                                                      @endforeach
                                                                   </ul>
                                                               </div>
                                                           </div>
@@ -234,7 +235,9 @@
                                                   @endforeach
                                                 </div>
                                                 </div>
-                                                <div class="product-pagination mb-0">
+
+
+                                                <!-- <div class="product-pagination mb-0">
                                                     <div class="theme-paggination-block">
                                                         <div class="row">
                                                             <div class="col-xl-6 col-md-6 col-sm-12">
@@ -245,9 +248,10 @@
                                                                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                                                                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                                                                         <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span> <span class="sr-only">Next</span></a></li>
-                                                                    </ul>
+                                                                    </ul>                                                                 
                                                                 </nav>
                                                             </div>
+
                                                             <div class="col-xl-6 col-md-6 col-sm-12">
                                                                 <div class="product-search-count-bottom">
                                                                     <h5>Showing Products 1-24 of 10 Result</h5>
@@ -255,7 +259,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
+                                                  {{$items->links()}}         
                                             </div>
                                         </div>
                                     </div>
@@ -336,6 +341,14 @@
 <script src="https://foliotek.github.io/Croppie/croppie.js"></script>
 
 <script type="text/javascript">
+$('#category').on('change',function(){
+  var cat = $(this).val();
+  // alert(cat);
+
+ $(window).load('http://localhost/andbaazar/merchant/shop?page=1?cat='+cat);
+
+});
+
     $(document).ready(function() {
      $('.summernote').summernote({
            height: 200,

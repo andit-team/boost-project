@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\ItemImage;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\Inventory;
 use App\Models\Merchant;
 use Sentinel;
@@ -22,7 +23,7 @@ class ShopsController extends Controller
     public function index()
     {
         $shop = Shop::all();
-        $seller = Merchant::all();
+        $seller = Merchant::all();   
         return view('admin.shop_list.index',compact('shop','seller'));
     }
 
@@ -31,13 +32,39 @@ class ShopsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(Request $request)
+    {  
         $product = Product::all();
-        $items = Product::with('inventory')->get();  
+        
+        // dd($product);
+        $items = Product::with('inventory')->paginate(2);
+
+        $category = Category::where('parent_id',0)->get();
+
         $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        return view('merchant.shops.update',compact('sellerProfile','shopProfile','product','items'));
+
+
+        // dd($request->all());
+
+        $categories = new category;
+
+         if (request()->has('cat')){
+             $categories =$categories->where('cat',request('cat'));  
+             
+             dd($categories);
+         }
+
+         if (request()->has('sort')){
+            $categories =$categories->orderBy('name',request('sort'));             
+        }
+
+    $categories = $categories->paginate(5)->appends([
+        'cat'      =>request('cat'),
+        'sort'     => request('sort'),
+    ]);
+       
+        return view('merchant.shops.update',compact('sellerProfile','shopProfile','product','items','category'));
     }
 
     /**
@@ -62,6 +89,37 @@ class ShopsController extends Controller
     {
         //
     }
+
+    // public function sort()
+    // {
+
+    //     $product = Product::all();
+    //     $items = Product::with('inventory')->paginate(4);
+
+    //     $category = Category::where('parent_id',0)->get();
+
+    //     $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
+    //     $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+
+    //     $categories = new category;
+
+    //      if (request()->has('category')){
+    //          $categories =$categories->where('color_slug',request('color_slug'));  
+             
+    //          dd( $categories);
+    //      }
+
+    //      if (request()->has('sort')){
+    //         $categories =$categories->orderBy('name',request('sort'));             
+    //     }
+
+    // $categories = $categories->paginate(5)->appends([
+    //     'color_slug' =>request('color_slug'),
+    //     'sort'     => request('sort'),
+    // ]);
+
+    // return view('merchant.shops.update',compact('sellerProfile','shopProfile','product','items','categories','category'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
