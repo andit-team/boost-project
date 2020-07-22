@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="bn_description" class="">Write about your shop (Bangla)<span class="text-danger"> *</span></label>
-                                <textarea class="form-control summernote @error('description') border-danger @enderror" placeholder="Write Your Message" name="description" id="" rows="15">{{ $shopProfile->description }}</textarea>
+                                <textarea class="form-control summernote @error('bdesc') border-danger @enderror" placeholder="Write Your Message"  name="bdesc"  id="" rows="15" >{{ $shopProfile->bdesc }}</textarea>
                             </div>
                         
                         </div>
