@@ -110,7 +110,7 @@ class Baazar
             list(, $image_file)      = explode(',', $image_file);
             $image_file = base64_decode($image_file);
 
-            $image_name= $name.time().'.png';
+            $image_name= $name.rand().'.png';
             $db_img = 'uploads/shops/products/'.$shop.'-'.$name.'-'.$color.'-'.$image_name;
             $path = public_path($db_img);
             file_put_contents($path, $image_file);

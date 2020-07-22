@@ -16,6 +16,6 @@ class InventoryMeta extends Model
     ];
 
     public function inventory(){
-        return $this->hasMany(Inventory::class,'product_id');
+        return $this->belongsTo(Inventory::class,'inventory_id');
     }
 }

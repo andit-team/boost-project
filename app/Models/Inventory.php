@@ -51,7 +51,7 @@ class Inventory extends Model
       return $this->belongsTo(Size::class,'size_id');
     }
     public function invenMeta(){
-      return $this->belongsTo(InventoryMeta::class,'product_id');
+      return $this->hasOne(InventoryMeta::class,'inventory_id');
     }
 
     public static function getInventroyColor($color,$item){

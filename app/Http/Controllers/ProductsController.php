@@ -209,11 +209,18 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($slug){
-        $product = Product::with('item_meta.attributes.options')->where('slug',$slug)->first();
-        // dd($product->item_meta);
-        echo 'asdf';
-        $itemimg           = ItemImage::all();
-        dd($itemimg);
+        $product = Product::with(['item_meta.attributes.options','itemimage','inventory.invenMeta','category.inventoryAttributes.options'])->where('slug',$slug)->first();
+        $itemImages = $product->itemimage->groupBy('color_slug');
+        // dd($product->category->inventoryAttributes);
+        // dd($product->inventory);
+        // echo 'asdf';
+        // $itemimg           = \DB::table('item_images')
+        //                       ->where('product_id',$product->id)
+        //                       ->select('color_slug', \DB::raw('count(*) as total'))
+        //                       ->groupBy('color_slug')
+        //                       ->where('deleted_at',NULL)
+        //                       ->get();
+        // dd($itemimg);
 
         $category           = Category::all();
         $item               = Product::all();
@@ -228,7 +235,7 @@ class ProductsController extends Controller
         //dd($porductMeta);
        
 
-        return view ('merchant.product.edit',compact('category','categories','item','productInventories','size','color','subCategories','product','tag','shopProfile'));
+        return view ('merchant.product.edit',compact('category','itemImages','categories','item','productInventories','size','color','subCategories','product','tag','shopProfile'));
     }
 
     /**
