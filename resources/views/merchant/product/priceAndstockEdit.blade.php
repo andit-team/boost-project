@@ -86,7 +86,10 @@
         <table class="table table-borderd">
             <thead class="">
             <tr class="inventory-head">
-
+                @foreach($product->category->inventoryAttributes as $in_attr)
+                    <th class="inventoryAttributes">{{$in_attr->name}}</th>
+                @endforeach
+                <th width="200">Color Family</th>
                 <th width="200">Color Family</th>
                 <th colspan="2">Price<span class="text-danger"> *</span></th>
                 <th width="100">Quantity</th>
@@ -95,12 +98,21 @@
             </tr>
             </thead>
             <tbody class="newRow">
-            @foreach($productInventories as $row)    
-            <tr class="firstRow" data-id="0" id="row-0">
-                <td>
-                    <select name="inventory_color[]" class="form-control inventory_colors">
-                     <option value="{{ $row->color_name }}" selected disabled>{{ $row->color_name }}</option>
+                @php $i = 0 @endphp
+            @foreach($product->inventory as $row)
+            <tr class="{{++$i == 1 ?'firstRow' : 'removableRow'}}" data-id="{{$row->id}}" id="row-{{$row->id}}">
+                @foreach($product->category->inventoryAttributes as $in_attr)
+                <td class="inventoryAttributes">
+                    <select name="inventoryAttr[{{$in_attr->name}}][]" class="form-control">
+                        @foreach($in_attr->options as $opt)
+                            <option value="{{$opt->id}}" {{$row->invenMeta->value == $opt->option ? 'selected':''}}>{{$opt->option}}</option>
+                        @endforeach
                     </select>
+                </td>
+                @endforeach
+
+                <td>
+                    <select name="inventory_color[]" class="form-control inventory_colors" data-sel="{{ strtolower($row->color_name) }}"></select>
                 </td>
                 <td><input type="number" class="form-control regulerPrice" placeholder="Regular price" name="inventory_price[]" id="regulerPrice" value="{{ $row->price }}"></td>
                 <td>
@@ -162,20 +174,43 @@
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
     <script>
 
+        //Rendering Main images into Dropzone
         $( "#sortable-main" ).sortable({
             placeholder: "ui-state-highlight",
             revert: true,
         });
         $("#sortable-main").disableSelection();
-        setup("my-awesome-dropzone-main",'main');
+        // setup("my-awesome-dropzone-main",'main');
+        var mockFile = [];
+        @foreach($itemImages['main'] as $img)
+            mockFiles = {
+                name:'img-'+'{{$img->color_slug}}',
+                size:{{$img->id}},
+                dataURL: "{{asset('/')}}"+"{{$img->org_img}}"
+            }
+            mockFile.push(mockFiles);
+        @endforeach
+        setup("my-awesome-dropzone-main",'main',mockFile);
+
+        //Rendering Other images into Dropzone
+        @foreach($itemImages as $color=>$imges)
+        mockFile = [];
+
+        @foreach($imges as $img)
+            mockFiles = {
+                name:'img-'+'{{$img->color_slug}}',
+                size:{{$img->id}},
+                dataURL: "{{asset('/')}}"+"{{$img->org_img}}"
+            }
+            mockFile.push(mockFiles);
+        @endforeach
+        @if($color != 'main')
+            appendDrops('{{$color}}',mockFile);
+            mockFile = [];
+        @endif
+        @endforeach
 
 
-        // $( "#sortable-blue" ).sortable({
-        //     placeholder: "ui-state-highlight",
-        //     revert: true,
-        // });
-        // $("#sortable-blue").disableSelection();
-        // setup("my-awesome-dropzoneblue",'blue');
 
 
 
@@ -253,10 +288,12 @@
         });
 
         function inventoryRows(color){
-            var option = `<option value="${color}" data-color="${color}">${color}</option>`;
             $('.inventory_colors').each(function(){
+                var sel = (color === $(this).data('sel'))?'selected':'';
+                var option = `<option value="${color}" ${sel} data-color="${color}">${color}</option>`;
                 $(this).append(option);
             });
+
         }
 
         //Drug & Drop script start
@@ -275,7 +312,13 @@
                 }
             });
             if(flag == 0){
-                $('.drops').append(
+                appendDrops(color);
+            }else{
+                swal("The selected color already been exits", {icon: "warning",buttons: false,timer: 2000});
+            }
+        });
+        function appendDrops(color,mockFile=''){
+            $('.drops').append(
                     `<div id="dropzone-${color}" class="img-upload-area" data-color="${color}"><label class="mt-3">Color Family: <b>${color}</b></label>
                     <span class="btn btn-sm text-danger" onclick="removeColorItem('${color}')"><i class="fa fa-trash"></i></span>
                     <div class="border m-0 collpanel drop-area row my-awesome-dropzone${color}" id="sortable-${color}">
@@ -290,17 +333,15 @@
                     revert: true,
                 });
                 $("#sortable-"+color ).disableSelection();
-                setup("my-awesome-dropzone"+color,color);
+                setup("my-awesome-dropzone"+color,color,mockFile);
                 inventoryRows(color);
-            }else{
-                swal("The selected color already been exits", {icon: "warning",buttons: false,timer: 2000});
-            }
-        });
+        }
+
         Dropzone.autoDiscover = false;
 
         
         //function
-        function setup(id,color) {
+        function setup(id,color,mockFile='') {
             let options = {
                 autoProcessQueue: false,
                 url : '/',
@@ -326,7 +367,17 @@
                     self.on("dragleave", function(event) {});
 
                     self.on("thumbnail", function(file){
-                        console.log(file);
+                        // console.log(file);
+                        var i = 0;
+                        $('.color-'+color+'-element').each(function(){
+                            i = i+1;
+                        });
+                        if(i > 5){
+                            swal("Maximum Five file are allowed", {icon: "warning",buttons: false,timer: 2000});
+                            this.removeFile(file);
+                            $('#id'+file.size).remove();
+                        }
+
                         if(file.size < 3000000){
                             $('.inputs').append(`<input type="hidden" class="image-class-${color}" name="images[${color}][]" id="id${file.size}" value="${file.dataURL}">`);
                         }else{
@@ -376,15 +427,17 @@
 
 
                     // Create the mock file:
-                    var mockFile = [
-                        { name: "Filename", size: 12345 , dataURL:"http://localhost/andbaazar/public/uploads/shops/logos/shop-4.png"},
-                        { name: "Filename", size: 12345 , dataURL:"http://localhost/andbaazar/public/uploads/shops/logos/shop-4.png"}
-                    ];
+                    // var mockFile = [
+                    //     { name: "Filename", size: 12345 , dataURL:"http://localhost/andbaazar/public/uploads/shops/logos/shop-4.png"},
+                    //     { name: "Filename", size: 12345 , dataURL:"http://localhost/andbaazar/public/uploads/shops/logos/shop-4.png"}
+                    // ];
 
-                    mockFile.forEach(mockFile=>{
-                        self.emit("addedfile", mockFile);
-                        self.emit("thumbnail", mockFile, mockFile.dataURL);
-                    });
+                    if(mockFile != ''){
+                        mockFile.forEach(mockFile=>{
+                            self.emit("addedfile", mockFile);
+                            self.emit("thumbnail", mockFile, mockFile.dataURL);
+                        });
+                    }
 
                 },
 
