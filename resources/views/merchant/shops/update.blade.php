@@ -67,7 +67,7 @@
     <div class="container">
         <div class="row">
             @include('layouts.inc.sidebar.vendor-sidebar',[$active='shop'])
-            <div class="col-sm-9 register-page contact-page">
+            <div class="col-sm-9 ">
                 <!-- vendor cover start -->
                 <div class="vendor-cover">
                     <div>
@@ -174,16 +174,17 @@
                                                                 </div>
                                                                 <div class="product-page-per-view">
                                                                     <select>
-                                                                        <option value="High to low">24 Products Par Page</option>
+                                                                        <option value="High to low">24 Products Par Page</option></a>
                                                                         <option value="Low to High">50 Products Par Page</option>
                                                                         <option value="Low to High">100 Products Par Page</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="product-page-filter">
-                                                                    <select>
-                                                                        <option value="High to low">Sorting items</option>
-                                                                        <option value="Low to High">50 Products</option>
-                                                                        <option value="Low to High">100 Products</option>
+
+                                                                    <select id="category">
+                                                                       @foreach($category as $row)
+                                                                         <option value="{{ $row->id }}">{{$row->name}}</option>
+                                                                       @endforeach
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -193,45 +194,50 @@
                                                 <div class="product-wrapper-grid">
                                                     <div class="row">
 
-                                                        <div class="col-xl-3 col-md-6 col-grid-box">
-                                                            <div class="product-box">
-                                                                <div class="img-wrapper">
-                                                                    <div class="front">
-                                                                        <a href="#"><img src="{{asset('frontend')}}/assets/images/fashion/product/1.jpg" class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                                                    </div>
-                                                                    <div class="cart-info cart-wrap">
-                                                                        <button data-toggle="modal" data-target="#addtocart" title="Add to cart"><i class="ti-shopping-cart"></i></button>
-                                                                        <a href="javascript:void(0)" title="Add to Wishlist"><i class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="ti-search" aria-hidden="true"></i></a> <a href="compare.html" title="Compare"><i class="ti-reload" aria-hidden="true"></i></a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-detail">
-                                                                    <div>
-                                                                        <div class="rating">
-                                                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                                                        </div>
-                                                                        <a href="product-page(no-sidebar).html">
-                                                                            <h6>Slim Fit Cotton Shirtssss</h6>
-                                                                        </a>
-                                                                        <p>Lorem Ipsum is simply dummy text of the printing and
-                                                                            typesetting industry. Lorem Ipsum has been the industry's
-                                                                            standard dummy text ever since the 1500s, when an unknown
-                                                                            printer took a galley of type and scrambled it to make a
-                                                                            type specimen book</p>
-                                                                        <h4>$500.00</h4>
-                                                                        <ul class="color-variant">
-                                                                            <li class="bg-light0"></li>
-                                                                            <li class="bg-light1"></li>
-                                                                            <li class="bg-light2"></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
 
+                                                    @foreach($items as $row)
+                                                    <div class="col-xl-3 col-sm-6">
+                                                          <div class="product-box">
+                                                              <div class="img-wrapper">
+                                                                  <div class="front">
+                                                                  @foreach($row->itemimage as $itemimg)
+                                                                      @if($loop->first)
+                                                                          <a href="#"><img src="{{ !empty($row->image) ? asset($row->image) : asset('/uploads/shops/products/product.png') }}" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                                                      @endif
+                                                                  @endforeach
+                                                                      <div class="product-hover">
+                                                                          <ul>
+                                                                              <li>
+                                                                                  <button class="btn" type="button" data-original-title="" title=""><i class="ti-pencil-alt"></i></button>
+                                                                              </li>
+                                                                              <li>
+                                                                                  <button class="btn" type="button" data-toggle="modal" data-target="#exampleModalCenter" data-original-title="" title=""><i class="ti-trash"></i></button>
+                                                                              </li>
+                                                                          </ul>
+                                                                      </div>
+                                                                  </div>
 
-                                                    </div>
+                                                              <div class="product-detail">
+                                                                  <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i></div>
+                                                                  <a href="#">
+                                                                      <h6>{{ $row->name}}</h6>
+                                                                  </a>
+                                                                  <h4>${{$row->price}}</h4>
+                                                                  <ul class="color-variant">
+                                                                      @foreach($row->inventory as $color)
+                                                                      <li class="bg-light0" style="background:{{ $color->color_name }}"></li>
+                                                                      @endforeach
+                                                                  </ul>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  @endforeach
                                                 </div>
-                                                <div class="product-pagination mb-0">
+                                                </div>
+
+
+                                                <!-- <div class="product-pagination mb-0">
                                                     <div class="theme-paggination-block">
                                                         <div class="row">
                                                             <div class="col-xl-6 col-md-6 col-sm-12">
@@ -242,9 +248,10 @@
                                                                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                                                                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                                                                         <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-chevron-right" aria-hidden="true"></i></span> <span class="sr-only">Next</span></a></li>
-                                                                    </ul>
+                                                                    </ul>                                                                 
                                                                 </nav>
                                                             </div>
+
                                                             <div class="col-xl-6 col-md-6 col-sm-12">
                                                                 <div class="product-search-count-bottom">
                                                                     <h5>Showing Products 1-24 of 10 Result</h5>
@@ -252,7 +259,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
+                                                  {{$items->links()}}         
                                             </div>
                                         </div>
                                     </div>
@@ -333,6 +341,14 @@
 <script src="https://foliotek.github.io/Croppie/croppie.js"></script>
 
 <script type="text/javascript">
+$('#category').on('change',function(){
+  var cat = $(this).val();
+  // alert(cat);
+
+ $(window).load('http://localhost/andbaazar/merchant/shop?page=1?cat='+cat);
+
+});
+
     $(document).ready(function() {
      $('.summernote').summernote({
            height: 200,
