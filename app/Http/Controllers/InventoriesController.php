@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Merchant;
 use App\Models\Inventory;
 use App\Models\Product;
+use App\Models\ItemImage;
 use App\Models\Color;
 use App\Models\Size;
 use App\Models\Shop;
@@ -198,8 +199,13 @@ class InventoriesController extends Controller
     }
 
     public function inventoryColor(Request $request){
+
         $color = $request->color;
         $item  = $request->item;
-        return Inventory::getInventroyColor($color,$item );
+        $inventory =  ItemImage::where('color_slug',$color)->where('product_id',$item);
+        $count = $inventory->count();
+        $images = $inventory->get()->toArray();
+        echo json_encode(['count' => $count,'images' => $images]);
+
     }
 }
