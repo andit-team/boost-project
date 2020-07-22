@@ -260,15 +260,16 @@
                                                         </div>
                                                     </div>
                                                 </div> -->
-                                                  {{$items->links()}}         
-                                            </div>
+                                                        
+                                            </div>                                         
                                         </div>
                                     </div>
-                                </div>
+                                </div>                              
                             </div>
                         </div>
-                    </div>
+                    </div>   
                 </section>
+                {{$items->links()}}  
             </div>
         </div>
     </div>
