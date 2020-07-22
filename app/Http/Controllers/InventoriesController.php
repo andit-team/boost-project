@@ -35,7 +35,7 @@ class InventoriesController extends Controller
 //        $color = Color::all();
 //        return view ('merchant.inventory.index',compact('inventory','item','size','color','sellerProfile','shopProfile'));
 
-        $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->get();
+        $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->get(); 
         $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
         $color              = Color::all(); 
         $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
@@ -65,6 +65,21 @@ class InventoriesController extends Controller
         return view ('merchant.inventory.create',compact('inventory','item','size','color','shopProfile','productAttriSize','productAttriCapa','inventoryAttriSize','inventoryAttriCapa'));
     }
 
+    public function addImages($images, $itemId,$shop){
+        foreach($images as $color => $image){
+          foreach($image as $img){
+            $i = 0;
+            $image = [
+              'product_id' => $itemId,
+              'color_slug' => $color,
+              'sort'       => ++$i,
+              'org_img'    => Baazar::base64Upload($img,'orgimg',$shop->slug,$color),
+            ];
+            ItemImage::create($image);
+          }
+        }
+      }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -73,35 +88,44 @@ class InventoriesController extends Controller
      */
     public function store(Inventory $inventory,Request $request)
     {
+        //dd($request->all());
         $shopId = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $product = Product::where('user_id',Sentinel::getUser()->id)->first();
         $this->validateForm($request);
         $slug = Baazar::getUniqueSlug($inventory, $product->name);
-        $data = [
-            'product_id'    => $request->product_id,
-            'slug'          => $slug,
-            'color_id'      => $request->color_id,
-            'size_id'       => $request->size_id,
-            'price'         => $request->price,
-            'qty_stock'     => $request->qty_stock,
-            'special_price' => $request->special_price,
-            'start_date'    => $request->start_date,
-            'end_date'      => $request->end_date,
-            'shop_id'       => $shopId->id,
-            'user_id'       => Sentinel::getUser()->id,
-            'created_at'    => now(),
-        ];
-
-        $inventory = Inventory::create($data);
-
-        $inventoryAtti = [
-            'name'        => $request->name,
-            'value'       => $request->value,
-            'inventory_id'=> $inventory->id,
-            'product_id'  => $inventory->product_id,
-        ];
-        InventoryMeta::create($inventoryAtti);
-        Session::flash('success', 'Inventory Added Successfully!');
+        $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
+        if($shop){
+            $data = [
+                'product_id'    => $request->product_id,
+                'slug'          => $slug,
+                'color_id'      => $request->color_id,
+                'size_id'       => $request->size_id,
+                'price'         => $request->price,
+                'qty_stock'     => $request->qty_stock,
+                'special_price' => $request->special_price,
+                'start_date'    => $request->start_date,
+                'end_date'      => $request->end_date,
+                'shop_id'       => $shopId->id,
+                'user_id'       => Sentinel::getUser()->id,
+                'created_at'    => now(),
+            ];
+    
+            $inventory = Inventory::create($data);
+    
+            $inventoryAtti = [
+                'name'        => $request->name,
+                'value'       => $request->value,
+                'inventory_id'=> $inventory->id,
+                'product_id'  => $inventory->product_id,
+            ];
+            InventoryMeta::create($inventoryAtti);
+    
+            if($request->images){
+                $this->addImages($request->images,$inventory->product_id,$shop);
+              }
+            Session::flash('success', 'Inventory Added Successfully!');
+        }
+        
         return redirect('merchant/inventories');
     }
 
@@ -208,4 +232,6 @@ class InventoriesController extends Controller
         echo json_encode(['count' => $count,'images' => $images]);
 
     }
+
+   
 }

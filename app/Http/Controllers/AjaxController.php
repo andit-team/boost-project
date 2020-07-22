@@ -7,6 +7,7 @@ use App\Models\Geo\Upazila;
 use App\Models\Geo\Municipal;
 use App\Models\Geo\Union;
 use Illuminate\Http\Request;
+use App\Models\Inventory;
 
 class AjaxController extends Controller
 {
@@ -81,4 +82,44 @@ class AjaxController extends Controller
         }
         echo $options;
     }
+
+    
+
+     public function searchColorWiseInventory($invnent_id){
+        if($invnent_id == 0){
+            $inventories  = Inventory::all();
+         }else{
+            $inventories  = Inventory::where('color_id',$invnent_id)->get(); 
+         }
+         $html = '';
+         if(!empty($inventories)){ 
+             foreach($inventories as $inventorie){
+                $html .= "<tr>"; 
+                $html .= "<td>{$inventorie->color->name}</td>";
+                $html .= "<td>{$inventorie->item->name}</td>";
+                $html .= "<td>{$inventorie->price}</td>";
+                $html .= "<td>{$inventorie->qty_stock}</td>";
+                $html .= "<td>2000</td>";
+                $html .= "<td class=''>
+                            <ul>
+                                <li><a  ><button class='btn btn-sm btn-warning' ><i class='fa fa-edit'></i> </button></a></li>
+                                <li>
+                                <form  method='post' style='margin-top:-2px' id='deleteButton{{$inventorie->id}}'>
+                                @csrf
+                                @method('delete')
+                                <button type='submit' class='btn btn-sm btn-primary' onclick='sweetalertDelete({{$inventorie->id}})'><i class='fa fa-trash-o'></i></button>
+                            </form>
+                                </li>
+                            </ul>
+                        </td>";
+                $html .= "</tr>";
+              }
+             }else{
+                $html .= "<tr>";
+                $html .= "<td colspan='2'>No data</td>";
+                $html .= "</tr>";
+             }
+             echo $html;
+         }
+     
 }
