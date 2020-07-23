@@ -183,7 +183,7 @@
 
                                                                     <select id="category">
                                                                        @foreach($category as $row)
-                                                                         <option value="{{ $row->id }}">{{$row->name}}</option>
+                                                                         <option value="{{ $row->slug }}">{{$row->name}}</option>
                                                                        @endforeach
                                                                     </select>
                                                                 </div>
@@ -343,24 +343,10 @@
 
 <script type="text/javascript">
 
-// $('#category').on('change',function(){
-//   var cat = $(this).val();
-//   // alert(cat);
-
-//  $(window).load('http://localhost/andbaazar/merchant/shop?page=1?cat='+cat);
-
-// });
-
-//     $(document).ready(function() {
-//      $('.summernote').summernote({
-//            height: 200,
-//       });
-//    });
-
 $('#category').on('change',function(){
   var cat = $(this).val();
  
-  window.location.href = 'shop?page=1&cat='+cat;
+  window.location.href = 'shop?page=1&cat=' + cat;
 });
 
 
@@ -370,6 +356,13 @@ $('#page_size').on('change',function(){
   window.location.href = 'shop?page=1&page_size=' + page_size;
 });
 
+
+
+$(document).ready(function() {
+     $('.summernote').summernote({
+           height: 200,
+      });
+   });
 
 
 
