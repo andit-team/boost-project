@@ -23,7 +23,7 @@ class InventoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
 //        $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
@@ -35,13 +35,24 @@ class InventoriesController extends Controller
 //        $color = Color::all();
 //        return view ('merchant.inventory.index',compact('inventory','item','size','color','sellerProfile','shopProfile'));
 
-        $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->get(); 
+
+        $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->paginate(10); 
         $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
         $color              = Color::all(); 
         $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
         $productAttriSize   = InventoryAttributeOption::where('inventory_attribute_id',1)->get();
         $inventoryAttriCapa = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',2)->first();
         $productAttriCapa   = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
+
+        if($request->has('color')){
+            $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->where('color_name',$request->color)->paginate(10); 
+            //dd($inventories);
+        }
+
+        $inventory =([
+            'color' => request('color'),
+        ]);
+
         return view ('merchant.inventory.index',compact('inventories','item','color','inventoryAttriSize','productAttriSize','inventoryAttriCapa','productAttriCapa'));
 
     }
@@ -98,7 +109,7 @@ class InventoriesController extends Controller
             $data = [
                 'product_id'    => $request->product_id,
                 'slug'          => $slug,
-                'color_id'      => $request->color_id,
+                'color_name'    => $request->color_name,
                 'size_id'       => $request->size_id,
                 'price'         => $request->price,
                 'qty_stock'     => $request->qty_stock,
@@ -215,7 +226,7 @@ class InventoriesController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             //'product_id' => 'required',
-            'color_id'   => 'required',
+            'color_name' => 'required',
             'qty_stock'  => 'required',
             'price'      => 'required',
 //            'size_id' => 'required',

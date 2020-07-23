@@ -17,7 +17,7 @@ class CreateInventoriesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
             $table->string('slug')->nullable();
-            $table->unsignedBigInteger('color_id');
+            $table->unsignedBigInteger('color_id')->nullable();
             $table->string('color_name')->nullable();
             $table->integer('qty_stock');
             $table->decimal('price',8,2)->default(0);
