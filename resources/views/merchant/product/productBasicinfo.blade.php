@@ -93,13 +93,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group margin">
-                    <label for="video_url">Video Url<span>*</span></label>
-                    <input type="text" class="form-control" name="video_url" id="video_url">
-                    <span class="text-danger" id="message_video_url"></span>
-                    @if ($errors->has('video_url'))
-                        <span class="text-danger">{{ $errors->first('video_url') }}</span>
-                    @endif
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group margin">
+                            <label for="video_url">Brands<span>*</span></label>
+                            <select name="brand" class="form-control" id="brand">
+                                <option value="" selected>No Brand</option>
+                            </select>
+                            <span class="text-danger" id="message_video_url"></span>
+                            @if ($errors->has('video_url'))
+                                <span class="text-danger">{{ $errors->first('video_url') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group margin">
+                            <label for="video_url">Video Url<span>*</span></label>
+                            <input type="text" class="form-control" name="video_url" id="video_url">
+                            <span class="text-danger" id="message_video_url"></span>
+                            @if ($errors->has('video_url'))
+                                <span class="text-danger">{{ $errors->first('video_url') }}</span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -161,9 +177,20 @@
                 $('#catarea').hide();
                 getCategoryAttr(id);
                 getInventoryAttr(id);
+                getBrands(id);
             }
         }
 
+        function getBrands(cid){
+            $.ajax({
+                type:"POST",
+                url:"{{ url('/merchant/product/get-brand/') }}",
+                data:{ 'cat': cid ,'_token':'{{csrf_token()}}'},
+                success:function(data){
+                    $('#brand').html(data);
+                }
+            });
+        }
         function setActive(level,e){
             var current = '';
             for(var j = level+1; j<10 ; j++){
