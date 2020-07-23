@@ -173,10 +173,10 @@
                                                                     </ul>
                                                                 </div>
                                                                 <div class="product-page-per-view">
-                                                                    <select>
-                                                                        <option value="High to low">24 Products Par Page</option></a>
-                                                                        <option value="Low to High">50 Products Par Page</option>
-                                                                        <option value="Low to High">100 Products Par Page</option>
+                                                                    <select  id="page_size">
+                                                                        <option value="24">24 Products Par Page</option></a>
+                                                                        <option value="48">48 Products Par Page</option>
+                                                                        <option value="96">96 Products Par Page</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="product-page-filter">
@@ -260,15 +260,16 @@
                                                         </div>
                                                     </div>
                                                 </div> -->
-                                                  {{$items->links()}}         
-                                            </div>
+                                                        
+                                            </div>                                         
                                         </div>
                                     </div>
-                                </div>
+                                </div>                              
                             </div>
                         </div>
-                    </div>
+                    </div>   
                 </section>
+                {{$items->links()}}  
             </div>
         </div>
     </div>
@@ -341,19 +342,34 @@
 <script src="https://foliotek.github.io/Croppie/croppie.js"></script>
 
 <script type="text/javascript">
+
+// $('#category').on('change',function(){
+//   var cat = $(this).val();
+//   // alert(cat);
+
+//  $(window).load('http://localhost/andbaazar/merchant/shop?page=1?cat='+cat);
+
+// });
+
+//     $(document).ready(function() {
+//      $('.summernote').summernote({
+//            height: 200,
+//       });
+//    });
+
 $('#category').on('change',function(){
   var cat = $(this).val();
-  // alert(cat);
-
- $(window).load('http://localhost/andbaazar/merchant/shop?page=1?cat='+cat);
-
+ 
+  window.location.href = 'shop?page=1&cat='+cat;
 });
 
-    $(document).ready(function() {
-     $('.summernote').summernote({
-           height: 200,
-      });
-   });
+
+$('#page_size').on('change',function(){
+  var page_size = $(this).val();
+ 
+  window.location.href = 'shop?page=1&page_size=' + page_size;
+});
+
 
 
 
