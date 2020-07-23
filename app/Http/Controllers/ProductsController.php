@@ -384,6 +384,20 @@ class ProductsController extends Controller
       return Product::getColorWiseImage($imgcolor);
     }
 
+    public function getBrand(Request $request){
+      // dd($request->all());
+      $category = Category::find($request->cat);
+      $option = '<option value="">No Brand</option>';
+      if(!empty($category)){
+        $brands = $category->brands;
+        if($brands){
+          foreach($brands as $brand){
+            $option .= "<option value='{$brand->id}'>{$brand->name}</option>";
+          }
+        }
+      }
+      echo $option ;
+    }
 
 
 

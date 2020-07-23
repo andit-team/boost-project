@@ -38,6 +38,8 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
 
 
 
+    Route::Post('/product/get-brand/','ProductsController@getBrand');
+
     Route::get('/product/subCategoryChild/{id}','ProductsController@subCategoryChild');
     Route::post('/product/approvement/{slug}','ProductsController@approvement');
     Route::put('/product/rejected/{slug}','ProductsController@rejected');

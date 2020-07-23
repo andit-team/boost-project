@@ -7,7 +7,7 @@ use App\Models\ProductCategory;
 use App\Models\Product;
 use App\Models\Attribute;
 use App\Models\InventoryAttribute;
-// use App\Models\Children;
+use App\Models\Brand;
 use App\User;
 
 class Category extends Model
@@ -47,6 +47,10 @@ class Category extends Model
 
     public function inventoryAttributes(){
       return $this->belongsToMany(InventoryAttribute::class, 'inventory_attribute_category', 'category_id', 'inventory_attribute_id');
+    }
+
+    public function brands(){
+      return $this->belongsToMany(Brand::class, 'brand_category', 'category_id', 'brand_id');
     }
 
     public function categoryAttr(){

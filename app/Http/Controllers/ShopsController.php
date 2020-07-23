@@ -33,39 +33,39 @@ class ShopsController extends Controller
      * @return \Illuminate\Http\Response
      */
     // public function create(Request $request)
-    // {  
-    //     $product = Product::all();
+        // {  
+        //     $product = Product::all();
+            
+        //     // dd($product);
+        //     $items = Product::with('inventory')->paginate(2);
+
+        //     $category = Category::where('parent_id',0)->get();
+
+        //     $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
+        //     $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+
+
+        //     // dd($request->all());
+
+        //     $categories = new category;
+
+        //      if (request()->has('cat')){
+        //          $categories =$categories->where('cat',request('cat'));  
+                
+        //          dd($categories);
+        //      }
+
+        //      if (request()->has('sort')){
+        //         $categories =$categories->orderBy('name',request('sort'));             
+        //     }
+
+        // $categories = $categories->paginate(5)->appends([
+        //     'cat'      =>request('cat'),
+        //     'sort'     => request('sort'),
+        // ]);
         
-    //     // dd($product);
-    //     $items = Product::with('inventory')->paginate(2);
-
-    //     $category = Category::where('parent_id',0)->get();
-
-    //     $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
-    //     $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-
-
-    //     // dd($request->all());
-
-    //     $categories = new category;
-
-    //      if (request()->has('cat')){
-    //          $categories =$categories->where('cat',request('cat'));  
-             
-    //          dd($categories);
-    //      }
-
-    //      if (request()->has('sort')){
-    //         $categories =$categories->orderBy('name',request('sort'));             
-    //     }
-
-    // $categories = $categories->paginate(5)->appends([
-    //     'cat'      =>request('cat'),
-    //     'sort'     => request('sort'),
-    // ]);
-       
-    //     return view('merchant.shops.update',compact('sellerProfile','shopProfile','product','items','category'));
-    // }
+        //     return view('merchant.shops.update',compact('sellerProfile','shopProfile','product','items','category'));
+        // }
 
     public function create(Request $request)
     {  
@@ -79,7 +79,12 @@ class ShopsController extends Controller
         if ($page_size<24){
         $page_size=24;
         }
-              
+        
+        //$product = Product::all();
+        
+        // dd($product);
+        //$items = Product::with('inventory')->paginate(2);
+
         $category = Category::where('parent_id',0)->get();
 
         $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
@@ -91,14 +96,15 @@ class ShopsController extends Controller
         $product = Product::all();
         
         $items = Product::with('inventory')->paginate($page_size);
-        //dd($product);
-
+        // dd($product);
+        
         if ($request->has('cat')){
-             $product = Product::where('category_id', $request->cat)->paginate($page_size);     
-             $items = Product::with('inventory')->where('category_id', $request->cat)->paginate($page_size);          
+             $product = Product::where('category_slug', 'like', '%' . $request->cat . '%')->paginate($page_size); 
+             dd($product);        
+             $items = Product::with('inventory')->where('category_slug', 'like', '%' . $request->cat . '%')->paginate($page_size);          
          }                 
         $product =$product->sortBy('name');         
-        //dd($product);          
+        // dd($product);          
 
     $categories = ([
         'cat'      =>request('cat'),
@@ -132,37 +138,7 @@ class ShopsController extends Controller
         //
     }
 
-    // public function sort()
-    // {
-
-    //     $product = Product::all();
-    //     $items = Product::with('inventory')->paginate(4);
-
-    //     $category = Category::where('parent_id',0)->get();
-
-    //     $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
-    //     $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-
-    //     $categories = new category;
-
-    //      if (request()->has('category')){
-    //          $categories =$categories->where('color_slug',request('color_slug'));  
-             
-    //          dd( $categories);
-    //      }
-
-    //      if (request()->has('sort')){
-    //         $categories =$categories->orderBy('name',request('sort'));             
-    //     }
-
-    // $categories = $categories->paginate(5)->appends([
-    //     'color_slug' =>request('color_slug'),
-    //     'sort'     => request('sort'),
-    // ]);
-
-    // return view('merchant.shops.update',compact('sellerProfile','shopProfile','product','items','categories','category'));
-    // }
-
+   
     /**
      * Show the form for editing the specified resource.
      *
