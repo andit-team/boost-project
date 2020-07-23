@@ -70,7 +70,7 @@
 
                         <div class="col-md-6">
                             <label for="product_id">Product <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('product_id') }}</span>
-                            <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off">
+                            <select name="product_id" class="form-control px-10 js-example-basic-single" id="product_id"  autocomplete="off">
                                 <option value="" selected disabled>Select Product</option>
                                 @foreach ($item as $row)
                                     <option data-cat="{{$row->category_id}}" value="{{ $row->id }}">{{$row->name}}</option>
@@ -293,9 +293,13 @@
    </div>
 </section>
 @endsection
+@push('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> 
+@endpush
 @push('js')
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script> 
         $(document).ready(function () {
             $('.size').hide();
@@ -576,6 +580,9 @@ $('#color_id').on('change',function(){
 
     window.location.href = 'inventories?page=1&color='+color;
 })
+    </script>
+    <script>
+        $('.js-example-basic-single').select2();
     </script>
 @endpush
 
