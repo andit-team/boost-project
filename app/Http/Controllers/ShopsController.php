@@ -32,13 +32,54 @@ class ShopsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function create(Request $request)
+    // {  
+    //     $product = Product::all();
+        
+    //     // dd($product);
+    //     $items = Product::with('inventory')->paginate(2);
+
+    //     $category = Category::where('parent_id',0)->get();
+
+    //     $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
+    //     $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+
+
+    //     // dd($request->all());
+
+    //     $categories = new category;
+
+    //      if (request()->has('cat')){
+    //          $categories =$categories->where('cat',request('cat'));  
+             
+    //          dd($categories);
+    //      }
+
+    //      if (request()->has('sort')){
+    //         $categories =$categories->orderBy('name',request('sort'));             
+    //     }
+
+    // $categories = $categories->paginate(5)->appends([
+    //     'cat'      =>request('cat'),
+    //     'sort'     => request('sort'),
+    // ]);
+       
+    //     return view('merchant.shops.update',compact('sellerProfile','shopProfile','product','items','category'));
+    // }
+
     public function create(Request $request)
     {  
-        $product = Product::all();
-        
-        // dd($product);
-        $items = Product::with('inventory')->paginate(2);
+        $page_size=24;
 
+        if($request->has('page_size')){
+
+            $page_size=$request->page_size;
+        }
+
+        if ($page_size<24){
+        $page_size=24;
+        }
+              
         $category = Category::where('parent_id',0)->get();
 
         $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
@@ -47,24 +88,25 @@ class ShopsController extends Controller
 
         // dd($request->all());
 
-        $categories = new category;
+        $product = Product::all();
+        
+        $items = Product::with('inventory')->paginate($page_size);
+        //dd($product);
 
-         if (request()->has('cat')){
-             $categories =$categories->where('cat',request('cat'));  
-             
-             dd($categories);
-         }
+        if ($request->has('cat')){
+             $product = Product::where('category_id', $request->cat)->paginate($page_size);     
+             $items = Product::with('inventory')->where('category_id', $request->cat)->paginate($page_size);          
+         }                 
+        $product =$product->sortBy('name');         
+        //dd($product);          
 
-         if (request()->has('sort')){
-            $categories =$categories->orderBy('name',request('sort'));             
-        }
-
-    $categories = $categories->paginate(5)->appends([
+    $categories = ([
         'cat'      =>request('cat'),
         'sort'     => request('sort'),
     ]);
        
-        return view('merchant.shops.update',compact('sellerProfile','shopProfile','product','items','category'));
+        return view('merchant.shops.update',compact('sellerProfile','shopProfile',
+        'product','items','category'));
     }
 
     /**
