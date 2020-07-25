@@ -15,8 +15,8 @@ class CreateInventoryMetasTable extends Migration
     {
         Schema::create('inventory_metas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('value');
+            $table->string('name')->nullable();
+            $table->string('value')->nullable();
             $table->unsignedBigInteger('inventory_id');
             $table->unsignedBigInteger('product_id');
             // $table->unsignedBigInteger('inventory_attribute_id');

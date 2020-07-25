@@ -36,7 +36,7 @@ class InventoriesController extends Controller
 //        return view ('merchant.inventory.index',compact('inventory','item','size','color','sellerProfile','shopProfile'));
 
 
-        $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->paginate(10); 
+        $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->orderBy('product_id')->paginate(10); 
         $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
         $color              = Color::all(); 
         $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
@@ -170,6 +170,9 @@ class InventoriesController extends Controller
         $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
         $inventoryAttriCapa = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',2)->first(); 
         $inventoryMeta      = InventoryMeta::all(); 
+        //$product            = Product::with(['item_meta.attributes.options','itemimage','inventory.invenMeta','category.inventoryAttributes.options'])->where('slug',$slug)->first();
+        //dd($product);
+        //$itemImages         = $product->itemimage->groupBy('color_slug');
         return view ('merchant.inventory.edit',compact('inventory','item','size','color','shopProfile','inventoryAttriSize','inventoryAttriCapa','productAttriSize','productAttriCapa','inventoryMeta'));
     }
 
@@ -183,11 +186,11 @@ class InventoriesController extends Controller
     public function update(Request $request,$slug)
     {
         $inventory  = Inventory::where('slug',$slug)->first();
-        $inventMeta = InventoryMeta::where('id',$inventory->id)->first();
+        $inventMeta = InventoryMeta::where('inventory_id',$inventory->id)->first();
         //dd($inventMeta);
         $this->validateForm($request);
         $data = [ 
-            'color_id'      => $request->color_id,
+            'color_name'    => $request->color_name,
             'size_id'       => $request->size_id,
             'price'         => $request->price,
             'qty_stock'     => $request->qty_stock,

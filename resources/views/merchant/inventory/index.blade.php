@@ -197,13 +197,15 @@
                                                 @forelse($inventories as $row)
                                                     <tr>
                                                         <td>{{$row->color_name}}</td>
-                                                        <td class="text-left">{{$row->item->name}} <small></small></td>
+                                                        <td class="text-left">{{$row->item->name}} 
+                                                            {{-- <small>({{ $row->invenMeta->value }})</small> --}}
+                                                        </td>
                                                         <td class="text-right">{{number_format($row->price,2)}}</td>
                                                         <td class="text-right">{{$row->qty_stock}}</td>
                                                         <td class="text-right">2000</td>
                                                         <td class="">
                                                             <ul>
-                                                                <li><a href="#" id="{{ url('merchant/inventories/update/'.$row->slug.'/invertoryupdate') }}" ><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#inventoryEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
+                                                                <li><a href="{{ url('merchant/inventories/update/'.$row->slug.'/invertoryupdate') }}"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#inventoryEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
                                                                 <li>
                                                                     <form action="{{ url('/merchant/inventories/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                                         @csrf
@@ -256,7 +258,9 @@
                                                  @if($row->qty_stock <=0)
                                                     <tr>
                                                         <td>{{$row->color_name}}</td>
-                                                        <td class="text-left">{{$row->item->name}}</td>
+                                                        <td class="text-left">{{$row->item->name}}
+                                                            {{-- <small>({{ $row->invenMeta->value }})</small> --}}
+                                                        </td>
                                                         <td class="text-right">{{number_format($row->price,2)}}</td>
                                                         <td class="text-right">{{$row->qty_stock}}</td>
                                                         <td class="text-right">2000</td>
