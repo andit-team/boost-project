@@ -323,6 +323,14 @@ $('#example22').DataTable({
     ]
 });
 
+$('#example23').DataTable({
+    dom: 'Bfrtip',
+    "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
+    buttons: [
+        'csv', 'excel', 'print'
+    ]
+});
+
 
 </script>
 @stack('js')

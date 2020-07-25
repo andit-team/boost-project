@@ -242,7 +242,5 @@ class InventoriesController extends Controller
         $images = $inventory->get()->toArray();
         echo json_encode(['count' => $count,'images' => $images]);
 
-    }
-
-   
+    } 
 }

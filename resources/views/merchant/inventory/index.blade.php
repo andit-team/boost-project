@@ -70,7 +70,7 @@
 
                         <div class="col-md-6">
                             <label for="product_id">Product <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('product_id') }}</span>
-                            <select name="product_id" class="form-control px-10 js-example-basic-single" id="product_id"  autocomplete="off">
+                            <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off">
                                 <option value="" selected disabled>Select Product</option>
                                 @foreach ($item as $row)
                                     <option data-cat="{{$row->category_id}}" value="{{ $row->id }}">{{$row->name}}</option>
@@ -232,13 +232,15 @@
                                 <div class="card dashboard-table mt-0">
                                     <div class="card-body">
                                         <div class="top-sec w-50">
-                                            <input type="text" class="form-control h-48" placeholder="Search">
-                                            <select name="" id="" class="form-control">
-                                                <option value="">Category one</option>
-                                                <option value="">category two</option>
+                                            <input type="text" class="form-control h-48" id="serchOutStock" placeholder="Search">
+                                            <select name="color_id" id="color_name" class="form-control"> 
+                                                <option value="0" selected>All Color</option>
+                                                @foreach($color as $row)
+                                                  <option value="{{$row->slug}}">{{$row->name}}</option> 
+                                                @endforeach
                                             </select>
                                         </div>
-                                        <table class="table-responsive-md table mb-0 table-striped">
+                                        <table class="table-responsive-md table mb-0 table-striped" id="example23">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Color</th>
@@ -279,6 +281,10 @@
                                                 @endforelse
                                             </tbody>
                                         </table> 
+                                        <br>
+                                        <div>Showing {{ $inventories->firstItem() }} to {{ $inventories->lastItem() }}
+                                            of total {{$inventories->total()}} entries</div>
+                                        {{$inventories->links()}}
                                     </div>
                                 </div>
                             </div>
@@ -558,6 +564,27 @@
         });  
     }  
 
+    $('#serchOutStock').keyup(function(){
+    search_outstock($(this).val());
+    });
+    function search_outstock(value){
+        $('#example23 tr').each(function(){
+            var found = 'false';
+            $(this).each(function(){
+                if($(this).text().toLowerCase().indexOf(value.toLowerCase())>= 0) {
+                    found = 'true';
+                }
+            });
+            if(found == 'true'){
+                $(this).show();
+            }else{
+                $(this).hide();
+            }  
+        })
+    }
+
+   
+
 
 //    function serchColorwiseInventory(id){
 //         $.ajax({
@@ -579,11 +606,16 @@ $('#color_id').on('change',function(){
     var color = $(this).val();
 
     window.location.href = 'inventories?page=1&color='+color;
+});
+$('#color_name').on('change',function(){
+    var color = $(this).val();
+
+    window.location.href = 'inventories?page=1&color='+color;
 })
-    </script>
-    <script>
-        $('.js-example-basic-single').select2();
-    </script>
+</script> 
+<script>
+    $('.js-example-basic-single').select2();
+</script>
 @endpush
 
 
