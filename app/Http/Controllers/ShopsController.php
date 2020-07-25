@@ -67,6 +67,54 @@ class ShopsController extends Controller
         //     return view('merchant.shops.update',compact('sellerProfile','shopProfile','product','items','category'));
         // }
 
+    // public function create(Request $request)
+    // {  
+    //     $page_size=24;
+
+    //     if($request->has('page_size')){
+
+    //         $page_size=$request->page_size;
+    //     }
+
+    //     if ($page_size<24){
+    //     $page_size=24;
+    //     }
+        
+    //     //$product = Product::all();
+        
+    //     // dd($product);
+    //     //$items = Product::with('inventory')->paginate(2);
+
+    //     $category = Category::where('parent_id',0)->get();
+
+    //     $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
+    //     $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+
+
+    //     // dd($request->all());
+
+    //     $product = Product::all();
+        
+    //     $items = Product::with('inventory')->paginate($page_size);
+    //     // dd($product);
+        
+    //     if ($request->has('cat')){
+    //          $product = Product::where('category_slug', 'like', '%' . $request->cat . '%')->paginate($page_size); 
+    //         //  dd($product);        
+    //          $items = Product::with('inventory')->where('category_slug', 'like', '%' . $request->cat . '%')->paginate($page_size);          
+    //      }                 
+    //     $product =$product->sortBy('name');         
+    //     // dd($product);          
+
+    // $categories = ([
+    //     'cat'      =>request('cat'),
+    //     'sort'     => request('sort'),
+    // ]);
+       
+    //     return view('merchant.shops.update',compact('sellerProfile','shopProfile',
+    //     'product','items','category'));
+    // }
+
     public function create(Request $request)
     {  
         $page_size=24;
@@ -96,15 +144,22 @@ class ShopsController extends Controller
         $product = Product::all();
         
         $items = Product::with('inventory')->paginate($page_size);
-        // dd($product);
-        
+        //dd($product);
+
         if ($request->has('cat')){
-             $product = Product::where('category_slug', 'like', '%' . $request->cat . '%')->paginate($page_size); 
-             dd($product);        
-             $items = Product::with('inventory')->where('category_slug', 'like', '%' . $request->cat . '%')->paginate($page_size);          
+            $sub_categories_id = Category::select('id')->where('parent_id',$request->cat)->first();
+
+            // dd($sub_categories_id);
+
+             $product = Product::whereIn('category_id', $sub_categories_id)->paginate($page_size);     
+            
+            // dd($product); 
+            
+             $items = Product::with('inventory')->whereIn('category_id', $sub_categories_id)->paginate($page_size); 
+            //  dd($items);
          }                 
         $product =$product->sortBy('name');         
-        // dd($product);          
+        //dd($product);          
 
     $categories = ([
         'cat'      =>request('cat'),

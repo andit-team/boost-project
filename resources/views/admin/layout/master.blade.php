@@ -21,7 +21,7 @@
     <!-- Font Awesome-->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/fontawesome.css">
     
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
     <!-- Flag icon-->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/flag-icon.css">
 

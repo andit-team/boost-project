@@ -174,16 +174,16 @@
                                                                 </div>
                                                                 <div class="product-page-per-view">
                                                                     <select  id="page_size">
-                                                                        <option value="24">24 Products Par Page</option></a>
-                                                                        <option value="48">48 Products Par Page</option>
-                                                                        <option value="96">96 Products Par Page</option>
+                                                                        <option value="24">24 Products Per Page</option></a>
+                                                                        <option value="48">48 Products Per Page</option>
+                                                                        <option value="96">96 Products Per Page</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="product-page-filter">
 
                                                                     <select id="category">
                                                                        @foreach($category as $row)
-                                                                         <option value="{{ $row->slug }}">{{$row->name}}</option>
+                                                                         <option value="{{ $row->id }}">{{$row->name}}</option>
                                                                        @endforeach
                                                                     </select>
                                                                 </div>
