@@ -96,9 +96,10 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group margin">
-                            <label for="video_url">Brands<span>*</span></label>
-                            <select name="brand" class="form-control" id="brand">
+                            <label for="brand_id">Brands<span>*</span></label>
+                            <select name="brand_id" class="form-control" id="brand">
                                 <option value="" selected>No Brand</option>
+                                <option value="1">Nokia</option>
                             </select>
                             <span class="text-danger" id="message_video_url"></span>
                             @if ($errors->has('video_url'))

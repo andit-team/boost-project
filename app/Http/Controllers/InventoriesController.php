@@ -16,6 +16,7 @@ use Baazar;
 use App\Models\InventoryAttributeOption;
 use App\Models\InventoryMeta;
 use App\Models\InventoryAttribute;
+use Illuminate\Support\Facades\DB;
 class InventoriesController extends Controller
 {
     /**
@@ -101,7 +102,8 @@ class InventoriesController extends Controller
     {
         //dd($request->all());
         $shopId = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        $product = Product::where('user_id',Sentinel::getUser()->id)->first();
+        $product = Product::with('itemimage')->where('user_id',Sentinel::getUser()->id)->first();
+        //dd($product);
         $this->validateForm($request);
         $slug = Baazar::getUniqueSlug($inventory, $product->name);
         $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
@@ -130,10 +132,27 @@ class InventoriesController extends Controller
                 'product_id'  => $inventory->product_id,
             ];
             InventoryMeta::create($inventoryAtti);
-    
+
             if($request->images){
                 $this->addImages($request->images,$inventory->product_id,$shop);
-              }
+            }
+    
+            // if($request->hasfile('images')){ 
+            //     foreach($request->file('images') as $file){
+            //        $this->addImages($request->images,$inventory->product_id,$shop);
+                   
+            //     }
+                  
+            //   }
+            //   else{
+            //     for($i = 0; $i >= count($product->itemimage['org_img']); $i++){
+            //         DB::table('item_images')
+            //         ->insert([
+            //             'product_id' => $product->id,
+            //             'org_img' => $product->itemimage['org_img'][$i],
+            //         ]);
+            //     }
+            //   }
             Session::flash('success', 'Inventory Added Successfully!');
         }
         
