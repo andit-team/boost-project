@@ -189,10 +189,10 @@ class InventoriesController extends Controller
         $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
         $inventoryAttriCapa = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',2)->first(); 
         $inventoryMeta      = InventoryMeta::all(); 
-        //$product            = Product::with(['item_meta.attributes.options','itemimage','inventory.invenMeta','category.inventoryAttributes.options'])->where('slug',$slug)->first();
+        $product            = Product::with(['item_meta.attributes.options','itemimage','inventory.invenMeta','category.inventoryAttributes.options'])->where('slug',$slug)->first();
         //dd($product);
-        //$itemImages         = $product->itemimage->groupBy('color_slug');
-        return view ('merchant.inventory.edit',compact('inventory','item','size','color','shopProfile','inventoryAttriSize','inventoryAttriCapa','productAttriSize','productAttriCapa','inventoryMeta'));
+        $itemImages         = $product->itemimage->groupBy('color_slug');
+        return view ('merchant.inventory.edit',compact('inventory','item','itemImages','size','color','shopProfile','inventoryAttriSize','inventoryAttriCapa','productAttriSize','productAttriCapa','inventoryMeta'));
     }
 
     /**
