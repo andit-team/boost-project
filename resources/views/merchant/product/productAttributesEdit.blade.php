@@ -12,7 +12,7 @@
 @endpush
 <div class="card mb-4">
     <h5 class="card-header">Product Attributes<span class="text-danger">*</span></h5>
-    <div class="attributes-area col-md-12">
+    <div class="attributes-area col-md-12"> 
         @php $i = 2; @endphp
         @foreach ($product->item_meta as $metas)
             @if($i == 8)
@@ -38,8 +38,7 @@
                 </div>
             @endif
             @php $i++; @endphp
-        @endforeach
-        </div>
+        @endforeach 
     </div>
     <div class="text-center mt-3">
         <a class="collapsed btn btn-sm btn-secondery col-md-10 button1"><i class="fa fa-angle-double-down"></i> More</a>
