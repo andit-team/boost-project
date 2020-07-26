@@ -44,3 +44,9 @@ Route::middleware(['auth','admin'])->prefix('andbaazaradmin')->group(function ()
    Route::get('category_setup','CategorySetupController@index');
 
 });
+
+// Category import
+Route::get('categoryImport', 'CategoryExportImportController@CategoryImportView');
+Route::get('catExport', 'CategoryExportImportController@export')->name('catexport');
+Route::post('catImport', 'CategoryExportImportController@import')->name('catimport');
+
