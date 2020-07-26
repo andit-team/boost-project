@@ -231,13 +231,17 @@ class ProductsController extends Controller
         $categories         = Category::where('parent_id',0)->get();
         $subCategories      = Category::where('parent_id','!=',0)->get();
         $tag                = Tag::all(); 
+        $selected_tags      = [];
+        foreach($product->itemtag as $tags){
+          $selected_tags[$tags->id] = $tags; 
+        }
         $shopProfile        = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $productInventories = Inventory::where('product_id',$product->id)->get();
         $porductMeta        = ItemMeta::where('product_id',$product->id)->get();
         //dd($porductMeta);
        
 
-        return view ('merchant.product.edit',compact('category','itemImages','categories','item','productInventories','size','color','subCategories','product','tag','shopProfile'));
+        return view ('merchant.product.edit',compact('category','itemImages','categories','selected_tags','item','productInventories','size','color','subCategories','product','tag','shopProfile'));
     }
 
     /**
@@ -248,10 +252,11 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product){
+      //dd($request->all());
         $data = [
             'name' => $request->name,
             'email' => $request->email,
-            'image' => Baazar::fileUpload($request,'image','old_image','/uploads/product_image'),
+            // 'image' => Baazar::fileUpload($request,'image','old_image','/uploads/product_image'),
             'price' => $request->price,
             'model_no' => $request->model_no,
             'org_price' => $request->org_price,
@@ -282,7 +287,7 @@ class ProductsController extends Controller
 
         $product->update($data);
 
-        Session::flash('success', 'Product Added Successfully!');
+        Session::flash('warning', 'Product updated Successfully!');
 
         return back();
     }

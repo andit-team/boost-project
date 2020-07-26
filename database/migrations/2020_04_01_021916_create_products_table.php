@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('email')->nullable();
             $table->string('slug');
             $table->decimal('price',8,2)->default(0);
-            $table->string('model_no');
+            $table->string('model_no')->nullable();
             $table->decimal('org_price',8,2)->default(0);
             $table->integer('pack_id')->nullable();
             $table->integer('sorting')->nullable();
@@ -49,7 +49,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('brand_id')->nullable();
             $table->text('category_slug')->nullable();
-            $table->string('tag_slug');
+            $table->string('tag_slug')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

@@ -61,11 +61,15 @@
                                             <div class="col-md-8 multiple-tag">
                                                 <select class="js-example-basic-multiple form-control" name="tag_id[]" id="tad_id"  multiple="multiple">
                                                     @foreach ($tag as $row)
-                                                        <option value="{{ $row->name }}">{{$row->name}}</option>
+                                                    @if(array_key_exists($row->name,$selected_tags))
+                                                        <option value="{{ $row->name }}" selected="true">{{$row->name}}</option>
+                                                    @else 
+                                                    <option value="{{ $row->name }}">{{$row->name}}</option>   
+                                                    @endif
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> 
                                         <div class="form-group row">
                                             <label for="model_no" class="col-xl-3 col-md-4">Model No<span>*</span></label>
                                             <input type="text" class="form-control col-md-8" name="model_no" id="model_no" value="{{ old('model_no',$product->model_no) }}"  required="">
@@ -118,9 +122,12 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <button class="btn btn-sm btn-solid" type="submit">Update</button>
+                                </div>
                                 </form>
                             </div>
-
+                             
                         </div>
                     </div>
                 </section>
