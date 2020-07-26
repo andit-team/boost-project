@@ -124,9 +124,9 @@
                                             <div class="d-flex">
                                                 <!-- <button type="button" class="btn btn-primary m-1" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-edit"></i> Edit</button> -->
 
-                                                <a href="{{url('merchant/shops/update/'.$shopProfile->slug)}}" target="_blank" type="button" class="btn btn-primary m-1"><i class="fa fa-edit"></i> Edit</a>
+                                                <a href="{{url('merchant/shops/update/'.$shopProfile->slug)}}"  type="button" class="btn btn-primary m-1"><i class="fa fa-edit"></i> Edit</a>
 
-                                                <a href="{{url('shops/'.$shopProfile->slug)}}" target="_blank" type="button" class="btn btn-info m-1"><i class="fa fa-eye"></i> View</a>
+                                                <a href="{{url('shops/'.$shopProfile->slug)}}"  type="button" class="btn btn-info m-1"><i class="fa fa-eye"></i> View</a>
                                             </div>
                                             {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#facebook"> <i class="fa fa-edit"></i> Edit Your Profile</button>                                                                         --}}
                                         </div>
@@ -183,6 +183,7 @@
 
                                                                     <select id="category">
                                                                        @foreach($category as $row)
+                                                                         <option value="Select">Search Category</option>
                                                                          <option value="{{ $row->id }}">{{$row->name}}</option>
                                                                        @endforeach
                                                                     </select>

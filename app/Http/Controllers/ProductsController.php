@@ -33,9 +33,31 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-      $items = Product::where('shop_id',Baazar::shop()->id)->get();
-      return view ('merchant.product.index',compact('items'));
+    public function index(Request $request){
+      $product = Product::where('shop_id',Baazar::shop()->id)->paginate(10);
+
+      // $items = Product::with('inventory')->paginate('10');
+      
+
+      if ($request->has('cat')){
+
+        $product = Product::where('shop_id',Baazar::shop()->id)->where('category_id',$request->cat)->paginate(10);
+        // $product =Product::orderBy('status','asc')->Where('status','$request->sta')->get();
+      //  dd($product);        
+    } 
+    
+    if ($request->has('status')){
+
+      // $product = Product::where('shop_id',Baazar::shop()->id)->where('category_id',$request->cat)->paginate(10);
+      $product =Product::orderBy('status','asc')->Where('status',$request->status)->paginate(10);
+    // dd($product);        
+  } 
+    $categories = ([
+      'cat'      =>request('cat'),
+      'status'   => request('status'),
+  ]);
+
+      return view ('merchant.product.index',compact('product'));
 
     }
 
