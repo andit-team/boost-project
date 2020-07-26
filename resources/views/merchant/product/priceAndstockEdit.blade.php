@@ -182,15 +182,15 @@
         $("#sortable-main").disableSelection();
         // setup("my-awesome-dropzone-main",'main');
         var mockFile = [];
-        // @foreach($itemImages['main'] as $img)
-        //     mockFiles = {
-        //         name:'img-'+'{{$img->color_slug}}',
-        //         size:{{$img->id}},
-        //         dataURL: "{{asset('/')}}"+"{{$img->org_img}}"
-        //     }
-        //     mockFile.push(mockFiles);
-        // @endforeach
-        // setup("my-awesome-dropzone-main",'main',mockFile);
+        @foreach($itemImages['main'] as $img)
+            mockFiles = {
+                name:'img-'+'{{$img->color_slug}}',
+                size:{{$img->id}},
+                dataURL: "{{asset('/')}}"+"{{$img->org_img}}"
+            }
+            mockFile.push(mockFiles);
+        @endforeach
+        setup("my-awesome-dropzone-main",'main',mockFile);
 
         //Rendering Other images into Dropzone
         @foreach($itemImages as $color=>$imges)
