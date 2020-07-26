@@ -100,7 +100,7 @@
 
                             <div class="col-md-6">
                                 <label for="color_id">Color <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('color_name') }}</span>
-                                <select name="color_name" class="form-control" id="color_id"  autocomplete="off">
+                                <select name="color_name" class="form-control" id="color_id"  autocomplete="off" id="selectColor">
                                     <option value="" selected disabled>Select Color</option>
                                     @foreach ($color as $row)
                                         <option  value="{{ $row->slug }}"@if($row->slug == $inventory->color_name) selected @endif>{{$row->name}}</option>
@@ -110,7 +110,7 @@
 
                             <div class="col-md-12"> 
                                 <label for="" class="col-xl-3 col-md-8"></label>
-                                <div class="drops dropzone-previews"></div>
+                                <div class="drops"></div>
                                 <div class="inputs"></div> 
                             </div>
 
@@ -144,7 +144,8 @@
                                         <option value="{{ $row->option }}" @if($row->option == $inventory->invenMeta->value) selected @endif>{{$row->option}}</option>
                                     @endforeach
                                 </select>
-                                @else
+                                @else 
+
                                 @endif
                                 @endif
                                 @endforeach
@@ -187,7 +188,7 @@
 @push('js')
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
-    {{-- <script>
+    <script>
 
         //Rendering Main images into Dropzone
         $( "#sortable-main" ).sortable({
@@ -197,7 +198,7 @@
         $("#sortable-main").disableSelection();
         // setup("my-awesome-dropzone-main",'main');
         var mockFile = [];
-        @foreach($itemImages->['main']->product->inventory as $img)
+        @foreach($itemImages['main'] as $img)
             mockFiles = {
                 name:'img-'+'{{$img->color_slug}}',
                 size:{{$img->id}},
@@ -501,6 +502,6 @@
                     }
                 });
         }
-    </script> --}}
+    </script>
 @endpush
 

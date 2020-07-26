@@ -91,7 +91,7 @@ class ProductsController extends Controller
       return $slug;
     }
 
-    public function addInventory($request,$itemId,$shopId){
+    public function addInventory($request,$itemId,$shopId,$slug){
       $i = 0;
       foreach($request->inventory_price as $row){
         if($request->inventory_color){
@@ -102,6 +102,7 @@ class ProductsController extends Controller
         }
         $inventories = [
           'product_id'      => $itemId,
+          'slug'            => $slug,
           'color_id'        => $color['id'],
           'color_name'      => $color['name'],
           'qty_stock'       => is_numeric($request->inventory_qty[$i])?$request->inventory_qty[$i]:0,
@@ -188,7 +189,7 @@ class ProductsController extends Controller
               'created_at'    => now(),
           ];
         $item = Product::create($data);
-        $this->addInventory($request,$item->id,$shop->id);
+        $this->addInventory($request,$item->id,$shop->id,$item->slug);
         if($request->attribute){
           $this->addAttributes($request->attribute,$item->id);
         }

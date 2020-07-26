@@ -161,7 +161,7 @@
                 <div class="row">
                     {{-- <a href="{{ url('merchant/inventories/new') }}" class="btn btn-sm btn-solid">add inventorys</a> --}}
                     <div class="col-sm-12 col-lg-12">
-                        <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
+                        <ul class="nav nav-tabs nav-material myTab" id="top-tab" role="tablist">
                             <li class="nav-item"><a class="nav-link active show" id="top-home-tab" data-toggle="tab" href="#top-home" role="tab" aria-selected="true"><i class="icofont icofont-ui-home"></i>Active</a>
                                 <div class="material-border"></div>
                             </li>
@@ -343,6 +343,29 @@
         $( "#sortable-red").sortable({
             placeholder: "ui-state-highlight",
             revert: true,
+        });
+
+            $(function () {
+            $('#sortable-red').sortable({
+                start: function (e, ui) {
+                    // creates a temporary attribute on the element with the old index
+                    $(this).attr('dropzone-previews', ui.item.index());
+                },
+                update: function (e, ui) {
+                    // gets the new and old index then removes the temporary attribute
+                    newIndex = ui.item.index();
+                    oldIndex = $(this).attr('dropzone-previews');
+                    $(this).removeAttr('dropzone-previews');
+                    tempNew = newIndex - 1;
+                    tempoldIndex = oldIndex;
+                    if (oldIndex > newIndex) {
+                        tempNew = newIndex + 1;
+                        $("#sortable-red li:eq(" + tempNew + ")").insertAfter($("#sortable-red li:eq(" + tempoldIndex + ")"));
+                    } else {
+                        $("#sortable-red li:eq(" + tempNew + ")").insertBefore($("#sortable-red li:eq(" + tempoldIndex + ")"));
+                    }
+                }
+            });
         });
 
         //dropzone scripts
@@ -615,7 +638,16 @@ $('#color_name').on('change',function(){
     var color = $(this).val();
 
     window.location.href = 'inventories?page=1&color='+color;
-})
+});
+$(document).ready(function(){
+    $('a[data-toggle="tab"]').on('show.bs.tab', function(e) {
+        localStorage.setItem('activeTab', $(e.target).attr('href'));
+    });
+    var activeTab = localStorage.getItem('activeTab');
+    if(activeTab){
+        $('.myTab a[href="' + activeTab + '"]').tab('show');
+    }
+});
 </script> 
 <script>
     $('.js-example-basic-single').select2();
