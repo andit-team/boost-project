@@ -1,6 +1,8 @@
 @push('css')
-<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{{-- <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css"> --}}
+<link rel="stylesheet" href="{{ asset('css/dropzone.css') }}">
+{{-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> --}}
+<link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
     <style>
         .h-100{
             height: 70px !important;
@@ -151,8 +153,10 @@
 </div>
 
 @push('js')
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    {{-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> --}}
+    <script src="{{ asset('js/jquery-ui.js') }}"></script>
+    {{-- <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script> --}}
+    <script src="{{ asset('js/dropzone.js') }}"></script>
     <script>
         function setSpecialPrices(){
             var spcial_price        = $('#spcial_price').val();

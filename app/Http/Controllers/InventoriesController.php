@@ -16,6 +16,7 @@ use Baazar;
 use App\Models\InventoryAttributeOption;
 use App\Models\InventoryMeta;
 use App\Models\InventoryAttribute;
+use Illuminate\Support\Facades\DB;
 class InventoriesController extends Controller
 {
     /**
@@ -36,7 +37,7 @@ class InventoriesController extends Controller
 //        return view ('merchant.inventory.index',compact('inventory','item','size','color','sellerProfile','shopProfile'));
 
 
-        $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->paginate(10); 
+        $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->orderBy('product_id')->paginate(10); 
         $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
         $color              = Color::all(); 
         $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
@@ -101,7 +102,8 @@ class InventoriesController extends Controller
     {
         //dd($request->all());
         $shopId = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        $product = Product::where('user_id',Sentinel::getUser()->id)->first();
+        $product = Product::with('itemimage')->where('user_id',Sentinel::getUser()->id)->first();
+        //dd($product);
         $this->validateForm($request);
         $slug = Baazar::getUniqueSlug($inventory, $product->name);
         $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
@@ -130,10 +132,27 @@ class InventoriesController extends Controller
                 'product_id'  => $inventory->product_id,
             ];
             InventoryMeta::create($inventoryAtti);
-    
+
             if($request->images){
                 $this->addImages($request->images,$inventory->product_id,$shop);
-              }
+            }
+    
+            // if($request->hasfile('images')){ 
+            //     foreach($request->file('images') as $file){
+            //        $this->addImages($request->images,$inventory->product_id,$shop);
+                   
+            //     }
+                  
+            //   }
+            //   else{
+            //     for($i = 0; $i >= count($product->itemimage['org_img']); $i++){
+            //         DB::table('item_images')
+            //         ->insert([
+            //             'product_id' => $product->id,
+            //             'org_img' => $product->itemimage['org_img'][$i],
+            //         ]);
+            //     }
+            //   }
             Session::flash('success', 'Inventory Added Successfully!');
         }
         
@@ -170,6 +189,9 @@ class InventoriesController extends Controller
         $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
         $inventoryAttriCapa = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',2)->first(); 
         $inventoryMeta      = InventoryMeta::all(); 
+        //$product            = Product::with(['item_meta.attributes.options','itemimage','inventory.invenMeta','category.inventoryAttributes.options'])->where('slug',$slug)->first();
+        //dd($product);
+        //$itemImages         = $product->itemimage->groupBy('color_slug');
         return view ('merchant.inventory.edit',compact('inventory','item','size','color','shopProfile','inventoryAttriSize','inventoryAttriCapa','productAttriSize','productAttriCapa','inventoryMeta'));
     }
 
@@ -183,11 +205,11 @@ class InventoriesController extends Controller
     public function update(Request $request,$slug)
     {
         $inventory  = Inventory::where('slug',$slug)->first();
-        $inventMeta = InventoryMeta::where('id',$inventory->id)->first();
+        $inventMeta = InventoryMeta::where('inventory_id',$inventory->id)->first();
         //dd($inventMeta);
         $this->validateForm($request);
         $data = [ 
-            'color_id'      => $request->color_id,
+            'color_name'    => $request->color_name,
             'size_id'       => $request->size_id,
             'price'         => $request->price,
             'qty_stock'     => $request->qty_stock,

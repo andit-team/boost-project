@@ -47,6 +47,7 @@ class Product extends Model
       'last_ordered_at',
       'last_carted_at',
       'total_view',
+      'brand_id',
       'activated_at',
       'active',
       'user_id',

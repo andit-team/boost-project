@@ -158,6 +158,7 @@ class ProductsController extends Controller
               'video_url'     => $request->video_url,
               'category_id'   => $request->category_id,
               'category_slug' => $request->category,
+              'brand_id'      => $request->brand_id,
               'tag_slug'      => $this->tagSlug($request->tag_id),
               'status'        => 'Pending',
               'shop_id'       => $shop->id,
