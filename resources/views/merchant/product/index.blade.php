@@ -16,21 +16,22 @@
                     <div class="form-group mr-1">
                         <div class="input-group">
                             <span class="input-group-addon bg-primary p-2 font-weight-bold text-white">Category</span>
-                            <select name="" class="form-control" id="">
-                                <option value="">Computers & Laptops /Laptops/Gaming/</option>
-                                <option value="">Computers & Laptops /Laptops/PC/</option>
-                                <option value="">Category three</option>
-                                <option value="">Category four</option>
+                            <select name="" class="form-control" id="category">
+                            @foreach($product as $row)
+                                <option value="Select">Search Category</option>
+                                <option value="{{ $row->category_id }}">{{$row->category_slug}}</option>
+                            @endforeach
                             </select>
-                        </div>
-                    </div>
+                        </div>                    
+                    </div>                   
                     <div class="form-group mr-2">
                         <div class="input-group">
                             <span class="input-group-addon bg-primary p-2 font-weight-bold text-white">Status</span>
-                            <select name="" class="form-control" id="">
-                                <option value="">Active</option>
-                                <option value="">Pending</option>
-                                <option value="">Rejected</option>
+                            <select name="" class="form-control" id="status">
+                                <option value="Select">Search Status</option>
+                                <option value="Active">Active</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Rejected">Rejected</option>
                             </select>
                         </div>
                     </div>
@@ -52,7 +53,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse($items as $row)
+                        @forelse($product as $row)
                         <tr>
                             {{--
                             <th scope="row"><img src="{{asset($row->image)}}" height="50" width="50" class="blur-up lazyloaded" /></th>
@@ -119,12 +120,18 @@
                         </div>
                     </tbody>
                 </table>
+                <div class ="mt-2">
+                {{$product->links()}}
+                </div>
+               
             </div>
+            
         </div>
     </div>
 </section>
 
-@endsection @push('js')
+@endsection 
+@push('js')
 <script>
     $("#search").keyup(function () {
         var value = this.value.toLowerCase().trim();
@@ -140,5 +147,20 @@
                 });
           });
     });
+</script>
+
+<script>
+
+$('#category').on('change',function(){
+  var cat = $(this).val();
+
+  window.location.href = 'products?page=1&cat=' + cat;
+});
+
+$('#status').on('change',function(){
+  var status = $(this).val();
+
+  window.location.href = 'products?page=1&status=' + status;
+});
 </script>
 @endpush
