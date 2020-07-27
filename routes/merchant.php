@@ -53,8 +53,9 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     Route::get('/shops/update/{slug}','ShopsController@edit');
     Route::post('/shop','ShopsController@update')->name('shopUpdate');
     // Route::get('/shop','ShopsController@sort')->name('shortData');
-    Route::get('/merchant/{slug}/resubmit','MerchantController@edit');
+    // Route::get('/merchant/{slug}/resubmit','MerchantController@edit');
     Route::put('/merchant/{slug}','MerchantController@update');
+    Route::put('merchant/resubmit/{id}','MerchantController@statusUpdate');
     Route::get('/merchant/{id}','MerchantController@show');
     Route::get('dropzone', 'DropzoneController@ProductsController');
     Route::post('dropzone/store', 'DropzoneController@ProductsController')->name('dropzone.store');
