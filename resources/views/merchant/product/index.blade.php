@@ -17,8 +17,8 @@
                         <div class="input-group">
                             <span class="input-group-addon bg-primary p-2 font-weight-bold text-white">Category</span>
                             <select name="" class="form-control" id="category">
-                            @foreach($product as $row)
-                                <option value="Select">Search Category</option>
+                            <option value="Select">Search Category</option>
+                            @foreach($product as $row)                               
                                 <option value="{{ $row->category_id }}">{{$row->category_slug}}</option>
                             @endforeach
                             </select>

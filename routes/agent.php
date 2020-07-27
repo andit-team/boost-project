@@ -9,7 +9,7 @@ Route::post('become-an-agent','AgentController@becomeAnAgentPost')->name('become
 Route::get('agent-resubmit-token','AgentController@resubmitToken');
 Route::post('agent-resubmit-token','AgentController@tokenUpdate')->name('resubmitToken');
 
-Route::post('agent-varifey','AgentController@verifyToken')->name('tokenVerify');
+Route::post('agent-varifey','AgentController@verifyToken')->name('agentTokenVerify');
 
 Route::get('agent-registration','AgentController@agentRegistration');
 Route::post('agent-registration','AgentController@registrationStepOne')->name('profileRegistration');

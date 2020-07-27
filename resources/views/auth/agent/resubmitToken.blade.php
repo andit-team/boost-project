@@ -71,7 +71,7 @@
                     @endif
 
                       
-                    <form class="form-horizontal auth-form" action="{{ route('tokenVerify') }}" method="post" enctype="multipart/form-data" id="validateForm">
+                    <form class="form-horizontal auth-form" action="{{ route('agentTokenVerify') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf 
                             <div class="form-group pt-3 pb-3">
                                 <input required  name="verification_token"  type="text" id="text" maxlength="5" class="form-control font-weight-bold @error('verification_token') border-danger @enderror"  placeholder="" id="exampleInputEmail12"> 

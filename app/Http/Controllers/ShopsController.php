@@ -166,7 +166,7 @@ class ShopsController extends Controller
         'sort'     => request('sort'),
     ]);
        
-        return view('merchant.shops.update',compact('sellerProfile','shopProfile',
+        return view('merchant.shops.shop_details',compact('sellerProfile','shopProfile',
         'product','items','category'));
     }
 
