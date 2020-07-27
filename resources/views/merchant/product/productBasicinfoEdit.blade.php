@@ -70,14 +70,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="name">Category Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('name') }}</span>
-                    <input type="text" readonly class="form-control @error('category') border-danger @enderror" required name="category" value="{{ old('name') }}" id="category" placeholder="Category">
+                    <label for="name">Category Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('category_slug') }}</span>
+                    <input type="text" readonly class="form-control @error('category') border-danger @enderror" required name="category" value="{{ old('category_slug',$product->category_slug) }}" id="category" placeholder="Category">
                     <span class="text-danger" id="message_category"></span>
                     <input type="hidden" name="category_id" id="category_id">
                     <div class="position-absolute foo p-3" id="catarea" style="display: none">
                         <div class="categories search-area d-flex scroll border">
                             <div class="col-md-3 cat-level p-2 level-1">
-                                <input type="text" class="form-control" onkeyup="categorySearch(1,this)" placeholder="search">
+                            <input type="text" class="form-control" onkeyup="categorySearch(1,this)" placeholder="search">
                                 <ul class="cat-levels" id="">
                                     @foreach ($categories as $row)
                                     <li onclick="getNextLevel({{$row->id}},1,this)" value="{{ $row->id }}">{{$row->name}} <span class="float-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></li>

@@ -14,12 +14,13 @@
                 <!-- address section start -->
                 <div class="col-sm-9 register-page container">
                         <h3>Edit Product</h3>
-                            <form class="theme-form" action="{{ url('merchant/products/update'.$product->slug) }}" method="post"  enctype="multipart/form-data">
+                            <form class="theme-form" action="{{ url('merchant/products/update/'.$product->slug) }}" method="post"  enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
                                 <div>
                                         @include('merchant.product.productBasicinfoEdit')
                                         @include('merchant.product.productAttributesEdit')
+                                        <input type="hidden" name="email" value="{{ $product->email }}">
                                 </div>
                                 <div class="card mb-4">
                                     <h5 class="card-header">Detailed Description</h5>
@@ -61,7 +62,7 @@
                                             <div class="col-md-8 multiple-tag">
                                                 <select class="js-example-basic-multiple form-control" name="tag_id[]" id="tad_id"  multiple="multiple">
                                                     @foreach ($tag as $row)
-                                                    @if(array_key_exists($row->name,$selected_tags))
+                                                    @if(in_array($row->name,$selected_tags))
                                                         <option value="{{ $row->name }}" selected="true">{{$row->name}}</option>
                                                     @else 
                                                     <option value="{{ $row->name }}">{{$row->name}}</option>   

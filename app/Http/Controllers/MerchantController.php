@@ -341,6 +341,7 @@ class MerchantController extends Controller{
                 'last_visited_from' => $request->last_visited_from,
                 // 'verification_token' => $request->verification_token,
                 // 'remember_token' => $request->remember_token,
+                'status'            => 'Inactive',
                 'user_id'           => Sentinel::getUser()->id,
                 'updated_at'        => now(),
             ]);
@@ -520,6 +521,16 @@ class MerchantController extends Controller{
 
         return back();
 
+    }
+
+    public function profileDelete($id){
+        $merchantProfile = Merchant::find($id);
+        // dd($merchantProfile);
+
+        $merchantProfile->user()->delete();
+        $merchantProfile->delete();
+        session()->flash('error','Profile Deleted Successfully');
+        return back();
     }
 
 

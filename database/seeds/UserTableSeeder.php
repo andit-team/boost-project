@@ -50,5 +50,18 @@ class UserTableSeeder extends Seeder
         $role = \Sentinel::findRoleBySlug('seller');
         $role->users()->attach($user->id);
 
+        $users = [
+                'first_name'    => 'Oli',
+                'last_name'     => 'Mia',  
+                'email'         => 'and.baazar@yahoo.com',
+                'password'      => '123456', //123456
+                'type'          => 'merchant',
+                'created_at'    => now(),
+                'updated_at'    => now()
+        ];
+        $user = \Sentinel::registerAndActivate($users);
+        $role = \Sentinel::findRoleBySlug('seller');
+        $role->users()->attach($user->id);
+
     }
 }
