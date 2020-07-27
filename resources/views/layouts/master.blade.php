@@ -33,10 +33,14 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/color1.css" media="screen" id="color">
 
+     <!-- Preloader css -->
+
+    <!-- <link rel="stylesheet" type="text/css" href=" https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.3.3/css-loader.css"> -->
+
     <!-- Croppie css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/croppie.css>
 
-    <link rel="stylesheet" type="text/css" href=" https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.3.3/css-loader.css">
+   
    
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
@@ -579,7 +583,7 @@
     <!-- Fly cart js-->
     <script src="{{asset('frontend')}}/assets/js/fly-cart.js"></script>
 
-   <script  scr ="https://cdnjs.cloudflare.com/ajax/libs/PreloadJS/1.0.1/preloadjs.min.js" ></script>
+   <!-- <script  scr ="https://cdnjs.cloudflare.com/ajax/libs/PreloadJS/1.0.1/preloadjs.min.js" ></script> -->
     <!-- Theme js-->
     <script src="{{asset('frontend')}}/assets/js/script.js"></script>
     <script src="{{asset('/')}}js/validator.js"></script>

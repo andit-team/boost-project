@@ -154,7 +154,7 @@
 @endsection
 
 @push('css') 
-<link hred="{{ asset('css/summernote.min.css')}}" rel="stylesheet">
+<!-- <link hred="{{ asset('css/summernote.min.css')}}" rel="stylesheet"> -->
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 <style>
     .categoryBox{
@@ -251,7 +251,7 @@ span.select2.select2-container.select2-container--default {
 </style>
 @endpush
 @push('js') 
-,<script src="{{ asset('js/summernote.min.js') }}"></script>
+<!-- <script src="{{ asset('js/summernote.min.js') }}"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script type="text/javascript">
 
