@@ -84,6 +84,24 @@ class ShopsTableSeeder extends Seeder
                   'created_at'           => now(),
                   'updated_at'           => now()
               ],
+              [
+                'name'                 => 'Electronic House',
+                'slug'                 => 'oli',
+                'phone'                => '01719100040 ',
+                'email'                => 'electronic.house@gmail.com',
+                'web'                  => 'electronic.com',
+                'lat'                  => '22.804547506687953',
+                'lng'                  => '89.55519250793455',
+                'facebook'             => 'https://www.facebook.com/electronic',
+                'youtube'              => 'https://www.youtube.com/electronic',
+                'twitter'              => 'https://www.twitter.com/electronic',
+                'instagram'            => 'https://www.instragram.com/electronic',
+                'description'          => 'dfdghbhsfh',
+                'merchant_id'          => '5',
+                'user_id'              => '4',
+                'created_at'           => now(),
+                'updated_at'           => now()
+            ],
       ];
 
       DB::table('shops')->insert($data);

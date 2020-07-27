@@ -27,6 +27,10 @@
    max-width:1200px;
   }
 }
+
+.m-l-b{
+    margin-left: -3px!important;
+}
 </style>
 @endpush
 @include('elements.alert')
@@ -234,9 +238,13 @@
                                                             <div class="modal-footer">
                                                                 <form action="{{ url('merchant/merchant/approvement/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">
                                                                     @csrf
-                                                                    <button type="submit" class="btn btn-warning">Approve</button>
+                                                                    <button type="submit" class="btn btn-info">Approve</button>
                                                                 </form>
-                                                                <button type="button" class="btn btn-primary ml-1" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Reject</button>
+                                                                <button type="button" class="btn btn-warning ml-1" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Reject</button>
+                                                                <form action="{{ url('merchant/merchant/profiledelete/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-primary m-l-b">Hard Reject</button>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -257,7 +265,7 @@
                                                 <th width="200">Email</th>
                                                 <th width="200">Phone</th>
                                                 <th width="200">Description</th>
-                                                <th width="80" class="text-center">Action</th>
+                                                <th width="80">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -272,7 +280,7 @@
                                                     <td>{!! $row->description !!}</td>
                                                     <td class="d-flex justify-content-between">
                                                         <ul>
-                                                            <li><a href="{{ url('/merchant/merchant/'.$row->id) }}" title="Rejected" class="btn btn-sm btn-primary"  data-toggle="modal" data-target=".rejected{{$row->id}}"><i class="fa fa-close"></i>View</a> </li>
+                                                            <li><a href="{{ url('/merchant/merchant/'.$row->id) }}" title="Rejected" class="btn btn-sm btn-primary"  data-toggle="modal" data-target=".rejected{{$row->id}}">View</a> </li>
                                                         </ul>
                                                     </td>
                                                 </tr>

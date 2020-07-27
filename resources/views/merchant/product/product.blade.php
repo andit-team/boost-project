@@ -1,7 +1,7 @@
 {{-- @extends('layouts.vendor') --}}
 @extends('merchant.master')
 @section('content')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/basic.css" rel="stylesheet" type="text/css" />
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/basic.css" rel="stylesheet" type="text/css" /> -->
 <style type="text/css">
     .dropzone {
         border:2px dashed #999999;
@@ -262,7 +262,7 @@
     <!-- section end -->
 @endsection
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script> -->
 <script>
     var loadFile = function(event) {
         var output = document.getElementById('output');

@@ -42,9 +42,9 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
 
     
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/summernote.min.css')}}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{asset('/css/summernote.min.css')}}"> -->
 
-    <!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
     @stack('css')
     <style>
         .onhover-dropdown .onhover-show-div {
@@ -196,7 +196,7 @@
 
     <!-- Summernote js-->
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 
     <script src="{{ asset('/js/summernote.min.js') }}"></script>
 
