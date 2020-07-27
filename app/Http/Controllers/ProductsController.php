@@ -241,6 +241,7 @@ class ProductsController extends Controller
         //                       ->where('deleted_at',NULL)
         //                       ->get();
         // dd($itemimg);
+        //dd( $product);
 
         $category           = Category::all();
         $item               = Product::all();
@@ -272,33 +273,24 @@ class ProductsController extends Controller
     public function update(Request $request, Product $product){
       //dd($request->all());
         $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            // 'image' => Baazar::fileUpload($request,'image','old_image','/uploads/product_image'),
-            'price' => $request->price,
-            'model_no' => $request->model_no,
-            'org_price' => $request->org_price,
-            'pack_id' => $request->pack_id,
-            // 'sorting' => $request->sorting,
-            'description' => $request->description,
-            'min_order' => $request->min_order,
-            // 'available_on' => $request->available_on,
-            // 'availability' => $request->availability,
-            'made_in' => $request->made_in,
-            'sub_category' => $request->sub_category,
-            'materials' => $request->materials,
-            'labeled' => $request->labeled,
-            'video_url' => $request->video_url,
-            // 'total_sale_amount' => $request->total_sale_amount,
-            'total_order_qty' => $request->total_order_qty,
-            'last_ordered_at' => $request->last_ordered_at,
-            'last_carted_at' => $request->last_carted_at,
-            // 'total_view' => $request->total_view,
-            // 'activated_at' => $request->activated_at,
-            'category_id' => $request->category_id,
-            'tag_id'      => $request->tag_id,
-            'user_id' => Sentinel::getUser()->id,
-            'update_at' => now(),
+          'name'          => $request->name,
+          'bn_name'       => $request->bn_name, 
+          // 'image'         => $feature,
+          'price'         => is_numeric($request->price)?$request->price:0,
+          'model_no'      => $request->model_no,
+          'org_price'     => is_numeric($request->org_price)?$request->org_price:0,
+          'description'   => $request->description,
+          'email'         => $request->email,
+          'bn_description'=> $request->bn_description,
+          'min_order'     => $request->min_order,
+          'made_in'       => $request->made_in,
+          'materials'     => $request->materials,
+          'video_url'     => $request->video_url,
+          'category_id'   => $request->category_id,
+          'category_slug' => $request->category,
+          'brand_id'      => $request->brand_id,
+          'tag_slug'      => $this->tagSlug($request->tag_id), 
+          'updated_at'    => now(),
         ];
 
 
