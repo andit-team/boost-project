@@ -17,8 +17,12 @@
     <!-- Icons -->
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!-- <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/font-awesome.min.css"> -->
+
     <!--Slick slider css-->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/slick.css">
+
+    
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/slick-theme.css">
 
     <!-- Animate icon -->
@@ -36,8 +40,12 @@
     <!-- Croppie css -->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/croppie.css>
 
-    <link rel="stylesheet" type="text/css" href=" https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.3.3/css-loader.css">
-   
+
+   <link rel="stylesheet" type="text/css" href=" https://cdnjs.cloudflare.com/ajax/libs/css-loader/3.3.3/css-loader.css">
+    
+    
+    <!-- <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/preloader.min.css> -->
+
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
     @stack('css')
@@ -556,6 +564,7 @@
 
     <!-- exitintent jquery-->
     <script src="{{asset('frontend')}}/assets/js/jquery.exitintent.js"></script>
+
     <script src="{{asset('frontend')}}/assets/js/exit.js"></script>
 
     <!-- popper js-->
@@ -580,10 +589,18 @@
     <script src="{{asset('frontend')}}/assets/js/fly-cart.js"></script>
 
    <script  scr ="https://cdnjs.cloudflare.com/ajax/libs/PreloadJS/1.0.1/preloadjs.min.js" ></script>
+
+   <!-- <script src="{{asset('frontend')}}/assets/js/preloader.min.js"></script> -->
+
     <!-- Theme js-->
     <script src="{{asset('frontend')}}/assets/js/script.js"></script>
+
+
     <script src="{{asset('/')}}js/validator.js"></script>
+
+
     <script src="{{asset('/')}}js/validatorRules.js"></script>
+
     @include('elements.myjs')
     <script>   
         function openSearch() {

@@ -11,7 +11,7 @@ class ExportImportController extends Controller
 {
   public function importExportView()
    {
-      return view('merchant.inventory.import');
+    return view('merchant.inventory.import');
    }
 
    /**

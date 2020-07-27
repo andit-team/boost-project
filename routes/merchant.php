@@ -90,8 +90,11 @@ Route::post('get-upazila', 'AjaxController@getUpazila')->name('get-upazila');
 Route::post('get-union', 'AjaxController@getUnion')->name('get-union');
 Route::post('get-village', 'AjaxController@getVillage')->name('get-village');
 Route::post('get-ward', 'AjaxController@getWard')->name('get-ward');
-Route::get('importExportView', 'ExportImportController@importExportView');
-Route::get('export', 'ExportImportController@export')->name('export');
-Route::post('import', 'ExportImportController@import')->name('import');
+
+// Inventory import
+Route::get('attributeImport', 'ExportImportController@importExportView');
+Route::get('invExport', 'ExportImportController@export')->name('export');
+Route::post('invImport', 'ExportImportController@import')->name('import');
+
 
 

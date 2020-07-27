@@ -41,14 +41,10 @@ class ProductsController extends Controller
 
       if ($request->has('cat')){
 
-        $product = Product::where('shop_id',Baazar::shop()->id)->where('category_id',$request->cat)->paginate(10);
-        // $product =Product::orderBy('status','asc')->Where('status','$request->sta')->get();
-      //  dd($product);        
+        $product = Product::where('shop_id',Baazar::shop()->id)->where('category_id',$request->cat)->paginate(10);            
     } 
     
-    if ($request->has('status')){
-
-      // $product = Product::where('shop_id',Baazar::shop()->id)->where('category_id',$request->cat)->paginate(10);
+    if ($request->has('status')){   
       $product =Product::orderBy('status','asc')->Where('status',$request->status)->paginate(10);
     // dd($product);        
   } 
