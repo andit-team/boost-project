@@ -35,7 +35,7 @@
                             </select>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-info btn-sm text-white font-weight-bold" style="padding: 8px; height: 38px;">Clear</a>
+                    <a href="{{url('/merchant/products')}}" class="btn btn-info btn-sm text-white font-weight-bold" style="padding: 8px; height: 38px;">Clear</a>
                 </div>
                 <table class="table-responsive-md table mb-0 table-striped mt-2">
                     <thead>
