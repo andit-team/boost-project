@@ -140,7 +140,7 @@ class MerchantController extends Controller{
             'email'      => $request->email,
             'password' 	 => $request->password,
             'type'       => 'merchant',
-            'create-at'  => now(),
+            'create_at'  => now(),
             ]);
 
 
@@ -340,8 +340,7 @@ class MerchantController extends Controller{
                 'last_visited_at'   => now(),
                 'last_visited_from' => $request->last_visited_from,
                 // 'verification_token' => $request->verification_token,
-                // 'remember_token' => $request->remember_token,
-                'status'            => 'Inactive',
+                // 'remember_token' => $request->remember_token, 
                 'user_id'           => Sentinel::getUser()->id,
                 'updated_at'        => now(),
             ]);
@@ -524,12 +523,24 @@ class MerchantController extends Controller{
     }
 
     public function profileDelete($id){
-        $merchantProfile = Merchant::find($id);
-        // dd($merchantProfile);
-
+        $merchantProfile = Merchant::find($id); 
         $merchantProfile->user()->delete();
         $merchantProfile->delete();
         session()->flash('error','Profile Deleted Successfully');
+        return back();
+    }
+
+    public function statusUpdate(Request $request,$id){
+        $request->validate([ 
+            'yes'        => 'accepted'
+        ]);
+        $merchantProfile = Merchant::find($id); 
+        $merchantProfile->update([
+            'status' => 'Inactive',
+        ]);
+
+        session()->flash('success','Profile resubmit successfully');
+
         return back();
     }
 
