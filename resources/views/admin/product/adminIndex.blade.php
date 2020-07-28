@@ -20,7 +20,7 @@
                     <div class="col-lg-6">
                         <div class="page-header-left">
                             <h3>Product List
-                                <small>Multikart Admin panel</small>
+                                <small>Andbaazar Admin panel</small>
                             </h3>
                         </div>
                     </div>

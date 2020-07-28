@@ -303,7 +303,9 @@ class ProductsController extends Controller
     }
 
 
-
+    public function clear($id){
+       return redirect('merchant/products');
+  }
 
 
     public function productList(){ 
