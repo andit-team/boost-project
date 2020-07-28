@@ -35,26 +35,14 @@
             <div class="modal-body">
                 <form class="needs-validation" novalidate="" action="{{ url('merchant/merchant/resubmit/'.$seller->id) }}" method="post" enctype="multipart/form-data" id="myform">
                     @csrf
-                    @method('put')
-                    {{-- <div class="form">
-                      <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="validationCustom01" class="mb-1">Color Name :</label>
-                        <input type="text"  name="name" value="{{old('name',$row->name)}}" required class="form-control @error('name') border-danger @enderror">
-                            <span class="text-danger">{{ $errors->first('name') }}</span>
-                        </div>
-
-                        <div class="form-group mb-0">
-                            <label for="color_code">Color Code:</label>
-                            <input class="form-control" name="color_code" value="{{ $row->color_code }}" id="color_code" type="text" rows="5" required="">
-                              <span class="text-danger">{{ $errors->first('color_code') }}</span>
-                        </div>
-
-                    </div> --}}
+                    @method('put') 
+                    <div class="form"> 
+                    <textarea class="form-control" cols="2" rows="4">{{ $seller->rej_desc }}</textarea>
+                    </div>
                     <div class="form">
                         If you fill your all information.Please fill the yes check box and click submit.
                     </div>
-                    <div class="form-terms">
+                    <div class="form-terms mt-2">
                         <div class="custom-control custom-checkbox mr-sm-2"> 
                             <input type="checkbox" name="yes" class="custom-control-input @error('yes') border-danger @enderror" id="customControlAutosizing1">  
                             <label class="custom-control-label" for="customControlAutosizing1">Yes</label> 
