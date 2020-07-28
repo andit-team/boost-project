@@ -45,6 +45,7 @@
                     <div class="form-terms mt-2">
                         <div class="custom-control custom-checkbox mr-sm-2"> 
                             <input type="checkbox" name="yes" class="custom-control-input @error('yes') border-danger @enderror" id="customControlAutosizing1">  
+                            
                             <label class="custom-control-label" for="customControlAutosizing1">Yes</label> 
                             <br>
                             <span class="text-danger">{{ $errors->first('yes') }}</span>

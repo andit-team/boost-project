@@ -416,6 +416,15 @@ class ProductsController extends Controller
       echo $option ;
     }
 
+    public function deleteInventory(Request $request){
+      //dd($request->all());
+      $productId       = $request->productId;
+      //dd($productId);
+      //$deleteInventory = DB::table('inventories')->where('product_id',$productId)->delete();
+      // return "inventorey Successfully Deleted";
+      return Product::deleteInventory($productId);
+    }
+
 
 
     // private function validateForm($request){

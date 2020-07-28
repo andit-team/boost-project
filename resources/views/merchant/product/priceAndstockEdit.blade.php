@@ -83,15 +83,15 @@
         </div>
 
         <span class="btn btn-primary btn-sm pull-left rowAdd" data-row="1"><i class="fa fa-plus"></i> Add row</span>
-        <table class="table table-borderd">
+        <table class="table table-borderd" id="inventory">
             <thead class="">
             <tr class="inventory-head">
                 @foreach($product->category->inventoryAttributes as $in_attr)
                     <th class="inventoryAttributes">{{$in_attr->name}}</th>
                 @endforeach
-                <th width="200">Color Family</th>
-                <th width="200">Color Family</th>
-                <th colspan="2">Price<span class="text-danger"> *</span></th>
+                <th width="200">Color Family</th> 
+                <th colspan="">Price<span class="text-danger"> *</span></th>
+                <th>Special price</th>
                 <th width="100">Quantity</th>
                 <th>SellerSKU</th>
                 <th></th>
@@ -112,7 +112,8 @@
                 @endforeach
 
                 <td>
-                    <select name="inventory_color[]" class="form-control inventory_colors" data-sel="{{ strtolower($row->color_name) }}"></select>
+                    <select name="inventory_color[]" class="form-control inventory_colors" data-sel="{{ strtolower($row->color_name) }}"></select> 
+                    <input type="hidden" name="product_id" class="product_id" value="{{ $row->id }}">
                 </td>
                 <td><input type="number" class="form-control regulerPrice" placeholder="Regular price" name="inventory_price[]" id="regulerPrice" value="{{ $row->price }}"></td>
                 <td>
@@ -281,9 +282,25 @@
             $(".rowAdd").data("row",rowNo+1);
         });
 
-        $(document).on("click", "span.rowRemove ", function () {
-            $(this).closest("tr.removableRow").remove();
-            var thisRow = $(this).parents("tr");
+        $(document).on("click", "span.rowRemove ", function () { 
+            var thisRow = $(this).parents("tr"); 
+            var productId = thisRow.find('.product_id').val(); 
+            var actionUrl = '{{ url("merchant/products/single-inventory-delete/") }}';
+            var token = "{{ csrf_token() }}";
+
+            $.ajax({
+                type: "POST",
+                url: actionUrl,
+                data:{ productId:productId, _token: token},
+                success:function(data){
+
+                    console.log(data);
+                }
+            });
+            var count = $('#inventory tr').length - 1;
+            if(count>1){
+                $(this).parents("tr").remove();
+            }
             
         });
 

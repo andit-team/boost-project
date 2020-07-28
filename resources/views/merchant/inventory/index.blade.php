@@ -176,7 +176,7 @@
                                         <div class="top-sec w-50">
                                             <input type="text" name="search" class="form-control" placeholder="Search" id="search" autocomplete="off">
                                             <select name="color_id" id="color_id" class="form-control"> 
-                                                <option value="0" selected>All Color</option>
+                                                <option value="select">select color</option> 
                                                 @foreach($color as $row)
                                                   <option value="{{$row->slug}}">{{$row->name}}</option> 
                                                 @endforeach
