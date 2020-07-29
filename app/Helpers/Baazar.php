@@ -111,8 +111,8 @@ class Baazar
 
     public function base64Upload($image_file,$name,$shop,$color){
         // dd($image_file);
-        $t = substr($image_file,0,15);
-        if($t == 'data:image/png;'){
+        $t = substr($image_file,0,11);
+        if($t == 'data:image/'){
             list($type, $image_file) = explode(';', $image_file);
             list(, $image_file)      = explode(',', $image_file);
             if($this->is_base64($image_file)){
@@ -124,6 +124,7 @@ class Baazar
                 return $db_img;            
             }
         }else{
+            // dd($image_file);
             $path = explode('/public/',$image_file);
             return $path[1];
         }

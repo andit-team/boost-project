@@ -19,6 +19,7 @@ use App\Models\Shop;
 use App\Models\Inventory;
 use App\Models\InventoryMeta;
 use App\Models\ItemMeta;
+use Illuminate\Support\Str;
 use Sentinel;
 use Session;
 use Baazar;
@@ -98,7 +99,7 @@ class ProductsController extends Controller
         }
         $inventories = [
           'product_id'      => $itemId,
-          'slug'            => $slug,
+          'slug'            => Str::slug($slug.'-'.$itemId.$color['name'].rand(1000,10000)),
           'color_id'        => $color['id'],
           'color_name'      => $color['name'],
           'qty_stock'       => is_numeric($request->inventory_qty[$i])?$request->inventory_qty[$i]:0,

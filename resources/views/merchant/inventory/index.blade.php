@@ -136,6 +136,10 @@
                             <label for="qty_stock">Stock Quantity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('qty_stock') }}</span>
                             <input type="number" class="form-control inputfield" name="qty_stock" id="qty_stock" value="{{ old('qty_stock') }}">
                         </div>
+                        <div class="col-md-12 mt-1">
+                            <label for="seller_sku">SellerSku <span class="text-danger"></span></label><span class="text-danger">{{ $errors->first('seller_sku') }}</span>
+                            <input type="text" class="form-control inputfield" name="seller_sku" id="seller_sku" value="{{ old('seller_sku') }}">
+                        </div>
                         <div class="col-md-12 mt-2">
                             <h4>Special price (optional)</h4>
                             <hr>
