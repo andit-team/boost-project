@@ -13,13 +13,14 @@ class PromotionUse extends Model
 
     public function user(){
      return $this->belongsTo(User::class,'user_id');
-
+    }
     public function buyer(){
       return $this->belongsTo(Customer::class,'buyer_id');
-
+    }
     public function order(){
      return $this->belongsTo(Order::class,'order_id');
-
+    }
     public function promotion(){
       return $this->belongsTo(Promotion::class,'promotion_id');
+    }
 }
