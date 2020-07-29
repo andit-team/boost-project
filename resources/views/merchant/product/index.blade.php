@@ -19,7 +19,7 @@
                             <select name="" class="form-control" id="category">
                             <option value="Select">Search Category</option>
                             @foreach($product as $row)                               
-                                <option value="{{ $row->category_id }}">{{$row->category_slug}}</option>
+                                <option value="{{ $row->category_slug }}" selected>  {{$row->category_slug}}</option>
                             @endforeach
                             </select>
                         </div>                    
@@ -152,7 +152,8 @@
 <script>
 
 $('#category').on('change',function(){
-  var cat = $(this).val();
+  var cat = $(this).val().toLowerCase().replace(/ /g,''); 
+  alert(cat);
 
   window.location.href = 'products?page=1&cat=' + cat;
 });
