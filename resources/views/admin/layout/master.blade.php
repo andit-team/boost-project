@@ -42,12 +42,18 @@
 
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/admin.css">
+
     <link rel="stylesheet" type="text/css" href="{{asset('css')}}/custom.css">
     <!-- Datatables css-->
     {{-- <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/datatables.css"> --}}
     <!--Datepicker css-->
     <link rel="stylesheet" type="text/css" href="{{asset('css')}}/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+
+    <link rel="stylesheet" type="text/css" href="{{asset('css')}}/datatable.min.css">
+
+
+    <!-- <link rel="stylesheet" href="http://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"> -->
 
     <link href="{{ asset('/') }}css/treeview.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
@@ -259,7 +265,10 @@
 <!--Datepicker js-->
 
 {{-- <script src="{{asset('frontend')}}/assets/js/bootstrap-datepicker.min.js"></script> --}}
-<script src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+<!-- <script src="http://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script> -->
+
+<script src="{{ asset('') }}/js/datatable.min.js"></script>
 
 <script src="{{ asset('') }}/js/treeview.js"></script>
 <script src="{{asset('/')}}js/validator.js"></script>

@@ -176,7 +176,7 @@
                                         <div class="top-sec w-50">
                                             <input type="text" name="search" class="form-control" placeholder="Search" id="search" autocomplete="off">
                                             <select name="color_id" id="color_id" class="form-control"> 
-                                                <option value="0" selected>All Color</option>
+                                                <option value="select">select color</option> 
                                                 @foreach($color as $row)
                                                   <option value="{{$row->slug}}">{{$row->name}}</option> 
                                                 @endforeach
@@ -305,11 +305,14 @@
 @endsection
 @push('css')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> 
+<!-- <link rel="stylesheet" type="text/css" href="{{asset('css')}}/select2.min.css"> -->
 @endpush
 @push('js')
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+<!-- <script src="{{ asset('') }}/js/select2.min.js"></script> -->
     <script> 
         $(document).ready(function () {
             $('.size').hide();

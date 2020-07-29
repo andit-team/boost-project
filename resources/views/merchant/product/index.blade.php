@@ -17,8 +17,8 @@
                         <div class="input-group">
                             <span class="input-group-addon bg-primary p-2 font-weight-bold text-white">Category</span>
                             <select name="" class="form-control" id="category">
-                            @foreach($product as $row)
-                                <option value="Select">Search Category</option>
+                            <option value="Select">Search Category</option>
+                            @foreach($product as $row)                               
                                 <option value="{{ $row->category_id }}">{{$row->category_slug}}</option>
                             @endforeach
                             </select>
@@ -35,7 +35,7 @@
                             </select>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-info btn-sm text-white font-weight-bold" style="padding: 8px; height: 38px;">Clear</a>
+                    <a href="{{url('/merchant/products')}}" class="btn btn-info btn-sm text-white font-weight-bold" style="padding: 8px; height: 38px;">Clear</a>
                 </div>
                 <table class="table-responsive-md table mb-0 table-striped mt-2">
                     <thead>

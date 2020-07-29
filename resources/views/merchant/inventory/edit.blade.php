@@ -110,7 +110,7 @@
 
                             <div class="col-md-12"> 
                                 <label for="" class="col-xl-3 col-md-8"></label>
-                                <div class="drops"></div>
+                                <div class="drops dropzone-previews"></div>
                                 <div class="inputs"></div> 
                             </div>
 
