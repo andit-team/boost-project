@@ -139,6 +139,12 @@ class Product extends Model
             ->get();
    }
 
+   public static function deleteInventory($productId){
+     return DB::table('inventories')
+             ->where('id','=',$productId)
+             ->delete();
+   }
+
 
 
       // public static function getColorWiseImage($imgcolor){

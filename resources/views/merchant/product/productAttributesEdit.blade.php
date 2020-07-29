@@ -39,6 +39,7 @@
             @endif
             @php $i++; @endphp
         @endforeach 
+                </div>
     </div>
     <div class="text-center mt-3">
         <a class="collapsed btn btn-sm btn-secondery col-md-10 button1"><i class="fa fa-angle-double-down"></i> More</a>

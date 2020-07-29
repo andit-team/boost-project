@@ -79,6 +79,7 @@ class InventoriesController extends Controller
 
     public function addImages($images, $itemId,$shop){
         foreach($images as $color => $image){
+            ItemImage::where('color_slug',$color)->where('product_id',$itemId)->forceDelete();
           foreach($image as $img){
             $i = 0;
             $image = [
@@ -100,7 +101,7 @@ class InventoriesController extends Controller
      */
     public function store(Inventory $inventory,Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
         $shopId = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $product = Product::with('itemimage')->where('user_id',Sentinel::getUser()->id)->first();
         //dd($product);

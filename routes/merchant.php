@@ -62,10 +62,11 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     Route::get('/products','ProductsController@index')->middleware('isMerchantActive');
     Route::get('/products/new','ProductsController@create')->middleware('isMerchantActive');;
     Route::post('/products/new','ProductsController@store')->name('product.store')->middleware('isMerchantActive');;
-    Route::get('/products/view/{slug}','ProductsController@show')->middleware('isMerchantActive');;
+    Route::get('/products/view/{slug}','ProductsController@show')->middleware('isMerchantActive');
     Route::get('/products/update/{slug}/productupdate','ProductsController@edit');
-    Route::put('/products/update/{slug}','ProductsController@update');
-    Route::get('/product','ProductsController@clear');
+    Route::put('/products/update/{slug}','ProductsController@update'); 
+    Route::post('/products/single-inventory-delete','ProductsController@deleteInventory'); 
+    Route::get('/product','ProductsController@clear'); 
     Route::resource('/product','ProductsController');
     Route::get('/inventories','InventoriesController@index')->middleware('isMerchantActive');
     Route::get('/inventories/new','InventoriesController@create');

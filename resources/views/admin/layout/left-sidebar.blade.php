@@ -16,7 +16,7 @@
                 <ul class="sidebar-menu">
                     <li><a class="sidebar-header" href="{{ url('andbaazaradmin/dashboard') }}"><i data-feather="home"></i><span>Dashboard</span></a></li>
 
-                    <li class="{{ request()->is('andbaazaradmin/products/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="briefcase"></i> <span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
+                    <li class="{{ request()->is('andbaazaradmin/products/category*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="briefcase"></i> <span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
                             <li class="{{ request()->is('andbaazaradmin/products/category*') ? 'active' : '' }}">
                                 <a href="#" ><i class="fa fa-cubes"></i> <span>Categories</span> <i class="fa fa-angle-right pull-right"></i></a>
@@ -34,10 +34,10 @@
 
                             <li class="{{ request()->is('andbaazaradmin/products/brand/*') ? 'active' : '' }}"><a href="{{url('andbaazaradmin/products/brand')}}" class="{{ request()->is('andbaazaradmin/products/brand') ? 'active' : '' }}"><i class="fa fa-pencil-square-o"></i> Brand</a></li>
 
-                            <li class="{{ request()->is('andbaazaradmin/products/*') ? 'active' : '' }}"> 
+                            <li class="{{ request()->is('andbaazaradmin/products/product_list*') ? 'active' : '' }}"> 
                                 <a  href="#" class="sidebar-header"><i data-feather="menu" ></i><span>Product Request</span><i class="fa fa-angle-right pull-right"></i></a>
                                 <ul class="sidebar-submenu">
-                                    <li class="{{ request()->is('andbaazaradmin/products/product_list') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/products/product_list')}}" class="{{ request()->is('andbaazaradmin/products/product_list') ? 'active' : '' }}" ><i class="fa fa-pencil-square-o"></i> Products list</a></li>
+                                    <li class="{{ request()->is('andbaazaradmin/products/product_list/*') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/products/product_list')}}" class="{{ request()->is('andbaazaradmin/products/product_list') ? 'active' : '' }}" ><i class="fa fa-pencil-square-o"></i> Products list</a></li>
                                     <li class="{{ request()->is('andbaazaradmin/products/productlist/*') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/products/Productlist')}}" class="{{ request()->is('andbaazaradmin/products/Productlist') ? 'active' : '' }}" ><i class="fa fa-pencil-square-o"></i> Products list</a></li>
                                 </ul>
                             </li>
