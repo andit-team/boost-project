@@ -11,6 +11,8 @@ use App\Models\Geo\Division;
 use App\User;
 use App\Events\SellerRegistration;
 use App\Models\Shop;
+use App\Models\Reject;
+use App\Models\RejectValue;
 use App\Mail\VendorProfileApprovalMail;
 use App\Mail\VendorProfileAcceptMail;
 use Session;
@@ -284,6 +286,8 @@ class MerchantController extends Controller{
      */
     public function index()
     {
+        $rejectlist = Reject::all();
+
         $activesellers = Merchant::with('shop')->where('status','Active')->orderBy('id', 'DESC')->get();
 
         $requestSellers = Merchant::with('shop')->where('status','Inactive')->orderBy('id','DESC')->get();
@@ -292,7 +296,7 @@ class MerchantController extends Controller{
 
         // dd($requestSellers->shop->name);
 
-        return view('merchant.merchant.index',compact('activesellers','requestSellers','rejectSellers'));
+        return view('merchant.merchant.index',compact('activesellers','requestSellers','rejectSellers','rejectlist'));
     }
 
     /**
@@ -502,19 +506,35 @@ class MerchantController extends Controller{
     }
 
     public function rejected(Request $request,$id){
-
+// dd($request);
+        
         $data = Merchant::where('id',$id)->first();
-
-
+        // dd($data);
         $data->update([
             'status'   => 'Reject',
-            'rej_desc' => $request->rej_desc,
-        ]);
+           ]);
+        
+        $rejct_value = RejectValue::where('id',$id)->first();
 
-        $name    = $data['first_name'];
-        $surname = $data['last_name'];
-        $rej_desc = $data['rej_desc'];
-        \Mail::to($data['email'])->send(new VendorProfileRejectMail($data,$name,$surname,$rej_desc));
+        $rej_list = count($_POST['rej_desc']);
+        
+        for($i = 0; $i<$rej_list; $i++){        
+                $rejct_value=RejectValue::create([
+                'rej_desc' => $request->rej_desc[$i],
+                'merchant_id' => $data->id,
+                'user_id'     => $data->user_id,
+            ]);
+            // dd($data);
+        }
+
+
+       
+        
+
+        // $name    = $data['first_name'];
+        // $surname = $data['last_name'];
+        // $rej_desc = $data['rej_desc'];
+        // \Mail::to($data['email'])->send(new VendorProfileRejectMail($data,$name,$surname,$rej_desc));
 
         session()->flash('warning','Profile Rejected Successfully and Sent Mail to the user');
 
