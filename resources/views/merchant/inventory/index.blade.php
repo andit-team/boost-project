@@ -340,33 +340,33 @@
             })
         });
 
-        $( "#sortable-red").sortable({
-            placeholder: "ui-state-highlight",
-            revert: true,
-        });
+        // $( "#sortable-red").sortable({
+        //     placeholder: "ui-state-highlight",
+        //     revert: true,
+        // });
 
-            $(function () {
-            $('#sortable-red').sortable({
-                start: function (e, ui) {
-                    // creates a temporary attribute on the element with the old index
-                    $(this).attr('dropzone-previews', ui.item.index());
-                },
-                update: function (e, ui) {
-                    // gets the new and old index then removes the temporary attribute
-                    newIndex = ui.item.index();
-                    oldIndex = $(this).attr('dropzone-previews');
-                    $(this).removeAttr('dropzone-previews');
-                    tempNew = newIndex - 1;
-                    tempoldIndex = oldIndex;
-                    if (oldIndex > newIndex) {
-                        tempNew = newIndex + 1;
-                        $("#sortable-red li:eq(" + tempNew + ")").insertAfter($("#sortable-red li:eq(" + tempoldIndex + ")"));
-                    } else {
-                        $("#sortable-red li:eq(" + tempNew + ")").insertBefore($("#sortable-red li:eq(" + tempoldIndex + ")"));
-                    }
-                }
-            });
-        });
+        //     $(function () {
+        //     $('#sortable-red').sortable({
+        //         start: function (e, ui) {
+        //             // creates a temporary attribute on the element with the old index
+        //             $(this).attr('dropzone-previews', ui.item.index());
+        //         },
+        //         update: function (e, ui) {
+        //             // gets the new and old index then removes the temporary attribute
+        //             newIndex = ui.item.index();
+        //             oldIndex = $(this).attr('dropzone-previews');
+        //             $(this).removeAttr('dropzone-previews');
+        //             tempNew = newIndex - 1;
+        //             tempoldIndex = oldIndex;
+        //             if (oldIndex > newIndex) {
+        //                 tempNew = newIndex + 1;
+        //                 $("#sortable-red li:eq(" + tempNew + ")").insertAfter($("#sortable-red li:eq(" + tempoldIndex + ")"));
+        //             } else {
+        //                 $("#sortable-red li:eq(" + tempNew + ")").insertBefore($("#sortable-red li:eq(" + tempoldIndex + ")"));
+        //             }
+        //         }
+        //     });
+        // });
 
         //dropzone scripts
         $('#selectColor').change(function(){
@@ -397,6 +397,16 @@
                         $( "#sortable-"+color ).sortable({
                             placeholder: "ui-state-highlight",
                             revert: true,
+                            update: function( event, ui ) {
+                                $('.inputs').html('');
+                                $(this).children().each(function (index){
+                                    if(index > 0){
+                                        // var kwy = Math.floor((Math.random() * 100000) + 1);
+                                        var sr = $(this)[0].children[3].src;
+                                        $('.inputs').append(`<input type="hidden" class="image-class-${color}" name="images[${color}][]" value="${sr}">`);
+                                    }
+                                })
+                            }
                         });
                         $("#sortable-"+color ).disableSelection();
                         $('#color-'+color).addClass('d-none');
@@ -437,11 +447,15 @@
             placeholder: "ui-state-highlight",
             revert: true,
         });
+
         $("#sortable-main").disableSelection();
         // setup("my-awesome-dropzone-main",'main');
 
+        function cheee(size){
+            console.log(size+' --');
+        }
         //function
-        function setup(id,color,mockFile='') {
+        function setup(id,color,mockFile='',sss = '') {
             let options = {
             autoProcessQueue: false,
             url : '/',
@@ -466,6 +480,10 @@
                 self.on("dragleave", function(event) {});
 
                 self.on("thumbnail", function(file){
+                    // console.log($('.h-100:last-child'));
+                    // $(".h-100:last-child").attr('data-size', file.size);
+                    // cheee(file.size);
+                    sss = file.size;
                     if(file.size < 3000000){
                         $('.inputs').append(`<input type="hidden" class="image-class-${color}" name="images[${color}][]" id="id${file.size}" value="${file.dataURL}">`);
                     }else{
@@ -475,6 +493,7 @@
                 });
 
                 self.on("removedfile", function(file) {
+                    console.log(file.dataURL);
                     var i = 0;
                     $('.color-'+color+'-element').each(function(){
                         i = i+1;
@@ -482,7 +501,14 @@
                     if(i === 0){
                         $('.color-'+color).removeClass('d-none');
                     }
-                    $('#id'+file.size).remove();
+                    // $('#id'+file.size).remove();
+                    $('div.col-md-12 div.inputs input.image-class-'+color).each(function(){
+                        // console.log($(this).val());
+                        if(file.dataURL == $(this).val()){
+                        // console.log($(this).val());
+                            $(this).remove();
+                        }
+                    });
                 });
 
                 // Send file starts
@@ -518,14 +544,15 @@
                         self.emit("thumbnail", mockFile, mockFile.dataURL);
                     });
                 }
+            console.log(sss);
             },
-
             previewTemplate: `
                 <div class="drop-single color-${color}-element ui-state-default">
                 <a href="javascript:undefined;" data-dz-remove=""><i class="fa fa-trash-o"></i>&nbsp;<span>Remove</span></a>
                 <br/>
                 <span class="dz-upload" data-dz-uploadprogress></span>
-                <img class="h-100" data-dz-thumbnail/>
+                <img class="h-100" data-size="${sss}" data-dz-thumbnail/>
+                <div class="d-none size" data-dz-size></div>
                 </div>`
             };
             var myDropzone = new Dropzone(`.${id}`, options);

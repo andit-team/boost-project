@@ -105,16 +105,28 @@ class Baazar
         if(!$seller){return 'No seller registred';}
         return $seller;
     }
+    public function is_base64($s){
+          return (bool) preg_match('/^[a-zA-Z0-9\/\r\n+]*={0,2}$/', $s);
+    }
+
     public function base64Upload($image_file,$name,$shop,$color){
+        // dd($image_file);
+        $t = substr($image_file,0,15);
+        if($t == 'data:image/png;'){
             list($type, $image_file) = explode(';', $image_file);
             list(, $image_file)      = explode(',', $image_file);
-            $image_file = base64_decode($image_file);
-
-            $image_name= $name.rand().'.png';
-            $db_img = 'uploads/shops/products/'.$shop.'-'.$name.'-'.$color.'-'.$image_name;
-            $path = public_path($db_img);
-            file_put_contents($path, $image_file);
-            return $db_img;
+            if($this->is_base64($image_file)){
+                $image_file = base64_decode($image_file);
+                $image_name= $name.rand().'.png';
+                $db_img = 'uploads/shops/products/'.$shop.'-'.$name.'-'.$color.'-'.$image_name;
+                $path = public_path($db_img);
+                file_put_contents($path, $image_file);
+                return $db_img;            
+            }
+        }else{
+            $path = explode('/public/',$image_file);
+            return $path[1];
+        }
     }
 
    public function insertRecords($data, $parent_id = 0,$parent_slug = 0) {
