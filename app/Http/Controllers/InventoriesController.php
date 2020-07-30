@@ -165,7 +165,7 @@ class InventoriesController extends Controller
     public function edit($slug)
     {
         $inventory          = Inventory::where('slug',$slug)->first();
-        //dd($inventory);
+        dd($inventory);
         $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
         $shopProfile        = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size               = Size::all();

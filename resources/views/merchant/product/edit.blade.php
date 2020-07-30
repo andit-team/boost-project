@@ -63,7 +63,7 @@
                                                 <select class="js-example-basic-multiple form-control" name="tag_id[]" id="tad_id"  multiple="multiple">
                                                     @foreach ($tag as $row)
                                                     @if(in_array($row->name,$selected_tags))
-                                                        <option value="{{ $row->name }}" selected="true">{{$row->name}}</option>
+                                                        <option value="{{ $row->name }}" selected="true">{{$row->name." "}}</option>
                                                     @else 
                                                     <option value="{{ $row->name }}">{{$row->name}}</option>   
                                                     @endif
