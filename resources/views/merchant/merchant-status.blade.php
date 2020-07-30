@@ -15,7 +15,10 @@
         <p class="lead text-danger">
             Hi <b>{{Sentinel::getUser()->first_name}}</b>,<br><br>
             Sorry your account has been rejected.<br><br>
-            <b>"{{$seller->rej_desc}}"</b><br><br>
+            @foreach($seller->rejectvalue as $row)
+            <b>"{{$seller->rej_desc}}"</b>
+            @endforeach
+            <br><br>
             Please put your rich information and <a href="{{url('merchant/profile')}}">profile</a> and <a href="{{url('merchant/shop')}}">shop</a>.<br><br>
             <b>Andbaazar</b>
         </p>
@@ -37,7 +40,20 @@
                     @csrf
                     @method('put') 
                     <div class="form"> 
-                    <textarea class="form-control" cols="2" rows="4">{{ $seller->rej_desc }}</textarea>
+                   
+                    @foreach($seller->rejectvalue as $row)
+                    <label class="form-check-label" for="check1">
+                        <input type="checkbox" class="form-check-input" id="checked" name="rej_desc[]" " />{{ $seller->rej_desc }}
+                    </label>
+                    @endforeach
+
+                      <!-- <textarea class="form-control" cols="2" rows="4">
+                      @foreach($seller as $row)
+                      {{ $seller->rejectvalue->rej_desc }}
+                      @endforeach
+                      </textarea> -->
+                   
+                   
                     </div>
                     <div class="form">
                         If you fill your all information.Please fill the yes check box and click submit.
