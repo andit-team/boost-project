@@ -1,4 +1,4 @@
-@if($seller->status == 'Inactive')
+@if($sellerProfile->status == 'Inactive')
 <div class="card">
     <div class="card-body">
         <p class="lead text-danger">
@@ -9,15 +9,23 @@
     </div>
 </div>
 <br>
-@elseif($seller->status == 'Reject')
+@elseif($sellerProfile->status == 'Reject')
 <div class="card">
     <div class="card-body">
         <p class="lead text-danger">
             Hi <b>{{Sentinel::getUser()->first_name}}</b>,<br><br>
-            Sorry your account has been rejected.<br><br>
-            @foreach($seller->rejectvalue as $row)
-            <b>"{{$seller->rej_desc}}"</b>
-            @endforeach
+            Sorry your account has been rejected for.<br><br>
+
+
+           
+            @foreach($sellerProfile->rejectvalue as $row)
+            <ol>
+                 <li><b class=" text-danger">{{$row->rej_desc." "}}</b></li>
+            </ol>
+            @endforeach    
+         
+               
+               
             <br><br>
             Please put your rich information and <a href="{{url('merchant/profile')}}">profile</a> and <a href="{{url('merchant/shop')}}">shop</a>.<br><br>
             <b>Andbaazar</b>
@@ -41,18 +49,9 @@
                     @method('put') 
                     <div class="form"> 
                    
-                    @foreach($seller->rejectvalue as $row)
-                    <label class="form-check-label" for="check1">
-                        <input type="checkbox" class="form-check-input" id="checked" name="rej_desc[]" " />{{ $seller->rej_desc }}
-                    </label>
+                    @foreach($sellerProfile->rejectvalue as $row)
+                    <b>{{$row->rej_desc." "}}</b>
                     @endforeach
-
-                      <!-- <textarea class="form-control" cols="2" rows="4">
-                      @foreach($seller as $row)
-                      {{ $seller->rejectvalue->rej_desc }}
-                      @endforeach
-                      </textarea> -->
-                   
                    
                     </div>
                     <div class="form">

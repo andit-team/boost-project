@@ -21,8 +21,9 @@ class MerchantController extends Controller{
 
     public function dashboard(){
         $reject_value = RejectValue::all();
-        $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
-        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        $sellerProfile = Merchant::with('rejectvalue')->where('user_id',Sentinel::getUser()->id)->first();
+        //dd($sellerProfile);
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first(); 
        return view('vendor-deshboard',compact('sellerProfile','shopProfile','reject_value'));
     }
 
