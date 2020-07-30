@@ -268,6 +268,8 @@ class ProductsController extends Controller
         return view ('merchant.product.edit',compact('brand','category','itemImages','categories','selected_tags','item','productInventories','size','color','subCategories','product','tag','shopProfile'));
     }
 
+    
+   
     /**
      * Update the specified resource in storage.
      *
@@ -275,11 +277,9 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug){
-      //dd($request->all());
-      $product = Product::where('slug',$slug)->first();
-      //dd($product);
-      //dd($request->all());
+    public function update(Request $request, $slug,Product $item){ 
+      $product = Product::where('slug',$slug)->first(); 
+      $product->item_meta()->delete(); 
         $data = [
           'name'          => $request->name,
           'bn_name'       => $request->bn_name, 
@@ -301,9 +301,15 @@ class ProductsController extends Controller
           'updated_at'    => now(),
         ];
 
+        if($request->attribute){ 
+          $this->addAttributes($request->attribute,$product->id);
+        }
+
 
 
         $product->update($data);
+
+       
 
         Session::flash('warning', 'Product updated Successfully!');
 
