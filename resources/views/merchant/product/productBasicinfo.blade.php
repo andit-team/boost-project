@@ -98,8 +98,7 @@
                         <div class="form-group margin">
                             <label for="brand_id">Brands<span>*</span></label>
                             <select name="brand_id" class="form-control" id="brand">
-                                <option value="" selected>No Brand</option>
-                                <option value="1">Nokia</option>
+                                <option value="" selected>No Brand</option> 
                             </select>
                             <span class="text-danger" id="message_video_url"></span>
                             @if ($errors->has('video_url'))

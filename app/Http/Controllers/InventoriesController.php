@@ -164,8 +164,7 @@ class InventoriesController extends Controller
      */
     public function edit($slug)
     {
-        $inventory          = Inventory::where('slug',$slug)->first();
-        dd($inventory);
+        $inventory          = Inventory::with(['item.itemimage'])->where('slug',$slug)->first(); 
         $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
         $shopProfile        = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size               = Size::all();
@@ -192,6 +191,8 @@ class InventoriesController extends Controller
         //dd($request->all());
         $inventory  = Inventory::where('slug',$slug)->first();
         $inventMeta = InventoryMeta::where('inventory_id',$inventory->id)->first();
+        $itemImages = $inventory->item->itemimage->groupBy('color_slug');
+
         //dd($inventMeta);
          $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
         $this->validateForm($request);
@@ -212,7 +213,7 @@ class InventoriesController extends Controller
         ]; 
         $inventMeta->update($inventoryAtti);
         if($request->images){
-            $this->addImages($request->images,$inventory->product_id,$shop);
+           $productImage =  $this->addImages($request->images,$inventory->product_id,$shop);  
         }
         Session::flash('warning', 'Inventory update Successfully!');
         return redirect('merchant/inventories');

@@ -96,10 +96,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group margin">
-                            <label for="brand_id">Brands<span>*</span></label>
+                            <label for="brand_id">Brands<span></span></label>
                             <select name="brand_id" class="form-control" id="brand">
-                                <option value="" selected>No Brand</option>
-                                <option value="1">Nokia</option>
+                                <option value="" selected>No Brand</option> 
+                                @foreach($brand as $row)
+                                 <option value="{{ $row->id }}" {{ $row->id == $product->brand_id ? 'selected' : '' }} >{{ $row->name }}</option>
+                                @endforeach
                             </select>
                             <span class="text-danger" id="message_video_url"></span>
                             @if ($errors->has('video_url'))
