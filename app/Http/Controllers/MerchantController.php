@@ -20,9 +20,11 @@ use Baazar;
 class MerchantController extends Controller{
 
     public function dashboard(){
-        $sellerProfile = Merchant::where('user_id',Sentinel::getUser()->id)->first();
-        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-       return view('vendor-deshboard',compact('sellerProfile','shopProfile'));
+        $reject_value = RejectValue::all();
+        $sellerProfile = Merchant::with('rejectvalue')->where('user_id',Sentinel::getUser()->id)->first();
+        //dd($sellerProfile);
+        $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first(); 
+       return view('vendor-deshboard',compact('sellerProfile','shopProfile','reject_value'));
     }
 
     public function merchantlogin(){
@@ -442,7 +444,7 @@ class MerchantController extends Controller{
         $userprofile = Sentinel::getUser();
         $seller = Merchant::where('slug',$slug)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-        return view('merchant.merchant.edit',compact('seller','userprofile','shopProfile'));
+        return view('merchant.merchant.edit',compact('seller','userprofile','shopProfile',''));
     }
 
     public function update(Request $request, $slug)
