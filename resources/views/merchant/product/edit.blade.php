@@ -20,7 +20,7 @@
                                 <div>
                                         @include('merchant.product.productBasicinfoEdit')
                                         @include('merchant.product.productAttributesEdit')
-                                        <input type="hidden" name="email" value="{{ $product->email }}">
+                                        <input type="hidden" name="email" value="{{ $product->email }}"> 
                                 </div>
                                 <div class="card mb-4">
                                     <h5 class="card-header">Detailed Description</h5>
@@ -63,9 +63,9 @@
                                                 <select class="js-example-basic-multiple form-control" name="tag_id[]" id="tad_id"  multiple="multiple">
                                                     @foreach ($tag as $row)
                                                     @if(in_array($row->name,$selected_tags))
-                                                        <option value="{{ $row->name }}" selected="true">{{$row->name." "}}</option>
+                                                        <option value="{{ $row->name }}">{{$row->name." "}}</option>
                                                     @else 
-                                                    <option value="{{ $row->name }}">{{$row->name}}</option>   
+                                                    <option value="{{ $row->name }}" selected="true">{{$row->name}}</option>   
                                                     @endif
                                                     @endforeach
                                                 </select>

@@ -55,7 +55,7 @@
                             <span class="text-danger" id="message_bn_name"></span>
                             @if ($errors->has('bn_name'))
                                 <span class="text-danger">{{ $errors->first('bn_name') }}</span>
-                            @endif
+                            @endif 
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -73,7 +73,7 @@
                     <label for="name">Category Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('category_slug') }}</span>
                     <input type="text" readonly class="form-control @error('category') border-danger @enderror" required name="category" value="{{ old('category_slug',$product->category_slug) }}" id="category" placeholder="Category">
                     <span class="text-danger" id="message_category"></span>
-                    <input type="hidden" name="category_id" id="category_id">
+                    <input type="hidden" name="category_id" id="category_id" value="{{ old('category_id',$product->category_id) }}">
                     <div class="position-absolute foo p-3" id="catarea" style="display: none">
                         <div class="categories search-area d-flex scroll border">
                             <div class="col-md-3 cat-level p-2 level-1">
