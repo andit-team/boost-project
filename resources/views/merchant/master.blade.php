@@ -63,7 +63,6 @@
             <img src="{{asset('preloader.gif')}}" alt="preloader" width="300">
         </div>
     </div>
-
     <!-- header start -->
     <header>
         <div class="mobile-fix-option"></div>
