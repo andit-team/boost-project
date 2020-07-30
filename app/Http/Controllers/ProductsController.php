@@ -280,10 +280,13 @@ class ProductsController extends Controller
     public function update(Request $request, $slug,Product $item){ 
       $product = Product::where('slug',$slug)->first(); 
       $product->item_meta()->delete(); 
+      $product->itemimage()->delete();
+      $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
+      $feature = Baazar::base64Upload($request->images['main'][0],$slug,$shop->slug,'featured');
         $data = [
           'name'          => $request->name,
           'bn_name'       => $request->bn_name, 
-          // 'image'         => $feature,
+          'image'         => $feature,
           'price'         => is_numeric($request->price)?$request->price:0,
           'model_no'      => $request->model_no,
           'org_price'     => is_numeric($request->org_price)?$request->org_price:0,
@@ -303,6 +306,9 @@ class ProductsController extends Controller
 
         if($request->attribute){ 
           $this->addAttributes($request->attribute,$product->id);
+        }
+        if($request->images){
+          $this->addImages($request->images,$product->id,$shop);
         }
 
 
