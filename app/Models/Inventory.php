@@ -53,6 +53,7 @@ class Inventory extends Model
     public function invenMeta(){
       return $this->hasOne(InventoryMeta::class,'inventory_id');
     }
+    
 
     public static function getInventroyColor($color,$item){
       return DB::table('inventories')

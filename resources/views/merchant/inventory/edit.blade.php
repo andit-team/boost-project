@@ -59,7 +59,9 @@
         .dropzone-previews { 
             width: 1020px; 
         }
-   
+        .spanHi{
+            height: 40px!important;
+        } 
         </style>
     @endpush
     @include('elements.alert')
@@ -87,6 +89,7 @@
                         @csrf
                         @method('put') 
                         <div class="form-row">
+                            
 
                             <div class="col-md-6">
                                 <label for="product_id">Product <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('product_id') }}</span>
@@ -97,13 +100,26 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="col-md-12 d-none">
+                                <label for="color_id" class="col-xl-3 col-md-4"></label>
+                                <div id="dropzone-main" class="img-upload-area" data-color="main"><label class="mt-3"><b>Feature Images :</b><span class="text-danger" id="message_main_img"></span></label>
+                                    <div class="border m-0 collpanel drop-area row my-awesome-dropzone-main" id="sortable-main">
+                                        <span class="dz-message color-main d-none">
+                                            <h2>Drag & Drop Your Files</h2>
+                                        </span>
+                                            
+                    
+                                    </div>
+                                    <small>Remember Your featured file will be the first one.</small><br>
+                                </div>
+                            </div>
 
                             <div class="col-md-6">
                                 <label for="color_id">Color <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('color_name') }}</span>
-                                <select name="color_name" class="form-control" id="color_id"  autocomplete="off" id="selectColor">
+                                <select name="color_name" class="form-control color_id"   autocomplete="off" id="selectColor" disabled>
                                     <option value="" selected disabled>Select Color</option>
                                     @foreach ($color as $row)
-                                        <option  value="{{ $row->slug }}"@if($row->slug == $inventory->color_name) selected @endif>{{$row->name}}</option>
+                                        <option  value="{{ $row->slug }}" {{(ucfirst($row->slug) == ucfirst($inventory->color_name))? 'selected' : ''}}>{{$row->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -111,7 +127,9 @@
                             <div class="col-md-12"> 
                                 <label for="" class="col-xl-3 col-md-8"></label>
                                 <div class="drops dropzone-previews"></div>
-                                <div class="inputs"></div> 
+                                <div class="inputs">
+
+                                </div> 
                             </div>
 
                             <div class="col-md-12"> 
@@ -158,6 +176,10 @@
                                 <label for="qty_stock">Stock Quantity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('qty_stock') }}</span>
                                 <input type="number" class="form-control inputfield" name="qty_stock" id="qty_stock" value="{{ old('qty_stock',$inventory->qty_stock) }}">
                             </div>
+                            <div class="col-md-12">
+                                <label for="seller_sku">SellerSku <span class="text-danger"></span></label><span class="text-danger">{{ $errors->first('seller_sku') }}</span>
+                                <input type="text" class="form-control inputfield" name="seller_sku" id="seller_sku" value="{{ old('seller_sku',$inventory->seller_sku) }}">
+                            </div>
                             <div class="col-md-12 mt-2">
                                 <h4>Special price (optional)</h4>
                                 <hr>
@@ -170,7 +192,7 @@
                             <div class="col-md-6">
                                 <label for="" >Special price Period</label>
                                 <div class="input-group">
-                                    <input type="text" id="spcial_price_start" name="start_date" class="datepickerRange form-control inputfield" value="{{ old('start_date',$inventory->start_date) }}"><span class="input-group-addon p-2 bg-success bottom">To</span><input type="text" id="spcial_price_end" name="end_date" class="datepickerRange form-control inputfield" value="{{ old('end_date',$inventory->end_date) }}">
+                                    <input type="text" id="spcial_price_start" name="start_date" class="datepickerRange form-control inputfield" value="{{ old('start_date',$inventory->start_date) }}"><span class="input-group-addon p-2 bg-success bottom spanHi">To</span><input type="text" id="spcial_price_end" name="end_date" class="datepickerRange form-control inputfield" value="{{ old('end_date',$inventory->end_date) }}">
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -224,94 +246,9 @@
             appendDrops('{{$color}}',mockFile);
             mockFile = [];
         @endif
-        @endforeach
+        @endforeach 
 
-
-
-
-
-
-        function setSpecialPrices(){
-            var spcial_price        = $('#spcial_price').val();
-            var spcial_price_start  = $('#spcial_price_start').val();
-            var spcial_price_end    = $('#spcial_price_end').val();
-            var row = $('#setSpecialPrice').data('id');
-            if(spcial_price_start != '' && spcial_price_end != '' && spcial_price != ''){
-                if(Date.parse(spcial_price_start) >= Date.parse(spcial_price_end)){
-                    $('#spcial_price_end').val('');
-                    alert("Please select a different End Date.");
-                }else{
-                    $('tr#row-'+row+' td .input-group input.form-control').val(spcial_price);
-                    $('tr#row-'+row+' td .input-group div.days input.startday').val(spcial_price_start);
-                    $('tr#row-'+row+' td .input-group div.days input.endday').val(spcial_price_end);
-                    $('#exampleModalCenter').modal('hide');
-                }
-            }else{
-                alert("Please input all field");
-            }
-
-        }
-        function getmodal(e){
-            var row = $(e).closest('tr').data('id');
-            var is_set = parseInt($('tr#row-'+row+' td .input-group input.form-control').val())||0
-            if(is_set == 0){
-                $('#spcial_price').val('');
-                $('#spcial_price_start').val('');
-                $('#spcial_price_end').val('');
-            }else{
-                $('#spcial_price').val(is_set);
-                $('#spcial_price_start').val($('tr#row-'+row+' td .input-group div.days input.startday').val());
-                $('#spcial_price_end').val($('tr#row-'+row+' td .input-group div.days input.endday').val());
-            }
-            $('#setSpecialPrice').data('id',row);
-            $('#exampleModalCenter').modal('show');
-        }
-
-        //get inventories attributes
-
-        function getInventoryAttr(cat_id = 2){
-            $.ajax({
-                type:"Post",
-                dataType: "json",
-                url:"{{ url('merchant/get-inventory-attr/')  }}",
-                data:{ 'cat_id': cat_id, '_token' : '{{ csrf_token() }}'},
-                success:function(data){
-                    $('.inventoryAttributes').remove();
-                    $('.inventory-head').prepend(data.label);
-                    $('.firstRow').prepend(data.option);
-                }
-            })
-        }
-
-        // inventories script
-        $('.rowAdd').click(function(){
-            var rowNo = parseFloat($(this).data("row"))||1;
-            var getTr = $('tr.firstRow:first');
-            $('tbody.newRow').append("<tr data-id="+rowNo+" id='row-"+rowNo+"' class='removableRow'>"+getTr.html()+"</tr>");
-            var defaultRow = $('tr.removableRow:last');
-            defaultRow.find('select.inventory_colors').val('');
-            defaultRow.find('input.regulerPrice').val('');
-            defaultRow.find('input.special_price').val('');
-            defaultRow.find('input.number1').val('');
-            defaultRow.find('input.t1').val('');
-            $(".rowAdd").data("row",rowNo+1);
-        });
-
-        $(document).on("click", "span.rowRemove ", function () {
-            $(this).closest("tr.removableRow").remove();
-            var thisRow = $(this).parents("tr");
-            
-        });
-
-        function inventoryRows(color){
-            $('.inventory_colors').each(function(){
-                var sel = (color === $(this).data('sel'))?'selected':'';
-                var option = `<option value="${color}" ${sel} data-color="${color}">${color}</option>`;
-                $(this).append(option);
-            });
-
-        }
-
+        //get inventories attributes 
         //Drug & Drop script start
         $( "#sortable-red").sortable({
             placeholder: "ui-state-highlight",
@@ -319,9 +256,9 @@
         });
 
         //dropzone scripts
-        $('#selectColor').change(function(){
+        $('#selectColor').change(function(){  
             var flag = 0;
-            var color = $(this).val();
+            var color = $(this).val(); 
             $('.img-upload-area').each(function(){
                 if(color == $(this).data('color')){
                     flag = 1;
@@ -334,20 +271,35 @@
             }
         });
         function appendDrops(color,mockFile=''){
-            $('.drops').append(
-                    `<div id="dropzone-${color}" class="img-upload-area" data-color="${color}"><label class="mt-3">Color Family: <b>${color}</b></label>
+            $('.inputs').html('');
+            $('.drops').html(
+                    `<div id="dropzone-${color}" class="img-upload-area dropzone-previews" data-color="${color}"><label class="mt-3">Color Family: <b>${color}</b></label>
                     <span class="btn btn-sm text-danger" onclick="removeColorItem('${color}')"><i class="fa fa-trash"></i></span>
-                    <div class="border m-0 collpanel drop-area row my-awesome-dropzone${color}" id="sortable-${color}">
+                    <div class="border m-0 collpanel drop-area row my-awesome-dropzone${color} dropzone-previews" id="sortable-${color}">
                         <span class="dz-message color-${color}">
                             <h2>Drag & Drop Your Files</h2>
                         </span>
                     </div>
                     <small>Remember Your featured file will be the first one.</small><br></div>`
                 );
+                // $( "#sortable-"+color ).sortable({
+                //     placeholder: "ui-state-highlight",
+                //     revert: true,
+                // });
                 $( "#sortable-"+color ).sortable({
-                    placeholder: "ui-state-highlight",
-                    revert: true,
-                });
+                            placeholder: "ui-state-highlight",
+                            revert: true,
+                            update: function( event, ui ) {
+                                $('.inputs').html('');
+                                $(this).children().each(function (index){
+                                    if(index > 0){
+                                        // var kwy = Math.floor((Math.random() * 100000) + 1);
+                                        var sr = $(this)[0].children[3].src;
+                                        $('.inputs').append(`<input type="hidden" class="image-class-${color}" name="images[${color}][]" value="${sr}">`);
+                                    }
+                                })
+                            }
+                        });
                 $("#sortable-"+color ).disableSelection();
                 setup("my-awesome-dropzone"+color,color,mockFile);
                 inventoryRows(color);
@@ -502,6 +454,7 @@
                     }
                 });
         }
+        
     </script>
 @endpush
 

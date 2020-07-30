@@ -17,6 +17,7 @@ use App\Models\InventoryAttributeOption;
 use App\Models\InventoryMeta;
 use App\Models\InventoryAttribute;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 class InventoriesController extends Controller
 {
     /**
@@ -111,7 +112,7 @@ class InventoriesController extends Controller
         if($shop){
             $data = [
                 'product_id'    => $request->product_id,
-                'slug'          => $slug,
+                'slug'          => Str::slug($slug.'-'.rand(1000,10000)),
                 'color_name'    => $request->color_name,
                 'size_id'       => $request->size_id,
                 'price'         => $request->price,
@@ -136,24 +137,7 @@ class InventoriesController extends Controller
 
             if($request->images){
                 $this->addImages($request->images,$inventory->product_id,$shop);
-            }
-    
-            // if($request->hasfile('images')){ 
-            //     foreach($request->file('images') as $file){
-            //        $this->addImages($request->images,$inventory->product_id,$shop);
-                   
-            //     }
-                  
-            //   }
-            //   else{
-            //     for($i = 0; $i >= count($product->itemimage['org_img']); $i++){
-            //         DB::table('item_images')
-            //         ->insert([
-            //             'product_id' => $product->id,
-            //             'org_img' => $product->itemimage['org_img'][$i],
-            //         ]);
-            //     }
-            //   }
+            } 
             Session::flash('success', 'Inventory Added Successfully!');
         }
         
@@ -181,6 +165,7 @@ class InventoriesController extends Controller
     public function edit($slug)
     {
         $inventory          = Inventory::where('slug',$slug)->first();
+        //dd($inventory);
         $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
         $shopProfile        = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size               = Size::all();
@@ -189,10 +174,9 @@ class InventoriesController extends Controller
         $productAttriCapa   = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
         $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
         $inventoryAttriCapa = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',2)->first(); 
-        $inventoryMeta      = InventoryMeta::all(); 
-        $product            = Product::with(['item_meta.attributes.options','itemimage','inventory.invenMeta','category.inventoryAttributes.options'])->where('slug',$slug)->first();
-        //dd($product);
-        $itemImages         = $product->itemimage->groupBy('color_slug');
+        $inventoryMeta      = InventoryMeta::all();  
+        $itemImages         = $inventory->item->itemimage->groupBy('color_slug');
+        //dd($itemImages);
         return view ('merchant.inventory.edit',compact('inventory','item','itemImages','size','color','shopProfile','inventoryAttriSize','inventoryAttriCapa','productAttriSize','productAttriCapa','inventoryMeta'));
     }
 
@@ -205,15 +189,17 @@ class InventoriesController extends Controller
      */
     public function update(Request $request,$slug)
     {
+        //dd($request->all());
         $inventory  = Inventory::where('slug',$slug)->first();
         $inventMeta = InventoryMeta::where('inventory_id',$inventory->id)->first();
         //dd($inventMeta);
+         $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
         $this->validateForm($request);
-        $data = [ 
-            'color_name'    => $request->color_name,
+        $data = [  
             'size_id'       => $request->size_id,
             'price'         => $request->price,
             'qty_stock'     => $request->qty_stock,
+            'seller_sku'    => $request->seller_sku,
             'special_price' => $request->special_price,
             'start_date'    => $request->start_date,
             'end_date'      => $request->end_date,
@@ -225,6 +211,9 @@ class InventoriesController extends Controller
             'value'       => $request->value,  
         ]; 
         $inventMeta->update($inventoryAtti);
+        if($request->images){
+            $this->addImages($request->images,$inventory->product_id,$shop);
+        }
         Session::flash('warning', 'Inventory update Successfully!');
         return redirect('merchant/inventories');
     }
@@ -249,7 +238,7 @@ class InventoriesController extends Controller
     private function validateForm($request){
         $validatedData = $request->validate([
             //'product_id' => 'required',
-            'color_name' => 'required',
+            //'color_name' => 'required',
             'qty_stock'  => 'required',
             'price'      => 'required',
 //            'size_id' => 'required',
