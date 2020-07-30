@@ -16,16 +16,15 @@
             Hi <b>{{Sentinel::getUser()->first_name}}</b>,<br><br>
             Sorry your account has been rejected for.<br><br>
 
-
-           
+            @php $i=0; @endphp
             @foreach($sellerProfile->rejectvalue as $row)
+          
             <ol>
-                 <li><b class=" text-danger">{{$row->rej_desc." "}}</b></li>
-            </ol>
+                 <span class ="text-danger">{{ ++$i }} .</span>
+                 <li><b class=" text-danger">{{$row->rej_desc." "}}</b></li>             
+            </ol>  
             @endforeach    
-         
-               
-               
+
             <br><br>
             Please put your rich information and <a href="{{url('merchant/profile')}}">profile</a> and <a href="{{url('merchant/shop')}}">shop</a>.<br><br>
             <b>Andbaazar</b>
@@ -36,22 +35,25 @@
     </div>
 </div>
 <div class="modal fade" id="merchantStatusModal{{ $seller->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title f-w-600" id="exampleModalLabel">Re-submit</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body ">
                 <form class="needs-validation" novalidate="" action="{{ url('merchant/merchant/resubmit/'.$seller->id) }}" method="post" enctype="multipart/form-data" id="myform">
                     @csrf
                     @method('put') 
                     <div class="form"> 
-                   
+                    @php $i=0; @endphp
                     @foreach($sellerProfile->rejectvalue as $row)
-                    <b>{{$row->rej_desc." "}}</b>
-                    @endforeach
+                    <ol>
+                        <span >{{ ++$i }} .</span>
+                        <li><b ">{{$row->rej_desc." "}}</b></li>             
+                    </ol>  
+                   @endforeach 
                    
                     </div>
                     <div class="form">
