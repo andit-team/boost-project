@@ -70,6 +70,9 @@
 
                    <li><a class="sidebar-header {{ request()->is('andbaazaradmin/courier') ? 'active' : '' }}" href="{{ url('andbaazaradmin/courier') }}" ><i data-feather="send"></i><span>Courier</span></a> </li>
 
+                   
+                   <li><a class="sidebar-header {{ request()->is('andbaazaradmin/reject') ? 'active' : '' }}" href="{{ url('andbaazaradmin/reject') }}" ><i data-feather="send"></i><span>Reject List</span></a> </li>
+
                    <li><a class="sidebar-header {{ request()->is('andbaazaradmin/merchant') ? 'active' : '' }}" href="{{ url('andbaazaradmin/merchant') }}" ><i data-feather="users"></i><span>Merchant profiles</span></a> </li>
 
                    <li><a class="sidebar-header {{ request()->is('andbaazaradmin/shop') ? 'active' : '' }}" href="{{ url('andbaazaradmin/shop') }}" ><i data-feather="shopping-bag"></i><span>Shop List</span></a> </li>
