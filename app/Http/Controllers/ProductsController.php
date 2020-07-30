@@ -275,7 +275,10 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product){
+    public function update(Request $request, $slug){
+      //dd($request->all());
+      $product = Product::where('slug',$slug)->first();
+      //dd($product);
       //dd($request->all());
         $data = [
           'name'          => $request->name,
