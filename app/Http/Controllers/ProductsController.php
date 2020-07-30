@@ -20,6 +20,7 @@ use App\Models\Inventory;
 use App\Models\InventoryMeta;
 use App\Models\ItemMeta;
 use Illuminate\Support\Str;
+use App\Models\Brand;
 use Sentinel;
 use Session;
 use Baazar;
@@ -74,6 +75,7 @@ class ProductsController extends Controller
         $tag = Tag::all();
         $sellerId = Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+  
 
         return view ('merchant.product.create',compact('category','categories','item','size','color','subCategories','tag','sellerId','shopProfile','childCategory'));
     }
@@ -259,9 +261,11 @@ class ProductsController extends Controller
         $productInventories = Inventory::where('product_id',$product->id)->get();
         $porductMeta        = ItemMeta::where('product_id',$product->id)->get();
         //dd($porductMeta);
+        $brand = Brand::all();
+        //dd($brand);
        
 
-        return view ('merchant.product.edit',compact('category','itemImages','categories','selected_tags','item','productInventories','size','color','subCategories','product','tag','shopProfile'));
+        return view ('merchant.product.edit',compact('brand','category','itemImages','categories','selected_tags','item','productInventories','size','color','subCategories','product','tag','shopProfile'));
     }
 
     /**
