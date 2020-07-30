@@ -21,10 +21,10 @@ class MerchantController extends Controller{
 
     public function dashboard(){
         $reject_value = RejectValue::all();
-        $sellerProfile = Merchant::with('rejectvalue')->where('user_id',Sentinel::getUser()->id)->first();
+        $seller = Merchant::with('rejectvalue')->where('user_id',Sentinel::getUser()->id)->first();
         //dd($sellerProfile);
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first(); 
-       return view('vendor-deshboard',compact('sellerProfile','shopProfile','reject_value'));
+       return view('vendor-deshboard',compact('seller','shopProfile','reject_value'));
     }
 
     public function merchantlogin(){

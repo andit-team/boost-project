@@ -36,6 +36,7 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request){
+      $sellerProfile = Merchant::with('rejectvalue')->where('user_id',Sentinel::getUser()->id)->first();
       $product = Product::where('shop_id',Baazar::shop()->id)->paginate(10);
 
       // $items = Product::with('inventory')->paginate('10');
@@ -55,7 +56,7 @@ class ProductsController extends Controller
       'status'   => request('status'),
   ]);
 
-      return view ('merchant.product.index',compact('product'));
+      return view ('merchant.product.index',compact('product','sellerProfile'));
 
     }
 

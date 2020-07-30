@@ -1,4 +1,4 @@
-@if($sellerProfile->status == 'Inactive')
+@if($seller->status == 'Inactive')
 <div class="card">
     <div class="card-body">
         <p class="lead text-danger">
@@ -9,7 +9,7 @@
     </div>
 </div>
 <br>
-@elseif($sellerProfile->status == 'Reject')
+@elseif($seller->status == 'Reject')
 <div class="card">
     <div class="card-body">
         <p class="lead text-danger">
@@ -17,7 +17,7 @@
             Sorry your account has been rejected for.<br><br>
 
             @php $i=0; @endphp
-            @foreach($sellerProfile->rejectvalue as $row)
+            @foreach($seller->rejectvalue as $row)
           
             <ol>
                  <span class ="text-danger">{{ ++$i }} .</span>
@@ -47,25 +47,30 @@
                     @csrf
                     @method('put') 
                     <div class="form"> 
-                    @php $i=0; @endphp
-                    @foreach($sellerProfile->rejectvalue as $row)
-                    <ol>
-                        <span >{{ ++$i }} .</span>
-                        <li><b ">{{$row->rej_desc." "}}</b></li>             
-                    </ol>  
-                   @endforeach 
-                   
+           
                     </div>
                     <div class="form">
                         If you fill your all information.Please fill the yes check box and click submit.
                     </div>
                     <div class="form-terms mt-2">
                         <div class="custom-control custom-checkbox mr-sm-2"> 
-                            <input type="checkbox" name="yes" class="custom-control-input @error('yes') border-danger @enderror" id="customControlAutosizing1">  
-                            
-                            <label class="custom-control-label" for="customControlAutosizing1">Yes</label> 
+                            <!-- <input type="checkbox" name="yes" class="custom-control-input @error('yes') border-danger @enderror" id="customControlAutosizing1">  
+                            @foreach($seller->rejectvalue as $row)
+                            <label class="custom-control-label" for="customControlAutosizing1">                     
+                            <b ">{{$row->rej_desc." "}}</b>          
+                             </label> 
+                            @endforeach                                                   
                             <br>
-                            <span class="text-danger">{{ $errors->first('yes') }}</span>
+                            <span class="text-danger">{{ $errors->first('yes') }}</span> -->
+
+                           
+                            <label for="option">
+                                <span></span>
+                                @foreach($seller->rejectvalue as $row)
+                                <input type="checkbox" name="checkbox" id="option{{$row->id}}"/>
+                                <p>{{$row->rej_desc." "}}</p>
+                                @endforeach  
+                            </label> 
                         </div>
                     </div>
                     <div class="modal-footer">
