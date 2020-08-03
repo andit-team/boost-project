@@ -40,7 +40,7 @@
                            @foreach($reject as $row)
                            <tr>
                                <td>{{ ++$i }}</td>
-                               <td>{{ $row->reject_name }}</td>                            
+                               <td>{{ $row->rej_name }}</td>                            
                                <td class="d-flex justify-content-between">
                                    <ul> 
                                         <li><a href="#" id="{{ url('/andbaazaradmin/reject/'.$row->id).'/edit' }}"><button class="btn btn-sm btn-warning"  data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
@@ -70,8 +70,8 @@
                                                   <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label for="validationCustom01" class="mb-1">Reject Name :</label>
-                                                    <input type="text"  name="reject_name" value="{{old('reject_name',$row->reject_name)}}" required class="form-control @error('reject_name') border-danger @enderror">
-                                                        <span class="text-danger">{{ $errors->first('reject_name') }}</span>
+                                                    <input type="text"  name="rej_name" value="{{old('rej_name',$row->rej_name)}}" required class="form-control @error('rej_name') border-danger @enderror">
+                                                        <span class="text-danger">{{ $errors->first('rej_name') }}</span>
                                                     </div>                                                 
                                                 </div>
                                                 <div class="modal-footer">
@@ -101,8 +101,8 @@
                               <div class="col-sm-12">
                                   <div class="form-group">
                                       <label for="tag">Reject Name:</label>
-                                      <input type="text"  name="reject_name" required class="form-control @error('reject_name') border-danger @enderror">
-                                      <span class="text-danger">{{ $errors->first('reject_name') }}</span>
+                                      <input type="text"  name="rej_name" required class="form-control @error('rej_name') border-danger @enderror">
+                                      <span class="text-danger">{{ $errors->first('rej_name') }}</span>
                                   </div>
                                   <div class="text-right">
                                       <button type="submit" class="btn btn-success">Save</button>

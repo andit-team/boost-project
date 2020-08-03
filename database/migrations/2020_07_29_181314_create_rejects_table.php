@@ -15,7 +15,7 @@ class CreateRejectsTable extends Migration
     {
         Schema::create('rejects', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('reject_name');
+            $table->string('rej_name');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

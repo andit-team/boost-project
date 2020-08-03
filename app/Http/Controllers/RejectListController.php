@@ -40,7 +40,7 @@ class RejectListController extends Controller
         // dd($request->all());
         $this->validateForm($request);
           $data = [
-              'reject_name' => $request->reject_name,
+              'rej_name' => $request->rej_name,
               'user_id'     => Sentinel::getUser()->id,
               'created_at'  => now(),
           ];
@@ -82,7 +82,7 @@ class RejectListController extends Controller
     {
         $this->validateForm($request);
         $data = [
-            'reject_name' => $request->reject_name,              
+            'rej_name' => $request->rej_name,              
             'user_id'     => Sentinel::getUser()->id,
             'updated'     => now(),
         ];
@@ -106,7 +106,7 @@ class RejectListController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'reject_name' => 'required',          
+            'rej_name' => 'required',          
         ]);
  }
 }

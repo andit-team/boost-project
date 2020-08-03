@@ -515,32 +515,29 @@ class MerchantController extends Controller{
         $data->update([
             'status'   => 'Reject',
            ]);
-           
         
         $rejct_value = RejectValue::where('id',$id)->first();
-        // if ($rejct_value != null) {
-            //$rejct_value->delete();
-        // }else{
-            
-        $rej_list = count($_POST['rej_desc']);
+
+        $rej_list = count($_POST['rej_name']);
         
         for($i = 0; $i<$rej_list; $i++){        
                 $rejct_value=RejectValue::create([
-                'rej_desc' => $request->rej_desc[$i],
+                'rej_name' => $request->rej_name[$i],
                 'merchant_id' => $data->id,
                 'user_id'     => $data->user_id,
-            ]); 
+            ]);
             // dd($data);
-        // }
-    }
+        }
 
-       
-        
+        $reject = Reject::create([
+            'rej_name' => $request->rej_name,
+            'user_id'  => Sentinel::getUser()->id, 
+        ]);
 
         // $name    = $data['first_name'];
         // $surname = $data['last_name'];
-        // $rej_desc = $data['rej_desc'];
-        // \Mail::to($data['email'])->send(new VendorProfileRejectMail($data,$name,$surname,$rej_desc));
+        // $rej_name = $data['rej_name'];
+        // \Mail::to($data['email'])->send(new VendorProfileRejectMail($data,$name,$surname,$rej_name));
 
         session()->flash('warning','Profile Rejected Successfully and Sent Mail to the user');
 
@@ -552,20 +549,20 @@ class MerchantController extends Controller{
         $merchantProfile = Merchant::find($id); 
         $merchantProfile->user()->delete();
         $merchantProfile->delete();
+        $merchantProfile->rejectvalue()->delete();
         session()->flash('error','Profile Deleted Successfully');
         return back();
     }
 
     public function statusUpdate(Request $request,$id){
         $request->validate([ 
-            'checkbox'  => 'accepted'
+            'yes'        => 'accepted'
         ]);
         $merchantProfile = Merchant::find($id); 
         $merchantProfile->update([
             'status' => 'Inactive',
         ]);
 
-        $merchantProfile->rejectvalue()->delete();
         session()->flash('success','Profile resubmit successfully');
 
         return back();
