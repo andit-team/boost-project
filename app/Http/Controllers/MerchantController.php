@@ -515,9 +515,13 @@ class MerchantController extends Controller{
         $data->update([
             'status'   => 'Reject',
            ]);
+           
         
         $rejct_value = RejectValue::where('id',$id)->first();
-
+        // if ($rejct_value != null) {
+            //$rejct_value->delete();
+        // }else{
+            
         $rej_list = count($_POST['rej_desc']);
         
         for($i = 0; $i<$rej_list; $i++){        
@@ -525,10 +529,10 @@ class MerchantController extends Controller{
                 'rej_desc' => $request->rej_desc[$i],
                 'merchant_id' => $data->id,
                 'user_id'     => $data->user_id,
-            ]);
+            ]); 
             // dd($data);
-        }
-
+        // }
+    }
 
        
         
@@ -554,13 +558,14 @@ class MerchantController extends Controller{
 
     public function statusUpdate(Request $request,$id){
         $request->validate([ 
-            'yes'        => 'accepted'
+            'checkbox'  => 'accepted'
         ]);
         $merchantProfile = Merchant::find($id); 
         $merchantProfile->update([
             'status' => 'Inactive',
         ]);
 
+        $merchantProfile->rejectvalue()->delete();
         session()->flash('success','Profile resubmit successfully');
 
         return back();
