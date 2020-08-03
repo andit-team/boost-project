@@ -408,7 +408,6 @@
                                 $('.inputs').html('');
                                 $(this).children().each(function (index){
                                     if(index > 0){
-                                        // var kwy = Math.floor((Math.random() * 100000) + 1);
                                         var sr = $(this)[0].children[3].src;
                                         $('.inputs').append(`<input type="hidden" class="image-class-${color}" name="images[${color}][]" value="${sr}">`);
                                     }

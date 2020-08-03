@@ -282,6 +282,7 @@ class ProductsController extends Controller
       $product = Product::where('slug',$slug)->first(); 
       $product->item_meta()->delete(); 
       $product->itemimage()->delete();
+      $product->inventory()->delete();
       $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
       $feature = Baazar::base64Upload($request->images['main'][0],$slug,$shop->slug,'featured');
         $data = [
@@ -305,19 +306,16 @@ class ProductsController extends Controller
           'updated_at'    => now(),
         ];
 
+        $product->update($data);
+        $this->addInventory($request,$product->id,$shop->id,$product->slug);
+
         if($request->attribute){ 
           $this->addAttributes($request->attribute,$product->id);
         }
         if($request->images){
           $this->addImages($request->images,$product->id,$shop);
         }
-
-
-
-        $product->update($data);
-
-       
-
+ 
         Session::flash('warning', 'Product updated Successfully!');
 
         return back();

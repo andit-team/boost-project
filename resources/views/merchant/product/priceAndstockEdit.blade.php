@@ -105,7 +105,7 @@
                 <td class="inventoryAttributes">
                     <select name="inventoryAttr[{{$in_attr->name}}][]" class="form-control">
                         @foreach($in_attr->options as $opt)
-                            <option value="{{$opt->id}}" {{$row->invenMeta->value == $opt->option ? 'selected':''}}>{{$opt->option}}</option>
+                            <option value="{{$opt->id}}" {{$row->invenMeta->value == $opt->id ? 'selected':''}}>{{$opt->option}}</option>
                         @endforeach
                     </select>
                 </td>
