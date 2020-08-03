@@ -14,11 +14,32 @@
         <div class="faq-tab">
             <ul class="nav nav-tabs" id="top-tab" role="tablist">
                 <li class="nav-item {{$active == 'dashboard' ? 'active' : ''}}"><a  class="nav-link  {{$active == 'dashboard' ? 'active' : ''}}" href="{{ url('merchant/dashboard') }}">dashboard</a></li>
-                <!-- <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#products">products</a></li>                             -->
+                                       
 
-                <li class="nav-item"><a  class="nav-link {{$active == 'product' ? 'active' : ''}}" href="{{ url('merchant/products') }}">Products</a></li>
+                <li class="nav-item"> 
+                  <a class="nav-link collapsed text-truncate navSymbol" href="#submenu1" data-toggle="collapse" data-target="#submenu1"> <span class="d-none d-sm-inline">Products<b class="caret"></b></span></a> 
+                  <div class="collapse" id="submenu1" aria-expanded="false">
+                    <ul class="flex-column pl-2 nav">
+                      <li class="nav-item active"> 
+                        <a  class="nav-link {{$active == 'product' ? 'active' : ''}}" href="{{ url('merchant/products') }}">E-commerce Products</a>
+                        <a  class="nav-link" href="#">SME Products</a>
+                      </li>
+                    </ul>
+                  </div> 
+                </li>
                 
-                <li class="nav-item"><a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventories') }}">Inventories</a></li>
+                <li class="nav-item">
+                  <a class="nav-link collapsed text-truncate Symbol" href="#submenu2" data-toggle="collapse" data-target="#submenu2"> <span class="d-none d-sm-inline">Inventories<b class="caret"></b></span></a>
+                  {{-- <a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventories') }}">Inventories</a> --}}
+                  <div class="collapse" id="submenu2" aria-expanded="false">
+                    <ul class="flex-column pl-2 nav">
+                      <li class="nav-item active"> 
+                        <a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventories') }}">E-commerce Inventories</a>
+                        <a  class="nav-link" href="#">SME Inventories</a>
+                      </li>
+                    </ul>
+                  </div> 
+                </li>
                 
                 
                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#orders">Orders</a> </li>
@@ -43,7 +64,23 @@
     #map {
       height: 200px;
     }
-    /* Optional: Makes the sample page fill the window. */
+    /* Optional: Makes the sample page fill the window. */ 
+      .navSymbol[data-toggle].collapsed:before {
+      content: "▼";
+      float:right; 
+  }
+  .navSymbol[data-toggle]:not(.collapsed):before {
+      content: "▲";
+      float:right;
+  }
+  .Symbol[data-toggle].collapsed:before {
+      content: "▼";
+      float:right; 
+  }
+  .Symbol[data-toggle]:not(.collapsed):before {
+      content: "▲";
+      float:right;
+  }
   </style>
 @endpush
 
