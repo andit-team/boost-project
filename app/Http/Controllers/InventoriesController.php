@@ -141,7 +141,7 @@ class InventoriesController extends Controller
             Session::flash('success', 'Inventory Added Successfully!');
         }
         
-        return redirect('merchant/inventories');
+        return redirect('merchant/e-commerce/inventories');
     }
 
     /**
@@ -201,6 +201,7 @@ class InventoriesController extends Controller
             'seller_sku'    => $request->seller_sku,
             'special_price' => $request->special_price,
             'start_date'    => $request->start_date,
+            'type'          => 'e-commerce',
             'end_date'      => $request->end_date,
             'updated_at'    => now(),
         ];
@@ -214,7 +215,7 @@ class InventoriesController extends Controller
             $this->addImages($request->images,$inventory->product_id,$shop);
         }
         Session::flash('warning', 'Inventory update Successfully!');
-        return redirect('merchant/inventories');
+        return redirect('merchant/e-commerce/inventories');
     }
 
     /**
@@ -229,7 +230,7 @@ class InventoriesController extends Controller
         $inventory->delete();
 
         Session::flash('error', 'Inventory Deleted Successfully!');
-        return redirect('merchant/inventories');
+        return redirect('merchant/e-commerce/inventories');
     }
 
 

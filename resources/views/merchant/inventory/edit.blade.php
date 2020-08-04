@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('merchant.master')
 
 @section('content')
     @push('css')
@@ -65,7 +65,7 @@
         </style>
     @endpush
     @include('elements.alert')
-    @component('layouts.inc.breadcrumb')
+    {{-- @component('layouts.inc.breadcrumb')
         @slot('pageTitle')
             Vendor Dashboard
         @endslot
@@ -73,7 +73,7 @@
             <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
             <li class="breadcrumb-item active" aria-current="page">Inventory</li>
         @endslot
-    @endcomponent
+    @endcomponent --}}
 
     <!--  dashboard section start -->
     <section class="dashboard-section section-b-space">
@@ -84,8 +84,8 @@
 
             <!-- address section start -->
                 <div class="col-sm-9 contact-page register-page container">
-                    <h3>Edit Inventory</h3>
-                    <form class="theme-form" action="{{ url('merchant/inventories/update/'.$inventory->slug) }}" method="post" id="validateForm">
+                    <h3>Edit E-commerce Inventory</h3>
+                    <form class="theme-form" action="{{ url('merchant/e-commerce/inventories/update/'.$inventory->slug) }}" method="post" id="validateForm">
                         @csrf
                         @method('put') 
                         <div class="form-row">
@@ -273,8 +273,7 @@
         function appendDrops(color,mockFile=''){
             $('.inputs').html('');
             $('.drops').html(
-                    `<div id="dropzone-${color}" class="img-upload-area dropzone-previews" data-color="${color}"><label class="mt-3">Color Family: <b>${color}</b></label>
-                    <span class="btn btn-sm text-danger" onclick="removeColorItem('${color}')"><i class="fa fa-trash"></i></span>
+                    `<div id="dropzone-${color}" class="img-upload-area dropzone-previews" data-color="${color}"><label class="mt-3">Color Family: <b>${color}</b></label> 
                     <div class="border m-0 collpanel drop-area row my-awesome-dropzone${color} dropzone-previews" id="sortable-${color}">
                         <span class="dz-message color-${color}">
                             <h2>Drag & Drop Your Files</h2>
