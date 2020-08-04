@@ -27,7 +27,7 @@
 
                         <fieldset id="basic_information">
                             <div>
-                                @include('merchant.smeproduct.productBasicinfo')                              
+                            @include('merchant.product.smeProduct.productBasicinfo')                               
                                 <input type="hidden" name="email" value="{{ $sellerId->email }}">
                             </div>
                             <input type="button" name="next" class="next btn btn-primary float-right" value="Next" data-step="1"/>
@@ -51,14 +51,7 @@
                                         @if ($errors->has('description'))
                                             <span class="text-danger">{{ $errors->first('description') }}</span>
                                         @endif
-                                    </div>
-                                    <div class="form-group">                                       
-                                        <input type="text" class="form-control" name="made_in" id="made_in" required="">
-                                        <span class="text-danger" id="message_made_in"></span>
-                                        @if ($errors->has('made_in'))
-                                            <span class="text-danger">{{ $errors->first('made_in') }}</span>
-                                        @endif
-                                    </div>
+                                    </div>                                  
                                 </div>
                             </div>
                             <input type="button" name="next" class="next btn btn-primary float-right" value="Next" data-step="2" />
@@ -335,7 +328,7 @@ $(document).ready(function(){
         err = checkeEmpty('bn_name');
         err = checkeEmpty('name');
         err = checkeEmpty('category');
-        err = checkeEmpty('video_url');
+        // err = checkeEmpty('video_url');
         //err = checkUrl('video_url');
         return err;
     }

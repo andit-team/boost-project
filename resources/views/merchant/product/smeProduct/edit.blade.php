@@ -42,8 +42,8 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <label for="made_in" class="">What in the box<span class="text-danger"> *</span></label>
-                                            <input type="text" class="form-control" name="made_in" id="made_in" value="{{ $product->made_in }}" required="">
+                                            <!-- <label for="made_in" class="">What in the box<span class="text-danger"> *</span></label>
+                                            <input type="text" class="form-control" name="made_in" id="made_in" value="{{ $product->made_in }}" required=""> -->
                                             <span class="text-danger" id="message_made_in"></span>
                                             @if ($errors->has('made_in'))
                                                 <span class="text-danger">{{ $errors->first('made_in') }}</span>

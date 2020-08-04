@@ -68,8 +68,7 @@
                             @endif
                         </div>
                     </div>
-                </div>
-                <div class="col-md-12">
+                    <div class="col-md-12">
                         <div class="form-group margin">
                             <label for="video_url">Video Url<span>*</span></label>
                             <input type="text" class="form-control" name="video_url" id="video_url">
@@ -78,7 +77,8 @@
                                 <span class="text-danger">{{ $errors->first('video_url') }}</span>
                             @endif
                         </div>
-                    </div>
+                    </div>   
+                </div>
                 <div class="form-group">
                     <label for="name">Category Name<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('name') }}</span>
                     <input type="text" readonly class="form-control @error('category') border-danger @enderror" required name="category" value="{{ old('name') }}" id="category" placeholder="Category">
@@ -102,16 +102,6 @@
                             <span class="btn btn-sm btn-danger m-1" id="clear">Clear</span>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <!-- <div class="col-md-12">
-                        <div class="form-group margin">                         
-                            <span class="text-danger" id="message_video_url"></span>
-                            @if ($errors->has('video_url'))
-                                <span class="text-danger">{{ $errors->first('video_url') }}</span>
-                            @endif
-                        </div>
-                    </div> --> 
                 </div>
             </div>
         </div>
@@ -177,16 +167,16 @@
             }
         }
 
-        function getBrands(cid){
-            $.ajax({
-                type:"POST",
-                url:"{{ url('/merchant/product/get-brand/') }}",
-                data:{ 'cat': cid ,'_token':'{{csrf_token()}}'},
-                success:function(data){
-                    $('#brand').html(data);
-                }
-            });
-        }
+        // function getBrands(cid){
+        //     $.ajax({
+        //         type:"POST",
+        //         url:"{{ url('/merchant/product/get-brand/') }}",
+        //         data:{ 'cat': cid ,'_token':'{{csrf_token()}}'},
+        //         success:function(data){
+        //             $('#brand').html(data);
+        //         }
+        //     });
+        // }
         function setActive(level,e){
             var current = '';
             for(var j = level+1; j<10 ; j++){

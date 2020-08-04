@@ -81,7 +81,6 @@ class ProductsController extends Controller
         return view ('merchant.product.create',compact('category','categories','item','size','color','subCategories','tag','sellerId','shopProfile','childCategory'));
     }
 
-
     public function tagSlug($tags){
       $slug = '';
       foreach($tags as $tag){

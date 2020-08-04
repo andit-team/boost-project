@@ -55,7 +55,7 @@ class SmeProductController extends Controller
 //       'status'   => request('status'),
 //   ]);
 
-      return view ('merchant.smeproduct.index',compact('product','sellerProfile'));
+      return view ('merchant.product.smeProduct.index',compact('product','sellerProfile'));
 
    
     }
@@ -77,8 +77,7 @@ class SmeProductController extends Controller
         $tag = Tag::all();
         $sellerId = Merchant::where('user_id',Sentinel::getUser()->id)->first();
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-
-        return view ('merchant.smeproduct.create',compact('category','categories','item','size','color','subCategories','tag','sellerId','shopProfile','childCategory'));
+        return view ('merchant.product.smeProduct.create',compact('category','categories','item','size','color','subCategories','tag','sellerId','shopProfile','childCategory'));
     }
 
 
@@ -92,15 +91,115 @@ class SmeProductController extends Controller
     }
   
 
+    public function addInventory($request,$itemId,$shopId,$slug){
+        $i = 0;
+        foreach($request->inventory_price as $row){
+          if($request->inventory_color){
+            $color = Color::where('name',$request->inventory_color[$i])->first()->toArray();
+          }else{
+            $color['id'] = 0;
+            $color['name'] = 'no color';
+          }
+          $inventories = [
+            'product_id'      => $itemId,
+            'slug'            => Str::slug($slug.'-'.$itemId.$color['name'].rand(1000,10000)),
+            'color_id'        => $color['id'],
+            'color_name'      => $color['name'],
+            'qty_stock'       => is_numeric($request->inventory_qty[$i])?$request->inventory_qty[$i]:0,
+            'price'           => is_numeric($request->inventory_price[$i])?$request->inventory_price[$i]:0,
+            'special_price'   => is_numeric($request->special_price[$i])?$request->special_price[$i]:0,
+            'start_date'      => $request->startday[$i],
+            'end_date'        => $request->endday[$i],
+            'seller_sku'      => $request->seller_sku[$i],
+            'type'            => 'sme',
+            'shop_id'         => $shopId,
+            'user_id'         => Sentinel::getUser()->id,
+            'created_at'      => now(),
+          ];
+          $inventory = Inventory::create($inventories);
+          if($request->inventoryAttr){
+            foreach($request->inventoryAttr as $att=>$val){
+                $inventory_meta = [
+                  'name'        => $att,
+                  'value'       => $val[$i],
+                  'inventory_id'=> $inventory->id,
+                  'product_id'  => $itemId,
+                ];
+                InventoryMeta::create($inventory_meta);
+            }
+          }
+          $i++;
+        }
+      }
+
+      public function addImages($images, $itemId,$shop){
+        foreach($images as $color => $image){
+          foreach($image as $img){
+            $i = 0;
+            $image = [
+              'product_id' => $itemId,
+              'color_slug' => $color,
+              'sort'       => ++$i,
+              'org_img'    => Baazar::base64Upload($img,'orgimg',$shop->slug,$color),
+            ];
+            ItemImage::create($image);
+          }
+        }
+      }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Product $item, Request $request)
     {
-        //
+        $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
+        if($shop){
+          $slug = Baazar::getUniqueSlug($item,$request->name);
+          $feature = Baazar::base64Upload($request->images['main'][0],$slug,$shop->slug,'featured');
+            $data = [
+                'name'          => $request->name,
+                'bn_name'       => $request->bn_name,
+                'slug'          => $slug,
+                'image'         => $feature,
+                'price'         => is_numeric($request->price)?$request->price:0,
+                'model_no'      => $request->model_no,
+                'org_price'     => is_numeric($request->org_price)?$request->org_price:0,
+                'description'   => $request->description,
+                'email'         => $request->email,
+                'bn_description'=> $request->bn_description,
+                'type'          => 'sme',
+                'made_in'       => $request->made_in,
+                'materials'     => $request->materials,
+                'video_url'     => $request->video_url,
+                'category_id'   => $request->category_id,
+                'category_slug' => $request->category,             
+                'tag_slug'      => $this->tagSlug($request->tag_id),
+                'status'        => 'Pending',
+                'shop_id'       => $shop->id,
+                'user_id'       => Sentinel::getUser()->id,
+                'created_at'    => now(),
+            ];
+          $item = Product::create($data);
+          $this->addInventory($request,$item->id,$shop->id,$item->slug);
+          if($request->attribute){
+            $this->addAttributes($request->attribute,$item->id);
+          }
+          if($request->images){
+            $this->addImages($request->images,$item->id,$shop);
+          }
+  
+  
+          // $name = $data['name'];
+          //  \Mail::to($sellerId['email'])->send(new ProductApproveRequestMail($sellerId, $name));
+          Session::flash('success', 'Product Added Successfully!');
+         }else{
+          return view('vendor-deshboard');
+         }
+  
+          return back();
     }
 
     /**
