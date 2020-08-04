@@ -35,11 +35,11 @@
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
-  Product List
+  E-com Product
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">Product List</li>
+      <li class="breadcrumb-item active" aria-current="page"> E-commerce Product </li>
   @endslot
 @endcomponent
 <div class="container-fluid">

@@ -287,6 +287,11 @@ class SmeProductController extends Controller
         return redirect('merchant/sme/products');
     }
 
+      public function smeproductList(){ 
+        $items = Product::with('inventory')->where('type','sme')->get();  
+    return view('merchant.product.smeProduct.product_list',compact('items'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *
