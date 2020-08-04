@@ -57,7 +57,7 @@ class SmeInventoryController extends Controller
     public function create()
     {
         $inventory          = Inventory::all();
-        $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
+        $item               = Product::where('user_id',Sentinel::getUser()->id)->where('type','sme')->get();
         $shopProfile        = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size               = Size::all();
         $color              = Color::all(); 
@@ -209,6 +209,11 @@ class SmeInventoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $smeInventroy = Inventory::find($id); 
+        $smeInventroy->delete();
+
+        Session::flash('error', 'SME Inventory Delete Successfully!');
+
+        return redirect('merchant/sme/inventories');
     }
 }

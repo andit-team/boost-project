@@ -110,7 +110,7 @@ class ProductsController extends Controller
           'start_date'      => $request->startday[$i],
           'end_date'        => $request->endday[$i],
           'seller_sku'      => $request->seller_sku[$i],
-          'type'            => 'e-commerce',
+          'type'            => 'ecommerce',
           'shop_id'         => $shopId,
           'user_id'         => Sentinel::getUser()->id,
           'created_at'      => now(),

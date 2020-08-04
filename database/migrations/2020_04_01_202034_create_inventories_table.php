@@ -28,7 +28,7 @@ class CreateInventoriesTable extends Migration
             $table->integer('sort')->nullable();
             $table->unsignedBigInteger('shop_id')->nullable();
             $table->string('available_on')->nullable();
-            $table->enum('type',['e-commerce','sme']);
+            $table->enum('type',['ecommerce','sme']);
             $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id');
             $table->softDeletes();

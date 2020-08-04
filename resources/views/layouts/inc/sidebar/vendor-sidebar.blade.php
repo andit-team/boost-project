@@ -22,7 +22,7 @@
                     <ul class="flex-column pl-2 nav">
                       <li class="nav-item"> 
                         <a  class="nav-link {{$active == 'product' ? 'active' : ''}}" href="{{ url('merchant/products') }}">E-commerce Products</a>
-                        <a  class="nav-link {{$active == 'smeProduct' ? 'active' : ''}}" href="{{ url('merchant/sme/products') }}">SME Products</a>
+                        <a  class="nav-link {{$active == 'sme/product' ? 'active' : ''}}" href="{{ url('merchant/sme/products') }}">SME Products</a>
                       </li>
                     </ul>
                   </div> 
