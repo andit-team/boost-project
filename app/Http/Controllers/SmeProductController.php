@@ -208,10 +208,22 @@ class SmeProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    public function show(Product $product){
+      $product      = Product::with('itemimage')->where('slug',$product->slug)->where('type','sme')->first();
+      $productImage = ItemImage::where('color_slug','main')->where('product_id',$product->id)->limit(5)->get();
+      //dd($productImage);
+      $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
+      $productCapasize = InventoryMeta::where('product_id',$product->id)->get();
+      $imageColor  = ItemImage::select('color_slug')->where('color_slug','!=','main')->where('product_id',$product->id)->distinct()->get();
+      // dd($imageColor);
+
+      return view('merchant.product.smeProduct.show',compact('product','shopProfile','productImage','productCapasize','imageColor'));
+  }
+
+  public function smeproductList(){ 
+    $items = Product::with('inventory')->where('type','sme')->get();  
+   return view('merchant.product.smeProduct.product_list',compact('items'));
+   }
 
     /**
      * Show the form for editing the specified resource.
@@ -285,11 +297,6 @@ class SmeProductController extends Controller
         Session::flash('warning', 'SME Product updated Successfully!');
 
         return redirect('merchant/sme/products');
-    }
-
-      public function smeproductList(){ 
-        $items = Product::with('inventory')->where('type','sme')->get();  
-    return view('merchant.product.smeProduct.product_list',compact('items'));
     }
 
     /**
