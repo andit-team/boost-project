@@ -25,11 +25,11 @@ class CreateProductsTable extends Migration
             $table->decimal('org_price',8,2)->default(0);
             $table->integer('pack_id')->nullable();
             $table->integer('sorting')->nullable();
-            $table->enum('type',['sme','ecommerce'])->default('ecommerce');
+            $table->enum('type',['sme','ecommerce']);
             $table->text('description')->nullable();
             $table->text('bn_description')->nullable();
             $table->text('rej_desc')->nullable();
-            $table->integer('min_order')->default(0);
+            // $table->integer('min_order')->nullable();
             $table->date('available_on')->nullable();
             $table->enum('availability',['Yes','No'])->default('Yes');
             // $table->string('availability');
