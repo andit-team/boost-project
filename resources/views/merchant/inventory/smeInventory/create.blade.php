@@ -74,7 +74,7 @@
                             <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off">
                                 <option value="" selected disabled>Select Product</option>
                                 @foreach ($item as $row)
-                                    <option data-cat="{{$row->category_id}}" value="{{ $row->id }}">{{$row->name}}</option>
+                                    <option  value="{{ $row->id }}">{{$row->name}}</option>
                                 @endforeach
                             </select>
                         </div>

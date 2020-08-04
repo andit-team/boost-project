@@ -30,7 +30,7 @@ class SmeInventoryController extends Controller
     {
         
         $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->where('type','sme')->orderBy('product_id')->paginate(10); 
-        $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
+        $item               = Product::where('user_id',Sentinel::getUser()->id)->where('type','sme')->get();
         $color              = Color::all(); 
         $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
         $productAttriSize   = InventoryAttributeOption::where('inventory_attribute_id',1)->get();
