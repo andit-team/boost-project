@@ -33,7 +33,7 @@
                   <div class="collapse" id="submenu2" aria-expanded="false">
                     <ul class="flex-column pl-2 nav">
                       <li class="nav-item"> 
-                        <a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventories') }}">E-commerce Inventories</a>
+                        <a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/e-commerce/inventories') }}">E-commerce Inventories</a>
                         <a  class="nav-link" href="#">SME Inventories</a>
                       </li>
                     </ul>

@@ -26,6 +26,7 @@ class Inventory extends Model
       'end_date',
       'seller_sku',
       'sort',
+      'type',
       'shop_id',
       'available_on',
       'active',

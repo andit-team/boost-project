@@ -69,15 +69,15 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     Route::get('/product','ProductsController@clear'); 
     Route::resource('/product','ProductsController');
     Route::get('/inventories','InventoriesController@index')->middleware('isMerchantActive');
-    Route::get('/inventories/new','InventoriesController@create');
-    Route::post('/inventories/new','InventoriesController@store')->name('inventory.store');
+    Route::get('/e-commerce/inventories/new','InventoriesController@create');
+    Route::post('/e-commerce/inventories/new','InventoriesController@store')->name('inventory.store');
     Route::get('/inventories/view/{slug}','InventoriesController@show');
-    Route::get('/inventories/update/{slug}/invertoryupdate','InventoriesController@edit');
-    Route::put('/inventories/update/{slug}','InventoriesController@update');
+    Route::get('/e-commerce/inventories/update/{slug}/invertoryupdate','InventoriesController@edit');
+    Route::put('/e-commerce/inventories/update/{slug}','InventoriesController@update');
     Route::get('/inventories/inventoryAttrioption/{id}','InventoriesController@inventoryAttrioption');
     Route::get('/inventories/inventorycolor','InventoriesController@inventoryColor');
     Route::get('/inventories/inventory/{id}','AjaxController@searchColorWiseInventory');
-    Route::resource('/inventories','InventoriesController');
+    Route::resource('/e-commerce/inventories','InventoriesController');
     Route::post('get-inventory-attr','InventoryAttributeController@getInventoryAttr');
     Route::post('get-category-attr','CategoriesController@getCategoryAttr');
 
