@@ -34,7 +34,7 @@
                     <ul class="flex-column pl-2 nav">
                       <li class="nav-item"> 
                         <a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/e-commerce/inventories') }}">E-commerce Inventories</a>
-                        <a  class="nav-link" href="#">SME Inventories</a>
+                        <a  class="nav-link {{$active == 'smeInventory' ? 'active' : ''}}" href="{{ url('merchant/sme/inventories') }}">SME Inventories</a>
                       </li>
                     </ul>
                   </div> 

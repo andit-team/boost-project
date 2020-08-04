@@ -38,7 +38,7 @@ class InventoriesController extends Controller
 //        return view ('merchant.inventory.index',compact('inventory','item','size','color','sellerProfile','shopProfile'));
 
 
-        $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->orderBy('product_id')->paginate(10); 
+        $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->where('type','e-commerce')->orderBy('product_id')->paginate(10); 
         $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
         $color              = Color::all(); 
         $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
@@ -120,6 +120,7 @@ class InventoriesController extends Controller
                 'special_price' => $request->special_price,
                 'start_date'    => $request->start_date,
                 'end_date'      => $request->end_date,
+                'type'          => 'e-commerce',
                 'shop_id'       => $shopId->id,
                 'user_id'       => Sentinel::getUser()->id,
                 'created_at'    => now(),
