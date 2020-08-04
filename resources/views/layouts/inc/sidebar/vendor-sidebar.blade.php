@@ -16,11 +16,11 @@
                 <li class="nav-item {{$active == 'dashboard' ? 'active' : ''}}"><a  class="nav-link  {{$active == 'dashboard' ? 'active' : ''}}" href="{{ url('merchant/dashboard') }}">dashboard</a></li>
                                        
 
-                <li class="nav-item"> 
+                <li class="nav-item active"> 
                   <a class="nav-link collapsed text-truncate navSymbol" href="#submenu1" data-toggle="collapse" data-target="#submenu1"> <span class="d-none d-sm-inline">Products<b class="caret"></b></span></a> 
                   <div class="collapse" id="submenu1" aria-expanded="false">
                     <ul class="flex-column pl-2 nav">
-                      <li class="nav-item active"> 
+                      <li class="nav-item"> 
                         <a  class="nav-link {{$active == 'product' ? 'active' : ''}}" href="{{ url('merchant/products') }}">E-commerce Products</a>
                         <a  class="nav-link" href="#">SME Products</a>
                       </li>
@@ -30,10 +30,9 @@
                 
                 <li class="nav-item">
                   <a class="nav-link collapsed text-truncate Symbol" href="#submenu2" data-toggle="collapse" data-target="#submenu2"> <span class="d-none d-sm-inline">Inventories<b class="caret"></b></span></a>
-                  {{-- <a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventories') }}">Inventories</a> --}}
                   <div class="collapse" id="submenu2" aria-expanded="false">
                     <ul class="flex-column pl-2 nav">
-                      <li class="nav-item active"> 
+                      <li class="nav-item"> 
                         <a  class="nav-link {{$active == 'inventory' ? 'active' : ''}}" href="{{ url('merchant/inventories') }}">E-commerce Inventories</a>
                         <a  class="nav-link" href="#">SME Inventories</a>
                       </li>
@@ -66,19 +65,19 @@
     }
     /* Optional: Makes the sample page fill the window. */ 
       .navSymbol[data-toggle].collapsed:before {
-      content: "▼";
+      content: "▾";
       float:right; 
   }
   .navSymbol[data-toggle]:not(.collapsed):before {
-      content: "▲";
+      content: "▴";
       float:right;
   }
   .Symbol[data-toggle].collapsed:before {
-      content: "▼";
+      content: "▾";
       float:right; 
   }
   .Symbol[data-toggle]:not(.collapsed):before {
-      content: "▲";
+      content: "▴";
       float:right;
   }
   </style>
