@@ -194,12 +194,12 @@ class SmeProductController extends Controller
   
           // $name = $data['name'];
           //  \Mail::to($sellerId['email'])->send(new ProductApproveRequestMail($sellerId, $name));
-          Session::flash('success', 'Product Added Successfully!');
+          Session::flash('success', 'SME Product Added Successfully!');
          }else{
           return view('vendor-deshboard');
          }
-  
-          return back();
+         return redirect('merchant/sme/product');
+          // return back();
     }
 
     /**
@@ -222,18 +222,6 @@ class SmeProductController extends Controller
     public function edit($slug){
       $product = Product::with(['item_meta.attributes.options','itemimage','inventory.invenMeta','category.inventoryAttributes.options'])->where('slug',$slug)->first();
       $itemImages = $product->itemimage->groupBy('color_slug');
-      // dd($product->category->inventoryAttributes);
-      // dd($product->inventory);
-      // echo 'asdf';
-      // $itemimg           = \DB::table('item_images')
-      //                       ->where('product_id',$product->id)
-      //                       ->select('color_slug', \DB::raw('count(*) as total'))
-      //                       ->groupBy('color_slug')
-      //                       ->where('deleted_at',NULL)
-      //                       ->get();
-      // dd($itemimg);
-      //dd( $product);
-
       $category           = Category::all();
       $item               = Product::all();
       $size               = Size::all();
@@ -289,17 +277,14 @@ class SmeProductController extends Controller
 
         $product->update($data);
         $this->addInventory($request,$product->id,$shop->id,$product->slug);
-
-        if($request->attribute){ 
-          $this->addAttributes($request->attribute,$product->id);
-        }
+       
         if($request->images){
           $this->addImages($request->images,$product->id,$shop);
         }
  
-        Session::flash('warning', 'Product updated Successfully!');
+        Session::flash('warning', 'SME Product updated Successfully!');
 
-        return back();
+        return redirect('merchant/sme/products');
     }
 
     /**
@@ -308,8 +293,14 @@ class SmeProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    public function destroy($id){
+      $product = Product::find($id);
+      $product->itemimage()->delete();
+      $product->inventory()->delete();
+      $product->delete();
+
+      Session::flash('error', 'SME Product Deleted Successfully');
+
+      return redirect('/merchant/sme/products');
+  }
 }

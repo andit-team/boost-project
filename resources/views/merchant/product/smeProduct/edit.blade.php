@@ -13,7 +13,7 @@
 
                 <!-- address section start -->
                 <div class="col-sm-9 register-page container">
-                        <h3>Edit Product</h3>
+                        <h3>Edit SME Product</h3>
                             <form class="theme-form" action="{{ url('merchant/products/update/'.$product->slug) }}" method="post"  enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
