@@ -36,24 +36,24 @@ class SmeProductController extends Controller
     public function index(Request $request)
     {
         $sellerProfile = Merchant::with('rejectvalue')->where('user_id',Sentinel::getUser()->id)->first();
-      $product = Product::where('shop_id',Baazar::shop()->id)->paginate(10);
+        $product = Product::where('shop_id',Baazar::shop()->id)->where('type','sme')->paginate(10);
 
       // $items = Product::with('inventory')->paginate('10');
       
 
-    //   if ($request->has('cat')){
+     if ($request->has('cat')){
 
         $product = Product::where('shop_id',Baazar::shop()->id)->where('category_id',$request->cat)->paginate(10);            
-    // } 
+    } 
     
-    // if ($request->has('status')){   
+    if ($request->has('status')){   
       $product =Product::orderBy('status','asc')->Where('status',$request->status)->paginate(10);
     // dd($product);        
-//   } 
-//     $categories = ([
-//       'cat'      =>request('cat'),
-//       'status'   => request('status'),
-//   ]);
+  } 
+    $categories = ([
+      'cat'      =>request('cat'),
+      'status'   => request('status'),
+  ]);
 
       return view ('merchant.product.smeProduct.index',compact('product','sellerProfile'));
 

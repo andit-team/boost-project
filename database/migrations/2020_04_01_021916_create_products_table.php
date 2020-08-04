@@ -24,8 +24,8 @@ class CreateProductsTable extends Migration
             $table->string('model_no')->nullable();
             $table->decimal('org_price',8,2)->default(0);
             $table->integer('pack_id')->nullable();
-            $table->integer('sorting')->nullable();
-            $table->enum('type',['e-commerce','sme']);
+            $table->integer('sorting')->nullable(); 
+            $table->enum('type',['sme','ecommerce'])->default('ecommerce'); 
             $table->text('description')->nullable();
             $table->text('bn_description')->nullable();
             $table->text('rej_desc')->nullable();

@@ -55,8 +55,9 @@ class Product extends Model
       'category_id',
       'category_slug',
       'tag_slug',
-       'status',
+       'status', 
        'type',
+
     ];
 
     public function getRouteKeyName()
