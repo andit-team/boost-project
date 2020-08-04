@@ -140,6 +140,22 @@
                                         </div> -->
                                     </div>
                                 </div>
+                                <div class="card mb-4">
+                                    <h5 class="card-header">Product Publis on news feed (optional)</h5>
+                                    <div class="card-body">
+                                        <div class="contianer">
+                                            <div class="form-group">
+                                                <div class="checkbox">
+                                                    <label data-toggle="collapse" data-target="#collapseable" aria-expanded="false" aria-controls="collapseable">
+                                                        Are you publis product on news feed <input type="checkbox"></label>
+                                                </div>
+                                            </div>
+                                            <div id="collapseable" aria-expanded="false" class="collapse">
+                                                <div class="well">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe ut molestias eius, nam neque esse eos modi corrupti harum fugit, hic recusandae praesentium, minima ipsa eligendi architecto at! Culpa, explicabo.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <button id="save" class="btn btn-success float-right ml-2" type="submit" data-step="4">Save</button>
                             <input type="button" id="previous3" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
