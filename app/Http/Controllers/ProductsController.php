@@ -215,7 +215,7 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product){
-        $product      = Product::with('itemimage')->where('slug',$product->slug)->first();
+        $product      = Product::with('itemimage')->where('slug',$product->slug)->where('type','ecommerce')->first();
         $productImage = ItemImage::where('color_slug','main')->where('product_id',$product->id)->limit(5)->get();
         //dd($productImage);
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
@@ -328,7 +328,7 @@ class ProductsController extends Controller
 
 
     public function productList(){ 
-        $items = Product::with('inventory')->get();  
+        $items = Product::with('inventory')->where('type','ecommerce')->get();  
      return view('merchant.product.product_list',compact('items'));
     }
 

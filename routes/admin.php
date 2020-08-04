@@ -36,8 +36,16 @@ Route::middleware(['auth','admin'])->prefix('andbaazaradmin')->group(function ()
     Route::resource('products/tag','TagsController');
     Route::resource('products/color','ColorsController');
     Route::resource('products/brand','BrandController');
-    Route::get('products/product_list','ProductsController@productList');
-    Route::get('products/Productlist','ProductsController@productTableList');
+
+    Route::get('e-commerce/products/','ProductsController@productList');
+    Route::get('products/AllProduct','ProductsController@productTableList');
+
+    // SME Product list start //
+
+    Route::get('sme/products/','SmeProductController@smeproductList');
+
+   // SME Product list start //
+
     Route::get('color-image/{color_slug}','ProductsController@colorWiseImage');
 
    Route::resource('/shop','ShopsController');

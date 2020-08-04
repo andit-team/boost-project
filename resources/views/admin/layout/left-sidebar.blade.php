@@ -37,13 +37,11 @@
                             <li class="{{ request()->is('andbaazaradmin/products/product_list*') ? 'active' : '' }}"> 
                                 <a  href="#" class="sidebar-header"><i data-feather="menu" ></i><span>Product Request</span><i class="fa fa-angle-right pull-right"></i></a>
                                 <ul class="sidebar-submenu">
-                                    <li class="{{ request()->is('andbaazaradmin/products/product_list/*') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/products/product_list')}}" class="{{ request()->is('andbaazaradmin/products/product_list') ? 'active' : '' }}" ><i class="fa fa-pencil-square-o"></i> Products list</a></li>
-                                    <li class="{{ request()->is('andbaazaradmin/products/productlist/*') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/products/Productlist')}}" class="{{ request()->is('andbaazaradmin/products/Productlist') ? 'active' : '' }}" ><i class="fa fa-pencil-square-o"></i> Products list</a></li>
+                                    <li class="{{ request()->is('andbaazaradmin/e-commerce/products/*') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/e-commerce/products/')}}" class="{{ request()->is('andbaazaradmin/e-commerce/products/') ? 'active' : '' }}" ><i class="fa fa-pencil-square-o"></i> E-com Products</a></li>
+                                    <li class="{{ request()->is('andbaazaradmin/sme/products/*') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/sme/products/')}}" class="{{ request()->is('andbaazaradmin/sme/products/') ? 'active' : '' }}" ><i class="fa fa-pencil-square-o"></i> SME Products</a></li>
+                                    <li class="{{ request()->is('andbaazaradmin/products/AllProduct/*') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/products/AllProduct')}}" class="{{ request()->is('andbaazaradmin/products/AllProduct') ? 'active' : '' }}" ><i class="fa fa-pencil-square-o"></i> All Products </a></li>
                                 </ul>
                             </li>
-
-                           
-
                         </ul>
                     </li>
 

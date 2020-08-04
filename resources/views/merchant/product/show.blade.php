@@ -82,7 +82,7 @@
                         </div>
                         <hr>
                         <div class="m-t-15">
-                            <a href="{{ url('andbaazaradmin/products/product_list') }}"  class="btn btn-success">Back</a>
+                            <a href="{{ url('andbaazaradmin/e-commerce/products') }}"  class="btn btn-success">Back</a>
                             @if($product->status == 'Active') 
                             <label class="badge badge-pill badge-info p-3">Approved</label>
                             @elseif($product->status == 'Reject') 

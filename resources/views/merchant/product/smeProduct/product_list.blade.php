@@ -35,11 +35,11 @@
 @include('elements.alert')
 @component('admin.layout.inc.breadcrumb')
   @slot('pageTitle')
-  Product List
+  SME Product
   @endslot
   @slot('page')
       <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-      <li class="breadcrumb-item active" aria-current="page">Product List</li>
+      <li class="breadcrumb-item active" aria-current="page">SME Product</li>
   @endslot
 @endcomponent
 <div class="container-fluid">
@@ -53,7 +53,7 @@
                             <div class="">
                                 @foreach($row->itemimage as $itemimg)
                                     @if($loop->first)
-                                        <a href="{{ url('/merchant/product/'.$row->slug) }}"><img src="{{ !empty($row->image) ? asset($row->image) : asset('/uploads/shops/products/product.png') }}" class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                        <a href="{{ url('/merchant/sme/product/'.$row->slug) }}"><img src="{{ !empty($row->image) ? asset($row->image) : asset('/uploads/shops/products/product.png') }}" class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                     @endif
                                 @endforeach 
                             </div>
@@ -68,7 +68,7 @@
                                     <label class="badge badge-pill badge-primary p-2">Reject</label>
                                 @endif
                             </div>
-                            <a href="{{ url('/merchant/product/'.$row->slug) }}">
+                            <a href="{{ url('/merchant/sme/product/'.$row->slug) }}">
                                 <h6>{{ $row->name}}</h6>
                             </a>
                             <h4>${{$row->price}}</h4>
