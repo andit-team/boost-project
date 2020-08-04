@@ -10,7 +10,7 @@
                 @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
                 <div class="col-sm-9 register-page container">
                     <h2 id="heading">Add Product</h2>
-                    <form id="msform" action="{{ route('product.store') }}" method="post"  enctype="multipart/form-data" id="validateForm">
+                    <form id="msform" action="{{ route('smeproduct.store') }}" method="post"  enctype="multipart/form-data" id="validateForm">
                         @csrf
                         <!-- progressbar -->
                         <ul id="progressbar">

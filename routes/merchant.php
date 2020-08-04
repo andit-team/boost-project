@@ -73,7 +73,7 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     
     Route::get('/sme/products','SmeProductController@index')->middleware('isMerchantActive');
     Route::get('/sme/products/new','SmeProductController@create')->middleware('isMerchantActive');;
-    Route::post('/sme/products/new','SmeProductController@store')->name('product.store')->middleware('isMerchantActive');;
+    Route::post('/sme/products/new','SmeProductController@store')->name('smeproduct.store')->middleware('isMerchantActive');;
     Route::get('/sme/products/view/{slug}','SmeProductController@show')->middleware('isMerchantActive');
     Route::get('/sme/products/update/{slug}/productupdate','SmeProductController@edit');
     Route::put('/sme/products/update/{slug}','SmeProductController@update'); 

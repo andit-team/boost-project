@@ -112,7 +112,7 @@
                                                 <span class="text-danger">{{ $errors->first('org_price') }}</span>
                                             @endif
                                         </div>
-                                        <div class="form-group row margin">
+                                        <!-- <div class="form-group row margin">
                                             <label for="min_order" class="col-xl-3 col-md-4">Minimum Order <span>*</span></label>
                                             <input type="number" class="form-control col-md-8" name="min_order" id="min_order" value="{{ old('min_order',$product->min_order) }}" required="">
                                             <label for="model_no" class="col-xl-3 col-md-4"><span></span></label>
@@ -120,7 +120,7 @@
                                             @if ($errors->has('min_order'))
                                                 <span class="text-danger">{{ $errors->first('min_order') }}</span>
                                             @endif
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                                 <div class="col-md-12">

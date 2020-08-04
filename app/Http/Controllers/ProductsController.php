@@ -37,7 +37,7 @@ class ProductsController extends Controller
      */
     public function index(Request $request){
       $sellerProfile = Merchant::with('rejectvalue')->where('user_id',Sentinel::getUser()->id)->first();
-      $product = Product::where('shop_id',Baazar::shop()->id)->paginate(10);
+      $product = Product::where('shop_id',Baazar::shop()->id)->where('type','ecommerce')->paginate(10);
 
       // $items = Product::with('inventory')->paginate('10');
       
@@ -48,7 +48,7 @@ class ProductsController extends Controller
     } 
     
     if ($request->has('status')){   
-      $product =Product::orderBy('status','asc')->Where('status',$request->status)->paginate(10);
+      $product =Product::orderBy('status','asc')->Where('type','$request->status')->paginate(10);
     // dd($product);        
   } 
     $categories = ([
@@ -174,8 +174,8 @@ class ProductsController extends Controller
               'org_price'     => is_numeric($request->org_price)?$request->org_price:0,
               'description'   => $request->description,
               'email'         => $request->email,
-              'bn_description'=> $request->bn_description,
-              'min_order'     => $request->min_order,
+              'type'          => 'ecommerce',
+              'bn_description'=> $request->bn_description,            
               'made_in'       => $request->made_in,
               'materials'     => $request->materials,
               'video_url'     => $request->video_url,
@@ -295,7 +295,7 @@ class ProductsController extends Controller
           'description'   => $request->description,
           'email'         => $request->email,
           'bn_description'=> $request->bn_description,
-          'min_order'     => $request->min_order,
+          // 'min_order'     => $request->min_order,
           'made_in'       => $request->made_in,
           'materials'     => $request->materials,
           'video_url'     => $request->video_url,
