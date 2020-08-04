@@ -25,7 +25,7 @@
 
         <ol>
             <span class="text-danger">{{ ++$i }} .</span>
-            <li><b class="text-danger">{{$row->rej_desc." "}}</b></li>
+            <li><b class="text-danger">{{$row->rej_name." "}}</b></li>
         </ol>
         @endforeach
 
@@ -86,7 +86,7 @@
                         @foreach($seller->rejectvalue as $row)
                         <div class="item">
                             <input type="checkbox" name="checkboxes[]" class="checkboxes mr-2" id="option{{$row->id}}" />
-                            <label for="a">{{$row->rej_desc." "}}</label>
+                            <label for="a">{{$row->rej_name." "}}</label>
                         </div>
                         @endforeach
 
