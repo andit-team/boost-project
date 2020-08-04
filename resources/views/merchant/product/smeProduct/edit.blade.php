@@ -18,8 +18,7 @@
                                 @csrf
                                 @method('put')
                                 <div>
-                                        @include('merchant.product.productBasicinfoEdit')
-                                        @include('merchant.product.productAttributesEdit')
+                                        @include('merchant.product.smeProduct.productBasicinfoEdit')                            
                                         <input type="hidden" name="email" value="{{ $product->email }}"> 
                                 </div>
                                 <div class="card mb-4">
@@ -52,7 +51,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    @include('merchant.product.priceAndstockEdit')
+                                    @include('merchant.product.smeProduct.priceAndstockEdit')
                                 </div>
                                 <div class="card mb-4">
                                     <h5 class="card-header">Tag & Model</h5>
@@ -95,7 +94,7 @@
                                     <h5 class="card-header">Price</h5>
                                     <div class="card-body">
                                         <div class="form-group row">
-                                            <label for="price" class="col-xl-3 col-md-4">Price<span>*</span></label>
+                                            <label for="price" class="col-xl-3 col-md-4">MRP<span>*</span></label>
                                             <input type="number" class="form-control col-md-8" name="price" id="price" value="{{ old('price',$product->price) }}" required="">
                                             <label for="model_no" class="col-xl-3 col-md-4"><span></span></label>
                                             <span class="text-danger" id="message_price"></span>
@@ -104,23 +103,14 @@
                                             @endif
                                         </div>
                                         <div class="form-group row margin">
-                                            <label for="org_price" class="col-xl-3 col-md-4">Orginal Price<span>*</span></label>
+                                            <label for="org_price" class="col-xl-3 col-md-4">Selling Price<span>*</span></label>
                                             <input type="number" class="form-control col-md-8" name="org_price" id="org_price" value="{{ old('org_price',$product->org_price) }}" required="">
                                             <label for="model_no" class="col-xl-3 col-md-4"><span></span></label>
                                             <span class="text-danger" id="message_org_price"></span>
                                             @if ($errors->has('org_price'))
                                                 <span class="text-danger">{{ $errors->first('org_price') }}</span>
                                             @endif
-                                        </div>
-                                        <div class="form-group row margin">
-                                            <label for="min_order" class="col-xl-3 col-md-4">Minimum Order <span>*</span></label>
-                                            <input type="number" class="form-control col-md-8" name="min_order" id="min_order" value="{{ old('min_order',$product->min_order) }}" required="">
-                                            <label for="model_no" class="col-xl-3 col-md-4"><span></span></label>
-                                            <span class="text-danger" id="message_min_order"></span>
-                                            @if ($errors->has('min_order'))
-                                                <span class="text-danger">{{ $errors->first('min_order') }}</span>
-                                            @endif
-                                        </div>
+                                        </div>                  
                                     </div>
                                 </div>
                                 <div class="col-md-12">

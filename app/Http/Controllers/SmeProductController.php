@@ -219,10 +219,38 @@ class SmeProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    public function edit($slug){
+      $product = Product::with(['item_meta.attributes.options','itemimage','inventory.invenMeta','category.inventoryAttributes.options'])->where('slug',$slug)->first();
+      $itemImages = $product->itemimage->groupBy('color_slug');
+      // dd($product->category->inventoryAttributes);
+      // dd($product->inventory);
+      // echo 'asdf';
+      // $itemimg           = \DB::table('item_images')
+      //                       ->where('product_id',$product->id)
+      //                       ->select('color_slug', \DB::raw('count(*) as total'))
+      //                       ->groupBy('color_slug')
+      //                       ->where('deleted_at',NULL)
+      //                       ->get();
+      // dd($itemimg);
+      //dd( $product);
+
+      $category           = Category::all();
+      $item               = Product::all();
+      $size               = Size::all();
+      $color              = Color::all();
+      $categories         = Category::where('parent_id',0)->get();
+      $subCategories      = Category::where('parent_id','!=',0)->get();
+      $tag                = Tag::all(); 
+      $selected_tags      = [];
+      foreach($product->itemtag as $tags){
+        $selected_tags[$tags->id] = $tags; 
+      }
+      $shopProfile        = Shop::where('user_id',Sentinel::getUser()->id)->first();
+      $productInventories = Inventory::where('product_id',$product->id)->get();
+      $porductMeta        = ItemMeta::where('product_id',$product->id)->get();
+      //dd($porductMeta);
+      return view ('merchant.product.smeProduct.edit',compact('category','itemImages','categories','selected_tags','item','productInventories','size','color','subCategories','product','tag','shopProfile'));
+  }
 
     /**
      * Update the specified resource in storage.
@@ -231,9 +259,47 @@ class SmeProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $slug,Product $item){ 
+      $product = Product::where('slug',$slug)->first(); 
+      $product->item_meta()->delete(); 
+      $product->itemimage()->delete();
+      $product->inventory()->delete();
+      $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
+      $feature = Baazar::base64Upload($request->images['main'][0],$slug,$shop->slug,'featured');
+        $data = [
+          'name'          => $request->name,
+          'bn_name'       => $request->bn_name, 
+          'image'         => $feature,
+          'price'         => is_numeric($request->price)?$request->price:0,
+          'model_no'      => $request->model_no,
+          'org_price'     => is_numeric($request->org_price)?$request->org_price:0,
+          'description'   => $request->description,
+          'email'         => $request->email,
+          'bn_description'=> $request->bn_description,
+          // 'min_order'     => $request->min_order,
+          'made_in'       => $request->made_in,
+          'materials'     => $request->materials,
+          'video_url'     => $request->video_url,
+          'category_id'   => $request->category_id,
+          'category_slug' => $request->category,
+          'brand_id'      => $request->brand_id,
+          'tag_slug'      => $this->tagSlug($request->tag_id), 
+          'updated_at'    => now(),
+        ];
+
+        $product->update($data);
+        $this->addInventory($request,$product->id,$shop->id,$product->slug);
+
+        if($request->attribute){ 
+          $this->addAttributes($request->attribute,$product->id);
+        }
+        if($request->images){
+          $this->addImages($request->images,$product->id,$shop);
+        }
+ 
+        Session::flash('warning', 'Product updated Successfully!');
+
+        return back();
     }
 
     /**
