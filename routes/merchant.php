@@ -68,6 +68,23 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     Route::post('/products/single-inventory-delete','ProductsController@deleteInventory'); 
     Route::get('/product','ProductsController@clear'); 
     Route::resource('/product','ProductsController');
+
+    // Sme Products Are Start//
+    
+    Route::get('/sme/products','SmeProductController@index')->middleware('isMerchantActive');
+    Route::get('/sme/products/new','SmeProductController@create')->middleware('isMerchantActive');;
+    Route::post('/sme/products/new','SmeProductController@store')->name('product.store')->middleware('isMerchantActive');;
+    Route::get('/sme/products/view/{slug}','SmeProductController@show')->middleware('isMerchantActive');
+    Route::get('/sme/products/update/{slug}/productupdate','SmeProductController@edit');
+    Route::put('/sme/products/update/{slug}','SmeProductController@update'); 
+    Route::post('/sme/products/single-inventory-delete','SmeProductController@deleteInventory'); 
+    Route::get('/sme/product','SmeProductController@clear'); 
+    Route::resource('/sme/product','SmeProductController');
+
+     // Sme Products Are End//
+
+
+
     Route::get('/inventories','InventoriesController@index')->middleware('isMerchantActive');
     Route::get('/e-commerce/inventories/new','InventoriesController@create');
     Route::post('/e-commerce/inventories/new','InventoriesController@store')->name('inventory.store');
