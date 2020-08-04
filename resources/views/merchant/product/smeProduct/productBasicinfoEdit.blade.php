@@ -94,22 +94,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group margin">
-                            <label for="brand_id">Brands<span></span></label>
-                            <select name="brand_id" class="form-control" id="brand">
-                                <option value="" selected>No Brand</option> 
-                                @foreach($brand as $row)
-                                 <option value="{{ $row->id }}" {{ $row->id == $product->brand_id ? 'selected' : '' }} >{{ $row->name }}</option>
-                                @endforeach
-                            </select>
-                            <span class="text-danger" id="message_video_url"></span>
-                            @if ($errors->has('video_url'))
-                                <span class="text-danger">{{ $errors->first('video_url') }}</span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="col-md-6">
+                   
+                    <div class="col-md-12">
                         <div class="form-group margin">
                             <label for="video_url">Video Url<span>*</span></label>
                             <input type="text" class="form-control" name="video_url" value="{{ old('video_url',$product->video_url) }}" id="video_url">
@@ -179,21 +165,8 @@
                 $('#category_id').val(id);
                 $('#category').val($('.currentSelection').text());
                 $('#catarea').hide();
-                getCategoryAttr(id);
-                getInventoryAttr(id);
-                getBrands(id);
+                getCategoryAttr(id);            
             }
-        }
-
-        function getBrands(cid){
-            $.ajax({
-                type:"POST",
-                url:"{{ url('/merchant/product/get-brand/') }}",
-                data:{ 'cat': cid ,'_token':'{{csrf_token()}}'},
-                success:function(data){
-                    $('#brand').html(data);
-                }
-            });
         }
         function setActive(level,e){
             var current = '';
