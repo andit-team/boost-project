@@ -522,17 +522,17 @@ class MerchantController extends Controller{
         
         for($i = 0; $i<$rej_list; $i++){        
                 $rejct_value=RejectValue::create([
-                'rej_name' => $request->rej_name[$i],
-                'merchant_id' => $data->id,
-                'user_id'     => $data->user_id,
+                'rej_name'      => $request->rej_name[$i],
+                'merchant_id'   => $data->id,
+                'user_id'       => $data->user_id,
             ]);
             // dd($data);
         }
 
-        $reject = Reject::create([
-            'rej_name' => $request->rej_name,
-            'user_id'  => Sentinel::getUser()->id, 
-        ]);
+        // $reject = Reject::create([
+        //     'rej_name' => $request->rej_name[0],
+        //     'user_id'  => Sentinel::getUser()->id, 
+        // ]);
 
         // $name    = $data['first_name'];
         // $surname = $data['last_name'];

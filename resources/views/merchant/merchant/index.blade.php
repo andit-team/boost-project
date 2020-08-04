@@ -179,43 +179,6 @@
                                                                         Gender &nbsp;: {{ $row->gender }}
                                                                     </p>
                                                                 </div>
-                                                                <div class="modal fade MyPopup2" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title f-w-600 text-danger" id="exampleModalLabel">Select The Reason For Reject :</h5>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form action="{{ url('merchant/merchant/rejected/'.$row->id)}}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
-                                                                                    @csrf @method('put')
-                                                                                    <div class="form">
-                                                                                        <div class="form-group">                                                                                                                                                                                            
-                                                                                            <div class="card">
-                                                                                                <div class="card-body">
-                                                                                                    <div class="form-check">
-                                                                                                        @foreach($rejectlist as $row)
-                                                                                                        <label class="form-check-label" for="check1">
-                                                                                                            <input type="checkbox" class="form-check-input" id="checked" name="rej_name[]" value="{{$row->rej_name}}" />{{$row->rej_name}}
-                                                                                                        </label>
-                                                                                                        @endforeach
-                                                                                                        <div class="form-group mt-2">
-                                                                                                            <label for="exampleInputPassword1 ">Others</label>
-                                                                                                            <input type="text" class="form-control" id="exampleInputPassword1" name="rej_name[]" placeholder=" if need add another reasoan ">
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                         
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="text-right">
-                                                                                        <button type="submit" class="btn btn-primary">Reject</button>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
                                                             </div>
 
                                                             <div class="col-md-6">
@@ -246,6 +209,43 @@
                                                         <form action="{{ url('merchant/merchant/profiledelete/'.$row->id) }}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
                                                             @csrf
                                                             <button type="submit" class="btn btn-primary m-l-b">Hard Reject</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade MyPopup2" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title f-w-600 text-danger" id="exampleModalLabel">Select The Reason For Reject :</h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{ url('merchant/merchant/rejected/'.$row->id)}}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
+                                                            @csrf @method('put')
+                                                            <div class="form">
+                                                                <div class="form-group">                                                                                                                                                                                            
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <div class="form-check">
+                                                                                @foreach($rejectlist as $row)
+                                                                                <label class="form-check-label" for="check1">
+                                                                                    <input type="checkbox" class="form-check-input" id="checked" name="rej_name[]" value="{{$row->rej_name}}" />{{$row->rej_name}}
+                                                                                </label>
+                                                                                @endforeach
+                                                                                <div class="form-group mt-2">
+                                                                                    <label for="exampleInputPassword1 ">Others</label>
+                                                                                    <input type="text" class="form-control" id="exampleInputPassword1" name="rej_name[]" placeholder=" if need add another reasoan ">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <button type="submit" class="btn btn-primary">Reject</button>
+                                                            </div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -343,40 +343,9 @@
 @endsection
 @push('js')
 <script>
-// $('#closemodal').click(function() {
-//     $('#modalwindow').modal('hide');
-// });
-
-
-
-        // $(".btnClosePopup").click(function () { 
-        //     // alert('hi');
-        //     $("#exampleModal").modal("show");
-        //     alert('hi');
-        //     $("#MyPopup").modal("hide");
-           
-        // });
-//             $('#MyPopup').on('hidden', function () {
-//     // Load up a new modal...
-//     $('#exampleModal').modal('show')
-
-// });
-
-
-
-
-// function showhiemodal() {
-//     $("#MyPopup").removeClass("fade").modal("hide");
-//     $(".MyPopup2").modal("show").addClass("fade");
-// });
-
-// $("#MyPopup").modal("show");
-
-// $(".btnClosePopup").on("click", function() {
-//     showhiemodal();
-// });
-                    
-        // });
+        $(".btnClosePopup").click(function () { 
+            $("#MyPopup").modal("hide");
+        });
  
 </script>
 @endpush
