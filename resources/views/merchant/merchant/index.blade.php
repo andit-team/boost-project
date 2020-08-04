@@ -78,7 +78,7 @@
                                             </td>
                                         </tr>
 
-                                        <div class="modal fade approved{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal hide fade approved{{$row->id}}"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-xl">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -160,7 +160,7 @@
                                             </td>
                                         </tr>
 
-                                        <div class="modal fade requested{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal fade requested{{$row->id}}" tabindex="-1" id="MyPopup" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-xl">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -178,41 +178,6 @@
                                                                         Phone &nbsp;&nbsp;: {{ $row->phone }} <br />
                                                                         Gender &nbsp;: {{ $row->gender }}
                                                                     </p>
-                                                                </div>
-                                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                    <div class="modal-dialog" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                <h5 class="modal-title f-w-600 text-danger" id="exampleModalLabel">Select The Reason For Reject :</h5>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <form action="{{ url('merchant/merchant/rejected/'.$row->id)}}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
-                                                                                    @csrf @method('put')
-                                                                                    <div class="form">
-                                                                                        <div class="form-group">                                                                                                                    
-                                                                                            <!-- <textarea class="form-control" name="rej_desc" id="validationCustom01" type="text" rows="10" required> -->
-                                                                                            <div class="card">
-                                                                                                <div class="card-body">
-                                                                                                    <div class="form-check">
-                                                                                                        @foreach($rejectlist as $row)
-                                                                                                        <label class="form-check-label" for="check1">
-                                                                                                            <input type="checkbox" class="form-check-input" id="checked" name="rej_desc[]" value="{{$row->reject_name}}" />{{$row->reject_name}}
-                                                                                                        </label>
-                                                                                                        @endforeach
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <!-- -->
-                                                                                            <!-- </textarea> -->
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="text-right">
-                                                                                        <button type="submit" class="btn btn-primary">Reject</button>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
                                                                 </div>
                                                             </div>
 
@@ -240,10 +205,47 @@
                                                             @csrf
                                                             <button type="submit" class="btn btn-info">Approve</button>
                                                         </form>
-                                                        <button type="button" class="btn btn-warning ml-1" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Reject</button>
+                                                        <button type="button" class="btn btn-warning ml-1 btnClosePopup" data-toggle="modal" id="" data-original-title="test" data-target="#exampleModal">Reject</button>
                                                         <form action="{{ url('merchant/merchant/profiledelete/'.$row->id) }}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
                                                             @csrf
                                                             <button type="submit" class="btn btn-primary m-l-b">Hard Reject</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade MyPopup2" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title f-w-600 text-danger" id="exampleModalLabel">Select The Reason For Reject :</h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{ url('merchant/merchant/rejected/'.$row->id)}}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
+                                                            @csrf @method('put')
+                                                            <div class="form">
+                                                                <div class="form-group">                                                                                                                                                                                            
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <div class="form-check">
+                                                                                @foreach($rejectlist as $row)
+                                                                                <label class="form-check-label" for="check1">
+                                                                                    <input type="checkbox" class="form-check-input" id="checked" name="rej_name[]" value="{{$row->rej_name}}" />{{$row->rej_name}}
+                                                                                </label>
+                                                                                @endforeach
+                                                                                <div class="form-group mt-2">
+                                                                                    <label for="exampleInputPassword1 ">Others</label>
+                                                                                    <input type="text" class="form-control" id="exampleInputPassword1" name="rej_name[]" placeholder=" if need add another reasoan ">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right">
+                                                                <button type="submit" class="btn btn-primary">Reject</button>
+                                                            </div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -339,3 +341,11 @@
     </div>
 </div>
 @endsection
+@push('js')
+<script>
+        $(".btnClosePopup").click(function () { 
+            $("#MyPopup").modal("hide");
+        });
+ 
+</script>
+@endpush

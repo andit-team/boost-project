@@ -15,7 +15,7 @@ class CreateRejectValuesTable extends Migration
     {
         Schema::create('reject_values', function (Blueprint $table) {
             $table->bigIncrements('id');         
-            $table->string('rej_desc')->nullable();
+            $table->string('rej_name')->nullable();
             $table->unsignedBigInteger('merchant_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
