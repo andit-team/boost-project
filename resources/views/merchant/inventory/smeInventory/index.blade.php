@@ -64,7 +64,7 @@
                                                             <ul>
                                                                 <li><a href="{{ url('merchant/sme/inventrories/update/'.$row->slug.'/smeinventroyupdate') }}"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#inventoryEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
                                                                 <li>
-                                                                    <form action="{{ url('/merchant/e-commerce/inventories/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
+                                                                    <form action="{{ url('/merchant/sme/inventories/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                                         @csrf
                                                                         @method('delete')
                                                                         <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
