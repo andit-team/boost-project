@@ -140,9 +140,20 @@ class SmeInventoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $inventory          = Inventory::with(['item.itemimage'])->where('slug',$slug)->where('type','sme')->first(); 
+        $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
+        $shopProfile        = Shop::where('user_id',Sentinel::getUser()->id)->first();
+        $size               = Size::all();
+        $color              = Color::all();
+        $productAttriSize   = InventoryAttributeOption::where('inventory_attribute_id',1)->get();
+        $productAttriCapa   = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
+        $inventoryAttriSize = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',1)->first();
+        $inventoryAttriCapa = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',2)->first(); 
+        $inventoryMeta      = InventoryMeta::all();  
+        $itemImages         = $inventory->item->itemimage->groupBy('color_slug');
+        return view('merchant.inventory.smeInventory.edit',compact('inventory','item','itemImages','size','color','shopProfile','inventoryMeta'));
     }
 
     /**
@@ -152,9 +163,32 @@ class SmeInventoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+         //dd($request->all());
+         $inventory  = Inventory::where('slug',$slug)->first();
+         $inventMeta = InventoryMeta::where('inventory_id',$inventory->id)->first();
+         //dd($inventMeta);
+          $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
+         $this->validateForm($request);
+         $data = [  
+             'size_id'       => $request->size_id,
+             'price'         => $request->price,
+             'qty_stock'     => $request->qty_stock,
+             'seller_sku'    => $request->seller_sku,
+             'special_price' => $request->special_price,
+             'start_date'    => $request->start_date,
+             'type'          => 'sme',
+             'end_date'      => $request->end_date,
+             'updated_at'    => now(),
+         ];
+         $inventory->update($data); 
+
+         if($request->images){
+             $this->addImages($request->images,$inventory->product_id,$shop);
+         }
+         Session::flash('warning', 'Inventory update Successfully!');
+         return redirect('merchant/sme/inventories');
     }
 
     private function validateForm($request){

@@ -165,7 +165,7 @@ class InventoriesController extends Controller
      */
     public function edit($slug)
     {
-        $inventory          = Inventory::with(['item.itemimage'])->where('slug',$slug)->first(); 
+        $inventory          = Inventory::with(['item.itemimage'])->where('slug',$slug)->where('type','e-commerce')->first(); 
         $item               = Product::where('user_id',Sentinel::getUser()->id)->get();
         $shopProfile        = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $size               = Size::all();

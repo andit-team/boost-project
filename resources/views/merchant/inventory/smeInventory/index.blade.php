@@ -62,7 +62,7 @@
                                                         <td class="text-right">2000</td>
                                                         <td class="">
                                                             <ul>
-                                                                <li><a href="{{ url('merchant/e-commerce/inventories/update/'.$row->slug.'/invertoryupdate') }}"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#inventoryEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
+                                                                <li><a href="{{ url('merchant/sme/inventrories/update/'.$row->slug.'/smeinventroyupdate') }}"><button class="btn btn-sm btn-warning" data-toggle="modal" data-original-title="test" data-target="#inventoryEditModal{{$row->id}}"><i class="fa fa-edit"></i> </button></a></li>
                                                                 <li>
                                                                     <form action="{{ url('/merchant/e-commerce/inventories/'.$row->id) }}" method="post" style="margin-top:-2px" id="deleteButton{{$row->id}}">
                                                                         @csrf

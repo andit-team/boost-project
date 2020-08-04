@@ -97,6 +97,8 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     Route::resource('/e-commerce/inventories','InventoriesController');
     Route::get('/sme/inventories/new','SmeInventoryController@create');
     Route::post('/sme/inventories/new','SmeInventoryController@store')->name('smeinventory.store');
+    Route::get('/sme/inventrories/update/{slug}/smeinventroyupdate','SmeInventoryController@edit');
+    Route::put('/sme/inventrories/update/{slug}','SmeInventoryController@update');
     Route::resource('/sme/inventories','SmeInventoryController');
     Route::post('get-inventory-attr','InventoryAttributeController@getInventoryAttr');
     Route::post('get-category-attr','CategoriesController@getCategoryAttr');
