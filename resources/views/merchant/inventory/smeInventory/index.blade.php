@@ -16,6 +16,23 @@
                 <h3>SME Inventory</h3>
                 <a href="{{ url('merchant/sme/inventories/new') }}" class="btn btn-sm btn-solid float-right">add New</a>
             </div> 
+            <div class="filter-area d-flex">
+                <div class="form-group mr-1">
+                    <input type="text" id="search" class="form-control" placeholder="Search Here..." />                     
+                </div>
+                <div class="form-group mr-1">
+                    <div class="input-group">
+                        <span class="input-group-addon bg-primary p-2 font-weight-bold text-white">Color</span>
+                        <select name="color_id" id="color_id" class="form-control"> 
+                            <option value="select">select color</option> 
+                            @foreach($color as $row)
+                              <option value="{{$row->slug}}">{{$row->name}}</option> 
+                            @endforeach
+                        </select>
+                    </div>                    
+                </div>   
+                <a href="{{url('/merchant/sme/inventories')}}" class="btn btn-info btn-sm text-white font-weight-bold" style="padding: 8px; height: 38px;">Clear</a>
+            </div>
             <section class="tab-product m-0">  
                         <ul class="nav nav-tabs nav-material myTab" id="top-tab" role="tablist">
                             <li class="nav-item"><a class="nav-link active show" id="top-home-tab" data-toggle="tab" href="#top-home" role="tab" aria-selected="true"><i class="icofont icofont-ui-home"></i>Active</a>
@@ -28,16 +45,7 @@
                         <div class="tab-content nav-material" id="top-tabContent">
                             <div class="tab-pane fade active show" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
                                 <div class="card dashboard-table mt-0">
-                                    <div class="card-body">
-                                        <div class="top-sec w-50">
-                                            <input type="text" name="search" class="form-control" placeholder="Search" id="search" autocomplete="off">
-                                            <select name="color_id" id="color_id" class="form-control"> 
-                                                <option value="select">select color</option> 
-                                                @foreach($color as $row)
-                                                  <option value="{{$row->slug}}">{{$row->name}}</option> 
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                    <div class="card-body"> 
                                         <table class="table-responsive-md table mb-0 table-striped" id="example22">
                                             <thead>
                                                 <tr>
