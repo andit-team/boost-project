@@ -47,6 +47,8 @@
                 
                 <li class="nav-item"><a  class="nav-link {{$active == 'shop' ? 'active' : ''}}" href="{{ url('merchant/shop') }}">shop</a>
                 </li>
+                <li class="nav-item"><a  class="nav-link {{$active == 'newsfeed' ? 'active' : ''}}" href="{{ url('merchant/newsfeed') }}">News Feed</a></li>
+
                 <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#settings">settings</a></li> 
                 
                 <li class="nav-item"><a class="nav-link" data-toggle="modal" data-target="#logout" href="{{url('logout')}}">logout</a> </li>           
