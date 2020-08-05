@@ -69,20 +69,11 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                        </div> 
-                                        <div class="form-group row">
-                                            <label for="model_no" class="col-xl-3 col-md-4">Model No<span>*</span></label>
-                                            <input type="text" class="form-control col-md-8" name="model_no" id="model_no" value="{{ old('model_no',$product->model_no) }}"  required="">
-                                            <label for="model_no" class="col-xl-3 col-md-4"><span></span></label>
-                                            <span class="text-danger" id="message_model_no"></span>
-                                            @if ($errors->has('model_no'))
-                                                <span class="text-danger">{{ $errors->first('model_no') }}</span>
-                                            @endif
-                                        </div>
+                                        </div>                                     
                                         <div class="form-group row margin">
                                             <label for="materials" class="col-xl-3 col-md-4">Materials<span>*</span></label>
                                             <input type="text" class="form-control col-md-8" name="materials" id="materials" value="{{ old('materials',$product->materials) }}" required="">
-                                            <label for="model_no" class="col-xl-3 col-md-4"><span></span></label>
+                                            <label for="materials" class="col-xl-3 col-md-4"><span></span></label>
                                             <span class="text-danger" id="message_materials"></span>
                                             @if ($errors->has('materials'))
                                                 <span class="text-danger">{{ $errors->first('materials') }}</span>

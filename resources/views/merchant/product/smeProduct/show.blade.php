@@ -82,7 +82,8 @@
                         </div>
                         <hr>
                         <div class="m-t-15">
-                            <a href="{{ url('andbaazaradmin/sme/products') }}"  class="btn btn-success">Back</a>
+                            <a class="btn btn-success" href="{{ URL::previous() }}">back</a>
+                            <!-- <a href="{{ url('andbaazaradmin/sme/products') }}"  class="btn btn-success">Back</a> -->
                             @if($product->status == 'Active') 
                             <label class="badge badge-pill badge-info p-3">Approved</label>
                             @elseif($product->status == 'Reject') 

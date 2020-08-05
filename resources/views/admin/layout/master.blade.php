@@ -309,6 +309,16 @@ $('#dataTableNoPagingDesc2').DataTable({
     "ordering": false
 });
 
+$('#dataTableNoPagingDesc3').DataTable({
+    dom: 'Bfrtip',
+    "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
+    paging: false,
+    buttons: [
+        'excel', 'csv', 'pdf'
+    ],
+    "ordering": false
+});
+
 $('#dataTableNoPaging').DataTable({
     dom: 'Bfrtip',
     "lengthMenu": [[25, 50, -1], [25, 50, "All"]],

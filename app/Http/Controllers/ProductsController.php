@@ -344,8 +344,10 @@ class ProductsController extends Controller
     }
 
     public function productTableList(){
-      $product = Product::all();
-      return view('merchant.product.productTableList',compact('product'));
+      $ecom = Product::with('inventory')->where('type','ecommerce')->get(); 
+      $sme = Product::with('inventory')->where('type','sme')->get();   
+      // $product = Product::all();
+      return view('merchant.product.productTableList',compact('ecom','sme'));
     }
 
      public function approvement($slug){
