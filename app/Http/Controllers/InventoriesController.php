@@ -55,7 +55,7 @@ class InventoriesController extends Controller
             'color' => request('color'),
         ]);
 
-        return view ('merchant.inventory.index',compact('inventories','item','color','inventoryAttriSize','productAttriSize','inventoryAttriCapa','productAttriCapa'));
+        return view ('merchant.inventory.ecommerceInventroy.index',compact('inventories','item','color','inventoryAttriSize','productAttriSize','inventoryAttriCapa','productAttriCapa'));
 
     }
 
@@ -75,7 +75,7 @@ class InventoriesController extends Controller
         $inventoryAttriCapa = InventoryAttributeOption::with('attribute')->where('inventory_attribute_id',2)->first();
         $productAttriSize   = InventoryAttributeOption::where('inventory_attribute_id',1)->get();
         $productAttriCapa   = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
-        return view ('merchant.inventory.create',compact('inventory','item','size','color','shopProfile','productAttriSize','productAttriCapa','inventoryAttriSize','inventoryAttriCapa'));
+        return view ('merchant.inventory.ecommerceInventroy.create',compact('inventory','item','size','color','shopProfile','productAttriSize','productAttriCapa','inventoryAttriSize','inventoryAttriCapa'));
     }
 
     public function addImages($images, $itemId,$shop){
@@ -154,7 +154,7 @@ class InventoriesController extends Controller
     public function show(Inventory $inventory)
     {
 
-        return view ('merchant.inventory.show',compact('inventory'));
+        return view ('merchant.inventory.ecommerceInventroy.show',compact('inventory'));
     }
 
     /**
@@ -177,7 +177,7 @@ class InventoriesController extends Controller
         $inventoryMeta      = InventoryMeta::all();  
         $itemImages         = $inventory->item->itemimage->groupBy('color_slug');
         //dd($itemImages);
-        return view ('merchant.inventory.edit',compact('inventory','item','itemImages','size','color','shopProfile','inventoryAttriSize','inventoryAttriCapa','productAttriSize','productAttriCapa','inventoryMeta'));
+        return view ('merchant.inventory.ecommerceInventroy.edit',compact('inventory','item','itemImages','size','color','shopProfile','inventoryAttriSize','inventoryAttriCapa','productAttriSize','productAttriCapa','inventoryMeta'));
     }
 
     /**
