@@ -113,6 +113,51 @@
                                         </div>                                       
                                     </div>
                                 </div>
+                               <div class="card mb-4">
+                                    <h5 class="card-header">Product Publis on news feed (optional)</h5>
+                                    <div class="card-body">
+                                        <div class="contianer"> 
+                                            <div class="form-group">
+                                                <div class="checkbox">
+                                                    <label data-toggle="collapse" data-target="#collapseable" aria-expanded="false" aria-controls="collapseable">
+                                                        Are you want to publish product on news feed ? <input type="checkbox" id="check"></label>
+                                                </div>
+                                            </div>
+                                            <div id="collapseable" aria-expanded="false" class="collapse">
+                                                <div class="well">
+                                                    <div class="form-group row">
+                                                        <div class="col-md-6 text-left">
+                                                            <label for="image">News feed Image</label> 
+                                                            <div class="mt-0">
+                                                                <img id="output"  class="imagestyle" src="{{ asset('/uploads/newsfeed_image/newsfeed-4.png') }}" />
+                                                            </div>
+                                                            <div class="uploadbtn">
+                                                                <label for="file-upload" class="custom-file-upload">Upload Here</label>
+                                                                <input id="file-upload" type="file" name="image" onchange="loadFile(event)"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="title" class="">Title <span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" name="title" id="title">
+                                                        <span class="text-danger" id="message_title"></span>
+                                                        @if ($errors->has('title'))
+                                                            <span class="text-danger">{{ $errors->first('title') }}</span>
+                                                        @endif 
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="news_desc" class="">Description<span class="text-danger"> *</span></label>
+                                                        <textarea class="form-control summernote"  id="newsDesctiption"  name="news_desc"></textarea>
+                                                        <span class="text-danger" id="message_news_desc"></span>
+                                                        @if ($errors->has('news_desc'))
+                                                            <span class="text-danger">{{ $errors->first('news_desc') }}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <button id="save" class="btn btn-success float-right ml-2" type="submit" data-step="4">Save</button>
                             <input type="button" id="previous3" name="previous" class="previous btn btn-info float-right mr-2" value="Previous" />
@@ -393,4 +438,11 @@ $(document).ready(function(){
     }
 
  </script>
+
+<script>
+ var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>
 @endpush

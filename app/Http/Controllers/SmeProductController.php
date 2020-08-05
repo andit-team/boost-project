@@ -22,6 +22,7 @@ use App\Models\InventoryMeta;
 use App\Models\ItemMeta;
 use Illuminate\Support\Str;
 use App\Models\Brand;
+use App\Models\Newsfeed;
 use Sentinel;
 use Session;
 use Baazar;
@@ -190,7 +191,17 @@ class SmeProductController extends Controller
           if($request->images){
             $this->addImages($request->images,$item->id,$shop);
           }
-  
+          
+        $newsFeed = [
+          'title'      => $request->title,
+          'image'      => Baazar::pdfUpload($request,'image','','/uploads/newsfeed_image'),
+          'news_desc'  => $request->news_desc, 
+          'product_id' => $item->id,
+          'user_id'    => Sentinel::getUser()->id,
+          'created_at' => now(),
+        ];
+
+        Newsfeed::create($newsFeed);
   
           // $name = $data['name'];
           //  \Mail::to($sellerId['email'])->send(new ProductApproveRequestMail($sellerId, $name));
@@ -261,6 +272,7 @@ class SmeProductController extends Controller
      */
     public function update(Request $request, $slug,Product $item){ 
       $product = Product::where('slug',$slug)->first(); 
+      $newsFeedUpdate = Newsfeed::where('product_id',$product->id)->first();
       $product->item_meta()->delete(); 
       $product->itemimage()->delete();
       $product->inventory()->delete();
@@ -293,6 +305,14 @@ class SmeProductController extends Controller
         if($request->images){
           $this->addImages($request->images,$product->id,$shop);
         }
+
+        $newsFeed = [
+          'title'      => $request->title,
+          'image'      => Baazar::pdfUpload($request,'image','old_image','/uploads/newsfeed_image'),
+          'news_desc'  => $request->news_desc,  
+          'updated_at' => now(),
+        ];
+        $newsFeedUpdate->update($newsFeed);
  
         Session::flash('warning', 'SME Product updated Successfully!');
 

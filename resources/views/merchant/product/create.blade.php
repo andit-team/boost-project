@@ -154,7 +154,7 @@
                                                 <div class="well">
                                                     <div class="form-group row">
                                                         <div class="col-md-6 text-left">
-                                                            <label for="image">News fedd Image</label> 
+                                                            <label for="image">News feed Image</label> 
                                                             <div class="mt-0">
                                                                 <img id="output"  class="imagestyle" src="{{ asset('/uploads/newsfeed_image/newsfeed-4.png') }}" />
                                                             </div>
