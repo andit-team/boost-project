@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="description" class="">Description (English)</label>
-                                        <textarea class="form-control  summernote"  id="description" name="description"></textarea>
+                                        <textarea class="form-control summernote"  id="description" name="description"></textarea>
                                         <span class="text-danger" id="message_description"></span>
                                         @if ($errors->has('description'))
                                             <span class="text-danger">{{ $errors->first('description') }}</span>
@@ -143,15 +143,44 @@
                                 <div class="card mb-4">
                                     <h5 class="card-header">Product Publis on news feed (optional)</h5>
                                     <div class="card-body">
-                                        <div class="contianer">
+                                        <div class="contianer"> 
                                             <div class="form-group">
                                                 <div class="checkbox">
                                                     <label data-toggle="collapse" data-target="#collapseable" aria-expanded="false" aria-controls="collapseable">
-                                                        Are you publis product on news feed <input type="checkbox"></label>
+                                                        Are you want to publish product on news feed ? <input type="checkbox" id="check"></label>
                                                 </div>
                                             </div>
                                             <div id="collapseable" aria-expanded="false" class="collapse">
-                                                <div class="well">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe ut molestias eius, nam neque esse eos modi corrupti harum fugit, hic recusandae praesentium, minima ipsa eligendi architecto at! Culpa, explicabo.</div>
+                                                <div class="well">
+                                                    <div class="form-group row">
+                                                        <div class="col-md-6 text-left">
+                                                            <label for="image">News fedd Image</label> 
+                                                            <div class="mt-0">
+                                                                <img id="output"  class="imagestyle" src="{{ asset('/uploads/newsfeed_image/newsfeed-4.png') }}" />
+                                                            </div>
+                                                            <div class="uploadbtn">
+                                                                <label for="file-upload" class="custom-file-upload">Upload Here</label>
+                                                                <input id="file-upload" type="file" name="image" onchange="loadFile(event)"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="title" class="">Title <span class="text-danger">*</span></label>
+                                                        <input type="text" class="form-control" name="title" id="title">
+                                                        <span class="text-danger" id="message_title"></span>
+                                                        @if ($errors->has('title'))
+                                                            <span class="text-danger">{{ $errors->first('title') }}</span>
+                                                        @endif 
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="news_desc" class="">Description<span class="text-danger"> *</span></label>
+                                                        <textarea class="form-control summernote"  id="newsDesctiption"  name="news_desc"></textarea>
+                                                        <span class="text-danger" id="message_news_desc"></span>
+                                                        @if ($errors->has('news_desc'))
+                                                            <span class="text-danger">{{ $errors->first('news_desc') }}</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -265,6 +294,30 @@ span.select2.select2-container.select2-container--default {
 
     #personal_information{
         display:none;
+    }
+
+    .imagestyle{
+        width: 200px;
+        height: 200px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #ccc;
+        border-bottom: 0px;
+        padding: 10px;
+    }
+
+    #file-upload{
+        display: none;
+    }
+    .uploadbtn{
+        width: 200px;background: #ddd;float: left;text-align: center;
+    }
+    .custom-file-upload {
+        /* border: 1px solid #ccc; */
+        display: inline-block;
+        padding: 9px 40px;
+        cursor: pointer;
+        border-top: 0px;
     }
 
 
@@ -435,106 +488,16 @@ $(document).ready(function(){
         return err;
     }
 
-    // $(document).ready(function(){
-    //     $('#next').click(function(){
-    //         var error = 0;
-    //         var current_step = $(this).data('step');
-    //         if(current_step == 1){
-    //             error = firstStepValidation();
-    //         }
-    //         if(error == 0) {
-    //             current_fs = $('#basic_information');
-    //             next_fs = $('#detail_information');
-    //             next_fs.show();
-    //             current_fs.hide();
-    //         }
-    //     });
+    $('#check').click(function(){
+        var txt = $('textarea#description').val();
+        $('#newsDesctiption').summernote('code',txt); 
+    });
 
-    //     $('#previous').click(function(){
-    //         current_fs = $('#detail_information');
-    //         next_fs = $('#basic_information');
-    //         next_fs.show();
-    //         current_fs.hide();
-    //     });
-    // });
 
-    // $(document).ready(function(){
-    //     $('#next1').click(function(){
-    //         var error = 0;
-    //         var current_step = $(this).data('step');
-
-    //         if(current_step == 2){
-    //             error = secondStepValidation();
-    //         }
-
-    //         // console.log(current_step);
-    //         if(error == 0) {
-    //             current_fs = $('#detail_information');
-    //             next_fs = $('#pricestock_information');
-    //             next_fs.show();
-    //             current_fs.hide();
-    //         }
-    //     });
-
-    //     $('#previous1').click(function(){
-    //         current_fs = $('#pricestock_information');
-    //         next_fs = $('#detail_information');
-    //         next_fs.show();
-    //         current_fs.hide();
-    //     });
-    // });
-
-    // $(document).ready(function(){
-    //     $('#next2').click(function(){
-    //         var error = 0;
-    //         var current_step = $(this).data('step');
-
-    //         if(current_step == 3){
-    //             error = thirdStepValidation();
-    //         }
-
-    //         // console.log(current_step);
-    //         if(error == 0) {
-    //             current_fs = $('#pricestock_information');
-    //             next_fs = $('#tagmodel_information');
-    //             next_fs.show();
-    //             current_fs.hide();
-    //         }
-    //     });
-
-    //     $('#previous2').click(function(){
-    //         current_fs = $('#pricestock_information');
-    //         next_fs = $('#detail_information');
-    //         next_fs.show();
-    //         current_fs.hide();
-    //     });
-    // });
-
-    // $(document).ready(function(){
-    //     $('#save').click(function(){
-    //         var error = 0;
-    //         var current_step = $(this).data('step');
-    //         //console.log(current_step);
-    //         if(current_step == 4){
-    //             error = fourthStepValidation();
-    //         }
-
-    //         // console.log(current_step);
-    //         // if(error == 0) {
-    //         //     current_fs = $('#personal_information2');
-    //         //     next_fs = $('#account_information1');
-    //         //     next_fs.show();
-    //         //     current_fs.hide();
-    //         // }
-    //     });
-
-    //     $('#previous3').click(function(){
-    //         current_fs = $('#tagmodel_information');
-    //         next_fs = $('#pricestock_information');
-    //         next_fs.show();
-    //         current_fs.hide();
-    //     });
-    // });
+    var loadFile = function(event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
 
  </script>
 @endpush

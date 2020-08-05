@@ -30,6 +30,7 @@ use App\Models\Size;
 use App\Models\Tag;
 use App\Models\Product;
 use App\Models\Brand;
+use App\Models\Newsfeed;
 class User extends EloquentUser
 {
     protected $fillable = [
@@ -121,4 +122,7 @@ class User extends EloquentUser
       public function brand(){
         return $this->hasMany(Brand::class,'user_id');
       }
+      public function news(){
+        return $this->hasOne(Newsfeed::class,'newsfeed_id');
       }
+    }

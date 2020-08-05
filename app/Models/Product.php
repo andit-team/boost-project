@@ -17,6 +17,7 @@ use App\Models\Category;
 use App\Models\Color;
 use App\Models\Size;
 use App\User;
+use App\Models\Newsfeed;
 
 class Product extends Model
 {
@@ -99,11 +100,13 @@ class Product extends Model
      }
      public function review(){
        return $this->hasMany(Review::class,'product_id');
-     }
-
+     } 
      public function item_meta(){
        return $this->hasMany(ItemMeta::class,'product_id');
      }
+     public function news(){
+      return $this->hasOne(Newsfeed::class,'newsfeed_id');
+    }  
 
      public static function getSubcategory($categoryId){
       return DB::table('categories')

@@ -24,6 +24,7 @@ use App\Models\Brand;
 use Sentinel;
 use Session;
 use Baazar;
+use App\Models\Newsfeed;
 
 class ProductsController extends Controller
 {
@@ -195,7 +196,18 @@ class ProductsController extends Controller
         }
         if($request->images){
           $this->addImages($request->images,$item->id,$shop);
-        }
+        } 
+
+        $newsFeed = [
+          'title'      => $request->title,
+          'image'      => Baazar::pdfUpload($request,'image','','/uploads/newsfeed_image'),
+          'news_desc'  => $request->news_desc, 
+          'product_id' => $item->id,
+          'user_id'    => Sentinel::getUser()->id,
+          'created_at' => now(),
+        ];
+
+        Newsfeed::create($newsFeed);
 
 
         // $name = $data['name'];
@@ -314,8 +326,7 @@ class ProductsController extends Controller
         }
         if($request->images){
           $this->addImages($request->images,$product->id,$shop);
-        }
- 
+        } 
         Session::flash('warning', 'Product updated Successfully!');
 
         return back();
