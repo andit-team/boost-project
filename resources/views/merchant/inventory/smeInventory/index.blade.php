@@ -16,8 +16,7 @@
                 <h3>SME Inventory</h3>
                 <a href="{{ url('merchant/sme/inventories/new') }}" class="btn btn-sm btn-solid float-right">add New</a>
             </div> 
-            <section class="tab-product m-0"> 
-                    <div class="col-sm-12 col-lg-12">
+            <section class="tab-product m-0">  
                         <ul class="nav nav-tabs nav-material myTab" id="top-tab" role="tablist">
                             <li class="nav-item"><a class="nav-link active show" id="top-home-tab" data-toggle="tab" href="#top-home" role="tab" aria-selected="true"><i class="icofont icofont-ui-home"></i>Active</a>
                                 <div class="material-border"></div>
@@ -35,7 +34,7 @@
                                             <select name="color_id" id="color_id" class="form-control"> 
                                                 <option value="select">select color</option> 
                                                 @foreach($color as $row)
-                                                  <option value="{{$row->slug}}" selected>{{$row->name}}</option> 
+                                                  <option value="{{$row->slug}}">{{$row->name}}</option> 
                                                 @endforeach
                                             </select>
                                         </div>
@@ -93,7 +92,7 @@
                                         <div class="top-sec w-50">
                                             <input type="text" class="form-control" id="serchOutStock" placeholder="Search">
                                             <select name="color_id" id="color_name" class="form-control"> 
-                                                <option value="Select" selected>Select Color</option>
+                                                <option value="Select">Select Color</option>
                                                 @foreach($color as $row)
                                                   <option value="{{$row->slug}}">{{$row->name}}</option> 
                                                 @endforeach
@@ -149,8 +148,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div> 
+                        </div>  
             </section> 
 
             

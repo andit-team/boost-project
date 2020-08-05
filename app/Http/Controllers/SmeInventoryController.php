@@ -38,7 +38,7 @@ class SmeInventoryController extends Controller
         $productAttriCapa   = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
 
         if($request->has('color')){
-            $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->where('color_name',$request->color)->paginate(10); 
+            $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->where('type','sme')->where('color_name',$request->color)->paginate(10); 
             //dd($inventories);
         }
 
@@ -103,6 +103,7 @@ class SmeInventoryController extends Controller
                 'size_id'       => $request->size_id,
                 'price'         => $request->price,
                 'qty_stock'     => $request->qty_stock,
+                'seller_sku'    => $request->seller_sku,
                 'special_price' => $request->special_price,
                 'start_date'    => $request->start_date,
                 'end_date'      => $request->end_date,
