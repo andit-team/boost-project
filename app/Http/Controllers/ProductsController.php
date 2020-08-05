@@ -245,8 +245,9 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($slug){
-        $product = Product::with(['item_meta.attributes.options','itemimage','inventory.invenMeta','category.inventoryAttributes.options'])->where('slug',$slug)->first();
-        $itemImages = $product->itemimage->groupBy('color_slug');
+        $product = Product::with(['item_meta.attributes.options','news','itemimage','inventory.invenMeta','category.inventoryAttributes.options'])->where('slug',$slug)->first(); 
+        $itemImages = $product->itemimage->groupBy('color_slug'); 
+        // dd($newsFeed);
         // dd($product->category->inventoryAttributes);
         // dd($product->inventory);
         // echo 'asdf';
@@ -291,7 +292,8 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $slug,Product $item){ 
-      $product = Product::where('slug',$slug)->first(); 
+      $product        = Product::where('slug',$slug)->first(); 
+      $newsFeedUpdate = Newsfeed::where('product_id',$product->id)->first(); 
       $product->item_meta()->delete(); 
       $product->itemimage()->delete();
       $product->inventory()->delete();
@@ -327,7 +329,14 @@ class ProductsController extends Controller
         if($request->images){
           $this->addImages($request->images,$product->id,$shop);
         } 
-        Session::flash('warning', 'Product updated Successfully!');
+        $newsFeed = [
+          'title'      => $request->title,
+          'image'      => Baazar::pdfUpload($request,'image','old_image','/uploads/newsfeed_image'),
+          'news_desc'  => $request->news_desc,  
+          'updated_at' => now(),
+        ];
+        $newsFeedUpdate->update($newsFeed);
+        Session::flash('success', 'Product updated Successfully!');
 
         return back();
     }
@@ -344,10 +353,8 @@ class ProductsController extends Controller
     }
 
     public function productTableList(){
-      $ecom = Product::with('inventory')->where('type','ecommerce')->get(); 
-      $sme = Product::with('inventory')->where('type','sme')->get();   
-      // $product = Product::all();
-      return view('merchant.product.productTableList',compact('ecom','sme'));
+      $product = Product::all();
+      return view('merchant.product.productTableList',compact('product'));
     }
 
      public function approvement($slug){

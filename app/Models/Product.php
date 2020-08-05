@@ -105,7 +105,7 @@ class Product extends Model
        return $this->hasMany(ItemMeta::class,'product_id');
      }
      public function news(){
-      return $this->hasOne(Newsfeed::class,'newsfeed_id');
+      return $this->hasOne(Newsfeed::class,'product_id');
     }  
 
      public static function getSubcategory($categoryId){
