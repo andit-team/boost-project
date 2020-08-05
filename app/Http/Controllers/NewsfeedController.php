@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Newsfeed;
+use App\Models\Newsfeed;
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\User;
+use Sentinel;
+use Session;
+use Baazar;
 
 class NewsfeedController extends Controller
 {
@@ -14,7 +19,9 @@ class NewsfeedController extends Controller
      */
     public function index()
     {
-        //
+        $newsFeed = Newsfeed::where('user_id',Sentinel::getUser()->id)->paginate(10);
+        
+        return view('merchant.newsFeed.index',compact('newsFeed'));
     }
 
     /**

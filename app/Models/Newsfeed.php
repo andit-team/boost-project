@@ -8,7 +8,12 @@ use App\Models\Product;
 
 class Newsfeed extends Model
 {
-    protected $fillable = ['image','title','news_desc','status','type','user_id','product_id'];
+    protected $fillable = ['image','title','slug','news_desc','status','type','user_id','product_id'];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function user(){
         return $this->belongsTo(User::class,'user_id');

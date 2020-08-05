@@ -159,9 +159,10 @@ class ProductsController extends Controller
       }
     }
 
-    public function store(Product $item, Request $request){
+    public function store(Product $item, Request $request, Newsfeed $newsfeed){
       // dd($request->all());
       $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
+      $newsslug = Baazar::getUniqueSlug($newsfeed,$request->title);
       if($shop){
         $slug = Baazar::getUniqueSlug($item,$request->name);
         $feature = Baazar::base64Upload($request->images['main'][0],$slug,$shop->slug,'featured');
@@ -200,6 +201,7 @@ class ProductsController extends Controller
 
         $newsFeed = [
           'title'      => $request->title,
+          'slug'       => $newsslug,
           'image'      => Baazar::pdfUpload($request,'image','','/uploads/newsfeed_image'),
           'news_desc'  => $request->news_desc, 
           'product_id' => $item->id,

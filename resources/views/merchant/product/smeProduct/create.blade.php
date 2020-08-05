@@ -7,7 +7,7 @@
     <section class="dashboard-section section-b-space">
         <div class="container">
             <div class="row">
-                @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
+                @include('layouts.inc.sidebar.vendor-sidebar',[$active ='smeProduct'])
                 <div class="col-sm-9 register-page container">
                     <h2 id="heading">Add SME Product</h2>
                     <form id="msform" action="{{ route('smeproduct.store') }}" method="post"  enctype="multipart/form-data" id="validateForm">

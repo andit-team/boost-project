@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row">
 
-            @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
+            @include('layouts.inc.sidebar.vendor-sidebar',[$active ='smeProduct'])
 
                 <!-- address section start -->
                 <div class="col-sm-9 register-page container">

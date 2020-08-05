@@ -17,6 +17,7 @@ class CreateNewsfeedsTable extends Migration
             $table->bigIncrements('id');
             $table->string('image')->nullable();
             $table->string('title')->nullable();
+            $table->string('slug')->nullable();
             $table->text('news_desc')->nullable(); 
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('user_id');
