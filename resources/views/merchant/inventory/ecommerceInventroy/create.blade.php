@@ -52,7 +52,7 @@
         height: 45px!important;
     }
     .dropzone-previews { 
-            width: 1020px; 
+            width: 980px; 
         }
 </style>
 @endpush
@@ -65,88 +65,93 @@
         @include('layouts.inc.sidebar.vendor-sidebar',[$active ='inventory'])
         <div class="col-md-9">
             <h3>Add E-commerce Inventory</h3>
-            <form class="theme-form" action="{{ route('inventory.store') }}" method="post" id="validateForm">
-                @csrf
-                    <div class="form-row">
-
-                        <div class="col-md-6">
-                            <label for="product_id">Product <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('product_id') }}</span>
-                            <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off">
-                                <option value="" selected disabled>Select Product</option>
-                                @foreach ($item as $row)
-                                    <option  value="{{ $row->id }}">{{$row->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-md-6"> 
-                            <label for="color_id"">Color<span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('color_id') }}</span>
-                                <select name="color_name" autocomplete="off" class="form-control color_id" id="selectColor">
-                                    <option value="">No Color</option>
-                                    @foreach($color as $row)
-                                        <option value="{{ $row->slug }}">{{ $row->name }}</option>
-                                    @endforeach
-                            </select>
-                        </div> 
-                        <div class="col-md-12"> 
-                                <label for="" class="col-xl-3 col-md-8"></label>
-                                <div class="drops dropzone-previews"></div>
-                                <div class="inputs"></div> 
-                        </div>
-
-                        <div class="col-md-12">
-                            <label for="size_id" class="siz">Size <span class="text-danger "> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
-                            <input type="hidden" name="name" value="{{ $inventoryAttriSize->attribute->name }}">
-                            <select name="value" class="form-control size" id="size_id" autocomplete="off">
-                                <option value="" selected disabled>Select Size</option>
-                                @foreach ($productAttriSize as $row)
-                                    <option value="{{ $row->option }}">{{$row->option}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="size_id" class="capa">Storage Capacity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
-                            <input type="hidden" name="name" value="{{ $inventoryAttriCapa->attribute->name }}">
-                            <select name="value" class="form-control capacity" id="size_id" autocomplete="off">
-                                <option value="" selected disabled>Select Size</option>
-                                @foreach ($productAttriCapa as $row)
-                                    <option value="{{ $row->option }}">{{$row->option}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-6 mt-1">
-                            <label for="price">Price <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('Price') }}</span>
-                            <input type="number" class="form-control inputfield" name="price" id="price" value="{{ old('price') }}">
-                        </div>
-                        <div class="col-md-6 mt-1">
-                            <label for="qty_stock">Stock Quantity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('qty_stock') }}</span>
-                            <input type="number" class="form-control inputfield" name="qty_stock" id="qty_stock" value="{{ old('qty_stock') }}">
-                        </div>
-                        <div class="col-md-12 mt-1">
-                            <label for="seller_sku">SellerSku <span class="text-danger"></span></label><span class="text-danger">{{ $errors->first('seller_sku') }}</span>
-                            <input type="text" class="form-control inputfield" name="seller_sku" id="seller_sku" value="{{ old('seller_sku') }}">
-                        </div>
-                        <div class="col-md-12 mt-2">
-                            <h4>Special price (optional)</h4>
-                            <hr>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="special_price">Special price</label>
-                            <input type="number" class="form-control inputfield" name="special_price" id="special_price" value="{{ old('special_price') }}">
-                        </div>
-
-                        <div class="col-md-6">
-                            <label for="" >Special price Period</label>
-                            <div class="input-group">
-                             <input type="text" id="spcial_price_start" name="start_date" class="datepickerRange form-control inputfield" value="{{ old('start_date') }}"><span class="input-group-addon p-2 bg-success bottom" >To</span><input type="text" id="spcial_price_end" name="end_date" class="datepickerRange form-control inputfield" value="{{ old('end_date') }}">
-                        </div>
-                        </div>
-                        <div class="col-md-12 mt-2">
-                            <button class="btn btn-sm btn-solid" type="submit">Save</button>
-                        </div>
-                    </div>
-                </form>       
-      </div>
+            <div class="card">
+                <div class="card-body">
+                    <form class="theme-form" action="{{ route('inventory.store') }}" method="post" id="validateForm">
+                        @csrf
+                            <div class="form-row">
+        
+                                <div class="col-md-6">
+                                    <label for="product_id">Product <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('product_id') }}</span>
+                                    <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off">
+                                        <option value="" selected disabled>Select Product</option>
+                                        @foreach ($item as $row)
+                                            <option  value="{{ $row->id }}">{{$row->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+        
+                                <div class="col-md-6"> 
+                                    <label for="color_id"">Color<span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('color_id') }}</span>
+                                        <select name="color_name" autocomplete="off" class="form-control color_id" id="selectColor">
+                                            <option value="">No Color</option>
+                                            @foreach($color as $row)
+                                                <option value="{{ $row->slug }}">{{ $row->name }}</option>
+                                            @endforeach
+                                    </select>
+                                </div> 
+                                <div class="col-md-12"> 
+                                        <label for="" class="col-xl-3 col-md-8"></label>
+                                        <div class="drops dropzone-previews"></div>
+                                        <div class="inputs"></div> 
+                                </div>
+        
+                                <div class="col-md-12">
+                                    <label for="size_id" class="siz">Size <span class="text-danger "> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
+                                    <input type="hidden" name="name" value="{{ $inventoryAttriSize->attribute->name }}">
+                                    <select name="value" class="form-control size" id="size_id" autocomplete="off">
+                                        <option value="" selected disabled>Select Size</option>
+                                        @foreach ($productAttriSize as $row)
+                                            <option value="{{ $row->option }}">{{$row->option}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="size_id" class="capa">Storage Capacity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
+                                    <input type="hidden" name="name" value="{{ $inventoryAttriCapa->attribute->name }}">
+                                    <select name="value" class="form-control capacity" id="size_id" autocomplete="off">
+                                        <option value="" selected disabled>Select Size</option>
+                                        @foreach ($productAttriCapa as $row)
+                                            <option value="{{ $row->option }}">{{$row->option}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mt-1">
+                                    <label for="price">Price <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('Price') }}</span>
+                                    <input type="number" class="form-control inputfield" name="price" id="price" value="{{ old('price') }}">
+                                </div>
+                                <div class="col-md-6 mt-1">
+                                    <label for="qty_stock">Stock Quantity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('qty_stock') }}</span>
+                                    <input type="number" class="form-control inputfield" name="qty_stock" id="qty_stock" value="{{ old('qty_stock') }}">
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <label for="seller_sku">SellerSku <span class="text-danger"></span></label><span class="text-danger">{{ $errors->first('seller_sku') }}</span>
+                                    <input type="text" class="form-control inputfield" name="seller_sku" id="seller_sku" value="{{ old('seller_sku') }}">
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <h4>Special price (optional)</h4>
+                                    <hr>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="special_price">Special price</label>
+                                    <input type="number" class="form-control inputfield" name="special_price" id="special_price" value="{{ old('special_price') }}">
+                                </div>
+        
+                                <div class="col-md-6">
+                                    <label for="" >Special price Period</label>
+                                    <div class="input-group">
+                                     <input type="text" id="spcial_price_start" name="start_date" class="datepickerRange form-control inputfield" value="{{ old('start_date') }}"><span class="input-group-addon p-2 bg-success bottom" >To</span><input type="text" id="spcial_price_end" name="end_date" class="datepickerRange form-control inputfield" value="{{ old('end_date') }}">
+                                </div>
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <button class="btn btn-sm btn-solid" type="submit">Save</button>
+                                    <a href="{{ url('merchant/e-commerce/inventories') }}" class="btn btn-sm btn-solid">Back</a>
+                                </div>
+                            </div>
+                        </form> 
+                </div>  
+            </div>         
+        </div>
       </div>
    </div>
 </section>

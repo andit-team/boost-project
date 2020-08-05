@@ -57,7 +57,7 @@
         .ui-sortable-placeholder { height: 125px; width: 125px; border: 1px dashed; line-height: 1.2em; }
 
         .dropzone-previews { 
-            width: 1020px; 
+            width: 980px; 
         }
         .spanHi{
             height: 40px!important;
@@ -83,123 +83,128 @@
             @include('layouts.inc.sidebar.vendor-sidebar',[$active='inventory'])
 
             <!-- address section start -->
-                <div class="col-sm-9 contact-page register-page container">
+                <div class="col-sm-9">
                     <h3>Edit E-commerce Inventory</h3>
-                    <form class="theme-form" action="{{ url('merchant/e-commerce/inventories/update/'.$inventory->slug) }}" method="post" id="validateForm">
-                        @csrf
-                        @method('put') 
-                        <div class="form-row">
-                            
-
-                            <div class="col-md-6">
-                                <label for="product_id">Product <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('product_id') }}</span>
-                                <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off" disabled>
-                                    <option value="" selected disabled>Select Product</option>
-                                    @foreach ($item as $row)
-                                        <option data-cat="{{$row->category_id}}" value="{{ $row->id }}" @if($row->id == $inventory->product_id) selected @endif>{{$row->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-md-12 d-none">
-                                <label for="color_id" class="col-xl-3 col-md-4"></label>
-                                <div id="dropzone-main" class="img-upload-area" data-color="main"><label class="mt-3"><b>Feature Images :</b><span class="text-danger" id="message_main_img"></span></label>
-                                    <div class="border m-0 collpanel drop-area row my-awesome-dropzone-main" id="sortable-main">
-                                        <span class="dz-message color-main d-none">
-                                            <h2>Drag & Drop Your Files</h2>
-                                        </span>
-                                            
-                    
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="theme-form" action="{{ url('merchant/e-commerce/inventories/update/'.$inventory->slug) }}" method="post" id="validateForm">
+                                @csrf
+                                @method('put') 
+                                <div class="form-row">
+                                    
+        
+                                    <div class="col-md-6">
+                                        <label for="product_id">Product <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('product_id') }}</span>
+                                        <select name="product_id" class="form-control px-10" id="product_id"  autocomplete="off" disabled>
+                                            <option value="" selected disabled>Select Product</option>
+                                            @foreach ($item as $row)
+                                                <option data-cat="{{$row->category_id}}" value="{{ $row->id }}" @if($row->id == $inventory->product_id) selected @endif>{{$row->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
-                                    <small>Remember Your featured file will be the first one.</small><br>
+                                    <div class="col-md-12 d-none">
+                                        <label for="color_id" class="col-xl-3 col-md-4"></label>
+                                        <div id="dropzone-main" class="img-upload-area" data-color="main"><label class="mt-3"><b>Feature Images :</b><span class="text-danger" id="message_main_img"></span></label>
+                                            <div class="border m-0 collpanel drop-area row my-awesome-dropzone-main" id="sortable-main">
+                                                <span class="dz-message color-main d-none">
+                                                    <h2>Drag & Drop Your Files</h2>
+                                                </span>
+                                                    
+                            
+                                            </div>
+                                            <small>Remember Your featured file will be the first one.</small><br>
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-md-6">
+                                        <label for="color_id">Color <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('color_name') }}</span>
+                                        <select name="color_name" class="form-control color_id"   autocomplete="off" id="selectColor" disabled>
+                                            <option value="" selected disabled>Select Color</option>
+                                            @foreach ($color as $row)
+                                                <option  value="{{ $row->slug }}" {{(ucfirst($row->slug) == ucfirst($inventory->color_name))? 'selected' : ''}}>{{$row->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+        
+                                    <div class="col-md-12"> 
+                                        <label for="" class="col-xl-3 col-md-8"></label>
+                                        <div class="drops dropzone-previews"></div>
+                                        <div class="inputs">
+        
+                                        </div> 
+                                    </div>
+        
+                                    <div class="col-md-12"> 
+                                        
+                                       @foreach($inventoryMeta as $meta)
+                                       @if($loop->first)
+                                       @if($meta->name == 'size')
+                                       <label for="size_id">Size <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
+                                       <input type="hidden" name="name" value="{{ $inventoryAttriCapa->attribute->name }}">
+                                        <select name="value" class="form-control size inputfield" id="size_id" autocomplete="off">
+                                            <option value="" selected disabled>Select Size</option>
+                                            @foreach ($productAttriSize as $row)
+                                                <option value="{{ $row->option }}" @if($row->option == $inventory->invenMeta->value) selected @endif>{{$row->option}}</option>
+                                            @endforeach
+                                        </select>
+                                        @else
+                                        @endif
+                                        @endif
+                                        @endforeach 
+                                    </div>
+                                    <div class="col-md-12"> 
+                                        @foreach($inventoryMeta as $inv)
+                                        @if($loop->first)
+                                        @if($inv->name == 'storage Capacity')
+                                        <label for="size_id">Storage Capacity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
+                                        <input type="hidden" name="name" value="{{ $inventoryAttriCapa->attribute->name }}">
+                                        <select name="value" class="form-control capacity inputfield" id="size_id" autocomplete="off">
+                                            <option value="" selected disabled>Select Capacity</option>
+                                            @foreach ($productAttriCapa as $row)
+                                                <option value="{{ $row->option }}" @if($row->option == $inventory->invenMeta->value) selected @endif>{{$row->option}}</option>
+                                            @endforeach
+                                        </select>
+                                        @else 
+        
+                                        @endif
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                    <div class="col-md-6 mt-2">
+                                        <label for="price">Price <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('Price') }}</span>
+                                        <input type="number" class="form-control inputfield" name="price" id="price" value="{{ old('price',$inventory->price) }}">
+                                    </div>
+                                    <div class="col-md-6 mt-2">
+                                        <label for="qty_stock">Stock Quantity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('qty_stock') }}</span>
+                                        <input type="number" class="form-control inputfield" name="qty_stock" id="qty_stock" value="{{ old('qty_stock',$inventory->qty_stock) }}">
+                                    </div>
+                                    <div class="col-md-12 mt-2">
+                                        <label for="seller_sku">SellerSku <span class="text-danger"></span></label><span class="text-danger">{{ $errors->first('seller_sku') }}</span>
+                                        <input type="text" class="form-control inputfield" name="seller_sku" id="seller_sku" value="{{ old('seller_sku',$inventory->seller_sku) }}">
+                                    </div>
+                                    <div class="col-md-12 mt-2">
+                                        <h4>Special price (optional)</h4>
+                                        <hr>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="special_price">Special price</label>
+                                        <input type="number" class="form-control inputfield" name="special_price" id="special_price" value="{{ old('special_price',$inventory->special_price) }}">
+                                    </div>
+        
+                                    <div class="col-md-6">
+                                        <label for="" >Special price Period</label>
+                                        <div class="input-group">
+                                            <input type="text" id="spcial_price_start" name="start_date" class="datepickerRange form-control inputfield" value="{{ old('start_date',$inventory->start_date) }}"><span class="input-group-addon p-2 bg-success bottom spanHi">To</span><input type="text" id="spcial_price_end" name="end_date" class="datepickerRange form-control inputfield" value="{{ old('end_date',$inventory->end_date) }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-sm btn-solid" type="submit">Update</button>
+                                        <a href="{{ url('merchant/e-commerce/inventories') }}" class="btn btn-sm btn-solid">Back</a>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="color_id">Color <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('color_name') }}</span>
-                                <select name="color_name" class="form-control color_id"   autocomplete="off" id="selectColor" disabled>
-                                    <option value="" selected disabled>Select Color</option>
-                                    @foreach ($color as $row)
-                                        <option  value="{{ $row->slug }}" {{(ucfirst($row->slug) == ucfirst($inventory->color_name))? 'selected' : ''}}>{{$row->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-md-12"> 
-                                <label for="" class="col-xl-3 col-md-8"></label>
-                                <div class="drops dropzone-previews"></div>
-                                <div class="inputs">
-
-                                </div> 
-                            </div>
-
-                            <div class="col-md-12"> 
-                                
-                               @foreach($inventoryMeta as $meta)
-                               @if($loop->first)
-                               @if($meta->name == 'size')
-                               <label for="size_id">Size <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
-                               <input type="hidden" name="name" value="{{ $inventoryAttriCapa->attribute->name }}">
-                                <select name="value" class="form-control size inputfield" id="size_id" autocomplete="off">
-                                    <option value="" selected disabled>Select Size</option>
-                                    @foreach ($productAttriSize as $row)
-                                        <option value="{{ $row->option }}" @if($row->option == $inventory->invenMeta->value) selected @endif>{{$row->option}}</option>
-                                    @endforeach
-                                </select>
-                                @else
-                                @endif
-                                @endif
-                                @endforeach 
-                            </div>
-                            <div class="col-md-12"> 
-                                @foreach($inventoryMeta as $inv)
-                                @if($loop->first)
-                                @if($inv->name == 'storage Capacity')
-                                <label for="size_id">Storage Capacity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('size_id') }}</span>
-                                <input type="hidden" name="name" value="{{ $inventoryAttriCapa->attribute->name }}">
-                                <select name="value" class="form-control capacity inputfield" id="size_id" autocomplete="off">
-                                    <option value="" selected disabled>Select Capacity</option>
-                                    @foreach ($productAttriCapa as $row)
-                                        <option value="{{ $row->option }}" @if($row->option == $inventory->invenMeta->value) selected @endif>{{$row->option}}</option>
-                                    @endforeach
-                                </select>
-                                @else 
-
-                                @endif
-                                @endif
-                                @endforeach
-                            </div>
-                            <div class="col-md-6 mt-1">
-                                <label for="price">Price <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('Price') }}</span>
-                                <input type="number" class="form-control inputfield" name="price" id="price" value="{{ old('price',$inventory->price) }}">
-                            </div>
-                            <div class="col-md-6 mt-1">
-                                <label for="qty_stock">Stock Quantity <span class="text-danger"> *</span></label><span class="text-danger">{{ $errors->first('qty_stock') }}</span>
-                                <input type="number" class="form-control inputfield" name="qty_stock" id="qty_stock" value="{{ old('qty_stock',$inventory->qty_stock) }}">
-                            </div>
-                            <div class="col-md-12">
-                                <label for="seller_sku">SellerSku <span class="text-danger"></span></label><span class="text-danger">{{ $errors->first('seller_sku') }}</span>
-                                <input type="text" class="form-control inputfield" name="seller_sku" id="seller_sku" value="{{ old('seller_sku',$inventory->seller_sku) }}">
-                            </div>
-                            <div class="col-md-12 mt-2">
-                                <h4>Special price (optional)</h4>
-                                <hr>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="special_price">Special price</label>
-                                <input type="number" class="form-control inputfield" name="special_price" id="special_price" value="{{ old('special_price',$inventory->special_price) }}">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label for="" >Special price Period</label>
-                                <div class="input-group">
-                                    <input type="text" id="spcial_price_start" name="start_date" class="datepickerRange form-control inputfield" value="{{ old('start_date',$inventory->start_date) }}"><span class="input-group-addon p-2 bg-success bottom spanHi">To</span><input type="text" id="spcial_price_end" name="end_date" class="datepickerRange form-control inputfield" value="{{ old('end_date',$inventory->end_date) }}">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <button class="btn btn-sm btn-solid" type="submit">Update</button>
-                            </div>
+                            </form>
                         </div>
-                    </form>
+                    </div> 
                 </div>
 
             </div>

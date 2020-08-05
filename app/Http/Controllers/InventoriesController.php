@@ -201,8 +201,7 @@ class InventoriesController extends Controller
             'qty_stock'     => $request->qty_stock,
             'seller_sku'    => $request->seller_sku,
             'special_price' => $request->special_price,
-            'start_date'    => $request->start_date,
-            'type'          => 'e-commerce',
+            'start_date'    => $request->start_date, 
             'end_date'      => $request->end_date,
             'updated_at'    => now(),
         ];

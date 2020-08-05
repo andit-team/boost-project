@@ -16,8 +16,7 @@
                 <h3>SME Inventory</h3>
                 <a href="{{ url('merchant/e-commerce/inventories/new') }}" class="btn btn-sm btn-solid float-right">add New</a>
             </div> 
-            <section class="tab-product m-0"> 
-                    <div class="col-sm-12 col-lg-12">
+            <section class="tab-product m-0">  
                         <ul class="nav nav-tabs nav-material myTab" id="top-tab" role="tablist">
                             <li class="nav-item"><a class="nav-link active show" id="top-home-tab" data-toggle="tab" href="#top-home" role="tab" aria-selected="true"><i class="icofont icofont-ui-home"></i>Active</a>
                                 <div class="material-border"></div>
@@ -149,8 +148,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div> 
+                        </div> 
             </section> 
 
             
