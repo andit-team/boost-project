@@ -89,7 +89,6 @@
                             </td>
                         </tr>
 
-                        {{--
                         <div class="modal fade" id="tagEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -104,7 +103,7 @@
                                                 <div class="form-group">
                                                     <label for="validationCustom01" class="mb-1">Description :</label>
                                                     <div>
-                                                        {{ $row->rej_name }}
+                                                        {{ $row->rej_desc}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -112,7 +111,7 @@
                                     </div>
                                 </div>
                             </div>
-                            --}} @empty
+                           @empty
                             <tr>
                                 <td colspan="7">No Product found</td>
                             </tr>

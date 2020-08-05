@@ -137,7 +137,7 @@
                                                 <div class="well">
                                                     <div class="form-group row">
                                                         <div class="col-md-6 text-left">
-                                                            <label for="image">News fedd Image</label> 
+                                                            <label for="image">News feed Image</label> 
                                                             <div class="mt-0">
                                                                 @if(!empty($product->news->image))
                                                                 <img id="output"  class="imagestyle" src="{{ asset($product->news->image) }}" />
