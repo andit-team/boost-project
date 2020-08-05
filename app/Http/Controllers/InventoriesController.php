@@ -47,7 +47,7 @@ class InventoriesController extends Controller
         $productAttriCapa   = InventoryAttributeOption::where('inventory_attribute_id',2)->get();
 
         if($request->has('color')){
-            $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->where('color_name',$request->color)->paginate(10); 
+            $inventories        = Inventory::where('shop_id',Baazar::shop()->id)->with('item')->with('invenMeta')->where('type','ecommerce')->where('color_name',$request->color)->paginate(10); 
             //dd($inventories);
         }
 

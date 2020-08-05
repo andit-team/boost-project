@@ -34,7 +34,7 @@
                                             <select name="color_id" id="color_id" class="form-control"> 
                                                 <option value="select">select color</option> 
                                                 @foreach($color as $row)
-                                                  <option value="{{$row->slug}}" selected>{{$row->name}}</option> 
+                                                  <option value="{{$row->slug}}">{{$row->name}}</option> 
                                                 @endforeach
                                             </select>
                                         </div>
@@ -92,7 +92,7 @@
                                         <div class="top-sec w-50">
                                             <input type="text" class="form-control" id="serchOutStock" placeholder="Search">
                                             <select name="color_id" id="color_name" class="form-control"> 
-                                                <option value="Select" selected>Select Color</option>
+                                                <option value="Select">Select Color</option>
                                                 @foreach($color as $row)
                                                   <option value="{{$row->slug}}">{{$row->name}}</option> 
                                                 @endforeach
