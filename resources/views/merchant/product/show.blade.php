@@ -90,7 +90,7 @@
                             <label class="badge badge-pill badge-primary p-3">Rejected</label>
                             <div class="form">
                                 <h6  class="product-title mt-3">Reject description</h6>
-                                <p>{{$product->rej_name }}</p>
+                                <p>{{$product->rej_desc }}</p>
                             </div>
                             @elseif($product->status == 'Pending')
                             <div class="m-l-approve">
@@ -117,7 +117,7 @@
                                                 <div class="form">
                                                     <div class="form-group">
                                                         <label for="validationCustom01" class="mb-1">Description :</label>
-                                                        <textarea class="form-control" name="rej_name" id="validationCustom01" type="text" required></textarea>
+                                                        <textarea class="form-control" name="rej_desc" id="validationCustom01" type="text" required></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
