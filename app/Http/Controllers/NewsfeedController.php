@@ -62,9 +62,11 @@ class NewsfeedController extends Controller
      * @param  \App\Newsfeed  $newsfeed
      * @return \Illuminate\Http\Response
      */
-    public function edit(Newsfeed $newsfeed)
+    public function edit($slug)
     {
-        //
+        $newsFeed = Newsfeed::where('slug',$slug)->first();
+        
+        return view('merchant.newsFeed.edit',compact('newsFeed'));
     }
 
     /**
@@ -74,9 +76,23 @@ class NewsfeedController extends Controller
      * @param  \App\Newsfeed  $newsfeed
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Newsfeed $newsfeed)
+    public function update(Request $request, $slug)
     {
-        //
+        $newsFeed = Newsfeed::where('slug',$slug)->first();
+
+        $data = [
+            'title'      => $request->title,
+            'image'      => Baazar::fileUpload($request,'image','old_image','/uploads/newsfeed_image'),
+            'news_desc'  => $request->news_desc,
+            'updated_at' => now(),
+        ];
+
+        $newsFeed->update($data);
+
+        Session::flash('success','News feed update successfully');
+
+        return redirect('merchant/newsfeed');
+         
     }
 
     /**
@@ -85,8 +101,13 @@ class NewsfeedController extends Controller
      * @param  \App\Newsfeed  $newsfeed
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Newsfeed $newsfeed)
+    public function destroy($id)
     {
-        //
+        $newsFeed = Newsfeed::find($id);
+        $newsFeed->delete();
+
+        Session::flash('error','News feed delete successfully');
+
+        return redirect('merchant/newsfeed');
     }
 }

@@ -46,13 +46,14 @@
                             <td class="d-flex justify-content-between">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="{{ url('merchant/newsfeed/update/'.$row->slug.'/newsfeedupdate') }}">
                                             <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                                         </a>
                                     </li>
                                     <li>
-                                        <form action="{{ url('/merchant/sme/product/'.$row->id) }}" method="post" style="margin-top: -2px;" id="deleteButton{{$row->id}}">
-                                            @csrf @method('delete')
+                                        <form action="{{ url('merchant/newsfeed/'.$row->id) }}" method="post" style="margin-top: -2px;" id="deleteButton{{$row->id}}">
+                                            @csrf 
+                                            @method('delete')
                                             <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
                                         </form>
                                     </li>
