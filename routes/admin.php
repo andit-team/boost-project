@@ -27,6 +27,7 @@ Route::middleware(['auth','admin'])->prefix('andbaazaradmin')->group(function ()
     Route::resource('/currency','CurrenciesController');
     Route::resource('/courier','CouriersController'); 
     //Route::get('/seller','SellersController@index');
+    Route::post('/reject-name','RejectListController@other');
     Route::resource('/reject','RejectListController'); 
     Route::get('/merchant','MerchantController@index');
     Route::get('/contact-us','ContactController@contactmailList');

@@ -224,7 +224,7 @@
                                                         <form action="{{ url('merchant/merchant/rejected/'.$row->id)}}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
                                                             @csrf @method('put')
                                                             <div class="form">
-                                                                <div class="form-group">                                                                                                                                                                                            
+                                                                <div class="form-group">
                                                                     <div class="card">
                                                                         <div class="card-body">
                                                                             <div class="form-check">
@@ -233,21 +233,27 @@
                                                                                     <input type="checkbox" class="form-check-input" id="checked" name="rej_name[]" value="{{$row->rej_name}}" />{{$row->rej_name}}
                                                                                 </label>
                                                                                 @endforeach
-                                                                                <div class="form-group mt-2">
-                                                                                    <label for="exampleInputPassword1 ">Others</label>
-                                                                                    <input type="text" class="form-control" id="other" name="rej_name[]" placeholder=" if need add another reasoan ">
-                                                                                    <button type="submit" class="btn btn-success mt-3 float-right btn-sm">save</button>
-                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    
                                                                 </div>
                                                             </div>
                                                             <div class="text-right">
                                                                 <button type="submit" class="btn btn-primary">Reject</button>
                                                             </div>
                                                         </form>
+                                                        <form id="rejectId" role="form" action="" class="form-material form" method="post">
+                                                           @csrf
+                                                           <div class="form-group mt-2">
+                                                               <label for="exampleInputPassword1 ">Others</label>
+                                                               <input type="text" class="form-control" id="rej_name" name="rej_name[]" placeholder=" if need add another reasoan ">
+                                                               <!-- <button class="btn btn-success mt-3 float-right btn-sm">save</button> -->
+                                                               <div class="form-group  float-right">
+                                                                 <span id="saveReason" class="btn btn-success mt-2 float-right btn-sm">Add</span>
+                                                               </div>
+                                                           </div>
+                                                        </form>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -344,14 +350,37 @@
 @endsection
 @push('js')
 <script>
-        $(".btnClosePopup").click(function () { 
+        $(".btnClosePopup").click(function () {
             $("#MyPopup").modal("hide");
         });
- 
+
 </script>
 
 <script>
 
 
+$('#saveReason').click(function(e){
+    e.preventDefault();
+    const name = $('#rej_name').val();
+    if(name == '' ){
+        alert ('Required Filed Must be filled');
+    }else{
+        var formData = $("#rejectId").serialize();
+        //alert(formData);
+        $.ajax({
+            type: 'POST',
+            url:"{{ url('/andbaazaradmin/reject-name/') }}",
+            data: formData,
+            dataType: "json",
+            success: function(response){
+                var option = `<option value='${response.id}' selected>${response.rej_name}</option>`;
+                $('#checked').append(option);
+                // $(".new-patient").modal("hide");
+                swal(response.rej_name+" Inserted as Reject Reason!", {icon: "success",buttons: false,timer: 2000});
+                $('#rejectId')[0].reset();
+            }
+        })
+    }
+});
 </script>
 @endpush
