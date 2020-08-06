@@ -269,6 +269,30 @@ span.select2.select2-container.select2-container--default {
         display:none;
     }
 
+    .imagestyle{
+        width: 200px;
+        height: 200px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #ccc;
+        border-bottom: 0px;
+        padding: 10px;
+    }
+
+    #file-upload{
+        display: none;
+    }
+    .uploadbtn{
+        width: 200px;background: #ddd;float: left;text-align: center;
+    }
+    .custom-file-upload {
+        /* border: 1px solid #ccc; */
+        display: inline-block;
+        padding: 9px 40px;
+        cursor: pointer;
+        border-top: 0px;
+    }
+
 
 </style>
 @endpush
@@ -440,6 +464,11 @@ $(document).ready(function(){
  </script>
 
 <script>
+    $('#check').click(function(){
+    var txt = $('textarea#description').val();
+    $('#newsDesctiption').summernote('code',txt); 
+});
+
  var loadFile = function(event) {
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);

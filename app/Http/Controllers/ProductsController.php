@@ -202,7 +202,7 @@ class ProductsController extends Controller
         $newsFeed = [
           'title'      => $request->title,
           'slug'       => $newsslug,
-          'image'      => Baazar::pdfUpload($request,'image','','/uploads/newsfeed_image'),
+          'image'      => Baazar::fileUpload($request,'image','','/uploads/newsfeed_image'),
           'news_desc'  => $request->news_desc, 
           'product_id' => $item->id,
           'user_id'    => Sentinel::getUser()->id,
@@ -333,7 +333,7 @@ class ProductsController extends Controller
         } 
         $newsFeed = [
           'title'      => $request->title,
-          'image'      => Baazar::pdfUpload($request,'image','old_image','/uploads/newsfeed_image'),
+          'image'      => Baazar::fileUpload($request,'image','old_image','/uploads/newsfeed_image'),
           'news_desc'  => $request->news_desc,  
           'updated_at' => now(),
         ];

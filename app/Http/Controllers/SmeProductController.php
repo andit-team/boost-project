@@ -154,9 +154,10 @@ class SmeProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Product $item, Request $request)
+    public function store(Product $item, Request $request, Newsfeed $newsfeed)
     {
         $shop = Merchant::where('user_id',Sentinel::getUser()->id)->first()->shop;
+        $newsslug = Baazar::getUniqueSlug($newsfeed,$request->title);
         if($shop){
           $slug = Baazar::getUniqueSlug($item,$request->name);
           $feature = Baazar::base64Upload($request->images['main'][0],$slug,$shop->slug,'featured');
@@ -194,7 +195,8 @@ class SmeProductController extends Controller
           
         $newsFeed = [
           'title'      => $request->title,
-          'image'      => Baazar::pdfUpload($request,'image','','/uploads/newsfeed_image'),
+          'slug'       => $newsslug,
+          'image'      => Baazar::fileUpload($request,'image','','/uploads/newsfeed_image'),
           'news_desc'  => $request->news_desc, 
           'product_id' => $item->id,
           'user_id'    => Sentinel::getUser()->id,
@@ -308,13 +310,13 @@ class SmeProductController extends Controller
 
         $newsFeed = [
           'title'      => $request->title,
-          'image'      => Baazar::pdfUpload($request,'image','old_image','/uploads/newsfeed_image'),
+          'image'      => Baazar::fileUpload($request,'image','old_image','/uploads/newsfeed_image'),
           'news_desc'  => $request->news_desc,  
           'updated_at' => now(),
         ];
         $newsFeedUpdate->update($newsFeed);
  
-        Session::flash('warning', 'SME Product updated Successfully!');
+        Session::flash('success', 'SME Product updated Successfully!');
 
         return redirect('merchant/sme/products');
     }
