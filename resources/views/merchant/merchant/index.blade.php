@@ -235,7 +235,8 @@
                                                                                 @endforeach
                                                                                 <div class="form-group mt-2">
                                                                                     <label for="exampleInputPassword1 ">Others</label>
-                                                                                    <input type="text" class="form-control" id="exampleInputPassword1" name="rej_name[]" placeholder=" if need add another reasoan ">
+                                                                                    <input type="text" class="form-control" id="other" name="rej_name[]" placeholder=" if need add another reasoan ">
+                                                                                    <button type="submit" class="btn btn-success mt-3 float-right btn-sm">save</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -347,5 +348,10 @@
             $("#MyPopup").modal("hide");
         });
  
+</script>
+
+<script>
+
+
 </script>
 @endpush
