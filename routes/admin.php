@@ -29,6 +29,7 @@ Route::middleware(['auth','admin'])->prefix('andbaazaradmin')->group(function ()
     //Route::get('/seller','SellersController@index');
     Route::resource('/reject','RejectListController'); 
     Route::get('/merchant','MerchantController@index');
+    Route::get('/newsfeed','NewsfeedController@feedlist');
     Route::get('/contact-us','ContactController@contactmailList');
     Route::put('/contact-us/{id}','ContactController@replayMail');
 

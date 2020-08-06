@@ -110,4 +110,12 @@ class NewsfeedController extends Controller
 
         return redirect('merchant/newsfeed');
     }
+
+    public function feedlist()
+    {
+       
+        $newsFeed = Newsfeed::all();
+        
+        return view('merchant.newsFeed.newsfeed_list',compact('newsFeed'));
+    }
 }

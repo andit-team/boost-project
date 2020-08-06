@@ -72,7 +72,7 @@
                                         <div class="form-group row">
                                             <label for="tag_id" class="col-xl-3 col-md-4">Tag <span>*</span></label>
                                             <div class="col-md-8 multiple-tag">
-                                                <select class="js-example-basic-multiple form-control" name="tag_id[]" id="tad_id" multiple="multiple">
+                                                <select class="js-example-basic-multiple form-control" name="tag_id[]" id="tad_id" multiple="multiple" required>
                                                     @foreach ($tag as $row)
                                                         <option value="{{ $row->name }}">{{$row->name}}</option>
                                                     @endforeach
