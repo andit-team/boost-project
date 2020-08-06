@@ -19,8 +19,9 @@ class CreateNewsfeedsTable extends Migration
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
             $table->text('news_desc')->nullable(); 
-            $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('user_id');
+            $table->enum('status',['Reject','Active','Pending'])->default('Pending');
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

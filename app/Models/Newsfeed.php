@@ -8,7 +8,7 @@ use App\Models\Product;
 
 class Newsfeed extends Model
 {
-    protected $fillable = ['image','title','slug','news_desc','status','type','user_id','product_id'];
+    protected $fillable = ['image','title','slug','news_desc','status','user_id','product_id'];
 
     public function getRouteKeyName()
     {

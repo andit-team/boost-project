@@ -102,8 +102,10 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     Route::resource('/sme/inventories','SmeInventoryController');
     Route::post('get-inventory-attr','InventoryAttributeController@getInventoryAttr');
     Route::post('get-category-attr','CategoriesController@getCategoryAttr');
-    Route::get('/newsfeed/update/{slug}/newsfeedupdate','NewsfeedController@edit');
+    Route::get('/newsfeed/update/{slug}/newsfeedupdate','NewsfeedController@edit'); 
     Route::put('/newsfeed/update/{slug}','NewsfeedController@update');
+    Route::post('/newsfeed/approvement/{slug}','NewsfeedController@approvement');
+    Route::post('/newsfeed/reject/{slug}','NewsfeedController@reject');
     Route::resource('/newsfeed','NewsfeedController');
 
     Route::post('shop-logo-crop', 'MerchantController@shopLogoCrop')->name('shop-logo-crop');

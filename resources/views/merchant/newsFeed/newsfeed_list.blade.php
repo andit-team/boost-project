@@ -4,6 +4,12 @@
         padding: 4px;
         font-size: 16px;
     }
+    .m-l-approve{
+        margin-left:65px; margin-top:-35px;
+    }
+    .m-l-reject{
+        margin-left:140px; margin-top:-27px;
+    }
 </style>
 @endpush 
 @include('elements.alert') 
@@ -46,9 +52,9 @@
                                             <td>{{ Baazar::short_text(strip_tags($row->news_desc),30) }}</td>
                                             <td>{{ $row->item->type }}</td>
                                             <td>
-                                                @if($row->item->status == 'Pending')
+                                                @if($row->status == 'Pending')
                                                 <label class="badge badge-pill badge-info p-2">Pending</label>
-                                                @elseif($row->item->status == 'Active')
+                                                @elseif($row->status == 'Active')
                                                 <label class="badge badge-pill badge-success p-2">Active</label>
                                                 @else
                                                 <label class="badge badge-pill badge-primary p-2">Reject</label>
@@ -82,27 +88,29 @@
                                                             </div> 
                                                             <h3 class="font-weight-bold mt-2">{{ $row->title }}</h3> 
                                                             <p>{!! $row->news_desc !!}</p>
-                                                            <div>
-                                                                @if($row->item->type == 'ecommerce')
-                                                                @if($row->item->status == 'Pending')
+                                                            <div> 
+                                                                @if($row->status == 'Pending')
                                                                 <label class="badge badge-pill badge-info p-2">Pending</label>
-                                                                <a href="{{ url('/merchant/product/'.$row->item->slug) }}" class="btn btn-sm btn-warning">Approve</a> 
-                                                                <a href="{{ url('/merchant/product/'.$row->item->slug) }}" class="btn btn-sm btn-primary">Reject</a>
-                                                                @elseif($row->item->status == 'Active')
+                                                                <div class="m-l-approve">
+                                                                    <form action="{{ url('merchant/newsfeed/approvement/'.$row->slug) }}" method="post" id="">
+                                                                        @csrf
+                                                                        <button type="submit" class="btn btn-sm btn-warning">Approve</button>
+                                                                    </form>
+                                                                </div> 
+                                                                <div>
+                                                                    <div class="m-l-reject">
+                                                                        <form action="{{ url('merchant/newsfeed/reject/'.$row->slug) }}" method="post" id="">
+                                                                            @csrf
+                                                                            <button type="submit" class="btn btn-sm btn-primary">Reject</button>
+                                                                        </form>
+                                                                     {{-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Reject</button> --}}
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                                @elseif($row->status == 'Active')
                                                                 <label class="badge badge-pill badge-success p-2">Active</label>
                                                                 @else
-                                                                <label class="badge badge-pill badge-primary p-2">Reject</label> 
-                                                                @endif
-                                                                @else
-                                                                @if($row->item->status == 'Pending')
-                                                                <label class="badge badge-pill badge-info p-2">Pending</label>
-                                                                <a href="{{ url('/merchant/sme/product/'.$row->item->slug) }}" class="btn btn-sm btn-warning">Approve</a>
-                                                                <a href="{{ url('/merchant/sme/product/'.$row->item->slug) }}" class="btn btn-sm btn-primary">Reject</a> 
-                                                                @elseif($row->item->status == 'Active')
-                                                                <label class="badge badge-pill badge-success p-2">Active</label>
-                                                                @else
-                                                                <label class="badge badge-pill badge-primary p-2">Reject</label> 
-                                                                @endif
+                                                                <label class="badge badge-pill badge-primary p-2">Reject</label>  
                                                                 @endif
                                                             </div> 
                                                         </div> 

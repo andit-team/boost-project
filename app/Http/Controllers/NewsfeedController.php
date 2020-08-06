@@ -118,4 +118,24 @@ class NewsfeedController extends Controller
         
         return view('merchant.newsFeed.newsfeed_list',compact('newsFeed'));
     }
+
+    public function approvement($slug){
+        $data =  Newsfeed::where('slug',$slug)->first();
+
+        $data->update(['status'=>'Active']);
+
+        Session::flash('success','News feed Approve successfully.');
+
+        return back();
+    }
+
+    public function reject($slug){
+        $data =  Newsfeed::where('slug',$slug)->first();
+
+        $data->update(['status'=>'Reject']);
+
+        Session::flash('error','News feed Reject successfully.');
+
+        return back();
+    }
 }
