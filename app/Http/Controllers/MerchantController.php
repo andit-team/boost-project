@@ -527,8 +527,7 @@ class MerchantController extends Controller{
                 'user_id'       => $data->user_id,
             ]);
             // dd($data);
-        }
-
+        }      
         // $reject = Reject::create([
         //     'rej_name' => $request->rej_name[0],
         //     'user_id'  => Sentinel::getUser()->id, 

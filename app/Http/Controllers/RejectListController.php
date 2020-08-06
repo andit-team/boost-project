@@ -49,6 +49,22 @@ class RejectListController extends Controller
           return redirect('andbaazaradmin/reject');
     }
 
+    public function other(Reject $reject, Request $request)
+    {
+        // dd($request->all());
+        $this->validateForm($request);
+          $data = [
+              'rej_name' => $request->rej_name,
+              'user_id'     => Sentinel::getUser()->id,
+              'created_at'  => now(),
+          ];
+         $reject = Reject::create($data);
+
+          echo json_encode($reject);
+        //   Session::flash('success', 'Reject Inserted Successfully!');
+        //   return redirect('andbaazaradmin/reject');
+    }
+
     /**
      * Display the specified resource.
      *
