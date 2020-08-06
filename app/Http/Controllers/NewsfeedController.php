@@ -129,10 +129,13 @@ class NewsfeedController extends Controller
         return back();
     }
 
-    public function reject($slug){
+    public function reject(Request $request,$slug){
         $data =  Newsfeed::where('slug',$slug)->first();
 
-        $data->update(['status'=>'Reject']);
+        $data->update([
+            'rej_desc' => $request->rej_desc,
+            'status'=>'Reject'
+            ]);
 
         Session::flash('error','News feed Reject successfully.');
 

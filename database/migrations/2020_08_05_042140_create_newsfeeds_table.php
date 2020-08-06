@@ -19,6 +19,7 @@ class CreateNewsfeedsTable extends Migration
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
             $table->text('news_desc')->nullable(); 
+            $table->text('rej_desc')->nullable();
             $table->enum('status',['Reject','Active','Pending'])->default('Pending');
             $table->unsignedBigInteger('product_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();

@@ -105,7 +105,7 @@ Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],functi
     Route::get('/newsfeed/update/{slug}/newsfeedupdate','NewsfeedController@edit'); 
     Route::put('/newsfeed/update/{slug}','NewsfeedController@update');
     Route::post('/newsfeed/approvement/{slug}','NewsfeedController@approvement');
-    Route::post('/newsfeed/reject/{slug}','NewsfeedController@reject');
+    Route::put('/newsfeed/reject/{slug}','NewsfeedController@reject');
     Route::resource('/newsfeed','NewsfeedController');
 
     Route::post('shop-logo-crop', 'MerchantController@shopLogoCrop')->name('shop-logo-crop');
