@@ -1,4 +1,28 @@
-@extends('merchant.master') @section('content') @include('elements.alert')
+@extends('merchant.master') 
+@section('content') 
+@push('css')
+ <style>
+     .modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  width: 1000px;
+}
+ </style>
+@include('elements.alert')
 
 <section class="dashboard-section section-b-space">
     <div class="container">
