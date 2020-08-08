@@ -351,7 +351,7 @@ class ProductsController extends Controller
 
     public function productList(){ 
         $items = Product::with('inventory')->where('type','ecommerce')->distinct()->get();  
-        dd($items);
+       
      return view('merchant.product.product_list',compact('items'));
     }
 
@@ -366,7 +366,10 @@ class ProductsController extends Controller
 
       $data = Product::where('slug',$slug)->first();
 
+      $newsFeed = Newsfeed::where('product_id',$data->id)->first();
+
       $data->update(['status' => 'Active']);
+      $newsFeed->update(['status' => 'Active']);
 
       $name =  $data['name'];
       \Mail::to($data['email'])->send(new productApproveMail($data, $name));
@@ -382,11 +385,19 @@ class ProductsController extends Controller
 
       $data = Product::where('slug',$slug)->first();
 
+      $newsFeed = Newsfeed::where('product_id',$data->id)->first();
+      //dd( $newsFeed);
+
 
       $data->update([
         'status' => 'Reject',
         'rej_desc' => $request->rej_desc,
         ]);
+
+        $newsFeed->update([
+        'status' => 'Reject',
+        'rej_desc' => $request->rej_desc,
+      ]);  
 
       $name = $data['name'];
       $rej_desc = $data['rej_desc'];
