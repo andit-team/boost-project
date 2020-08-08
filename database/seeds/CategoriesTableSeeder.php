@@ -34,6 +34,16 @@ class CategoriesTableSeeder extends Seeder
    include('CategoriesAttr/Groceries.php');
    include('CategoriesAttr/Furniture_Décor.php');
    include('CategoriesAttr/Tools_DIY_Outdoor.php');
+   include('Smecategory/Bambao_and_cane_industries.php');
+   include('Smecategory/Brass_bell-metal.php');
+   include('Smecategory/Cool_Mat.php');
+   include('Smecategory/Cottage_Industry.php');
+   include('Smecategory/Cottage_Industry.php');
+   include('Smecategory/Embroidered_Quilts.php');
+   include('Smecategory/Jute_goods.php');
+   include('Smecategory/Ornaments .php');
+   include('Smecategory/Pottery .php');
+   include('Smecategory/Textile_Weaving_factories.php');
 	// dd($mobiles_tablets);
      
       \Baazar::insertRecords($mobiles_tablets);
@@ -100,6 +110,33 @@ class CategoriesTableSeeder extends Seeder
 
          \Baazar::insertRecords($tools_diy_outdoor);
       echo  'Tools, DIY & Outdoor Done....';
+
+      \Baazar::insertRecordsSme($bambocane);
+      echo  'Bambo Done....';
+
+      \Baazar::insertRecordsSme($brass_bell_metal);
+      echo  'Brass Done....';
+
+      \Baazar::insertRecordsSme($cool_mat);
+      echo  'Cool Mat Done....';
+
+      \Baazar::insertRecordsSme($cottage_industries);
+      echo  'Cottage Done....';
+
+      \Baazar::insertRecordsSme($embroidered_quilts);
+      echo  'Embroidered Done....';
+
+      \Baazar::insertRecordsSme($jute_goods);
+      echo  'Jute Done....';
+
+      \Baazar::insertRecordsSme($ornaments);
+      echo  'Jute Done....';
+
+      \Baazar::insertRecordsSme($pottery);
+      echo  'Pottery Done....';
+
+      \Baazar::insertRecordsSme($textile_weaving_factories);
+      echo  'Pottery Done....';
 
 
 

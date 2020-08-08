@@ -32,12 +32,10 @@
                                 <table class="table table-borderd" id="dataTableNoPagingDesc3">
                                     <thead>
                                         <tr>
-                                            <th width="50">Sl</th>
-                                            <th>Product Name</th>
+                                            <th width="50">Sl</th> 
                                             <th>Feed By</th>
                                             <th>Title</th>
-                                            <th>Description</th>
-                                            <th>Type</th>
+                                            <th>Description</th> 
                                             <th>Status</th>
                                             <th class="text-center">Action</th>
                                         </tr>
@@ -45,12 +43,10 @@
                                     <tbody>
                                         @php $i=0; @endphp @foreach($newsFeed as $row)
                                         <tr>
-                                            <td>{{ ++$i }}</td> 
-                                            <td>{{ $row->item->name}}</td>
+                                            <td>{{ ++$i }}</td>  
                                             <td>{{ $row->user->first_name.' '.$row->user->last_name}}</td>
                                             <td>{{ $row->title}}</td>
-                                            <td>{{ Baazar::short_text(strip_tags($row->news_desc),30) }}</td>
-                                            <td>{{ $row->item->type }}</td>
+                                            <td>{{ Baazar::short_text(strip_tags($row->news_desc),30) }}</td> 
                                             <td>
                                                 @if($row->status == 'Pending')
                                                 <label class="badge badge-pill badge-info p-2">Pending</label>
