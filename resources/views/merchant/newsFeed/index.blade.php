@@ -16,32 +16,32 @@
                 <h3>News Feed</h3> 
                 <a href="{{ url('merchant/newsfeed/new') }}" class="btn btn-sm btn-solid float-right">add New</a>
             </div> 
+            <div class="filter-area d-flex">
+                <div class="form-group mr-1">
+                    <input type="text" id="search" class="form-control" placeholder="Search Here..." />                     
+                </div> 
+            </div>
             <table class="table-responsive-md table mb-0 table-striped mt-2">
                 <thead>
-                    <tr> 
-                        <th scope="col" class="text-left">Product name</th>
+                    <tr>  
                         <th scope="col" class="text-left">Title</th>
-                        <th scope="col">Description</th> 
-                        <th scope="col">Type</th>
+                        <th scope="col">Description</th>  
                         <th scope="col">Status</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($newsFeed as $row)
-                        <tr> 
-                            <td class="text-left">{{$row->item->name}}</td>
+                        <tr>  
                             <td class="text-left">{{$row->title}}</td>
-                            <td>{!!\Illuminate\Support\Str::limit($row->news_desc,20)!!}</td>
-                            <td>{{ $row->item->type }}</td>
-                            
+                            <td>{!!\Illuminate\Support\Str::limit($row->news_desc,20)!!}</td> 
                             <td>
-                                @if($row->item->status == 'Pending')
+                                @if($row->status == 'Pending')
                                 <label class="badge badge-pill badge-primary p-2">Pending</label>
-                                @elseif($row->item->status == 'Active')
+                                @elseif($row->status == 'Active')
                                 <label class="badge badge-pill badge-success p-2">Active</label>
                                 @else
-                                <a href="#" id="" class="badge badge-pill badge-danger p-2" data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->item->id}}">Reject</a>
+                                <a href="#" id="" class="badge badge-pill badge-danger p-2" data-toggle="modal" data-original-title="test" data-target="#tagEditModal{{$row->id}}">Reject</a>
                                 @endif
                             </td>
                             <td class="d-flex justify-content-between">
@@ -62,7 +62,7 @@
                             </td>
                         </tr>
                          
-                        <div class="modal fade" id="tagEditModal{{$row->item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="tagEditModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -76,7 +76,7 @@
                                                 <div class="form-group">
                                                     <label for="validationCustom01" class="mb-1">Description :</label>
                                                     <div>
-                                                        {{ $row->item->rej_desc }}
+                                                        {{ $row->rej_desc }}
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,47 +111,21 @@
 
 <!-- <script src="{{ asset('') }}/js/select2.min.js"></script> --> 
     <script>
-      $('#search').keyup(function(){   
-    search_table($(this).val());  
-    });   
-    function search_table(value){  
-        $('#example22 tr').each(function(){  
-            var found = 'false';  
-            $(this).each(function(){  
-                if($(this).text().toLowerCase().indexOf(value.toLowerCase()) >= 0)  
-                {  
-                    found = 'true';  
-                }  
-            });  
-            if(found == 'true')  
-            {  
-                $(this).show();  
-            }  
-            else  
-            {  
-                $(this).hide();  
-            }  
-        });  
-    }  
-
-    $('#serchOutStock').keyup(function(){
-    search_outstock($(this).val());
+      $("#search").keyup(function () {
+        var value = this.value.toLowerCase().trim();
+        $("table tr").each(function (index) {
+            if (!index) return;
+            $(this)
+                .find("td")
+                .each(function () {
+                    var id = $(this).text().toLowerCase().trim();
+                    var not_found = id.indexOf(value) == -1;
+                    $(this).closest("tr").toggle(!not_found);
+                    return not_found;
+                });
+          });
     });
-    function search_outstock(value){
-        $('#example23 tr').each(function(){
-            var found = 'false';
-            $(this).each(function(){
-                if($(this).text().toLowerCase().indexOf(value.toLowerCase())>= 0) {
-                    found = 'true';
-                }
-            });
-            if(found == 'true'){
-                $(this).show();
-            }else{
-                $(this).hide();
-            }  
-        })
-    }
+   
  
 
 $('#color_id').on('change',function(){

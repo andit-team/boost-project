@@ -20,6 +20,7 @@ class NewsfeedController extends Controller
     public function index()
     {
         $newsFeed = Newsfeed::where('user_id',Sentinel::getUser()->id)->paginate(10);
+       
         
         return view('merchant.newsFeed.index',compact('newsFeed'));
     }
@@ -40,13 +41,16 @@ class NewsfeedController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Newsfeed $newsfeed)
     {
         $this->validateForm($request);
+        $slug = Baazar::getUniqueSlug($newsfeed,$request->title);
         $data = [
             'title'      => $request->title,
+            'slug'       => $slug,
             'image'      => Baazar::fileUpload($request,'image','','/uploads/newsfeed_image'),
             'news_desc'  => $request->news_desc,
+            'user_id'    => Sentinel::getUser()->id,
             'created_at' => now(),
         ];
         
