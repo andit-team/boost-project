@@ -14,6 +14,7 @@
         <div class="col-md-9"> 
             <div class="top-sec">
                 <h3>News Feed</h3> 
+                <a href="{{ url('merchant/newsfeed/new') }}" class="btn btn-sm btn-solid float-right">add New</a>
             </div> 
             <table class="table-responsive-md table mb-0 table-striped mt-2">
                 <thead>

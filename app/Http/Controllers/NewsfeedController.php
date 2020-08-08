@@ -31,7 +31,7 @@ class NewsfeedController extends Controller
      */
     public function create()
     {
-        //
+        return view ('merchant.newsFeed.create');
     }
 
     /**
@@ -42,7 +42,19 @@ class NewsfeedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateForm($request);
+        $data = [
+            'title'      => $request->title,
+            'image'      => Baazar::fileUpload($request,'image','','/uploads/newsfeed_image'),
+            'news_desc'  => $request->news_desc,
+            'created_at' => now(),
+        ];
+        
+        Newsfeed::create($data);
+
+        Session::flash('success','News feed Added successfully');
+
+        return redirect('merchant/newsfeed');
     }
 
     /**
@@ -140,5 +152,12 @@ class NewsfeedController extends Controller
         Session::flash('error','News feed Reject successfully.');
 
         return back();
+    }
+
+    private function validateForm($request){
+        $validatedData = $request->validate([
+            'title'     => 'required',
+            'news_desc' => 'required'
+        ]); 
     }
 }

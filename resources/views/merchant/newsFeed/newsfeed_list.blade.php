@@ -109,7 +109,7 @@
                                                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <form action="{{ url('merchant/newsfeed/reject/'.$row->slug)}}" method="post" style="margin-top:-2px" id="deleteButton({{ $row->id }})">
+                                                                                    <form action="{{ url('merchant/newsfeed/reject/'.$row->slug)}}" method="post" style="margin-top:-2px" id="">
                                                                                     @csrf
                                                                                     @method('put')
                                                                                     <div class="form">
