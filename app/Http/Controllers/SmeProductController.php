@@ -44,7 +44,7 @@ class SmeProductController extends Controller
 
      if ($request->has('cat')){
 
-        $product = Product::where('shop_id',Baazar::shop()->id)->where('category_id',$request->cat)->paginate(10);            
+        $product = Product::where('shop_id',Baazar::shop()->id)->where('category_slug','like','%'.$request->cat.'%')->where('type','sme')->paginate(10);            
     } 
     
     if ($request->has('status')){   

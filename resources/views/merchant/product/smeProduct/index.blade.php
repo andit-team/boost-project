@@ -43,7 +43,7 @@
                             <select name="" class="form-control" id="category">
                             <option value="Select">Search Category</option>
                             @foreach($product as $row)                               
-                                <option value="{{ $row->category_id }}" selected>  {{$row->category_slug}}</option>
+                                <option value="{{ $row->category_slug }}">  {{$row->category_slug}}</option>
                             @endforeach
                             </select>
                         </div>                    
@@ -59,7 +59,7 @@
                             </select>
                         </div>
                     </div>
-                    <a href="{{url('/merchant/products')}}" class="btn btn-info btn-sm text-white font-weight-bold" style="padding: 8px; height: 38px;">Clear</a>
+                    <a href="{{url('/merchant/sme/products')}}" class="btn btn-info btn-sm text-white font-weight-bold" style="padding: 8px; height: 38px;">Clear</a>
                 </div>
                 <table class="table-responsive-md table mb-0 table-striped mt-2">
                     <thead>
@@ -175,8 +175,8 @@
 <script>
 
 $('#category').on('change',function(){
-  var cat = $(this).val().toLowerCase().replace(/ /g,''); 
-  alert(cat);
+  var cat = $(this).val(); 
+  
 
   window.location.href = 'products?page=1&cat=' + cat;
 });
