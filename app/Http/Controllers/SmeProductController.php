@@ -72,7 +72,7 @@ class SmeProductController extends Controller
         $item = Product::all();
         $size= Size::all();
         $color = Color::all();
-        $categories = Category::where('parent_id',0)->get();
+        $categories = Category::where('parent_id',0)->where('type','sme')->get();
         $subCategories = Category::where('parent_id','!=',0)->get();
         $childCategory = Category::where('parent_id','!=',0)->get();
         $tag = Tag::all();
