@@ -350,7 +350,8 @@ class ProductsController extends Controller
 
 
     public function productList(){ 
-        $items = Product::with('inventory')->where('type','ecommerce')->get();  
+        $items = Product::with('inventory')->where('type','ecommerce')->distinct()->get();  
+        dd($items);
      return view('merchant.product.product_list',compact('items'));
     }
 

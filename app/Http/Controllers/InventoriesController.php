@@ -120,7 +120,7 @@ class InventoriesController extends Controller
                 'special_price' => $request->special_price,
                 'start_date'    => $request->start_date,
                 'end_date'      => $request->end_date,
-                'type'          => 'e-commerce',
+                'type'          => 'ecommerce',
                 'shop_id'       => $shopId->id,
                 'user_id'       => Sentinel::getUser()->id,
                 'created_at'    => now(),
