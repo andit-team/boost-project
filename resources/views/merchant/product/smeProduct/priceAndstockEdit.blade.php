@@ -100,17 +100,7 @@
             <tbody class="newRow">
                 @php $i = 0 @endphp
             @foreach($product->inventory as $row)
-            <tr class="{{++$i == 1 ?'firstRow' : 'removableRow'}}" data-id="{{$row->id}}" id="row-{{$row->id}}">
-                @foreach($product->category->inventoryAttributes as $in_attr)
-                <td class="inventoryAttributes">
-                    <select name="inventoryAttr[{{$in_attr->name}}][]" class="form-control">
-                        @foreach($in_attr->options as $opt)
-                            <option value="{{$opt->id}}" {{$row->invenMeta->value == $opt->id ? 'selected':''}}>{{$opt->option}}</option>
-                        @endforeach
-                    </select>
-                </td>
-                @endforeach
-
+            <tr class="{{++$i == 1 ?'firstRow' : 'removableRow'}}" data-id="{{$row->id}}" id="row-{{$row->id}}"> 
                 <td>
                     <select name="inventory_color[]" class="form-control inventory_colors" data-sel="{{ strtolower($row->color_name) }}"></select> 
                     <input type="hidden" name="product_id" class="product_id" value="{{ $row->id }}">
