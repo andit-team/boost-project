@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 @include('layouts.inc.sidebar.vendor-sidebar',[$active ='product'])
-                <div class="col-sm-9 register-page container">
+                <div class="col-sm-9">
                     <h2 id="heading">Add Product</h2>
                     <form id="msform" action="{{ url('merchant/product/') }}" method="post"  enctype="multipart/form-data" id="validateForm">
                         @csrf
@@ -112,7 +112,7 @@
                                     <h5 class="card-header">Price</h5>
                                     <div class="card-body">
                                         <div class="form-group row">
-                                            <label for="price" class="col-xl-3 col-md-4">Price<span>*</span></label>
+                                            <label for="price" class="col-xl-3 col-md-4">MRP<span>*</span></label>
                                             <input type="number" class="form-control col-md-8" name="price" id="price" required="">
                                             <label for="model_no" class="col-xl-3 col-md-4"><span></span></label>
                                             <span class="text-danger" id="message_price"></span>
@@ -121,7 +121,7 @@
                                             @endif
                                         </div>
                                         <div class="form-group row margin">
-                                            <label for="org_price" class="col-xl-3 col-md-4">Orginal Price<span>*</span></label>
+                                            <label for="org_price" class="col-xl-3 col-md-4">Seling Price<span>*</span></label>
                                             <input type="number" class="form-control col-md-8" name="org_price" id="org_price" required="">
                                             <label for="model_no" class="col-xl-3 col-md-4"><span></span></label>
                                             <span class="text-danger" id="message_org_price"></span>
@@ -498,6 +498,20 @@ $(document).ready(function(){
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
     };
+
+    
+
+    $(function() {
+  var checkbox = $("#check"); 
+  checkbox.change(function() {
+    if (checkbox.is(':checked')) { 
+      $('#title').prop('required', true); 
+    } else { 
+      $("#title").val("");
+      $('#title').prop('required', false); 
+    }
+  });
+});
 
  </script>
 @endpush

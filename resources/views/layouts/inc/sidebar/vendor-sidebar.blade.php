@@ -17,7 +17,7 @@
                                        
 
                 <li class="nav-item"> 
-                  <a class="nav-link collapsed text-truncate navSymbol" href="#submenu1" data-toggle="collapse" data-target="#submenu1"> <span class="d-none d-sm-inline">Products<b class="caret"></b></span></a> 
+                  <a class="nav-link collapsed text-truncate navSymbol" href="#submenu1" data-toggle="collapse" data-target="#submenu1"> <span class="d-none d-sm-inline">Products</span></a> 
                   <div class="collapse" id="submenu1" aria-expanded="false">
                     <ul class="flex-column pl-2 nav">
                       <li class="nav-item"> 
@@ -29,7 +29,7 @@
                 </li>
                 
                 <li class="nav-item">
-                  <a class="nav-link collapsed text-truncate Symbol" href="#submenu2" data-toggle="collapse" data-target="#submenu2"> <span class="d-none d-sm-inline">Inventories<b class="caret"></b></span></a>
+                  <a class="nav-link collapsed text-truncate Symbol" href="#submenu2" data-toggle="collapse" data-target="#submenu2"> <span class="d-none d-sm-inline">Inventories</span></a>
                   <div class="collapse" id="submenu2" aria-expanded="false">
                     <ul class="flex-column pl-2 nav">
                       <li class="nav-item"> 
