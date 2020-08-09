@@ -37,27 +37,28 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request){
-      $sellerProfile = Merchant::with('rejectvalue')->where('user_id',Sentinel::getUser()->id)->first();
-      $product = Product::where('shop_id',Baazar::shop()->id)->where('type','ecommerce')->paginate(10);
+      // $cats = \DB::table('products')->select('category_id')->distinct()->get();
+      // dd($cats);
+      $product = Product::where('shop_id',Baazar::shop()->id);
 
+      $cat = $product->select('category_id')->distinct()->get();
+      // dd($cat);
+      // $sellerProfile = Merchant::with('rejectvalue')->where('user_id',Sentinel::getUser()->id)->first();
+      $product = Product::where('shop_id',Baazar::shop()->id)->where('type','ecommerce')->paginate(2);
       // $items = Product::with('inventory')->paginate('10');
-      
 
       if ($request->has('cat')){
-
-        $product = Product::where('shop_id',Baazar::shop()->id)->where('category_slug','like','%'.$request->cat.'%')->where('type','ecommerce')->paginate(10);            
-    } 
+        $product = Product::where('shop_id',Baazar::shop()->id)->where('category_slug','like','%'.$request->cat.'%')->where('type','ecommerce')->paginate(2);            
+      }
     
-    if ($request->has('status')){   
-      $product =Product::orderBy('status','asc')->Where('status',$request->status)->where('type','ecommerce')->paginate(10);
-    // dd($product);        
-  } 
-    $categories = ([
-      'cat'      =>request('cat'),
-      'status'   => request('status'),
-  ]);
-
-      return view ('merchant.product.index',compact('product','sellerProfile'));
+      if ($request->has('status')){
+        $product = Product::orderBy('status','asc')->Where('status',$request->status)->where('type','ecommerce')->paginate(2);   
+      } 
+      $categories = ([
+        'cat'      =>request('cat'),
+        'status'   => request('status'),
+      ]);
+      return view ('merchant.product.index',compact('product'));
 
     }
 

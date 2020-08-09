@@ -175,15 +175,14 @@
 
 <script>
 
-$('#category').on('change',function(){
-  var cat = $(this).val();  
-  window.location.href = 'products?page=1&cat=' + cat;
-});
+// $('#category').on('change',function(){
+//   var cat = $(this).val();  
+//   window.location.href = 'products?page=1&cat=' + cat;
+// });
 
-$('#status').on('change',function(){
-  var status = $(this).val();
-
-  window.location.href = 'products?page=1&status=' + status;
-});
+// $('#status').on('change',function(){
+//   var status = $(this).val();
+//   window.location.href = 'products?page=1&status=' + status;
+// });
 </script>
 @endpush
