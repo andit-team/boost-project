@@ -8,7 +8,7 @@
         <div class="container">
             <div class="row">
                 @include('layouts.inc.sidebar.vendor-sidebar',[$active ='smeProduct'])
-                <div class="col-sm-9 register-page container">
+                <div class="col-sm-9">
                     <h2 id="heading">Add SME Product</h2>
                     <form id="msform" action="{{ route('smeproduct.store') }}" method="post"  enctype="multipart/form-data" id="validateForm">
                         @csrf
@@ -473,5 +473,17 @@ $(document).ready(function(){
         var output = document.getElementById('output');
         output.src = URL.createObjectURL(event.target.files[0]);
     };
+
+    $(function() {
+  var checkbox = $("#check"); 
+  checkbox.change(function() {
+    if (checkbox.is(':checked')) { 
+      $('#title').prop('required', true); 
+    } else { 
+      $("#title").val("");
+      $('#title').prop('required', false); 
+    }
+  });
+});
 </script>
 @endpush

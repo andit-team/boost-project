@@ -19,7 +19,7 @@ class NewsfeedController extends Controller
      */
     public function index()
     {
-        $newsFeed = Newsfeed::where('user_id',Sentinel::getUser()->id)->paginate(10);
+        $newsFeed = Newsfeed::where('user_id',Sentinel::getUser()->id)->where('title','!=','')->paginate(10);
        
         
         return view('merchant.newsFeed.index',compact('newsFeed'));
@@ -130,7 +130,7 @@ class NewsfeedController extends Controller
     public function feedlist()
     {
        
-        $newsFeed = Newsfeed::all();
+        $newsFeed = Newsfeed::where('title','!=','')->get();
         
         return view('merchant.newsFeed.newsfeed_list',compact('newsFeed'));
     }

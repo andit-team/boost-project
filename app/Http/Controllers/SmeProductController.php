@@ -48,7 +48,7 @@ class SmeProductController extends Controller
     } 
     
     if ($request->has('status')){   
-      $product =Product::orderBy('status','asc')->Where('status',$request->status)->paginate(10);
+      $product =Product::orderBy('status','asc')->Where('status',$request->status)->where('type','sme')->paginate(10);
     // dd($product);        
   } 
     $categories = ([
