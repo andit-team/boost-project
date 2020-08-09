@@ -508,7 +508,7 @@ class MerchantController extends Controller{
     }
 
     public function rejected(Request $request,$id){
-// dd($request);
+ //dd($request->all());
         
         $data = Merchant::where('id',$id)->first();
         // dd($data);
@@ -523,6 +523,7 @@ class MerchantController extends Controller{
         for($i = 0; $i<$rej_list; $i++){        
                 $rejct_value=RejectValue::create([
                 'rej_name'      => $request->rej_name[$i],
+                'type'          => $request->type,
                 'merchant_id'   => $data->id,
                 'user_id'       => $data->user_id,
             ]);
