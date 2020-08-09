@@ -85,7 +85,8 @@
                         </form>
                         
             </div>
-            <form action="{{ route('resubmitToken') }}" method="post" id="resendform" style="d-none">
+            {{-- <form action="{{ route('getToken') }}" method="post" id="resendform" style="d-none"> --}}
+            <form action="#" method="post" id="resendform" style="d-none">
                 @csrf 
                 <input type="hidden" name="slug" value={{$agent->slug}}>
             </form> 

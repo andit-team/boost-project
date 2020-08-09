@@ -71,33 +71,38 @@
                     @endif
 
                       
-                    <form class="form-horizontal auth-form" action="{{ route('tokenVerify') }}" method="post" enctype="multipart/form-data" id="validateForm">
+                    <form class="form-horizontal auth-form" action="{{ route('postToken') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf 
                             <div class="form-group pt-3 pb-3">
                                 <input required  name="verification_token"  type="text" id="text" maxlength="5" class="form-control font-weight-bold @error('verification_token') border-danger @enderror"  placeholder="" id="exampleInputEmail12"> 
                                 <span class="text-danger">{{$errors->first('verification_token')}}</span>
-                                <input type="hidden" name="slug" value={{ $seller->slug }}>
+                                <input type="hidden" name="token" value={{ $seller->remember_token }}>
                             </div>  
                             <div class="form-button float-right">
-                                <button class="btn btn-success" type="submit">Verifey</button> 
+                                <button class="btn btn-success" type="submit">Verify</button> 
                                 <span class="btn btn-info disabled" id="Resend" type="submit"> <span class="c"></span> Resend </span> 
                             </div> 
                         </form>
                         
             </div>
-            <form action="{{ route('resubmitToken') }}" method="post" id="resendform" style="d-none">
+            <form action="{{ route('updateToken') }}" method="post" id="resendform" style="d-none">
                 @csrf 
-                <input type="hidden" name="slug" value={{$seller->slug}}>
+                <input type="hidden" name="token" value={{$seller->remember_token}}>
             </form> 
         </div>
     </div>
 </div> 
 
 @endsection
-
+<style>
+    .disabled{
+        pointer-events: none;
+    }
+</style>
 @push('js')
     <script>
         $('#Resend').click(function(){
+            // console.log('dd');
             $('#resendform').submit();
         });
 

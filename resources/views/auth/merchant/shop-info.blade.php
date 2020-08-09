@@ -75,7 +75,7 @@
                             <div class="form-group">
                                 <input required="" name="name" value="{{ old('name') }}" type="text" class="form-control @error('name') border-danger @enderror" placeholder="Shop Name" id="exampleInputEmail12" autocomplete="off"> 
                                 <span class="text-danger">{{ $errors->first('name') }}</span>
-                               <input type="hidden" name="slug" value="{{ $seller->slug }}">
+                               <input type="hidden" name="token" value="{{ $seller->remember_token }}">
                             </div> 
                             <div class="form-group">
                                 <input required="" name="slogan" value="{{ old('slogan') }}" type="text" class="form-control @error('slogan') border-danger @enderror" placeholder="Shop Slogan" id="exampleInputEmail12" autocomplete="off"> 
