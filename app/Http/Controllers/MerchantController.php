@@ -288,7 +288,7 @@ class MerchantController extends Controller{
      */
     public function index()
     {
-        $rejectlist = Reject::all();
+        $rejectlist = Reject::where('type','profile')->get();
 
         $activesellers = Merchant::with('shop')->where('status','Active')->orderBy('id', 'DESC')->get();
 

@@ -219,6 +219,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title f-w-600 text-danger" id="exampleModalLabel">Select The Reason For Reject :</h5>
+                                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <form action="{{ url('merchant/merchant/rejected/'.$row->id)}}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
@@ -230,8 +231,9 @@
                                                                             <div class="form-check">
                                                                                 @foreach($rejectlist as $row)
                                                                                 <label class="form-check-label" for="check1">
-                                                                                    <input type="checkbox" class="form-check-input" id="checked" name="rej_name[]" value="{{$row->rej_name}}" />{{$row->rej_name}}
-                                                                                </label>
+                                                                                    <input type="checkbox" class="form-check-input" id="checked" name="rej_name[]" value="{{$row->rej_name}}" required>{{$row->rej_name}}
+                                                                                    <input type="hidden" class="form-control" value="profile">
+                                                                                </label><br>
                                                                                 @endforeach
                                                                             </div>
                                                                         </div>
