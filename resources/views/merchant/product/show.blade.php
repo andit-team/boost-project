@@ -115,9 +115,15 @@
                                                 @csrf
                                                 @method('put')
                                                 <div class="form">
-                                                    <div class="form-group">
-                                                        <label for="validationCustom01" class="mb-1">Description :</label>
-                                                        <textarea class="form-control" name="rej_desc" id="validationCustom01" type="text" required></textarea>
+                                                    <div class="card-body">
+                                                        <div class="form-check">
+                                                            @foreach($rejectlist as $row)
+                                                            <label class="form-check-label" for="check1">
+                                                                <input type="checkbox" class="form-check-input" id="checked" name="rej_name[]" value="{{$row->rej_name}}">{{$row->rej_name}}
+                                                            </label><br>
+                                                            <input type="hidden" name="type" class="form-control" value="product">
+                                                            @endforeach
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">

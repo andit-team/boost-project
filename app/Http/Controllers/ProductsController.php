@@ -21,6 +21,8 @@ use App\Models\InventoryMeta;
 use App\Models\ItemMeta;
 use Illuminate\Support\Str;
 use App\Models\Brand;
+use App\Models\Reject;
+use App\Models\RejectValue;
 use Sentinel;
 use Session;
 use Baazar;
@@ -236,9 +238,10 @@ class ProductsController extends Controller
         $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
         $productCapasize = InventoryMeta::where('product_id',$product->id)->get();
         $imageColor  = ItemImage::select('color_slug')->where('color_slug','!=','main')->where('product_id',$product->id)->distinct()->get();
+        $rejectlist = Reject::where('type','product')->get();
         // dd($imageColor);
 
-        return view('merchant.product.show',compact('product','shopProfile','productImage','productCapasize','imageColor'));
+        return view('merchant.product.show',compact('product','shopProfile','productImage','productCapasize','imageColor','rejectlist'));
     }
 
     /**
@@ -385,7 +388,7 @@ class ProductsController extends Controller
 
 
       $data = Product::where('slug',$slug)->first();
-
+      //dd( $data);
       $newsFeed = Newsfeed::where('product_id',$data->id)->first();
       //dd( $newsFeed);
 
@@ -398,7 +401,21 @@ class ProductsController extends Controller
         $newsFeed->update([
         'status' => 'Reject',
         'rej_desc' => $request->rej_desc,
-      ]);  
+      ]); 
+      
+       $rejct_value = RejectValue::where('id', $data->id)->first();
+
+        $rej_list = count($_POST['rej_name']);
+        
+        for($i = 0; $i<$rej_list; $i++){        
+                $rejct_value=RejectValue::create([
+                'rej_name'      => $request->rej_name[$i],
+                'type'          => $request->type,
+                'merchant_id'   => $data->id,
+                'user_id'       => $data->user_id,
+            ]);
+            // dd($data);
+        }      
 
       $name = $data['name'];
       $rej_desc = $data['rej_desc'];
