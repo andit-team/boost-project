@@ -32,6 +32,7 @@ class CreateMerchantsTable extends Migration
             $table->string('verification_token')->nullable();
             $table->string('remember_token')->nullable();
             $table->enum('status',['Active','Inactive','Reject'])->default('Inactive');
+            $table->enum('reg_step',['otp-varification','personal-info','shop-info','complete'])->default('otp-varification');
             // $table->boolean('active')->default(1)->change();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->softDeletes();

@@ -52,19 +52,22 @@ class MerchantController extends Controller{
             return redirect('merchant/login')->with('error', 'Invalid email or password');
     }
 
+
+
+
+    //Merchant Registration Start HERE........................................................
     public function sellOnAndbaazar(){
         return view('merchant.sell-on-andbaazar');
     }
 
     public function sellOnAndbaazarPost(Request $request, Merchant $seller){
-
         $request->validate([
             'first_name' => 'required',
             'last_name'  => 'required',
-            'phone'      => 'required',
+            'phone'      => 'required|unique:merchants,phone',
         ]);
-
         $slug = Baazar::getUniqueSlug($seller,$request->first_name);
+        $token = Baazar::randString(24);
         $verify_number = mt_rand(10000,99999);
         $Seller = ([
             'first_name'         => $request->first_name,
@@ -72,66 +75,60 @@ class MerchantController extends Controller{
             'slug'               => $slug,
             'phone'              => $request->phone,
             'verification_token' => $verify_number,
+            'remember_token'     => $token,
+            'reg_step'           => 'otp-varification',
             'created_at' => now(),
         ]);
-
         Merchant::create($Seller);
-
         session()->flash('success','Merchant profile registration 1st stape complete successfully');
-
-        return redirect('sell-resubmit-token'.'?slug='.$slug);
+        return redirect('merchant/otp-varification'.'?token='.$token);
     }
 
-    public function resubmitToken(Request $request){
-        $seller = Merchant::where('slug',$request->slug)->first();
+    public function getToken(Request $request){
+        $seller = Merchant::where('remember_token',$request->token)->first();
+        if($seller->reg_step != 'otp-varification'){
+            return redirect('merchant/'.$seller->reg_step.'?token='.$request->token);
+        }
+        return view('auth.merchant.otp-varification',compact('seller'));
 
-
-        return view('auth.merchant.resubmitToken',compact('seller'));
     }
 
-    public function tokenUpdate(Request $request){
-        $seller    = Merchant::where('slug',$request->slug)->first();
-
+    public function updateToken(Request $request){
+        $seller    = Merchant::where('remember_token',$request->token)->first();
         $verify_number = mt_rand(10000,99999);
-
         $seller->update([
             'verification_token' => $verify_number,
         ]);
-
         session()->flash('success','Verify toke re-send successfully!');
-
-        return view('auth.merchant.resubmitToken',compact('seller'));
-
+        return redirect('merchant/otp-varification'.'?token='.$request->token);
     }
 
-    public function verifyToken(Request $request){
+    public function postToken(Request $request){
         $request->validate([
             'verification_token'    => 'required|exists:merchants,verification_token|max:5'
         ]);
-        $seller    = Merchant::where('slug',$request->slug)->first();
+        $seller    = Merchant::where('remember_token',$request->token)->first();
         $seller->update([
-            'verification_token' => $request->verification_token,
-            'slug' => $request->slug,
+            'verification_token' => 'varified',
+            'reg_step'           => 'personal-info',
         ]);
 
         session()->flash('success','Verification Successfully!');
-
-        return redirect('seller-registration'.'?slug='.$request->slug);
-
+        return redirect('merchant/personal-info'.'?token='.$request->token);
     }
-
-    public function sellerRegistration(Request $request){
-        $seller = Merchant::where('slug',$request->slug)->first();
-
+    
+    public function personalInfo(Request $request){
+        $seller = Merchant::where('remember_token',$request->token)->first();
         if(!$seller){
             return redirect('/');
         }
-
-        return view('auth.merchant.registration',compact('seller'));
+        if($seller->reg_step != 'personal-info'){
+            return redirect('merchant/'.$seller->reg_step.'?token='.$request->token);
+        }
+        return view('auth.merchant.personal-info',compact('seller'));
     }
 
-    public function registrationStepOne(Request $request){
-
+    public function savePersonalInfo(Request $request){
         $request->validate([
             'password'      => 'required|confirmed',
             'email'         => 'required|unique:merchants,email',
@@ -148,50 +145,64 @@ class MerchantController extends Controller{
             ]);
 
 
-        $sellerId    = Merchant::where('slug',$request->slug)->first();
+        $sellerId    = Merchant::where('remember_token',$request->token)->first();
+        if(!$sellerId){
+            return redirect('/');
+        }
+        $sellerId->update([
+            'first_name'         => $sellerId->first_name,
+            'last_name'          => $sellerId->last_name,
+            'phone'              => $sellerId->phone,
+            'email'              => $request->email,
+            'dob'                => $request->dob,
+            'gender'             => $request->gender,
+            'description'        => $request->description,
+            'last_visited_at'    => now(),
+            'last_visited_from'  => $request->last_visited_from,
+            'verification_token' => $request->verification_token,
+            'reg_step'           => 'shop-info',
+            'status'             => 'Inactive',
+            'user_id'            =>  $seller->id,
+            'updated_at'         => now(),
+        ]);
 
-            $sellerId->update([
-                'first_name'         => $sellerId->first_name,
-                'last_name'          => $sellerId->last_name,
-                'phone'              => $sellerId->phone,
-                'email'              => $request->email,
-                'dob'                => $request->dob,
-                'gender'             => $request->gender,
-                'description'        => $request->description,
-                'last_visited_at'    => now(),
-                'last_visited_from'  => $request->last_visited_from,
-                'verification_token' => $request->verification_token,
-                'status'             => 'Inactive',
-                'user_id'            =>  $seller->id,
-                'updated_at'         => now(),
-            ]);
-
-            // \Mail::to($sellerId)->send(new VendorProfileApprovalMail($sellerId));
+        // \Mail::to($sellerId)->send(new VendorProfileApprovalMail($sellerId));
 
         session()->flash('success','Registration Successfully!');
-
-        return redirect('seller-shope-registration'.'?slug='.$request->slug);
+        return redirect('merchant/shop-info'.'?token='.$request->token);
     }
 
     public function shopRegistration(Request $request){
-        $seller = Merchant::where('slug',$request->slug)->first();
+        $seller = Merchant::where('remember_token',$request->token)->first();
         if(!$seller){
             return redirect('/');
         }
         $divisions = Division::all();
-        return view('auth.merchant.shopRegistration',compact('seller','divisions'));
+
+        if($seller->reg_step != 'shop-info'){
+            return redirect('merchant/'.$seller->reg_step.'?token='.$request->token);
+        }
+        return view('auth.merchant.shop-info',compact('seller','divisions'));
     }
 
     public function shopRegistrationStore(Request $request,Shop $shop){
         $request->validate([
             'name'       => 'required',
             'slogan'     => 'required',
-            'phone'      => 'required',
-            'address'    => 'required',
-            'zip'        => 'numeric|required',
-            'email'      => 'required|unique:shops,email',
+            // 'phone'      => 'required',
+            // 'address'    => 'required',
+            // 'zip'        => 'numeric|required',
+            // 'email'      => 'required|unique:shops,email',
         ]);
-        $sellerId = Merchant::where('slug',$request->slug)->first();
+        $sellerId = Merchant::where('remember_token',$request->token)->first();
+        
+        if(!$sellerId){
+            return redirect('/');
+        }
+
+        $sellerId->update([
+            'reg_step'         => 'complete',
+        ]);
         $slug = Baazar::getUniqueSlug($shop,$request->name);
         $shope = [
             'name'      => $request->name,
@@ -210,27 +221,15 @@ class MerchantController extends Controller{
         ];
 
         Shop::create($shope);
-
         session()->flash('success','Shop registration Successfully!');
-
         return redirect('merchant/login');
     }
 
     public function termsCondtion(){
-        return view('frontend.termsCondition');
+        return view('frontend.merchant-termsCondition');
     }
-    public function registrationStepOneProcess(){
-    }
-    public function registrationStepTwo(){
-        return view();
-    }
-    public function registrationStepTwoProcess(){
-    }
-    public function registrationStepFinal(){
-        return view();
-    }
-    public function registrationStepFinalProcess(){
-    }
+    //Merchant Registration End Here HERE....................................................********************************************************************************....
+
 
     private function validateForm($request){
         $validatedData = $request->validate([

@@ -65,14 +65,14 @@
                     @endif
 
                       
-                    <form class="form-horizontal auth-form" action="{{ route('profileRegistration') }}" method="post" enctype="multipart/form-data" id="validateForm">
+                    <form class="form-horizontal auth-form" action="{{ route('savePersonalInfo') }}" method="post" enctype="multipart/form-data" id="validateForm">
                         @csrf 
                             <div class="form-group">
                                 <input required="" name="verification_token"  type="hidden" value="{{ $seller->verification_token }}"  class="form-control" placeholder="varification Code" id="exampleInputEmail12">
                                 <input type="hidden" name="type" value="sellers">
                                 <input type="hidden" name="first_name" value="{{ $seller->first_name }}">
                                 <input type="hidden" name="last_name" value="{{ $seller->last_name }}">
-                                <input type="hidden" name="slug" value="{{ $seller->slug }}">
+                                <input type="hidden" name="token" value="{{ $seller->remember_token }}">
                             </div>
                             <div class="form-group">
                                 <input required="" name="email" autocomplete="off" value="{{ old('email') }}" type="email" class="form-control @error('email') border-danger @enderror" placeholder="Email" id="exampleInputEmail12" autocomplete="off">
@@ -96,7 +96,7 @@
                             <div class="form-terms">
                                 <div class="custom-control custom-checkbox mr-sm-2"> 
                                     <input type="checkbox" name="agreed" class="custom-control-input" id="customControlAutosizing1"> 
-                                    <label class="custom-control-label" for="customControlAutosizing1"><span>I agree all statements in <a href="{{ url('terms-condition') }}" target="_blank"  class="pull-right">Terms &amp; Conditions</a></span></label>
+                                    <label class="custom-control-label" for="customControlAutosizing1"><span>I agree all statements in <a href="{{ url('merchant/terms-condition') }}" target="_blank"  class="pull-right">Terms &amp; Conditions</a></span></label>
                                     <br>
                                     <span class="text-danger">{{ $errors->first('agreed') }}</span>
                                 </div>
