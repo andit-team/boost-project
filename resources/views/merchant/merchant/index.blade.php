@@ -250,7 +250,7 @@
                                                            <div class="form-group mt-2">
                                                                <label for="exampleInputPassword1 ">Others</label>
                                                                <input type="text" class="form-control" id="rej_name" name="rej_name" placeholder=" if need add another reasoan ">
-                                                               <!-- <button class="btn btn-success mt-3 float-right btn-sm">save</button> -->
+                                                               <input type="hidden" name="type" class="form-control" value="profile">
                                                                <div class="form-group  float-right">
                                                                  <span id="saveReason" class="btn btn-success mt-2 float-right btn-sm">Add</span>
                                                                </div>
@@ -374,7 +374,6 @@ $('#saveReason').click(function(e){
             dataType: "json",
             success: function(response){
                 var name = $('#rej_name').val('');
-                swal(response.rej_name+" Inserted as Reject Reason!", {icon: "success",buttons: false,timer: 2000});
                 if(response){
                     $("#again").load(" #again");
                 } 

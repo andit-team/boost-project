@@ -107,14 +107,14 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title f-w-600" id="exampleModalLabel">Reject</h5>
+                                                <h5 class="modal-title f-w-600 text-danger" id="exampleModalLabel">Select The Reason For Reject :</h5>
                                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             </div>
                                             <div class="modal-body">
                                                 <form action="{{ url('merchant/product/rejected/'.$product->slug)}}" method="post" style="margin-top:-2px" id="deleteButton({{ $product->id }})">
                                                 @csrf
                                                 @method('put')
-                                                <div class="form">
+                                                <div class="form" id="again">
                                                     <div class="card-body">
                                                         <div class="form-check">
                                                             @foreach($rejectlist as $row)
@@ -125,13 +125,23 @@
                                                             @endforeach
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary">Reject</button>
+                                                 </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary">Reject</button>
+                                                    </form> 
+                                                    </div>
                                                 </form>
-                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                                                </div>
-                                                </form>
+                                                <form id="rejectId" role="form" action="" class="form-material form" method="post">
+                                                    @csrf
+                                                    <div class="form-group mt-2">
+                                                        <label for="exampleInputPassword1 ">Others</label>
+                                                        <input type="text" class="form-control" id="rej_name" name="rej_name" placeholder=" if need add another reasoan ">
+                                                        <input type="hidden" name="type" class="form-control" value="product"> 
+                                                        <div class="form-group  float-right">
+                                                          <span id="saveReason" class="btn btn-success mt-2 float-right btn-sm">Add</span>
+                                                        </div>
+                                                    </div>
+                                                 </form>
                                             </div>
                                         </div>
                                     </div>
@@ -179,5 +189,27 @@
             }) 
          })
      });
+
+     $('#saveReason').click(function(e){ 
+    e.preventDefault();
+    const name = $('#rej_name').val(); 
+    if(name == '' ){
+        alert ('Required Filed Must be filled');
+    }else{
+        var formData = $("#rejectId").serialize(); 
+        $.ajax({
+            type: 'POST',
+            url:"{{ url('/andbaazaradmin/reject-name/') }}", 
+            data: formData,
+            dataType: "json",
+            success: function(response){
+                var name = $('#rej_name').val(''); 
+                if(response){
+                    $("#again").load(" #again");
+                } 
+            }
+        })
+    }
+});
  </script>
 @endpush
