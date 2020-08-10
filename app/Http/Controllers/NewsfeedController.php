@@ -23,9 +23,11 @@ class NewsfeedController extends Controller
     public function index()
     {
         $newsFeed = Newsfeed::where('user_id',Sentinel::getUser()->id)->where('title','!=','')->paginate(10);
+        $rejectReason = RejectValue::where('user_id',Sentinel::getUser()->id)->where('type','feed')->get();
+        // dd($rejectReason);
        
         
-        return view('merchant.newsFeed.index',compact('newsFeed'));
+        return view('merchant.newsFeed.index',compact('newsFeed','rejectReason'));
     }
 
     /**

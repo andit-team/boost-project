@@ -121,7 +121,7 @@
                                                             <label class="form-check-label" for="check1">
                                                                 <input type="checkbox" class="form-check-input" id="checked" name="rej_name[]" value="{{$row->rej_name}}">{{$row->rej_name}}
                                                             </label><br>
-                                                            <input type="hidden" name="type" class="form-control" value="product">
+                                                            <input type="hidden" name="type" class="form-control" value="ecommerce">
                                                             @endforeach
                                                         </div>
                                                     </div>

@@ -41,26 +41,29 @@ class ProductsController extends Controller
     public function index(Request $request){
       // $cats = \DB::table('products')->select('category_id')->distinct()->get();
       // dd($cats);
-      $product = Product::where('shop_id',Baazar::shop()->id);
+      $product = Product::with('user')->where('shop_id',Baazar::shop()->id);
+     
 
       $cat = $product->select('category_id')->distinct()->get();
       // dd($cat);
       // $sellerProfile = Merchant::with('rejectvalue')->where('user_id',Sentinel::getUser()->id)->first();
-      $product = Product::where('shop_id',Baazar::shop()->id)->where('type','ecommerce')->paginate(2);
+      $product = Product::where('shop_id',Baazar::shop()->id)->where('type','ecommerce')->paginate(10);
+      $rejectReason = RejectValue::where('user_id',Sentinel::getUser()->id)->where('type','ecommerce')->get();
+      // dd($rejectReason);
       // $items = Product::with('inventory')->paginate('10');
 
       if ($request->has('cat')){
-        $product = Product::where('shop_id',Baazar::shop()->id)->where('category_slug','like','%'.$request->cat.'%')->where('type','ecommerce')->paginate(2);            
+        $product = Product::where('shop_id',Baazar::shop()->id)->where('category_slug','like','%'.$request->cat.'%')->where('type','ecommerce')->paginate(10);            
       }
     
       if ($request->has('status')){
-        $product = Product::orderBy('status','asc')->Where('status',$request->status)->where('type','ecommerce')->paginate(2);   
+        $product = Product::orderBy('status','asc')->Where('status',$request->status)->where('type','ecommerce')->paginate(10);   
       } 
       $categories = ([
         'cat'      =>request('cat'),
         'status'   => request('status'),
       ]);
-      return view ('merchant.product.index',compact('product'));
+      return view ('merchant.product.index',compact('product','rejectReason'));
 
     }
 
@@ -405,6 +408,7 @@ class ProductsController extends Controller
                 'rej_name'      => $request->rej_name[$i],
                 'type'          => $request->type,
                 'merchant_id'   => $data->id,
+                'product_id'    => $data->id,
                 'user_id'       => $data->user_id,
             ]);
             // dd($data);
