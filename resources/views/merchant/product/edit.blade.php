@@ -14,7 +14,7 @@
                 <!-- address section start -->
                 <div class="col-sm-9 register-page container">
                         <h3>Edit Product</h3>
-                            <form class="theme-form" action="{{ url('merchant/products/update/'.$product->slug) }}" method="post"  enctype="multipart/form-data">
+                            <form class="theme-form" action="{{ url('merchant/e-commerce/products/update/'.$product->slug) }}" method="post"  enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
                                 <div>
@@ -124,7 +124,7 @@
                                     </div>
                                 </div> 
                                 <div class="col-md-12">
-                                    <button class="btn btn-sm btn-solid" type="submit">Update</button>
+                                    <button class="btn btn-sm btn-solid ml-0" type="submit">Update</button>
                                 </div>
                                 </form>
                             </div>

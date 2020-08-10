@@ -308,14 +308,7 @@ class SmeProductController extends Controller
           $this->addImages($request->images,$product->id,$shop);
         }
 
-        $newsFeed = [
-          'title'      => $request->title,
-          'image'      => Baazar::fileUpload($request,'image','old_image','/uploads/newsfeed_image'),
-          'news_desc'  => $request->news_desc,  
-          'updated_at' => now(),
-        ];
-        $newsFeedUpdate->update($newsFeed);
- 
+        
         Session::flash('success', 'SME Product updated Successfully!');
 
         return redirect('merchant/sme/products');

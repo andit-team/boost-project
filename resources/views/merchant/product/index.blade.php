@@ -32,7 +32,7 @@
             <div class="col-md-9">
                 <div class="top-sec">
                     <h3>E-commerce Products</h3>
-                    <a href="{{ url('merchant/products/new') }}" class="btn btn-sm btn-solid">Add New</a>
+                    <a href="{{ url('merchant/e-commerce/products/new') }}" class="btn btn-sm btn-solid">Add New</a>
                 </div>
                 <div class="filter-area d-flex">
                     <div class="form-group mr-1">
@@ -60,7 +60,7 @@
                             </select>
                         </div>
                     </div>
-                    <a href="{{url('/merchant/products')}}" class="btn btn-info btn-sm text-white font-weight-bold" style="padding: 8px; height: 38px;">Clear</a>
+                    <a href="{{url('merchant/e-commerce/products')}}" class="btn btn-info btn-sm text-white font-weight-bold" style="padding: 8px; height: 38px;">Clear</a>
                 </div>
                 <table class="table-responsive-md table mb-0 table-striped mt-2">
                     <thead>
@@ -100,7 +100,7 @@
                             <td class="d-flex justify-content-between">
                                 <ul>
                                     <li>
-                                        <a href="{{ url('merchant/products/update/'.$row->slug.'/productupdate') }}">
+                                        <a href="{{ url('merchant/e-commerce/products/update/'.$row->slug.'/productupdate') }}">
                                             <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                                         </a>
                                     </li>

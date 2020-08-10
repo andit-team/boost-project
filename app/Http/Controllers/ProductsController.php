@@ -334,14 +334,7 @@ class ProductsController extends Controller
         }
         if($request->images){
           $this->addImages($request->images,$product->id,$shop);
-        } 
-        $newsFeed = [
-          'title'      => $request->title,
-          'image'      => Baazar::fileUpload($request,'image','old_image','/uploads/newsfeed_image'),
-          'news_desc'  => $request->news_desc,  
-          'updated_at' => now(),
-        ];
-        $newsFeedUpdate->update($newsFeed);
+        }  
         Session::flash('success', 'Product updated Successfully!');
 
         return back();
@@ -463,13 +456,7 @@ class ProductsController extends Controller
          return redirect('merchant/product');
     }
 
-    public function vendorshow($slug){
-
-    //  $product = Product::with('category')->where('user_id',Sentinel::getUser()->id)->first();
-      $product = Product::with(['category','itemimage'])->where('slug',$slug)->first();
-      $shopProfile = Shop::where('user_id',Sentinel::getUser()->id)->first();
-      return view('merchant.product.vendorshow',compact('product','shopProfile'));
-    }
+    
 
     public function colorWiseImage(Request $request){
       $imgcolor = $request->imgcolor;

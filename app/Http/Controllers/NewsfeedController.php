@@ -11,6 +11,7 @@ use Session;
 use Baazar;
 use App\Models\Reject;
 use App\Models\RejectValue;
+use DB;
 
 class NewsfeedController extends Controller
 {
@@ -60,7 +61,7 @@ class NewsfeedController extends Controller
 
         Session::flash('success','News feed Added successfully');
 
-        return redirect('merchant/newsfeed');
+        return redirect('merchant/newsfeed/news');
     }
 
     /**
@@ -109,7 +110,7 @@ class NewsfeedController extends Controller
 
         Session::flash('success','News feed update successfully');
 
-        return redirect('merchant/newsfeed');
+        return redirect('merchant/newsfeed/news');
          
     }
 
@@ -126,7 +127,7 @@ class NewsfeedController extends Controller
 
         Session::flash('error','News feed delete successfully');
 
-        return redirect('merchant/newsfeed');
+        return redirect('merchant/newsfeed/news');
     }
 
     public function feedlist()
@@ -151,10 +152,9 @@ class NewsfeedController extends Controller
     }
 
     public function reject(Request $request,$slug){
-        $data =  Newsfeed::where('slug',$slug)->first();
-
-        $data->update([
-            'rej_desc' => $request->rej_desc,
+        $data =  Newsfeed::where('slug',$slug)->first(); 
+        
+        $data->update([ 
             'status'=>'Reject'
             ]);
 

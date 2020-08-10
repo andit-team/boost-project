@@ -201,12 +201,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <form action="{{ url('merchant/merchant/approvement/'.$row->id) }}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
+                                                        <form action="{{ url('merchant/approvement/'.$row->id) }}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
                                                             @csrf
                                                             <button type="submit" class="btn btn-info">Approve</button>
                                                         </form>
                                                         <button type="button" class="btn btn-warning ml-1 btnClosePopup" data-toggle="modal" id="" data-original-title="test" data-target="#exampleModal">Reject</button>
-                                                        <form action="{{ url('merchant/merchant/profiledelete/'.$row->id) }}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
+                                                        <form action="{{ url('merchant/profiledelete/'.$row->id) }}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
                                                             @csrf
                                                             <button type="submit" class="btn btn-primary m-l-b">Hard Reject</button>
                                                         </form>
@@ -222,7 +222,7 @@
                                                         <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{ url('merchant/merchant/rejected/'.$row->id)}}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
+                                                        <form action="{{ url('merchant/rejected/'.$row->id)}}" method="post" style="margin-top: -2px;" id="deleteButton({{ $row->id }})">
                                                             @csrf 
                                                             @method('put')
                                                             <div class="form" id="again">

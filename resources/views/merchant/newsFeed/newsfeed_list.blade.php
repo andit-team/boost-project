@@ -96,7 +96,7 @@
                                                                     </div> 
                                                                     <div>
                                                                         <div class="m-l-reject"> 
-                                                                        <button type="button" class="btn btn-sm btn-primary btnClosePopup" data-toggle="modal" data-original-title="test" data-target="#exampleModal">Reject</button>
+                                                                        <button type="button" class="btn btn-sm btn-primary btnClosePopup" data-toggle="modal" data-original-title="test" data-target="#exampleModal{{ $row->id }}">Reject</button>
                                                                         </div> 
                                                                     </div>
                                                                     
@@ -111,7 +111,7 @@
                                                     </div>
                                                 </div>
                                             </div> 
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal fade" id="exampleModal{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">

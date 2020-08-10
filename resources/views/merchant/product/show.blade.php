@@ -94,7 +94,7 @@
                             </div>
                             @elseif($product->status == 'Pending')
                             <div class="m-l-approve">
-                            <form action="{{ url('merchant/product/approvement/'.$product->slug) }}" method="post" style="margin-top:-2px" id="deleteButton({{ $product->id }})">
+                            <form action="{{ url('merchant/e-commerce/products/approvement/'.$product->slug) }}" method="post" style="margin-top:-2px" id="deleteButton({{ $product->id }})">
                                 @csrf
                                 <button type="submit" class="btn btn-warning">Approve</button>
                             </form>
@@ -111,7 +111,7 @@
                                                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ url('merchant/product/rejected/'.$product->slug)}}" method="post" style="margin-top:-2px" id="deleteButton({{ $product->id }})">
+                                                <form action="{{ url('merchant/e-commerce/products/rejected/'.$product->slug)}}" method="post" style="margin-top:-2px" id="deleteButton({{ $product->id }})">
                                                 @csrf
                                                 @method('put')
                                                 <div class="form" id="again">
