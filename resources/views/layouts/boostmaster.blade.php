@@ -33,8 +33,8 @@
   <script src="{{ asset('frontend/boost/assest/js/jquery-3.3.1.min.js')}}"></script>
   <script src="{{ asset('frontend/boost/assest/js/bootstrap.min.js')}}"></script>
   <script src="{{ asset('frontend/boost/assest/js/popper.min.js')}}"></script>
-  <script src="{{ asset('frontend/boost/assest/js/date-picker.js')}}"></script>
-  {{-- <script src="{{ asset('frontend/boost/assest/js/bootstrap-datepicker.min.js')}}"></script> --}}
+  {{-- <script src="{{ asset('frontend/boost/assest/js/date-picker.js')}}"></script> --}}
+  <script src="{{ asset('frontend/boost/assest/js/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{ asset('js/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{ asset('frontend/boost/assest/js/custom.js')}}"></script>
 
@@ -101,8 +101,7 @@ $('#product-show-six').on('click',function(){
       // alert('adfsa');
     let ss = $(this).attr('src');
     $('#kk').attr('src',ss);
-})
-
+}); 
    </script>
 </body>
 

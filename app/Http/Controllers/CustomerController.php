@@ -10,6 +10,7 @@ use Reminder;
 use Mail;
 use App\Events\CustomerRegistration;
 use App\Models\Customer;
+use Boost;
 
 class CustomerController extends Controller{
     public function __construct(){
@@ -25,6 +26,7 @@ class CustomerController extends Controller{
     }
 
     public function registration(Request $request){
+        // dd($request->all());
         $data = [
 		    'first_name'=> $request->first_name,
             'last_name' => $request->last_name,
@@ -36,8 +38,9 @@ class CustomerController extends Controller{
             'or_phone' => $request->or_phone,
             'or_address' => $request->or_address,
             'account' => $request->account,
-            'or_reg' => $request->or_reg,
-            'image' => $request->image,
+            'or_reg' => $request->or_reg, 
+            'file_1'=> Boost::pdfUpload($request,'file_1','','/uploads/customer_profile'), 
+            'file_2' => Boost::pdfUpload($request,'file_2','','/uploads/customer_profile'),
             'address_1' => $request->address_1,
             'address_2' => $request->address_2,
             'postcode' => $request->postcode,
@@ -51,7 +54,7 @@ class CustomerController extends Controller{
         // dd($customer);
         event(new CustomerRegistration($customer));
         // echo 'done';
-        return redirect('dashboard');
+        return redirect('orders/payment-deatils');
     }
 
     public function userloginprocess(Request $request){

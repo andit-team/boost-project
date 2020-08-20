@@ -25,10 +25,12 @@ class CreateUsersTable extends Migration
             $table->string('or_phone')->nullable();
             $table->string('or_address')->nullable();
             $table->string('or_reg')->nullable();
-            $table->string('image')->nullable();
+            $table->string('file_1')->nullable();
+            $table->string('file_2')->nullable();
             $table->string('account')->nullable();
             $table->string('address_1')->nullable();
             $table->string('address_2')->nullable();
+            $table->string('postcode')->nullable();
             $table->string('town')->nullable();
             $table->string('email')->nullable();
             $table->string('password')->nullable();
