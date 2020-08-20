@@ -7,7 +7,7 @@ use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
 use Sentinel;
 use App\User;
-use Baazar;
+use Boost;
 use Session;
 
 class CustomersController extends Controller
@@ -50,7 +50,7 @@ class CustomersController extends Controller
                 'first_name'            => $request->first_name,
                 'last_name'             => $request->last_name,
                 'phone'                 => $request->phone,
-                'picture'               => Baazar::fileUpload($request,'picture','old_image','/uploads/buyer_profile'),
+                'picture'               => Boost::fileUpload($request,'picture','old_image','/uploads/buyer_profile'),
                 'dob'                   => $request->dob,
                 'gender'                => $request->gender,
                 'description'           => $request->description,
@@ -70,7 +70,7 @@ class CustomersController extends Controller
                 'first_name'            => $request->first_name,
                 'last_name'             => $request->last_name,
                 'phone'                 => $request->phone,
-                'picture'               => Baazar::fileUpload($request,'picture','','/uploads/buyer_profile'),
+                'picture'               => Boost::fileUpload($request,'picture','','/uploads/buyer_profile'),
                 'dob'                   => $request->dob,
                 'gender'                => $request->gender,
                 'description'           => $request->description,

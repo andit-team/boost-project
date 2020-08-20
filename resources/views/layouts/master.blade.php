@@ -7,9 +7,9 @@
     <meta name="description" content="multikart">
     <meta name="keywords" content="multikart">
     <meta name="author" content="multikart">
-    <link rel="icon" href="{{asset('frontend')}}/assets/images/favicon/fav.png" type="image/x-icon">
-    <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/favicon/fav.png" type="image/x-icon">
-    <title>Andbaazar</title>
+    <link rel="icon" href="{{asset('frontend')}}/assets/images/favicon/boostfav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/favicon/boostfav.png" type="image/x-icon">
+    <title>Boost</title>
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -48,6 +48,11 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('/')}}/css/custom.css">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
+    <style>
+        .subs{
+            padding: 13px!important;
+        }
+    </style>
     @stack('css')
 </head>
 <body>
@@ -68,10 +73,10 @@
                     <div class="col-lg-7">
                         <div class="header-contact">
                             <ul>
-                                <li>Welcome to  Andbaazar</li>
-                                <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 041 - 722 - 684</li>
+                                <li>Welcome to  Boost</li>
+                                {{-- <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 041 - 722 - 684</li>
                                 <li><a href="{{url('sell-on-andbaazar')}}" style="color: #999999;font-size: 14px; padding-right: 25px;">Start Selling Here</a></li>
-                                <li><a href="{{url('become-an-agent')}}" style="color: #999999;font-size: 14px; padding-right: 25px;">Become an Agent</a></li>
+                                <li><a href="{{url('become-an-agent')}}" style="color: #999999;font-size: 14px; padding-right: 25px;">Become an Agent</a></li> --}}
                             </ul>
                         </div>
                     </div>
@@ -85,9 +90,9 @@
                                     @if( Sentinel::getUser())
                                     <li class=""><a href="{{ url('/dashboard') }}">My Dashboard</a></li>
                                     <li class=""><a href="{{ url('profile/') }}" data-lng="es">My Profile</a></li>
-                                    <li class=""><a href="{{ url('profile/shipping') }}" data-lng="es">My Shippin Address</a></li>
-                                    <li class=""><a href="{{ url('profile/billing') }}" data-lng="es">My Billing Address</a></li>
-                                    <li class=""><a href="{{ url('profile/card') }}" data-lng="es">My Card</a></li>
+                                    <li class=""><a href="#" data-lng="es">My Shippin Address</a></li>
+                                    <li class=""><a href="#" data-lng="es">My Billing Address</a></li>
+                                    <li class=""><a href="#" data-lng="es">My Card</a></li>
                                     {{-- <li><a href="{{url('logout')}}" data-lng="es">Logout</a></li> --}}
                                     @else
                                     <li><a href="{{url('login')}}" data-lng="en">SIGN IN</a></li>
@@ -113,8 +118,8 @@
                               
                             </div>
                             <div class="brand-logo">
-                                <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
-                                        class="img-fluid blur-up lazyload" alt=""></a>
+                                {{-- <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
+                                        class="img-fluid blur-up lazyload" alt=""></a> --}}
                             </div>
                         </div>
                         <div class="menu-right pull-right">
@@ -130,11 +135,11 @@
                                             <a href="{{url('/')}}">Home</a>
                                         </li>
                                         <li>
-                                            <a href="{{url('/about-us')}}">About</a>
+                                            <a href="#">Products</a>
                                         </li>
-                                        <li class="mega" id="hover-cls"><a href="{{url('/products')}}">Product
+                                        <li class="mega" id="hover-cls"><a href="#">News
                                         </a>
-                                        <ul class="mega-menu full-mega-menu">
+                                        {{-- <ul class="mega-menu full-mega-menu">
                                             <li>
                                                 <div class="container">
                                                     <div class="row">
@@ -224,13 +229,10 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                        </ul>
-                                    </li>
-                                        <li>
-                                            <a href="{{url('/blog')}}">blog</a>
-                                        </li>
+                                        </ul> --}}
+                                    </li> 
                                         <li><a href="{{url('/contact-us')}}">Contact Us</a></li>
-                                            <li>
+                                            {{-- <li>
                                                 <a href="{{url('/up-coming')}}">Upcoming</a>
                                                 <div class="lable-nav">new</div>
                                                 <ul>
@@ -247,7 +249,7 @@
                                                                 class="new-tag">new</span></a></li>
                                                     <li><a href="product-page(vertical-tab).html">Tab</a></li>
                                                 </ul>
-                                            </li>
+                                            </li> --}}
                                     </ul>
                                 </nav>
                             </div>
@@ -381,7 +383,7 @@
                                     <input type="text" class="form-control" name="EMAIL" id="mce-EMAIL"
                                         placeholder="Enter your email" required="required">
                                 </div>
-                                <button type="submit" class="btn btn-solid" id="mc-submit">subscribe</button>
+                                <button type="submit" class="btn btn-primary subs" id="mc-submit">subscribe</button>
                             </form>
                         </div>
                     </div>
@@ -396,8 +398,8 @@
                             <h4>about</h4>
                         </div>
                         <div class="footer-contant">
-                            <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
-                                class="img-fluid blur-up lazyload" alt=""></a>                       
+                            {{-- <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
+                                class="img-fluid blur-up lazyload" alt=""></a>                        --}}
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                                 ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
                             <div class="footer-social">
@@ -417,14 +419,14 @@
                                 <h4>my account</h4>
                             </div>
                             <div class="footer-contant">
-                                <ul>
+                                {{-- <ul>
                                     <li><a href="{{url('merchant/login')}}">merchant login</a></li>
                                     <li><a href="#">mens</a></li>
                                     <li><a href="#">womens</a></li>
                                     <li><a href="#">clothing</a></li>
                                     <li><a href="#">accessories</a></li>
                                     <li><a href="#">featured</a></li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
                     </div>
@@ -434,13 +436,13 @@
                                 <h4>why we choose</h4>
                             </div>
                             <div class="footer-contant">
-                                <ul>
+                                {{-- <ul>
                                     <li><a href="#">shipping & return</a></li>
                                     <li><a href="#">secure shopping</a></li>
                                     <li><a href="#">gallary</a></li>
                                     <li><a href="#">affiliates</a></li>
                                     <li><a href="#">contacts</a></li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
                     </div>
@@ -450,13 +452,13 @@
                                 <h4>store information</h4>
                             </div>
                             <div class="footer-contant">
-                                <ul class="contact-list">
+                                {{-- <ul class="contact-list">
                                     <li><i class="fa fa-map-marker"></i>Multikart Demo Store, Demo store India 345-659
                                     </li>
                                     <li><i class="fa fa-phone"></i>Call Us: 123-456-7898</li>
                                     <li><i class="fa fa-envelope-o"></i>Email Us: <a href="#">Support@Fiot.com</a></li>
                                     <li><i class="fa fa-fax"></i>Fax: 123456</li>
-                                </ul>
+                                </ul> --}}
                             </div>
                         </div>
                     </div>
@@ -502,7 +504,7 @@
     <!-- theme setting -->
 
     <!-- exit modal popup start-->
-    <div class="modal fade bd-example-modal-lg theme-modal exit-modal" id="exit_popup" tabindex="-1" role="dialog"
+    {{-- <div class="modal fade bd-example-modal-lg theme-modal exit-modal" id="exit_popup" tabindex="-1" role="dialog"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -535,7 +537,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Add to cart modal popup end-->
 
     <!-- facebook chat section start -->

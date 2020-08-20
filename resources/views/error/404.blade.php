@@ -45,7 +45,7 @@
 	html{
 		height:100%;
 		/* background: #ffffff url(https://www.kindpng.com/imgv/biomJw_transparent-fruit-and-vegetables-clipart-vegetables-with-basket/#gal_transparent-fruit-and-vegetables-clipart-vegetables-with-basket-png-png-download_biomJw_598263.png); no-repeat center bottom fixed; */
-		background: #ffffff url(https://images.alphacoders.com/768/76811.jpg);no-repeat center bottom fixed;
+		background: #ffffff url(https://images7.alphacoders.com/387/387506.jpg);no-repeat center bottom fixed;
 		/* background: #ffffff url(https://images.unsplash.com/photo-1449168013943-3a15804bb41c?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=1958d4bfb59a246c6092ff0daabd284b); no-repeat center bottom fixed; */
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
@@ -285,8 +285,8 @@
 			
 			{{-- <img id="cspio-logo" src="https://static.comingsoonpage.com/cspio-assets/1.0.0/seedprod-logo-white.png"> --}}
 
-			<a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/andbaazar.png"
-				class="img-fluid blur-up lazyload" alt="image" style ="padding:40px;"></a>
+			{{-- <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/andbaazar.png"
+				class="img-fluid blur-up lazyload" alt="image" style ="padding:40px;"></a> --}}
 			    				
 			<h1 id="cspio-headline">Coming Soon Page</h1>			    				
 			
@@ -311,7 +311,8 @@
 
 			<div id="cspio-credit">
 					<span>Created with <a target="_blank" href="https://www.comingsoonpage.com"><img id="aff" src="https://static.comingsoonpage.com/cspio-assets/1.0.0/comingsoonpage.com-logo.png" alt="Created by ComingSoonPage.com"></a> Free download <a target="_blank" href="http://www.seedprod.com/free-coming-soon-page/" style="text-decoration:underline" alt="Get your free coming soon page.">here.</a>
-				</span></div>
+				</span>
+			</div>
 									    									    			    			    							    			     			    		
 		</div><!-- end of #cspio-content -->
 	</div>

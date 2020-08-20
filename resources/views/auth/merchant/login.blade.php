@@ -18,19 +18,32 @@
     .padding{
             padding: 12px!important;
         }
+        
+        .bg-primary{
+            background-color: #0088CF!important;
+            -webkit-box-shadow: 1px 5px 24px #0088CF!important; 
+        }
+        .active{
+            color: #0088CF!important;
+            border-bottom: 2px solid #0088CF!important;
+        }
+        .lcolor{
+            color: #0088CF!important; 
+        }
+    
     </style>
 @endpush
 <div class="row">
     <div class="col-md-5 p-0 card-left">
         <div class="card bg-primary padding">
             <div class="svg-icon">
-                <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
-                    class="img-fluid blur-up lazyload" alt="image"></a>
+                {{-- <a href="{{url('/')}}"><img src="{{asset('frontend')}}/assets/images/icon/logo.png"
+                    class="img-fluid blur-up lazyload" alt="image"></a> --}}
             </div> 
             <div class="single-item">
                 <div>
                     <div>
-                        <h3>Welcome to Andbaazar</h3>
+                        <h3>Welcome to Boost</h3>
                         <p>This a largest  multivendor ecommerce site.You can bye or sell anything. 
                              It allows you to create an online marketplace.
                             Independent vendors can sell their products through a single storefront. 
@@ -39,7 +52,7 @@
                 </div>
                 <div>
                     <div>
-                        <h3>Welcome to Andbaazar</h3>
+                        <h3>Welcome to Boost</h3>
                         <p>You can share anything with your friend.Like Comment. You can easily sell door-to-door without much hassle.
                           Let us take a look at what a multi-vendor marketplace is and
                           how you can make one successful multi-vendor marketplace using WooCommerce.</p>
@@ -47,7 +60,7 @@
                 </div>
                 <div>
                     <div>
-                        <h3>Welcome to Andbaazar</h3>
+                        <h3>Welcome to Boost</h3>
                         <p>You can connect to your friend and chat with them by using our site.
                             online store with all the tools you need to build, manage, and grow your business. 
                             Ecwid store in minutes with shipping, tax, payment, advertising options ready.
@@ -87,16 +100,16 @@
                                 <div class="custom-control custom-checkbox mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" name="remember" id="customControlAutosizing">
                                     <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
-                                    <a href="{{url('merchant/forgot_password')}}" class="btn btn-default forgot-pass">Forget password</a>
+                                    <a href="{{url('merchant/forgot_password')}}" class="btn btn-default forgot-pass lcolor">Forget password</a>
                                 </div>
                             </div>
-                            <div class="form-button">
-                                <button class="btn btn-primary" type="submit">Login</button>
+                            <div class="form-button mt-4">
+                                <button class="btn btn-info" type="submit">Login</button>
                             </div>   
                       </form> 
                 </div>
             </div>
         </div>
     </div>
-<a href="{{url('/')}}" class="btn btn-secondary back-btn"><i data-feather="arrow-left"></i>Back To Home</a>
+{{-- <a href="{{url('/')}}" class="btn btn-secondary back-btn"><i data-feather="arrow-left"></i>Back To Home</a> --}}
 @endsection

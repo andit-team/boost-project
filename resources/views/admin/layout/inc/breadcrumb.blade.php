@@ -7,7 +7,7 @@
                 <div class="col-lg-6">
                     <div class="page-header-left">
                         <h3>{{$pageTitle}}
-                            <small>AndBaazar Admin panel</small>
+                            <small>Boost Admin panel</small>
                         </h3>
                     </div>
                 </div>

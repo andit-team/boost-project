@@ -1,12 +1,12 @@
 <div class="page-sidebar">
             <div class="main-header-left d-none d-lg-block">
-                <div class="logo-wrapper"><a href="index.html"><img class="blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/icon/logo.png" alt=""></a></div>
+                <div class="logo-wrapper"><a href="index.html"><img class="blur-up lazyloaded" src="{{asset('frontend')}}/assets/images/icon/" alt=""></a></div>
             </div>
             <div class="sidebar custom-scrollbar">
                 <div class="sidebar-user text-center">
                     <div><img class="img-60 rounded-circle lazyloaded blur-up" src="{{asset('frontend')}}/assets/images/dashboard/user1.jpg" alt="#">
                     </div>
-                    <h6 class="mt-3 f-14">JOHN</h6>
+                    <h6 class="mt-3 f-14" style="color: #0088CF!important; ">JOHN</h6>
                     <p>general manager.</p>
                 </div>
 
@@ -14,9 +14,9 @@
 
 
                 <ul class="sidebar-menu">
-                    <li><a class="sidebar-header" href="{{ url('andbaazaradmin/dashboard') }}"><i data-feather="home"></i><span>Dashboard</span></a></li>
+                    <li><a class="sidebar-header" href="{{ url('boostadmin/dashboard') }}"><i data-feather="home"></i><span>Dashboard</span></a></li>
 
-                    <li class="{{ request()->is('andbaazaradmin/products/category*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="briefcase"></i> <span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
+                    {{-- <li class="{{ request()->is('andbaazaradmin/products/category*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="briefcase"></i> <span>Products</span><i class="fa fa-angle-right pull-right"></i></a>
                         <ul class="sidebar-submenu">
                             <li class="{{ request()->is('andbaazaradmin/products/category*') ? 'active' : '' }}">
                                 <a href="#" ><i class="fa fa-cubes"></i> <span>Categories</span> <i class="fa fa-angle-right pull-right"></i></a>
@@ -43,20 +43,15 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
-                    {{-- <li class="{{ request()->is('andbaazaradmin/products/shop/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="shopping-bag"></i><span>Shops</span><i class="fa fa-angle-right pull-right"></i></a>
+                   
 
-                        <ul class="sidebar-submenu">
-                            <li><a href="<a href="{{ 'andbaazaradmin/shop' }}"><i class="fa fa-pencil-square-o"></i> All Shop</a></li>
-                            <li><a href="<a href="{{ 'andbaazaradmin/shop/create' }}"><i class="fa fa-pencil-square-o"></i> Create Shop</a></li>
-                        </ul>
+                   <li><a class="sidebar-header {{ request()->is('boostadmin/merchant/*') ? 'active' : '' }}"  href="{{ url('boostadmin/merchant') }}" class="{{ request()->is('boostadmin/merchant/') ? 'active' : '' }}"><i data-feather="users"></i><span>Merchant Profile</span></a> </li>
+                   <li><a class="sidebar-header {{ request()->is('boostadmin/products/*') ? 'active' : '' }}"  href="{{ url('boostadmin/products') }}" class="{{ request()->is('boostadmin/products/') ? 'active' : '' }}"><i data-feather="shopping-bag"></i><span>Product</span></a> </li>
+                   
 
-                   </li> --}}
-
-                   <li><a class="sidebar-header {{ request()->is('andbaazaradmin/paymentmethod') ? 'active' : '' }}"  href="{{ url('andbaazaradmin/paymentmethod') }}" class="{{ request()->is('andbaazaradmin/paymentmethod') ? 'active' : '' }}"><i data-feather="credit-card"></i><span>Payment Method</span></a> </li>
-
-                   <li><a class="sidebar-header {{ request()->is('andbaazaradmin/shippingmethod') ? 'active' : '' }}"  href="{{ url('andbaazaradmin/shippingmethod') }}" class="{{ request()->is('andbaazaradmin/shippingmethod') ? 'active' : '' }}"><i data-feather="truck"></i><span>Shipping Method</span></a> </li>
+                   {{-- <li><a class="sidebar-header {{ request()->is('andbaazaradmin/shippingmethod') ? 'active' : '' }}"  href="{{ url('andbaazaradmin/shippingmethod') }}" class="{{ request()->is('andbaazaradmin/shippingmethod') ? 'active' : '' }}"><i data-feather="truck"></i><span>Shipping Method</span></a> </li>
 
                    <li><a class="sidebar-header {{ request()->is('andbaazaradmin/promotion') ? 'active' : '' }}"  href="{{ url('andbaazaradmin/promotion') }}"><i data-feather="align-left"></i><span>Promotion</span></a> </li>
 
@@ -77,40 +72,7 @@
 
                    <li><a class="sidebar-header {{ request()->is('andbaazaradmin/contact-us') ? 'active' : '' }}" href="{{ url('andbaazaradmin/contact-us') }}" ><i data-feather="message-circle"></i><span>Contact us Messages</span></a> </li>
 
-                   <li><a class="sidebar-header {{ request()->is('andbaazaradmin/newsfeed') ? 'active' : '' }}" href="{{ url('andbaazaradmin/newsfeed') }}" ><i data-feather="message-square"></i><span>Feed</span></a> </li>
-
-                   
-
-
-                   {{-- <li class="{{ request()->is('andbaazaradmin/merchant/*') ? 'active' : '' }}"><a href="#" class="sidebar-header" ><i class="fa fa-facebook"></i> <span>Vendor Profile</span> <i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li class="{{ request()->is('andbaazaradmin/merchant') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/merchant/') }}" class="{{ request()->is('andbaazaradmin/merchant') ? 'active' : '' }}" ><i class="fa fa-pencil-square-o"></i> Profile list</a></li>
-
-                        </ul>
-                    </li> --}}
-
-
-{{--                    <li class="{{ request()->is('andbaazaradmin/product_list/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="menu" ></i><span>Product Request</span><i class="fa fa-angle-right pull-right"></i></a>--}}
-{{--                        <ul class="sidebar-submenu">--}}
-{{--                            <li class="{{ request()->is('andbaazaradmin/product_list') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/product_list')}}" class="{{ request()->is('andbaazaradmin/product_list') ? 'active' : '' }}" ><i class="fa fa-pencil-square-o"></i> Products list</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
-
-                    {{-- <li class="{{ request()->is('andbaazaradmin/shop/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="menu" ></i><span>Shop</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li class="{{ request()->is('andbaazaradmin/shop') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/shop')}}" class="{{ request()->is('andbaazaradmin/shop') ? 'active' : '' }}" ><i class="fa fa-pencil-square-o"></i> Shop list</a></li>
-                        </ul>
-                    </li> --}}
-                    {{-- <li class="{{ request()->is('andbaazaradmin/contact-us/*') ? 'active' : '' }}"><a class="sidebar-header" href="#"><i data-feather="menu" ></i><span>Contact us Message</span><i class="fa fa-angle-right pull-right"></i></a>
-                        <ul class="sidebar-submenu">
-                            <li class="{{ request()->is('andbaazaradmin/contact-us') ? 'active' : '' }}"><a href="{{ url('andbaazaradmin/contact-us')}}" class="{{ request()->is('andbaazaradmin/contact-us') ? 'active' : '' }}" ><i class="fa fa-pencil-square-o"></i> Message List</a></li>
-                        </ul>
-                    </li>  --}}
-                     {{-- <li><a class="sidebar-header" href="invoice.html"><i data-feather="archive"></i><span>Invoice</span></a>
-                    </li>
-                    <li><a class="sidebar-header" href="login.html"><i data-feather="log-in"></i><span>Login</span></a>
-                    </li> --}}
-
+                   <li><a class="sidebar-header {{ request()->is('andbaazaradmin/newsfeed') ? 'active' : '' }}" href="{{ url('andbaazaradmin/newsfeed') }}" ><i data-feather="message-square"></i><span>Feed</span></a> </li>  --}}
                 </ul>
             </div>
-        </div>
+        </div> 

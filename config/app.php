@@ -52,8 +52,8 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
-    'asset_url' => env('ASSET_URL', 'http://localhost/andbaazar/public'),
+    'url' => env('APP_URL', NULL),
+    'asset_url' => env('ASSET_URL', NULL),
 
 
     // 'url' => env('APP_URL', 'https://andbaazar.com'),
@@ -178,7 +178,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\BaazarServiceProvider::class,
+        App\Providers\BoostServiceProvider::class,
 
         //sentinel Auth
         Cartalyst\Sentinel\Laravel\SentinelServiceProvider::class,
@@ -236,7 +236,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Baazar' => App\Facades\BaazarFacad::class,
+        'Boost' => App\Facades\BoostFacad::class,
         
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
 

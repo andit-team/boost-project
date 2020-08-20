@@ -35,17 +35,17 @@
                                 <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
                         </div>
                     @endif
-                    <form class="theme-form" action="{{route('userloginprocess')}}" method="post">
+                    <form class="" action="{{route('userloginprocess')}}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" name="login[email]" class="form-control" id="email" placeholder="Email" required="">
+                            <input type="text" name="login[email]" class="form-control" value="buyer@boost.com" id="email" placeholder="Email" required="">
                         </div>
                         <div class="form-group">
                             <label for="review">Password</label>
                             <input type="password" class="form-control" id="review" name="login[password]" placeholder="Enter your password" required="">
                         </div>
-                        <button type="submit" class="btn btn-solid">Login</button>                                       
+                        <button type="submit" class="btn btn-primary">Login</button>                                       
                         <a href="{{url('forgot_password')}}" class="btn btn-default forgot-pass">Forget password</a>                               
                     </form>
                 </div>
@@ -56,11 +56,11 @@
                <h6 class="title-font">Create A Account</h6>
                     <p>Sign up for a free account at our store. Registration is quick and easy. It allows you to be
                         able to order from our shop. To start shopping click register.</p><a href="{{url('register')}}"
-                        class="btn btn-solid">Create an Account</a>
+                        class="btn btn-primary">Create an Account</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!--Section ends-->
-@endsection
+@endsection 

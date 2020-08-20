@@ -6,10 +6,10 @@
 @include('elements.alert')
 @component('layouts.inc.breadcrumb')
   @slot('pageTitle')
-      Andbaazar
+      Boost
   @endslot
   @slot('page')
-      <li class="breadcrumb-item active" aria-current="page">Become a Vendor</li>
+      <li class="breadcrumb-item active" aria-current="page">Become a Merchant</li>
   @endslot
 @endcomponent
 

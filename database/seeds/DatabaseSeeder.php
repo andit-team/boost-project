@@ -11,55 +11,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-                DB::statement('SET FOREIGN_KEY_CHECKS=0');
-                DB::table('divisions')->truncate();      
-                DB::table('districts')->truncate();      
-                DB::table('upazilas')->truncate();      
-                DB::table('unions')->truncate();      
-                DB::table('municipals')->truncate();      
-                DB::table('municipal_wards')->truncate();
-                DB::table('villages')->truncate();
-                DB::table('categories')->truncate();
-                DB::table('couriers')->truncate();
-                DB::table('currencies')->truncate();
-                DB::table('promotion_heads')->truncate();
-                DB::table('merchants')->truncate();
-                DB::table('customers')->truncate();
-                DB::table('shops')->truncate();
-                DB::table('tags')->truncate();
+                DB::statement('SET FOREIGN_KEY_CHECKS=0'); 
+                // DB::table('merchants')->truncate();
+                DB::table('customers')->truncate(); 
+                Db::table('countries')->truncate();
                 DB::table('permissions')->truncate();
-                DB::table('roles')->truncate();
-                DB::table('colors')->truncate();
-                DB::table('brands')->truncate();
-                DB::table('sizes')->truncate();
-                DB::table('attributes')->truncate();
-                DB::table('attribute_metas')->truncate();
-                DB::table('inventory_attributes')->truncate();
-                DB::table('inventory_attribute_options')->truncate();
-                DB::table('inventory_attribute_category')->truncate();
-                DB::table('rejects')->truncate();
+                DB::table('roles')->truncate(); 
                 DB::table('users')->truncate();
 
 
-        $this->call([
-                geotableseeder::class,
+        $this->call([ 
                 RoleTableSeeder::class,
                 CustomersTableSeeder::class,
                 PermissionTableSeeder::class,
-                UserTableSeeder::class,
-                CategoriesTableSeeder::class,
-                CuriersTableSeeder::class,
-                CurrenciesTableSeeder::class,
-                PromotionHeadsTableSeeder::class,
-                MerchantsTableSeeder::class,
-                ShopsTableSeeder::class,
-                TagsTableSeeder::class,
-                ColorsTableSeeder::class,
-                BrandTableSeeder::class,
-                // SizesTableSeeder::class,
-                InventoryAttributesSeeder::class,
-                RejectTableSeeder::class,
-
+                UserTableSeeder::class, 
+                // MerchantsTableSeeder::class,  
+                CountryTableSeeder::class,
         ]);
     }
 }

@@ -9,17 +9,11 @@ use App\Models\Product;
 class AdminHomeController extends Controller{
 
     public function dashboard(){
-        if (Sentinel::check()){
-            $newMerchant = Merchant::whereMonth('created_at', date('m'))
-            ->whereYear('created_at', date('Y'))
-            ->count('first_name'); 
-            $newProduct = Product::whereMonth('created_at',date('m'))
-            ->whereYear('created_at',date('Y'))
-            ->count('name');
+        if (Sentinel::check()){ 
             
-            return view('admin.dashboard',compact('newMerchant','newProduct'));
+            return view('admin.dashboard');
         }else{
-            return redirect('andbaazar/login')->with('error','Invalid email or password');
+            return redirect('boost/login')->with('error','Invalid email or password');
         }
 			
     }

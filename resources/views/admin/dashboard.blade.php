@@ -1,5 +1,16 @@
 @extends('admin.layout.master')
 
+@push('css')
+ <style>
+     /* .card-header{ 
+        background-color: #187DC8!important;
+     }
+     .card-body{
+        background-color: #83D6FD!important;
+     } */
+ </style>
+@endpush
+
 @section('content')
 
     <!-- Container-fluid starts-->
@@ -9,7 +20,7 @@
                 <div class="col-lg-6">
                     <div class="page-header-left">
                         <h3>Dashboard
-                            <small>Multikart Admin panel</small>
+                            <small>Boost Admin panels</small>
                         </h3>
                     </div>
                 </div>
@@ -49,7 +60,7 @@
                                 <div class="align-self-center text-center"><i data-feather="box" class="font-secondary"></i></div>
                             </div>
                             <div class="media-body col-8"><span class="m-0">Products</span>
-                                <h3 class="mb-0"> <span class="counter">{{ $newProduct }}</span><small> This Month</small></h3>
+                                <h3 class="mb-0"> <span class="counter"></span><small> This Month</small></h3>
                             </div>
                         </div>
                     </div>
@@ -77,7 +88,7 @@
                                 <div class="align-self-center text-center"><i data-feather="users" class="font-danger"></i></div>
                             </div>
                             <div class="media-body col-8"><span class="m-0">New Merchant</span>
-                                <h3 class="mb-0"> <span class="counter">{{ $newMerchant }}</span><small> This Month</small></h3>
+                                <h3 class="mb-0"> <span class="counter"></span><small> This Month</small></h3>
                             </div>
                         </div>
                     </div>
@@ -87,8 +98,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h5>Market Value</h5>
-                        <div class="card-header-right">
-                            <ul class="list-unstyled card-option">
+                        {{-- <div class="card-header-right">
+                            <ul class="list-unstyled card-option" >
                                 <li><i class="icofont icofont-simple-left"></i></li>
                                 <li><i class="view-html fa fa-code"></i></li>
                                 <li><i class="icofont icofont-maximize full-card"></i></li>
@@ -96,15 +107,13 @@
                                 <li><i class="icofont icofont-refresh reload-card"></i></li>
                                 <li><i class="icofont icofont-error close-card"></i></li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="card-body">
                         <div class="market-chart"></div>
                         <div class="code-box-copy">
                             <button class="code-box-copy__btn btn-clipboard" data-clipboard-target="#example-head" title="Copy"><i class="icofont icofont-copy-alt"></i></button>
-                            <pre><code class="language-html" id="example-head">&lt;!-- Cod Box Copy begin --&gt;
-&lt;div class="market-chart"&gt;&lt;/div&gt;
-&lt;!-- Cod Box Copy end --&gt;</code></pre>
+                            <pre><code class="language-html" id="example-head">&lt;!-- Cod Box Copy begin --&gt; &lt;div class="market-chart"&gt;&lt;/div&gt; &lt;!-- Cod Box Copy end --&gt;</code></pre>
                         </div>
                     </div>
                    </div>
@@ -113,7 +122,7 @@
                    <div class="card">
                         <div class="card-header">
                             <h5>Latest Orders</h5>
-                            <div class="card-header-right">
+                            {{-- <div class="card-header-right">
                                 <ul class="list-unstyled card-option">
                                     <li><i class="icofont icofont-simple-left"></i></li>
                                     <li><i class="view-html fa fa-code"></i></li>
@@ -122,7 +131,7 @@
                                     <li><i class="icofont icofont-refresh reload-card"></i></li>
                                     <li><i class="icofont icofont-error close-card"></i></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="card-body">
                             <div class="user-status table-responsive latest-order-table">
@@ -366,7 +375,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h5>Buy / Sell</h5>
-                                <div class="card-header-right">
+                                {{-- <div class="card-header-right">
                                     <ul class="list-unstyled card-option">
                                         <li><i class="icofont icofont-simple-left"></i></li>
                                         <li><i class="view-html fa fa-code"></i></li>
@@ -375,7 +384,7 @@
                                         <li><i class="icofont icofont-refresh reload-card"></i></li>
                                         <li><i class="icofont icofont-error close-card"></i></li>
                                     </ul>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="card-body sell-graph">
                                 <canvas id="myGraph"></canvas>
@@ -392,7 +401,7 @@
                         <div class="card height-equal">
                             <div class="card-header">
                                 <h5>Goods return</h5>
-                                <div class="card-header-right">
+                                {{-- <div class="card-header-right">
                                     <ul class="list-unstyled card-option">
                                         <li><i class="icofont icofont-simple-left"></i></li>
                                         <li><i class="view-html fa fa-code"></i></li>
@@ -401,7 +410,7 @@
                                         <li><i class="icofont icofont-refresh reload-card"></i></li>
                                         <li><i class="icofont icofont-error close-card"></i></li>
                                     </ul>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="card-body">
                                 <div class="user-status table-responsive products-table">
@@ -528,7 +537,7 @@
                                 <div class="card height-equal">
                                     <div class="card-header">
                                         <h5>Empolyee Status</h5>
-                                        <div class="card-header-right">
+                                        {{-- <div class="card-header-right">
                                             <ul class="list-unstyled card-option">
                                                 <li><i class="icofont icofont-simple-left"></i></li>
                                                 <li><i class="view-html fa fa-code"></i></li>
@@ -537,7 +546,7 @@
                                                 <li><i class="icofont icofont-refresh reload-card"></i></li>
                                                 <li><i class="icofont icofont-error close-card"></i></li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="card-body">
                                         <div class="user-status table-responsive products-table">
@@ -760,7 +769,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h5>Sales Status</h5>
-                                <div class="card-header-right">
+                                {{-- <div class="card-header-right">
                                     <ul class="list-unstyled card-option">
                                         <li><i class="icofont icofont-simple-left"></i></li>
                                         <li><i class="view-html fa fa-code"></i></li>
@@ -769,7 +778,7 @@
                                         <li><i class="icofont icofont-refresh reload-card"></i></li>
                                         <li><i class="icofont icofont-error close-card"></i></li>
                                     </ul>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="card-body">
                                 <div class="row">

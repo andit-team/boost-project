@@ -1,4 +1,11 @@
 @extends('layouts.master',['title' => 'Dashboard'])
+@push('css')
+<style>
+    .lcolor{
+            color: #0088CF!important; 
+        }
+</style>
+@endpush
 @section('content')
 @include('elements.alert')
 @component('layouts.inc.breadcrumb')
@@ -37,19 +44,19 @@
                                 <div class="col-sm-6">
                                     <div class="box">
                                         <div class="box-title">
-                                            <h3>Contact Information</h3><a href="#">Edit</a>
+                                            <h3>Contact Information</h3><a href="#" class="lcolor">Edit</a>
                                         </div>
                                         <div class="box-content">
                                             <h6>MARK JECNO</h6>
                                             <h6>MARk-JECNO@gmail.com</h6>
-                                            <h6><a href="#">Change Password</a></h6>
+                                            <h6><a href="#" class="lcolor">Change Password</a></h6>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="box">
                                         <div class="box-title">
-                                            <h3>Newsletters</h3><a href="#">Edit</a>
+                                            <h3>Newsletters</h3><a href="#" class="lcolor" class="lcolor">Edit</a>
                                         </div>
                                         <div class="box-content">
                                             <p>You are currently not subscribed to any newsletter.</p>
@@ -60,18 +67,18 @@
                             <div>
                                 <div class="box">
                                     <div class="box-title">
-                                        <h3>Address Book</h3><a href="#">Manage Addresses</a>
+                                        <h3>Address Book</h3><a href="#" class="lcolor">Manage Addresses</a>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <h6>Default Billing Address</h6>
-                                            <address>You have not set a default billing address.<br><a href="#">Edit
+                                            <address>You have not set a default billing address.<br><a href="#" class="lcolor">Edit
                                                     Address</a></address>
                                         </div>
                                         <div class="col-sm-6">
                                             <h6>Default Shipping Address</h6>
                                             <address>You have not set a default shipping address.<br><a
-                                             href="#">Edit Address</a></address>
+                                             href="#" class="lcolor">Edit Address</a></address>
                                         </div>
                                     </div>
                                 </div>

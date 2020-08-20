@@ -1,8 +1,8 @@
 <?php
 
 
-Route::get('sell-on-andbaazar','MerchantController@sellOnAndbaazar');
-Route::post('sell-on-andbaazar','MerchantController@sellOnAndbaazarPost')->name('sellOnAndbaazarPost');
+// Route::get('sell-on-andbaazar','MerchantController@sellOnAndbaazar');
+// Route::post('sell-on-andbaazar','MerchantController@sellOnAndbaazarPost')->name('sellOnAndbaazarPost');
 
 Route::group(['prefix' => 'merchant'],function () {
     //Registration
@@ -15,8 +15,8 @@ Route::group(['prefix' => 'merchant'],function () {
     Route::post('shop-info','MerchantController@shopRegistrationStore')->name('sellerShopeRegistration');
     Route::get('terms-condition','MerchantController@termsCondtion');
     //Login
-    Route::get('login','MerchantController@merchantlogin');
-    Route::post('login','MerchantController@merchantloginprocess')->name('merchantloginprocess');
+    // Route::get('login','MerchantController@merchantlogin');
+    // Route::post('login','MerchantController@merchantloginprocess')->name('merchantloginprocess');
     // forgot password route....
     Route::get('forgot_password', 'ForgotPassword@forgot');
     Route::post('forgot_password', 'ForgotPassword@password');

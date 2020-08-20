@@ -2,11 +2,11 @@
 
 
 
-Route::get('andbaazaradmin/login','AuthController@adminlogin');
-Route::post('andbaazaradmin/login','AuthController@adminloginprocess')->name('loginproces');
+Route::get('boostadmin/login','AuthController@adminlogin');
+Route::post('boostadmin/login','AuthController@adminloginprocess')->name('loginproces');
 
 
-Route::middleware(['auth','admin'])->prefix('andbaazaradmin')->group(function (){
+Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
 // Route::prefix('andbaazaradmin')->group(function () {
     Route::get('dashboard','AdminHomeController@dashboard');
     Route::get('products/category-tree-view',['uses'=>'CategoriesController@manageCategory']);
@@ -29,23 +29,18 @@ Route::middleware(['auth','admin'])->prefix('andbaazaradmin')->group(function ()
     //Route::get('/seller','SellersController@index');
     Route::post('/reject-name','RejectListController@other');
     Route::resource('/reject','RejectListController'); 
-    Route::get('/merchant','MerchantController@index');
+    Route::get('/merchant/new-profile','MerchantController@create');
+    Route::post('/merchant/new-profile','MerchantController@store')->name('marchantstore');
+    Route::get('/merchant/update-profile/{slug}/updatemerchant','MerchantController@edit');
+    Route::put('/merchant/update-profile/{slug}','MerchantController@update');
+    Route::resource('/merchant','MerchantController');
     Route::get('/newsfeed','NewsfeedController@feedlist');
     Route::get('/contact-us','ContactController@contactmailList');
     Route::put('/contact-us/{id}','ContactController@replayMail');
 
-    Route::resource('products/size','SizesController');
-    Route::resource('products/tag','TagsController');
-    Route::resource('products/color','ColorsController');
-    Route::resource('products/brand','BrandController');
-
-    Route::get('e-commerce/products/','ProductsController@productList');
-    Route::get('products/AllProduct','ProductsController@productTableList');
-
-    // SME Product list start //
-
-    Route::get('sme/products/','SmeProductController@smeproductList');
-
+    Route::get('products/new-products/new','ProductController@create');
+    Route::post('products/new-products/new','ProductController@store')->name('productstore');
+    Route::resource('products','ProductController');
    // SME Product list start //
 
     Route::get('color-image/{color_slug}','ProductsController@colorWiseImage');

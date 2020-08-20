@@ -10,7 +10,7 @@
     <meta name="author" content="pixelstrap">   
     <link rel="icon" href="{{asset('frontend')}}/assets/images/favicon/fav.png" type="image/x-icon">
     <link rel="shortcut icon" href="{{asset('frontend')}}/assets/images/favicon/fav.png" type="image/x-icon">
-    <title>Andbaazar Admin Login</title>
+    <title>Boost Admin Login</title>
 
     <!-- Google font-->
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -34,6 +34,19 @@
 
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{asset('frontend')}}/assets/css/admin.css">
+    <style>
+        .bg-primary{
+            background-color: #0088CF!important;
+            -webkit-box-shadow: 1px 5px 24px #0088CF!important; 
+        }
+        .active{
+            color: #0088CF!important;
+            border-bottom: 2px solid #0088CF!important;
+        }
+        .lcolor{
+            color: #0088CF!important; 
+        }
+    </style>
 
 </head>
 <body>
@@ -141,19 +154,19 @@
                         <div class="single-item">
                             <div>
                                 <div>
-                                    <h3>Welcome to Multikart</h3>
+                                    <h3>Welcome to Boost</h3>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                    <h3>Welcome to Multikart</h3>
+                                    <h3>Welcome to Boost</h3>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
                                 </div>
                             </div>
                             <div>
                                 <div>
-                                    <h3>Welcome to Multikart</h3>
+                                    <h3>Welcome to Boost</h3>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy.</p>
                                 </div>
                             </div>
@@ -182,7 +195,7 @@
                                     <form class="form-horizontal auth-form" method="post" action="{{route('loginproces')}}">
                                         @csrf
                                         <div class="form-group">
-                                            <input required="" name="login[email]" type="email" value="admin@andit.com" class="form-control" placeholder="Email" id="exampleInputEmail1">
+                                            <input required="" name="login[email]" type="email" value="admin@boost.com" class="form-control" placeholder="Email" id="exampleInputEmail1">
                                         </div>
                                         <div class="form-group">
                                             <input required="" name="login[password]" type="password" class="form-control" placeholder="Password">
@@ -191,11 +204,11 @@
                                             <div class="custom-control custom-checkbox mr-sm-2">
                                                 <input type="checkbox" class="custom-control-input" name="remember" id="customControlAutosizing">
                                                 <label class="custom-control-label" for="customControlAutosizing">Remember me</label>
-                                                <a href="#" class="btn btn-default forgot-pass">lost your password</a>
+                                                <a href="#" class="btn btn-default forgot-pass lcolor">lost your password</a>
                                             </div>
                                         </div>
-                                        <div class="form-button">
-                                            <button class="btn btn-primary" type="submit">Login</button>
+                                        <div class="form-button mt-4">
+                                            <button class="btn btn-info" type="submit">Login</button>
                                         </div>           
                                     </form>
                                 </div>
