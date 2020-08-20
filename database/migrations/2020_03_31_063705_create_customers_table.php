@@ -21,6 +21,16 @@ class CreateCustomersTable extends Migration
            $table->string('last_name')->nullable();
            $table->string('phone')->nullable();
            $table->string('picture')->nullable();
+           $table->string('com_name')->nullable();
+           $table->string('com_phone')->nullable();
+           $table->string('com_address')->nullable();
+           $table->string('com_vat')->nullable();
+           $table->string('or_name')->nullable();
+           $table->string('or_phone')->nullable();
+           $table->string('or_address')->nullable();
+           $table->string('or_reg')->nullable();
+           $table->string('image')->nullable();
+           $table->string('account')->nullable();
            $table->date('dob')->nullable();
            $table->enum('gender',['Male','Female','Other'])->nullable();
            $table->text('description')->nullable();

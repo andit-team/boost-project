@@ -40,7 +40,13 @@
       }
      })
     })  
-    $('#datepicker').datepicker();
+    // $('#datepicker').datepicker();
+    $('#datepickerNexDayOnly').datepicker({
+      startDate: '-0d',
+      format:"yyyy-mm-dd",
+      autoclose: true,
+      todayHighlight: true,
+  });
 
     $(".toggle-password").click(function () {
 

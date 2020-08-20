@@ -36,7 +36,7 @@
               <p><small>Here, please choose the date you want your first products to arrive.
                 </small></p>
               <div class="card">
-                <div id="datepicker"></div>
+                <div id="datepickerNexDayOnly"></div>
               </div>
             </div>
           </div>
@@ -47,7 +47,7 @@
             <h2>Select delivery frequency</h2>
             <div class="seclect-dats-frequency">
               <ul class="frequency-select">
-                <li><input type="radio" value="3" name="frequencySelect" id="frequency3" checked="">
+                <li><input type="radio" value="3" name="frequencySelect" id="frequency3">
                   <label for="frequency3">Every 3 weeks</label></li>
                 <li><input type="radio" value="4" name="frequencySelect" id="frequency4">
                   <label for="frequency4">Every 4 weeks</label></li>
