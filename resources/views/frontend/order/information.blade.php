@@ -109,6 +109,7 @@
         </div>
         <div class="col-lg-12">
           <div class="countinu-btn">
+            <button type="submit" class="btn btn-sm btn-info">save</button>
           <a href="{{url('orders/payment-deatils')}}" class="btn btn-footer">Continue To Payment</a>
           </div>
         </div>

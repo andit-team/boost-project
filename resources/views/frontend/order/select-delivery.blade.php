@@ -36,7 +36,7 @@
               <p><small>Here, please choose the date you want your first products to arrive.
                 </small></p>
               <div class="card">
-                <div id="datepickerNexDayOnly"></div>
+                <div id="datepickerNexDayOnly" class="datepicker-inline"></div>
               </div>
             </div>
           </div>

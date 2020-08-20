@@ -12,6 +12,13 @@
   <link rel="stylesheet" href="{{ asset('frontend/boost/assest/css/color.css') }}" />
   <link rel="stylesheet" href="{{ asset('frontend/boost/assest/css/style.css')}}" />
   <link rel="stylesheet" href="{{ asset('frontend/boost/assest/css/responsive.css')}}" />
+  <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}"/>
+  <style>
+    .datepicker-inline {
+      width: 100%;
+  }
+  </style>
+  
 </head>
 
 <body>
@@ -27,7 +34,8 @@
   <script src="{{ asset('frontend/boost/assest/js/bootstrap.min.js')}}"></script>
   <script src="{{ asset('frontend/boost/assest/js/popper.min.js')}}"></script>
   <script src="{{ asset('frontend/boost/assest/js/date-picker.js')}}"></script>
-  <script src="{{ asset('frontend/boost/assest/js/bootstrap-datepicker.min.js')}}"></script>
+  {{-- <script src="{{ asset('frontend/boost/assest/js/bootstrap-datepicker.min.js')}}"></script> --}}
+  <script src="{{ asset('js/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{ asset('frontend/boost/assest/js/custom.js')}}"></script>
 
   <script>

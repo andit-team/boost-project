@@ -9,6 +9,7 @@ use Session;
 use Reminder;
 use Mail;
 use App\Events\CustomerRegistration;
+use App\Models\Customer;
 
 class CustomerController extends Controller{
     public function __construct(){
@@ -26,12 +27,27 @@ class CustomerController extends Controller{
     public function registration(Request $request){
         $data = [
 		    'first_name'=> $request->first_name,
-		    'last_name' => $request->last_name,
+            'last_name' => $request->last_name,
+            'com_name' => $request->com_name,
+            'com_phone' => $request->com_phone,
+            'com_address' => $request->com_address,
+            'com_vat' => $request->com_vat,
+            'or_name' => $request->or_name,
+            'or_phone' => $request->or_phone,
+            'or_address' => $request->or_address,
+            'account' => $request->account,
+            'or_reg' => $request->or_reg,
+            'image' => $request->image,
+            'address_1' => $request->address_1,
+            'address_2' => $request->address_2,
+            'postcode' => $request->postcode,
+            'town' => $request->town,
 		    'email' 	=> $request->email,
 		    'password' 	=> $request->password,
 		    'type' 	    => 'customers',
 		];
         $customer = Sentinel::registerAndActivate($data);
+
         // dd($customer);
         event(new CustomerRegistration($customer));
         // echo 'done';
