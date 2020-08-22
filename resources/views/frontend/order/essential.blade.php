@@ -188,11 +188,14 @@ function DecreaseQty(pId){
  }
 function getTotal(){
    var sum = 0;
+   setTimeout(function(){
+      
    $('.sum').each(function(e){
       sum = parseFloat(sum) + parseFloat($(this).val())||0; 
       console.log($(this).val());
    });
-   setTimeout(function(){
+   console.log(sum);
+   
       $("#total").text('£ '+sum);
    },800);
 }
