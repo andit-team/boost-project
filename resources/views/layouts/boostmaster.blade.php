@@ -48,13 +48,33 @@
       }
      })
     })  
-    // $('#datepicker').datepicker();
     $('#datepickerNexDayOnly').datepicker({
       startDate: '-0d',
       format:"yyyy-mm-dd",
       autoclose: true,
       todayHighlight: true,
   });
+let a;
+
+//Calender Click to Get Date
+$('#datepickerNexDayOnly').datepicker().on('changeDate', function(e) {
+        var dateObj = $('#datepickerNexDayOnly').datepicker('getDate')
+        var month = dateObj.getMonth()
+        var day = dateObj.getDate();
+        var year = dateObj.getFullYear();
+
+        //Format 1
+        //newdate = day + "/" + month+1 + "/" + year;
+        //$('.data-var-value h4').html(newdate)
+
+        //Format 2
+        const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+        newdate2 = day + " " + monthNames[month] + " " + year;
+
+        $('.data-var-value h4').html(newdate2)
+
+    });
+
 
     $(".toggle-password").click(function () {
 
@@ -103,6 +123,15 @@ $('#product-show-six').on('click',function(){
     $('#kk').attr('src',ss);
 }); 
    </script>
+
+   <script>
+$(function(){
+  console.log(234)
+  $(document).on("click", "tr td.day" , function() {
+            console.log($(this));
+        });
+})
+</script>
 </body>
 
 </html>
