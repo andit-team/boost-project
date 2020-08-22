@@ -91,7 +91,8 @@ class OrderController extends Controller
 
     public function ordernow(){
         $product = Product::all();
-        return view('frontend.order.essential',compact('product'));
+        $cartProduct = Order::with('product')->get(); 
+        return view('frontend.order.essential',compact('product','cartProduct'));
     }
 
     public function addCart(Request $request){

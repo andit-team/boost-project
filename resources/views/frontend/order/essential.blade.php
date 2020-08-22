@@ -1,6 +1,18 @@
 @extends('layouts.boostmaster')
 
 @section('content')
+<style>
+   .item-product-img {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+   .top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+</style>
 <!-- Content  Area -->
 <section id="essentials-product">
     <div class="container">
@@ -35,32 +47,14 @@
          </div>
   
          <!-- Top Product Img -->
-         <div class="item-product-img">
-  
+         <div class="item-product-img" id="loadagain">
+            @foreach($cartProduct as $row)
             <div class="product-item-img">
-            <img id="ff" src="">
+               {{-- {{ $row->qty }} --}}
+               <img id="ff" src="{{ asset($row->product->product_image)}}">
+               <div class="top-left">{{ $row->qty }}</div>
             </div>
-   
-            <div class="product-item-img">
-            <img id="gg" src="">
-            </div>
-   
-            <div class="product-item-img">
-            <img id="hh" src="">
-            </div>
-   
-            <div class="product-item-img">
-            <img id="ii" src="">
-            </div>
-   
-            <div class="product-item-img">
-            <img id="jj" src="">
-            </div>
-   
-            <div class="product-item-img">
-            <img id="kk" src="">
-            </div>
-   
+            @endforeach  
             <div class="product-amount">
             <h3>Total <span>£18.00</span></h3>
             </div>
@@ -133,7 +127,10 @@ $(document).ready(function(){
       data: {'product':productId,'_token':'{{csrf_token()}}'},
       dataType: "json",
       success:function(response){
-         console.log(response);
+         if(response){
+           $('#loadagain').load(' #loadagain');
+         }
+         // console.log(response);
       }
    }) 
  });
