@@ -91,12 +91,12 @@ class OrderController extends Controller
 
     public function ordernow(){
         $product = Product::all();
-        $cartProduct = Order::with('product')->get(); 
+        $cartProduct = Order::with('product')->get();  
         return view('frontend.order.essential',compact('product','cartProduct'));
     }
 
     public function addCart(Request $request){
-        $order = Order::where('product_id',$request->product)->first(); 
+        $order = Order::where('product_id',$request->product)->first();  
         if($order){
             $orderupdate = [
                 'qty' => $order->qty+1,
@@ -123,6 +123,8 @@ class OrderController extends Controller
         return view('frontend.order.select-delivery');
     }
 
+    public function dateFrequency(){}
+
     public function information(){
         return view('frontend.order.information');
     }
@@ -133,5 +135,32 @@ class OrderController extends Controller
 
     public function overview(){
         return view('frontend.order.overview');
+    }
+
+    public function orderDecreas(Request $request){
+        // dd($request->all());
+        $order = Order::where('product_id',$request->productDecreas)->first(); 
+        if($order){
+            $orderdecrese = [
+                'qty' => $order->qty-1,
+                'updated_at' => now(),
+            ];
+            $orderminus= $order->update($orderdecrese);
+            // dd($orderminus);
+            return response()->json(['status'=>'OK']);
+            // echo json_encode($orderminus);
+        }
+    } 
+
+
+    public function orderRemove(Request $request){
+        // dd($request->all());
+        $order = Order::where('product_id',$request->productdelete)->first(); 
+        if($order){
+            
+            $orderremove = $order->delete();
+            return response()->json(['status'=>'OK']);
+            // echo json_encode($orderremove );
+        }
     }
 }

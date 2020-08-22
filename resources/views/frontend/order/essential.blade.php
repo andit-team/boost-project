@@ -2,15 +2,40 @@
 
 @section('content')
 <style>
-   .item-product-img {
+  .container {
   position: relative;
-  text-align: center;
-  color: white;
+  font-family: Arial;
 }
-   .top-left {
+
+.text-block {
   position: absolute;
-  top: 8px;
-  left: 16px;
+  /* bottom: 20px;
+  top: 20px; */
+  margin-top: -99px;
+  /* background-color: black; */
+  color: white;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+}
+.text-block-right{
+   position: absolute;
+  /* bottom: 20px;
+  top: 20px; */
+  margin-top: -50px;
+  margin-left: 62px;
+  /* background-color: black; */
+  color: white;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+}
+.loading{
+   pointer-events: none;
+   opacity: .5;
+}
+
+.btn-sm{
+   padding:1px; 
+   margin-top :25px;
 }
 </style>
 <!-- Content  Area -->
@@ -29,34 +54,45 @@
          <!-- modal area -->
          <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
           aria-hidden="true">
-          <div class="modal-dialog modal-sm">
-           <div class="modal-content" id="product-info-modal">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-             <span aria-hidden="true">×</span>
-            </button>
-            <div class="product-info-modal">
-             <h3><strong>Info.</strong></h3>
-             <h4>About our pricing.</h4>
-             <p>Our products are top quality, but we don’t charge top price. In a world where we are constantly bombarded
-              with marketing messages, we decided to introduce a single price point of £6. Enough for us to keep the
-              lights on and reinvest wisely. Not enough for a private jet. Price includes the delivery and you pay as you
-              go.</p>
+            <div class="modal-dialog modal-sm">
+               <div class="modal-content" id="product-info-modal">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                  </button>
+                  <div class="product-info-modal">
+                  <h3><strong>Info.</strong></h3>
+                  <h4>About our pricing.</h4>
+                  <p>Our products are top quality, but we don’t charge top price. In a world where we are constantly bombarded
+                  with marketing messages, we decided to introduce a single price point of £6. Enough for us to keep the
+                  lights on and reinvest wisely. Not enough for a private jet. Price includes the delivery and you pay as you
+                  go.</p>
+                  </div>
+               </div>
             </div>
-           </div>
-          </div>
          </div>
   
          <!-- Top Product Img -->
-         <div class="item-product-img" id="loadagain">
-            @foreach($cartProduct as $row)
-            <div class="product-item-img">
-               {{-- {{ $row->qty }} --}}
-               <img id="ff" src="{{ asset($row->product->product_image)}}">
-               <div class="top-left">{{ $row->qty }}</div>
+         <div class="item-product-img loadagain">
+            @foreach($cartProduct as $row) 
+            <div class="product-item-img"> 
+               <img  src="{{ asset($row->product->product_image)}}">
+               <div class="text-block"> 
+                  <p>{{ $row->qty }}</p>
+               </div>
+               @if($row->qty == 1)
+               <div class="text-block-right">
+                  <button  onclick="Deleteproduct({{ $row->product_id }})"  class="btn btn-sm btn-danger">x</button>
+               </div>
+               @elseif($row->qty >= 1)
+               <div class="text-block-right">
+                  <button onclick="DecreaseQty({{$row->product_id}})" class="btn btn-sm btn-danger">-</button>
+               </div>
+               @endif 
             </div>
+            <input type="hidden" class="sum" value="{{$row->qty * $row->product->price}}">
             @endforeach  
             <div class="product-amount">
-            <h3>Total <span>£18.00</span></h3>
+            <h3>Total <span id="total"></span></h3>
             </div>
    
          </div>
@@ -114,6 +150,53 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script> 
 
+function DecreaseQty(pId){
+   $.ajax({
+      type:"POST",
+      url:"{{ url('orders/decreas') }}",
+      data:{'productDecreas':pId,'_token':'{{csrf_token()}}'},
+      dataType:"json",
+      beforeSend:function(response){
+         $('body').addClass('loading');
+      },
+      success:function(response){
+         if(response.status === 'OK'){
+            $('.loadagain').load(' .loadagain');
+            getTotal();
+            $('body').removeClass('loading');
+         }
+      }
+   });
+ }
+ function Deleteproduct(pdel){
+   $.ajax({
+      type:"POST",
+      url:"{{ url('orders/remove') }}",
+      data:{'productdelete':pdel,'_token':'{{csrf_token()}}'},
+      dataType:"json",
+      beforeSend:function(response){
+         $('body').addClass('loading');
+      },
+      success:function(response){ 
+         if(response.status === 'OK'){
+            $('.loadagain').load(' .loadagain');
+            getTotal();
+            $('body').removeClass('loading');
+         }
+      }
+   });
+ }
+function getTotal(){
+   var sum = 0;
+   $('.sum').each(function(e){
+      sum = parseFloat(sum) + parseFloat($(this).val())||0; 
+      console.log($(this).val());
+   });
+   setTimeout(function(){
+      $("#total").text('£ '+sum);
+   },800);
+}
+
 $(document).ready(function(){ 
    var imagename = [];
  $('img#product-show').on('click',function(){
@@ -126,13 +209,16 @@ $(document).ready(function(){
       url:"{{ url('orders/addcart') }}",
       data: {'product':productId,'_token':'{{csrf_token()}}'},
       dataType: "json",
-      success:function(response){
+      success:function(response){ 
          if(response){
-           $('#loadagain').load(' #loadagain');
+           $('.loadagain').load(' .loadagain');
+           getTotal();
          }
          // console.log(response);
       }
    }) 
  });
 });
+
+
 </script>

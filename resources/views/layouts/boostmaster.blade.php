@@ -72,6 +72,7 @@ $('#datepickerNexDayOnly').datepicker().on('changeDate', function(e) {
         newdate2 = day + " " + monthNames[month] + " " + year;
 
         $('.data-var-value h4').html(newdate2)
+        $('#datenew').append($('#datepickerNexDayOnly').val());
 
     });
 
@@ -85,52 +86,16 @@ if (input.attr("type") == "password") {
 } else {
  input.attr("type", "password");
 }
-});
-
-$('#product-show-one').on('click',function(){
-      // alert('adfsa');
-    let ss = $(this).attr('src');
-    $('#ff').attr('src',ss);
-});
-
-$('#product-show-two').on('click',function(){
-      // alert('adfsa');
-    let ss = $(this).attr('src');
-    $('#gg').attr('src',ss);
-});
-
-$('#product-show-three').on('click',function(){
-      // alert('adfsa');
-    let ss = $(this).attr('src');
-    $('#hh').attr('src',ss);
-});
-
-$('#product-show-four').on('click',function(){
-      // alert('adfsa');
-    let ss = $(this).attr('src');
-    $('#ii').attr('src',ss);
-});
-
-$('#product-show-five').on('click',function(){
-      // alert('adfsa');
-    let ss = $(this).attr('src');
-    $('#jj').attr('src',ss);
-});
-
-$('#product-show-six').on('click',function(){
-      // alert('adfsa');
-    let ss = $(this).attr('src');
-    $('#kk').attr('src',ss);
 }); 
    </script>
 
    <script>
-$(function(){
-  console.log(234)
-  $(document).on("click", "tr td.day" , function() {
-            console.log($(this));
-        });
-})
+    $(function(){
+      console.log(234)
+      $(document).on("click", "tr td.day" , function() {
+                console.log($(this));
+            });
+    })
 </script>
 </body>
 

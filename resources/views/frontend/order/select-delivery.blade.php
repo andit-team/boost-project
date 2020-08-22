@@ -32,7 +32,7 @@
           <div class="delivary-date-arae">
             <h2>Select preferred delivery date</h2>
             <div class="data-var-value">
-              <h4>24th September</h4>
+              <h4></h4>
               <p><small>Here, please choose the date you want your first products to arrive.
                 </small></p>
               <div class="card">
@@ -47,13 +47,13 @@
             <h2>Select delivery frequency</h2>
             <div class="seclect-dats-frequency">
               <ul class="frequency-select">
-                <li><input type="radio" value="3" name="frequencySelect" id="frequency3">
+                <li><input type="radio" value="21" name="frequencySelect" id="frequency3">
                   <label for="frequency3">Every 3 weeks</label></li>
-                <li><input type="radio" value="4" name="frequencySelect" id="frequency4">
+                <li><input type="radio" value="28" name="frequencySelect" id="frequency4">
                   <label for="frequency4">Every 4 weeks</label></li>
-                <li><input type="radio" value="5" name="frequencySelect" id="frequency5">
+                <li><input type="radio" value="35" name="frequencySelect" id="frequency5">
                   <label for="frequency5">Every 5 weeks</label></li>
-                <li><input type="radio" value="6" name="frequencySelect" id="frequency2">
+                <li><input type="radio" value="42" name="frequencySelect" id="frequency2">
                   <label for="frequency2">Every 6 weeks</label></li>
               </ul>
               <div id="paragraph">
