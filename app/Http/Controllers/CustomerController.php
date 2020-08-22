@@ -54,6 +54,7 @@ class CustomerController extends Controller{
         // dd($customer);
         event(new CustomerRegistration($customer));
         // echo 'done';
+        session()->flash('success','registration  successfully');
         return redirect('orders/payment-deatils');
     }
 
