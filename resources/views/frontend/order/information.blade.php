@@ -78,8 +78,8 @@
               </div>
             </div> 
             <div class="form-group">
-            <input type="text" class="form-control" name="first_name" placeholder="First Name">
-            <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+            <input type="text" class="form-control" name="first_name" required placeholder="First Name">
+            <input type="text" class="form-control" name="last_name" required placeholder="Last Name">
             </div>
             <div id="Selection-1-container" class="togglehid hidden">
               <div class="form-group">
@@ -99,7 +99,7 @@
             </div>
             <div class="form-group">
             <p class="input-fild-para">Your email address will be your username</p>
-            <input type="email" name="email" class="form-control" placeholder="Email Address">
+            <input type="email" name="email" class="form-control" required placeholder="Email Address">
             </div>
             <div class="form-group">
             <p class="input-fild-para">Set your new boost password</p>
