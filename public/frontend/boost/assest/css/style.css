@@ -842,16 +842,19 @@ contact page
 }
 
 .item-product-img img {
-  width: 70px;
-  height: 65px;
+  width: 100px;
+  height: 90px;
+  border: 1px dashed #000;
+  /* width: 70px;
+  height: 65px; */
   /* display: none; */
 }
 
 .product-item-img {
-  height: 65px;
-  width: 70px;
+  /* height: 65px;
+  width: 70px; */
   /* border: 1px dashed #248bcb; */
-  margin-right: 30px;
+  margin-right: 5px;
 }
 
 .product-amount-arae p {

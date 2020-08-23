@@ -49,6 +49,7 @@
 
                    <li><a class="sidebar-header {{ request()->is('boostadmin/merchant/*') ? 'active' : '' }}"  href="{{ url('boostadmin/merchant') }}" class="{{ request()->is('boostadmin/merchant/') ? 'active' : '' }}"><i data-feather="users"></i><span>Merchant Profile</span></a> </li>
                    <li><a class="sidebar-header {{ request()->is('boostadmin/products/*') ? 'active' : '' }}"  href="{{ url('boostadmin/products') }}" class="{{ request()->is('boostadmin/products/') ? 'active' : '' }}"><i data-feather="shopping-bag"></i><span>Product</span></a> </li>
+                   <li><a class="sidebar-header {{ request()->is('boostadmin/invoice/*') ? 'active' : '' }}"  href="{{ url('boostadmin/invoice') }}" class="{{ request()->is('boostadmin/invoice/') ? 'active' : '' }}"><i data-feather="bookmark"></i><span>Invoice</span></a> </li>
                    
 
                    {{-- <li><a class="sidebar-header {{ request()->is('andbaazaradmin/shippingmethod') ? 'active' : '' }}"  href="{{ url('andbaazaradmin/shippingmethod') }}" class="{{ request()->is('andbaazaradmin/shippingmethod') ? 'active' : '' }}"><i data-feather="truck"></i><span>Shipping Method</span></a> </li>

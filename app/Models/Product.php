@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Order;
+use App\Models\Invoice;
 
 class Product extends Model
 {
@@ -20,6 +21,9 @@ class Product extends Model
 
     public function order(){
         return $this->hasMany(Order::class,'product_id');
+    }
+    public function invoice(){
+        return $this->hasOne(Invoice::class,'product_id');
     }
 
 }

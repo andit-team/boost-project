@@ -9,23 +9,11 @@ Route::post('boostadmin/login','AuthController@adminloginprocess')->name('loginp
 Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
 // Route::prefix('andbaazaradmin')->group(function () {
     Route::get('dashboard','AdminHomeController@dashboard');
-    Route::get('products/category-tree-view',['uses'=>'CategoriesController@manageCategory']);
-    Route::get('/category/attribute/{slug}/attribute','CatAttributeController@attribute');
-    Route::put('/category/attribute','CatAttributeController@attributeset');
-    // Route::get('/category/attribute/{slug}/attribute','CatAttributeController@attribute');
-    Route::resource('/category','CatAttributeController');
-    Route::get('products/subcategory-tree-view',['uses'=>'CategoriesController@manageSubCategory']);
-    Route::put('/add-category','CategoriesController@addCategory')->name('add.category');
-    // Route::post('/add-category',['as'=>'add.category','uses'=>'CategoriesController@addCategory']);
-    Route::resource('products/category','CategoriesController');
+    
+    
     Route::resource('/child','ChildrenController');
     Route::resource('/paymentmethod','PaymentMethodsController');
-    Route::resource('/shippingmethod','ShippingMethodsController');
-    Route::resource('promotion','PromotionsController');
-    Route::resource('/promotionhead','PromotionHeadsController');
-    Route::resource('/promotionplan','PromotionPlansController');
-    Route::resource('/currency','CurrenciesController');
-    Route::resource('/courier','CouriersController'); 
+    Route::resource('/shippingmethod','ShippingMethodsController'); 
     //Route::get('/seller','SellersController@index');
     Route::post('/reject-name','RejectListController@other');
     Route::resource('/reject','RejectListController'); 
@@ -34,6 +22,7 @@ Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
     Route::get('/merchant/update-profile/{slug}/updatemerchant','MerchantController@edit');
     Route::put('/merchant/update-profile/{slug}','MerchantController@update');
     Route::resource('/merchant','MerchantController');
+    Route::resource('/invoice','InvoiceController');
     Route::get('/newsfeed','NewsfeedController@feedlist');
     Route::get('/contact-us','ContactController@contactmailList');
     Route::put('/contact-us/{id}','ContactController@replayMail');

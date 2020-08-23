@@ -8,6 +8,7 @@ use App\User;
 use Session;
 use Boost;
 use Sentinel;
+use App\Models\Invoice;
 
 class ProductController extends Controller
 {
@@ -41,6 +42,7 @@ class ProductController extends Controller
     public function store(Request $request, Product $products)
     {
         $slug = Boost::getUniqueSlug($products,$request->product_name);
+        $invoiceNumber = mt_rand(10000,99999);
 
         $data = [
             'product_name' => $request->product_name,
@@ -52,7 +54,16 @@ class ProductController extends Controller
             'created_at'   => now(),
         ];
 
-        Product::create($data);
+        $proudctId = Product::create($data);
+
+        $invoice = [
+          'invoice_number' => '#'.''.$invoiceNumber,
+          'product_id' => $proudctId->id,
+          'user_id'      => Sentinel::getUser()->id,
+          'created_at'   => now(),
+        ];
+
+        Invoice::create($invoice);
 
         Session::flash('success','Product Create Successfully');
 

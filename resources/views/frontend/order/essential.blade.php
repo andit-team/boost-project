@@ -33,9 +33,26 @@
    opacity: .5;
 }
 
-.btn-sm{
+/* .btn-sm{
    padding:1px; 
    margin-top :25px;
+} */
+.cart-qty{
+   position: absolute;
+    font-weight: 600;
+    background: #00000059;
+    padding: 2px 9px;
+    color: #fff;
+    font-size: 25px;
+}
+.cart-remove{
+   position: relative;
+    right: 30px;
+    top: 33px;
+    border-radius: 0;
+    padding: 5px 7px;
+    background: red;
+    color: #fff;
 }
 </style>
 <!-- Content  Area -->
@@ -72,29 +89,31 @@
          </div>
   
          <!-- Top Product Img -->
-         <div class="item-product-img loadagain">
-            @foreach($cartProduct as $row) 
-            <div class="product-item-img"> 
-               <img  src="{{ asset($row->product->product_image)}}">
-               <div class="text-block"> 
-                  <p>{{ $row->qty }}</p>
+         <div class="loadagain">
+            <div class="item-product-img">
+               <div class="product-item-img"> 
+                  <span class="cart-qty">7</span>
+                  <img src="http://localhost/boost-project/public/uploads/productImage/1598095075.jpg">
+                  <span onclick="DecreaseQty(1)" class="cart-remove"><i class="fas fa-minus"></i></span>
+                  
                </div>
-               @if($row->qty == 1)
-               <div class="text-block-right">
-                  <button  onclick="Deleteproduct({{ $row->product_id }})"  class="btn btn-sm btn-danger">x</button>
+               @foreach($cartProduct as $row) 
+                  <div class="product-item-img"> 
+                     <span class="cart-qty">{{ $row->qty }}</span>
+                     <img  src="{{ asset($row->product->product_image)}}">
+                     @if($row->qty == 1)
+                        <span  onclick="Deleteproduct({{ $row->product_id }})"  class="cart-remove"><i class="far fa-trash-alt"></i></span>
+                     @elseif($row->qty >= 1)
+                        <span onclick="DecreaseQty({{$row->product_id}})" class="cart-remove"><i class="fas fa-minus"></i></span>
+                     @endif 
+                  </div>
+                  <input type="hidden" class="sum" value="{{$row->qty * $row->product->price}}">
+               @endforeach  
+               <div class="product-amount">
+                  <h3>Total <span id="total"></span></h3>
                </div>
-               @elseif($row->qty >= 1)
-               <div class="text-block-right">
-                  <button onclick="DecreaseQty({{$row->product_id}})" class="btn btn-sm btn-danger">-</button>
-               </div>
-               @endif 
+      
             </div>
-            <input type="hidden" class="sum" value="{{$row->qty * $row->product->price}}">
-            @endforeach  
-            <div class="product-amount">
-            <h3>Total <span id="total"></span></h3>
-            </div>
-   
          </div>
          <p>Tap the product below to add it into your order</p>
          {{-- <form id="itemId" role="form" method="POST"> --}}

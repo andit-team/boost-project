@@ -16,11 +16,11 @@
 @endpush 
 @include('elements.alert') 
 @component('admin.layout.inc.breadcrumb') 
-@slot('pageTitle') Product
+@slot('pageTitle') Invoice
 @endslot 
 @slot('page')
 <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-<li class="breadcrumb-item active" aria-current="page">Product</li>
+<li class="breadcrumb-item active" aria-current="page">Invoice</li>
 @endslot
  @endcomponent
 <div class="container-fluid">
@@ -33,14 +33,15 @@
                 <div class="card-body">  
                         <div class="card-body order-datatable">
                             <div class="text-right">
-                                <a href="{{ url('boostadmin/products/new-products/new') }}" class="btn btn-md btn-info" title="create">Add New</a>
+                                {{-- <a href="{{ url('boostadmin/products/new-products/new') }}" class="btn btn-md btn-info" title="create">Add New</a> --}}
                             </div> 
-                            <hr>
+                            
                             <table class="table table-borderd" id="dataTableNoPagingDesc3">
                                 <thead>
                                     <tr>
                                         <th width="50">Sl</th>  
                                         <th>Name</th>
+                                        <th>Invoice</th>
                                         <th>Price</th>
                                         <th>Weight</th> 
                                         <th class="text-center">Action</th>
@@ -48,12 +49,13 @@
                                 </thead>
                                 <tbody>
                                     @php $i=0; @endphp 
-                                        @foreach($product as $row)
+                                        @foreach($invoice as $row)
                                             <tr>
                                                 <td>{{ ++$i }}</td>  
-                                                <td width="500">{{ $row->product_name}}</td>
-                                                <td width="200">{{ $row->price}} €</td>
-                                                <td>{{ $row->weight }}</td>  
+                                                <td>{{ $row->product->product_name}}</td>
+                                                <td>{{ $row->invoice_number }}</td>
+                                                <td>{{ $row->product->price}} €</td>
+                                                <td>{{ $row->product->weight }}</td>  
                                                 <td class="d-flex justify-content-between" >
                                                     {{-- <ul style="margin-left:200px!important">
                                                         <li><a href="#" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>
@@ -78,32 +80,4 @@
     </div>
 </div>
 @endsection
-@push('js')
-  <script>
-       $(".btnClosePopup").click(function () {
-            $(".feednewsmodal").modal("hide");
-        });
 
-        $('#saveReason').click(function(e){ 
-    e.preventDefault();
-    const name = $('#rej_name').val(); 
-    if(name == '' ){
-        alert ('Required Filed Must be filled');
-    }else{
-        var formData = $("#rejectId").serialize(); 
-        $.ajax({
-            type: 'POST',
-            url:"{{ url('/andbaazaradmin/reject-name/') }}", 
-            data: formData,
-            dataType: "json",
-            success: function(response){
-                var name = $('#rej_name').val(''); 
-                if(response){
-                    $("#again").load(" #again");
-                } 
-            }
-        })
-    }
-});
-  </script>
-@endpush

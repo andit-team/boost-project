@@ -31,6 +31,7 @@ use App\Models\Tag;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Newsfeed;
+use App\Models\Invoice;
 class User extends EloquentUser
 {
     protected $fillable = [
@@ -56,6 +57,10 @@ class User extends EloquentUser
         'password',
     ];
     protected $loginNames = ['email','type'];
+
+    public function invoice(){
+      return $this->hasOne(Invoice::class,'user_id');
+    }
 
     public function buyer(){
       return $this->hasMany(Customer::class,'buyer_id');
