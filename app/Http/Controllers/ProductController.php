@@ -42,8 +42,8 @@ class ProductController extends Controller
     public function store(Request $request, Product $products)
     {
         $slug = Boost::getUniqueSlug($products,$request->product_name);
-        $invoiceNumber = mt_rand(10000,99999);
-
+        $invoiceNumber = mt_rand(10000,99999); 
+        
         $data = [
             'product_name' => $request->product_name,
             'slug'         => $slug,
@@ -87,9 +87,11 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($slug)
     {
-        //
+        $product = Product::where('slug',$slug)->first();
+        
+        return view('admin.product.edit',compact('product'));
     }
 
     /**
@@ -99,9 +101,23 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $slug)
     {
-        //
+        $product = Product::where('slug',$slug)->first();
+
+        $data = [
+            'product_name' => $request->product_name, 
+            'weight'       => $request->weight,
+            'price'        => $request->price,
+            'product_image'=> Boost::fileUpload($request,'product_image','old_image','/uploads/productImage'), 
+            'updated_at'   => now(),
+        ];
+
+        $product->update($data);
+
+        Session::flash('success','Product Update Successfully');
+
+        return redirect('boostadmin/products');
     }
 
     /**
@@ -110,8 +126,13 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+
+        Session::flash('error','Product delete successfully.');
+
+        return redirect('boostadmin/products');
     }
 }

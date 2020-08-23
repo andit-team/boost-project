@@ -78,7 +78,11 @@
                                         </div>
                                         <div class="uploadbtn float-right">
                                             <label for="file-upload" class="custom-file-upload">Upload Here</label>
-                                            <input id="file-upload" type="file" required name="product_image" onchange="loadFile(event)"/> 
+                                            @if(empty('product_image'))
+                                            <input id="file-upload" type="file" required name="product_image" value="/uploads/productImage/product.png" onchange="loadFile(event)"/> 
+                                            @else
+                                            <input id="file-upload" type="file" required name="product_image"  onchange="loadFile(event)"/> 
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-md-12 mt-4">

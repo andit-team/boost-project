@@ -29,6 +29,8 @@ Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
 
     Route::get('products/new-products/new','ProductController@create');
     Route::post('products/new-products/new','ProductController@store')->name('productstore');
+    Route::get('products/update-products/{slug}/update','ProductController@edit');
+    Route::put('products/update-products/{slug}','ProductController@update');
     Route::resource('products','ProductController');
    // SME Product list start //
 

@@ -100,7 +100,7 @@
                @foreach($cartProduct as $row) 
                   <div class="product-item-img"> 
                      <span class="cart-qty">{{ $row->qty }}</span>
-                     <img  src="{{ asset($row->product->product_image)}}">
+                     <img  src="{{ !empty($row->product->product_image) ? asset($row->product->product_image) : asset('/uploads/productImage/product.png') }}"> 
                      @if($row->qty == 1)
                         <span  onclick="Deleteproduct({{ $row->product_id }})"  class="cart-remove"><i class="far fa-trash-alt"></i></span>
                      @elseif($row->qty >= 1)
@@ -123,7 +123,7 @@
                @foreach($product as $row)
                  <div class="product-modal-wrap">
                     <div class="product-boxed"  data-name="{{ $row->product_name }}">
-                       <img id="product-show"  data-id="{{$row->id}}" class="product" src="{{ asset($row->product_image)}}" alt="img">
+                       <img id="product-show"  data-id="{{$row->id}}" class="product" src="{{ !empty($row->product_image) ? asset($row->product_image) : asset('/uploads/productImage/product.png') }}" alt="img">
                        {{-- <input type="hidden" name="product_id" value="{{$row->id}}"> --}}
                        <p><span>{{$row->product_name}}</span> <span>{{ $row->weight }}ml</span></p>
                     </div>
