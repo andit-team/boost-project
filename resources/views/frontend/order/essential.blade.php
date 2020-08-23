@@ -88,39 +88,31 @@
          </div>
   
          <!-- Top Product Img -->
-         <pre>
-            <?php 
-            // dd(csrf_token());
-                  // dd(session('carts'));
-                  ?>
-               </pre>
          <div class="loadagain">
-            <div class="item-product-img row"> 
-               @if(session()->has('carts'))              
-               @foreach(session('carts') as $row)
-                     <div class="col-md-2 col-sm-6 col-12">
-                        <div class="d-flex">
-                           <div class="">
-                              <span class="cart-qty display-3">{{ $row['qty'] }}</span>
-                              <img src="{{ asset($row['image']) }}">
-                           </div>
-                           <div style="margin-top: 1px">
-                              <span onclick="IncreaseQty({{$row['product_id']}})" class="cart-remove bg-success"><i class="fas fa-plus"></i></span><br>
-                              @if($row['qty'] > 0)
-                                 <span onclick="DecreaseQty({{$row['product_id']}})" class="cart-remove bg-warning"><i class="fas fa-minus"></i></span><br>
-                              @endif
-                              <span onclick="Deleteproduct({{$row['product_id']}})" class="cart-remove bg-danger"><i class="fas fa-trash-alt"></i></span>
-                           </div>
+            <div class="item-product-img row">               
+               @forelse($cartProduct as $row)
+                  <div class="col-md-2 col-sm-6 col-12">
+                     <div class="d-flex">
+                        <div class="">
+                           <span class="cart-qty display-3">{{ $row->qty }}</span>
+                           <img src="{{ asset($row->product->product_image) }}">
+                        </div>
+                        <div style="margin-top: 1px">
+                           <span onclick="IncreaseQty({{$row->product_id}})" class="cart-remove bg-success"><i class="fas fa-plus"></i></span><br>
+                           @if($row->qty > 0)
+                              <span onclick="DecreaseQty({{$row->product_id}})" class="cart-remove bg-warning"><i class="fas fa-minus"></i></span><br>
+                           @endif
+                           <span onclick="Deleteproduct({{$row->product_id}})" class="cart-remove bg-danger"><i class="fas fa-trash-alt"></i></span>
                         </div>
                      </div>
-                     <input type="hidden" class="sum" value="{{$row['qty'] * $row['price']}}">
-               @endforeach
-               @else
+                  </div>
+                  <input type="hidden" class="sum" value="{{$row->qty * $row->product->price}}">
+               @empty
                   <div class="col-md-2 col-sm-6 col-12">
                      <span class="cart-qty">0</span>
                      <img src="https://medifactia.com/wp-content/uploads/2018/01/placeholder-300x300.png">
                   </div>
-               @endif
+               @endforelse
             </div>
             <br>
             <div class="product-amount">

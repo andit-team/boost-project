@@ -91,59 +91,33 @@ class OrderController extends Controller
     }
 
     public function ordernow(){
-        // session()->flush();
-        // session()->forget('carts');
         $product = Product::all();
         $cartProduct = Order::with('product')->get();  
-        // session(['key' => 'valuasdfasdfe']);
         return view('frontend.order.essential',compact('product','cartProduct'));
-
     }
 
     public function addCart(Request $request){
-        dd(session('carts'));
-        $key = '';
-        if(session()->has('carts')) {
-            $key = array_search($request->product, array_column(session('carts'), 'product_id'));
-            echo $key;
-            if(session('carts')[$key]){
-                echo 'dd';
-                $cart = session('carts')[$key];
-                dd($cart);
-            }
-        }
-        dd($key);
-        $product = Product::find($request->product);
-        if($product){
-            $carts = [
-                'product_id'=> $product->id,
-                'image'     => $product->product_image,
-                'price'     => $product->price,
-                'qty'       => 1,
+        $order = Order::where('product_id',$request->product)->first();  
+        if($order){
+            $orderupdate = [
+                'qty' => $order->qty+1,
+                'updated_at' => now(),
             ];
-        }
-        // dd($carts);
-        Session::push('carts', $carts);
-        // session(['Carts'=>$carts]);
-        
-        
-        // dd($carts);
+            $orderincrise = $order->update($orderupdate);
+            echo json_encode($orderincrise );
+        }else{
+            $data = [
+                'product_id' => $request->product,
+                'created_at' => now(),
+            ];
+            
+           $orderadd = Order::create($data);
 
-        // if($order){
-        //     $orderupdate = [
-        //         'qty' => $order->qty+1,
-        //         'updated_at' => now(),
-        //     ];
-        //     $orderincrise = $order->update($orderupdate);
-        //     echo json_encode($orderincrise );
-        // }else{
-        //     $data = [
-        //         'product_id' => $request->product,
-        //         'created_at' => now(),
-        //     ];
-        //    $orderadd = Order::create($data);
-        //    echo json_encode($orderadd);
-        // }
+           echo json_encode($orderadd);
+        }
+            
+       
+
     }
 
     public function selectDelivery(){
