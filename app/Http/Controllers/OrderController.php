@@ -10,6 +10,7 @@ use Boost;
 use Sentinel;
 use App\Models\Product; 
 use Illuminate\Support\Facades\DB;
+use App\Models\Date;
 
 class OrderController extends Controller
 {
@@ -123,7 +124,17 @@ class OrderController extends Controller
         return view('frontend.order.select-delivery');
     }
 
-    public function dateFrequency(){}
+    public function dateFrequency(Request $request){
+        dd($request->all());
+        $data = [
+            'preferred_date' => $request->preferred_date,
+            'frequency' => $request->frequency,
+            'created_at' => now(),
+        ];
+        $orderfequency = Date::create($data);
+
+        echo json_encode($orderfequency);
+    }
 
     public function information(){
         return view('frontend.order.information');

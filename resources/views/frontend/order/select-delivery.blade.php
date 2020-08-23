@@ -47,13 +47,13 @@
             <h2>Select delivery frequency</h2>
             <div class="seclect-dats-frequency">
               <ul class="frequency-select">
-                <li><input type="radio" value="21" name="frequencySelect" id="frequency3">
+                <li><input type="radio" class="frequency" value="21" name="frequency" id="frequency3">
                   <label for="frequency3">Every 3 weeks</label></li>
-                <li><input type="radio" value="28" name="frequencySelect" id="frequency4">
+                <li><input type="radio" class="frequency" value="28" name="frequency" id="frequency4">
                   <label for="frequency4">Every 4 weeks</label></li>
-                <li><input type="radio" value="35" name="frequencySelect" id="frequency5">
+                <li><input type="radio" class="frequency" value="35" name="frequency" id="frequency5">
                   <label for="frequency5">Every 5 weeks</label></li>
-                <li><input type="radio" value="42" name="frequencySelect" id="frequency2">
+                <li><input type="radio" class="frequency" value="42" name="frequency" id="frequency2">
                   <label for="frequency2">Every 6 weeks</label></li>
               </ul>
               <div id="paragraph">
@@ -68,7 +68,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> 
         <div class="col-lg-12">
           <div class="countinu-btn">
             <a href="{{url('orders/information')}}" class="btn btn-footer">Continue</a>
@@ -79,3 +79,4 @@
   </section>
   @include('layouts.inc.footer.productFooter') 
 @endsection
+

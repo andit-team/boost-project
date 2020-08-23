@@ -72,8 +72,7 @@ $('#datepickerNexDayOnly').datepicker().on('changeDate', function(e) {
         newdate2 = day + " " + monthNames[month] + " " + year;
 
         $('.data-var-value h4').html(newdate2)
-        $('#datenew').append($('#datepickerNexDayOnly').val());
-
+         
     });
 
 
@@ -96,6 +95,22 @@ if (input.attr("type") == "password") {
                 console.log($(this));
             });
     })
+</script>
+<script>
+  $(".frequency").on('click',function(){
+     var frequency = $(this).val();
+     var newdate = $('h4').text();
+     
+     $.ajax({
+       type:"POST",
+       url:"{{ url('orders/frequency') }}",
+       data:{'frequency':frequency,'newdate':newdate,'_token':'{{csrf_token()}}'},
+       dataType:"json",
+       success:function(response){
+         console.log(response);
+       }
+     });
+  });
 </script>
 </body>
 
