@@ -108,6 +108,7 @@ class OrderController extends Controller
         }else{
             $data = [
                 'product_id' => $request->product,
+                'session_id' => Session::getId(),
                 'created_at' => now(),
             ];
             

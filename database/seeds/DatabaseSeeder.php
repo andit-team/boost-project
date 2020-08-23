@@ -15,9 +15,11 @@ class DatabaseSeeder extends Seeder
                 // DB::table('merchants')->truncate();
                 DB::table('customers')->truncate(); 
                 Db::table('countries')->truncate();
+                DB::table('products')->truncate();
                 DB::table('permissions')->truncate();
                 DB::table('roles')->truncate(); 
                 DB::table('users')->truncate();
+                
 
 
         $this->call([ 
@@ -27,6 +29,7 @@ class DatabaseSeeder extends Seeder
                 UserTableSeeder::class, 
                 // MerchantsTableSeeder::class,  
                 CountryTableSeeder::class,
+                ProductTableSeeder::class,
         ]);
     }
 }
