@@ -39,7 +39,8 @@
                             <table class="table table-borderd" id="dataTableNoPagingDesc3">
                                 <thead>
                                     <tr>
-                                        <th width="50">Sl</th>  
+                                        <th width="50">Sl</th> 
+                                        <th>Image</th> 
                                         <th>Name</th>
                                         <th>Price</th>
                                         <th>Weight</th> 
@@ -50,21 +51,22 @@
                                     @php $i=0; @endphp 
                                         @foreach($product as $row)
                                             <tr>
-                                                <td>{{ ++$i }}</td>  
+                                                <td>{{ ++$i }}</td> 
+                                                <td><img src="{{ !empty($row->product_image) ? asset($row->product_image) : asset('/uploads/productImage/product.png') }}" width="100" height="100"> </td> 
                                                 <td width="500">{{ $row->product_name}}</td>
                                                 <td width="200">{{ $row->price}} €</td>
                                                 <td>{{ $row->weight }}</td>  
                                                 <td class="d-flex justify-content-between" >
-                                                    {{-- <ul style="margin-left:200px!important">
-                                                        <li><a href="#" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>
+                                                    <ul style="margin-left:200px!important">
+                                                        <li><a href="{{ url('boostadmin/products/update-products/'.$row->slug.'/update') }}" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>
                                                         <li> 
-                                                            <form action="#" method="post"  id="deleteButton{{$row->id}}">
+                                                            <form action="{{ url('boostadmin/products/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
                                                                 @csrf
                                                                 @method('delete') 
                                                                 <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
                                                             </form> 
                                                         </li>
-                                                    </ul> --}}
+                                                    </ul>
                                                 </td> 
                                             </tr> 
                                         @endforeach 

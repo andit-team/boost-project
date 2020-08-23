@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->string('price');
             $table->string('weight');
-            $table->string('product_image');
+            $table->string('product_image')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

@@ -97,6 +97,7 @@ class OrderController extends Controller
     }
 
     public function addCart(Request $request){
+        // dd($request->all());
         $order = Order::where('product_id',$request->product)->first();  
         if($order){
             $orderupdate = [
@@ -108,6 +109,7 @@ class OrderController extends Controller
         }else{
             $data = [
                 'product_id' => $request->product,
+                'session_id' => Session::getId(),
                 'created_at' => now(),
             ];
             

@@ -250,10 +250,14 @@ function addProduct(productId){
       url:"{{ url('orders/addcart') }}",
       data: {'product':productId,'_token':'{{csrf_token()}}'},
       dataType: "json",
+      beforeSend:function(response){
+               $('body').addClass('loading');
+            },
       success:function(response){ 
          if(response){
            $('.loadagain').load(' .loadagain');
            getTotal();
+           $('body').removeClass('loading');
          }
       }
    }) 
