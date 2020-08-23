@@ -46,12 +46,11 @@
     font-size: 25px;
 }
 .cart-remove{
-   position: relative;
+   /* position: relative;
     right: 30px;
-    top: 33px;
+    top: 33px; */
     border-radius: 0;
     padding: 5px 7px;
-    background: red;
     color: #fff;
 }
 </style>
@@ -89,42 +88,54 @@
          </div>
   
          <!-- Top Product Img -->
+         <pre>
+            <?php 
+            // dd(csrf_token());
+                  // dd(session('carts'));
+                  ?>
+               </pre>
          <div class="loadagain">
-            <div class="item-product-img">
-               <div class="product-item-img"> 
-                  <span class="cart-qty">7</span>
-                  <img src="http://localhost/boost-project/public/uploads/productImage/1598095075.jpg">
-                  <span onclick="DecreaseQty(1)" class="cart-remove"><i class="fas fa-minus"></i></span>
-                  
-               </div>
-               @foreach($cartProduct as $row) 
-                  <div class="product-item-img"> 
-                     <span class="cart-qty">{{ $row->qty }}</span>
-                     <img  src="{{ asset($row->product->product_image)}}">
-                     @if($row->qty == 1)
-                        <span  onclick="Deleteproduct({{ $row->product_id }})"  class="cart-remove"><i class="far fa-trash-alt"></i></span>
-                     @elseif($row->qty >= 1)
-                        <span onclick="DecreaseQty({{$row->product_id}})" class="cart-remove"><i class="fas fa-minus"></i></span>
-                     @endif 
+            <div class="item-product-img row"> 
+               @if(session()->has('carts'))              
+               @foreach(session('carts') as $row)
+                     <div class="col-md-2 col-sm-6 col-12">
+                        <div class="d-flex">
+                           <div class="">
+                              <span class="cart-qty display-3">{{ $row['qty'] }}</span>
+                              <img src="{{ asset($row['image']) }}">
+                           </div>
+                           <div style="margin-top: 1px">
+                              <span onclick="IncreaseQty({{$row['product_id']}})" class="cart-remove bg-success"><i class="fas fa-plus"></i></span><br>
+                              @if($row['qty'] > 0)
+                                 <span onclick="DecreaseQty({{$row['product_id']}})" class="cart-remove bg-warning"><i class="fas fa-minus"></i></span><br>
+                              @endif
+                              <span onclick="Deleteproduct({{$row['product_id']}})" class="cart-remove bg-danger"><i class="fas fa-trash-alt"></i></span>
+                           </div>
+                        </div>
+                     </div>
+                     <input type="hidden" class="sum" value="{{$row['qty'] * $row['price']}}">
+               @endforeach
+               @else
+                  <div class="col-md-2 col-sm-6 col-12">
+                     <span class="cart-qty">0</span>
+                     <img src="https://medifactia.com/wp-content/uploads/2018/01/placeholder-300x300.png">
                   </div>
-                  <input type="hidden" class="sum" value="{{$row->qty * $row->product->price}}">
-               @endforeach  
-               <div class="product-amount">
-                  <h3>Total <span id="total"></span></h3>
-               </div>
-      
+               @endif
             </div>
+            <br>
+            <div class="product-amount">
+               <h3>Total <span id="total">£ ...</span></h3>
+            </div>
+
          </div>
          <p>Tap the product below to add it into your order</p>
          {{-- <form id="itemId" role="form" method="POST"> --}}
             {{-- @csrf --}}
             <div class="product-img-show-area">
-               <!-- Product Bottom Img -->
                @foreach($product as $row)
                  <div class="product-modal-wrap">
                     <div class="product-boxed"  data-name="{{ $row->product_name }}">
-                       <img id="product-show"  data-id="{{$row->id}}" class="product" src="{{ asset($row->product_image)}}" alt="img">
-                       {{-- <input type="hidden" name="product_id" value="{{$row->id}}"> --}}
+                       <img id="product-show" onclick="addProduct({{$row->id}})" class="product" src="{{ asset($row->product_image)}}" alt="img">
                        <p><span>{{$row->product_name}}</span> <span>{{ $row->weight }}ml</span></p>
                     </div>
                     <a href="!#" data-toggle="modal" data-target=".product-info-details">Product info</a>
@@ -166,7 +177,8 @@
    </div>
    @include('layouts.inc.footer.productFooter')
 @endsection
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+@push('js')
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
 <script> 
 
 function DecreaseQty(pId){
@@ -186,25 +198,46 @@ function DecreaseQty(pId){
          }
       }
    });
- }
- function Deleteproduct(pdel){
-   $.ajax({
-      type:"POST",
-      url:"{{ url('orders/remove') }}",
-      data:{'productdelete':pdel,'_token':'{{csrf_token()}}'},
-      dataType:"json",
-      beforeSend:function(response){
-         $('body').addClass('loading');
-      },
-      success:function(response){ 
-         if(response.status === 'OK'){
-            $('.loadagain').load(' .loadagain');
-            getTotal();
-            $('body').removeClass('loading');
-         }
+}
+function Deleteproduct(pdel){
+   swal({
+      title: "Are you sure?",
+      text: "To continue this action!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+      })
+      .then((willDelete) => {
+      if (willDelete) {
+         swal("Your action has beed done! :)", {
+            icon: "success",
+            buttons: false,
+            timer: 1000
+         });
+            $.ajax({
+            type:"POST",
+            url:"{{ url('orders/remove') }}",
+            data:{'productdelete':pdel,'_token':'{{csrf_token()}}'},
+            dataType:"json",
+            beforeSend:function(response){
+               $('body').addClass('loading');
+            },
+            success:function(response){ 
+               if(response.status === 'OK'){
+                  $('.loadagain').load(' .loadagain');
+                  getTotal();
+                  $('body').removeClass('loading');
+               }
+            }
+         });
       }
    });
- }
+}
+
+function IncreaseQty(pId){
+   addProduct(pId);
+}
+
 function getTotal(){
    var sum = 0;
    setTimeout(function(){
@@ -219,14 +252,8 @@ function getTotal(){
    },800);
 }
 
-$(document).ready(function(){ 
-   var imagename = [];
- $('img#product-show').on('click',function(){
-
-  var productId = $(this).data('id');
-//   alert(productId); 
-
-   $.ajax({ 
+function addProduct(productId){
+   $.ajax({
       type:"POST",
       url:"{{ url('orders/addcart') }}",
       data: {'product':productId,'_token':'{{csrf_token()}}'},
@@ -236,11 +263,11 @@ $(document).ready(function(){
            $('.loadagain').load(' .loadagain');
            getTotal();
          }
-         // console.log(response);
       }
    }) 
- });
-});
+}
+
 
 
 </script>
+@endpush

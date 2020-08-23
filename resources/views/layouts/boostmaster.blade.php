@@ -37,7 +37,7 @@
   <script src="{{ asset('frontend/boost/assest/js/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{ asset('js/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{ asset('frontend/boost/assest/js/custom.js')}}"></script>
-
+  @stack('js')
   <script>
     const big_img = document.querySelectorAll(".product-item-img img");
     const lister = document.querySelectorAll(".product-boxed img");

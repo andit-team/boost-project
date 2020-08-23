@@ -835,15 +835,19 @@ contact page
   padding-top: 45px;
 }
 
+div.item-product-img.row div.col-md-2 {
+  margin-top: 50px;
+}
+
 .item-product-img {
-  display: flex;
-  padding-top: 50px;
+  /* display: flex;
+  padding-top: 50px; */
   justify-content: center;
 }
 
 .item-product-img img {
-  width: 100px;
-  height: 90px;
+  width: 130px;
+  height: 100px;
   border: 1px dashed #000;
   /* width: 70px;
   height: 65px; */
@@ -868,6 +872,7 @@ contact page
   margin-right: 20px;
   cursor: pointer;
   margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .product-boxed img {
@@ -883,6 +888,7 @@ contact page
   display: grid;
   padding-top: 30px;
   grid-template-columns: auto auto auto auto auto auto;
+  justify-content: center;
 }
 
 .product-amount h3 span {
