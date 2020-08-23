@@ -99,7 +99,9 @@
                </div>
                @foreach($cartProduct as $row) 
                   <div class="product-item-img"> 
+                     @if($row->qty >=2)
                      <span class="cart-qty">{{ $row->qty }}</span>
+                     @endif
                      <img  src="{{ !empty($row->product->product_image) ? asset($row->product->product_image) : asset('/uploads/productImage/product.png') }}"> 
                      @if($row->qty == 1)
                         <span  onclick="Deleteproduct({{ $row->product_id }})"  class="cart-remove"><i class="far fa-trash-alt"></i></span>
