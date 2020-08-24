@@ -119,15 +119,17 @@
             </div>
             <div class="item-product-img row">               
                @forelse($cartProduct as $row)
-                  <div class="col-md-2 col-sm-6 col-12">
+                  <div class="col-md-2 col-sm-6 col-12 mt-2">
                      <div class="d-flex">
                         <div class="">
+                           @if($row->qty >= 2)
                            <span class="cart-qty display-3">{{ $row->qty }}</span>
+                           @endif
                            <img src="{{ asset($row->product->product_image) }}">
                         </div>
                         <div style="margin-top: 1px">
                            <span onclick="IncreaseQty({{$row->product_id}})" class="cart-remove bg-success"><i class="fas fa-plus"></i></span><br>
-                           @if($row->qty > 0)
+                           @if($row->qty >= 2)
                               <span onclick="DecreaseQty({{$row->product_id}})" class="cart-remove bg-warning"><i class="fas fa-minus"></i></span><br>
                            @endif
                            <span onclick="Deleteproduct({{$row->product_id}})" class="cart-remove bg-danger"><i class="fas fa-trash-alt"></i></span>
@@ -200,7 +202,9 @@
 @push('js')
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 <script> 
-
+$(document).ready(function(){
+   getTotal();
+})
 function DecreaseQty(pId){
    $.ajax({
       type:"POST",

@@ -17,7 +17,7 @@ class ProductTableSeeder extends Seeder
                'slug' => 'Product-1',
                'price' => 10,
                'weight' => 250,
-               'product_image' => '/uploads/productImage/1597814811.png',
+               'product_image' => '/uploads/productImage/1597814811.jpg',
                'user_id' => 1,
                'created_at' => now(),
                'updated_at' => now()
@@ -27,7 +27,7 @@ class ProductTableSeeder extends Seeder
             'slug' => 'Product-2',
             'price' => 15,
             'weight' => 250,
-            'product_image' => '/uploads/productImage/1597814811.png',
+            'product_image' => '/uploads/productImage/1597814811.jpg',
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
@@ -37,7 +37,7 @@ class ProductTableSeeder extends Seeder
             'slug' => 'Product-3',
             'price' => 20,
             'weight' => 300,
-            'product_image' => '/uploads/productImage/1597814811.png',
+            'product_image' => '/uploads/productImage/1597814811.jpg',
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
@@ -47,7 +47,7 @@ class ProductTableSeeder extends Seeder
             'slug' => 'Product-4',
             'price' => 25,
             'weight' => 300,
-            'product_image' => '/uploads/productImage/1597814811.png',
+            'product_image' => '/uploads/productImage/1597814811.jpg',
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
@@ -57,7 +57,7 @@ class ProductTableSeeder extends Seeder
             'slug' => 'Product-5',
             'price' => 30,
             'weight' => 500,
-            'product_image' => '/uploads/productImage/1597814811.png',
+            'product_image' => '/uploads/productImage/1597814811.jpg',
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
@@ -67,7 +67,7 @@ class ProductTableSeeder extends Seeder
             'slug' => 'Product-6',
             'price' => 35,
             'weight' => 750,
-            'product_image' => '/uploads/productImage/1597814811.png',
+            'product_image' => '/uploads/productImage/1597814811.jpg',
             'user_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
