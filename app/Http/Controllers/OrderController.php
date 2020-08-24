@@ -95,7 +95,7 @@ class OrderController extends Controller
         // dd(session()->all());
         // dd(Session::getId());
         $product = Product::all();
-        $cartProduct = Cart::with('product')->where('user_id','=',Session::getId())->get();  
+        $cartProduct = Cart::with('product')->get();  
         // dd($cartProduct);
         return view('frontend.order.essential',compact('product','cartProduct'));
     }
@@ -156,7 +156,7 @@ class OrderController extends Controller
 
     public function orderDecreas(Request $request){
         // dd($request->all());
-        $order = Order::where('product_id',$request->productDecreas)->first(); 
+        $order = Cart::where('product_id',$request->productDecreas)->first(); 
         if($order){
             $orderdecrese = [
                 'qty' => $order->qty-1,
@@ -172,7 +172,7 @@ class OrderController extends Controller
 
     public function orderRemove(Request $request){
         // dd($request->all());
-        $order = Order::where('product_id',$request->productdelete)->first(); 
+        $order = Cart::where('product_id',$request->productdelete)->first(); 
         if($order){
             
             $orderremove = $order->delete();
