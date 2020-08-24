@@ -91,7 +91,7 @@
          <div class="loadagain">
             <div class="item-product-img row">               
                @forelse($cartProduct as $row)
-                  <div class="col-md-2 col-sm-6 col-12">
+                  <div class="col-md-2 col-sm-6 col-12 mt-2">
                      <div class="d-flex">
                         <div class="">
                            <span class="cart-qty display-3">{{ $row->qty }}</span>
@@ -172,7 +172,9 @@
 @push('js')
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 <script> 
-
+$(document).ready(function(){
+   getTotal();
+})
 function DecreaseQty(pId){
    $.ajax({
       type:"POST",
