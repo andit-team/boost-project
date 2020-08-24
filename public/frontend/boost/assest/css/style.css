@@ -1059,7 +1059,7 @@ div.item-product-img.row div.col-md-2 {
 
 #register_form .form-control {
   margin-bottom: 10px;
-  border: none;
+  /* border: none; */
   height: 45px;
   border-radius: 0;
   position: relative;

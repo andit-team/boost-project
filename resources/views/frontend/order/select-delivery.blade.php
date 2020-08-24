@@ -13,16 +13,16 @@
         <div class="col-lg-8">
           <ul class="list-area-payment">
             <li>
-              <a href="select-delivery.html" class="active">Delivery</a>
+              <a href="{{url('orders/select-delivery')}}" class="active">Delivery</a>
             </li>
             <li>
-              <a href="information.html">Information</a>
+              <a href="{{url('orders/information')}}">Information</a>
             </li>
             <li>
-              <a href="payment-details.html">Payment</a>
+              <a href="{{url('orders/payment-deatils')}}">Payment</a>
             </li>
             <li>
-              <a href="overview.html">Overview</a>
+              <a href="{{url('orders/overview')}}">Overview</a>
             </li>
           </ul>
         </div>
@@ -32,11 +32,11 @@
           <div class="delivary-date-arae">
             <h2>Select preferred delivery date</h2>
             <div class="data-var-value">
-              <h4></h4>
+              <h4>{{date('d F Y')}}</h4>
               <p><small>Here, please choose the date you want your first products to arrive.
                 </small></p>
               <div class="card">
-                <div id="datepickerNexDayOnly" class="datepicker-inline"></div>
+                <div id="datepickerNexDayOnly" data-date="{{date('yy-m-d')}}" class="datepicker-inline"></div>
               </div>
             </div>
           </div>
@@ -46,16 +46,22 @@
           <div class="delivary-date-arae">
             <h2>Select delivery frequency</h2>
             <div class="seclect-dats-frequency">
+              <form action="{{route('setDelevaryDate')}}" id="delevary" method="post">
+                <input type="hidden" id="delevary-date" name="delevaryDate" value="{{date('d F Y')}}">
+                @csrf
               <ul class="frequency-select">
-                <li><input type="radio" class="frequency" value="21" name="frequency" id="frequency3">
-                  <label for="frequency3">Every 3 weeks</label></li>
-                <li><input type="radio" class="frequency" value="28" name="frequency" id="frequency4">
-                  <label for="frequency4">Every 4 weeks</label></li>
-                <li><input type="radio" class="frequency" value="35" name="frequency" id="frequency5">
-                  <label for="frequency5">Every 5 weeks</label></li>
-                <li><input type="radio" class="frequency" value="42" name="frequency" id="frequency2">
-                  <label for="frequency2">Every 6 weeks</label></li>
+                <li><input type="radio" class="frequency" value="Only at once" checked name="frequency" id="at-once">
+                  <label for="at-once">Only at once</label></li>
+                <li><input type="radio" class="frequency" value="Every 3 weeks" name="frequency" id="Every-3-weeks">
+                  <label for="Every-3-weeks">Every 3 weeks</label></li>
+                <li><input type="radio" class="frequency" value="Every 4 weeks" name="frequency" id="Every-4-weeks">
+                  <label for="Every-4-weeks">Every 4 weeks</label></li>
+                <li><input type="radio" class="frequency" value="Every 5 weeks" name="frequency" id="Every-5-weeks">
+                  <label for="Every-5-weeks">Every 5 weeks</label></li>
+                <li><input type="radio" class="frequency" value="Every 6 weeks" name="frequency" id="Every-6-weeks">
+                  <label for="Every-6-weeks">Every 6 weeks</label></li>
               </ul>
+            </form>
               <div id="paragraph">
                 <p>Not sure on timings? For most, our products last around <strong>4
                     weeks.</strong>
@@ -71,7 +77,7 @@
         </div> 
         <div class="col-lg-12">
           <div class="countinu-btn">
-            <a href="{{url('orders/information')}}" class="btn btn-footer">Continue</a>
+            <button class="btn btn-footer" id="continue">Continue</button>
           </div>
         </div>
       </div>
@@ -79,4 +85,12 @@
   </section>
   @include('layouts.inc.footer.productFooter') 
 @endsection
+@push('js')
+  <script>
+    $('#continue').click(function(){
+      $('#delevary').submit();
+    });
+  </script>
+@endpush
+
 

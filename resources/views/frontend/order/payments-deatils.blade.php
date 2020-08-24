@@ -13,16 +13,16 @@
         <div class="col-lg-8">
           <ul class="list-area-payment">
             <li>
-              <a href="select-delivery.html">Delivery</a>
+              <a href="{{url('orders/select-delivery')}}">Delivery</a>
             </li>
             <li>
-              <a href="information.html">Information</a>
+              <a href="{{url('orders/information')}}">Information</a>
             </li>
             <li>
-              <a href="payment-details.html" class="active">Payment</a>
+              <a href="{{url('orders/payment-deatils')}}" class="active">Payment</a>
             </li>
             <li>
-              <a href="overview.html">Overview</a>
+              <a href="{{url('orders/overview')}}">Overview</a>
             </li>
           </ul>
         </div>
@@ -81,7 +81,7 @@
                     Same as shipping address</label>
                 </div>
 
-                <div id="display-none">
+                <div>
                   <div id="register_form">
                     <div class="form-group">
                       <input type="text" class="form-control" placeholder="Postcode">
@@ -98,6 +98,8 @@
                     </div>
                   </div>
                 </div>
+
+
               </div>
             </div>
           </div>
@@ -111,4 +113,64 @@
     </div>
   </section>
   @include('layouts.inc.footer.productFooter')
-@endsection
+  @endsection
+  
+  @push('js')
+  {{-- <div id="paypal-button-container"></div> --}}
+  {{-- <script src="https://www.paypal.com/sdk/js?client-id=AXWcAX4EbepJp9nrf6l03Tko2WyBh40QA3zVZWTP0vGLJeFQaGWJE_attOLzD0F9ctEHMvn2Uepuu7gS"></script> --}}
+<script>
+  // paypal.Buttons().render('#paypal-button-container');
+  // This function displays Smart Payment Buttons on your web page.
+
+  
+</script>
+
+{{-- <script>paypal.Buttons({
+  enableStandardCardFields: true,
+  createOrder: function(data, actions) {
+    return actions.order.create({
+      intent: 'CAPTURE',
+      payer: {
+        name: {
+          given_name: "PayPal",
+          surname: "Customer"
+        },
+        address: {
+          address_line_1: '123 ABC Street',
+          address_line_2: 'Apt 2',
+          admin_area_2: 'San Jose',
+          admin_area_1: 'CA',
+          postal_code: '95121',
+          country_code: 'US'
+        },
+        email_address: "customer@domain.com",
+        phone: {
+          phone_type: "MOBILE",
+          phone_number: {
+            national_number: "14082508100"
+          }
+        }
+      },
+      purchase_units: [
+        {
+          amount: {
+            value: '15.00',
+            currency_code: 'USD'
+          },
+          shipping: {
+            address: {
+              address_line_1: '2211 N First Street',
+              address_line_2: 'Building 17',
+              admin_area_2: 'San Jose',
+              admin_area_1: 'CA',
+              postal_code: '95131',
+              country_code: 'US'
+            }
+          },
+        }
+      ]
+    });
+  }
+}).render("#paypal-button-container");
+</script> --}}
+@endpush

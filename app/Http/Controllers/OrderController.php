@@ -91,39 +91,55 @@ class OrderController extends Controller
         //
     }
 
+    private function getSessionUser(){
+        if (Sentinel::check()){ 
+            return Sentinel::getUser()->id;
+        }else{
+            if(session()->has('user_id')){
+              return session('user_id');
+            }else{
+                $userId = Boost::randString();
+                session(['user_id' => $userId]);
+                return $userId;
+            }
+        }
+    }
     public function ordernow(){
         // dd(session()->all());
         // dd(Session::getId());
+        $userId = $this->getSessionUser();
         $product = Product::all();
-        $cartProduct = Cart::with('product')->get();  
+        $cartProduct = Cart::with('product')->where('user_id',$userId)->get();  
         // dd($cartProduct);
         return view('frontend.order.essential',compact('product','cartProduct'));
     }
 
     public function addCart(Request $request){
+        // dd(session()->all());
         // dd($request->all());
-        $order = Cart::where('product_id',$request->product)->first();  
-        if($order){
-            $orderupdate = [
-                'qty' => $order->qty+1,
-                'updated_at' => now(),
-            ];
-            $orderincrise = $order->update($orderupdate);
-            echo json_encode($orderincrise );
-        }else{
-            $data = [
-                'product_id' => $request->product,
-                'user_id' => Session::getId(),
-                'created_at' => now(),
-            ];
-            
-           $orderadd = Cart::create($data);
-
-           echo json_encode($orderadd);
+        $userId = $this->getSessionUser();
+        $product = Product::find($request->product);
+        if($product){
+            $cart = Cart::where('product_id',$request->product)->where('user_id',$userId)->first();  
+            if($cart){
+                $cartupdate = [
+                    'qty' => $cart->qty+1,
+                    'updated_at' => now(),
+                ];
+                $cartincrise = $cart->update($cartupdate);
+                echo json_encode($cartincrise);
+            }else{
+                $data = [
+                    'product_id'    => $request->product,
+                    'user_id'       => $userId,
+                    'price'         => $product->price,
+                    'created_at'    => now(),
+                ];
+                
+            $cartadd = Cart::create($data);
+            echo json_encode($cartadd);
+            }
         }
-            
-       
-
     }
 
     public function selectDelivery(){
@@ -131,15 +147,17 @@ class OrderController extends Controller
     }
 
     public function dateFrequency(Request $request){
-        dd($request->all());
+        $userId = $this->getSessionUser();
         $data = [
-            'preferred_date' => $request->preferred_date,
-            'frequency' => $request->frequency,
+            'invoice'           => Boost::randString(8),
+            'delivery_date'     => $request->delevaryDate,
+            'delivery_frequency'=> $request->frequency,
+            'user_id'           => $userId,
             'created_at' => now(),
         ];
-        $orderfequency = Date::create($data);
-
-        echo json_encode($orderfequency);
+        // dd($data);
+        $orderfequency = Order::create($data);
+        return redirect('orders/information');
     }
 
     public function information(){
@@ -147,34 +165,37 @@ class OrderController extends Controller
     }
 
     public function payment(){
+        // dd(Sentinel::getUser());
         return view('frontend.order.payments-deatils');
     }
 
     public function overview(){
-        return view('frontend.order.overview');
+        $userId = session('user_id');
+        $carts = Cart::with('product')->where('user_id',$userId)->get();
+        $order = Order::where('user_id',$userId)->first();
+        // dd(Sentinel::getUser()); 
+        return view('frontend.order.overview',compact('carts','order'));
     }
 
     public function orderDecreas(Request $request){
         // dd($request->all());
-        $order = Cart::where('product_id',$request->productDecreas)->first(); 
+        $userId = $this->getSessionUser();
+        $order = Cart::where('product_id',$request->productDecreas)->where('user_id',$userId)->first(); 
         if($order){
             $orderdecrese = [
                 'qty' => $order->qty-1,
                 'updated_at' => now(),
             ];
             $orderminus= $order->update($orderdecrese);
-            // dd($orderminus);
             return response()->json(['status'=>'OK']);
-            // echo json_encode($orderminus);
         }
     } 
 
 
     public function orderRemove(Request $request){
-        // dd($request->all());
-        $order = Cart::where('product_id',$request->productdelete)->first(); 
+        $userId = $this->getSessionUser();
+        $order = Cart::where('product_id',$request->productdelete)->where('user_id',$userId)->first(); 
         if($order){
-            
             $orderremove = $order->delete();
             return response()->json(['status'=>'OK']);
             // echo json_encode($orderremove );

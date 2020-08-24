@@ -72,6 +72,7 @@ $('#datepickerNexDayOnly').datepicker().on('changeDate', function(e) {
         newdate2 = day + " " + monthNames[month] + " " + year;
 
         $('.data-var-value h4').html(newdate2)
+        $('#delevary-date').val(newdate2)
          
     });
 
@@ -96,7 +97,7 @@ if (input.attr("type") == "password") {
             });
     })
 </script>
-<script>
+{{-- <script>
   $(".frequency").on('click',function(){
      var frequency = $(this).val();
      var newdate = $('h4').text();
@@ -111,7 +112,7 @@ if (input.attr("type") == "password") {
        }
      });
   });
-</script>
+</script> --}}
 </body>
 
 </html>

@@ -26,41 +26,41 @@ class UserTableSeeder extends Seeder
         $users = [
                 'first_name'    => 'Sofiq',
                 'last_name'     => 'Mia',
-                'email'         => 'buyer@boost.com',
+                'email'         => 'customer@boost.com',
                 'password'      => '123456', //123456
-                'type'          => 'customers',
+                'type'          => 'customer',
                 'created_at'    => now(),
                 'updated_at'    => now()
         ];
         $user = \Sentinel::registerAndActivate($users);
-        $role = \Sentinel::findRoleBySlug('buyer');
+        $role = \Sentinel::findRoleBySlug('customer');
         $role->users()->attach($user->id);
 
         $users = [
                 'first_name'    => 'Rofiq',
                 'last_name'     => 'Mia',
-                'email'         => 'seller@boost.com',
+                'email'         => 'bussiness@boost.com',
                 // 'email'         => 'and.baazar@yahoo.com',
                 'password'      => '123456', //123456
-                'type'          => 'merchant',
+                'type'          => 'bussiness',
                 'created_at'    => now(),
                 'updated_at'    => now()
         ];
         $user = \Sentinel::registerAndActivate($users);
-        $role = \Sentinel::findRoleBySlug('seller');
+        $role = \Sentinel::findRoleBySlug('bussiness');
         $role->users()->attach($user->id);
 
         $users = [
                 'first_name'    => 'Oli',
                 'last_name'     => 'Mia',  
-                'email'         => 'and.baazar@yahoo.com',
+                'email'         => 'educational@boost.com',
                 'password'      => '123456', //123456
-                'type'          => 'merchant',
+                'type'          => 'educational',
                 'created_at'    => now(),
                 'updated_at'    => now()
         ];
         $user = \Sentinel::registerAndActivate($users);
-        $role = \Sentinel::findRoleBySlug('seller');
+        $role = \Sentinel::findRoleBySlug('educational');
         $role->users()->attach($user->id);
 
     }

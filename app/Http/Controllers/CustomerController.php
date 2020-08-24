@@ -27,6 +27,18 @@ class CustomerController extends Controller{
 
     public function registration(Request $request){
         // dd($request->all());
+        $request->validate([
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'email'         => 'required|email|unique:App\User,email',
+            'password'      => 'required|confirmed|min:6',
+            'password_confirmation' => 'required|min:6',
+            'postcode'      => 'required',
+            'address_1'     => 'required',
+            // 'address_2'     => 'required',
+            'town'          => 'required',
+            'account'       => 'required',
+        ]);
         $data = [
 		    'first_name'=> $request->first_name,
             'last_name' => $request->last_name,
@@ -47,12 +59,20 @@ class CustomerController extends Controller{
             'town' => $request->town,
 		    'email' 	=> $request->email,
 		    'password' 	=> $request->password,
-		    'type' 	    => 'customers',
+		    'type' 	    => $request->account,
 		];
         $customer = Sentinel::registerAndActivate($data);
+        $role = \Sentinel::findRoleBySlug($request->account);
+        $role->users()->attach($customer->id);
 
+        $credentials = [
+			'email'		=> $customer->email,
+			'password'	=> $request->password,
+			'type'	    => $request->account,
+		];
+        Sentinel::authenticate($credentials);
         // dd($customer);
-        event(new CustomerRegistration($customer));
+        // event(new CustomerRegistration($customer));
         // echo 'done';
         session()->flash('success','registration  successfully');
         return redirect('orders/payment-deatils');
@@ -62,7 +82,7 @@ class CustomerController extends Controller{
         $credentials = [
 			'email'		=> $request->login['email'],
 			'password'	=> $request->login['password'],
-			'type'	    => 'customers',
+			'type'	    => 'customer',
 		];
 
 		// if($request->remember == 'on')
