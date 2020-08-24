@@ -101,7 +101,7 @@
                         </div>
                         <div style="margin-top: 1px">
                            <span onclick="IncreaseQty({{$row->product_id}})" class="cart-remove bg-success"><i class="fas fa-plus"></i></span><br>
-                           @if($row->qty > 0)
+                           @if($row->qty >= 2)
                               <span onclick="DecreaseQty({{$row->product_id}})" class="cart-remove bg-warning"><i class="fas fa-minus"></i></span><br>
                            @endif
                            <span onclick="Deleteproduct({{$row->product_id}})" class="cart-remove bg-danger"><i class="fas fa-trash-alt"></i></span>

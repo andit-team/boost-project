@@ -11,6 +11,7 @@ use Sentinel;
 use App\Models\Product; 
 use Illuminate\Support\Facades\DB;
 use App\Models\Date;
+use App\Models\Cart;
 
 class OrderController extends Controller
 {
@@ -91,14 +92,17 @@ class OrderController extends Controller
     }
 
     public function ordernow(){
+        // dd(session()->all());
+        // dd(Session::getId());
         $product = Product::all();
-        $cartProduct = Order::with('product')->where('session_id','=',Session::getId())->get();  
+        $cartProduct = Cart::with('product')->where('user_id','=',Session::getId())->get();  
+        // dd($cartProduct);
         return view('frontend.order.essential',compact('product','cartProduct'));
     }
 
     public function addCart(Request $request){
         // dd($request->all());
-        $order = Order::where('product_id',$request->product)->first();  
+        $order = Cart::where('product_id',$request->product)->first();  
         if($order){
             $orderupdate = [
                 'qty' => $order->qty+1,
@@ -109,11 +113,11 @@ class OrderController extends Controller
         }else{
             $data = [
                 'product_id' => $request->product,
-                'session_id' => Session::getId(),
+                'user_id' => Session::getId(),
                 'created_at' => now(),
             ];
             
-           $orderadd = Order::create($data);
+           $orderadd = Cart::create($data);
 
            echo json_encode($orderadd);
         }
