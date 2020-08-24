@@ -7,6 +7,30 @@
   font-family: Arial;
 }
 
+.loader {
+   border: 16px solid #000000;
+    border-top: 16px solid #ffffff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+}
+.loader-div{
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: 99;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
 .text-block {
   position: absolute;
   /* bottom: 20px;
@@ -31,6 +55,7 @@
 .loading{
    pointer-events: none;
    opacity: .5;
+   position: relative
 }
 
 /* .btn-sm{
@@ -89,6 +114,9 @@
   
          <!-- Top Product Img -->
          <div class="loadagain">
+            <div class="loader-div" style="display: none">
+               <div class="loader"></div>
+            </div>
             <div class="item-product-img row">               
                @forelse($cartProduct as $row)
                   <div class="col-md-2 col-sm-6 col-12 mt-2">
@@ -184,13 +212,15 @@ function DecreaseQty(pId){
       data:{'productDecreas':pId,'_token':'{{csrf_token()}}'},
       dataType:"json",
       beforeSend:function(response){
-         $('body').addClass('loading');
+         $('.loadagain').addClass('loading');
+         $('.loader-div').show();
       },
       success:function(response){
          if(response.status === 'OK'){
             $('.loadagain').load(' .loadagain');
             getTotal();
-            $('body').removeClass('loading');
+            $('.loadagain').removeClass('loading');
+            $('.loader-div').hide();
          }
       }
    });
@@ -216,13 +246,15 @@ function Deleteproduct(pdel){
             data:{'productdelete':pdel,'_token':'{{csrf_token()}}'},
             dataType:"json",
             beforeSend:function(response){
-               $('body').addClass('loading');
+               $('.loadagain').addClass('loading');
+               $('.loader-div').show();
             },
             success:function(response){ 
                if(response.status === 'OK'){
                   $('.loadagain').load(' .loadagain');
                   getTotal();
-                  $('body').removeClass('loading');
+                  $('.loadagain').removeClass('loading');
+                  $('.loader-div').hide();
                }
             }
          });
@@ -255,13 +287,15 @@ function addProduct(productId){
       data: {'product':productId,'_token':'{{csrf_token()}}'},
       dataType: "json",
       beforeSend:function(response){
-               $('body').addClass('loading');
+               $('.loadagain').addClass('loading');
+               $('.loader-div').show();
             },
       success:function(response){ 
          if(response){
            $('.loadagain').load(' .loadagain');
            getTotal();
-           $('body').removeClass('loading');
+           $('.loadagain').removeClass('loading');
+           $('.loader-div').hide();
          }
       }
    }) 
