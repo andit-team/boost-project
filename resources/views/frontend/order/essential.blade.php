@@ -94,7 +94,9 @@
                   <div class="col-md-2 col-sm-6 col-12 mt-2">
                      <div class="d-flex">
                         <div class="">
+                           @if($row->qty >= 2)
                            <span class="cart-qty display-3">{{ $row->qty }}</span>
+                           @endif
                            <img src="{{ asset($row->product->product_image) }}">
                         </div>
                         <div style="margin-top: 1px">

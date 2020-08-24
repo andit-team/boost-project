@@ -92,7 +92,7 @@ class OrderController extends Controller
 
     public function ordernow(){
         $product = Product::all();
-        $cartProduct = Order::with('product')->get();  
+        $cartProduct = Order::with('product')->where('session_id','=',Session::getId())->get();  
         return view('frontend.order.essential',compact('product','cartProduct'));
     }
 
