@@ -50,9 +50,11 @@ class InvoiceController extends Controller
      * @param  \App\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function show(Invoice $invoice)
+    public function show($id)
     {
-        //
+        $invoice = Invoice::find($id);
+
+        return view('admin.invoice.show',compact('invoice'));
     }
 
     /**
