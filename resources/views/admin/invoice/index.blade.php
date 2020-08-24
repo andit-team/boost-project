@@ -44,7 +44,7 @@
                                         <th>Invoice</th>
                                         <th>Price</th>
                                         <th>Weight</th> 
-                                        {{-- <th class="text-center">Action</th> --}}
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,18 +56,19 @@
                                                 <td>{{ $row->invoice_number }}</td>
                                                 <td>{{ $row->product->price}} €</td>
                                                 <td>{{ $row->product->weight }}</td>  
-                                                {{-- <td class="d-flex justify-content-between" >
+                                                <td class="d-flex justify-content-between" >
                                                     <ul style="margin-left:200px!important">
-                                                        <li><a href="#" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>
+                                                        <li><a href="{{ url('boostadmin/invoice/'.$row->id) }}" id="" title="Edit"><button class="btn btn-sm btn-info" ><i class="fa fa-eye"></i></button> </a></li>
+                                                        {{-- <li><a href="#" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>
                                                         <li> 
                                                             <form action="#" method="post"  id="deleteButton{{$row->id}}">
                                                                 @csrf
                                                                 @method('delete') 
                                                                 <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
                                                             </form> 
-                                                        </li>
+                                                        </li> --}}
                                                     </ul>
-                                                </td>  --}}
+                                                </td> 
                                             </tr> 
                                         @endforeach 
                                 </tbody>
