@@ -10,6 +10,8 @@ use Reminder;
 use Mail;
 use App\Events\CustomerRegistration;
 use App\Models\Customer;
+use App\Models\Cart;
+use App\Models\Order;
 use Boost;
 
 class CustomerController extends Controller{
@@ -71,9 +73,9 @@ class CustomerController extends Controller{
 			'type'	    => $request->account,
 		];
         Sentinel::authenticate($credentials);
-        // dd($customer);
-        // event(new CustomerRegistration($customer));
-        // echo 'done';
+        Cart::where('user_id',session('user_id'))->update(['user_id'=> Sentinel::getUser()->id]);
+        Order::where('user_id',session('user_id'))->update(['user_id'=>Sentinel::getUser()->id]);
+        session()->forget('user_id');
         session()->flash('success','registration  successfully');
         return redirect('orders/payment-deatils');
     }

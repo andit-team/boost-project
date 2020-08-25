@@ -12,6 +12,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use App\Models\Date;
 use App\Models\Cart;
+use App\Models\PaymentCard;
 
 class OrderController extends Controller
 {
@@ -107,6 +108,7 @@ class OrderController extends Controller
     public function ordernow(){
         // dd(session()->all());
         // dd(Session::getId());
+        Sentinel::logout(null, true);
         $userId = $this->getSessionUser();
         $product = Product::all();
         $cartProduct = Cart::with('product')->where('user_id',$userId)->get();  
@@ -156,7 +158,8 @@ class OrderController extends Controller
             'created_at' => now(),
         ];
         // dd($data);
-        $orderfequency = Order::create($data);
+        $order = Order::create($data);
+        session(['invoice' => $order->invoice]);
         return redirect('orders/information');
     }
 
@@ -169,11 +172,45 @@ class OrderController extends Controller
         return view('frontend.order.payments-deatils');
     }
 
+    public function paymentCardSave(Request $request){
+        $request->validate([
+            'name'              => 'required',
+            'card_number'       => 'required',
+            'mmyy'              => 'required',
+            'cc'                => 'required|numeric',
+            'postCode'          => 'required|numeric',
+            'address1'          => 'required',
+            // 'address2'          => 'required',
+            'town'              => 'required',
+            // 'subcription'       => 'required',
+            'aggredTc'          => 'required',
+            'sameAsShipping'    => 'required',
+        ]);
+        $data = [
+            'name'              => $request->name,
+            'card_number'       => $request->card_number,
+            'mmyy'              => $request->mmyy,
+            'cc'                => $request->cc,
+            'postCode'          => $request->postCode,
+            'address1'          => $request->address1,
+            'address2'          => $request->address2,
+            'town'              => $request->town,
+            'subcription'       => $request->subcription,
+            'aggredTc'          => $request->aggredTc,
+            'sameAsShipping'    => $request->sameAsShipping,
+            'user_id'           => Sentinel::getUser()->id,
+            'created_at'        => now()
+        ];
+        PaymentCard::create($data);
+        // session()->flash('success','Payment information added success');
+        Session::flash('success','Payment information added success');
+        return redirect('orders/overview');
+    }
+
     public function overview(){
-        $userId = session('user_id');
-        $carts = Cart::with('product')->where('user_id',$userId)->get();
-        $order = Order::where('user_id',$userId)->first();
-        // dd(Sentinel::getUser()); 
+        $carts = Cart::with('product')->where('user_id',Sentinel::getUser()->id)->get();
+        $order = Order::where('user_id',Sentinel::getUser()->id)->OrderBy('id','DESC')->first();
+        // dd($order);
         return view('frontend.order.overview',compact('carts','order'));
     }
 

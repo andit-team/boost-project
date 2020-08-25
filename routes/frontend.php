@@ -20,13 +20,15 @@ Route::get('orders/select-delivery','OrderController@selectDelivery');
 
 Route::get('orders/information','OrderController@information');
 Route::get('orders/payment-deatils','OrderController@payment');
+Route::post('orders/payment-deatils','OrderController@paymentCardSave')->name('saveCard');
 Route::get('orders/overview','OrderController@overview');
 Route::post('orders/addcart','OrderController@addCart');
 Route::post('orders/decreas','OrderController@orderDecreas');
 Route::post('orders/remove','OrderController@orderRemove');
 Route::post('orders/frequency','OrderController@dateFrequency')->name('setDelevaryDate');
 Route::resource('orders','OrderController');
-
+Route::post('strans','PaymentTransController@store');
+// Route::resource('trans','PaymentTransController');
 // Frontend Routes Are End Here...............
 
 // Customer Routes Are Start Here...............

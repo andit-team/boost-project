@@ -27,25 +27,33 @@
           </ul>
         </div>
       </div>
+      <form action="{{route('saveCard')}}" method="post">
+        @csrf
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
           <div class="delivary-date-arae">
             <h2>Credit card details</h2>
-            <form id="payment-form">
+            <div id="payment-form">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="First Name">
+                <input type="text" name="name" class="form-control" placeholder="Name" value="{{old('name')}}">
+                <span class="text-danger">{{$errors->first('name')}}</span>
+              </div>
+              <div class="form-group">
                 <div id="card-payment-area">
                   <i class="far fa-credit-card"></i>
                   <div class="card-input-number">
-                    <input type="number" class="form-control" placeholder="Card Number">
+                    <input type="number" name="card_number" class="form-control" placeholder="Card Number"  value="{{old('card_number')}}">
                   </div>
                   <div class="date-cc-area">
-                    <input type="number" class="form-control" placeholder="MM/YY">
-                    <input type="number" class="form-control" placeholder="CC">
+                    <input type="number" name="mmyy" class="form-control" placeholder="MM/YY"  value="{{old('mmyy')}}">
+                    <input type="number" name="cc" class="form-control" placeholder="CC"  value="{{old('cc')}}">
                   </div>
                 </div>
+                <span class="text-danger">{{$errors->first('card_number')}}</span>
+                <span class="text-danger">{{$errors->first('mmyy')}}</span>
+                <span class="text-danger">{{$errors->first('cc')}}</span>
               </div>
-            </form>
+            </div>
             <div class="card-shows-img">
               <p>Secure payments with</p>
               <div class="card-img">
@@ -65,36 +73,43 @@
               <p>I consent to boost sending me Essentials Only, at the frequency of my choice.</p>
               <div class="check-payment-details">
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                  <label class="form-check-label" for="exampleCheck1">I confirm this is a recurring payment
+                  <input type="checkbox" name="subcription" {{ old('subcription') ? 'checked' : '' }} class="form-check-input" id="subcription">
+                  <label class="form-check-label" for="subcription">I confirm this is a recurring payment
                     subscription.</label>
                 </div>
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                  <label class="form-check-label" for="exampleCheck2">I confirm I have read and agree to the <a
+                  <input type="checkbox" name="aggredTc" {{ old('aggredTc') ? 'checked' : '' }} class="form-check-input" id="aggredTc">
+                  <label class="form-check-label" for="aggredTc">I confirm I have read and agree to the <a
                       href="#!">TERMS
                       AND CONDITIONS.</a> </label>
                 </div>
                 <div class="form-check" id="check-block">
-                  <input type="checkbox" class="form-check-input checked" id="exampleCheck3">
-                  <label class="form-check-label" for="exampleCheck3"><strong>Billing address</strong>
+                  <input type="checkbox" name="sameAsShipping" {{ old('sameAsShipping') ? 'checked' : '' }} class="form-check-input checked" id="sameAsShipping">
+                  <label class="form-check-label" for="sameAsShipping"><strong>Billing address</strong>
                     Same as shipping address</label>
                 </div>
+                <span class="text-danger">{{$errors->first('subcription')}}</span>
+                <span class="text-danger">{{$errors->first('aggredTc')}}</span>
+                <span class="text-danger">{{$errors->first('sameAsShipping')}}</span>
 
                 <div>
                   <div id="register_form">
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Postcode">
+                      <input type="text" name="postCode" id="postCode" class="form-control" placeholder="Postcode"  value="{{old('postCode')}}">
+                      <span class="text-danger">{{$errors->first('postCode')}}</span> <br>
                       <button class="btn btn-footer">Lookup Address</button>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Address Line 1">
+                      <input type="text" name="address1" id="address1" class="form-control" placeholder="Address Line 1"  value="{{old('address1')}}">
+                      <span class="text-danger">{{$errors->first('address1')}}</span>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Address Line 2 (optional)">
+                      <input type="text" name="address2" id="address2" class="form-control" placeholder="Address Line 2 (optional)"  value="{{old('address2')}}">
+                      <span class="text-danger">{{$errors->first('address2')}}</span>
                     </div>
                     <div class="form-group">
-                      <input type="text" class="form-control" placeholder="Town / City">
+                      <input type="text" name="town" id="town" class="form-control" placeholder="Town / City"  value="{{old('town')}}">
+                      <span class="text-danger">{{$errors->first('town')}}</span>
                     </div>
                   </div>
                 </div>
@@ -106,71 +121,30 @@
         </div>
         <div class="col-lg-12">
           <div class="countinu-btn">
-            <a href="{{url('orders/overview')}}" class="btn btn-footer">Next Step</a>
+            <button type="submit" class="btn btn-footer">Next Step</button>
           </div>
         </div>
       </div>
+    </form>
     </div>
   </section>
+
   @include('layouts.inc.footer.productFooter')
   @endsection
-  
   @push('js')
-  {{-- <div id="paypal-button-container"></div> --}}
-  {{-- <script src="https://www.paypal.com/sdk/js?client-id=AXWcAX4EbepJp9nrf6l03Tko2WyBh40QA3zVZWTP0vGLJeFQaGWJE_attOLzD0F9ctEHMvn2Uepuu7gS"></script> --}}
-<script>
-  // paypal.Buttons().render('#paypal-button-container');
-  // This function displays Smart Payment Buttons on your web page.
-
-  
-</script>
-
-{{-- <script>paypal.Buttons({
-  enableStandardCardFields: true,
-  createOrder: function(data, actions) {
-    return actions.order.create({
-      intent: 'CAPTURE',
-      payer: {
-        name: {
-          given_name: "PayPal",
-          surname: "Customer"
-        },
-        address: {
-          address_line_1: '123 ABC Street',
-          address_line_2: 'Apt 2',
-          admin_area_2: 'San Jose',
-          admin_area_1: 'CA',
-          postal_code: '95121',
-          country_code: 'US'
-        },
-        email_address: "customer@domain.com",
-        phone: {
-          phone_type: "MOBILE",
-          phone_number: {
-            national_number: "14082508100"
-          }
+    <script>
+      $('#sameAsShipping').change(function(){
+        if($(this).is(':checked')){
+          $('#postCode').val('{{Sentinel::getUser()->postcode}}');
+          $('#address1').val('{{Sentinel::getUser()->address_1}}');
+          $('#address2').val('{{Sentinel::getUser()->address_2}}');
+          $('#town').val('{{Sentinel::getUser()->town}}');
+        }else{
+          $('#postCode').val('');
+          $('#address1').val('');
+          $('#address2').val('');
+          $('#town').val('');
         }
-      },
-      purchase_units: [
-        {
-          amount: {
-            value: '15.00',
-            currency_code: 'USD'
-          },
-          shipping: {
-            address: {
-              address_line_1: '2211 N First Street',
-              address_line_2: 'Building 17',
-              admin_area_2: 'San Jose',
-              admin_area_1: 'CA',
-              postal_code: '95131',
-              country_code: 'US'
-            }
-          },
-        }
-      ]
-    });
-  }
-}).render("#paypal-button-container");
-</script> --}}
-@endpush
+      });
+    </script>
+  @endpush
