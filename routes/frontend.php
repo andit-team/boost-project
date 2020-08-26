@@ -15,8 +15,11 @@ Route::resource('item', 'HomeController');
 Route::resource('about-us', 'AboutController');
 Route::resource('contact-us', 'ContactController');
 
-Route::get('orders/order-now','OrderController@ordernow');
+Route::get('orders/order-now/{edit?}','OrderController@ordernow');
 Route::get('orders/select-delivery','OrderController@selectDelivery');
+Route::post('orders/frequency','OrderController@dateFrequency')->name('setDelevaryDate');
+Route::get('orders/edit/select-delivery','OrderController@EditDelivery');
+Route::post('orders/edit/select-delivery','OrderController@UpdateDelivery')->name('UpdateDelevaryDate');
 
 Route::get('orders/information','OrderController@information');
 Route::get('orders/payment-deatils','OrderController@payment');
@@ -25,7 +28,7 @@ Route::get('orders/overview','OrderController@overview');
 Route::post('orders/addcart','OrderController@addCart');
 Route::post('orders/decreas','OrderController@orderDecreas');
 Route::post('orders/remove','OrderController@orderRemove');
-Route::post('orders/frequency','OrderController@dateFrequency')->name('setDelevaryDate');
+
 Route::resource('orders','OrderController');
 Route::post('strans','PaymentTransController@store');
 // Route::resource('trans','PaymentTransController');

@@ -13,7 +13,7 @@
         <div class="col-lg-8">
           <ul class="list-area-payment">
             <li>
-              <a href="{{url('orders/select-delivery')}}">Delivery</a>
+              <a href="{{url('orders/edit/select-delivery')}}">Delivery</a>
             </li>
             <li>
               <a href="{{url('orders/information')}}">Information</a>
@@ -32,6 +32,24 @@
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
           <div class="delivary-date-arae">
+            <h2>Payment Information</h2>
+            <div class="d-flex justify-content-around mt-4">
+              <div class="form-group">
+                <input type="radio" checked class="form-conrtol mr-2" name="type" value="paypal" id="paypal">
+                <label for="paypal">
+                  <img src="{{ asset('frontend/boost/assest/img/paypal.png')}}" alt="img">
+                </label> 
+              </div>
+              <div class="form-group">
+                <input type="radio" class="form-conrtol mr-2" value="bank" name="type" id="bank">
+                <label for="bank">
+                  <img src="{{ asset('frontend/boost/assest/img/bank.png')}}" alt="img">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="delivary-date-arae" style="pointer-events: none; opacity:.7">
             <h2>Credit card details</h2>
             <div id="payment-form">
               <div class="form-group">
@@ -95,9 +113,9 @@
                 <div>
                   <div id="register_form">
                     <div class="form-group">
-                      <input type="text" name="postCode" id="postCode" class="form-control" placeholder="Postcode"  value="{{old('postCode')}}">
+                      <input type="text" name="postCode" id="postCode" class="form-control" placeholder="Postcode"  value="{{old('postCode','M320JG')}}">
                       <span class="text-danger">{{$errors->first('postCode')}}</span> <br>
-                      <button class="btn btn-footer">Lookup Address</button>
+                      <span class="btn btn-footer" id="lookUpAddress">Lookup Address</span>
                     </div>
                     <div class="form-group">
                       <input type="text" name="address1" id="address1" class="form-control" placeholder="Address Line 1"  value="{{old('address1')}}">
@@ -127,6 +145,37 @@
       </div>
     </form>
     </div>
+
+    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      Launch demo modal
+    </button> --}}
+
+    
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 0px;">
+        <div class="modal-content" style="transform: rotate(0deg);">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Select Address</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="">
+              <div class="form-group">
+                <select name="" id="address" class="form-control">
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   @include('layouts.inc.footer.productFooter')
@@ -145,6 +194,57 @@
           $('#address2').val('');
           $('#town').val('');
         }
+      });
+      $('#lookUpAddress').click(function(){
+        const postCode = $('#postCode').val();
+        // console.log(postCode);
+        if(postCode != ''){
+          $('#postCode').removeClass('border-danger');
+          $.ajax({
+            type:"Get",
+            url:"https://api.getaddress.io/find/"+postCode+"?api-key=1jGB7xre2UKJLfThyWR-MQ22395&expand=true",
+            dataType:"json",
+            beforeSend:function(response){},
+            success:function(response){
+              if(response.addresses != ''){
+                // console.log(response.addresses);
+                var option = '';
+                response.addresses.forEach(function(address){
+                  option += `<option value="${address.line_1}" data-town="${address.town_or_city}">${address.line_1}</option>`;
+                });
+                $('#address').html(option);
+                $('#exampleModalCenter').modal('show');
+              }else{
+                alert('address not found');
+              }
+            },
+            error:function(response){
+              swal({
+                title: "Opps!",
+                text: "Address not Found",
+                icon: "error",
+                buttons: true,
+                dangerMode: true,
+              })
+              // alert('asdfasdfasdf');
+            }
+        });
+
+        }else{
+          $('#postCode').addClass('border-danger');
+        }
+      });
+
+      $('#address').change(function(){
+        const town = $(this).find(':selected').data('town');
+        const line_1 = $(this).val();
+        const line_2 = $(this).find(':selected').data('line_2');
+
+        $('#address1').val(line_1);
+        $('#address2').val(line_2);
+        $('#town').val(town);
+        $('#exampleModalCenter').modal('hide');
+        
       });
     </script>
   @endpush

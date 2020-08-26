@@ -41,7 +41,7 @@
       <div class="col-lg-8">
         <ul class="list-area-payment">
           <li>
-            <a href="{{url('orders/select-delivery')}}">Delivery</a>
+            <a href="{{url('orders/edit/select-delivery')}}">Delivery</a>
           </li>
           <li>
             <a href="{{url('orders/information')}}" class="active">Information</a>

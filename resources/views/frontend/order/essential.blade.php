@@ -90,7 +90,7 @@
        <div class="essentials-product-add-arae">
         <h2>Essentials Only.</h2>
         <div class="product-amount-arae">
-         <h6>£6 per item <a href="#!" data-toggle="modal" data-target=".bd-example-modal-sm"><i
+         <h6><span id="qty">0</span> per item <a href="#!" data-toggle="modal" data-target=".bd-example-modal-sm"><i
             class="fas fa-info-circle"></i></a></h6>
          <!-- modal area -->
          <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
@@ -137,6 +137,7 @@
                         </div>
                      </div>
                   </div>
+                  <input type="hidden" class="qty" value="{{$row->qty}}">
                   <input type="hidden" class="sum" value="{{$row->qty * $row->product->price}}">
                @empty
                   <div class="col-md-2 col-sm-6 col-12">
@@ -168,7 +169,11 @@
             </div>
          {{-- </form>  --}}
          <div class="select-death">
-          <a href="{{ url('orders/select-delivery') }}" class="btn btn-footer">SELECT DATES</a>
+            @if($edit == 'edit')
+               <a href="{{ url('orders/overview') }}" class="btn btn-footer">Continue</a>
+            @else
+               <a href="{{ url('orders/select-delivery') }}" class="btn btn-footer">SELECT DATES</a>
+            @endif
          </div>
         </div>
        </div>
@@ -269,14 +274,15 @@ function IncreaseQty(pId){
 
 function getTotal(){
    var sum = 0;
+   var qty = 0;
    setTimeout(function(){
-      
-   $('.sum').each(function(e){
-      sum = parseFloat(sum) + parseFloat($(this).val())||0; 
-      console.log($(this).val());
-   });
-   console.log(sum);
-   
+      $('.sum').each(function(e){
+         sum = parseFloat(sum) + parseFloat($(this).val())||0; 
+      });   
+      $('.qty').each(function(e){
+         qty = parseFloat(qty) + parseFloat($(this).val())||0; 
+      });   
+      $("#qty").text(qty);
       $("#total").text('£ '+sum);
    },800);
 }

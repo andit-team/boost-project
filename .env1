@@ -1,14 +1,14 @@
 APP_NAME=boost
 APP_ENV=local
 APP_KEY=base64:agndHOnw6/Dm2i4M1g/PlpcXg2bHGkZN4Jzrl+VxC+U=
-APP_DEBUG=true
+APP_DEBUG=false
 APP_URL=https://projects.andit.co/laravel/boost/
 ASSET_URL=https://projects.andit.co/laravel/boost/public/
 
 LOG_CHANNEL=stack
 
 DB_CONNECTION=mysql
-DB_HOST=localhost
+DB_HOST=andit.co
 DB_PORT=3306
 DB_DATABASE=anditco1_boost
 DB_USERNAME=anditco1_boost

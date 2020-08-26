@@ -105,15 +105,17 @@ class OrderController extends Controller
             }
         }
     }
-    public function ordernow(){
+    public function ordernow($edit = Null){
         // dd(session()->all());
         // dd(Session::getId());
-        Sentinel::logout(null, true);
+        if($edit != 'edit'){
+            Sentinel::logout(null, true);
+        }
         $userId = $this->getSessionUser();
         $product = Product::all();
-        $cartProduct = Cart::with('product')->where('user_id',$userId)->get();  
+        $cartProduct = Cart::with('product')->where('user_id',$userId)->get();
         // dd($cartProduct);
-        return view('frontend.order.essential',compact('product','cartProduct'));
+        return view('frontend.order.essential',compact('product','cartProduct','edit'));
     }
 
     public function addCart(Request $request){
@@ -145,7 +147,29 @@ class OrderController extends Controller
     }
 
     public function selectDelivery(){
+        $userId = $this->getSessionUser();
+        $cartProduct = Cart::where('user_id',$userId)->count();
+        if($cartProduct == 0 ){
+            return redirect()->back();
+        }
         return view('frontend.order.select-delivery');
+    }
+    public function EditDelivery(){
+        $order = Order::where('invoice',session('invoice'))->first();
+        if(!$order){return redirect()->back();}
+        $returnUrl = session('_previous')['url'];
+        return view('frontend.order.edit.select-delivery',compact('order','returnUrl'));
+    }
+
+    public function UpdateDelivery(Request $request){
+        // dd($request->all());
+        $order = Order::where('invoice',session('invoice'))->first();
+        if(!$order){return redirect()->back();}
+        $order->update([
+            'delivery_date'     => $request->delevaryDate,
+            'delivery_frequency'=> $request->frequency,
+        ]);
+        return redirect($request->back);
     }
 
     public function dateFrequency(Request $request){
@@ -157,36 +181,42 @@ class OrderController extends Controller
             'user_id'           => $userId,
             'created_at' => now(),
         ];
-        // dd($data);
         $order = Order::create($data);
         session(['invoice' => $order->invoice]);
         return redirect('orders/information');
     }
 
     public function information(){
-        return view('frontend.order.information');
+        if(session()->has('invoice')){
+            return view('frontend.order.information');
+        }
+        return redirect()->back();
     }
 
     public function payment(){
-        // dd(Sentinel::getUser());
+        if (!Sentinel::check()) {
+            return redirect()->back();
+        }
         return view('frontend.order.payments-deatils');
     }
 
     public function paymentCardSave(Request $request){
+        // dd($request->all());
         $request->validate([
-            'name'              => 'required',
-            'card_number'       => 'required',
-            'mmyy'              => 'required',
-            'cc'                => 'required|numeric',
-            'postCode'          => 'required|numeric',
+            // 'name'              => 'required',
+            // 'card_number'       => 'required',
+            // 'mmyy'              => 'required',
+            // 'cc'                => 'required|numeric',
+            'postCode'          => 'required',
             'address1'          => 'required',
             // 'address2'          => 'required',
             'town'              => 'required',
             // 'subcription'       => 'required',
             'aggredTc'          => 'required',
-            'sameAsShipping'    => 'required',
+            // 'sameAsShipping'    => 'required',
         ]);
         $data = [
+            'type'              => $request->type,
             'name'              => $request->name,
             'card_number'       => $request->card_number,
             'mmyy'              => $request->mmyy,
@@ -208,6 +238,9 @@ class OrderController extends Controller
     }
 
     public function overview(){
+        if(!Sentinel::getUser()->card){
+            return redirect()->back();
+        }
         $carts = Cart::with('product')->where('user_id',Sentinel::getUser()->id)->get();
         $order = Order::where('user_id',Sentinel::getUser()->id)->OrderBy('id','DESC')->first();
         // dd($order);

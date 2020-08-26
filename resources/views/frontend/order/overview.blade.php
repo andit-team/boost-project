@@ -15,7 +15,7 @@
             <div class="col-lg-8">
                 <ul class="list-area-payment">
                     <li>
-                        <a href="{{url('orders/select-delivery')}}">Delivery</a>
+                        <a href="{{url('orders/edit/select-delivery')}}">Delivery</a>
                     </li>
                     <li>
                         <a href="{{url('orders/information')}}" >Information</a>
@@ -52,12 +52,12 @@
                                         @endforeach
                                             {{rtrim($products,' , ')}}
                                     </td>
-                                    <td><a href="#!">Edit</a></td>
+                                    <td><a href="{{url('orders/order-now/edit')}}">Edit</a></td>
                                 </tr>
                                 <tr>
                                     <td>Your Delivery</td>
                                     <td>{{$order->delivery_frequency}}, Starting : {{$order->delivery_date}}</td>
-                                    <td><a href="#!">Edit</a></td>
+                                    <td><a href="{{url('orders/edit/select-delivery')}}">Edit</a></td>
                                 </tr>
                                 <tr>
                                     <td>Your Details</td>
@@ -71,7 +71,7 @@
                                 </tr>
                                 <tr>
                                     <td>payment-details</td>
-                                    <td>CARD: <span>*****{{Sentinel::getUser()->card->card_number}}</span></td>
+                                    <td>{{ucfirst($pType = Sentinel::getUser()->card->type)}}</td>
                                     <td><a href="#!">Edit</a></td>
                                 </tr>
                             </tbody>
@@ -97,10 +97,59 @@
             <div class="col-lg-12">
                 <div class="countinu-btn">
                     @if($order->payment_status == 'pending')
-                    @include('elements.paypal_button',[
-                        'amount'    => $total,
-                        'order_invoice'  => $order->invoice,
-                    ])
+                        @if($pType == 'paypal')
+                            @include('elements.paypal_button',[
+                                'amount'    => $total,
+                                'order_invoice'  => $order->invoice,
+                            ])
+                        @else
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                            Bank Transfer
+                        </button>
+
+                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 0px;">
+                              <div class="modal-content" style="transform: rotate(0deg);">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Bank Information</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table table-striped" style="margin-top: 0px;">
+                                        <tr>
+                                            <th width="150" class="text-right">Account Holder</th>
+                                            <td width="5">:</td>
+                                            <td class="text-left">Boost App</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-right">Account Number</th>
+                                            <td width="5">:</td>
+                                            <td class="text-left">335168249251542</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-right">Bank</th>
+                                            <td width="5">:</td>
+                                            <td class="text-left"> Bangladesh Bank</td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-right">Branch</th>
+                                            <td width="5">:</td>
+                                            <td class="text-left"> Dhaka Branch</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+                                </div>
+                              </div>
+                            </div>
+                          </div>    
+
+                        @endif
                     @else
                        <a href="{{url('customer')}}" class="btn btn-footer">Go to Dashboard</a>
                     @endif

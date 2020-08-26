@@ -15,11 +15,12 @@ class CreatePaymentCardsTable extends Migration
     {
         Schema::create('payment_cards', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('card_number');
-            $table->string('mmyy');
-            $table->integer('cc');
-            $table->integer('postCode');
+            $table->enum('type',['paypal','bank','cradit-card'])->nullable();
+            $table->string('name')->nullable();
+            $table->string('card_number')->nullable();
+            $table->string('mmyy')->nullable();
+            $table->integer('cc')->nullable();
+            $table->string('postCode');
             $table->string('address1');
             $table->string('address2')->nullable();
             $table->string('town');
