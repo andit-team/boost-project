@@ -193,6 +193,52 @@ class OrderController extends Controller
         return redirect()->back();
     }
 
+    public function EditInformation(){
+        if (!Sentinel::check()) {
+            return redirect()->back();
+        }
+        $user = Sentinel::getUser();
+        // dd($user);
+        $returnUrl = session('_previous')['url'];
+        return view('frontend.order.edit.information',compact('user','returnUrl'));
+    }
+
+    public function UpdateInformation(Request $request){
+        $request->validate([
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'email'         => 'required|email',
+            'postcode'      => 'required',
+            'address_1'     => 'required',
+            'town'          => 'required',
+            'account'       => 'required',
+        ]);
+        $data = [
+		    'first_name'=> $request->first_name,
+            'last_name' => $request->last_name,
+            'com_name' => $request->com_name,
+            'com_phone' => $request->com_phone,
+            'com_address' => $request->com_address,
+            'com_vat' => $request->com_vat,
+            'or_name' => $request->or_name,
+            'or_phone' => $request->or_phone,
+            'or_address' => $request->or_address,
+            'account' => $request->account,
+            'or_reg' => $request->or_reg, 
+            'file_1'=> Boost::pdfUpload($request,'file_1','old_file_1','/uploads/customer_profile'), 
+            'file_2' => Boost::pdfUpload($request,'file_2','old_file_2','/uploads/customer_profile'),
+            'address_1' => $request->address_1,
+            'address_2' => $request->address_2,
+            'postcode' => $request->postcode,
+            'town'      => $request->town,
+		    'email' 	=> $request->email,
+		    'type' 	    => $request->account,
+        ];
+        $user = Sentinel::getUser();
+        $user->update($data);
+        return redirect($request->back);
+    }
+
     public function payment(){
         if (!Sentinel::check()) {
             return redirect()->back();
@@ -237,7 +283,53 @@ class OrderController extends Controller
         return redirect('orders/overview');
     }
 
+    public function EditPayment(){
+        if (!Sentinel::check()) {
+            return redirect()->back();
+        }
+        if ($card = Sentinel::getUser()->card) {
+            // dd($card);
+            $returnUrl = session('_previous')['url'];
+            return view('frontend.order.edit.payments-deatils',compact('card','returnUrl'));
+        }
+        return redirect()->back();
+    }
+
+    public function UpdatePayment(Request $request){
+        $card = PaymentCard::where('id',$request->card_id)->where('user_id',Sentinel::getUser()->id)->first();
+        if(!$card){
+            return redirect()->back(); 
+        }
+        $request->validate([
+            'postCode'          => 'required',
+            'address1'          => 'required',
+            'town'              => 'required',
+            'aggredTc'          => 'required',
+        ]);
+        $data = [
+            'type'              => $request->type,
+            'name'              => $request->name,
+            'card_number'       => $request->card_number,
+            'mmyy'              => $request->mmyy,
+            'cc'                => $request->cc,
+            'postCode'          => $request->postCode,
+            'address1'          => $request->address1,
+            'address2'          => $request->address2,
+            'town'              => $request->town,
+            'subcription'       => $request->subcription,
+            'aggredTc'          => $request->aggredTc,
+            'sameAsShipping'    => $request->sameAsShipping,
+            'updated_at'        => now()
+        ];
+        $card->update($data);
+        return redirect($request->back);
+    }
+
+
     public function overview(){
+        if (!Sentinel::check()) {
+            return redirect()->back();
+        }
         if(!Sentinel::getUser()->card){
             return redirect()->back();
         }

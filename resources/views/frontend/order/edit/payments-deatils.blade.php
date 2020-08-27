@@ -19,7 +19,7 @@
               <a href="{{url('orders/edit/information')}}">Information</a>
             </li>
             <li>
-              <a href="{{url('orders/payment-deatils')}}" class="active">Payment</a>
+              <a href="{{url('orders/edit/payment-deatils')}}" class="active">Payment</a>
             </li>
             <li>
               <a href="{{url('orders/overview')}}">Overview</a>
@@ -27,21 +27,23 @@
           </ul>
         </div>
       </div>
-      <form action="{{route('saveCard')}}" method="post">
+      <form action="{{route('updateCard')}}" method="post">
         @csrf
+        <input type="hidden" name="back" value="{{$returnUrl}}">
+        <input type="hidden" value="{{$card->id}}" name="card_id">
       <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
           <div class="delivary-date-arae">
             <h2>Payment Information</h2>
             <div class="d-flex justify-content-around mt-4">
               <div class="form-group">
-                <input type="radio" checked class="form-conrtol mr-2" name="type" value="paypal" id="paypal">
+                <input type="radio" {{$card->type == 'paypal' ? 'checked' : ''}} class="form-conrtol mr-2" name="type" value="paypal" id="paypal">
                 <label for="paypal">
                   <img src="{{ asset('frontend/boost/assest/img/paypal.png')}}" alt="img">
                 </label> 
               </div>
               <div class="form-group">
-                <input type="radio" class="form-conrtol mr-2" value="bank" name="type" id="bank">
+                <input type="radio" {{$card->type == 'bank' ? 'checked' : ''}} class="form-conrtol mr-2" value="bank" name="type" id="bank">
                 <label for="bank">
                   <img src="{{ asset('frontend/boost/assest/img/bank.png')}}" alt="img">
                 </label>
@@ -91,18 +93,18 @@
               <p>I consent to boost sending me Essentials Only, at the frequency of my choice.</p>
               <div class="check-payment-details">
                 <div class="form-check">
-                  <input type="checkbox" name="subcription" {{ old('subcription') ? 'checked' : '' }} class="form-check-input" id="subcription">
+                  <input type="checkbox" name="subcription" {{$card->subcription == 'on' ? 'checked' : ''}} class="form-check-input" id="subcription">
                   <label class="form-check-label" for="subcription">I confirm this is a recurring payment
                     subscription.</label>
                 </div>
                 <div class="form-check">
-                  <input type="checkbox" name="aggredTc" {{ old('aggredTc') ? 'checked' : '' }} class="form-check-input" id="aggredTc">
+                  <input type="checkbox" name="aggredTc" {{$card->aggredTc == 'on' ? 'checked' : ''}} class="form-check-input" id="aggredTc">
                   <label class="form-check-label" for="aggredTc">I confirm I have read and agree to the <a
                       href="#!">TERMS
                       AND CONDITIONS.</a> </label>
                 </div>
                 <div class="form-check" id="check-block">
-                  <input type="checkbox" name="sameAsShipping" {{ old('sameAsShipping') ? 'checked' : '' }} class="form-check-input checked" id="sameAsShipping">
+                  <input type="checkbox" name="sameAsShipping" {{$card->sameAsShipping == 'on' ? 'checked' : ''}} class="form-check-input checked" id="sameAsShipping">
                   <label class="form-check-label" for="sameAsShipping"><strong>Billing address</strong>
                     Same as shipping address</label>
                 </div>
@@ -113,20 +115,20 @@
                 <div>
                   <div id="register_form">
                     <div class="form-group">
-                      <input type="text" name="postCode" id="postCode" class="form-control" placeholder="Postcode"  value="{{old('postCode','M320JG')}}">
+                      <input type="text" name="postCode" id="postCode" class="form-control" placeholder="Postcode"  value="{{old('postCode',$card->postCode)}}">
                       <span class="text-danger">{{$errors->first('postCode')}}</span> <br>
                       <span class="btn btn-footer" id="lookUpAddress">Lookup Address</span>
                     </div>
                     <div class="form-group">
-                      <input type="text" name="address1" id="address1" class="form-control" placeholder="Address Line 1"  value="{{old('address1')}}">
+                      <input type="text" name="address1" id="address1" class="form-control" placeholder="Address Line 1"  value="{{old('address1',$card->address1)}}">
                       <span class="text-danger">{{$errors->first('address1')}}</span>
                     </div>
                     <div class="form-group">
-                      <input type="text" name="address2" id="address2" class="form-control" placeholder="Address Line 2 (optional)"  value="{{old('address2')}}">
+                      <input type="text" name="address2" id="address2" class="form-control" placeholder="Address Line 2 (optional)"  value="{{old('address2',$card->address2)}}">
                       <span class="text-danger">{{$errors->first('address2')}}</span>
                     </div>
                     <div class="form-group">
-                      <input type="text" name="town" id="town" class="form-control" placeholder="Town / City"  value="{{old('town')}}">
+                      <input type="text" name="town" id="town" class="form-control" placeholder="Town / City"  value="{{old('town',$card->town)}}">
                       <span class="text-danger">{{$errors->first('town')}}</span>
                     </div>
                   </div>
@@ -139,7 +141,7 @@
         </div>
         <div class="col-lg-12">
           <div class="countinu-btn">
-            <button type="submit" class="btn btn-footer">Next Step</button>
+            <button type="submit" class="btn btn-footer">Update & Continue</button>
           </div>
         </div>
       </div>

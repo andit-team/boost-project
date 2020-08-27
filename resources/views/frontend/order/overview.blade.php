@@ -18,10 +18,10 @@
                         <a href="{{url('orders/edit/select-delivery')}}">Delivery</a>
                     </li>
                     <li>
-                        <a href="{{url('orders/information')}}" >Information</a>
+                        <a href="{{url('orders/edit/information')}}" >Information</a>
                     </li>
                     <li>
-                        <a href="{{url('orders/payment-deatils')}}">Payment</a>
+                        <a href="{{url('orders/edit/payment-deatils')}}">Payment</a>
                     </li>
                     <li>
                         <a href="{{url('orders/overview')}}" class="active">Overview</a>
@@ -67,12 +67,12 @@
                                         {{Sentinel::getUser()->address_1}},
                                         {{Sentinel::getUser()->town}}
                                     </td>
-                                    <td><a href="#!">Edit</a></td>
+                                    <td><a href="{{url('orders/edit/information')}}">Edit</a></td>
                                 </tr>
                                 <tr>
                                     <td>payment-details</td>
                                     <td>{{ucfirst($pType = Sentinel::getUser()->card->type)}}</td>
-                                    <td><a href="#!">Edit</a></td>
+                                    <td><a href="{{url('orders/edit/payment-deatils')}}">Edit</a></td>
                                 </tr>
                             </tbody>
                         </table>

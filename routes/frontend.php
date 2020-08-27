@@ -22,8 +22,14 @@ Route::get('orders/edit/select-delivery','OrderController@EditDelivery');
 Route::post('orders/edit/select-delivery','OrderController@UpdateDelivery')->name('UpdateDelevaryDate');
 
 Route::get('orders/information','OrderController@information');
+Route::get('orders/edit/information','OrderController@EditInformation');
+Route::post('orders/edit/information','OrderController@UpdateInformation')->name('UpdateInformation');
+
 Route::get('orders/payment-deatils','OrderController@payment');
 Route::post('orders/payment-deatils','OrderController@paymentCardSave')->name('saveCard');
+Route::get('orders/edit/payment-deatils','OrderController@EditPayment');
+Route::post('orders/edit/payment-deatils','OrderController@UpdatePayment')->name('updateCard');
+
 Route::get('orders/overview','OrderController@overview');
 Route::post('orders/addcart','OrderController@addCart');
 Route::post('orders/decreas','OrderController@orderDecreas');

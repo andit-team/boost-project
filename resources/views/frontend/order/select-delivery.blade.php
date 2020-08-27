@@ -16,10 +16,10 @@
               <a href="{{url('orders/select-delivery')}}" class="active">Delivery</a>
             </li>
             <li>
-              <a href="{{url('orders/information')}}">Information</a>
+              <a href="{{url('orders/edit/information')}}">Information</a>
             </li>
             <li>
-              <a href="{{url('orders/payment-deatils')}}">Payment</a>
+              <a href="{{url('orders/edit/payment-deatils')}}">Payment</a>
             </li>
             <li>
               <a href="{{url('orders/overview')}}">Overview</a>
