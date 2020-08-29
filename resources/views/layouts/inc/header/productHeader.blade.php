@@ -1,6 +1,6 @@
 <header class="header-area home-area-header">
     <!-- Logo & Navber -->
-    <nav class="site-navigation navbar navbar-expand-lg navbar-light">
+    <nav class="site-navigation navbar navbar-expand-lg navbar-light {{@$login_header ? $login_header : ''}}">
       <div class="container">
         <a class="navbar-brand" href="{{url('/')}}"><img src="{{ asset('frontend/boost/assest/img/logo.png')}}" alt="img" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"

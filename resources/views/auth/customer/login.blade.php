@@ -1,66 +1,43 @@
-@extends('layouts.master')
+@extends('layouts.boostmaster')
 @section('content')
-
-<!-- breadcrumb start -->
-<div class="breadcrumb-section">
+@include('layouts.inc.header.productHeader',['login_header'=>'header-login'])
+ <!-- section  Form-->
+ <section class="login-area">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="page-title">
-                    <h2>customer's login</h2>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <nav aria-label="breadcrumb" class="theme-breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">login</li>
-                    </ol>
-                </nav>
-            </div>
+     <div class="row">
+      <div class="col-lg-6">
+       <div class="login-left-side-area">
+        <h2>Sign in</h2>
+        <p>Use your great.gov.uk login details to sign in.</p>
+        <form class="#!" id="form-login">
+         <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" required class="form-control">
+         </div>
+         <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" required>
+         </div>
+         <div class="">
+          <a href="dashboard" class="btn btn-footer">Sign In</a>
+          <a href="password-reset.html">Forgotten password?</a>
+         </div>
+        </form>
+       </div>
+      </div>
+      <div class="col-lg-6">
+       <div class="login-right-side-area">
+        <h2>Create a great.gov.uk account</h2>
+        <p>Create a great.gov.uk account and you'll get a business page to promote your business to overseas buyers.</p>
+        <p>It takes less than three minutes to create an account.</p>
+        <div class="">
+         <a href="register" class="btn btn-footer">Create account</a>
         </div>
+       </div>
+      </div>
+     </div>
     </div>
-</div>
-<!-- breadcrumb End -->
-
-<!--section start-->
-<section class="login-page section-b-space">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <h3>Login</h3>
-                <div class="theme-card">
-                    @if (\Session::has('error'))
-                        <div class="alert alert-danger">
-                                <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
-                        </div>
-                    @endif
-                    <form class="" action="{{route('userloginprocess')}}" method="post">
-                        @csrf
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="text" name="login[email]" class="form-control" value="buyer@boost.com" id="email" placeholder="Email" required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="review">Password</label>
-                            <input type="password" class="form-control" id="review" name="login[password]" placeholder="Enter your password" required="">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>                                       
-                        <a href="{{url('forgot_password')}}" class="btn btn-default forgot-pass">Forget password</a>                               
-                    </form>
-                </div>
-            </div>
-            <div class="col-lg-6 right-login">
-                <h3>New Customer</h3>
-                <div class="theme-card authentication-right">
-               <h6 class="title-font">Create A Account</h6>
-                    <p>Sign up for a free account at our store. Registration is quick and easy. It allows you to be
-                        able to order from our shop. To start shopping click register.</p><a href="{{url('register')}}"
-                        class="btn btn-primary">Create an Account</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--Section ends-->
+   </section>
+   <!-- section  Form-->
+@include('layouts.inc.footer.productFooter')
 @endsection 

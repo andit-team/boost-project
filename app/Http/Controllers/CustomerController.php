@@ -16,11 +16,11 @@ use Boost;
 
 class CustomerController extends Controller{
     public function __construct(){
-        $this->middleware(['auth','customer'])->except('register','userlogin','registration','userloginprocess');
+        // $this->middleware(['auth','customer'])->except('register','userlogin','registration','userloginprocess');
     }
 
     public function dashboard(){
-        return view('buyer-dashboard');
+        return view('customer-dashboard');
     }
 
     public function register(){

@@ -103,6 +103,58 @@
   .sei-un-dis-form-area h2 {
     font-size: 36px;
   }
+
+    /* /////////////////////////updated-29-08-2020//////////////////////// */
+
+    #hide-sidebar {
+      display: none;
+      transition: .4s all;
+      -webkit-transition: .4s all;
+      -moz-transition: .4s all;
+      -ms-transition: .4s all;
+      -o-transition: .4s all;
+      position: fixed;
+      background: #e2e2e2;
+      width: 80%;
+      z-index: 999;
+      top: 100px;
+      margin: 0 auto;
+    }
+  
+    .side-bar-menu-burger {
+      display: block;
+      text-align: right;
+    }
+  
+    .dashboard-right-side {
+      padding-top: 40px;
+    }
+  
+    .menu-sticky-arae {
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      background: #187dc8;
+      padding: 20px 20px;
+    }
+  
+    #seclect-dashboard {
+      padding: 0px 0 150px 0;
+      background-color: #ECEEE7;
+    }
+  
+    .daseboard-list-wrapper {
+      padding-top: 30px;
+    }
+  
+    .login-right-side-area {
+      padding-top: 40px;
+    }
+  
+    .login-area {
+      padding: 220px 0 155px 0;
+    }
+    
 }
 
 @media only screen and (max-width: 768px) {
@@ -161,6 +213,8 @@
   .midel-service {
     margin-top: 50px;
   }
+
+
 
 
 }
