@@ -1,9 +1,13 @@
 APP_NAME=boost
 APP_ENV=local
 APP_KEY=base64:agndHOnw6/Dm2i4M1g/PlpcXg2bHGkZN4Jzrl+VxC+U=
+
 APP_DEBUG=true
 APP_URL=http://localhost/boost-project/
 ASSET_URL=http://localhost/boost-project/public
+
+
+
 
 LOG_CHANNEL=stack
 

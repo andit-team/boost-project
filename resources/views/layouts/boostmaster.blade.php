@@ -37,6 +37,7 @@
   <script src="{{ asset('frontend/boost/assest/js/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{ asset('js/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{ asset('frontend/boost/assest/js/custom.js')}}"></script>
+  @include('elements.myjs')
   @stack('js')
   <script>
     const big_img = document.querySelectorAll(".product-item-img img");
@@ -72,6 +73,7 @@ $('#datepickerNexDayOnly').datepicker().on('changeDate', function(e) {
         newdate2 = day + " " + monthNames[month] + " " + year;
 
         $('.data-var-value h4').html(newdate2)
+        $('#delevary-date').val(newdate2)
          
     });
 
@@ -96,7 +98,7 @@ if (input.attr("type") == "password") {
             });
     })
 </script>
-<script>
+{{-- <script>
   $(".frequency").on('click',function(){
      var frequency = $(this).val();
      var newdate = $('h4').text();
@@ -111,7 +113,7 @@ if (input.attr("type") == "password") {
        }
      });
   });
-</script>
+</script> --}}
 </body>
 
 </html>

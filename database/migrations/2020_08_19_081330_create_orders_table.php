@@ -15,14 +15,18 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('product_id');
-            $table->string('qty')->default(1);
-            $table->string('session_id');
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('user_id');
+            $table->string('invoice');
+            $table->string('delivery_date');
+            $table->string('delivery_frequency');
+            $table->decimal('sub_total',8,2)->default(0.00);
+            $table->decimal('discount',5,2)->default(0.00);
+            $table->decimal('total',8,2)->default(0.00);
+            $table->decimal('pay_amount',8,2)->default(0.00);
+            $table->string('paypal_id')->nullable();
+            $table->enum('order_status',['delivary','information','payment','overview'])->default('delivary');
+            $table->enum('payment_status',['pending','complete','pertialy'])->default('pending');
             $table->timestamps();
-            
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

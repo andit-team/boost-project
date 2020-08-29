@@ -10,6 +10,8 @@ use Reminder;
 use Mail;
 use App\Events\CustomerRegistration;
 use App\Models\Customer;
+use App\Models\Cart;
+use App\Models\Order;
 use Boost;
 
 class CustomerController extends Controller{
@@ -27,6 +29,18 @@ class CustomerController extends Controller{
 
     public function registration(Request $request){
         // dd($request->all());
+        $request->validate([
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'email'         => 'required|email|unique:App\User,email',
+            'password'      => 'required|confirmed|min:6',
+            'password_confirmation' => 'required|min:6',
+            'postcode'      => 'required',
+            'address_1'     => 'required',
+            // 'address_2'     => 'required',
+            'town'          => 'required',
+            'account'       => 'required',
+        ]);
         $data = [
 		    'first_name'=> $request->first_name,
             'last_name' => $request->last_name,
@@ -47,13 +61,21 @@ class CustomerController extends Controller{
             'town' => $request->town,
 		    'email' 	=> $request->email,
 		    'password' 	=> $request->password,
-		    'type' 	    => 'customers',
+		    'type' 	    => $request->account,
 		];
         $customer = Sentinel::registerAndActivate($data);
+        $role = \Sentinel::findRoleBySlug($request->account);
+        $role->users()->attach($customer->id);
 
-        // dd($customer);
-        event(new CustomerRegistration($customer));
-        // echo 'done';
+        $credentials = [
+			'email'		=> $customer->email,
+			'password'	=> $request->password,
+			'type'	    => $request->account,
+		];
+        Sentinel::authenticate($credentials);
+        Cart::where('user_id',session('user_id'))->update(['user_id'=> Sentinel::getUser()->id]);
+        Order::where('user_id',session('user_id'))->update(['user_id'=>Sentinel::getUser()->id]);
+        session()->forget('user_id');
         session()->flash('success','registration  successfully');
         return redirect('orders/payment-deatils');
     }
@@ -62,7 +84,7 @@ class CustomerController extends Controller{
         $credentials = [
 			'email'		=> $request->login['email'],
 			'password'	=> $request->login['password'],
-			'type'	    => 'customers',
+			'type'	    => 'customer',
 		];
 
 		// if($request->remember == 'on')

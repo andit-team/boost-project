@@ -15,17 +15,29 @@ Route::resource('item', 'HomeController');
 Route::resource('about-us', 'AboutController');
 Route::resource('contact-us', 'ContactController');
 
-Route::get('orders/order-now','OrderController@ordernow');
+Route::get('orders/order-now/{edit?}','OrderController@ordernow');
 Route::get('orders/select-delivery','OrderController@selectDelivery');
+Route::post('orders/frequency','OrderController@dateFrequency')->name('setDelevaryDate');
+Route::get('orders/edit/select-delivery','OrderController@EditDelivery');
+Route::post('orders/edit/select-delivery','OrderController@UpdateDelivery')->name('UpdateDelevaryDate');
+
 Route::get('orders/information','OrderController@information');
+Route::get('orders/edit/information','OrderController@EditInformation');
+Route::post('orders/edit/information','OrderController@UpdateInformation')->name('UpdateInformation');
+
 Route::get('orders/payment-deatils','OrderController@payment');
+Route::post('orders/payment-deatils','OrderController@paymentCardSave')->name('saveCard');
+Route::get('orders/edit/payment-deatils','OrderController@EditPayment');
+Route::post('orders/edit/payment-deatils','OrderController@UpdatePayment')->name('updateCard');
+
 Route::get('orders/overview','OrderController@overview');
 Route::post('orders/addcart','OrderController@addCart');
 Route::post('orders/decreas','OrderController@orderDecreas');
 Route::post('orders/remove','OrderController@orderRemove');
-Route::post('orders/frequency','OrderController@dateFrequency');
-Route::resource('orders','OrderController');
 
+Route::resource('orders','OrderController');
+Route::post('strans','PaymentTransController@store');
+// Route::resource('trans','PaymentTransController');
 // Frontend Routes Are End Here...............
 
 // Customer Routes Are Start Here...............

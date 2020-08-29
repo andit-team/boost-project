@@ -1,3 +1,4 @@
+{{-- https://codeseven.github.io/toastr/demo.html --}}
 @push('css')
     <link rel="stylesheet" href="{{ asset('css') }}/toastr.min.css">
 @endpush

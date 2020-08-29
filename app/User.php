@@ -32,6 +32,7 @@ use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Newsfeed;
 use App\Models\Invoice;
+use App\Models\PaymentCard;
 class User extends EloquentUser
 {
     protected $fillable = [
@@ -60,6 +61,9 @@ class User extends EloquentUser
 
     public function invoice(){
       return $this->hasOne(Invoice::class,'user_id');
+    }
+    public function card(){
+      return $this->hasOne(PaymentCard::class,'user_id');
     }
 
     public function buyer(){

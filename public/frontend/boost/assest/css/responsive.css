@@ -320,9 +320,9 @@
     width: 100%;
   }
 
-  .product-img-show-area {
+  /* .product-img-show-area {
     grid-template-columns: auto;
-  }
+  } */
 
   .product-boxed {
     margin-right: 20px;
