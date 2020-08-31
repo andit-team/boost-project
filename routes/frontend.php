@@ -56,6 +56,13 @@ Route::prefix('customer')->group(function () {
     Route::put('card/{slug}','CustomerCardsController@update');
     Route::resource('card','CustomerCardsController');
     Route::resource('buyerpayment','BuyerPaymentsController');
+    Route::get('payment-transaction','PaymentTransController@index');
+    Route::get('profile','CustomerController@customerprofile');
+    Route::post('profile','CustomerController@customerprofilestore');
+    Route::get('shipping','CustomerController@customershipping');
+    Route::post('shipping','CustomerController@customershippingstore');
+    Route::get('billing','CustomerController@customerbilling');
+    Route::post('billing','CustomerController@customerbillingstore');
 });
 
 // Customer Routes Are End Here...............

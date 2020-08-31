@@ -146,7 +146,7 @@
             </div> 
             <div class="col-lg-12">
               <div class="countinu-btn">
-              <button type="submit" class="btn btn-footer">Register</button>
+              <button type="submit" name="register" class="btn btn-footer">Register</button>
               </div>
             </div>
             </div>

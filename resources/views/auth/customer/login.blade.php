@@ -9,17 +9,24 @@
        <div class="login-left-side-area">
         <h2>Sign in</h2>
         <p>Use your great.gov.uk login details to sign in.</p>
-        <form class="#!" id="form-login">
+        @if (\Session::has('error'))
+               <div class="alert alert-danger">
+                        <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
+               </div>
+          @endif
+        <form  action="{{route('userloginprocess')}}" method="post" id="form-login">
+         @csrf
          <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" required class="form-control">
+          <input type="email" name="login[email]" id="email" required class="form-control">
          </div>
          <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" required>
+          <input type="password" class="form-control" name="login[password]" id="password" required>
          </div>
          <div class="">
-          <a href="dashboard" class="btn btn-footer">Sign In</a>
+          {{-- <a href="dashboard" class="btn btn-footer">Sign In</a> --}}
+          <button type="submit" class="btn btn-footer">Sign In</button>
           <a href="password-reset.html">Forgotten password?</a>
          </div>
         </form>

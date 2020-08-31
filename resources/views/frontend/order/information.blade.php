@@ -171,7 +171,7 @@
         </div> 
         <div class="col-lg-12">
           <div class="countinu-btn">
-          <button type="submit" class="btn btn-footer">Continue To Payment</button>
+          <button type="submit" name="information" class="btn btn-footer">Continue To Payment</button>
           </div>
         </div>
         </div>

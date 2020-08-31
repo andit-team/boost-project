@@ -10,6 +10,11 @@ use App\Models\Order;
 use Sentinel;
 class PaymentTransController extends Controller
 {
+    public function index(){ 
+        $transation = PaymentTrans::where('user_id',Sentinel::getUser()->id)->get(); 
+        
+        return view('frontend.paymenttransaction.index',compact('transation'));
+    }
     public function store(Request $request){
         // dd($request->all());
         $data = $request->data;

@@ -1114,7 +1114,7 @@ div.item-product-img.row div.col-md-2 {
 
 #card-payment-area .card-input-number .form-control {
   margin: 0;
-  width: 255px;
+  width: 144px;
 }
 
 #card-payment-area .date-cc-area .form-control {
@@ -1126,7 +1126,7 @@ div.item-product-img.row div.col-md-2 {
 }
 
 #card-payment-area .date-cc-area input:last-child {
-  width: 88px;
+  width: 63px;
 }
 
 #card-payment-area .date-cc-area {

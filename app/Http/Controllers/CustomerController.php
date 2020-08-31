@@ -13,13 +13,14 @@ use App\Models\Customer;
 use App\Models\Cart;
 use App\Models\Order;
 use Boost;
+use App\Models\PaymentCard;
 
 class CustomerController extends Controller{
     public function __construct(){
-        // $this->middleware(['auth','customer'])->except('register','userlogin','registration','userloginprocess');
+        $this->middleware(['auth','customer'])->except('register','userlogin','registration','userloginprocess');
     }
 
-    public function dashboard(){
+    public function dashboard(){   
         return view('customer-dashboard');
     }
 
@@ -27,7 +28,7 @@ class CustomerController extends Controller{
         return view('auth.customer.register');
     }
 
-    public function registration(Request $request){
+    public function registration(Request $request, User $user){
         // dd($request->all());
         $request->validate([
             'first_name'    => 'required',
@@ -40,9 +41,9 @@ class CustomerController extends Controller{
             // 'address_2'     => 'required',
             'town'          => 'required',
             'account'       => 'required',
-        ]);
+        ]); 
         $data = [
-		    'first_name'=> $request->first_name,
+            'first_name'=> $request->first_name, 
             'last_name' => $request->last_name,
             'com_name' => $request->com_name,
             'com_phone' => $request->com_phone,
@@ -76,17 +77,24 @@ class CustomerController extends Controller{
         Cart::where('user_id',session('user_id'))->update(['user_id'=> Sentinel::getUser()->id]);
         Order::where('user_id',session('user_id'))->update(['user_id'=>Sentinel::getUser()->id]);
         session()->forget('user_id');
-        session()->flash('success','registration  successfully');
-        return redirect('orders/payment-deatils');
+        if($request->has('information')){
+            session()->flash('success','registration  successfully');
+           return redirect('orders/payment-deatils');
+        }elseif($request->has('register')){
+            session()->flash('success','registration  successfully');
+            return redirect('dashboard');
+        }
+        
     }
 
     public function userloginprocess(Request $request){
+        // dd($request->all());
         $credentials = [
 			'email'		=> $request->login['email'],
 			'password'	=> $request->login['password'],
 			'type'	    => 'customer',
 		];
-
+        // dd($credentials);
 		// if($request->remember == 'on')
 		// 	$user = Sentinel::authenticateAndRemember($credentials);
 		// else
@@ -162,6 +170,79 @@ class CustomerController extends Controller{
 
         Session::flash('success', 'Password  Reset Successfully!');
         return redirect('login');
+    }
+
+    public function customerprofile(){
+        $customer = Sentinel::getUser();  
+        // dd($customer);
+        
+
+        return view('frontend.customers.update',compact('customer'));
+    }
+
+    public function customerprofilestore(Request $request){
+        $customer = Sentinel::getUser();  
+        
+        
+
+        $data = [
+            'first_name'=> $request->first_name, 
+            'last_name' => $request->last_name,
+            'email' 	=> $request->email,
+            'password' 	=> bcrypt($request->password),
+            'updated_at'=> now(),
+        ];
+        $customer->update($data);
+        Session::flash('success', 'Profile update Successfully!');
+        return redirect()->back();
+
+    }
+
+    public function customershipping(){
+        $shipping = Sentinel::getUser();
+        return view('frontend.shipping.update',compact('shipping'));
+    }
+
+    public function customershippingstore(Request $request){
+        $shipping = Sentinel::getUser();
+        $data = [
+            'address_1'  => $request->address_1,
+            'address_2'  => $request->address_2,
+            'postcode'   => $request->postcode,
+            'town'       => $request->town,
+            'update_now' => now(),
+        ];
+        $shipping->update($data);
+        Session::flash('success', 'Profile update Successfully!');
+        return redirect()->back();
+    }
+
+    public function customerbilling(){ 
+        $billing= PaymentCard::where('user_id',Sentinel::getUser()->id)->first();
+        return view('frontend.billing.update',compact('billing'));
+    }
+
+    public function customerbillingstore(Request $request){
+        $billing= PaymentCard::where('user_id',Sentinel::getUser()->id)->first();
+        $data = [
+            'type'              => $request->type,
+            'name'              => $request->name,
+            'card_number'       => $request->card_number,
+            'mmyy'              => $request->mmyy,
+            'cc'                => $request->cc,
+            'postCode'          => $request->postCode,
+            'address1'          => $request->address1,
+            'address2'          => $request->address2,
+            'town'              => $request->town,
+            'subcription'       => $request->subcription,
+            'aggredTc'          => $request->aggredTc,
+            'sameAsShipping'    => $request->sameAsShipping,
+            'updated_at'        => now()
+        ];
+
+        $billing->update( $data); 
+        Session::flash('success', 'Billing update Successfully!');
+        return redirect()->back();
     }
 
 }
