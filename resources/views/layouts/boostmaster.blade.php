@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{{ asset('frontend/boost/assest/css/style.css')}}" />
   <link rel="stylesheet" href="{{ asset('frontend/boost/assest/css/responsive.css')}}" />
   <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}"/>
+  @stack('css')
   <style>
     .datepicker-inline {
       width: 100%;

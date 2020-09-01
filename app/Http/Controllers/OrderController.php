@@ -108,9 +108,9 @@ class OrderController extends Controller
     public function ordernow($edit = Null){
         // dd(session()->all());
         // dd(Session::getId());
-        if($edit != 'edit'){
-            Sentinel::logout(null, true);
-        }
+        // if($edit != 'edit'){
+        //     Sentinel::logout(null, true);
+        // }
         $userId = $this->getSessionUser();
         $product = Product::all();
         $cartProduct = Cart::with('product')->where('user_id',$userId)->get();

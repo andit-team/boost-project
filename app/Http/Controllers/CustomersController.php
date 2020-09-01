@@ -19,7 +19,8 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        //
+        $customerlist = User::where('type','customer')->get(); 
+        return view('admin.customer.customerlist',compact('customerlist'));
     }
 
     /**
@@ -28,12 +29,13 @@ class CustomersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        $userprofile = Sentinel::getUser();
-        $profile = Customer::where('user_id',Sentinel::getUser()->id)->first();
-        if(!empty($profile))
-            return view('frontend.customers.update',compact('profile','userprofile'));
-        else
-        return view('frontend.customers.create',compact('profile','userprofile'));
+        // $userprofile = Sentinel::getUser();
+        // $profile = Customer::where('user_id',Sentinel::getUser()->id)->first();
+        // if(!empty($profile))
+        //     return view('frontend.customers.update',compact('profile','userprofile'));
+        // else
+        // return view('frontend.customers.create',compact('profile','userprofile'));
+        return view('admin.customer.create');
     }
 
     /**

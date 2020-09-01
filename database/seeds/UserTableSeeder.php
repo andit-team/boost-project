@@ -29,6 +29,7 @@ class UserTableSeeder extends Seeder
                 'email'         => 'customer@boost.com',
                 'password'      => '123456', //123456
                 'type'          => 'customer',
+                'account'       => 'customer',
                 'created_at'    => now(),
                 'updated_at'    => now()
         ];
@@ -42,7 +43,8 @@ class UserTableSeeder extends Seeder
                 'email'         => 'bussiness@boost.com',
                 // 'email'         => 'and.baazar@yahoo.com',
                 'password'      => '123456', //123456
-                'type'          => 'bussiness',
+                'type'          => 'customer',
+                'account'       =>  'bussiness',
                 'created_at'    => now(),
                 'updated_at'    => now()
         ];
@@ -55,7 +57,8 @@ class UserTableSeeder extends Seeder
                 'last_name'     => 'Mia',  
                 'email'         => 'educational@boost.com',
                 'password'      => '123456', //123456
-                'type'          => 'educational',
+                'type'          => 'customer',
+                'account'       => 'educational',
                 'created_at'    => now(),
                 'updated_at'    => now()
         ];

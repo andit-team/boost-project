@@ -20,8 +20,10 @@ class CustomerController extends Controller{
         $this->middleware(['auth','customer'])->except('register','userlogin','registration','userloginprocess');
     }
 
-    public function dashboard(){   
-        return view('customer-dashboard');
+    public function dashboard(){  
+        $purchase = Cart::where('user_id',Sentinel::getUser()->id)->get();
+        // dd($purchase); 
+        return view('customer-dashboard',compact('purchase'));
     }
 
     public function register(){
@@ -62,7 +64,7 @@ class CustomerController extends Controller{
             'town' => $request->town,
 		    'email' 	=> $request->email,
 		    'password' 	=> $request->password,
-		    'type' 	    => $request->account,
+		    'type' 	    => 'customer',
 		];
         $customer = Sentinel::registerAndActivate($data);
         $role = \Sentinel::findRoleBySlug($request->account);
@@ -71,7 +73,7 @@ class CustomerController extends Controller{
         $credentials = [
 			'email'		=> $customer->email,
 			'password'	=> $request->password,
-			'type'	    => $request->account,
+			'type'	    => 'customer',
 		];
         Sentinel::authenticate($credentials);
         Cart::where('user_id',session('user_id'))->update(['user_id'=> Sentinel::getUser()->id]);
@@ -219,30 +221,83 @@ class CustomerController extends Controller{
 
     public function customerbilling(){ 
         $billing= PaymentCard::where('user_id',Sentinel::getUser()->id)->first();
-        return view('frontend.billing.update',compact('billing'));
+        if($billing){
+            return view('frontend.billing.update',compact('billing'));
+        }else{
+            return view('frontend.billing.edit');
+        }
+        
     }
 
     public function customerbillingstore(Request $request){
         $billing= PaymentCard::where('user_id',Sentinel::getUser()->id)->first();
-        $data = [
-            'type'              => $request->type,
-            'name'              => $request->name,
-            'card_number'       => $request->card_number,
-            'mmyy'              => $request->mmyy,
-            'cc'                => $request->cc,
-            'postCode'          => $request->postCode,
-            'address1'          => $request->address1,
-            'address2'          => $request->address2,
-            'town'              => $request->town,
-            'subcription'       => $request->subcription,
-            'aggredTc'          => $request->aggredTc,
-            'sameAsShipping'    => $request->sameAsShipping,
-            'updated_at'        => now()
-        ];
-
-        $billing->update( $data); 
+        if($billing){
+            $data = [
+                'type'              => $request->type,
+                'name'              => $request->name,
+                'card_number'       => $request->card_number,
+                'mmyy'              => $request->mmyy,
+                'cc'                => $request->cc,
+                'postCode'          => $request->postCode,
+                'address1'          => $request->address1,
+                'address2'          => $request->address2,
+                'town'              => $request->town,
+                'subcription'       => $request->subcription,
+                'aggredTc'          => $request->aggredTc,
+                'sameAsShipping'    => $request->sameAsShipping,
+                'updated_at'        => now()
+            ];
+    
+            $billing->update( $data); 
+        }else{
+            $data = [
+                'type'              => $request->type,
+                'name'              => $request->name,
+                'card_number'       => $request->card_number,
+                'mmyy'              => $request->mmyy,
+                'cc'                => $request->cc,
+                'postCode'          => $request->postCode,
+                'address1'          => $request->address1,
+                'address2'          => $request->address2,
+                'town'              => $request->town,
+                'subcription'       => $request->subcription,
+                'aggredTc'          => $request->aggredTc,
+                'sameAsShipping'    => $request->sameAsShipping,
+                'user_id'           =>Sentinel::getUser()->id, 
+                'updated_at'        => now(),
+            ];
+            PaymentCard::create($data);
+        } 
         Session::flash('success', 'Billing update Successfully!');
         return redirect()->back();
     }
 
+    public function bussinessprofile(){
+        $business = Sentinel::getUser();
+        // dd($business);
+        return view('frontend.bussinessprofile.update',compact('business'));
+    }
+
+    public function bussinessprofilestore(Request $request){
+        $business = Sentinel::getUser();
+
+        $data = [
+            'first_name'=> $request->first_name, 
+            'last_name' => $request->last_name,
+            'com_name' => $request->com_name,
+            'com_phone' => $request->com_phone,
+            'com_address' => $request->com_address,
+            'com_vat' => $request->com_vat, 
+            'file_1'=> Boost::pdfUpload($request,'file_1','old_file_1','/uploads/customer_profile'), 
+            'file_2' => Boost::pdfUpload($request,'file_2','old_file_2','/uploads/customer_profile'),
+            'email' 	=> $request->email,
+            'update_at' => now(),
+        ]; 
+        
+        $business->update($data);
+
+        Session::flash('success', 'Bussiness Profile update Successfully!');
+        return redirect()->back();
+    }
+ 
 }

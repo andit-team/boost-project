@@ -63,6 +63,8 @@ Route::prefix('customer')->group(function () {
     Route::post('shipping','CustomerController@customershippingstore');
     Route::get('billing','CustomerController@customerbilling');
     Route::post('billing','CustomerController@customerbillingstore');
+    Route::get('bussiness-profile','CustomerController@bussinessprofile');
+    Route::post('bussiness-profile','CustomerController@bussinessprofilestore');
 });
 
 // Customer Routes Are End Here...............

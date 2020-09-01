@@ -32,6 +32,8 @@ Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
     Route::get('products/update-products/{slug}/update','ProductController@edit');
     Route::put('products/update-products/{slug}','ProductController@update');
     Route::resource('products','ProductController');
+    Route::get('customer/new-profile','CustomersController@create');
+    Route::resource('customer','CustomersController');
    // SME Product list start //
 
     Route::get('color-image/{color_slug}','ProductsController@colorWiseImage');
