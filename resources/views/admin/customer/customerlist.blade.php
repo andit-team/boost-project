@@ -11,10 +11,7 @@
     }
     .m-l-reject{
         margin-left:140px; margin-top:-27px;
-    }
-    .table{
-        padding-top: 25px!important;
-    }
+    } 
 </style>
 @endpush 
 @include('elements.alert') 
@@ -38,7 +35,7 @@
                             <div class="text-right pb-3">
                                 <a href="{{ url('boostadmin/customer/new-profile') }}" class="btn btn-md btn-info" title="create">Add New</a>
                             </div> 
-                            <div>
+                            <hr> 
                                 <table class="table table-borderd" id="dataTableNoPagingDesc3">
                                     <thead>
                                         <tr>
@@ -48,7 +45,7 @@
                                             <th>Address</th>
                                             <th>Account type</th>
                                             <th>Post code</th> 
-                                            {{-- <th class="text-center">Action</th> --}}
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -61,25 +58,24 @@
                                                     <td>{{ $row->address_1}}</td>
                                                     <td>{{ $row->account }}</td> 
                                                     <td>{{ $row->postcode }}</td> 
-                                                    {{-- <td class="d-flex justify-content-between" >
+                                                    <td class="d-flex justify-content-between" >
                                                         <ul style="margin-left:200px!important">
-                                                            <li><a href="{{ url('boostadmin/merchant/update-profile/'.$row->slug.'/updatemerchant')}}" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>
+                                                            <li><a href="{{ url('boostadmin/customer/edit/'.$row->id.'/update-customer')}}" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>
                                                             <li> 
-                                                                <form action="{{ url('boostadmin/merchant/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
+                                                                <form action="{{ url('boostadmin/customer/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
                                                                     @csrf
                                                                     @method('delete') 
                                                                     <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
                                                                 </form> 
                                                             </li>
                                                         </ul>
-                                                    </td> --}}
+                                                    </td>
                                                 </tr> 
                                             @endforeach 
                                     </tbody>
                                 </table>
                             </div>
-                        </div> 
-                    </div> 
+                        </div>  
                 </div>
             </div>
         </div>

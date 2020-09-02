@@ -52,7 +52,7 @@
                                         @foreach($product as $row)
                                             <tr>
                                                 <td>{{ ++$i }}</td> 
-                                                <td><img src="{{ !empty($row->product_image) ? asset($row->product_image) : asset('/uploads/productImage/product.png') }}" width="100" height="100"> </td> 
+                                                <td><img src="{{ !empty($row->product_image) ? asset($row->product_image) : asset('/uploads/productImage/product.png') }}" width="70" height="50"> </td> 
                                                 <td width="500">{{ $row->product_name}}</td>
                                                 <td width="200">{{ $row->price}} €</td>
                                                 <td>{{ $row->weight }}</td>  

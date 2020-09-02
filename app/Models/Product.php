@@ -10,7 +10,7 @@ use App\Models\Cart;
 
 class Product extends Model
 {
-    protected $fillable = ['product_name','slug','price','weight','product_image','user_id'];
+    protected $fillable = ['product_name','slug','price','weight','product_image','desc','user_id'];
     
       public function getRouteKeyName()
       {

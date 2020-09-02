@@ -28,13 +28,7 @@ class CustomersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(){
-        // $userprofile = Sentinel::getUser();
-        // $profile = Customer::where('user_id',Sentinel::getUser()->id)->first();
-        // if(!empty($profile))
-        //     return view('frontend.customers.update',compact('profile','userprofile'));
-        // else
-        // return view('frontend.customers.create',compact('profile','userprofile'));
+    public function create(){ 
         return view('admin.customer.create');
     }
 
@@ -44,54 +38,53 @@ class CustomersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-        $userprofile = Sentinel::getUser();
-        $buyerId = Customer::where('user_id',Sentinel::getUser()->id)->first();
-        if($buyerId){
-           $buyerId->update([
-                'first_name'            => $request->first_name,
-                'last_name'             => $request->last_name,
-                'phone'                 => $request->phone,
-                'picture'               => Boost::fileUpload($request,'picture','old_image','/uploads/buyer_profile'),
-                'dob'                   => $request->dob,
-                'gender'                => $request->gender,
-                'description'           => $request->description,
-                'updated_at'            => now(),
-            ]);
+    public function store(Request $request,User $user){
+        $request->validate([
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'email'         => 'required|email|unique:App\User,email',
+            'password'      => 'required|min:6', 
+            'postcode'      => 'required',
+            'address_1'     => 'required', 
+            'town'          => 'required',
+            'account'       => 'required',
+        ]); 
+        
+        $data = [
+            'first_name'  => $request->first_name, 
+            'last_name'   => $request->last_name,
+            'com_name'    => $request->com_name,
+            'com_phone'   => $request->com_phone,
+            'com_address' => $request->com_address,
+            'com_vat'     => $request->com_vat,
+            'or_name'     => $request->or_name,
+            'or_phone'    => $request->or_phone,
+            'or_address'  => $request->or_address,
+            'account'     => $request->account,
+            'or_reg'      => $request->or_reg, 
+            'file_1'      => Boost::pdfUpload($request,'file_1','','/uploads/customer_profile'), 
+            'file_2'      => Boost::pdfUpload($request,'file_2','','/uploads/customer_profile'),
+            'address_1'   => $request->address_1,
+            'address_2'   => $request->address_2,
+            'postcode'    => $request->postcode,
+            'town'        => $request->town,
+		    'email' 	  => $request->email,
+		    'password' 	  => $request->password,
+		    'type' 	      => 'customer',
+        ]; 
 
-            $userprofile->update([
-                'first_name'            => $request->first_name,
-                'last_name'             => $request->last_name,
-            ]);
+        $customer = Sentinel::registerAndActivate($data);
+        $role = \Sentinel::findRoleBySlug($request->account);
+        $role->users()->attach($customer->id);
 
+        $credentials = [
+			'email'		=> $customer->email,
+			'password'	=> $request->password,
+			'type'	    => 'customer',
+		];
 
-            Session::flash('success','Profile update Successfully');
-            return back();
-        }else{
-            $data =[
-                'first_name'            => $request->first_name,
-                'last_name'             => $request->last_name,
-                'phone'                 => $request->phone,
-                'picture'               => Boost::fileUpload($request,'picture','','/uploads/buyer_profile'),
-                'dob'                   => $request->dob,
-                'gender'                => $request->gender,
-                'description'           => $request->description,
-                'user_id'               => Sentinel::getUser()->id,
-                'created_at'            => now(),
-            ];
-
-            Customer::create($data);
-
-            $userprofile->update([
-                'first_name'            => $request->first_name,
-                'last_name'             => $request->last_name,
-            ]);
-            Session::flash('success','Profile Create Successfully');
-            return back();
-        }
-
-        Session::flash('danger','please insert your profile inforation correctley');
-        return back();
+        Session::flash('success','Customer profile addes successfully');
+        return redirect('boostadmin/customer');
 
     }
 
@@ -114,7 +107,8 @@ class CustomersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = User::find($id);
+        return view('admin.customer.edit',compact('customer'));
     }
 
     /**
@@ -126,7 +120,41 @@ class CustomersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'first_name'    => 'required',
+            'last_name'     => 'required',
+            'email'         => 'required|email|unique:App\User,email,'.$id, 
+            'postcode'      => 'required',
+            'address_1'     => 'required', 
+            'town'          => 'required',
+            'account'       => 'required',
+        ]); 
+        $customer = User::find($id);
+        $data = [
+            'first_name'  => $request->first_name, 
+            'last_name'   => $request->last_name,
+            'com_name'    => $request->com_name,
+            'com_phone'   => $request->com_phone,
+            'com_address' => $request->com_address,
+            'com_vat'     => $request->com_vat,
+            'or_name'     => $request->or_name,
+            'or_phone'    => $request->or_phone,
+            'or_address'  => $request->or_address,
+            'account'     => $request->account,
+            'or_reg'      => $request->or_reg, 
+            'file_1'      => Boost::pdfUpload($request,'file_1','old_file_1','/uploads/customer_profile'), 
+            'file_2'      => Boost::pdfUpload($request,'file_2','old_file_2','/uploads/customer_profile'),
+            'address_1'   => $request->address_1,
+            'address_2'   => $request->address_2,
+            'postcode'    => $request->postcode,
+            'town'        => $request->town,
+		    'email' 	  => $request->email, 
+        ];
+
+        $customer->update($data);
+        
+        Session::flash('success','Customer profile update successfully');
+        return redirect('boostadmin/customer');
     }
 
     /**
@@ -137,7 +165,12 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $customer = User::find($id);
+        $customer->delete();
+
+        Session::flash('error','Customer profile deleted!');
+        return redirect('boostadmin/customer');
+
     }
 
     private function validateForm($request){
