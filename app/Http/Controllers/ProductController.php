@@ -50,6 +50,7 @@ class ProductController extends Controller
             'weight'       => $request->weight,
             'price'        => $request->price,
             'product_image'=> Boost::fileUpload($request,'product_image','','/uploads/productImage'),
+            'desc'         => $request->desc,
             'user_id'      => Sentinel::getUser()->id,
             'created_at'   => now(),
         ];
@@ -110,6 +111,7 @@ class ProductController extends Controller
             'weight'       => $request->weight,
             'price'        => $request->price,
             'product_image'=> Boost::fileUpload($request,'product_image','old_image','/uploads/productImage'), 
+            'desc'         => $request->desc,
             'updated_at'   => now(),
         ];
 

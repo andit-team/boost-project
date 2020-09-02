@@ -55,7 +55,7 @@
                                                 <td><img src="{{ !empty($row->product_image) ? asset($row->product_image) : asset('/uploads/productImage/product.png') }}" width="70" height="50"> </td> 
                                                 <td width="500">{{ $row->product_name}}</td>
                                                 <td width="200">{{ $row->price}} €</td>
-                                                <td>{{ $row->weight }}</td>  
+                                                <td>{{ $row->weight }} ml</td>  
                                                 <td class="d-flex justify-content-between" >
                                                     <ul style="margin-left:200px!important">
                                                         <li><a href="{{ url('boostadmin/products/update-products/'.$row->slug.'/update') }}" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>

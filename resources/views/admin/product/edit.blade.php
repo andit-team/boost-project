@@ -32,8 +32,8 @@
     .inputhight{
         height: 51px!important;
     }
-    .{
-        /* height: 37px!important; */
+    .contact-page{
+      padding-left: 300px!important;
     }
 </style>
 @include('elements.alert')
@@ -52,7 +52,7 @@
         <div class="container">
             <div class="row">
                 {{-- @include('layouts.inc.sidebar.buyer-sidebar',[$active = 'profile']) --}}
-                <div class="col-sm-12 contact-page"> 
+                <div class="col-sm-9 contact-page"> 
                     <div class="card">
                         <div class="card-body">
                             <h3>PRODUCT DETAIL</h3>
@@ -70,10 +70,15 @@
         
                                         <label for="weight" class="mt-2">Weight<span class="text-danger"> *</span></label> <span class="text-danger">{{ $errors->first('weight') }}</span>
                                         <input type="number" class="form-control  @error('weight') border-danger @enderror" required  name="weight" value="{{ old('weight',$product->weight) }}" id="" placeholder="Weight">
+
+                                        <label for="desc" class="mt-2">Descripiton</label>
+                                       <textarea  class="form-control " rows="10" cols="10"  name="desc"  id="" placeholder="Product Description">{{ $product->desc }}</textarea>
                                     </div>
         
                                     <div class="col-md-4 text-right">
+                                        <div class="text-left pl-4">
                                         <label for="picture">Product Image</label>
+                                        </div>
                                         <div class="mt-0"> 
                                                 <img id="output"  class="imagestyle" src="{{ !empty($product->product_image) ? asset($product->product_image) : asset('/uploads/productImage/product.png') }}" /> 
                                         </div>
@@ -85,6 +90,7 @@
                                     </div>
                                     <div class="col-md-12 mt-4">
                                         <button type="submit" class="btn btn-md btn-info" >Update</button>
+                                        <a href="{{ url('boostadmin/products') }}" class="btn btn-md btn-primary">Back</a>
                                     </div>
                                 </div>  
                             </form>

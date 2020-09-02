@@ -71,11 +71,13 @@
                                         <input type="number" class="form-control  @error('weight') border-danger @enderror" required  name="weight" value="{{ old('weight') }}" id="" placeholder="Weight">
 
                                         <label for="desc" class="mt-2">Descripiton</label>
-                                        <textarea  class="form-control " rows="10" cols="10"  name="desc" value="{{ old('desc') }}" id="" placeholder="Product Description"></textarea>
+                                        <textarea  class="form-control " rows="10" cols="10"  name="desc"  id="" placeholder="Product Description"></textarea>
                                     </div>
         
                                     <div class="col-md-4 text-right">
+                                        <div class="text-left pl-4">
                                         <label for="picture">Product Image</label>
+                                        </div>
                                         <div class="mt-0"> 
                                                 <img id="output"  class="imagestyle" src="{{ asset('/uploads/productImage/product.png') }}" /> 
                                         </div>
@@ -90,6 +92,7 @@
                                     </div>
                                     <div class="col-md-12 mt-4">
                                         <button type="submit" class="btn btn-md btn-info" >Save</button>
+                                        <a href="{{ url('boostadmin/products') }}" class="btn btn-md btn-primary">Back</a>
                                     </div>
                                 </div>  
                             </form>

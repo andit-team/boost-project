@@ -148,6 +148,7 @@
             
                                 <div class="col-md-12 mt-4">
                                     <button type="submit" class="btn btn-lg btn-info" >Save</button>
+                                    <a href="{{url('boostadmin/customer')}}" class="btn btn-md btn-primary">Back</a>
                                 </div>
                                    
                             </form>
