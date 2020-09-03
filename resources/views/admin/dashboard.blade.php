@@ -109,7 +109,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Order ID</th>
-                                    <th scope="col">Customer Name</th>
+                                    {{-- <th scope="col">Customer Name</th> --}}
                                     <th scope="col">Invoice</th>
                                     <th scope="col">Status</th>
                                 </tr>
@@ -119,7 +119,7 @@
                                 @foreach($last_10_order as $row)
                                 <tr>
                                     <td>{{ ++$i }}</td>
-                                    <td>{{ $row->user->first_name.' '.$row->user->last_name }}</td>
+                                    {{-- <td>{{ $row->user->first_name.' '.$row->user->last_name }}</td> --}}
                                     <td>{{ $row->invoice }}</td>
                                     <td>{{ $row->order_status }}</td>
                                 </tr> 

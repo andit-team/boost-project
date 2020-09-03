@@ -53,7 +53,7 @@
                             @forelse($orders as $order)
                             <tr>
                               <td class="text-center">{{sprintf('%02d',++$i)}}</td>
-                              <td> <a href="invoice/{{$order->invoice}}"> #{{$order->invoice}} </a></td>
+                              <td> <a href="customer/invoice/{{$order->invoice}}"> #{{$order->invoice}} </a></td>
                               <td>
 
                                 @php 
