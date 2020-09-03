@@ -63,6 +63,7 @@ Route::prefix('customer')->group(function () {
     Route::post('profile','CustomerController@customerprofilestore');
     Route::get('shipping','CustomerController@customershipping');
     Route::post('shipping','CustomerController@customershippingstore');
+    Route::get('invoice/{slug}','CustomerController@invoice');
     Route::get('billing','CustomerController@customerbilling');
     Route::post('billing','CustomerController@customerbillingstore');
     Route::get('bussiness-profile','CustomerController@bussinessprofile');

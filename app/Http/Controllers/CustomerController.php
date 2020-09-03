@@ -27,6 +27,7 @@ class CustomerController extends Controller{
         return view('customer-dashboard',compact('orders','i'));
     }
 
+
     public function register(){
         return view('auth.customer.register');
     }
@@ -320,11 +321,18 @@ class CustomerController extends Controller{
         return redirect()->back();
     }
 
+
     public function orderHistory(){
         $orders = Order::where('user_id',Sentinel::getUser()->id)->get();
         $i = 0;
 
         return view('frontend.orderhistory.orderhistory',compact('orders','i'));
+    }
+
+    public function invoice($invoice){
+        $order = Order::where('invoice',$invoice)->where('user_id',Sentinel::getUser()->id)->first();
+        return view('frontend.order.invoice');
+        // dd($order); 
     }
  
 }
