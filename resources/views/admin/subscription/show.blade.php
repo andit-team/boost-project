@@ -19,11 +19,11 @@
 @endpush 
 @include('elements.alert') 
 @component('admin.layout.inc.breadcrumb') 
-@slot('pageTitle') Order List
+@slot('pageTitle') Subscription Order List
 @endslot 
 @slot('page')
 <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-<li class="breadcrumb-item active" aria-current="page">Order</li>
+<li class="breadcrumb-item active" aria-current="page">Subscription</li>
 @endslot
  @endcomponent
 <div class="container-fluid">
