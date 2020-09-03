@@ -9,8 +9,8 @@
       <div class="dashboard-list">
         <ul>
           <li class="{{$active == 'dashboard' ? 'active' : ''}}"><a href="{{ url('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a></li>
-          <li><a href="{{ url('customer/order-hitory') }}"> <i class="fas fa-shopping-cart"></i> Order History</a></li>
-          <li class="{{ $active == 'order' ? 'active' : '' }}"><a href="{{url('orders/order-now')}}"> <i class="fas fa-cart-plus"></i> New Order</a></li>
+          <li class="{{ $active == 'order' ? 'active' : '' }}"><a href="{{ url('customer/order-hitory') }}"> <i class="fas fa-shopping-cart"></i> Order History</a></li>
+          <li><a href="{{url('orders/order-now')}}"> <i class="fas fa-cart-plus"></i> New Order</a></li>
           <li class="{{ $active == 'shipping' ? 'active' : '' }}"><a href="{{ url('customer/shipping') }}"><i class="fas fa-shipping-fast"></i> Shipping</a></li>
           <li class="{{ $active == 'billing' ? 'active' : '' }}"><a href="{{ url('customer/billing') }}"><i class="fas fa-file-invoice-dollar"></i> Billing</a></li>
           <li class="{{ $active == 'trans' ? 'active' : '' }}"><a href="{{ url('customer/payment-transaction') }}"><i class="fas fa-exchange-alt"></i> Transections</a></li>

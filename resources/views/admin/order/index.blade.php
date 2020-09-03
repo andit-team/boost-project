@@ -40,7 +40,7 @@
                                     <thead>
                                         <tr>
                                             <th width="50">Sl</th>  
-                                            <th>Customer Name</th>  
+                                            {{-- <th>Customer Name</th>   --}}
                                             <th>Order Invoice</th>
                                             <th>Delevery Date</th>
                                             <th>Delevery Frequency</th>
@@ -54,7 +54,7 @@
                                             @foreach($order as $row)
                                                 <tr>
                                                     <td>{{ ++$i }}</td>  
-                                                    <td>{{ $row->user->first_name.' '.$row->user->last_name}}</td> 
+                                                    {{-- <td>{{ $row->user->first_name.' '.$row->user->last_name}}</td>  --}}
                                                     <td>{{ $row->invoice }}</td>
                                                     <td>{{ $row->delivery_date}}</td>
                                                     <td>{{ $row->delivery_frequency }}</td> 
