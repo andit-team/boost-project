@@ -31,6 +31,8 @@ Route::get('orders/edit/payment-deatils','OrderController@EditPayment');
 Route::post('orders/edit/payment-deatils','OrderController@UpdatePayment')->name('updateCard');
 
 Route::get('orders/overview','OrderController@overview');
+Route::post('orders/confirm','OrderController@orderConfirm')->name('orderConfirm');
+
 Route::post('orders/addcart','OrderController@addCart');
 Route::post('orders/decreas','OrderController@orderDecreas');
 Route::post('orders/remove','OrderController@orderRemove');

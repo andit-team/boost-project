@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Date;
 use App\Models\Cart;
 use App\Models\PaymentCard;
+use App\Models\Orderitem;
 
 class OrderController extends Controller
 {
@@ -156,10 +157,13 @@ class OrderController extends Controller
     public function selectDelivery(){
         $userId = $this->getSessionUser();
         $cartProduct = Cart::where('user_id',$userId)->count();
-        if($cartProduct == 0 ){
-            return redirect()->back();
+        if($cartProduct != 0 ){
+            if(session()->has('invoice')){
+                return redirect('orders/edit/select-delivery');
+            }
+            return view('frontend.order.select-delivery');
         }
-        return view('frontend.order.select-delivery');
+        return redirect()->back();
     }
     public function EditDelivery(){
         $order = Order::where('invoice',session('invoice'))->first();
@@ -190,11 +194,18 @@ class OrderController extends Controller
         ];
         $order = Order::create($data);
         session(['invoice' => $order->invoice]);
-        return redirect('orders/information');
+        if (Sentinel::check()){
+            return redirect('orders/edit/information');
+        }else{
+            return redirect('login');
+        }
     }
 
     public function information(){
         if(session()->has('invoice')){
+            if (Sentinel::check()){
+                return redirect('orders/edit/information');
+            }
             return view('frontend.order.information');
         }
         return redirect()->back();
@@ -247,10 +258,13 @@ class OrderController extends Controller
     }
 
     public function payment(){
-        if (!Sentinel::check()) {
-            return redirect()->back();
+        if (Sentinel::check()) {
+            if(Sentinel::getUser()->card){
+                return redirect('orders/edit/payment-deatils');
+            }
+            return view('frontend.order.payments-deatils');
         }
-        return view('frontend.order.payments-deatils');
+        return redirect()->back();
     }
 
     public function paymentCardSave(Request $request){
@@ -329,7 +343,7 @@ class OrderController extends Controller
             'updated_at'        => now()
         ];
         $card->update($data);
-        return redirect($request->back);
+        return redirect('orders/overview');
     }
 
 
@@ -341,7 +355,7 @@ class OrderController extends Controller
             return redirect()->back();
         }
         $carts = Cart::with('product')->where('user_id',Sentinel::getUser()->id)->get();
-        $order = Order::where('user_id',Sentinel::getUser()->id)->OrderBy('id','DESC')->first();
+        $order = Order::where('invoice',session('invoice'))->first();
         // dd($order);
         return view('frontend.order.overview',compact('carts','order'));
     }
@@ -369,5 +383,30 @@ class OrderController extends Controller
             return response()->json(['status'=>'OK']);
             // echo json_encode($orderremove );
         }
+    }
+
+    public function orderConfirm(Request $request){
+        $carts = Cart::where('user_id',Sentinel::getUser()->id)->get()->toArray();
+        $subTotal = 0;
+        $order = Order::where('invoice', session('invoice'))->first();
+        foreach($carts as $item){
+            $subTotal += $item['qty'] * $item['price'];
+            $item['order_id']   = $order->id;
+            Orderitem::create($item);
+        }
+        $order->update([
+                'sub_total'         => $subTotal, 
+                'total'             => $subTotal, 
+                'pay_amount'        => 0,
+                'payment_status'    => 'Pending'
+            ]);
+        Cart::where('user_id',Sentinel::getUser()->id)->delete();
+        session()->forget('invoice');
+
+        //Send Mail Here...
+
+        Session::flash('success','Your order has been successfully created!');
+        return redirect('dashboard');
+
     }
 }

@@ -104,8 +104,13 @@
                             ])
                         @else
 
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                            Bank Transfer
+                        {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> --}}
+                            <form action="{{route('orderConfirm')}}" method="post" id="deleteButtonorderConfirm">
+                                @csrf
+                                <input type="hidden" value="{{$order->invoice}}" name="invoice">
+                            </form>
+                        <button type="button" class="btn btn-primary" onclick="sweetalertDelete('orderConfirm')">
+                            Confirmation Order
                         </button>
 
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -147,7 +152,7 @@
                                 </div>
                               </div>
                             </div>
-                          </div>    
+                        </div>    
 
                         @endif
                     @else

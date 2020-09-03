@@ -24,6 +24,9 @@
             <li class="nav-item">
               <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">COMMERCIO</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login">LOGIN</a>
+            </li>
           </ul>
         </div>
       </div>

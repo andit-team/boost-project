@@ -35,69 +35,56 @@
           <div class="col-lg-8 co-md-12 col-sm-12 col-12">
             <div class="dashboard-right-side">
               <div class="dashboard-right-side-content">
-                <h3>Dashboard</h3>
-                <div class="dashboard-cards">
-                  <div class="row"> 
-                      <h5>Purchase History</h5>  
+                <div class="dashboard-cards mt-0">
+                  <div class="container">
+                    <div class="row">  
+                        <h5>Invoice List</h5>
                         <table class="table table-striped">
                           <thead>
                             <tr>
-                              <th>Id</th>
-                              <th>Product Name</th>
-                              <th>QTY</th>
+                              <th class="text-center">#Sl</th>
+                              <th width="120">Invoice Number</th>
+                              <th>Products</th>
+                              <th width="120" class="text-right">Total</th>
+                              <th width="120" class="text-center">Payment Status</th>
                             </tr>
                           </thead>
                           <tbody>
-                            @php $i =0; @endphp
-                            @forelse($purchase as $row)
-                              <tr>
-                                <td>{{++$i}}</td>
-                                <td>{{$row->product->product_name}}</td>
-                                <td>{{$row->qty}}</td>
-                              </tr>
-                              @empty
-                              <tr>
-                                  <td colspan="7">No Product found</td>
-                              </tr>
-                              @endforelse
+                            @forelse($orders as $order)
+                            <tr>
+                              <td class="text-center">{{sprintf('%02d',++$i)}}</td>
+                              <td> <a href="invoice/{{$order->invoice}}"> #{{$order->invoice}} </a></td>
+                              <td>
+
+                                @php 
+                                    $products = '';
+                                    $total = 0;
+                                @endphp
+                                @foreach($order->items as $cart)
+                                    @php
+                                        $total += $cart->qty*$cart->price;
+                                        $products .= $cart->product->product_name.' , '; 
+                                    @endphp
+                                @endforeach
+                                {{rtrim($products,' , ')}}
+
+                              </td>
+                              <td class="text-right">
+                                £ {{$total}}
+                              </td>
+                              <td class="text-center">
+                                {{ucfirst($order->payment_status)}}
+                              </td>
+                            </tr>
+                            @empty
+
+                            <tr>
+                              <td colspan="3">No Order yet</td>
+                            </tr>
+                            @endforelse
                           </tbody>
                         </table> 
-                  </div>
-                </div>
-                <div class="dashboard-cards">
-                  <div class="row">  
-                      <h5>Invoice List</h5>
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th>Id</th>
-                            <th>Invoice Number</th>
-                            <th>Product Id</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>#102356</td>
-                            <td>5</td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>#102360</td>
-                            <td>5</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>#102365</td>
-                            <td>5</td>
-                          </tr>
-                          <tr>
-                            <td>4</td>
-                            <td>#102355</td>
-                            <td>5</td>
-                          </tr>
-                        </tbody>
-                      </table> 
+                    </div>
                   </div>
                 </div>
               </div>

@@ -31,13 +31,14 @@ class PaymentTransController extends Controller
         ];
         PaymentTrans::create($payment);
         $carts = Cart::where('user_id',Sentinel::getUser()->id)->get()->toArray();
+        $order = Order::where('invoice',$request->invoice)->first();
         $subTotal = 0;
-        $status = 'OK';
         foreach($carts as $item){
             $subTotal += $item['qty'] * $item['price'];
+            $item['order_id']   = $order->id;
             Orderitem::create($item);
         }
-        Order::where('invoice',$request->invoice)->update([
+        $order->update([
                 'sub_total'         => $subTotal, 
                 'total'             => $subTotal, 
                 'pay_amount'        => $payment['paid_amount'],

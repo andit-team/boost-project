@@ -20,10 +20,11 @@ class CustomerController extends Controller{
         $this->middleware(['auth','customer'])->except('register','userlogin','registration','userloginprocess');
     }
 
-    public function dashboard(){  
-        $purchase = Cart::where('user_id',Sentinel::getUser()->id)->get();
+    public function dashboard(){
+        $orders = Order::where('user_id',Sentinel::getUser()->id)->get();
         // dd($purchase); 
-        return view('customer-dashboard',compact('purchase'));
+        $i = 0;
+        return view('customer-dashboard',compact('orders','i'));
     }
 
     public function register(){
@@ -76,16 +77,26 @@ class CustomerController extends Controller{
 			'type'	    => 'customer',
 		];
         Sentinel::authenticate($credentials);
-        Cart::where('user_id',session('user_id'))->update(['user_id'=> Sentinel::getUser()->id]);
-        Order::where('user_id',session('user_id'))->update(['user_id'=>Sentinel::getUser()->id]);
-        session()->forget('user_id');
-        if($request->has('information')){
-            session()->flash('success','registration  successfully');
-           return redirect('orders/payment-deatils');
-        }elseif($request->has('register')){
-            session()->flash('success','registration  successfully');
+        if(session()->has('user_id'))
+            Cart::where('user_id',session('user_id'))->update(['user_id'=> Sentinel::getUser()->id]);
+            Order::where('user_id',session('user_id'))->update(['user_id'=>Sentinel::getUser()->id]);
+            session()->forget('user_id');
+
+        // if($request->has('information')){
+        //     session()->flash('success','registration  successfully');
+        //    return redirect('orders/payment-deatils');
+        // }elseif($request->has('register')){
+        //     session()->flash('success','registration  successfully');
+        //     return redirect('dashboard');
+        // }
+        Session::flash('success','Registration Successfully!');
+        if(session()->has('invoice'))
+            if($customer->card)
+                return redirect('orders/edit/payment-deatils');
+            else
+                return redirect('orders/payment-deatils');
+        else
             return redirect('dashboard');
-        }
         
     }
 
@@ -96,14 +107,23 @@ class CustomerController extends Controller{
 			'password'	=> $request->login['password'],
 			'type'	    => 'customer',
 		];
-        // dd($credentials);
-		// if($request->remember == 'on')
-		// 	$user = Sentinel::authenticateAndRemember($credentials);
-		// else
-			$user = Sentinel::authenticate($credentials);
+		$user = Sentinel::authenticate($credentials);
         // dd($user);
-		if($user)
-			return redirect('dashboard');
+
+        if(session()->has('user_id'))
+            Cart::where('user_id',session('user_id'))->update(['user_id'=> Sentinel::getUser()->id]);
+            Order::where('user_id',session('user_id'))->update(['user_id'=>Sentinel::getUser()->id]);
+            session()->forget('user_id');
+
+        Session::flash('success','You are log in...');
+        if($user)
+            if(session()->has('invoice'))
+                if($user->card)
+                    return redirect('orders/edit/payment-deatils');
+                else
+                    return redirect('orders/payment-deatils');
+            else
+    			return redirect('dashboard');
 		else
 			return redirect('login')->with('error', 'Invalid email or password');
     }
