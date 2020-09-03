@@ -32,7 +32,8 @@ use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Newsfeed;
 use App\Models\Invoice;
-use App\Models\PaymentCard;
+use App\Models\PaymentCard; 
+
 class User extends EloquentUser
 {
     protected $fillable = [
@@ -64,56 +65,22 @@ class User extends EloquentUser
     }
     public function card(){
       return $this->hasOne(PaymentCard::class,'user_id');
+    } 
+    public function order(){
+      return $this->hasMany(Order::class,'user_id');
+    }  
+    public function cart(){
+      return $this->hasMany(Cart::class,'user_id');
+    }  
+    public function inventory(){
+      return $this->hasMany(Inventory::class,'user_id');
     }
-
-    public function buyer(){
-      return $this->hasMany(Customer::class,'buyer_id');
-   }
-
-     public function buyercard(){
-       return $this->hasMany(CustomerCard::class,'buyer_id');
+    public function product(){
+        return $this->hasMany(Product::class,'user_id');
+    }   
+    public function orderitem(){
+      return $this->hasMany(OrderItem::class,'user_id');
     }
-      public function buyerpayment(){
-        return $this->hasMany(BuyerPayment::class,'payment_method_id');
-     }
-     public function buyershippingadd(){
-       return $this->hasMany(CustomerShippingAddress::class,'buyer_id');
-    }
-
-      public function cart(){
-        return $this->hasMany(Cart::class,'user_id');
-      }
-
-     
-      public function inventory(){
-        return $this->hasMany(Inventory::class,'user_id');
-      }
-      public function product(){
-         return $this->hasMany(Product::class,'user_id');
-      }
-      public function itemcategory(){
-        return $this->hasMany(ProductCategory::class,'user_id');
-      }
-      public function itemimage(){
-        return $this->hasMany(ItemImage::class,'user_id');
-      }
-      public function itemtag(){
-        return $this->hasMany(ProductTag::class,'user_id');
-      }
-      public function order(){
-        return $this->hasMany(Order::class,'user_id');
-      }
-      public function orderitem(){
-        return $this->hasMany(OrderItem::class,'user_id');
-      }
-      public function paymentmethod(){
-        return $this->hasMany(PaymentMethod::class,'user_id');
-      } 
-      public function seller(){
-        return $this->hasMany(Merchant::class,'user_id');
-      }
-      public function shippingmethod(){
-        return $this->hasMany(ShippingMethod::class,'user_id');
-      }
+      
       
     }

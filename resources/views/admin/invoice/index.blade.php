@@ -44,7 +44,7 @@
                                         <th>Invoice</th>
                                         <th>Price</th>
                                         <th>Weight</th> 
-                                        <th class="text-center">Action</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,9 +55,9 @@
                                                 <td>{{ $row->product->product_name}}</td>
                                                 <td>{{ $row->invoice_number }}</td>
                                                 <td>{{ $row->product->price}} €</td>
-                                                <td>{{ $row->product->weight }}</td>  
+                                                <td>{{ $row->product->weight }} ml</td>  
                                                 <td class="d-flex justify-content-between" >
-                                                    <ul style="margin-left:200px!important">
+                                                    <ul>
                                                         <li><a href="{{ url('boostadmin/invoice/'.$row->id) }}" id="" title="Edit"><button class="btn btn-sm btn-info" ><i class="fa fa-eye"></i></button> </a></li>
                                                         {{-- <li><a href="#" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>
                                                         <li> 
@@ -68,7 +68,7 @@
                                                             </form> 
                                                         </li> --}}
                                                     </ul>
-                                                </td> 
+                                                </td>  
                                             </tr> 
                                         @endforeach 
                                 </tbody>

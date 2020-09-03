@@ -32,5 +32,6 @@ Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
     Route::get('customer/edit/{id}/update-customer','CustomersController@edit');
     Route::put('customer/edit/{id}','CustomersController@update');
     Route::resource('customer','CustomersController'); 
+    Route::resource('order','OrderController');
 }); 
 

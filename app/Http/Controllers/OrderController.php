@@ -23,7 +23,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+       
+        $order = Order::all();
+        // dd($order); 
+       return view('admin.order.index',compact('order'));
     }
 
     /**
@@ -53,9 +56,13 @@ class OrderController extends Controller
      * @param  \App\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show($id)
     {
-        //
+        $order = Order::find($id);
+        $cartProduct = Cart::where('user_id',$order->user_id)->get();
+        $totlaPrice = Cart::where('user_id',$order->user_id)->sum('price');
+        
+        return view('admin.order.show',compact('cartProduct','totlaPrice','order'));
     }
 
     /**
