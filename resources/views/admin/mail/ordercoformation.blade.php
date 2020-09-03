@@ -1,0 +1,2 @@
+hi every one
+{{ $subtotal }}

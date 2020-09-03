@@ -14,6 +14,7 @@ use App\Models\Date;
 use App\Models\Cart;
 use App\Models\PaymentCard;
 use App\Models\Orderitem;
+use App\Mail\OrderConformationMail;
 
 class OrderController extends Controller
 {
@@ -387,6 +388,7 @@ class OrderController extends Controller
 
     public function orderConfirm(Request $request){
         $carts = Cart::where('user_id',Sentinel::getUser()->id)->get()->toArray();
+        $userId = Sentinel::getUser();
         $subTotal = 0;
         $order = Order::where('invoice', session('invoice'))->first();
         foreach($carts as $item){
@@ -394,7 +396,7 @@ class OrderController extends Controller
             $item['order_id']   = $order->id;
             Orderitem::create($item);
         }
-        $order->update([
+        $ordersId = $order->update([
                 'sub_total'         => $subTotal, 
                 'total'             => $subTotal, 
                 'pay_amount'        => 0,
@@ -403,7 +405,16 @@ class OrderController extends Controller
         Cart::where('user_id',Sentinel::getUser()->id)->delete();
         session()->forget('invoice');
 
+        
+
         //Send Mail Here...
+
+        $subtotal = $order['sub_total'];
+        $total    = $order['total'];
+
+        
+
+        \Mail::to($userId['email'])->send(new OrderConformationMail($userId,$subtotal,$total));
 
         Session::flash('success','Your order has been successfully created!');
         return redirect('dashboard');

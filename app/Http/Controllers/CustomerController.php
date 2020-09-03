@@ -319,5 +319,12 @@ class CustomerController extends Controller{
         Session::flash('success', 'Bussiness Profile update Successfully!');
         return redirect()->back();
     }
+
+    public function orderHistory(){
+        $orders = Order::where('user_id',Sentinel::getUser()->id)->get();
+        $i = 0;
+
+        return view('frontend.orderhistory.orderhistory',compact('orders','i'));
+    }
  
 }
