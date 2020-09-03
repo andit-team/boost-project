@@ -42,7 +42,7 @@
                 if(response.status == 200){
                     // $('#ajaxRespond').toggle();
                     $('.alert-success').show();
-                    setTimeout(function(){ window.location.href="{{url('customer')}}"; }, 1500);
+                    setTimeout(function(){ window.location.href="{{url('customer/invoice/'.$order_invoice)}}"; }, 1500);
                 }else{
                     alert('Something is not right!');
                 }

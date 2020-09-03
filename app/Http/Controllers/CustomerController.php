@@ -331,7 +331,10 @@ class CustomerController extends Controller{
 
     public function invoice($invoice){
         $order = Order::where('invoice',$invoice)->where('user_id',Sentinel::getUser()->id)->first();
-        return view('frontend.order.invoice');
+        $i = 0;
+        $total = 0;
+        $subtotal = 0;
+        return view('frontend.order.invoice',compact('order','i','total','subtotal'));
         // dd($order); 
     }
  

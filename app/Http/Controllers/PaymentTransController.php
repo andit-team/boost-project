@@ -26,16 +26,19 @@ class PaymentTransController extends Controller
             'payer_email'       => $data['payer']['email_address'],
             'paid_amount'       => $data['purchase_units'][0]['amount']['value'],
             'order_amount'      => $request->order_amount,
-            'order_invoice'          => $request->order_invoice,
+            'order_invoice'     => $request->order_invoice,
             'user_id'           => Sentinel::getUser()->id,
         ];
         PaymentTrans::create($payment);
         $carts = Cart::where('user_id',Sentinel::getUser()->id)->get()->toArray();
         $order = Order::where('invoice',$request->invoice)->first();
+        // echo $request->invoice;
+        // dd($order);
         $subTotal = 0;
         foreach($carts as $item){
             $subTotal += $item['qty'] * $item['price'];
             $item['order_id']   = $order->id;
+            // dd($item);
             Orderitem::create($item);
         }
         $order->update([

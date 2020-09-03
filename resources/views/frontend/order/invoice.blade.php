@@ -41,9 +41,9 @@
                         <div class="container">
                             <div class="invoice-head d-flex justify-content-between mt-3">
                                 <div class="company-info">
-                                    <h6>Invoice #adsfas</h6>
-                                    <p>Date:</p>
-                                    <p>Time:</p>
+                                    <h6>#{{$order->invoice}}</h6>
+                                    <p>Date: {{date('d M Y',date(strtotime($order->created_at)))}}</p>
+                                    <p>Time: {{date('h:i A',date(strtotime($order->created_at)))}}</p>
                                 </div>
                                 <div class="customer-info">
                                     <h6>Kamrul Islam</h6>
@@ -51,7 +51,7 @@
                                     <p>Khlna</p>
                                 </div>
                             </div>
-                            <div class="invoice-body" style="background-image: url({{asset('paid.png')}});background-repeat: no-repeat; background-position: center; background-size: 200px;">
+                            <div class="invoice-body" style="background-image: url({{ $order->payment_status == 'complete' ? asset('paid.png') : asset('not-paid.png')}});background-repeat: no-repeat; background-position: bottom; background-size: 200px;">
                                 <table class="table table-borderd" >
                                     <thead>
                                         <tr>
@@ -63,43 +63,31 @@
                                         </tr>
                                     </thead>
                                     <tbody style="background: none;">
+                                        @foreach($order->items as $item)
                                         <tr>
-                                            <td>01</td>
-                                            <td>Product One</td>
-                                            <td class="text-center">3</td>
-                                            <td class="text-right">300</td>
-                                            <td class="text-right">900</td>
+                                            <td>{{sprintf('%02d',++$i)}}</td>
+                                            <td>{{$item->product->product_name}}</td>
+                                            <td class="text-center">{{$item->qty}}</td>
+                                            <td class="text-right">{{$item->price}}</td>
+                                            <td class="text-right">{{$subtotal += $item->qty * $item->price}}</td>
                                         </tr>
-                                        <tr>
-                                            <td>01</td>
-                                            <td>Product One</td>
-                                            <td class="text-center">3</td>
-                                            <td class="text-right">300</td>
-                                            <td class="text-right">900</td>
-                                        </tr>
-                                        <tr>
-                                            <td>01</td>
-                                            <td>Product One</td>
-                                            <td class="text-center">3</td>
-                                            <td class="text-right">300</td>
-                                            <td class="text-right">900</td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <td colspan="3" class="text-right">SubTotal</td>
                                             <td>:</td>
-                                            <td class="text-right">900</td>
+                                            <td class="text-right">{{$subtotal}}</td>
                                         </tr>
                                         <tr>
                                             <td colspan="3" class="text-right">Discount</td>
                                             <td>:</td>
-                                            <td class="text-right">00</td>
+                                            <td class="text-right">{{$order->discount}}</td>
                                         </tr>
                                         <tr>
                                             <td colspan="3" class="text-right">Total</td>
                                             <td>:</td>
-                                            <td class="text-right">900</td>
+                                            <td class="text-right">{{$subtotal - $order->discount }}</td>
                                         </tr>
                                     </tfoot>
                                 </table>

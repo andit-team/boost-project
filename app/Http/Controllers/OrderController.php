@@ -255,7 +255,7 @@ class OrderController extends Controller
         ];
         $user = Sentinel::getUser();
         $user->update($data);
-        return redirect($request->back);
+        return redirect('orders/overview');
     }
 
     public function payment(){
@@ -417,7 +417,7 @@ class OrderController extends Controller
         \Mail::to($userId['email'])->send(new OrderConformationMail($userId,$subtotal,$total));
 
         Session::flash('success','Your order has been successfully created!');
-        return redirect('dashboard');
+        return redirect('customer/invoice/'.$order->invoice);
 
     }
 
