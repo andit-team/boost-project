@@ -27,6 +27,7 @@ class CustomerController extends Controller{
         return view('customer-dashboard',compact('orders','i'));
     }
 
+
     public function register(){
         return view('auth.customer.register');
     }
@@ -318,6 +319,12 @@ class CustomerController extends Controller{
 
         Session::flash('success', 'Bussiness Profile update Successfully!');
         return redirect()->back();
+    }
+
+    public function invoice($invoice){
+        $order = Order::where('invoice',$invoice)->where('user_id',Sentinel::getUser()->id)->first();
+        return view('frontend.order.invoice');
+        // dd($order);
     }
  
 }
