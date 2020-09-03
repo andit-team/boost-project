@@ -18,7 +18,9 @@
                    <li><a class="sidebar-header {{ request()->is('boostadmin/customer/*') ? 'active' : '' }}"  href="{{ url('boostadmin/customer') }}" class="{{ request()->is('boostadmin/customer/') ? 'active' : '' }}"><i data-feather="users"></i><span>Customer Profile</span></a> </li>
                    <li><a class="sidebar-header {{ request()->is('boostadmin/products/*') ? 'active' : '' }}"  href="{{ url('boostadmin/products') }}" class="{{ request()->is('boostadmin/products/') ? 'active' : '' }}"><i data-feather="shopping-bag"></i><span>Product</span></a> </li>
                    <li><a class="sidebar-header {{ request()->is('boostadmin/order/*') ? 'active' : '' }}"  href="{{ url('boostadmin/order') }}" class="{{ request()->is('boostadmin/order/') ? 'active' : '' }}"><i data-feather="list"></i><span>Order</span></a> </li>
+                   <li><a class="sidebar-header {{ request()->is('boostadmin/subscription-order-list/*') ? 'active' : '' }}"  href="{{ url('boostadmin/subscription-order-list') }}" class="{{ request()->is('boostadmin/subscription-order-list/') ? 'active' : '' }}"><i data-feather="list"></i><span>Subscription List</span></a> </li>
                    <li><a class="sidebar-header {{ request()->is('boostadmin/invoice/*') ? 'active' : '' }}"  href="{{ url('boostadmin/invoice') }}" class="{{ request()->is('boostadmin/invoice/') ? 'active' : '' }}"><i data-feather="bookmark"></i><span>Invoice</span></a> </li> 
+                   <li><a class="sidebar-header {{ request()->is('boostadmin/news/*') ? 'active' : '' }}"  href="{{ url('boostadmin/news') }}" class="{{ request()->is('boostadmin/news/') ? 'active' : '' }}"><i data-feather="align-left"></i><span>News Latter</span></a> </li> 
                 </ul>
             </div>
         </div> 

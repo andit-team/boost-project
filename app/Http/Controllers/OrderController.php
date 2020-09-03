@@ -409,4 +409,20 @@ class OrderController extends Controller
         return redirect('dashboard');
 
     }
+
+
+    public function subslist(){
+        $subscription = Order::where('delivery_frequency','!=','Only at once')->get();
+        //dd($subscription);
+        return view('admin.subscription.subscriptionlist',compact('subscription'));
+    }
+
+    public function subsDetails($id){
+        $order = Order::find($id);
+        $cartProduct = Cart::where('user_id',$order->user_id)->get();
+        $totlaPrice = Cart::where('user_id',$order->user_id)->sum('price');
+
+        return view('admin.subscription.show',compact('order','cartProduct','totlaPrice'));
+    }
+
 }

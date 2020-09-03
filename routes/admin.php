@@ -32,6 +32,13 @@ Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
     Route::get('customer/edit/{id}/update-customer','CustomersController@edit');
     Route::put('customer/edit/{id}','CustomersController@update');
     Route::resource('customer','CustomersController'); 
+    Route::get('subscription-order-list','OrderController@subslist');
+    Route::get('subscription-order-list/details/{id}','OrderController@subsDetails');
     Route::resource('order','OrderController');
+    Route::get('news/new-news','NewsController@create');
+    Route::post('news/new-news','NewsController@store')->name('newsstore');
+    // Route::get('news/edit/{id}/update-news','NewsController@edit');
+    // Route::put('news/edit/{id}','NewsController@update');
+    Route::resource('news','NewsController');
 }); 
 
