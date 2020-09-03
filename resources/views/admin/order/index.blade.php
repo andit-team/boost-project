@@ -62,7 +62,7 @@
                                                     <td>{{ $row->payment_status }}</td>
                                                     <td class="d-flex justify-content-between" >
                                                         <ul>
-                                                            <li ><a href="{{ url('boostadmin/order/'.$row->id)}}" id="" title="Edit"><button class="btn btn-sm btn-info" ><i class="fa fa-eye"></i></button> </a></li>
+                                                            <li ><a href="{{ url('boostadmin/order/'.$row->id)}}" id="" title="Edit"><button class="btn btn-sm btn-info" ><i class="fa fa-list"></i></button> </a></li>
                                                              {{--<li><a href="{{ url('boostadmin/customer/edit/'.$row->id.'/update-customer')}}" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>
                                                             <li> 
                                                                 <form action="{{ url('boostadmin/customer/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
