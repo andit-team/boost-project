@@ -25,7 +25,11 @@
               <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">COMMERCIO</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login">LOGIN</a>
+              @if(Sentinel::check())
+              <a class="nav-link" href="{{url('dashboard')}}" >MY ACCOUNT </a>
+              @else
+              <a class="nav-link" href="{{url('login')}}" >LOGIN </a>
+              @endif
             </li>
           </ul>
         </div>

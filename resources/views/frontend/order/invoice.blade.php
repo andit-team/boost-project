@@ -7,6 +7,12 @@
     .delivary-date-arae{
         padding-top: 0px!important;
     }
+    .head-info p {
+      color: #000;
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 18px;
+    }
 </style>
 @endpush
 @include('elements.alert')
@@ -35,24 +41,55 @@
           <div class="col-lg-8 co-md-12 col-sm-12 col-12">
             <div class="dashboard-right-side">
               <div class="dashboard-right-side-content">
-                <h3>Invoice</h3>
-                <div class="dashboard-cards">
+                <div class="dashboard-cards mt-0">
                     <section>
                         <div class="container">
-                            <div class="invoice-head d-flex justify-content-between mt-3">
-                                <div class="company-info">
-                                    <h6>#{{$order->invoice}}</h6>
-                                    <p>Date: {{date('d M Y',date(strtotime($order->created_at)))}}</p>
-                                    <p>Time: {{date('h:i A',date(strtotime($order->created_at)))}}</p>
+                            <div class="invoice-head d-flex justify-content-between mt-3 mb-4">
+                              <div class="company-info">
+                                <img src="{{asset('frontend/boost/assest/img/logo.png')}}" alt="" style="width: 190px;height: auto;">
+                              </div>
+                              <div class="customer-info head-info">
+                                <p>
+                                  Boost App ltd. <br>
+                                  48-49 Princes Place <br>
+                                  London <br>
+                                  W11 4QA <br>
+                                  Email: essentials@takk.co.uk <br>
+                                  CRN: 11160506 <br>
+                                  VAT ID: 322111665
+                                </p>
+                              </div>
+                            </div>
+                            <div class="invoice-head d-flex justify-content-between mt-4">
+                                <div class="company-info head-info">
+                                  <p> 
+                                    Invoice #: {{$order->invoice}} <br>
+                                    Invoice Date: {{date('d M Y',date(strtotime($order->created_at)))}} {{date('h:i A',date(strtotime($order->created_at)))}} <br>
+                                    Order Date: {{$order->delivery_date}} <br>
+                                    Order Number: {{sprintf('%04d',$order->id)}} 
+                                  </p>
                                 </div>
-                                <div class="customer-info">
-                                    <h6>Kamrul Islam</h6>
-                                    <p>Nirala</p>
-                                    <p>Khlna</p>
+                                <div class="company-info head-info">
+                                  <p>
+                                    <b>Bill To:</b> <br>
+                                    {{$order->user->card->name}} <br>
+                                    {{$order->user->card->address_1}} <br>
+                                    {{$order->user->card->postCode}} <br>
+                                    {{$order->user->card->town}}
+                                  </p>
+                                </div>
+                                <div class="customer-info head-info">
+                                  <p>
+                                    <b>Ship To:</b> <br>
+                                    {{$order->user->first_name}} {{$order->user->last_name}} <br>
+                                    {{$order->user->address_1}} <br>
+                                    {{$order->user->postcode}} <br>
+                                    {{$order->user->town}}
+                                  </p>
                                 </div>
                             </div>
                             <div class="invoice-body" style="background-image: url({{ $order->payment_status == 'complete' ? asset('paid.png') : asset('not-paid.png')}});background-repeat: no-repeat; background-position: bottom; background-size: 200px;">
-                                <table class="table table-borderd" >
+                                <table class="table table-borderd mt-2" >
                                     <thead>
                                         <tr>
                                             <th width="50">#Sl</th>
@@ -91,6 +128,9 @@
                                         </tr>
                                     </tfoot>
                                 </table>
+                                @if($order->payment_status != 'complete')
+                                  <a href="{{url('public/bank-info.png')}}" target="_Blank">Our Bank Information</a>
+                                @endif
                             </div>
                         </div>
                     </section>

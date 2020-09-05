@@ -181,6 +181,9 @@ class OrderController extends Controller
             'delivery_date'     => $request->delevaryDate,
             'delivery_frequency'=> $request->frequency,
         ]);
+        if($request->back != 'https://projects.andit.co/laravel/boost/orders/overview'){
+            return redirect('orders/information');
+        }
         return redirect($request->back);
     }
 
@@ -388,6 +391,7 @@ class OrderController extends Controller
 
     public function orderConfirm(Request $request){
         $carts = Cart::where('user_id',Sentinel::getUser()->id)->get()->toArray();
+        // dd($carts);
         $userId = Sentinel::getUser();
         $subTotal = 0;
         $order = Order::where('invoice', session('invoice'))->first();
@@ -395,6 +399,7 @@ class OrderController extends Controller
             $subTotal += $item['qty'] * $item['price'];
             $item['order_id']   = $order->id;
             Orderitem::create($item);
+            Cart::where('id',$item['id'])->delete();
         }
         $ordersId = $order->update([
                 'sub_total'         => $subTotal, 
@@ -402,7 +407,6 @@ class OrderController extends Controller
                 'pay_amount'        => 0,
                 'payment_status'    => 'Pending'
             ]);
-        Cart::where('user_id',Sentinel::getUser()->id)->delete();
         session()->forget('invoice');
 
         
@@ -414,7 +418,7 @@ class OrderController extends Controller
 
         
 
-        \Mail::to($userId['email'])->send(new OrderConformationMail($userId,$subtotal,$total));
+        \Mail::to($userId['email'])->send(new OrderConformationMail($userId,$subtotal,$total,$order));
 
         Session::flash('success','Your order has been successfully created!');
         return redirect('customer/invoice/'.$order->invoice);

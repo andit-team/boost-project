@@ -27,7 +27,7 @@
          <div class="">
           {{-- <a href="dashboard" class="btn btn-footer">Sign In</a> --}}
           <button type="submit" class="btn btn-footer">Sign In</button>
-          <a href="password-reset.html">Forgotten password?</a>
+          <a href="{{url('forgot_password')}}">Forgotten password?</a>
          </div>
         </form>
        </div>

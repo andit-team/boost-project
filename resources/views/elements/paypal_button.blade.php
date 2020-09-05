@@ -1,6 +1,5 @@
 <div id="paypal-button-container" class="btn"></div>
 <br>
-<small>Start your subscriptions..</small>
 @push('js')
 <script src="https://www.paypal.com/sdk/js?client-id=AXWcAX4EbepJp9nrf6l03Tko2WyBh40QA3zVZWTP0vGLJeFQaGWJE_attOLzD0F9ctEHMvn2Uepuu7gS"></script>
 <script>

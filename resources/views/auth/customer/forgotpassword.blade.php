@@ -11,13 +11,14 @@
        <div class="login-left-side-area">
         <h2>Password reset</h2>
         <p>Enter the email address you used to register.</p>
-        <form class="#!" id="form-login">
+        <form class="" action="{{url('forgot_password')}}" id="form-login">
          <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control">
+          <input type="email" name="email" required class="form-control">
+          <span class="text-danger">{{$errors->first('email')}}</span>
          </div>
          <div class="form-submit">
-          <button class="btn btn-footer">Reset my password</button>
+          <button class="btn btn-footer" type="submit">Reset my password</button>
          </div>
          <div class="contact-area-login">
           <p>

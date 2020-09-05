@@ -230,4 +230,23 @@ class Boost
     public function randString($length = 10) {
         return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
     }
+
+    public function getDaysNumber($str){
+        switch($str){
+            case "Every 3 weeks":
+                return 21;
+            break;
+            case "Every 4 weeks":
+                return 28;
+            break;
+            case "Every 5 weeks":
+                return 35;
+            break;
+            case "Every 6 weeks":
+                return 42;
+            break;
+            default:
+                return 0;
+        }
+    }
 }

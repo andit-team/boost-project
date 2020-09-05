@@ -102,6 +102,18 @@
                                 'amount'    => $total,
                                 'order_invoice'  => $order->invoice,
                             ])
+                            <button type="button" class="btn btn-lg btn-primary mt-2" onclick="submitPaypal()">
+                                Confirmation Order
+                            </button>
+                            @push('js')
+                                <script>
+                                    function submitPaypal(){
+                                        console.log('clickded');
+                                        // e.preventdefault()
+                                        $('#paypal-button-container').trigger('click');
+                                    }
+                                </script>
+                            @endpush
                         @else
 
                         {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> --}}

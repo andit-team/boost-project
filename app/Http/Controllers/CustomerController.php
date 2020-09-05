@@ -17,7 +17,7 @@ use App\Models\PaymentCard;
 
 class CustomerController extends Controller{
     public function __construct(){
-        $this->middleware(['auth','customer'])->except('register','userlogin','registration','userloginprocess');
+        $this->middleware(['auth','customer'])->except('register','userlogin','registration','userloginprocess','forgot','password');
     }
 
     public function dashboard(){
@@ -110,26 +110,31 @@ class CustomerController extends Controller{
 		];
 		$user = Sentinel::authenticate($credentials);
         // dd($user);
+        if($user){
+            if(session()->has('user_id'))
+                Cart::where('user_id',session('user_id'))->update(['user_id'=> Sentinel::getUser()->id]);
+                Order::where('user_id',session('user_id'))->update(['user_id'=>Sentinel::getUser()->id]);
+                session()->forget('user_id');
 
-        if(session()->has('user_id'))
-            Cart::where('user_id',session('user_id'))->update(['user_id'=> Sentinel::getUser()->id]);
-            Order::where('user_id',session('user_id'))->update(['user_id'=>Sentinel::getUser()->id]);
-            session()->forget('user_id');
-
-        Session::flash('success','You are log in...');
-        if($user)
-            if(session()->has('invoice'))
-                if($user->card)
-                    return redirect('orders/edit/payment-deatils');
+            Session::flash('success','You are log in...');
+            if($user)
+                if(session()->has('invoice'))
+                    if($user->card)
+                        return redirect('orders/edit/payment-deatils');
+                    else
+                        return redirect('orders/payment-deatils');
                 else
-                    return redirect('orders/payment-deatils');
+                    return redirect('dashboard');
             else
-    			return redirect('dashboard');
-		else
-			return redirect('login')->with('error', 'Invalid email or password');
+                return redirect('login')->with('error', 'Invalid email or password');
+        }
+        return redirect()->back();
     }
 
     public function userlogin(){
+        if(Sentinel::check()){
+            return redirect('dashboard');
+        }
         return view('auth.customer.login');
     }
 
@@ -139,7 +144,7 @@ class CustomerController extends Controller{
     }
 
     public function password(Request $request){
-
+        die('on development');
         //   dd($request->all());
 
           $user = User::whereEmail($request->email)->first();

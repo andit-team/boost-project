@@ -18,12 +18,14 @@ class OrderConformationMail extends Mailable
      */
     public $userId;
     public $subtotal;
-    public $total; 
-    public function __construct($userId,$subtotal,$total)
+    public $total;
+    public $order;
+    public function __construct($userId,$subtotal,$total,$order)
     {
         $this->userId = $userId;
         $this->subtotal = $subtotal;
         $this->total = $total; 
+        $this->order = $order;
     }
 
     /**
@@ -33,6 +35,6 @@ class OrderConformationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('admin.mail.ordercoformation',['userId'=>$this->userId,'subtotal'=>$this->subtotal,'total'=>$this->total]);
+        return $this->view('admin.mail.ordercoformation',['userId'=>$this->userId,'subtotal'=>$this->subtotal,'total'=>$this->total,'order'=>$this->order]);
     }
 }
