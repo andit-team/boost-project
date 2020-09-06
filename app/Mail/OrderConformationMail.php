@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-
+use PDF;
 class OrderConformationMail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -35,6 +35,11 @@ class OrderConformationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('admin.mail.ordercoformation',['userId'=>$this->userId,'subtotal'=>$this->subtotal,'total'=>$this->total,'order'=>$this->order]);
+        $order = $this->order;
+        // $pdf = PDF::loadView('admin.mail.ordercoformations');
+        // $pdf = PDF::loadView('admin.mail.bankInfo');
+        return $this->view('admin.mail.template',['userId'=>$this->userId])
+        ->attachData(PDF::loadView('admin.mail.ordercoformation',compact('order'))->output(), "invoice.pdf")
+        ->attachData(PDF::loadView('admin.mail.bankInfo',compact('order'))->output(), "bank-info.pdf");
     }
 }

@@ -121,7 +121,7 @@
                                 @csrf
                                 <input type="hidden" value="{{$order->invoice}}" name="invoice">
                             </form>
-                        <button type="button" class="btn btn-primary" onclick="sweetalertDelete('orderConfirm')">
+                        <button type="button" class="btn btn-primary" onclick="sweetalertDelete('orderConfirm',3000)">
                             Confirmation Order
                         </button>
 

@@ -125,7 +125,7 @@
                         </div>
                     </div>
                     <div class="invoice-head d-flex mt-4">
-                        <div class="company-info head-info" style="width: 33%;float: left;">
+                        <div class="company-info head-info" style="width: 50%;float: left;">
                             <p> 
                                 Invoice #: {{$order->invoice}} <br>
                                 Invoice Date: {{date('d M Y',date(strtotime($order->created_at)))}} {{date('h:i A',date(strtotime($order->created_at)))}} <br>
@@ -133,7 +133,7 @@
                                 Order Number: {{sprintf('%04d',$order->id)}} 
                               </p>
                         </div>
-                        <div class="company-info head-info" style="width: 33%; text-align: right;">
+                        {{-- <div class="company-info head-info" style="width: 33%; text-align: right;">
                             <p>
                                 <b>Bill To:</b> <br />
                                 {{$order->user->card->name}} <br>
@@ -141,8 +141,8 @@
                                 {{$order->user->card->postCode}} <br>
                                 {{$order->user->card->town}}
                             </p>
-                        </div>
-                        <div class="customer-info head-info" style="text-align: right; width: 34%;">
+                        </div> --}}
+                        <div class="customer-info head-info" style="text-align: right;">
                             <p>
                                 <b>Ship To:</b> <br />
                                 {{$order->user->first_name}} {{$order->user->last_name}} <br>
@@ -152,7 +152,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="invoice-body" style="background-image: url({{ $order->payment_status == 'complete' ? asset('paid.png') : asset('not-paid.png')}}); background-repeat: no-repeat; background-position: bottom; background-size: 200px;">
+                    <div class="invoice-body">
                         <table class="table mt-2" border="1">
                             <thead>
                                 <tr>
@@ -193,9 +193,6 @@
                                 </tr>
                             </tfoot>
                         </table>
-                        @if($order->payment_status != 'complete')
-                            <a href="{{url('public/bank-info.png')}}" target="_Blank">Our Bank Information</a>
-                        @endif
                     </div>
                 </div>
             </section>

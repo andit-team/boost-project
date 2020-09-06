@@ -87,7 +87,7 @@ $('.updateNotification').click(function(){
       });
 });
 
-function sweetalertDelete(id) {
+function sweetalertDelete(id,time=1000) {
     event.preventDefault();
     swal({
       title: "Are you sure?",
@@ -101,7 +101,7 @@ function sweetalertDelete(id) {
         swal("Your action has beed done! :)", {
           icon: "success",
           buttons: false,
-          timer: 1000
+          timer: time
         });
           $("#deleteButton"+id).submit();
       }

@@ -128,7 +128,8 @@ class CustomerController extends Controller{
             else
                 return redirect('login')->with('error', 'Invalid email or password');
         }
-        return redirect()->back();
+        // return redirect()->back();
+        return redirect('login')->with('error','Sorry you are not loggedin.');
     }
 
     public function userlogin(){

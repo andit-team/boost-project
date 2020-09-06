@@ -113,7 +113,7 @@ float: left;
 width: 50%;
 height: 110px;
 ">
-                <img src="https://projects.andit.co/laravel/boost/public//frontend/boost/assest/img/logo.png" alt="" style="width: 190px;height: auto;">
+                <img src="https://projects.andit.co/laravel/boost/public/frontend/boost/assest/img/logo.jpg" alt="" style="width: 190px;height: auto;">
               </div>
               <div class="customer-info head-info" style="
 text-align: right;
@@ -130,10 +130,7 @@ text-align: right;
               </div>
             </div>
             <div class="invoice-head d-flex mt-4">
-                <div class="company-info head-info" style="
-width: 33%;
-float: left;:;
-">
+                <div class="company-info head-info" style="width: 50%;float: left;">
                   <p> 
                     Invoice #: x8BUOSVq <br>
                     Invoice Date: 05 Sep 2020 04:32 AM <br>
@@ -141,10 +138,7 @@ float: left;:;
                     Order Number: 0005 
                   </p>
                 </div>
-                <div class="company-info head-info" style="
-width: 33%;
-text-align: right;
-">
+                <div class="company-info head-info" style="width: 50%; text-align: right;">
                   <p>
                     <b>Bill To:</b> <br>
                      <br>
@@ -153,7 +147,7 @@ text-align: right;
                     Surbe two
                   </p>
                 </div>
-                <div class="customer-info head-info" style="text-align: right;width: 34%;">
+                {{-- <div class="customer-info head-info" style="text-align: right;width: 34%;">
                   <p>
                     <b>Ship To:</b> <br>
                     Shariful Islam <br>
@@ -161,9 +155,9 @@ text-align: right;
                     234 <br>
                     Surbe two
                   </p>
-                </div>
+                </div> --}}
             </div>
-            <div class="invoice-body" style="background-image: url(https://projects.andit.co/laravel/boost/public//not-paid.png);background-repeat: no-repeat; background-position: bottom; background-size: 200px;">
+            <div class="invoice-body">
                 <table class="table mt-2" border="1">
                     <thead>
                         <tr>

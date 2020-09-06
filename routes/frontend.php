@@ -9,6 +9,15 @@ Route::get('logout','AuthController@logout');
 
 // Frontend Routes Are Start Here...............
 
+Route::get('vie', function(){
+    return view('admin.mail.ordercoformations');
+});
+Route::get('mail', function(){
+    // $pdf = PDF::loadView('admin.mail.bankInfo');
+    // return $pdf->download('invoice.pdf');
+    \Mail::to('shariful.info56@gmail.com')->send(new App\Mail\OrderConformationMail('1',100,100,'order'));
+});
+
 Route::get('/', 'HomeController@index');
 Route::get('addto_cart', 'HomeController@cart');
 Route::resource('item', 'HomeController');
