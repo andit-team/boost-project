@@ -25,7 +25,7 @@
             console.log(details);
             // alert('Transaction completed by ' + details.payer.name.given_name);
             // Call your server to save the transaction
-            return fetch("{{ url('strans') }}", {
+            return fetch("{{ route('payment_transfer') }}", {
             method: 'post',
             headers: {
                 'content-type': 'application/json'

@@ -7,6 +7,7 @@ use App\Models\PaymentTrans;
 use App\Models\Cart;
 use App\Models\Orderitem;
 use App\Models\Order;
+use App\Mail\OrderConformationMail;
 use Sentinel;
 class PaymentTransController extends Controller
 {
@@ -16,6 +17,8 @@ class PaymentTransController extends Controller
         return view('frontend.paymenttransaction.index',compact('transation'));
     }
     public function store(Request $request){
+        // die('asdf');
+        // echo 'sssssssss';
         // dd($request->all());
         $data = $request->data;
         $payment = [
@@ -30,25 +33,62 @@ class PaymentTransController extends Controller
             'user_id'           => Sentinel::getUser()->id,
         ];
         PaymentTrans::create($payment);
+
+        // $carts = Cart::where('user_id',Sentinel::getUser()->id)->get()->toArray();
+        // $order = Order::where('invoice',$request->invoice)->first();
+        // echo $request->order_invoice;
+        // // dd($order);
+        // $subTotal = 0;
+        // foreach($carts as $item){
+        //     $subTotal += $item['qty'] * $item['price'];
+        //     $item['order_id']   = $order->id;
+        //     // dd($item);
+        //     Orderitem::create($item);
+        // }
+        // $order->update([
+        //         'sub_total'         => $subTotal, 
+        //         'total'             => $subTotal, 
+        //         'pay_amount'        => $payment['paid_amount'],
+        //         'payment_status'    => 'complete'
+        //     ]);
+        // Cart::where('user_id',Sentinel::getUser()->id)->delete();
+        
+        // return response()->json(['status' => $status]);
+
+
+
+
         $carts = Cart::where('user_id',Sentinel::getUser()->id)->get()->toArray();
-        $order = Order::where('invoice',$request->invoice)->first();
-        // echo $request->invoice;
-        // dd($order);
+        // dd($carts);
+        $userId = Sentinel::getUser();
         $subTotal = 0;
+        $order = Order::where('invoice', $request->order_invoice)->first();
+        // dd($order);
         foreach($carts as $item){
             $subTotal += $item['qty'] * $item['price'];
             $item['order_id']   = $order->id;
-            // dd($item);
             Orderitem::create($item);
+            Cart::where('id',$item['id'])->delete();
         }
-        $order->update([
+        $ordersId = $order->update([
                 'sub_total'         => $subTotal, 
                 'total'             => $subTotal, 
-                'pay_amount'        => $payment['paid_amount'],
-                'payment_status'    => 'complete'
+                'pay_amount'        => 0,
+                'payment_status'    => 'Pending'
             ]);
-        Cart::where('user_id',Sentinel::getUser()->id)->delete();
+        session()->forget('invoice');
+
+        
+
+        //Send Mail Here...
+
+        $subtotal = $order['sub_total'];
+        $total    = $order['total'];
+
+        
+
+        \Mail::to($userId['email'])->send(new OrderConformationMail($userId,$subtotal,$total,$order));
+
         echo "OK";
-        // return response()->json(['status' => $status]);
     }
 }
