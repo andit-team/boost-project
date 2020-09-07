@@ -427,9 +427,10 @@ class OrderController extends Controller
 
 
     public function subslist(){
-        $subscription = Order::where('delivery_frequency','!=','Only at once')->get();
-        //dd($subscription);
-        return view('admin.subscription.subscriptionlist',compact('subscription'));
+        $orders = Order::where('delivery_frequency','!=','Only at once')->get();
+        $i = 0;
+        // dd($subscription);
+        return view('admin.subscription.subscriptionlist',compact('orders','i'));
     }
 
     public function subsDetails($id){
@@ -438,6 +439,16 @@ class OrderController extends Controller
         $totlaPrice = Cart::where('user_id',$order->user_id)->sum('price');
 
         return view('admin.subscription.show',compact('order','cartProduct','totlaPrice'));
+    }
+
+    public function invoiceDetails($id){
+        $order = Order::where('user_id',$id)->first();
+        // dd($order);
+        $i = 0;
+        $total = 0;
+        $subtotal = 0;
+    //   dd($id);
+      return view('admin.subscription.show',compact('order','i','total','subtotal'));
     }
 
 }

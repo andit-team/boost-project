@@ -71,11 +71,11 @@
                                 </div>
                                 <div class="company-info head-info">
                                   <p>
-                                    <b>Bill To:</b> <br>
+                                    {{-- <b>Bill To:</b> <br>
                                     {{$order->user->card->name}} <br>
                                     {{$order->user->card->address_1}} <br>
                                     {{$order->user->card->postCode}} <br>
-                                    {{$order->user->card->town}}
+                                    {{$order->user->card->town}} --}}
                                   </p>
                                 </div>
                                 <div class="customer-info head-info">
@@ -106,7 +106,8 @@
                                             <td>{{$item->product->product_name}}</td>
                                             <td class="text-center">{{$item->qty}}</td>
                                             <td class="text-right">{{$item->price}}</td>
-                                            <td class="text-right">{{$subtotal += $item->qty * $item->price}}</td>
+                                            <td class="text-right">{{ $item->qty * $item->price}}</td>
+                                            @php $subtotal += $item->qty * $item->price @endphp
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -129,7 +130,7 @@
                                     </tfoot>
                                 </table>
                                 @if($order->payment_status != 'complete')
-                                  <a href="{{url('public/bank-info.png')}}" target="_Blank">Our Bank Information</a>
+                                  {{-- <a href="{{url('public/bank-info.png')}}" target="_Blank">Our Bank Information</a> --}}
                                 @endif
                             </div>
                         </div>

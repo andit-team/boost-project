@@ -34,11 +34,11 @@ Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
     Route::resource('customer','CustomersController'); 
     Route::get('subscription-order-list','OrderController@subslist');
     Route::get('subscription-order-list/details/{id}','OrderController@subsDetails');
+    Route::get('invoice-customer/{id}','OrderController@invoiceDetails');
     Route::resource('order','OrderController');
     Route::get('news/new-news','NewsController@create');
     Route::post('news/new-news','NewsController@store')->name('newsstore');
     // Route::get('news/edit/{id}/update-news','NewsController@edit');
-    // Route::put('news/edit/{id}','NewsController@update');
-    Route::resource('news','NewsController');
+    // Route::put('news/edit/{id}','NewsController@update'); 
 }); 
 

@@ -110,7 +110,7 @@
                 <div class="container">
                     <div class="invoice-head mt-3 mb-4">
                         <div class="company-info" style="float: left; width: 50%; height: 110px;">
-                            <img src="{{asset('frontend/boost/assest/img/logo.png')}}" alt="" style="width: 190px; height: auto;" />
+                            <img src="{{asset('frontend/boost/assest/img/logo3.png')}}" alt="" style="width: 190px; height: auto;" />
                         </div>
                         <div class="customer-info head-info" style="text-align: right;">
                             <p>
@@ -171,7 +171,8 @@
                                         <td>{{$item->product->product_name}}</td>
                                         <td class="text-center">{{$item->qty}}</td>
                                         <td class="text-right">{{$item->price}}</td>
-                                        <td class="text-right">{{$subtotal += $item->qty * $item->price}}</td>
+                                        <td class="text-right">{{$item->qty * $item->price}}</td>
+                                        @php $subtotal += $item->qty * $item->price @endphp
                                     </tr>
                                 @endforeach
                             </tbody>

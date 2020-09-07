@@ -14,6 +14,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use Boost;
 use App\Models\PaymentCard;
+use App\Mail\WelcomeNotificationMail;
 
 class CustomerController extends Controller{
     public function __construct(){
@@ -69,18 +70,22 @@ class CustomerController extends Controller{
 		    'type' 	    => 'customer',
 		];
         $customer = Sentinel::registerAndActivate($data);
+        // $mailes = $customer['email'];
+        // dd($mailes);
+        $customerFirstName = $data['first_name'];
+        $customerLastName = $data['last_name'];
+        \Mail::to($customer['email'])->send(new WelcomeNotificationMail($customer,$customerFirstName,$customerLastName));
         $role = \Sentinel::findRoleBySlug($request->account);
-        $role->users()->attach($customer->id);
-
+        $role->users()->attach($customer->id); 
         $credentials = [
 			'email'		=> $customer->email,
 			'password'	=> $request->password,
 			'type'	    => 'customer',
 		];
-        Sentinel::authenticate($credentials);
+        Sentinel::authenticate($credentials); 
         if(session()->has('user_id'))
             Cart::where('user_id',session('user_id'))->update(['user_id'=> Sentinel::getUser()->id]);
-            Order::where('user_id',session('user_id'))->update(['user_id'=>Sentinel::getUser()->id]);
+            Order::where('user_id',session('user_id'))->update(['user_id'=>Sentinel::getUser()->id]); 
             session()->forget('user_id');
 
         // if($request->has('information')){
@@ -89,7 +94,7 @@ class CustomerController extends Controller{
         // }elseif($request->has('register')){
         //     session()->flash('success','registration  successfully');
         //     return redirect('dashboard');
-        // }
+        // } 
         Session::flash('success','Registration Successfully!');
         if(session()->has('invoice'))
             if($customer->card)
