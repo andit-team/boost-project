@@ -102,18 +102,33 @@
                                 'amount'    => $total,
                                 'order_invoice'  => $order->invoice,
                             ])
-                            <button type="button" class="btn btn-lg btn-primary mt-2" onclick="submitPaypal()">
+                            <p>Please Pay & Confirm your Order.</p>
+                            {{-- <button type="button" class="btn btn-lg btn-primary mt-2" onclick="">
                                 Confirmation Order
                             </button>
+                            <script>
+                                function submitPaypal(){
+                                    console.log('clickdedsssdfasdfs');
+                                    let a= document.querySelector('.paypal-button')
+
+                                    a?a.click():console.log('not found')
+                                }
+                            </script>
                             @push('js')
+
                                 <script>
-                                    function submitPaypal(){
-                                        console.log('clickded');
-                                        // e.preventdefault()
-                                        $('#paypal-button-container').trigger('click');
-                                    }
+                                    document.addEventListener('DOMContentLoaded', function(){
+                                        setTimeout(function(){
+                                        let a= $('#paypal-button-container').children().children();
+                                            // let b = a.find('.paypal-button')
+                                        console.log(a)
+                                        // console.log(b)
+                                        console.log("asdasdad")
+                                        },1000)
+                                    })
                                 </script>
-                            @endpush
+                                
+                            @endpush --}}
                         @else
 
                         {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"> --}}

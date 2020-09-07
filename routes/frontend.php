@@ -47,7 +47,7 @@ Route::post('orders/decreas','OrderController@orderDecreas');
 Route::post('orders/remove','OrderController@orderRemove');
 
 Route::resource('orders','OrderController');
-Route::post('strans','PaymentTransController@store');
+Route::post('payment_transfer','PaymentTransController@store')->name('payment_transfer');
 // Route::resource('trans','PaymentTransController');
 // Frontend Routes Are End Here...............
 
