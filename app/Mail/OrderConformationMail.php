@@ -20,12 +20,14 @@ class OrderConformationMail extends Mailable
     public $subtotal;
     public $total;
     public $order;
-    public function __construct($userId,$subtotal,$total,$order)
+    public $username;
+    public function __construct($userId,$subtotal,$total,$order,$username)
     {
         $this->userId = $userId;
         $this->subtotal = $subtotal;
         $this->total = $total; 
         $this->order = $order;
+        $this->username = $username;
     }
 
     /**
@@ -38,7 +40,7 @@ class OrderConformationMail extends Mailable
         $order = $this->order;
         // $pdf = PDF::loadView('admin.mail.ordercoformations');
         // $pdf = PDF::loadView('admin.mail.bankInfo');
-        return $this->view('admin.mail.template',['userId'=>$this->userId])
+        return $this->view('admin.mail.template',['userId'=>$this->userId,'username'=>$this->username])
         ->attachData(PDF::loadView('admin.mail.ordercoformation',compact('order'))->output(), "invoice.pdf")
         ->attachData(PDF::loadView('admin.mail.bankInfo',compact('order'))->output(), "bank-info.pdf");
     }

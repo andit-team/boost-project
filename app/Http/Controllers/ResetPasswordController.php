@@ -30,6 +30,6 @@ class ResetPasswordController extends Controller
         Session::flash('success', 'Password  Reset Successfully!');    
         // return redirect('merchant/login'.'?email='.$email);
         // Session::flush();     
-        return redirect('merchant/login'); 
+        return redirect('login'); 
     }
 }

@@ -39,7 +39,7 @@
                                 <table class="table table-borderd" id="dataTableNoPagingDesc3">
                                     <thead>
                                         <tr>
-                                            <th width="50">Sl</th>  
+                                            {{-- <th width="50">Sl</th>  
                                             <th>Customer Name</th>  
                                             <th>Order Invoice</th>
                                             <th>Delevery Date</th>
@@ -47,11 +47,16 @@
                                             <th>Next Delivery Frequency</th>
                                             <th>Order Status</th> 
                                             <th>Payment Status</th>
-                                            <th>Action</th>
+                                            <th>Action</th> --}}
+                                            <th class="50r">#Sl</th>
+                                            <th>Invoice Number</th>
+                                            <th>Products</th>
+                                            <th>Total</th>
+                                            <th>Payment Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php $i=0; @endphp 
+                                        {{-- @php $i=0; @endphp 
                                             @foreach($subscription as $row)
                                                 <tr>
                                                     <td>{{ ++$i }}</td>  
@@ -76,18 +81,51 @@
                                                     <td class="d-flex justify-content-between" >
                                                         <ul>
                                                             <li ><a href="{{ url('boostadmin/subscription-order-list/details/'.$row->id)}}" id="" title="Edit"><button class="btn btn-sm btn-info" ><i class="fa fa-list"></i></button> </a></li>
-                                                             {{-- <li><a href="{{ url('boostadmin/customer/edit/'.$row->id.'/update-customer')}}" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>
+                                                             <li><a href="{{ url('boostadmin/customer/edit/'.$row->id.'/update-customer')}}" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>
                                                             <li> 
                                                                 <form action="{{ url('boostadmin/customer/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
                                                                     @csrf
                                                                     @method('delete') 
                                                                     <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
                                                                 </form> 
-                                                            </li> --}}
+                                                            </li>
                                                         </ul>
                                                     </td>
                                                 </tr> 
-                                            @endforeach 
+                                            @endforeach  --}}
+                                            @forelse($orders as $order)
+                                            <tr>
+                                              <td class="text-center">{{sprintf('%02d',++$i)}}</td>
+                                              <td> <a href="{{ url('boostadmin/invoice-customer/'.$order->id) }}"> #{{$order->invoice}} </a></td>
+                                              <td>
+                
+                                                @php 
+                                                    $products = '';
+                                                    $total = 0;
+                                                @endphp
+                                                @foreach($order->items as $cart)
+                                                    @php
+                                                        $total += $cart->qty*$cart->price;
+                                                        $products .= $cart->product->product_name.' , '; 
+                                                    @endphp
+                                                @endforeach
+                                                {{rtrim($products,' , ')}}
+                
+                                              </td>
+                                              <td class="text-left">
+                                                £ {{$total}}
+                                              </td>
+                                              <td class="text-left">
+                                                {{ucfirst($order->payment_status)}}
+                                              </td>
+                                            </tr>
+                                            @empty
+                
+                                            <tr>
+                                              <td colspan="3">No Order yet</td>
+                                            </tr>
+                                            @endforelse
+                                          </tbody>
                                     </tbody>
                                 </table>
                             </div>

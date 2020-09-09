@@ -76,6 +76,18 @@
                 text-decoration: none;
                 color: #000;
             }
+            .wellcome{
+                margin: 0 0 0 225px;
+                padding: 0 0 0 30px;
+                list-style: none;
+                width: 100%;
+                text-align: left;
+                display: block;
+            }
+            .wellcome li{
+                display: inline-block;
+                margin: 0 20px;
+            }
         </style>
     </head>
     <body>
@@ -86,33 +98,54 @@
         padding: 20px 30px;
         ">
           <div class="container">
-            <div class="text-center">
+              <div class="text-center">
                 <img src="{{asset('frontend/boost/assest/img/logo3.png')}}" alt="" style="width: 190px; height: auto;" />
               </div>
-              <div class="text-center">
-                  <h1>Your order has been send</h1> 
+              <div class="text-center mt-4">
+                  <h1>Well come to the team</h1> 
               </div>
               <div class="text-center mt-4">
                 <img src="{{asset('frontend/assets/images/wellcome.png')}}" alt="" style="width: 700px; height: auto;" />
-              </div> 
-              <div class="text-left mt-4" style="padding-left:100px;">
-                <h4>Dear {{ $username }},</h4>
-             </div>
+              </div>
+              <div class="text-left mt-5">
+              <h4>Hey {{$customerFirstName}}</h4>
+              </div>
+              <div class="text-left">
+                <h4>Thanks for joining Boost</h4>
+                </div>
               <div>
-                  <p class="body-content mt-4" style="padding-left:100px;">
-                    Just to let you know, your latest Boost selection is on its way. It’ll<br>be with you in 2 – 5 days, and you can track it with the following <br> <a href="#">link</a>, using the following tracking code: 0718377152264621. 
+                  <p class="body-content mt-4 text-justify">
+                    A simpler way of getting just what you need, when you need it.<br> 
+                    And a stand against overconsumption.  
                   </p>
               </div>
               <div>
-                <p class="body-content mt-4" style="padding-left:100px;">
-                    We hope you will love our products and having one less thing to <br> think about. 
+                <p class="body-content mt-4 text-justify">
+                    We are currently working on your order, and you will receive it at<br> 
+                    the latest by 23/09/2020.
                 </p>
-              </div>
-              <div class="text-center mt-4 mb-4">
-                  <a class="btn" href="{{url('dashboard')}}">Go To Dashboard</a>
-              </div>
-          </div>
-        </section> 
+            </div>
+            <div>
+                <p class="body-content mt-4 ">
+                    Should you need to, you can make any changes <a href="{{url('dashboard')}}">here</a>.
+                </p> 
+            </div>
+            <div>
+                <p class="body-content mt-4 ">
+                    Best,<br>
+                    Team Boost 
+                </p> 
+            </div>
+            <div class="text-left">
+                <ul class="wellcome">
+                    <li><a href="#"><img src="{{asset('frontend/assets/images/linkdin.png')}}" alt="" style="width: 30px; height: 30px;" /></a></li>
+                    <li><a href="#"><img src="{{asset('frontend/assets/images/instagram.png')}}" alt="" style="width: 30px; height: 30px;" /></i></a></li>
+                </ul>
+                <p>
+                    No marketing here. Just an automatic email to let you know about your BOOST <br> subscription. 
+                </p>
+            </div>
+        </section>
   
 </div>
     </body>

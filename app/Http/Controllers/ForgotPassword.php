@@ -37,17 +37,17 @@ class ForgotPassword extends Controller
 
       $this->sendEmail( $user);
       // Session::flush();
-      return redirect()->back()->with(['success'=> 'Reset code sent to your emai']);   
+      return redirect()->back()->with(['success'=> 'Reset link sent to your emai']);   
        
        }
 
        public function sendEmail($user){
            Mail::send(
-               'admin.emails.forgot',
+               'admin.mail.forgot',
                ['user' => $user],
                function($message) use ($user) {
                    $message->to($user->email);
-                   $message->subject("$user->name,Reset Your password");
+                   $message->subject("$user->first_name,Reset Your password");
                }
             );
        }

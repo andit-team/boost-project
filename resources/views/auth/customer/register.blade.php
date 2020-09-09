@@ -99,20 +99,25 @@
                 <div class="shipping-product">
                   <p>Please note, we currently only ship within the UK</p>
                   <div action="!#" id="register_form">
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <input type="text" class="form-control @error('first_name') border-danger @enderror" name="postcode" required placeholder="Postcode" value="{{old('postcode')}}">
                     <span class="text-danger">{{$errors->first('postcode')}}</span>
+                  </div> --}}
+                  <div class="form-group">
+                    <input type="text" name="postcode" id="postCode" class="form-control" placeholder="Post Code"  value="{{old('postcode','M320JG')}}">
+                    <span class="text-danger">{{$errors->first('postcode')}}</span> <br>
+                    <span class="btn btn-footer" id="lookUpAddress">Lookup Address</span>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control @error('address_1') border-danger @enderror" name="address_1" required placeholder="Address Line 1" value="{{old('address_1')}}">
+                    <input type="text" class="form-control @error('address_1') border-danger @enderror" name="address_1" id="address1" required placeholder="Address Line 1" value="{{old('address_1')}}">
                     <span class="text-danger">{{$errors->first('address_1')}}</span>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control @error('address_2') border-danger @enderror" name="address_2" placeholder="Address Line 2 (optional)" value="{{old('address_2')}}">
+                    <input type="text" class="form-control @error('address_2') border-danger @enderror" name="address_2" id="address2" placeholder="Address Line 2 (optional)" value="{{old('address_2')}}">
                     <span class="text-danger">{{$errors->first('address_2')}}</span>
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control @error('town') border-danger @enderror" name="town" required placeholder="Town / City" value="{{old('town')}}">
+                    <input type="text" class="form-control @error('town') border-danger @enderror" name="town" id="town" required placeholder="Town / City" value="{{old('town')}}">
                     <span class="text-danger">{{$errors->first('town')}}</span>
                 </div>
                   </div>
@@ -152,6 +157,31 @@
             </div>
          </form>
         </div>
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 0px;">
+            <div class="modal-content" style="transform: rotate(0deg);">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Select Address</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="">
+                  <div class="form-group">
+                    <select name="" id="address" class="form-control">
+                    </select>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+              </div>
+            </div>
+          </div>
+        </div>
        </section>
     <!--Section ends-->
     @include('layouts.inc.footer.productFooter')
@@ -187,6 +217,58 @@
         }
       });
     }); 
+
+    $('#lookUpAddress').click(function(){
+        const postCode = $('#postCode').val();
+        // console.log(postCode);
+        if(postCode != ''){
+          $('#postCode').removeClass('border-danger');
+          $.ajax({
+            type:"Get",
+            url:"https://api.getaddress.io/find/"+postCode+"?api-key=1jGB7xre2UKJLfThyWR-MQ22395&expand=true",
+            dataType:"json",
+            beforeSend:function(response){},
+            success:function(response){
+              if(response.addresses != ''){
+                // console.log(response.addresses);
+                var option = '';
+                response.addresses.forEach(function(address){
+                  option += `<option value="${address.line_1}" data-town="${address.town_or_city}">${address.line_1}</option>`;
+                });
+                $('#address').html(option);
+                $('#exampleModalCenter').modal('show');
+              }else{
+                alert('address not found');
+              }
+            },
+            error:function(response){
+              swal({
+                title: "Opps!",
+                text: "Address not Found",
+                icon: "error",
+                buttons: true,
+                dangerMode: true,
+              })
+              // alert('asdfasdfasdf');
+            }
+        });
+
+        }else{
+          $('#postCode').addClass('border-danger');
+        }
+      });
+
+      $('#address').change(function(){
+        const town = $(this).find(':selected').data('town');
+        const line_1 = $(this).val();
+        const line_2 = $(this).find(':selected').data('line_2');
+
+        $('#address1').val(line_1);
+        $('#address2').val(line_2);
+        $('#town').val(town);
+        $('#exampleModalCenter').modal('hide');
+        
+      });
 </script>
 <script>
   var loadFile = function(event) {

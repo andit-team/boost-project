@@ -4,7 +4,7 @@
 // Route::get('sell-on-andbaazar','MerchantController@sellOnAndbaazar');
 // Route::post('sell-on-andbaazar','MerchantController@sellOnAndbaazarPost')->name('sellOnAndbaazarPost');
 
-Route::group(['prefix' => 'merchant'],function () {
+Route::group(['prefix' => 'boost'],function () {
     //Registration
     Route::get('otp-varification','MerchantController@getToken')->name('getToken');
     Route::post('otp-varification','MerchantController@postToken')->name('postToken');
