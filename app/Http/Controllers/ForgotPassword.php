@@ -25,7 +25,6 @@ class ForgotPassword extends Controller
     //   dd($request->all());
 
       $user = User::whereEmail($request->email)->first();
-
       if($user == null){
 
         return redirect()->back()->with(['error'=> 'Email not exists']);    
@@ -33,18 +32,18 @@ class ForgotPassword extends Controller
        
       $user = Sentinel::findById($user->id);
 
-      $reminder = Reminder::exists($user) ? : Reminder::create($user);
-
-      $this->sendEmail( $user);
+      Reminder::exists($user) ? : Reminder::create($user);
+      $reminder = \DB::table('reminders')->where('user_id',$user->id)->first();
+      $this->sendEmail($user,$reminder->code);
       // Session::flush();
-      return redirect()->back()->with(['success'=> 'Reset link sent to your emai']);   
+      return redirect()->back()->with(['success'=> 'Reset link sent to your email']);   
        
        }
 
-       public function sendEmail($user){
+       public function sendEmail($user,$reminder){
            Mail::send(
                'admin.mail.forgot',
-               ['user' => $user],
+               ['user' => $user,'reminder'=>$reminder],
                function($message) use ($user) {
                    $message->to($user->email);
                    $message->subject("$user->first_name,Reset Your password");

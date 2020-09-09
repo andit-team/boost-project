@@ -93,14 +93,16 @@
         </div>
     @endif
           
-    <form class="form-horizontal auth-form" action="{{ url('boost/reset_password/'.$email->email) }}" method="post">
+    <form class="form-horizontal auth-form" action="{{ url('reset_password/'.$email->email) }}" method="post">
         @csrf
         @method('PUT')                            
             <div class="form-group">
                 <input required="" name="password" type="password" class="form-control" placeholder=" New Password">
+                <span class="text-danger">{{$errors->first('password')}}</span>
             </div>
             <div class="form-group">
-                <input required="" name="password" type="password" class="form-control" placeholder="Confirm Password">
+                <input required="" name="password_confirmation" type="password" class="form-control" placeholder="Confirm Password">
+                <span class="text-danger">{{$errors->first('password_confirmation')}}</span>
             </div>
             
             <div class="form-button">

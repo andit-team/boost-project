@@ -1,5 +1,6 @@
 @extends('layouts.boostmaster')
 @section('content')
+@include('elements.alert')
 @include('layouts.inc.header.productHeader',['login_header'=>'header-login'])
  <!-- section  Form-->
  <section class="login-area">
@@ -8,7 +9,7 @@
       <div class="col-lg-6">
        <div class="login-left-side-area">
         <h2>Sign in</h2>
-        <p>Use your great.gov.uk login details to sign in.</p>
+        <p>Use your login details to sign in.</p>
         @if (\Session::has('error'))
                <div class="alert alert-danger">
                         <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>

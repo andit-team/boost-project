@@ -4,15 +4,9 @@
 // Route::get('sell-on-andbaazar','MerchantController@sellOnAndbaazar');
 // Route::post('sell-on-andbaazar','MerchantController@sellOnAndbaazarPost')->name('sellOnAndbaazarPost');
 
-Route::group(['prefix' => 'boost'],function () {
+
     //Registration
-    Route::get('otp-varification','MerchantController@getToken')->name('getToken');
-    Route::post('otp-varification','MerchantController@postToken')->name('postToken');
-    Route::post('token/update','MerchantController@updateToken')->name('updateToken');
-    Route::get('personal-info','MerchantController@personalInfo');
-    Route::post('personal-info','MerchantController@savePersonalInfo')->name('savePersonalInfo');
-    Route::get('shop-info','MerchantController@shopRegistration');
-    Route::post('shop-info','MerchantController@shopRegistrationStore')->name('sellerShopeRegistration');
+   
     Route::get('terms-condition','MerchantController@termsCondtion');
     //Login
     // Route::get('login','MerchantController@merchantlogin');
@@ -22,7 +16,7 @@ Route::group(['prefix' => 'boost'],function () {
     Route::post('forgot_password', 'ForgotPassword@password');
     Route::get('reset_password/', 'ResetPasswordController@reset');
     Route::put('reset_password/{email}', 'ResetPasswordController@updatePassword');
-});
+
 
 Route::group(['prefix' => 'merchant','middleware' => ['auth','merchant']],function () {
     Route::get('dashboard','MerchantController@dashboard');
