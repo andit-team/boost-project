@@ -34,8 +34,8 @@
       </div>
       <div class="col-lg-6">
        <div class="login-right-side-area">
-        <h2>Create a great.gov.uk account</h2>
-        <p>Create a great.gov.uk account and you'll get a business page to promote your business to overseas buyers.</p>
+        <h2>Create a account</h2>
+        <p>Create a account and you'll get a business page to promote your business to overseas buyers.</p>
         <p>It takes less than three minutes to create an account.</p>
         <div class="">
          <a href="register" class="btn btn-footer">Create account</a>
