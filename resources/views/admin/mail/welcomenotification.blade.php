@@ -107,36 +107,36 @@
               <div class="text-center mt-4">
                 <img src="{{asset('frontend/assets/images/wellcome.png')}}" alt="" style="width: 700px; height: auto;" />
               </div>
-              <div class="text-left mt-5">
+              <div class="text-left mt-5" style="padding-left:100px;">
               <h4>Hey {{$customerFirstName}}</h4>
               </div>
-              <div class="text-left">
+              <div class="text-left" style="padding-left:100px;">
                 <h4>Thanks for joining Boost</h4>
                 </div>
               <div>
-                  <p class="body-content mt-4 text-justify">
+                  <p class="body-content mt-4" style="padding-left:100px;">
                     A simpler way of getting just what you need, when you need it.<br> 
                     And a stand against overconsumption.  
                   </p>
               </div>
               <div>
-                <p class="body-content mt-4 text-justify">
+                <p class="body-content mt-4" style="padding-left:100px;">
                     We are currently working on your order, and you will receive it at<br> 
                     the latest by 23/09/2020.
                 </p>
             </div>
             <div>
-                <p class="body-content mt-4 ">
+                <p class="body-content mt-4 " style="padding-left:100px;">
                     Should you need to, you can make any changes <a href="{{url('dashboard')}}">here</a>.
                 </p> 
             </div>
             <div>
-                <p class="body-content mt-4 ">
+                <p class="body-content mt-4 " style="padding-left:100px;">
                     Best,<br>
                     Team Boost 
                 </p> 
             </div>
-            <div class="text-left">
+            <div class="text-left" style="padding-left:100px;">
                 <ul class="wellcome">
                     <li><a href="#"><img src="{{asset('frontend/assets/images/linkdin.png')}}" alt="" style="width: 30px; height: 30px;" /></a></li>
                     <li><a href="#"><img src="{{asset('frontend/assets/images/instagram.png')}}" alt="" style="width: 30px; height: 30px;" /></i></a></li>

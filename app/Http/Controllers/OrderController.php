@@ -452,4 +452,8 @@ class OrderController extends Controller
       return view('admin.subscription.show',compact('order','i','total','subtotal'));
     }
 
+    public function term(){
+        return view('frontend.order.termcondition');
+    }
+
 }
