@@ -45,9 +45,10 @@ Route::post('orders/confirm','OrderController@orderConfirm')->name('orderConfirm
 Route::post('orders/addcart','OrderController@addCart');
 Route::post('orders/decreas','OrderController@orderDecreas');
 Route::post('orders/remove','OrderController@orderRemove');
+Route::get('orders/terms-condition','OrderController@term');
 
 Route::resource('orders','OrderController');
-Route::post('payment_transfer','PaymentTransController@store')->name('payment_transfer');
+Route::post('payment_transfer','PaymentTransController@store')->name('payment_transfer'); 
 // Route::resource('trans','PaymentTransController');
 // Frontend Routes Are End Here...............
 

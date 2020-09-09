@@ -108,9 +108,22 @@
                     We hope you will love our products and having one less thing to <br> think about. 
                 </p>
               </div>
-              <div class="text-center mt-4 mb-4">
-                  <a class="btn" href="{{url('dashboard')}}">Go To Dashboard</a>
+              <div>
+                <p class="body-content mt-4" style="padding-left:100px;">
+                    Your invoice is attached. 
+                </p>
               </div>
+              <div>
+                <p class="body-content mt-4" style="padding-left:100px;">
+                    Best,<br>
+                    Team Boost 
+                </p> 
+            </div>
+            <div style="padding-left:100px; mt-4">
+                <hr>
+                Have a question? <a href="#">essentials@boost.co.uk</a><br>
+                0800 44 80 140 (Monday to Friday, 9am to 6pm)
+            </div> 
           </div>
         </section> 
   

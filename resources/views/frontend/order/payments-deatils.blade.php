@@ -98,7 +98,7 @@
                 <div class="form-check">
                   <input type="checkbox" name="aggredTc" {{ old('aggredTc') ? 'checked' : '' }} class="form-check-input" id="aggredTc">
                   <label class="form-check-label" for="aggredTc">I confirm I have read and agree to the <a
-                      href="#!">TERMS
+                      href="{{url('orders/terms-condition')}}">TERMS
                       AND CONDITIONS.</a> </label>
                 </div>
                 <div class="form-check" id="check-block">
