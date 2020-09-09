@@ -65,7 +65,7 @@
             .body-content{
                 line-height: 28px;
                 font-size: 20px;
-                text-align: center;
+                text-align: left;
             }
             .mt-4{
                 margin-top: 32px;
@@ -86,22 +86,33 @@
         padding: 20px 30px;
         ">
           <div class="container">
+            <div class="text-center">
+                <img src="{{asset('frontend/boost/assest/img/logo3.png')}}" alt="" style="width: 190px; height: auto;" />
+              </div>
               <div class="text-center">
-                  <h1>Congratulation!</h1>
-                  <p>Your order has been successull</p>
+                  <h1>Your order has been send</h1> 
+              </div>
+              <div class="text-center mt-4">
+                <img src="{{asset('frontend/assets/images/wellcome.png')}}" alt="" style="width: 700px; height: auto;" />
+              </div> 
+              <div class="text-left mt-4" style="padding-left:100px;">
+                <h4>Dear {{ $username }},</h4>
+             </div>
+              <div>
+                  <p class="body-content mt-4" style="padding-left:100px;">
+                    Just to let you know, your latest Boost selection is on its way. It’ll<br>be with you in 2 – 5 days, and you can track it with the following <br> <a href="#">link</a>, using the following tracking code: 0718377152264621. 
+                  </p>
               </div>
               <div>
-                  <p class="body-content mt-4">
-                    Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. 
-                    The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De 
-                    Finibus Bonorum et Malorum for use in a type specimen book.   
-                  </p>
+                <p class="body-content mt-4" style="padding-left:100px;">
+                    We hope you will love our products and having one less thing to <br> think about. 
+                </p>
               </div>
               <div class="text-center mt-4 mb-4">
                   <a class="btn" href="{{url('dashboard')}}">Go To Dashboard</a>
               </div>
           </div>
-        </section>
+        </section> 
   
 </div>
     </body>

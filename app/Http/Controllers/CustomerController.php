@@ -34,7 +34,7 @@ class CustomerController extends Controller{
     }
 
     public function registration(Request $request, User $user){
-        // dd($request->all());
+        //  dd($request->all());
         $request->validate([
             'first_name'    => 'required',
             'last_name'     => 'required',
@@ -150,7 +150,7 @@ class CustomerController extends Controller{
     }
 
     public function password(Request $request){
-        die('on development');
+        // die('on development');
         //   dd($request->all());
 
           $user = User::whereEmail($request->email)->first();

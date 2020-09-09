@@ -1,4 +1,4 @@
-@extends('auth.auth-master')
+{{-- @extends('auth.auth-master')
 @section('content')
 <div class="row"> 
     <div class="col-md-5 p-0 card-left">
@@ -51,7 +51,7 @@
                     </div>
                 @endif
                       
-                <form class="form-horizontal auth-form" action="{{ url('merchant/reset_password/'.$email->email) }}" method="post">
+                <form class="form-horizontal auth-form" action="{{ url('boost/reset_password/'.$email->email) }}" method="post">
                     @csrf
                     @method('PUT')                            
                         <div class="form-group">
@@ -72,5 +72,54 @@
  </div>
 <a href="{{url('/')}}" class="btn btn-secondary back-btn"><i data-feather="arrow-left"></i>Back To Home</a>
 
-@endsection
+@endsection --}}
+
+@extends('layouts.boostmaster')
+@section('content')
+@include('layouts.inc.header.productHeader',['login_header'=>'header-login'])
+
+
+<!--section start-->
+<section class="login-area">
+    <div class="container">
+     <div class="row">
+      <div class="col-lg-6">
+       <div class="login-left-side-area">
+        <h2>Password reset</h2>
+        <p>Enter your new passwod</p>
+        @if (\Session::has('error'))
+        <div class="alert alert-danger">
+                <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
+        </div>
+    @endif
+          
+    <form class="form-horizontal auth-form" action="{{ url('boost/reset_password/'.$email->email) }}" method="post">
+        @csrf
+        @method('PUT')                            
+            <div class="form-group">
+                <input required="" name="password" type="password" class="form-control" placeholder=" New Password">
+            </div>
+            <div class="form-group">
+                <input required="" name="password" type="password" class="form-control" placeholder="Confirm Password">
+            </div>
+            
+            <div class="form-button">
+                <button class="btn btn-primary" type="submit">Reset Password</button>
+            </div>                       
+        </form>
+         <div class="contact-area-login">
+          <p>
+              <a href="login">Back to Login</a> 
+            if the password reset doesn't work.</p>
+         </div>
+        </form>
+       </div>
+      </div>
+     </div>
+    </div> 
+   </section>
+
+   <!-- section  Form-->
+   @include('layouts.inc.footer.productFooter')
+   @endsection 
 

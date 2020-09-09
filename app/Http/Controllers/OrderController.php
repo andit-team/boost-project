@@ -415,10 +415,11 @@ class OrderController extends Controller
 
         $subtotal = $order['sub_total'];
         $total    = $order['total'];
+        $username = $userId['first_name'];
 
         
 
-        \Mail::to($userId['email'])->send(new OrderConformationMail($userId,$subtotal,$total,$order));
+        \Mail::to($userId['email'])->send(new OrderConformationMail($userId,$subtotal,$total,$order,$username));
 
         Session::flash('success','Your order has been successfully created!');
         return redirect('customer/invoice/'.$order->invoice);

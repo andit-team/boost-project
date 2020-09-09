@@ -83,8 +83,12 @@ Route::prefix('customer')->group(function () {
 // Customer Routes Are End Here...............
 // forgot password route....
 
-Route::get('forgot_password', 'CustomerController@forgot');
-Route::post('forgot_password', 'CustomerController@password');
+// Route::get('forgot_password', 'CustomerController@forgot');
+// Route::post('forgot_password', 'CustomerController@password');
+// Route::get('forgot_password', 'ForgotPassword@forgot');
+// Route::post('forgot_password', 'ForgotPassword@password');
+// Route::get('reset_password/', 'ResetPasswordController@reset');
+// Route::put('reset_password/{email}', 'ResetPasswordController@updatePassword');
 
 // Reset  Password Route....
 
