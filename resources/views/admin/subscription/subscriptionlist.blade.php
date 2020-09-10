@@ -38,16 +38,7 @@
                             {{-- <hr>  --}}
                                 <table class="table table-borderd" id="dataTableNoPagingDesc3">
                                     <thead>
-                                        <tr>
-                                            {{-- <th width="50">Sl</th>  
-                                            <th>Customer Name</th>  
-                                            <th>Order Invoice</th>
-                                            <th>Delevery Date</th>
-                                            <th>Delevery Frequency</th>
-                                            <th>Next Delivery Frequency</th>
-                                            <th>Order Status</th> 
-                                            <th>Payment Status</th>
-                                            <th>Action</th> --}}
+                                        <tr> 
                                             <th class="50r">#Sl</th>
                                             <th>Invoice Number</th>
                                             <th>Products</th>
@@ -55,44 +46,7 @@
                                             <th>Payment Status</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        {{-- @php $i=0; @endphp 
-                                            @foreach($subscription as $row)
-                                                <tr>
-                                                    <td>{{ ++$i }}</td>  
-                                                    <td>{{ $row->user->first_name.' '.$row->user->last_name}}</td> 
-                                                    <td>{{ $row->invoice }}</td>
-                                                    <td>{{ $row->delivery_date}}</td>
-                                                    <td>{{ $row->delivery_frequency }}</td> 
-                                                    <td>
-                                                        @if($row->delivery_frequency == 'Only at once')
-                                                        @elseif($row->delivery_frequency == 'Every 3 weeks')
-                                                        {{ date('d-M-Y',strTotime($row->delivery_date.'+21 days')) }}
-                                                        @elseif($row->delivery_frequency == 'Every 4 weeks')
-                                                        {{ date('d-M-Y',strTotime($row->delivery_date.'+28 days')) }}
-                                                        @elseif($row->delivery_frequency == 'Every 5 weeks')
-                                                        {{ date('d-M-Y',strTotime($row->delivery_date.'+35 days')) }}
-                                                        @elseif($row->delivery_frequency == 'Every 6 weeks')
-                                                        {{ date('d-M-Y',strTotime($row->delivery_date.'+42 days')) }}
-                                                        @endif
-                                                    </td>
-                                                    <td>{{ $row->order_status }}</td> 
-                                                    <td>{{ $row->payment_status }}</td>
-                                                    <td class="d-flex justify-content-between" >
-                                                        <ul>
-                                                            <li ><a href="{{ url('boostadmin/subscription-order-list/details/'.$row->id)}}" id="" title="Edit"><button class="btn btn-sm btn-info" ><i class="fa fa-list"></i></button> </a></li>
-                                                             <li><a href="{{ url('boostadmin/customer/edit/'.$row->id.'/update-customer')}}" id="" title="Edit"><button class="btn btn-sm btn-warning" ><i class="fa fa-edit"></i></button> </a></li>
-                                                            <li> 
-                                                                <form action="{{ url('boostadmin/customer/'.$row->id) }}" method="post"  id="deleteButton{{$row->id}}">
-                                                                    @csrf
-                                                                    @method('delete') 
-                                                                    <button type="submit" class="btn btn-sm btn-primary" onclick="sweetalertDelete({{$row->id}})"><i class="fa fa-trash-o"></i></button>
-                                                                </form> 
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr> 
-                                            @endforeach  --}}
+                                    <tbody> 
                                             @forelse($orders as $order)
                                             <tr>
                                               <td class="text-center">{{sprintf('%02d',++$i)}}</td>
