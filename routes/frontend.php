@@ -7,16 +7,14 @@ Route::post('register','CustomerController@registration')->name('registration');
 Route::get('dashboard','CustomerController@dashboard');
 Route::get('logout','AuthController@logout');
 
+Route::get('forgot_password', 'ForgotPassword@forgot');
+Route::post('forgot_password', 'ForgotPassword@password');
+Route::get('reset_password/', 'ResetPasswordController@reset');
+Route::put('reset_password/{email}', 'ResetPasswordController@updatePassword');
+
 // Frontend Routes Are Start Here...............
 
-Route::get('vie', function(){
-    return view('admin.mail.ordercoformations');
-});
-Route::get('mail', function(){
-    // $pdf = PDF::loadView('admin.mail.bankInfo');
-    // return $pdf->download('invoice.pdf');
-    \Mail::to('shariful.info56@gmail.com')->send(new App\Mail\OrderConformationMail('1',100,100,'order'));
-});
+
 
 Route::get('/', 'HomeController@index');
 Route::get('addto_cart', 'HomeController@cart');
@@ -103,7 +101,7 @@ Route::prefix('customer')->group(function () {
 // Route::put('reset_password/{email}', 'ResetPasswordController@updatePassword');
 
 // Reset  Password Route....
-
-Route::get('reset_password/', 'CustomerController@reset');
-Route::put('reset_password/{email}', 'CustomerController@updatePassword');
+Route::get('reset_password/', 'ResetPasswordController@reset');
+// Route::get('reset_password/', 'CustomerController@reset');
+Route::put('reset_password/{email}', 'ResetPasswordController@updatePassword');
 

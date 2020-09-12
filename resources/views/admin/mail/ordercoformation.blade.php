@@ -194,6 +194,7 @@
                                 </tr>
                             </tfoot>
                         </table>
+                        <h3>Payment Status :  {{ucfirst($order->payment_status)}}</h3>
                     </div>
                 </div>
             </section>

@@ -12,14 +12,14 @@
         <h2>Password reset</h2>
         <p>Enter the email address you used to register.</p>
         @if (\Session::has('error'))
-        <div class="alert alert-danger">
-                <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
+        <div class="alert alert-danger mt-2">
+                <p class="text-muted font-weight-bold pt-0">{!! \Session::get('error') !!}</p>
         </div>
         @endif   
     
         @if (\Session::has('success'))
-        <div class="alert alert-success">
-                <p class="text-muted font-weight-bold">{!! \Session::get('success') !!}</p>
+        <div class="alert alert-success mt-2">
+                <p class="text-muted font-weight-bold pt-0">{!! \Session::get('success') !!}</p>
         </div>
         @endif  
         <form class="" action="{{url('forgot_password')}}" method="post" id="form-login">

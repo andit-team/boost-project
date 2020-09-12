@@ -38,10 +38,14 @@ class OrderConformationMail extends Mailable
     public function build()
     {
         $order = $this->order;
+        // dd($order);
         // $pdf = PDF::loadView('admin.mail.ordercoformations');
         // $pdf = PDF::loadView('admin.mail.bankInfo');
-        return $this->view('admin.mail.template',['userId'=>$this->userId,'username'=>$this->username])
-        ->attachData(PDF::loadView('admin.mail.ordercoformation',compact('order'))->output(), "invoice.pdf")
-        ->attachData(PDF::loadView('admin.mail.bankInfo',compact('order'))->output(), "bank-info.pdf");
+        $data =  $this->view('admin.mail.template',['userId'=>$this->userId,'username'=>$this->username])
+        ->attachData(PDF::loadView('admin.mail.ordercoformation',compact('order'))->output(), "invoice.pdf");
+        if($order->payment_status == "Pending"){
+           $data = $data->attachData(PDF::loadView('admin.mail.bankInfo',compact('order'))->output(), "bank-info.pdf");
+        }
+        return $data;
     }
 }

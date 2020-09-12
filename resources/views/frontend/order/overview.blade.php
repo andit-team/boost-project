@@ -47,7 +47,7 @@
                                         @foreach($carts as $cart)
                                             @php
                                                 $total += $cart->qty*$cart->price;
-                                                $products .= $cart->product->product_name.' , '; 
+                                                $products .= $cart->product->product_name.' x '.$cart->qty.' , '; 
                                             @endphp
                                         @endforeach
                                             {{rtrim($products,' , ')}}
@@ -136,9 +136,9 @@
                                 @csrf
                                 <input type="hidden" value="{{$order->invoice}}" name="invoice">
                             </form>
-                        <button type="button" class="btn btn-primary" onclick="sweetalertDelete('orderConfirm',3000)">
+                        <span type="button" class="btn btn-primary" onclick="confirmsss('orderConfirm',3000)">
                             Confirmation Order
-                        </button>
+                        </span>
 
                         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document" style="margin-top: 0px;">
@@ -193,3 +193,38 @@
 </section>
    @include('layouts.inc.footer.productFooter')
 @endsection
+@push('css')
+    <style>
+        .invisibles{
+            pointer-events: none;
+            opacity: .5;
+        }
+    </style>
+@endpush
+@push('js')
+<script>
+    function confirmsss(id,time=1000) {
+        
+    event.preventDefault();
+    swal({
+      title: "Are you sure?",
+      text: "To continue this action!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        swal("Your action has beed done! :)", {
+          icon: "success",
+          buttons: false,
+          timer: time
+        });
+          $("#deleteButton"+id).submit();
+          $('body').addClass('invisibles');
+      }
+    });
+}
+
+</script>
+@endpush

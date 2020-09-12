@@ -37,6 +37,7 @@
   {{-- <script src="{{ asset('frontend/boost/assest/js/date-picker.js')}}"></script> --}}
   <script src="{{ asset('frontend/boost/assest/js/bootstrap-datepicker.min.js')}}"></script>
   <script src="{{ asset('js/bootstrap-datepicker.min.js')}}"></script>
+  <script src="{{ asset('frontend/boost/assest/js/custom.js')}}"></script>
   @include('elements.myjs')
   @stack('js')
   <script>

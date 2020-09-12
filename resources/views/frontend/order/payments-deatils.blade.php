@@ -97,9 +97,7 @@
                 </div>
                 <div class="form-check">
                   <input type="checkbox" name="aggredTc" {{ old('aggredTc') ? 'checked' : '' }} class="form-check-input" id="aggredTc">
-                  <label class="form-check-label" for="aggredTc">I confirm I have read and agree to the <a
-                      href="{{url('terms-condition')}}">TERMS
-                      AND CONDITIONS.</a> </label>
+                  <label class="form-check-label" for="aggredTc">I confirm I have read and agree to the </label> <a href="{{url('terms-condition')}}" target="_blank">TERMS AND CONDITIONS.</a>
                 </div>
                 <div class="form-check" id="check-block">
                   <input type="checkbox" name="sameAsShipping" {{ old('sameAsShipping') ? 'checked' : '' }} class="form-check-input checked" id="sameAsShipping">
@@ -113,7 +111,7 @@
                 <div>
                   <div id="register_form">
                     <div class="form-group">
-                      <input type="text" name="postCode" id="postCode" class="form-control" placeholder="Postcode"  value="{{old('postCode','M320JG')}}">
+                      <input type="text" name="postCode" id="postCode" class="form-control" placeholder="Postcode"  value="{{old('postCode')}}">
                       <span class="text-danger">{{$errors->first('postCode')}}</span> <br>
                       <span class="btn btn-footer" id="lookUpAddress">Lookup Address</span>
                     </div>

@@ -125,7 +125,7 @@
                                     <div>
                                       <div id="register_form">
                                         <div class="form-group">
-                                          <input type="text" name="postCode" id="postCode" class="form-control" placeholder="Postcode"  value="{{old('postCode','M320JG')}}">
+                                          <input type="text" name="postCode" id="postCode" class="form-control" placeholder="Postcode"  value="{{old('postCode')}}">
                                           <span class="text-danger">{{$errors->first('postCode')}}</span> <br>
                                           <span class="btn btn-footer" id="lookUpAddress">Lookup Address</span>
                                         </div>

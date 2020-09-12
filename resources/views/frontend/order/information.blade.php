@@ -128,7 +128,7 @@
                 <span class="text-danger">{{$errors->first('postcode')}}</span>
               </div> --}}
               <div class="form-group">
-                <input type="text" name="postcode" id="postCode" class="form-control" placeholder="Postcode"  value="{{old('postcode','M320JG')}}">
+                <input type="text" name="postcode" id="postCode" class="form-control" placeholder="Postcode"  value="{{old('postcode')}}">
                 <span class="text-danger">{{$errors->first('postcode')}}</span> <br>
                 <span class="btn btn-footer" id="lookUpAddress">Lookup Address</span>
               </div>

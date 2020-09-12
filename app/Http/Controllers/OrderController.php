@@ -200,7 +200,7 @@ class OrderController extends Controller
             'delivery_date'     => $request->delevaryDate,
             'delivery_frequency'=> $request->frequency,
             'user_id'           => $userId,
-            'created_at' => now(),
+            'created_at'        => now(),
         ];
         $order = Order::create($data);
         session(['invoice' => $order->invoice]);
@@ -222,6 +222,9 @@ class OrderController extends Controller
     }
 
     public function EditInformation(){
+        if(!session()->has('invoice')){
+            return redirect()->back();
+        }
         if (!Sentinel::check()) {
             return redirect()->back();
         }
@@ -271,6 +274,7 @@ class OrderController extends Controller
     }
 
     public function payment(){
+        // dd(session('invoice'));
         if (Sentinel::check()) {
             if(Sentinel::getUser()->card){
                 return redirect('orders/edit/payment-deatils');
@@ -318,6 +322,9 @@ class OrderController extends Controller
     }
 
     public function EditPayment(){
+        if(!session()->has('invoice')){
+            return redirect()->back();
+        }
         if (!Sentinel::check()) {
             return redirect()->back();
         }
@@ -368,7 +375,13 @@ class OrderController extends Controller
             return redirect()->back();
         }
         $carts = Cart::with('product')->where('user_id',Sentinel::getUser()->id)->get();
+        if(!$carts){
+            return redirect()->back();
+        }
         $order = Order::where('invoice',session('invoice'))->first();
+        if(!$order){
+            return redirect()->back();
+        }
         // dd($order);
         return view('frontend.order.overview',compact('carts','order'));
     }

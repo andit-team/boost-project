@@ -18,7 +18,7 @@ use App\Mail\WelcomeNotificationMail;
 
 class CustomerController extends Controller{
     public function __construct(){
-        $this->middleware(['auth','customer'])->except('register','userlogin','registration','userloginprocess','forgot','password');
+        $this->middleware(['auth','customer'])->except('register','userlogin','registration','userloginprocess','forgot','password','reset');
     }
 
     public function dashboard(){
@@ -215,17 +215,25 @@ class CustomerController extends Controller{
     }
 
     public function customerprofilestore(Request $request){
-        $customer = Sentinel::getUser();  
-        
-        
-
+        $customer = Sentinel::getUser();
+        $user = User::where('id','!=',$customer->id)->where('email',$request->email)->first();
+        if($user){
+            Session::flash('error', 'Email Already Exists!');
+            return redirect()->back();
+        }
         $data = [
             'first_name'=> $request->first_name, 
             'last_name' => $request->last_name,
             'email' 	=> $request->email,
-            'password' 	=> bcrypt($request->password),
+            // 'password' 	=> bcrypt($request->password),
             'updated_at'=> now(),
         ];
+
+        if(!empty($request->password)){
+            $data['password'] = bcrypt($request->password);
+        }
+
+
         $customer->update($data);
         Session::flash('success', 'Profile update Successfully!');
         return redirect()->back();

@@ -99,9 +99,7 @@
                 </div>
                 <div class="form-check">
                   <input type="checkbox" name="aggredTc" {{$card->aggredTc == 'on' ? 'checked' : ''}} class="form-check-input" id="aggredTc">
-                  <label class="form-check-label" for="aggredTc">I confirm I have read and agree to the <a
-                      href="#!">TERMS
-                      AND CONDITIONS.</a> </label>
+                  <label class="form-check-label" for="aggredTc">I confirm I have read and agree to the </label> <a href="{{url('terms-condition')}}" target="_blank">TERMS AND CONDITIONS.</a> 
                 </div>
                 <div class="form-check" id="check-block">
                   <input type="checkbox" name="sameAsShipping" {{$card->sameAsShipping == 'on' ? 'checked' : ''}} class="form-check-input checked" id="sameAsShipping">

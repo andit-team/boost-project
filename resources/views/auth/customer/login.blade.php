@@ -11,8 +11,8 @@
         <h2>Sign in</h2>
         <p>Use your login details to sign in.</p>
         @if (\Session::has('error'))
-               <div class="alert alert-danger">
-                        <p class="text-muted font-weight-bold">{!! \Session::get('error') !!}</p>
+               <div class="alert alert-danger mt-2">
+                        <p class="text-muted font-weight-bold" style="padding-top: 0px ">{!! \Session::get('error') !!}</p>
                </div>
           @endif
         <form  action="{{route('userloginprocess')}}" method="post" id="form-login">
