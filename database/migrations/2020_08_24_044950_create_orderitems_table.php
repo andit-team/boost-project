@@ -19,10 +19,8 @@ class CreateOrderitemsTable extends Migration
             $table->string('qty')->default(1);
             $table->string('price')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('order_id');
             $table->timestamps();
             
-            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });

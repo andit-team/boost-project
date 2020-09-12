@@ -10,7 +10,8 @@ Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
 
     Route::get('dashboard','AdminHomeController@dashboard');
     
-    
+    Route::resource('distributors','AgentController');
+    Route::resource('clubs','ClubController');
     Route::resource('/child','ChildrenController');
     Route::resource('/paymentmethod','PaymentMethodsController');
     Route::resource('/shippingmethod','ShippingMethodsController'); 
@@ -21,6 +22,7 @@ Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
     Route::get('/newsfeed','NewsfeedController@feedlist');
     Route::get('/contact-us','ContactController@contactmailList');
     Route::put('/contact-us/{id}','ContactController@replayMail');
+    
 
     Route::get('products/new-products/new','ProductController@create');
     Route::post('products/new-products/new','ProductController@store')->name('productstore');
@@ -40,6 +42,8 @@ Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
     Route::post('news/new-news','NewsController@store')->name('newsstore');
     // Route::get('news/edit/{id}/update-news','NewsController@edit');
     // Route::put('news/edit/{id}','NewsController@update'); 
-    Route::resource('news','NewsController');
+    Route::resource('news','NewsController'); 
+    Route::get('contact-messages','ContactController@AdminIndex');
+    Route::get('diretaries','ContactController@diretaries');
 }); 
 
