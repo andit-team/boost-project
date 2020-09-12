@@ -37,7 +37,7 @@
         <div class="row  align-items-center">
           <div class="col-lg-4 col-md-8 col-sm-8 col-8">
             <div class="seclict-delivary-logo-area">
-              {{-- <a href="index.html"><img src="{{asset('frontend/boost/assest/img/logo.png')}}" alt="img"></a> --}}
+              {{-- <a href="{{url('/')}}"><img src="{{asset('frontend/boost/assest/img/logo.png')}}" alt="img"></a> --}}
             </div>
           </div>
           {{-- <div class="col-lg-8 col-md-4 col-sm-4 col-4">

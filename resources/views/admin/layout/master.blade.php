@@ -93,7 +93,7 @@
                     <label class="switch"><a href="#"><i id="sidebar-toggle" data-feather="align-left"></i></a></label>
                 </div>
             </div>
-            <div class="nav-right col">
+            {{-- <div class="nav-right col">
                 <ul class="nav-menus">
                     <li>
                         <form class="form-inline search-form">
@@ -153,12 +153,12 @@
                             <li><a href="#"><i data-feather="lock"></i>Lock Screen</a></li>
                             <li><a href="#"><i data-feather="settings"></i>Settings</a></li>
                             <li><a href="{{url('logout')}}"><i data-feather="log-out"></i>Logout</a></li>
-                            {{-- <li><a href="{{url('logout')}}" data-lng="es">Logout</a></li> --}}
+                           
                         </ul>
                     </li>
                 </ul>
                 <div class="d-lg-none mobile-toggle pull-right"><i data-feather="more-horizontal"></i></div>
-            </div>
+            </div> --}}
         </div>
     </div>
     <!-- Page Header Ends -->

@@ -232,6 +232,7 @@
               if(response.addresses != ''){
                 // console.log(response.addresses);
                 var option = '';
+                option = `<option value="">Select Address</option>`;
                 response.addresses.forEach(function(address){
                   option += `<option value="${address.line_1}" data-town="${address.town_or_city}">${address.line_1}</option>`;
                 });

@@ -37,3 +37,4 @@
       </div>
     </nav>
   </header>
+  @include('layouts.inc.header.modal')

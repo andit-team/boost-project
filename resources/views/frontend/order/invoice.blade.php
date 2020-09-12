@@ -23,7 +23,7 @@
         <div class="row  align-items-center">
           <div class="col-lg-4 col-md-8 col-sm-8 col-8">
             <div class="seclict-delivary-logo-area">
-              <a href="index.html"><img src="{{asset('frontend/boost/assest/img/logo.png')}}" alt="img"></a>
+              <a href="{{url('/')}}"><img src="{{asset('frontend/boost/assest/img/logo.png')}}" alt="img"></a>
             </div>
           </div>
           <div class="col-lg-8 col-md-4 col-sm-4 col-4">
@@ -51,12 +51,11 @@
                               <div class="customer-info head-info">
                                 <p>
                                   Boost App ltd. <br>
-                                  48-49 Princes Place <br>
-                                  London <br>
-                                  W11 4QA <br>
-                                  Email: essentials@takk.co.uk <br>
-                                  CRN: 11160506 <br>
-                                  VAT ID: 322111665
+                                  3 Ripple Road <br>
+                                  IG11 7ND <br>
+                                  Barking <br>
+                                  Essex <br>
+                                  Email: britongroup@britongorup.co.uk
                                 </p>
                               </div>
                             </div>

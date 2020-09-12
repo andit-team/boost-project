@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Mail\ContactusMail;
+use App\Models\Dietary;
 use Sentinel;
-use Baazar;
 use Session;
 
 class ContactController extends Controller
@@ -20,6 +20,39 @@ class ContactController extends Controller
     {
        return view('frontend.contact');
     }
+    public function AdminIndex(){
+        $messages = Contact::orderBy('id','desc')->get();
+        // dd($messages);
+        $i = 0;
+        return view('admin.contacts.contact',compact('messages','i'));
+    }
+
+    public function DeleteMessage(Request $request){
+        $message = Contact::find($request->id);
+        if($message){
+            $message->delete();
+            session()->flash('success','Message Deleted Successfully!');
+            return redirect()->back();
+        }
+        return redirect()->back();
+    }
+
+    public function diretaries(){
+        $diretaries = Dietary::orderBy('id','desc')->get();
+        // dd($diretaries);
+        $i = 0;
+        return view('admin.contacts.diretary',compact('diretaries','i'));
+    }
+    public function DeleteDiretary(Request $request){
+        $Dietary = Dietary::find($request->id);
+        if($Dietary){
+            $Dietary->delete();
+            session()->flash('success','Dietary Deleted Successfully!');
+            return redirect()->back();
+        }
+        return redirect()->back();
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -39,25 +72,56 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-       
         $this->validateForm($request);
 
         $data = [
-            'first_name'  => $request->first_name,
-            'last_name'   => $request->last_name,
-            'phone'       => $request->phone, 
-            'sub'         => $request->sub,  
+            'name'  => $request->name,
+            'phone'       => $request->phone,
             'email'       => $request->email,
-            'description' => $request->description,
+            'messages' => $request->message,
+            'latter' => $request->latter,
+            'tc' => $request->tc,
+            'pp' => $request->pp,
             'created_at'  => now(),
         ];   
 
-        $comment = Contact::create($data); 
-
-        session()->flash('success','Your message sent successfully!');
-
+        $done = Contact::create($data);
+        if($done){
+            session()->flash('success','Your message sent successfully!');
+        }else{
+            session()->flash('error','Message not Sent');
+        }
         return redirect()->back();
         // echo json_encode($comment);   
+    }
+    public function dieraryStore(Request $request){
+        $request->validate([
+            'dname'  => 'required',
+            'dphone'   => 'required',
+            'demail'       => 'email',
+            'dmessage'         => 'required',
+            'dpp'         => 'accepted',
+            'dtc'         => 'accepted',
+            'dcompany_name'         => 'required',
+            'distribution'         => 'required',
+        ]);
+        $data = [
+            'name'          => $request->dname,
+            'email'         => $request->demail,
+            'phone'         => $request->dphone,
+            'distribution'  => $request->distribution,
+            'company_name'  => $request->dcompany_name,
+            'message'       => $request->dmessage,
+            'tc'            => $request->dtc,
+            'pp'            => $request->dpp,
+        ];
+        $done = Dietary::create($data);
+        if($done){
+            session()->flash('success','Your information sent successfully!');
+        }else{
+            session()->flash('error','Information not Sent');
+        }
+        return redirect()->back();
     }
 
     /**
@@ -130,12 +194,14 @@ class ContactController extends Controller
 
     private function validateForm($request){
         $validatedData = $request->validate([
-            'first_name'  => 'required',
-            'last_name'   => 'required',
-            'email'       => 'required|email',
-            'phone'       => 'required', 
-            'sub'         => 'required',
-            'description' => 'required',
+            'name'  => 'required',
+            // 'phone'   => 'required',
+            'email'       => 'email',
+            // 'latter'       => 'required', 
+            'message'         => 'required',
+            'pp'         => 'accepted',
+            'tc'         => 'accepted',
+            // 'description' => 'required',
         ]);
     }
 }

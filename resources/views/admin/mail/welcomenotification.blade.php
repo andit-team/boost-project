@@ -119,12 +119,6 @@
                     And a stand against overconsumption.  
                   </p>
               </div>
-              <div>
-                <p class="body-content mt-4" style="padding-left:100px;">
-                    We are currently working on your order, and you will receive it at<br> 
-                    the latest by 23/09/2020.
-                </p>
-            </div>
             <div>
                 <p class="body-content mt-4 " style="padding-left:100px;">
                     Should you need to, you can make any changes <a href="{{url('dashboard')}}">here</a>.

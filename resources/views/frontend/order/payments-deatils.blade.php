@@ -98,7 +98,7 @@
                 <div class="form-check">
                   <input type="checkbox" name="aggredTc" {{ old('aggredTc') ? 'checked' : '' }} class="form-check-input" id="aggredTc">
                   <label class="form-check-label" for="aggredTc">I confirm I have read and agree to the <a
-                      href="{{url('orders/terms-condition')}}">TERMS
+                      href="{{url('terms-condition')}}">TERMS
                       AND CONDITIONS.</a> </label>
                 </div>
                 <div class="form-check" id="check-block">
@@ -209,6 +209,7 @@
               if(response.addresses != ''){
                 // console.log(response.addresses);
                 var option = '';
+                option = `<option value="">Select Address</option>`;
                 response.addresses.forEach(function(address){
                   option += `<option value="${address.line_1}" data-town="${address.town_or_city}">${address.line_1}</option>`;
                 });

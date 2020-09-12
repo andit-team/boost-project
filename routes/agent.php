@@ -15,7 +15,7 @@ Route::get('agent-registration','AgentController@agentRegistration');
 Route::post('agent-registration','AgentController@registrationStepOne')->name('profileRegistration');
 
 Route::post('signup-step-one','AgentController@registrationStepOneProcess')->name('merchantStepOne');
-Route::get('terms-condition','AgentController@termsCondtion');
+// Route::get('terms-condition','AgentController@termsCondtion');
 
 
 /***************

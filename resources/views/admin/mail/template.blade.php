@@ -100,7 +100,7 @@
              </div>
               <div>
                   <p class="body-content mt-4" style="padding-left:100px;">
-                    Just to let you know, your latest Boost selection is on its way. It’ll<br>be with you in 2 – 5 days, and you can track it with the following <br> <a href="#">link</a>, using the following tracking code: 0718377152264621. 
+                    Just to let you know, your latest Boost selection is on its way. It’ll<br>be with you in 2 – 5 days.
                   </p>
               </div>
               <div>
@@ -121,8 +121,7 @@
             </div>
             <div style="padding-left:100px; mt-4">
                 <hr>
-                Have a question? <a href="#">essentials@boost.co.uk</a><br>
-                0800 44 80 140 (Monday to Friday, 9am to 6pm)
+                Have a question? <a href="#">britongroup@britongorup.co.uk</a><br>
             </div> 
           </div>
         </section> 

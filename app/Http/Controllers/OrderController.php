@@ -258,6 +258,9 @@ class OrderController extends Controller
         ];
         $user = Sentinel::getUser();
         $user->update($data);
+        if(!Sentinel::getUser()->card){
+            return redirect('orders/payment-deatils');
+        }
         return redirect('orders/overview');
     }
 
@@ -405,7 +408,8 @@ class OrderController extends Controller
                 'sub_total'         => $subTotal, 
                 'total'             => $subTotal, 
                 'pay_amount'        => 0,
-                'payment_status'    => 'Pending'
+                'payment_status'    => 'Pending',
+                'order_status'    => 'confirm'
             ]);
         session()->forget('invoice');
 

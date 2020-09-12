@@ -6,8 +6,8 @@
                 <div class="sidebar-user text-center">
                     <div><img class="img-60 rounded-circle lazyloaded blur-up" src="{{asset('frontend')}}/assets/images/dashboard/user1.jpg" alt="#">
                     </div>
-                    <h6 class="mt-3 f-14" style="color: #0088CF!important; ">JOHN</h6>
-                    <p>general manager.</p>
+                    <h6 class="mt-3 f-14" style="color: #0088CF!important; ">Admin</h6>
+                    <p>Admin Panel</p>
                 </div>
 
 
@@ -21,6 +21,9 @@
                    <li><a class="sidebar-header {{ request()->is('boostadmin/subscription-order-list/*') ? 'active' : '' }}"  href="{{ url('boostadmin/subscription-order-list') }}" class="{{ request()->is('boostadmin/subscription-order-list/') ? 'active' : '' }}"><i data-feather="list"></i><span>Subscription List</span></a> </li>
                    <li><a class="sidebar-header {{ request()->is('boostadmin/invoice/*') ? 'active' : '' }}"  href="{{ url('boostadmin/invoice') }}" class="{{ request()->is('boostadmin/invoice/') ? 'active' : '' }}"><i data-feather="bookmark"></i><span>Invoice</span></a> </li> 
                    <li><a class="sidebar-header {{ request()->is('boostadmin/news/*') ? 'active' : '' }}"  href="{{ url('boostadmin/news') }}" class="{{ request()->is('boostadmin/news/') ? 'active' : '' }}"><i data-feather="align-left"></i><span>News Latter</span></a> </li> 
+                   <li><a class="sidebar-header {{ request()->is('boostadmin/contact-messages') ? 'active' : '' }}"  href="{{ url('boostadmin/contact-messages') }}" class="{{ request()->is('boostadmin/contact-messages/') ? 'active' : '' }}"><i data-feather="align-left"></i><span>Contact Messages</span></a> </li> 
+                   <li><a class="sidebar-header {{ request()->is('boostadmin/diretaries') ? 'active' : '' }}"  href="{{ url('boostadmin/diretaries') }}" class="{{ request()->is('boostadmin/diretaries/') ? 'active' : '' }}"><i data-feather="align-left"></i><span>Diretaries</span></a> </li> 
+                   <li><a class="sidebar-header {{ request()->is('logout') ? 'active' : '' }}"  href="{{ url('logout') }}" class="{{ request()->is('logout/') ? 'active' : '' }}"><i data-feather="log-out"></i><span>Logout</span></a> </li> 
                 </ul>
             </div>
         </div> 

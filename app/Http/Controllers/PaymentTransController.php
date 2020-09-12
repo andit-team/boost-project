@@ -74,7 +74,8 @@ class PaymentTransController extends Controller
                 'sub_total'         => $subTotal, 
                 'total'             => $subTotal, 
                 'pay_amount'        => 0,
-                'payment_status'    => 'Pending'
+                'payment_status'    => 'Pending',
+                'order_status'    => 'confirm'
             ]);
         session()->forget('invoice');
 

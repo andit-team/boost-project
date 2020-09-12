@@ -40,5 +40,11 @@ Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
     Route::post('news/new-news','NewsController@store')->name('newsstore');
     // Route::get('news/edit/{id}/update-news','NewsController@edit');
     // Route::put('news/edit/{id}','NewsController@update'); 
+    Route::resource('news','NewsController');
+    Route::resource('distributors','AgentController');
+    Route::get('contact-messages','ContactController@AdminIndex');
+    Route::get('diretaries','ContactController@diretaries');
+    Route::delete('contact-message-delete','ContactController@DeleteMessage');
+    Route::delete('diretary-delete','ContactController@DeleteDiretary');
 }); 
 

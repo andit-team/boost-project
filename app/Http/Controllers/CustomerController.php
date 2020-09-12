@@ -22,8 +22,8 @@ class CustomerController extends Controller{
     }
 
     public function dashboard(){
-        $orders = Order::where('user_id',Sentinel::getUser()->id)->get();
-        // dd($purchase); 
+        $orders = Order::where('user_id',Sentinel::getUser()->id)->where('order_status','confirm')->get();
+        // dd($orders);
         $i = 0;
         return view('customer-dashboard',compact('orders','i'));
     }
@@ -334,7 +334,7 @@ class CustomerController extends Controller{
 
 
     public function orderHistory(){
-        $orders = Order::where('user_id',Sentinel::getUser()->id)->get();
+        $orders = Order::where('user_id',Sentinel::getUser()->id)->where('order_status','confirm')->get();
         $i = 0;
 
         return view('frontend.orderhistory.orderhistory',compact('orders','i'));

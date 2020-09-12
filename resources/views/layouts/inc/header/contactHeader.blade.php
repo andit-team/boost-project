@@ -19,7 +19,7 @@
               <a class="nav-link" href="#">NEWS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link  active-page" href="{{'contact-us'}}">CONTATTI</a>
+              <a class="nav-link  active-page" href="{{url('contact-us')}}">CONTATTI</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">COMMERCIO </a>
@@ -37,3 +37,5 @@
       </div>
     </nav>
   </header>
+
+  @include('layouts.inc.header.modal')
