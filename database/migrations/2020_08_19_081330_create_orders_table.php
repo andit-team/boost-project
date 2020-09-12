@@ -24,7 +24,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('total',8,2)->default(0.00);
             $table->decimal('pay_amount',8,2)->default(0.00);
             $table->string('paypal_id')->nullable();
-            $table->enum('order_status',['delivary','information','payment','overview'])->default('delivary');
+            $table->enum('order_status',['delivary','information','payment','overview','confirm'])->default('delivary');
             $table->enum('payment_status',['pending','complete','pertialy'])->default('pending');
             $table->timestamps();
         });
