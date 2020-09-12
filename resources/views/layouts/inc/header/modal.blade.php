@@ -11,9 +11,9 @@
           <div class="all-model-content d-flex">
             <div class="list-model">
               <ul>
-                <li><a href="sei-un-distributore.html"> A) SEI UN DISTRIBUTORE? </a> </li>
-                <li><a href="sei-un-local.html"> B) SHAI UN LOCALE?.</a></li>
-                <li><a href="sei-un-consumatore.html"> C) SEI UN CONSUMATORE?</a></li>
+                <li><a href="{{url('sei-un-distributore')}}"> A) SEI UN DISTRIBUTORE? </a> </li>
+                <li><a href="{{url('sei-un-local')}}"> B) SHAI UN LOCALE?.</a></li>
+                <li><a href="{{url('login')}}"> C) SEI UN CONSUMATORE?</a></li>
               </ul>
             </div>
             <div class="model-para">

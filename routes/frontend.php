@@ -47,14 +47,19 @@ Route::post('orders/confirm','OrderController@orderConfirm')->name('orderConfirm
 Route::post('orders/addcart','OrderController@addCart');
 Route::post('orders/decreas','OrderController@orderDecreas');
 Route::post('orders/remove','OrderController@orderRemove');
+Route::get('terms-condition','OrderController@term');
 
 
 Route::get('terms-condition','OrderController@term');
 
 Route::resource('orders','OrderController');
 Route::post('payment_transfer','PaymentTransController@store')->name('payment_transfer'); 
-Route::get('distributors','AgentController@create');
-Route::post('distributors','AgentController@store')->name('distributorstore');
+Route::get('sei-un-distributore','AgentController@create');
+Route::post('sei-un-distributore','AgentController@store')->name('distributorstore');
+Route::resource('distributors','AgentController');
+Route::get('sei-un-local','ClubController@create');
+Route::post('sei-un-local','ClubController@store')->name('cludbstore');
+Route::resource('clubs','ClubController');
 // Route::resource('trans','PaymentTransController');
 // Frontend Routes Are End Here...............
 

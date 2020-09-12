@@ -23,6 +23,8 @@
                    <li><a class="sidebar-header {{ request()->is('boostadmin/news/*') ? 'active' : '' }}"  href="{{ url('boostadmin/news') }}" class="{{ request()->is('boostadmin/news/') ? 'active' : '' }}"><i data-feather="align-left"></i><span>News Latter</span></a> </li> 
                    <li><a class="sidebar-header {{ request()->is('boostadmin/contact-messages') ? 'active' : '' }}"  href="{{ url('boostadmin/contact-messages') }}" class="{{ request()->is('boostadmin/contact-messages/') ? 'active' : '' }}"><i data-feather="align-left"></i><span>Contact Messages</span></a> </li> 
                    <li><a class="sidebar-header {{ request()->is('boostadmin/diretaries') ? 'active' : '' }}"  href="{{ url('boostadmin/diretaries') }}" class="{{ request()->is('boostadmin/diretaries/') ? 'active' : '' }}"><i data-feather="align-left"></i><span>Diretaries</span></a> </li> 
+                   <li><a class="sidebar-header {{ request()->is('boostadmin/distributors/*') ? 'active' : '' }}"  href="{{ url('boostadmin/distributors') }}" class="{{ request()->is('boostadmin/distributors/') ? 'active' : '' }}"><i data-feather="align-left"></i><span>Distributer Info</span></a> </li>
+                   <li><a class="sidebar-header {{ request()->is('boostadmin/clubs/*') ? 'active' : '' }}"  href="{{ url('boostadmin/clubs') }}" class="{{ request()->is('boostadmin/clubs/') ? 'active' : '' }}"><i data-feather="align-left"></i><span>Club Info</span></a> </li>  
                    <li><a class="sidebar-header {{ request()->is('logout') ? 'active' : '' }}"  href="{{ url('logout') }}" class="{{ request()->is('logout/') ? 'active' : '' }}"><i data-feather="log-out"></i><span>Logout</span></a> </li> 
                 </ul>
             </div>

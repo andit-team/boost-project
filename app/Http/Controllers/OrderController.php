@@ -61,10 +61,16 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::find($id);
-        $cartProduct = Cart::where('user_id',$order->user_id)->get();
-        $totlaPrice = Cart::where('user_id',$order->user_id)->sum('price');
+        // $order = Order::where('user_id',$id)->first();
+        // $cartProduct = Cart::where('user_id',$order->user_id)->get();
+        // $totlaPrice = Cart::where('user_id',$order->user_id)->sum('price');
+
+        $i = 0;
+        $total = 0;
+        $subtotal = 0;
         
-        return view('admin.order.show',compact('cartProduct','totlaPrice','order'));
+        // return view('admin.order.show',compact('cartProduct','totlaPrice','order'));
+        return view('admin.order.show',compact('order','i','total','subtotal'));
     }
 
     /**
@@ -447,7 +453,7 @@ class OrderController extends Controller
     }
 
     public function invoiceDetails($id){
-        $order = Order::where('user_id',$id)->first();
+        $order = Order::find($id);
         // dd($order);
         $i = 0;
         $total = 0;

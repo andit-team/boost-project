@@ -10,7 +10,8 @@ Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
 
     Route::get('dashboard','AdminHomeController@dashboard');
     
-    
+    Route::resource('distributors','AgentController');
+    Route::resource('clubs','ClubController');
     Route::resource('/child','ChildrenController');
     Route::resource('/paymentmethod','PaymentMethodsController');
     Route::resource('/shippingmethod','ShippingMethodsController'); 
@@ -21,6 +22,7 @@ Route::middleware(['auth','admin'])->prefix('boostadmin')->group(function (){
     Route::get('/newsfeed','NewsfeedController@feedlist');
     Route::get('/contact-us','ContactController@contactmailList');
     Route::put('/contact-us/{id}','ContactController@replayMail');
+    
 
     Route::get('products/new-products/new','ProductController@create');
     Route::post('products/new-products/new','ProductController@store')->name('productstore');
